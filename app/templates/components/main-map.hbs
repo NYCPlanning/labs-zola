@@ -27,6 +27,7 @@
     {{/map.source}}
   {{/if}}
 
+  {{map.on 'click' (action routeToLot)}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
 {{/mapbox-gl}}
