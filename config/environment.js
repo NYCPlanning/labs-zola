@@ -1,8 +1,6 @@
-/* eslint-env node */
-'use strict';
 
-module.exports = function(environment) {
-  let ENV = {
+const env = function (environment) {
+  const ENV = {
     modulePrefix: 'labs-zola',
     environment,
     rootURL: '/',
@@ -14,8 +12,8 @@ module.exports = function(environment) {
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
-        Date: false
-      }
+        Date: false,
+      },
     },
     'mapbox-gl': {
       accessToken: 'pk.eyJ1IjoiY3dob25nbnljIiwiYSI6ImNpczF1MXdrdjA4MXcycXA4ZGtyN2x5YXIifQ.3HGyME8tBs6BnljzUVIt4Q',
@@ -23,7 +21,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
   };
 
   if (environment === 'development') {
@@ -45,9 +43,9 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
-  if (environment === 'production') {
-
-  }
+  if (environment === 'production') {}; // eslint-disable-line
 
   return ENV;
 };
+
+module.exports = env;
