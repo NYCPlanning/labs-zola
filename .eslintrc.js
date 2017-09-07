@@ -16,5 +16,6 @@ module.exports = {
     'func-names': 0,
     'space-before-function-paren': 0,
     'prefer-arrow-callback': 0,
+    'no-underscore-dangle': 0,
   }
 };
