@@ -15,6 +15,8 @@
     "test": "ember test"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "broccoli-asset-rev": "^2.4.5",
     "broccoli-clean-css": "^1.1.0",
     "ember-ajax": "^3.0.0",
@@ -40,12 +42,12 @@
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.14.0",
     "ember-welcome-page": "^3.0.0",
-    "foundation-sites": "^6.4.3",
     "eslint": "^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
+    "foundation-sites": "^6.4.3",
     "loader.js": "^4.2.3",
     "mapbox-gl": "^0.39.1"
   },
@@ -54,7 +56,6 @@
   },
   "private": true,
   "dependencies": {
-    "phantomjs": "^2.1.7",
     "phantomjs-prebuilt": "^2.1.15"
   }
 }
