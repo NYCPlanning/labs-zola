@@ -122,7 +122,7 @@ export default Ember.Component.extend({
 
   highlightedLotFeature: null,
 
-  highlightedLotSource: Ember.computed('highlightedLotFeature', function () {
+  highlightedLotSource: computed('highlightedLotFeature', function () {
     return {
       type: 'geojson',
       data: {
@@ -167,7 +167,7 @@ export default Ember.Component.extend({
     },
 
     handleMouseover(e) {
-      const feature = e.target.queryRenderedFeatures(e.point, { layers: ['pluto-fill'] })[0];
+      const [feature] = e.target.queryRenderedFeatures(e.point, { layers: ['pluto-fill'] });
 
       if (feature) {
         const { bbl } = feature.properties;
