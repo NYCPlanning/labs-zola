@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import mapboxgl from 'mapbox-gl';
 import carto from '../utils/carto';
 
 const zoningSQL = 'SELECT *, LEFT(zonedist, 2) as primaryzone FROM support_zoning_zd';
@@ -72,22 +73,61 @@ const zdLabelLayer = {
 
 const plutoSQL = 'SELECT the_geom_webmercator, bbl, address FROM support_mappluto';
 
-const plutoLayer = {
-  id: 'pluto',
+const plutoFillLayer = {
+  id: 'pluto-fill',
+  type: 'fill',
+  source: 'pluto',
+  minzoom: 14,
+  'source-layer': 'layer0',
+  paint: {
+    'fill-opacity': 0,
+  },
+};
+
+const plutoLineLayer = {
+  id: 'pluto-line',
   type: 'line',
   source: 'pluto',
+  minzoom: 14,
   'source-layer': 'layer0',
-  'paint': {
-    'line-color': '#888',
+  paint: {
     'line-width': 1,
+    'line-color': '#cdcdcd',
+  },
+};
+
+const highlightedLotLayer = {
+  id: 'highlighted-lot',
+  type: 'fill',
+  source: 'highlighted-lot',
+  paint: {
+    'fill-opacity': 1,
+    'fill-color': 'steelblue',
   },
 };
 
 export default Ember.Component.extend({
   classNames: ['main-map'],
+
   lat: 40.7071266,
+
   lng: -74,
+
   zoom: 10.2,
+
+  highlightedLotFeature: null,
+
+  highlightedLotSource: Ember.computed('highlightedLotFeature', function () {
+    return {
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features: [this.get('highlightedLotFeature')],
+      },
+    };
+  }),
+
+  highlightedLotLayer,
 
   zoningSourcePromise: Ember.computed('zoningTemplate', () => { // eslint-disable-line
     return carto.getVectorTileTemplate([zoningSQL])
@@ -109,5 +149,36 @@ export default Ember.Component.extend({
       }));
   }),
 
-  plutoLayer,
+  plutoFillLayer,
+  plutoLineLayer,
+
+  actions: {
+    handleMapLoad(map) {
+      map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+      map.moveLayer('building');
+      map.setPaintProperty('building', 'fill-opacity', 0.4);
+    },
+
+    handleMouseover(e) {
+      const feature = e.target.queryRenderedFeatures(e.point, { layers: ['pluto-fill'] })[0];
+
+      if (feature) {
+        const { bbl } = feature.properties;
+
+        e.target.getCanvas().style.cursor = 'pointer';
+
+        const prevFeature = this.get('highlightedLotFeature');
+        if (!prevFeature || prevFeature.properties.bbl !== bbl) {
+          this.set('highlightedLotFeature', feature);
+        }
+      } else {
+        e.target.getCanvas().style.cursor = '';
+        this.set('mouseoverLocation', null);
+      }
+    },
+
+    handleMouseleave() {
+      this.set('mouseoverLocation', null);
+    },
+  },
 });

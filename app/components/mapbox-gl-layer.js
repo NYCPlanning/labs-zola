@@ -62,7 +62,7 @@ export default Component.extend({
    */
   _sourceLayer: computed('layer', 'sourceLayer', function() {
     const layer = this.get('layer');
-    return layer['source-layer'];
+    return layer['source-layer'] || '';
   }),
 
   /**
