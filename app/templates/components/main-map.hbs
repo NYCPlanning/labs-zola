@@ -1,6 +1,20 @@
-{{#mapbox-gl 
-  id='main-map' 
-  initOptions=(hash style='mapbox://styles/mapbox/light-v9' 
-  zoom=zoom 
-  center=(array lng lat))}}
+{{#mapbox-gl
+  id='main-map'
+  initOptions=(hash style='mapbox://styles/mapbox/light-v9'
+  zoom=zoom
+  center=(array lng lat))
+  as |map|
+}}
+  {{#with (await plutoSourcePromise) as |plutoSource|}}
+    {{#map.source sourceId='pluto' options=plutoSource as |source|}}
+      {{source.layer layer=plutoLayer }}
+    {{/map.source}}
+  {{/with}}
+  {{#with (await zoningSourcePromise) as |zoningSource|}}
+    {{#map.source sourceId='zoning' options=zoningSource as |source|}}
+      {{source.layer layer=zdLayer before='waterway-label'}}
+      {{source.layer layer=zdLabelLayer before='waterway-label'}}
+    {{/map.source}}
+  {{/with}}
+
 {{/mapbox-gl}}
