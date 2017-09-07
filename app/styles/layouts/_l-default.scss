@@ -29,12 +29,16 @@ body > .ember-view {
 
   @include breakpoint(large) {
     @include xy-cell-static(5,false,0);
-    height: 100vh;
+    height: calc(100vh - 9.375rem);
 
     position: fixed;
-    top: 0;
+    top: 6rem;
     left: 0;
   }
+}
+
+.search {
+
 }
 
 .content-area {
