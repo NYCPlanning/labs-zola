@@ -1,0 +1,21 @@
+@import "settings";
+@import 'foundation-sites/foundation';
+@include foundation-everything;
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body > div {
+  height: 100%;
+}
+
+#main-map {
+  height: 100%;
+  width: 100%;
+}
+
+.main-map {
+  height: 100%;
+}
