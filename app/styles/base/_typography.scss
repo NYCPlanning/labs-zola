@@ -1,0 +1,53 @@
+// --------------------------------------------------
+// Base: Typography
+// --------------------------------------------------
+
+//
+// Headings
+// --------------------------------------------------
+.header-xxlarge { @extend h1; }
+.header-xlarge {  @extend h2; }
+.header-large {   @extend h3; }
+.header-medium {  @extend h4; }
+.header-small {   @extend h5; }
+.header-tiny {    @extend h6; }
+
+h6,
+.header-tiny {
+  text-transform: uppercase;
+  font-weight: $global-weight-normal;
+  margin-bottom: 0.5em;
+}
+
+//
+// Typograhpy helper classes
+// --------------------------------------------------
+.nowrap {
+  white-space: nowrap;
+}
+.no-margin {
+  margin: 0 !important;
+}
+
+.text-small {
+  font-size: rem-calc(12);
+  line-height: 1.7;
+}
+
+.light-gray { color: $light-gray; }
+.medium-gray { color: $medium-gray; }
+.dark-gray { color: $dark-gray; }
+.dcp-orange { color: $dcp-orange; }
+
+// Land Use colors
+.lu-peach { color: $lu-peach; }
+.lu-yellow { color: $lu-yellow; }
+.lu-magenta { color: $lu-magenta; }
+.lu-red { color: $lu-red; }
+.lu-orange { color: $lu-orange; }
+.lu-pink { color: $lu-pink; }
+.lu-green { color: $lu-green; }
+.lu-blue { color: $lu-blue; }
+.lu-lavendar { color: $lu-lavendar; }
+.lu-silver { color: $lu-silver; }
+.lu-gray { color: $lu-gray; }

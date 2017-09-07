@@ -1,0 +1,19 @@
+// --------------------------------------------------
+// Module: Search
+// --------------------------------------------------
+
+.search {
+  background-color: $white;
+  padding: rem-calc(9) rem-calc(6) rem-calc(6);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 2;
+
+  @include breakpoint(large) {
+    padding-right: rem-calc(9);
+  }
+
+  input {
+    margin: 0;
+  }
+}
