@@ -15,8 +15,6 @@
     "test": "ember test"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
     "broccoli-asset-rev": "^2.4.5",
     "broccoli-clean-css": "^1.1.0",
     "ember-ajax": "^3.0.0",

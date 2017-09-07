@@ -5,7 +5,7 @@ moduleForComponent('main-map', 'Integration | Component | main map', {
   integration: true,
 });
 
-test('it renders', (assert) => {
+test('it renders', function (assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
@@ -16,9 +16,6 @@ test('it renders', (assert) => {
   // Template block usage:
   this.render(hbs`
     {{#main-map}}
-      template block text
     {{/main-map}}
   `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });
