@@ -1,3 +1,7 @@
+@import "settings";
+@import 'foundation-sites/foundation';
+@include foundation-everything;
+
 html, body {
   height: 100%;
   margin: 0;
