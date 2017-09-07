@@ -107,12 +107,8 @@ const highlightedLotLayer = {
 };
 
 export default Ember.Component.extend({
-<<<<<<< HEAD
   classNames: ['map-container'],
-=======
-  classNames: ['main-map'],
 
->>>>>>> 2-map-symbology
   lat: 40.7071266,
 
   lng: -74,
