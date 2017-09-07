@@ -159,7 +159,6 @@ export default Ember.Component.extend({
   plutoFillLayer,
   plutoLineLayer,
 
-<<<<<<< Updated upstream
   actions: {
     handleMapLoad(map) {
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
@@ -179,27 +178,6 @@ export default Ember.Component.extend({
         if (!prevFeature || prevFeature.properties.bbl !== bbl) {
           this.set('highlightedLotFeature', feature);
         }
-=======
-  plutoLayer,
-
-  actions: {
-    handleMapLoad(map) {
-      map.addControl(new mapboxgl.NavigationControl(), 'top-left');
-    },
-
-    handleMouseover(e) {
-      const feature = e.target.queryRenderedFeatures(e.point, { layers: ['pluto'] })[0];
-
-      if (feature) {
-        // const { bbl } = feature.properties;
-        e.target.getCanvas().style.cursor = 'pointer';
-        console.log(feature);
-        // this.set('mouseoverLocation', {
-        //   x: e.point.x + 30,
-        //   y: e.point.y,
-        // });
-        // this.set('tooltip-text', `${address} ${descriptio}`);
->>>>>>> Stashed changes
       } else {
         e.target.getCanvas().style.cursor = '';
         this.set('mouseoverLocation', null);

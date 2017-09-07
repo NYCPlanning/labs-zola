@@ -8,7 +8,7 @@ const {
   get,
   getOwner,
   getProperties,
-  guidFor
+  guidFor,
 } = Ember;
 
 export default Component.extend({
@@ -18,14 +18,12 @@ export default Component.extend({
 
   /**
    * @param object
-   * @description The style layer to add, conforming to the Mapbox Style Specification's layer definition.
    * {@link https://www.mapbox.com/mapbox-gl-js/api/#map#addlayer Mapbox}
   */
   layer: null,
 
   /**
    * @param string
-   * @description The ID of an existing layer to insert the new layer before. If this argument is omitted, the layer will be appended to the end of the layers array.
    * {@link https://www.mapbox.com/mapbox-gl-js/api/#map#addlayer Mapbox}
   */
   before: null,
@@ -103,7 +101,7 @@ export default Component.extend({
   }).readOnly(),
 
   init() {
-    this._super(...arguments);
+    this._super(...arguments); // eslint-disable-line
 
     const {
       _layerId,
@@ -119,27 +117,27 @@ export default Component.extend({
       sourceId,
       layerType,
       layoutOptions,
-      paintOptions
+      paintOptions,
     } = getProperties(this, '_layerId', '_layerType', '_sourceId', '_sourceLayer', '_layout', '_paint', '_filter', 'before', 'sourceId', 'layerType', 'layoutOptions', 'paintOptions');
 
     deprecate('Use of `sourceId` is deprecated in favor of `layer.source`', sourceId === null, {
       id: 'ember-mapbox-gl.mapbox-gl-layer',
-      until: '1.0.0'
+      until: '1.0.0',
     });
 
     deprecate('Use of `layerType` is deprecated in favor of `layer.type`', layerType === null, {
       id: 'ember-mapbox-gl.mapbox-gl-layer',
-      until: '1.0.0'
+      until: '1.0.0',
     });
 
     deprecate('Use of `layoutOptions` is deprecated in favor of `layer.layout`', layoutOptions === null, {
       id: 'ember-mapbox-gl.mapbox-gl-layer',
-      until: '1.0.0'
+      until: '1.0.0',
     });
 
     deprecate('Use of `paintOptions` is deprecated in favor of `layer.paint`', paintOptions === null, {
       id: 'ember-mapbox-gl.mapbox-gl-layer',
-      until: '1.0.0'
+      until: '1.0.0',
     });
 
     const layer = {
@@ -148,7 +146,7 @@ export default Component.extend({
       source: _sourceId,
       'source-layer': _sourceLayer,
       layout: _layout,
-      paint: _paint
+      paint: _paint,
     };
 
     if (_filter !== null) {
@@ -159,29 +157,29 @@ export default Component.extend({
   },
 
   didUpdateAttrs() {
-    this._super(...arguments);
+    this._super(...arguments); // eslint-disable-line
 
     const {
       _layerId,
       _layout,
       _paint,
-      _filter
+      _filter,
     } = getProperties(this, '_layerId', '_layout', '_paint', '_filter');
 
-    for (const k in _layout) {
-      this.map.setLayoutProperty(_layerId, k, _layout[k]);
+    for (const k in _layout) { // eslint-disable-line
+      this.map.setLayoutProperty(_layerId, k, _layout[k]); // eslint-disable-line
     }
 
-    for (const k in _paint) {
-      this.map.setPaintProperty(_layerId, k, _paint[k]);
+    for (const k in _paint) { // eslint-disable-line
+      this.map.setPaintProperty(_layerId, k, _paint[k]); // eslint-disable-line
     }
 
     this.map.setFilter(_layerId, _filter);
   },
 
   willDestroy() {
-    this._super(...arguments);
+    this._super(...arguments); // eslint-disable-line
 
     this.map.removeLayer(get(this, '_layerId'));
-  }
+  },
 });

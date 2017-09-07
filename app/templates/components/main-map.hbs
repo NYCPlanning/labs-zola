@@ -12,7 +12,7 @@
       {{source.layer layer=zdLayer before='waterway-label'}}
       {{source.layer layer=zdLabelLayer before='waterway-label'}}
     {{/map.source}}
-    
+
     {{#map.source sourceId='pluto' options=plutoSource as |source|}}
       {{source.layer layer=plutoFillLayer }}
       {{source.layer layer=plutoLineLayer }}
@@ -26,9 +26,6 @@
   {{/if}}
 
   {{map.on 'click' (action routeToLot)}}
-  {{map.on 'mousemove' (action 'handleMouseover')}}
-  {{map.on 'mouseout' (action 'handleMouseleave')}}
-
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
 
