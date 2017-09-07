@@ -5,7 +5,11 @@
 body > .ember-view {
   // This hacky selector gets the app.js wrapper
   @include xy-grid;
-  @include flex-align(right);
+
+  @include breakpoint(large) {
+    @include flex-align(right);
+    min-height: 100vh;
+  }
 }
 
 .site-header {
@@ -35,10 +39,6 @@ body > .ember-view {
     top: 6rem;
     left: 0;
   }
-}
-
-.search {
-
 }
 
 .content-area {
