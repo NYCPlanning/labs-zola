@@ -1,6 +1,11 @@
 import Ember from 'ember';
 import mapboxgl from 'mapbox-gl';
+import { task } from 'ember-concurrency';
 import carto from '../utils/carto';
+
+const { computed } = Ember;
+const { reads } = computed;
+
 
 const zoningSQL = 'SELECT *, LEFT(zonedist, 2) as primaryzone FROM support_zoning_zd';
 const zdLayer = {
@@ -129,25 +134,27 @@ export default Ember.Component.extend({
 
   highlightedLotLayer,
 
-  zoningSourcePromise: Ember.computed('zoningTemplate', () => { // eslint-disable-line
-    return carto.getVectorTileTemplate([zoningSQL])
+  zoningSourcePromise: task(function* () {
+    return yield carto.getVectorTileTemplate([zoningSQL])
       .then(zoningTemplate => ({
         type: 'vector',
         tiles: [zoningTemplate],
       }));
-  }),
+  }).restartable().on('didInsertElement'),
+  zoningSource: reads('zoningSourcePromise.last.value'),
 
   zdLayer,
   zdLabelLayer,
 
-  plutoSourcePromise: Ember.computed('plutoTemplate', () => { // eslint-disable-line
-    return carto.getVectorTileTemplate([plutoSQL])
+  plutoSourcePromise: task(function* () {
+    return yield carto.getVectorTileTemplate([plutoSQL])
       .then(plutoTemplate => ({
         type: 'vector',
         tiles: [plutoTemplate],
         minzoom: 12,
       }));
-  }),
+  }).restartable().on('didInsertElement'),
+  plutoSource: reads('plutoSourcePromise.last.value'),
 
   plutoFillLayer,
   plutoLineLayer,

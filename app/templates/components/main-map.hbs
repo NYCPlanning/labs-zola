@@ -8,20 +8,16 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|
 }}
-
-  {{#with (await zoningSourcePromise) as |zoningSource|}}
     {{#map.source sourceId='zoning' options=zoningSource as |source|}}
       {{source.layer layer=zdLayer before='waterway-label'}}
       {{source.layer layer=zdLabelLayer before='waterway-label'}}
     {{/map.source}}
-  {{/with}}
-
-  {{#with (await plutoSourcePromise) as |plutoSource|}}
+    
     {{#map.source sourceId='pluto' options=plutoSource as |source|}}
       {{source.layer layer=plutoFillLayer }}
       {{source.layer layer=plutoLineLayer }}
     {{/map.source}}
-  {{/with}}
+
 
   {{#if highlightedLotFeature}}
     {{#map.source sourceId='highlighted-lot' options=highlightedLotSource as |source|}}
@@ -32,4 +28,5 @@
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
+
 {{/mapbox-gl}}
