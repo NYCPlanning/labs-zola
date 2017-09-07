@@ -69,21 +69,21 @@ $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #1779ba,
-  secondary: #767676,
+  primary: $a11y-orange,
+  secondary: #ffc861,
   success: #3adb76,
-  warning: #ffae00,
-  alert: #cc4b37,
+  warning: #cc3322,
+  alert: #4466ff,
 );
-$light-gray: #e6e6e6;
+$light-gray: #fafafa;
 $medium-gray: #cacaca;
-$dark-gray: #8a8a8a;
-$black: #0a0a0a;
+$dark-gray: #6b717b;
+$black: #1a2a2a;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
-$body-antialiased: true;
+$body-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$body-antialiased: false;
 $global-margin: 1rem;
 $global-padding: 1rem;
 $global-position: 1rem;
@@ -139,25 +139,25 @@ $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
 $header-styles: (
   small: (
-    'h1': ('font-size': 24),
-    'h2': ('font-size': 20),
-    'h3': ('font-size': 19),
-    'h4': ('font-size': 18),
-    'h5': ('font-size': 17),
-    'h6': ('font-size': 16),
+    'h1': ('font-size': 34),
+    'h2': ('font-size': 25),
+    'h3': ('font-size': 20),
+    'h4': ('font-size': 16),
+    'h5': ('font-size': 14),
+    'h6': ('font-size': 12),
   ),
   medium: (
-    'h1': ('font-size': 48),
-    'h2': ('font-size': 40),
-    'h3': ('font-size': 31),
-    'h4': ('font-size': 25),
-    'h5': ('font-size': 20),
-    'h6': ('font-size': 16),
+    'h1': ('font-size': 38),
+    'h2': ('font-size': 34),
+    'h3': ('font-size': 25),
+    'h4': ('font-size': 20),
+    'h5': ('font-size': 16),
+    'h6': ('font-size': 12),
   ),
 );
 $header-text-rendering: optimizeLegibility;
-$small-font-size: 80%;
-$header-small-font-color: $medium-gray;
+$small-font-size: 70%;
+$header-small-font-color: inherit;
 $paragraph-lineheight: 1.6;
 $paragraph-margin-bottom: 1rem;
 $paragraph-text-rendering: optimizeLegibility;
@@ -199,14 +199,14 @@ $abbr-underline: 1px dotted $black;
 // 5. Typography Helpers
 // ---------------------
 
-$lead-font-size: $global-font-size * 1.25;
-$lead-lineheight: 1.6;
+$lead-font-size: $global-font-size * 1.5;
+$lead-lineheight: 1.4;
 $subheader-lineheight: 1.4;
-$subheader-color: $dark-gray;
+$subheader-color: inherit;
 $subheader-font-weight: $global-weight-normal;
 $subheader-margin-top: 0.2rem;
 $subheader-margin-bottom: 0.5rem;
-$stat-font-size: 2.5rem;
+$stat-font-size: rem-calc(38);
 
 // 6. Abide
 // --------
@@ -866,4 +866,3 @@ $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
 $xy-block-grid-max: 8;
-
