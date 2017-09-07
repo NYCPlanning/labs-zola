@@ -47,5 +47,9 @@
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "phantomjs": "^2.1.7",
+    "phantomjs-prebuilt": "^2.1.15"
+  }
 }
