@@ -55,6 +55,7 @@
   },
   "private": true,
   "dependencies": {
-    "ember-fetch": "^3.3.1"
+    "ember-fetch": "^3.3.1",
+    "phantomjs-prebuilt": "^2.1.15"
   }
 }
