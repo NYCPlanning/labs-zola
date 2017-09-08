@@ -2,12 +2,9 @@ import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task, timeout } from 'ember-concurrency';
 import bblDemux from '../utils/bbl-demux';
+import fetch from 'fetch';
 
 const { merge } = Ember;
-
-function toTitleCase(str) {
-  return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-}
 
 function getMatches(text) {
   const SQL = `
@@ -22,7 +19,7 @@ function getMatches(text) {
      WHERE address LIKE '%25${text.toUpperCase()}%25' LIMIT 10`;
 
   const URL = `https://carto.planninglabs.nyc/user/data/api/v2/sql?q=${SQL}`;
-  return $.ajax(URL);
+  return fetch(URL).then(res => res.json());
 }
 
 export default Ember.Component.extend({
@@ -31,13 +28,15 @@ export default Ember.Component.extend({
 
   @computed('searchTerms')
   results(searchTerms) {
-    if (searchTerms) {
-      return getMatches(searchTerms)
-        .then((res) => {
-          const { rows } = res;
-          return rows.map(row => merge(row, bblDemux(row.bbl)));
-        });
-    }
-    return [];
+    if (!searchTerms) return;
+    return this.get('debouncedResults').perform(searchTerms);
   },
+
+  debouncedResults: task(function* (searchTerms) {
+    return yield getMatches(searchTerms)
+      .then((res) => {
+        const { rows } = res;
+        return rows.map(row => merge(row, bblDemux(row.bbl)));
+      });
+  }).keepLatest(),
 });
