@@ -112,6 +112,16 @@ const highlightedLotLayer = {
   },
 };
 
+const selectedLotLayer = {
+  id: 'selected-lot',
+  type: 'fill',
+  source: 'selected-lot',
+  paint: {
+    'fill-opacity': 1,
+    'fill-color': 'steelblue',
+  },
+};
+
 export default Ember.Component.extend({
   mainMap: service(),
   
@@ -136,6 +146,15 @@ export default Ember.Component.extend({
     };
   },
   highlightedLotLayer,
+
+  @computed('mainMap.selected')
+  selectedLotSource(selected) {
+    return {
+      type: 'geojson',
+      data: selected.get('geometry'),
+    }
+  },
+  selectedLotLayer,
 
   zoningSourcePromise: task(function* () {
     return yield carto.getVectorTileTemplate([zoningSQL])

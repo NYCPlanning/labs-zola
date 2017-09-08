@@ -3,8 +3,8 @@
 {{#mapbox-gl
   id='main-map'
   initOptions=(hash style='mapbox://styles/mapbox/light-v9'
-  zoom=zoom
-  center=(array lng lat))
+                    zoom=zoom
+                    center=(array lng lat))
   mapLoaded=(action 'handleMapLoad')
   as |map|
 }}
@@ -24,6 +24,13 @@
     {{/map.source}}
   {{/if}}
 
+  {{#if mainMap.selected}}
+    {{#map.source sourceId='selected-lot' options=selectedLotSource as |source|}}
+      {{source.layer layer=selectedLotLayer after='waterway-label'}}
+    {{/map.source}}
+  {{/if}}
+
+  {{map.call 'fitBounds' mainMap.bounds}}
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
