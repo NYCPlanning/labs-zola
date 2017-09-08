@@ -40,5 +40,9 @@
       color: $anchor-color-hover;
       background-color: $light-gray;
     }
+
+    &.loading {
+      color: $dark-gray;
+    }
   }
 }
