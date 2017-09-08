@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
-import { task, timeout } from 'ember-concurrency';
-import bblDemux from '../utils/bbl-demux';
+import { task } from 'ember-concurrency';
 import fetch from 'fetch';
+import bblDemux from '../utils/bbl-demux';
 
 const { merge } = Ember;
 
@@ -28,7 +28,7 @@ export default Ember.Component.extend({
 
   @computed('searchTerms')
   results(searchTerms) {
-    if (!searchTerms) return;
+    if (!searchTerms) return [];
     return this.get('debouncedResults').perform(searchTerms);
   },
 
