@@ -1,9 +1,8 @@
 import Ember from 'ember';
 import mapboxgl from 'mapbox-gl';
 import { task } from 'ember-concurrency';
+import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import carto from '../utils/carto';
-import { computed } from 'ember-decorators/object';
-import { on } from 'ember-decorators/object/evented'
 
 const { reads } = Ember.computed;
 const { service } = Ember.inject;
@@ -124,7 +123,7 @@ const selectedLotLayer = {
 
 export default Ember.Component.extend({
   mainMap: service(),
-  
+
   classNames: ['map-container'],
 
   lat: 40.7071266,
@@ -152,7 +151,7 @@ export default Ember.Component.extend({
     return {
       type: 'geojson',
       data: selected.get('geometry'),
-    }
+    };
   },
   selectedLotLayer,
 

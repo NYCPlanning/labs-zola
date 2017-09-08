@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import carto, { buildSqlUrl } from '../utils/carto';
+import { buildSqlUrl } from '../utils/carto';
 
 const SQL = function(id) {
   return `SELECT *, bbl AS id FROM support_mappluto WHERE bbl=${id}`;

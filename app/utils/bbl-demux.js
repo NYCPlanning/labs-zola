@@ -1,6 +1,6 @@
 import numeral from 'npm:numeral';
 
-export default function bblDemux(bbl) {
+export default function bblDemux(bbl = '') {
   if (typeof bbl === 'string' || typeof bbl === 'number') {
     const bblString = bbl.toString();
     const boro = bblString.substring(0, 1);
