@@ -8,7 +8,7 @@ const { reads } = computed;
 
 
 const zoningSQL = 'SELECT *, LEFT(zonedist, 2) as primaryzone FROM support_zoning_zd';
-const zdLayer = {
+const zdFillLayer = {
   id: 'zd',
   type: 'fill',
   source: 'zoning',
@@ -44,7 +44,27 @@ const zdLayer = {
     },
     'fill-opacity': 0.3,
     'fill-antialias': true,
-    'fill-outline-color': '#444',
+  },
+};
+
+const zdLineLayer = {
+  id: 'zd-lines',
+  type: 'line',
+  source: 'zoning',
+  'source-layer': 'layer0',
+  paint: {
+    'line-opacity': {
+      stops: [
+        [12, 0],
+        [13, 0.2],
+      ],
+    },
+    'line-width': {
+      stops: [
+        [13, 1],
+        [14, 3],
+      ],
+    },
   },
 };
 
@@ -54,6 +74,18 @@ const paint = {
     'text-halo-color': '#FFFFFF',
     'text-halo-width': 2,
     'text-halo-blur': 2,
+    'text-opacity': {
+      stops: [
+        [
+          12,
+          0,
+        ],
+        [
+          13,
+          1,
+        ],
+      ],
+    },
   },
   co_labels: {
     'text-color': 'rgba(255, 0, 0, 1)',
@@ -72,8 +104,19 @@ const zdLabelLayer = {
   layout: {
     'symbol-placement': 'point',
     'text-field': '{zonedist}',
+    'text-size': {
+      stops: [
+        [
+          10,
+          8,
+        ],
+        [
+          14,
+          16,
+        ],
+      ],
+    },
   },
-  minzoom: 14,
 };
 
 const plutoSQL = 'SELECT the_geom_webmercator, bbl, address FROM support_mappluto';
@@ -82,7 +125,7 @@ const plutoFillLayer = {
   id: 'pluto-fill',
   type: 'fill',
   source: 'pluto',
-  minzoom: 14,
+  minzoom: 15,
   'source-layer': 'layer0',
   paint: {
     'fill-opacity': 0,
@@ -93,11 +136,17 @@ const plutoLineLayer = {
   id: 'pluto-line',
   type: 'line',
   source: 'pluto',
-  minzoom: 14,
+  minzoom: 15,
   'source-layer': 'layer0',
   paint: {
-    'line-width': 1,
-    'line-color': '#cdcdcd',
+    'line-width': 0.5,
+    'line-color': 'rgba(130, 130, 130, 1)',
+    'line-opacity': {
+      stops: [
+        [15, 0],
+        [16, 1],
+      ],
+    },
   },
 };
 
@@ -143,7 +192,8 @@ export default Ember.Component.extend({
   }).restartable().on('didInsertElement'),
   zoningSource: reads('zoningSourcePromise.last.value'),
 
-  zdLayer,
+  zdFillLayer,
+  zdLineLayer,
   zdLabelLayer,
 
   plutoSourcePromise: task(function* () {
@@ -163,7 +213,7 @@ export default Ember.Component.extend({
     handleMapLoad(map) {
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
       map.moveLayer('building');
-      map.setPaintProperty('building', 'fill-opacity', 0.4);
+      setTimeout(() => { map.setPaintProperty('building', 'fill-opacity', 0.4); }, 1000);
     },
 
     handleMouseover(e) {
