@@ -19,11 +19,6 @@
     {{source.layer layer=plutoLineLayer }}
   {{/map.source}}
 
-  {{#map.source sourceId='pluto' options=plutoSource as |source|}}
-    {{source.layer layer=plutoFillLayer }}
-    {{source.layer layer=plutoLineLayer }}
-  {{/map.source}}
-
   {{#if highlightedLotFeature}}
     {{#map.source sourceId='highlighted-lot' options=highlightedLotSource as |source|}}
       {{source.layer layer=highlightedLotLayer before='waterway-label'}}
