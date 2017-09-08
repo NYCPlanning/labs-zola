@@ -20,21 +20,24 @@
 
 .search-results {
   background-color: $white;
+  font-size: rem-calc(12);
   width: 100%;
   position: absolute;
   top: 100%;
-  font-size: rem-calc(12);
-  cursor: pointer;
-  margin-left: rem-calc(-6);
+  right: 0;
+  bottom: auto;
+  left: 0;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.1);
 
   li {
-    padding: $global-margin / 2;
+    color: $anchor-color;
+    border-top: 1px solid $medium-gray;
+    padding: $global-margin/2;
+    cursor: pointer;
+
     &:hover {
+      color: $anchor-color-hover;
       background-color: $light-gray;
     }
-  }
-
-  li+li {
-    border-top: 1px solid $medium-gray;
   }
 }
