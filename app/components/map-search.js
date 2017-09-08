@@ -1,6 +1,9 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task, timeout } from 'ember-concurrency';
+import bblDemux from '../utils/bbl-demux';
+
+const { merge } = Ember;
 
 function toTitleCase(str) {
   return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -30,7 +33,11 @@ export default Ember.Component.extend({
   results(searchTerms) {
     if (searchTerms) {
       return getMatches(searchTerms)
-        .then(res => res.rows);
+        .then((res) => {
+          const { rows } = res;
+          return rows.map(row => merge(row, bblDemux(row.bbl)));
+        });
     }
+    return [];
   },
 });

@@ -1,9 +1,13 @@
 {{input type='text' placeholder='Search...' value=searchTerms}}
 <ul class="search-results no-bullet">
   {{#each (await results) as |result|}}
-    <li>{{result.address}}</li>
-  {{else}}
-    Loading...
+    {{!-- <li>{{result.address}}</li> --}}
+    {{#link-to 'lot' result.boro result.block result.lot tagName='li'}}
+      {{result.address}}
+    {{/link-to}}
   {{/each}}
+  {{#if (is-pending results)}}
+    <li>Loading...</li>
+  {{/if}}
 </ul>
 {{yield}}
