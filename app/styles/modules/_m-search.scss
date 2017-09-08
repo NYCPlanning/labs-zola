@@ -17,3 +17,24 @@
     margin: 0;
   }
 }
+
+.search-results {
+  background-color: $white;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  font-size: rem-calc(12);
+  cursor: pointer;
+  margin-left: rem-calc(-6);
+
+  li {
+    padding: $global-margin / 2;
+    &:hover {
+      background-color: $light-gray;
+    }
+  }
+
+  li+li {
+    border-top: 1px solid $medium-gray;
+  }
+}

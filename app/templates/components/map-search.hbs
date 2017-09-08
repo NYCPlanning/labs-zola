@@ -1,2 +1,9 @@
-<input type="text" placeholder="Search...">
+{{input type='text' placeholder='Search...' value=searchTerms}}
+<ul class="search-results no-bullet">
+  {{#each (await results) as |result|}}
+    <li>{{result.address}}</li>
+  {{else}}
+    Loading...
+  {{/each}}
+</ul>
 {{yield}}
