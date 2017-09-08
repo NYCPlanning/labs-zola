@@ -24,7 +24,7 @@ function getMatches(text) {
 
 export default Ember.Component.extend({
   classNames: ['search'],
-  searchTerms: '120 broadway',
+  searchTerms: '',
 
   @computed('searchTerms')
   results(searchTerms) {
