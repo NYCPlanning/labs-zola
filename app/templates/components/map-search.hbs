@@ -1,5 +1,9 @@
 {{input type='text' placeholder='Search...' value=searchTerms}}
-<button class="close-button" aria-label="Clear Search" type="button" {{action 'clear'}}><span>&times;</span></button>
+{{#if searchTerms}}
+  <button class="close-button" aria-label="Clear Search" type="button" {{action 'clear'}}>
+    <span aria-hidden="true">&times;</span>
+  </button>
+{{/if}}
 <ul class="search-results no-bullet">
   {{#each (await results) as |result|}}
     {{#link-to 'lot' result.boro result.block result.lot tagName='li'}}
