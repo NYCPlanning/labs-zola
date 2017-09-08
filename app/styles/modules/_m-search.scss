@@ -32,6 +32,12 @@
   bottom: auto;
   left: 0;
   box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  &.has-results {
+    opacity: 1;
+  }
 
   li {
     color: $anchor-color;
@@ -44,9 +50,20 @@
       color: $anchor-color-hover;
       background-color: $light-gray;
     }
-
-    &.loading {
-      color: $dark-gray;
-    }
   }
+}
+
+.search-results--loading {
+  border-top: 1px solid $medium-gray;
+  padding: $global-margin/2;
+  color: $dark-gray;
+  background-color: rgba($white,0.94);
+  font-size: rem-calc(12);
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  bottom: auto;
+  left: 0;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.1);
 }

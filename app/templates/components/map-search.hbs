@@ -1,14 +1,13 @@
 {{input type='text' placeholder='Search...' value=searchTerms}}
 <button class="close-button" aria-label="Clear Search" type="button"><span aria-hidden="true">&times;</span></button>
-<ul class="search-results no-bullet">
+<ul class="search-results no-bullet {{if (await results) 'has-results' ''}}">
   {{#each (await results) as |result|}}
     {{#link-to 'lot' result.boro result.block result.lot tagName='li'}}
       {{to-title-case result.address}}
     {{/link-to}}
   {{/each}}
-
-  {{#if (is-pending results)}}
-    <li class="loading">Loading...</li>
-  {{/if}}
 </ul>
+{{#if (is-pending results)}}
+  <div class="search-results--loading">Loading...</div>
+{{/if}}
 {{yield}}
