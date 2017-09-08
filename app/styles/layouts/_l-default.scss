@@ -39,6 +39,14 @@ body > .ember-view {
     top: 6rem;
     left: 0;
   }
+
+  @include breakpoint(xlarge) {
+    @include xy-cell-static(6,false,0);
+  }
+
+  @include breakpoint(xxlarge) {
+    @include xy-cell-static(7,false,0);
+  }
 }
 
 .content-area {
@@ -53,6 +61,13 @@ body > .ember-view {
     @include xy-cell-static(7,false,0);
     box-shadow: -4px 0 0 rgba(0,0,0,0.1);
     margin-top: 6rem;
+  }
 
+  @include breakpoint(xlarge) {
+    @include xy-cell-static(6,false,0);
+  }
+
+  @include breakpoint(xxlarge) {
+    @include xy-cell-static(5,false,0);
   }
 }
