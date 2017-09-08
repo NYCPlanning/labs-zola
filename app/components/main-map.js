@@ -8,7 +8,7 @@ const { reads } = Ember.computed;
 const { service } = Ember.inject;
 
 const zoningSQL = 'SELECT *, LEFT(zonedist, 2) as primaryzone FROM support_zoning_zd';
-const zdLayer = {
+const zdFillLayer = {
   id: 'zd',
   type: 'fill',
   source: 'zoning',
@@ -19,32 +19,52 @@ const zdLayer = {
       type: 'categorical',
       stops: [
         ['BP', '#666666'],
-        ['C1', '#ff0000'],
-        ['C2', '#ff0000'],
-        ['C3', '#ff0000'],
-        ['C4', '#ff0000'],
-        ['C5', '#ff0000'],
-        ['C6', '#ff0000'],
-        ['C7', '#ff0000'],
+        ['C1', '#ffa89c'],
+        ['C2', '#ff9086'],
+        ['C3', '#ff786f'],
+        ['C4', '#ff6059'],
+        ['C5', '#ff4843'],
+        ['C6', '#ff302d'],
+        ['C7', '#ff1816'],
         ['C8', '#ff0000'],
-        ['M1', '#E362FB'],
-        ['M2', '#E362FB'],
-        ['M3', '#E362FB'],
+        ['M1', '#f3b7fb'],
+        ['M2', '#eb8dfb'],
+        ['M3', '#e362fb'],
         ['PA', '#78D271'],
-        ['R1', '#F2F618'],
-        ['R2', '#F2F618'],
-        ['R3', '#F2F618'],
-        ['R4', '#F2F618'],
-        ['R5', '#F2F618'],
-        ['R6', '#F2F618'],
-        ['R7', '#F2F618'],
-        ['R8', '#F2F618'],
-        ['R9', '#F2F618'],
+        ['R1', '#f6f4b1'],
+        ['R2', '#f6f49e'],
+        ['R3', '#f5f58b'],
+        ['R4', '#f5f578'],
+        ['R5', '#f4f565'],
+        ['R6', '#f4f551'],
+        ['R7', '#f3f63e'],
+        ['R8', '#f3f62b'],
+        ['R9', '#f2f618'],
       ],
     },
     'fill-opacity': 0.3,
     'fill-antialias': true,
-    'fill-outline-color': '#444',
+  },
+};
+
+const zdLineLayer = {
+  id: 'zd-lines',
+  type: 'line',
+  source: 'zoning',
+  'source-layer': 'layer0',
+  paint: {
+    'line-opacity': {
+      stops: [
+        [12, 0],
+        [13, 0.2],
+      ],
+    },
+    'line-width': {
+      stops: [
+        [13, 1],
+        [14, 3],
+      ],
+    },
   },
 };
 
@@ -54,6 +74,18 @@ const paint = {
     'text-halo-color': '#FFFFFF',
     'text-halo-width': 2,
     'text-halo-blur': 2,
+    'text-opacity': {
+      stops: [
+        [
+          12,
+          0,
+        ],
+        [
+          13,
+          1,
+        ],
+      ],
+    },
   },
   co_labels: {
     'text-color': 'rgba(255, 0, 0, 1)',
@@ -72,8 +104,19 @@ const zdLabelLayer = {
   layout: {
     'symbol-placement': 'point',
     'text-field': '{zonedist}',
+    'text-size': {
+      stops: [
+        [
+          10,
+          8,
+        ],
+        [
+          14,
+          16,
+        ],
+      ],
+    },
   },
-  minzoom: 14,
 };
 
 const plutoSQL = 'SELECT the_geom_webmercator, bbl, address FROM support_mappluto';
@@ -82,7 +125,7 @@ const plutoFillLayer = {
   id: 'pluto-fill',
   type: 'fill',
   source: 'pluto',
-  minzoom: 14,
+  minzoom: 15,
   'source-layer': 'layer0',
   paint: {
     'fill-opacity': 0,
@@ -93,11 +136,17 @@ const plutoLineLayer = {
   id: 'pluto-line',
   type: 'line',
   source: 'pluto',
-  minzoom: 14,
+  minzoom: 15,
   'source-layer': 'layer0',
   paint: {
-    'line-width': 1,
-    'line-color': '#cdcdcd',
+    'line-width': 0.5,
+    'line-color': 'rgba(130, 130, 130, 1)',
+    'line-opacity': {
+      stops: [
+        [15, 0],
+        [16, 1],
+      ],
+    },
   },
 };
 
@@ -165,7 +214,8 @@ export default Ember.Component.extend({
 
   zoningSource: reads('zoningSourcePromise.last.value'),
 
-  zdLayer,
+  zdFillLayer,
+  zdLineLayer,
   zdLabelLayer,
 
   plutoSourcePromise: task(function* () {
@@ -186,7 +236,7 @@ export default Ember.Component.extend({
     handleMapLoad(map) {
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
       map.moveLayer('building');
-      map.setPaintProperty('building', 'fill-opacity', 0.4);
+      setTimeout(() => { map.setPaintProperty('building', 'fill-opacity', 0.4); }, 1000);
     },
 
     handleMouseover(e) {

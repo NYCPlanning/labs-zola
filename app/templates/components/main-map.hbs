@@ -9,7 +9,8 @@
   as |map|
 }}
   {{#map.source sourceId='zoning' options=zoningSource as |source|}}
-    {{source.layer layer=zdLayer before='waterway-label'}}
+    {{source.layer layer=zdFillLayer before='waterway-label'}}
+    {{source.layer layer=zdLineLayer before='waterway-label'}}
     {{source.layer layer=zdLabelLayer before='waterway-label'}}
   {{/map.source}}
 
