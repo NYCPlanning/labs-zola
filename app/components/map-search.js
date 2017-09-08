@@ -24,7 +24,7 @@ function getMatches(text) {
 
 export default Ember.Component.extend({
   classNames: ['search'],
-  searchTerms: '120 broadway',
+  searchTerms: '',
 
   @computed('searchTerms')
   results(searchTerms) {
@@ -39,4 +39,10 @@ export default Ember.Component.extend({
         return rows.map(row => merge(row, bblDemux(row.bbl)));
       });
   }).keepLatest(),
+
+  actions: {
+    clear() {
+      this.set('searchTerms', '');
+    },
+  },
 });

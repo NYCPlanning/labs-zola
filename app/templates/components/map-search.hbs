@@ -1,6 +1,10 @@
 {{input type='text' placeholder='Search...' value=searchTerms}}
-<button class="close-button" aria-label="Clear Search" type="button"><span aria-hidden="true">&times;</span></button>
-<ul class="search-results no-bullet {{if (await results) 'has-results' ''}}">
+{{#if searchTerms}}
+  <button class="close-button" aria-label="Clear Search" type="button" {{action 'clear'}}>
+    <span aria-hidden="true">&times;</span>
+  </button>
+{{/if}}
+<ul class="search-results no-bullet{{if (await results) ' has-results' ''}}">
   {{#each (await results) as |result|}}
     {{#link-to 'lot' result.boro result.block result.lot tagName='li'}}
       {{to-title-case result.address}}

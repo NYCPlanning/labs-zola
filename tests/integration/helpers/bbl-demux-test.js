@@ -8,10 +8,9 @@ moduleForComponent('bbl-demux', 'helper:bbl-demux', {
 
 // Replace this with your real tests.
 test('it renders', function(assert) {
-  this.set('inputValue', '1234');
+  this.set('inputValue', { boro: 4, block: 4381, lot: 1});
 
   this.render(hbs`{{bbl-demux inputValue}}`);
 
-  assert.equal(this.$().text().trim(), '1234');
+  assert.equal(this.$().text().trim(), '4043810001');
 });
-

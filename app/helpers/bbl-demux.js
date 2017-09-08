@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import demux from '../utils/bbl-demux'; 
+import demux from '../utils/bbl-demux';
 
 export function bblDemux(params) {
   const [bbl] = params;
