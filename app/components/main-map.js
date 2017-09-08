@@ -181,6 +181,10 @@ export default Ember.Component.extend({
 
   zoom: 10.2,
 
+  options: {
+    padding: 300,
+  },
+
   highlightedLotFeature: null,
 
   @computed('highlightedLotFeature')

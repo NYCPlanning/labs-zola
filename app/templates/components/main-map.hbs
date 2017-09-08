@@ -31,7 +31,7 @@
     {{/map.source}}
   {{/if}}
 
-  {{map.call 'fitBounds' mainMap.bounds}}
+  {{map.call 'fitBounds' mainMap.bounds options}}
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
