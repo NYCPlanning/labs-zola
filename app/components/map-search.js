@@ -39,4 +39,10 @@ export default Ember.Component.extend({
         return rows.map(row => merge(row, bblDemux(row.bbl)));
       });
   }).keepLatest(),
+
+  actions: {
+    clear() {
+      this.set('searchTerms', '');
+    },
+  },
 });
