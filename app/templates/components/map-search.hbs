@@ -4,11 +4,11 @@
 </button>
 <ul class="search-results no-bullet">
   {{#each (await results) as |result|}}
-    {{!-- <li>{{result.address}}</li> --}}
     {{#link-to 'lot' result.boro result.block result.lot tagName='li'}}
-      {{result.address}}
+      {{to-title-case result.address}}
     {{/link-to}}
   {{/each}}
+
   {{#if (is-pending results)}}
     <li class="loading">Loading...</li>
   {{/if}}
