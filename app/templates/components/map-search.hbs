@@ -1,4 +1,7 @@
 {{input type='text' placeholder='Search...' value=searchTerms}}
+<button class="close-button" aria-label="Close alert" type="button">
+  <span aria-hidden="true">&times;</span>
+</button>
 <ul class="search-results no-bullet">
   {{#each (await results) as |result|}}
     {{!-- <li>{{result.address}}</li> --}}
