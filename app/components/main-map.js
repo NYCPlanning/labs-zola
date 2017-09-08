@@ -1,11 +1,11 @@
 import Ember from 'ember';
 import mapboxgl from 'mapbox-gl';
 import { task } from 'ember-concurrency';
+import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import carto from '../utils/carto';
 
-const { computed } = Ember;
-const { reads } = computed;
-
+const { reads } = Ember.computed;
+const { service } = Ember.inject;
 
 const zoningSQL = 'SELECT *, LEFT(zonedist, 2) as primaryzone FROM support_zoning_zd';
 const zdLayer = {
@@ -111,7 +111,19 @@ const highlightedLotLayer = {
   },
 };
 
+const selectedLotLayer = {
+  id: 'selected-lot',
+  type: 'fill',
+  source: 'selected-lot',
+  paint: {
+    'fill-opacity': 1,
+    'fill-color': 'steelblue',
+  },
+};
+
 export default Ember.Component.extend({
+  mainMap: service(),
+
   classNames: ['map-container'],
 
   lat: 40.7071266,
@@ -122,17 +134,26 @@ export default Ember.Component.extend({
 
   highlightedLotFeature: null,
 
-  highlightedLotSource: Ember.computed('highlightedLotFeature', function () {
+  @computed('highlightedLotFeature')
+  highlightedLotSource(feature) {
     return {
       type: 'geojson',
       data: {
         type: 'FeatureCollection',
-        features: [this.get('highlightedLotFeature')],
+        features: [feature],
       },
     };
-  }),
-
+  },
   highlightedLotLayer,
+
+  @computed('mainMap.selected')
+  selectedLotSource(selected) {
+    return {
+      type: 'geojson',
+      data: selected.get('geometry'),
+    };
+  },
+  selectedLotLayer,
 
   zoningSourcePromise: task(function* () {
     return yield carto.getVectorTileTemplate([zoningSQL])
@@ -141,6 +162,7 @@ export default Ember.Component.extend({
         tiles: [zoningTemplate],
       }));
   }).restartable().on('didInsertElement'),
+
   zoningSource: reads('zoningSourcePromise.last.value'),
 
   zdLayer,
@@ -154,6 +176,7 @@ export default Ember.Component.extend({
         minzoom: 12,
       }));
   }).restartable().on('didInsertElement'),
+
   plutoSource: reads('plutoSourcePromise.last.value'),
 
   plutoFillLayer,
@@ -167,7 +190,7 @@ export default Ember.Component.extend({
     },
 
     handleMouseover(e) {
-      const feature = e.target.queryRenderedFeatures(e.point, { layers: ['pluto-fill'] })[0];
+      const [feature] = e.target.queryRenderedFeatures(e.point, { layers: ['pluto-fill'] });
 
       if (feature) {
         const { bbl } = feature.properties;

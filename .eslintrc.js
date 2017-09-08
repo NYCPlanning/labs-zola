@@ -1,5 +1,6 @@
 module.exports = {
   root: true,
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2017,
     sourceType: 'module'
@@ -16,5 +17,6 @@ module.exports = {
     'func-names': 0,
     'space-before-function-paren': 0,
     'prefer-arrow-callback': 0,
+    'no-underscore-dangle': 0,
   }
 };

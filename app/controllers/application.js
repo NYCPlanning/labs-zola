@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import bblDemux from '../utils/bbl-demux';
 
 export default Ember.Controller.extend({
 
@@ -8,11 +9,7 @@ export default Ember.Controller.extend({
       const { bbl } = feature.properties;
 
       if (bbl) {
-        const bblString = bbl.toString();
-        const boro = bblString.substring(0, 1);
-        const block = parseInt(bblString.substring(1, 6), 10);
-        const lot = parseInt(bblString.substring(6), 10);
-
+        const { boro, block, lot } = bblDemux(bbl);
         this.transitionToRoute('lot', boro, block, lot);
       }
     },

@@ -3,21 +3,20 @@
 {{#mapbox-gl
   id='main-map'
   initOptions=(hash style='mapbox://styles/mapbox/light-v9'
-  zoom=zoom
-  center=(array lng lat))
+                    zoom=zoom
+                    center=(array lng lat))
   mapLoaded=(action 'handleMapLoad')
   as |map|
 }}
-    {{#map.source sourceId='zoning' options=zoningSource as |source|}}
-      {{source.layer layer=zdLayer before='waterway-label'}}
-      {{source.layer layer=zdLabelLayer before='waterway-label'}}
-    {{/map.source}}
+  {{#map.source sourceId='zoning' options=zoningSource as |source|}}
+    {{source.layer layer=zdLayer before='waterway-label'}}
+    {{source.layer layer=zdLabelLayer before='waterway-label'}}
+  {{/map.source}}
 
-    {{#map.source sourceId='pluto' options=plutoSource as |source|}}
-      {{source.layer layer=plutoFillLayer }}
-      {{source.layer layer=plutoLineLayer }}
-    {{/map.source}}
-
+  {{#map.source sourceId='pluto' options=plutoSource as |source|}}
+    {{source.layer layer=plutoFillLayer }}
+    {{source.layer layer=plutoLineLayer }}
+  {{/map.source}}
 
   {{#if highlightedLotFeature}}
     {{#map.source sourceId='highlighted-lot' options=highlightedLotSource as |source|}}
@@ -25,6 +24,13 @@
     {{/map.source}}
   {{/if}}
 
+  {{#if mainMap.selected}}
+    {{#map.source sourceId='selected-lot' options=selectedLotSource as |source|}}
+      {{source.layer layer=selectedLotLayer after='waterway-label'}}
+    {{/map.source}}
+  {{/if}}
+
+  {{map.call 'fitBounds' mainMap.bounds}}
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
