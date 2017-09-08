@@ -8,7 +8,7 @@ const {
   get,
   getOwner,
   getProperties,
-  guidFor,
+  guidFor
 } = Ember;
 
 export default Component.extend({
@@ -18,12 +18,14 @@ export default Component.extend({
 
   /**
    * @param object
+   * @description The style layer to add, conforming to the Mapbox Style Specification's layer definition.
    * {@link https://www.mapbox.com/mapbox-gl-js/api/#map#addlayer Mapbox}
   */
   layer: null,
 
   /**
    * @param string
+   * @description The ID of an existing layer to insert the new layer before. If this argument is omitted, the layer will be appended to the end of the layers array.
    * {@link https://www.mapbox.com/mapbox-gl-js/api/#map#addlayer Mapbox}
   */
   before: null,
@@ -53,14 +55,6 @@ export default Component.extend({
    */
   _sourceId: computed('layer.source', 'sourceId', function() {
     return get(this, 'layer.source') || get(this, 'sourceId');
-  }),
-
-  /**
-   * @private for use by mapbox-gl-source to pass in its source-layer
-   */
-  _sourceLayer: computed('layer', 'sourceLayer', function() {
-    const layer = this.get('layer');
-    return layer['source-layer'] || '';
   }),
 
   /**
@@ -96,90 +90,88 @@ export default Component.extend({
       get(this, 'paintOptions'));
   }).readOnly(),
 
-  _filter: computed('_envConfig.filter', 'layer.filter', function() {
-    return get(this, 'layer.filter') || null;
-  }).readOnly(),
-
-  init() {
-    this._super(...arguments); // eslint-disable-line
-
+  _layer: computed('layer', '_layerId', '_layerType', '_sourceId', '_layout', '_paint', function() {
     const {
+      layer,
       _layerId,
       _layerType,
       _sourceId,
-      _sourceLayer,
       _layout,
-      _paint,
-      _filter,
+      _paint
+    } = getProperties(this, 'layer', '_layerId', '_layerType', '_sourceId', '_layout', '_paint');
+
+    const computedLayer = {
+      id: _layerId,
+      type: _layerType,
+      source: _sourceId,
+      layout: _layout,
+      paint: _paint
+    };
+
+    // do this to pick up other properties like filter, re, metadata, source-layer, minzoom, maxzoom, etc
+    return assign({}, layer, computedLayer);
+  }),
+
+  init() {
+    this._super(...arguments);
+
+    const {
+      _layer,
       before,
 
       // All of these properties are deprecated, but remain for backwards compatibility
       sourceId,
       layerType,
       layoutOptions,
-      paintOptions,
-    } = getProperties(this, '_layerId', '_layerType', '_sourceId', '_sourceLayer', '_layout', '_paint', '_filter', 'before', 'sourceId', 'layerType', 'layoutOptions', 'paintOptions');
+      paintOptions
+    } = getProperties(this, '_layer', 'before', 'sourceId', 'layerType', 'layoutOptions', 'paintOptions');
 
     deprecate('Use of `sourceId` is deprecated in favor of `layer.source`', sourceId === null, {
       id: 'ember-mapbox-gl.mapbox-gl-layer',
-      until: '1.0.0',
+      until: '1.0.0'
     });
 
     deprecate('Use of `layerType` is deprecated in favor of `layer.type`', layerType === null, {
       id: 'ember-mapbox-gl.mapbox-gl-layer',
-      until: '1.0.0',
+      until: '1.0.0'
     });
 
     deprecate('Use of `layoutOptions` is deprecated in favor of `layer.layout`', layoutOptions === null, {
       id: 'ember-mapbox-gl.mapbox-gl-layer',
-      until: '1.0.0',
+      until: '1.0.0'
     });
 
     deprecate('Use of `paintOptions` is deprecated in favor of `layer.paint`', paintOptions === null, {
       id: 'ember-mapbox-gl.mapbox-gl-layer',
-      until: '1.0.0',
+      until: '1.0.0'
     });
 
-    const layer = {
-      id: _layerId,
-      type: _layerType,
-      source: _sourceId,
-      'source-layer': _sourceLayer,
-      layout: _layout,
-      paint: _paint,
-    };
-
-    if (_filter !== null) {
-      layer.filter = _filter;
-    }
-
-    this.map.addLayer(layer, before);
+    this.map.addLayer(_layer, before);
   },
 
   didUpdateAttrs() {
-    this._super(...arguments); // eslint-disable-line
+    this._super(...arguments);
 
-    const {
-      _layerId,
-      _layout,
-      _paint,
-      _filter,
-    } = getProperties(this, '_layerId', '_layout', '_paint', '_filter');
+    const _layer = get(this, '_layer');
 
-    for (const k in _layout) { // eslint-disable-line
-      this.map.setLayoutProperty(_layerId, k, _layout[k]); // eslint-disable-line
+    for (const k in _layer.layout) {
+      this.map.setLayoutProperty(_layer.id, k, _layer.layout[k]);
     }
 
-    for (const k in _paint) { // eslint-disable-line
-      this.map.setPaintProperty(_layerId, k, _paint[k]); // eslint-disable-line
+    for (const k in _layer.paint) {
+      this.map.setPaintProperty(_layer.id, k, _layer.paint[k]);
     }
 
-    this.map.setFilter(_layerId, _filter);
+    if ('filter' in _layer) {
+      this.map.setFilter(_layer.id, _layer.filter);
+    }
+
+    this.map.setLayerZoomRange(_layer.id, _layer.minzoom, _layer.maxzoom);
   },
 
   willDestroy() {
-    this._super(...arguments); // eslint-disable-line
+    this._super(...arguments);
 
     this.map.removeLayer(get(this, '_layerId'));
-  },
+  }
 });
