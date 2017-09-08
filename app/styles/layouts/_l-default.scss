@@ -9,6 +9,7 @@ body > .ember-view {
   @include breakpoint(large) {
     @include flex-align(right);
     min-height: 100vh;
+    background-color: $medium-gray;
   }
 }
 
@@ -34,10 +35,17 @@ body > .ember-view {
   @include breakpoint(large) {
     @include xy-cell-static(5,false,0);
     height: calc(100vh - 9.375rem);
-
     position: fixed;
     top: 6rem;
     left: 0;
+  }
+
+  @include breakpoint(xlarge) {
+    @include xy-cell-static(6,false,0);
+  }
+
+  @include breakpoint(xxlarge) {
+    @include xy-cell-static(7,false,0);
   }
 }
 
@@ -53,6 +61,14 @@ body > .ember-view {
     @include xy-cell-static(7,false,0);
     box-shadow: -4px 0 0 rgba(0,0,0,0.1);
     margin-top: 6rem;
+    transition: width 0.5s;
+  }
 
+  @include breakpoint(xlarge) {
+    @include xy-cell-static(6,false,0);
+  }
+
+  @include breakpoint(xxlarge) {
+    @include xy-cell-static(5,false,0);
   }
 }
