@@ -155,8 +155,8 @@ const highlightedLotLayer = {
   type: 'fill',
   source: 'highlighted-lot',
   paint: {
-    'fill-opacity': 1,
-    'fill-color': 'steelblue',
+    'fill-opacity': 0.8,
+    'fill-color': '#E86400',
   },
 };
 
