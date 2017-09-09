@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import fetch from 'fetch';
 
 const { assign } = Ember;
 
