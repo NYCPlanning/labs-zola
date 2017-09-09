@@ -53,6 +53,11 @@
   }
 }
 
+.highlighted-result {
+  color: $anchor-color-hover;
+  background-color: $medium-gray;
+}
+
 .search-results--loading {
   border-top: 1px solid $medium-gray;
   padding: $global-margin/2;

@@ -234,6 +234,8 @@ export default Ember.Component.extend({
 
   actions: {
     handleMapLoad(map) {
+      const mainMap = this.get('mainMap');
+      mainMap.set('mapInstance', map);
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
       map.moveLayer('building');
       setTimeout(() => { map.setPaintProperty('building', 'fill-opacity', 0.4); }, 1000);
