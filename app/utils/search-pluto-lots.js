@@ -1,4 +1,8 @@
+import Ember from 'ember';
 import carto from '../utils/carto';
+import bblDemux from '../utils/bbl-demux';
+
+const { assign } = Ember;
 
 export default function searchPlutoLots(text = '') {
   const SQL = `
@@ -12,5 +16,12 @@ export default function searchPlutoLots(text = '') {
       END) as address, bbl FROM support_mappluto 
      WHERE address LIKE '%25${text.toUpperCase()}%25' LIMIT 10`;
 
-  return carto.SQL(SQL);
+  return carto.SQL(SQL).then(rows =>
+    rows.map(row =>
+      assign(
+        row,
+        bblDemux(row.bbl),
+        { type: 'lot' },
+      ),
+    ));
 }
