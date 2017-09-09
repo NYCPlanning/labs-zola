@@ -4,11 +4,15 @@
     <span aria-hidden="true">&times;</span>
   </button>
 {{/if}}
-<ul class="search-results no-bullet{{if (await results) ' has-results' ''}}">
+<ul class="search-results no-bullet {{if (or (await results)) 'has-results' ''}}">
   {{#each (await results) as |result|}}
-    {{#link-to 'lot' result.boro result.block result.lot tagName='li'}}
-      {{to-title-case result.address}}
-    {{/link-to}}
+    {{#if (eq result.type 'lot')}}
+      {{#link-to 'lot' result.boro result.block result.lot tagName='li'}}
+        {{to-title-case result.address}} (Lot)
+      {{/link-to}}
+    {{else}}
+      <li>{{result.label}} (Address)</li>
+    {{/if}}
   {{/each}}
 </ul>
 {{#if (is-pending results)}}

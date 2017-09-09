@@ -1,26 +1,42 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
-import { task } from 'ember-concurrency';
+import { task, timeout } from 'ember-concurrency';
 import fetch from 'fetch';
 import bblDemux from '../utils/bbl-demux';
+import searchPlutoLots from '../utils/search-pluto-lots';
 
-const { merge } = Ember;
+const { assign } = Ember;
 
-function getMatches(text) {
-  const SQL = `
-    SELECT (address || ', ' || 
-      CASE 
-        WHEN borough = 'MN' THEN 'Manhattan' 
-        WHEN borough = 'BX' THEN 'Bronx' 
-        WHEN borough = 'BK' THEN 'Brooklyn' 
-        WHEN borough = 'QN' THEN 'Queens' 
-        WHEN borough = 'SI' THEN 'Staten Island'
-      END) as address, bbl FROM support_mappluto 
-     WHERE address LIKE '%25${text.toUpperCase()}%25' LIMIT 10`;
+const DEBOUNCE_MS = 250;
 
-  const URL = `https://carto.planninglabs.nyc/user/data/api/v2/sql?q=${SQL}`;
-  return fetch(URL).then(res => res.json());
-}
+const mapzenSearchAPI = 'https://search.mapzen.com/v1/autocomplete?focus.point.lat=40.7259&focus.point.lon=-73.9805&limit=5&api_key=mapzen-q5s65uH&text=';
+
+const handleLots = function(rows) {
+  return rows.map(row =>
+    assign(
+      row,
+      bblDemux(row.bbl),
+      { type: 'lot' },
+    ),
+  );
+};
+
+const handleAddresses = function(searchTerms, results) {
+  const url = `${mapzenSearchAPI}${searchTerms}, New York, NY`;
+
+  if (results.length) {
+    return results;
+  }
+
+  return fetch(url)
+    .then(res => res.json())
+    .then(addresses => addresses.features
+      .filter(feature => feature.properties.locality === 'New York')
+      .map(feature =>
+        assign(feature.properties, { type: 'address', geometry: feature.geometry }),
+      ),
+    );
+};
 
 export default Ember.Component.extend({
   classNames: ['search'],
@@ -33,11 +49,10 @@ export default Ember.Component.extend({
   },
 
   debouncedResults: task(function* (searchTerms) {
-    return yield getMatches(searchTerms)
-      .then((res) => {
-        const { rows } = res;
-        return rows.map(row => merge(row, bblDemux(row.bbl)));
-      });
+    yield timeout(DEBOUNCE_MS);
+    return yield searchPlutoLots(searchTerms)
+      .then(handleLots)
+      .then(handleAddresses.bind(this, searchTerms));
   }).keepLatest(),
 
   actions: {
