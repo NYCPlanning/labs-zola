@@ -19,4 +19,8 @@
 {{#if (is-pending results)}}
   <div class="search-results--loading">Loading...</div>
 {{/if}}
+
+{{#if (and searchTerms (not resultsCount) (is-fulfilled results))}}
+  <div class="search-results--loading">No Results Found</div>
+{{/if}}
 {{yield}}

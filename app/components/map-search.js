@@ -38,7 +38,7 @@ export default Ember.Component.extend({
         ))
       .then((results) => {
         const url = `${mapzenSearchAPI}${searchTerms}, New York, NY`;
-
+        console.log(results, results.length);
         if (results.length) {
           return results;
         }
@@ -62,8 +62,10 @@ export default Ember.Component.extend({
 
   keyPress(event) {
     const selected = this.get('selected');
+    const { keyCode } = event;
+
     // enter
-    if (event.keyCode === 13) {
+    if (keyCode === 13) {
       const results = this.get('results.value');
       if (results) {
         const selectedResult = results.objectAt(selected);
@@ -82,6 +84,7 @@ export default Ember.Component.extend({
 
     if ([38, 40].includes(keyCode)) {
       const results = this.get('results.value');
+
       // up
       if (keyCode === 38) {
         if (results) {
