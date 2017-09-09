@@ -1,6 +1,6 @@
 import carto from '../utils/carto';
 
-export default function searchPlutoLots(text) {
+export default function searchPlutoLots(text = '') {
   const SQL = `
     SELECT (address || ', ' || 
       CASE 
@@ -13,4 +13,4 @@ export default function searchPlutoLots(text) {
      WHERE address LIKE '%25${text.toUpperCase()}%25' LIMIT 10`;
 
   return carto.SQL(SQL);
-};
+}
