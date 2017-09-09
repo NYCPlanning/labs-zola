@@ -7,13 +7,6 @@ moduleForComponent('map-search', 'Integration | Component | map search', {
   integration: true,
 });
 
-const triggerKey = function(key) {
-  const e = this.$().Event("keyup");
-  e.which = key;
-  e.keyCode = key;
-  this.$('input').trigger(e);
-};
-
 test('it renders', function (assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
@@ -41,21 +34,28 @@ test('it keys down', function (assert) {
   this.setProperties({
     searchTerms: '120 Broadway',
     results: TEST_DATA,
-    selected: 1,
+    selected: 0,
   });
 
   this.render(hbs`{{map-search results=results searchTerms=searchTerms selected=selected}}`);
-
-  assert.equal(this.$('.highlighted-result').text().trim(), '1120 Broadway (Lot)');
+  this.set('selected', 1);
+  assert.equal(!!(this.$('.highlighted-result').text().trim().indexOf('1120 Broadway')+1), true);
 });
 
 test('it keys up', function (assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{map-search}}`);
+  this.setProperties({
+    searchTerms: '120 Broadway',
+    results: TEST_DATA,
+    selected: 0,
+  });
 
-  assert.equal(this.$().text().trim(), '');
+  this.render(hbs`{{map-search results=results searchTerms=searchTerms selected=selected}}`);
+  this.set('selected', 1);
+  this.set('selected', 0);
+  assert.equal(!!(this.$('.highlighted-result').text().trim().indexOf('120 Broadway')+1), true);
 });
 
 test('it enters', function (assert) {
@@ -72,17 +72,22 @@ test('it enters', function (assert) {
 test('it says loading when loading', function (assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{map-search}}`);
-
-  assert.equal(this.$().text().trim(), '');
+  this.setProperties({
+    searchTerms: '120 Broadway',
+  });
+  this.render(hbs`{{map-search searchTerms=searchTerms}}`);
+  assert.equal(this.$('.search-results--loading').text().trim(), 'Loading...');
 });
 
 test('it says no results when no results', function (assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
+  this.setProperties({
+    searchTerms: '120 Broadway Street, Tulsa, OK',
+    results: [],
+    resultsCount: 0,
+  });
+  this.render(hbs`{{map-search searchTerms=searchTerms results=results resultsCount=resultsCount}}`);
 
-  this.render(hbs`{{map-search}}`);
-
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(!!(this.$().text().trim().indexOf('No Results Found')+1), true);
 });
