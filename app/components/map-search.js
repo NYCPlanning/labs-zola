@@ -1,16 +1,12 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task, timeout } from 'ember-concurrency';
-import fetch from 'fetch';
-import bblDemux from '../utils/bbl-demux';
+import mapzen from '../utils/mapzen';
 import searchPlutoLots from '../utils/search-pluto-lots';
 
-const { assign } = Ember;
 const { service } = Ember.inject;
 
 const DEBOUNCE_MS = 250;
-
-const mapzenSearchAPI = 'https://search.mapzen.com/v1/autocomplete?focus.point.lat=40.7259&focus.point.lon=-73.9805&limit=5&api_key=mapzen-q5s65uH&text=';
 
 export default Ember.Component.extend({
   classNames: ['search'],
@@ -28,29 +24,12 @@ export default Ember.Component.extend({
     if (searchTerms.length < 3) this.cancel();
     yield timeout(DEBOUNCE_MS);
     return yield searchPlutoLots(searchTerms)
-      .then(rows =>
-        rows.map(row =>
-          assign(
-            row,
-            bblDemux(row.bbl),
-            { type: 'lot' },
-          ),
-        ))
       .then((results) => {
-        const url = `${mapzenSearchAPI}${searchTerms}, New York, NY`;
-        console.log(results, results.length);
         if (results.length) {
           return results;
         }
 
-        return fetch(url)
-          .then(res => res.json())
-          .then(addresses => addresses.features
-            .filter(feature => feature.properties.locality === 'New York')
-            .map(feature =>
-              assign(feature.properties, { type: 'address', geometry: feature.geometry }),
-            ),
-          );
+        return mapzen(searchTerms);
       });
   }).keepLatest(),
 
