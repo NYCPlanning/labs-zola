@@ -19,7 +19,7 @@
     {{source.layer layer=plutoLineLayer }}
   {{/map.source}}
 
-  {{#if highlightedLotFeature}}
+  {{#if highlightedLotFeatures}}
     {{#map.source sourceId='highlighted-lot' options=highlightedLotSource as |source|}}
       {{source.layer layer=highlightedLotLayer before='waterway-label'}}
     {{/map.source}}
