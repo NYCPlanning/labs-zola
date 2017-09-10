@@ -5,6 +5,6 @@ module('Unit | Utility | search pluto lots');
 
 // Replace this with your real tests.
 test('it works', function(assert) {
-  let result = searchPlutoLots();
+  let result = searchPlutoLots('120 broadway');
   assert.ok(result);
 });
