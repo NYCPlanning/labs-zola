@@ -6,6 +6,7 @@ import carto from '../utils/carto';
 
 const { reads } = Ember.computed;
 const { service } = Ember.inject;
+const { later } = Ember.run;
 
 const zoningSQL = 'SELECT *, LEFT(zonedist, 2) as primaryzone FROM support_zoning_zd';
 const zdFillLayer = {
@@ -243,7 +244,9 @@ export default Ember.Component.extend({
       mainMap.set('mapInstance', map);
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
       map.moveLayer('building');
-      setTimeout(() => { map.setPaintProperty('building', 'fill-opacity', 0.4); }, 1000);
+      later(() => {
+        map.setPaintProperty('building', 'fill-opacity', 0.4);
+      }, 1000);
     },
 
     handleMouseover(e) {
