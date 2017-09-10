@@ -178,7 +178,6 @@ export default Ember.Component.extend({
   lat: 40.7071266,
   lng: -74,
   zoom: 10.2,
-  highlightedLotFeature: null,
 
   @computed('mainMap.selected')
   fitBoundsOptions(selected) {
@@ -187,13 +186,15 @@ export default Ember.Component.extend({
     };
   },
 
-  @computed('highlightedLotFeature')
-  highlightedLotSource(feature) {
+  highlightedLotFeatures: [],
+
+  @computed('highlightedLotFeatures')
+  highlightedLotSource(features) {
     return {
       type: 'geojson',
       data: {
         type: 'FeatureCollection',
-        features: [feature],
+        features,
       },
     };
   },
@@ -246,19 +247,22 @@ export default Ember.Component.extend({
     },
 
     handleMouseover(e) {
-      const [feature] = e.target.queryRenderedFeatures(e.point, { layers: ['pluto-fill'] });
+      const features = e.target.queryRenderedFeatures(e.point, { layers: ['pluto-fill'] });
 
-      if (feature) {
-        const { bbl } = feature.properties;
+      if (features.length > 0) {
+        const { bbl } = features[0].properties;
 
         e.target.getCanvas().style.cursor = 'pointer';
 
-        const prevFeature = this.get('highlightedLotFeature');
-        if (!prevFeature || prevFeature.properties.bbl !== bbl) {
-          this.set('highlightedLotFeature', feature);
+        const prevFeatures = this.get('highlightedLotFeatures');
+
+        if (prevFeatures.length < 1 || prevFeatures[0].properties.bbl !== bbl) {
+          this.set('highlightedLotFeatures', features);
         }
       } else {
         e.target.getCanvas().style.cursor = '';
+
+        this.set('highlightedLotFeatures', []);
         this.set('mouseoverLocation', null);
       }
     },
