@@ -176,12 +176,16 @@ export default Ember.Component.extend({
   classNames: ['map-container'],
 
   lat: 40.7071266,
-
   lng: -74,
-
   zoom: 10.2,
-
   highlightedLotFeature: null,
+
+  @computed('mainMap.selected')
+  fitBoundsOptions(selected) {
+    return {
+      padding: selected ? 300 : 0,
+    };
+  },
 
   @computed('highlightedLotFeature')
   highlightedLotSource(feature) {
