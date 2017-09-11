@@ -176,10 +176,15 @@ export default Ember.Component.extend({
   classNames: ['map-container'],
 
   lat: 40.7071266,
-
   lng: -74,
-
   zoom: 10.2,
+
+  @computed('mainMap.selected')
+  fitBoundsOptions(selected) {
+    return {
+      padding: selected ? 300 : 0,
+    };
+  },
 
   highlightedLotFeatures: [],
 
@@ -234,6 +239,8 @@ export default Ember.Component.extend({
 
   actions: {
     handleMapLoad(map) {
+      const mainMap = this.get('mainMap');
+      mainMap.set('mapInstance', map);
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
       map.moveLayer('building');
       setTimeout(() => { map.setPaintProperty('building', 'fill-opacity', 0.4); }, 1000);

@@ -4,18 +4,23 @@
     <span aria-hidden="true">&times;</span>
   </button>
 {{/if}}
-<ul class="search-results no-bullet {{if (or (await results)) 'has-results' ''}}">
-  {{#each (await results) as |result|}}
-    {{#if (eq result.type 'lot')}}
-      {{#link-to 'lot' result.boro result.block result.lot tagName='li'}}
+
+<ul class="search-results no-bullet {{if resultsCount 'has-results'}}">
+  {{#each (await results) as |result index|}}
+    <li class="{{if (eq selected index) 'highlighted-result'}}" {{action 'goTo' result}}>
+      {{#if (eq result.type 'lot')}}
         {{to-title-case result.address}} (Lot)
-      {{/link-to}}
-    {{else}}
-      <li>{{result.label}} (Address)</li>
-    {{/if}}
+      {{else}}
+        {{result.label}} (Address)
+      {{/if}}
+    </li>
   {{/each}}
 </ul>
 {{#if (is-pending results)}}
   <div class="search-results--loading">Loading...</div>
+{{/if}}
+
+{{#if (and searchTerms (not resultsCount) (is-fulfilled results))}}
+  <div class="search-results--loading">No Results Found</div>
 {{/if}}
 {{yield}}
