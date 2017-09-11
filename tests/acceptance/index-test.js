@@ -29,23 +29,6 @@ test('map-search enter on first search result for lot', function(assert) {
   });
 });
 
-
-test('map-search keydown and second result highlighted', function(assert) {
-  visit('/');
-  fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
-
-  andThen(() => {
-    keyEvent(SEARCH_INPUT_SELECTOR, 'keyup', 40).then(() => {
-      andThen(() => {
-        assert.equal(
-          find(resultAt(2)).attr('class'),
-          'highlighted-result',
-        );
-      });
-    });
-  });
-});
-
 test('map-search keydown, keyup, keyup -> first result highlighted', function(assert) {
   visit('/');
   fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
