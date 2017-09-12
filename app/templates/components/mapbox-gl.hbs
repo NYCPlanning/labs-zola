@@ -1,0 +1,15 @@
+{{#if glSupported}}
+  {{#if map}}
+    {{yield (hash
+      call=(component 'mapbox-gl-call' obj=map)
+      control=(component 'mapbox-gl-control' map=map)
+      layer=(component 'mapbox-gl-layer' map=map)
+      marker=(component 'mapbox-gl-marker' map=map)
+      on=(component 'mapbox-gl-on' eventSource=map)
+      popup=(component 'mapbox-gl-popup' map=map)
+      source=(component 'mapbox-gl-source' map=map)
+    )}}
+  {{/if}}
+{{else}}
+  {{yield to='inverse'}}
+{{/if}}
