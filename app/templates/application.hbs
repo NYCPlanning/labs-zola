@@ -1,9 +1,9 @@
 {{site-header}}
 <div class="site-main grid-x">
   <div class="cell large-7 xxlarge-8">
-    {{map-search}}
+    {{map-search transitionTo=transitionTo}}
     <div class="map-grid">
-      {{main-map routeToLot=(action 'routeToLot')}}
+      {{main-map routeToLot=(action 'routeToLot') transitionTo=(action 'transitionTo')}}
       {{layer-palette}}
     </div>
   </div>

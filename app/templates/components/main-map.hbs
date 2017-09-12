@@ -6,16 +6,20 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|
 }}
-  {{#map.source sourceId='zoning' options=zoningSource as |source|}}
-    {{source.layer layer=zdFillLayer before='waterway-label'}}
-    {{source.layer layer=zdLineLayer before='waterway-label'}}
-    {{source.layer layer=zdLabelLayer before='waterway-label'}}
-  {{/map.source}}
+  {{#if zoningSourcePromise.last.isSuccessful}}
+    {{#map.source sourceId='zoning' options=zoningSource as |source|}}
+      {{source.layer layer=zdFillLayer before='waterway-label'}}
+      {{source.layer layer=zdLineLayer before='waterway-label'}}
+      {{source.layer layer=zdLabelLayer before='waterway-label'}}
+    {{/map.source}}
+  {{/if}}
 
-  {{#map.source sourceId='pluto' options=plutoSource as |source|}}
-    {{source.layer layer=plutoFillLayer }}
-    {{source.layer layer=plutoLineLayer }}
-  {{/map.source}}
+  {{#if plutoSourcePromise.last.isSuccessful}}
+    {{#map.source sourceId='pluto' options=plutoSource as |source|}}
+      {{source.layer layer=plutoFillLayer }}
+      {{source.layer layer=plutoLineLayer }}
+    {{/map.source}}
+  {{/if}}
 
   {{#if highlightedLotFeatures}}
     {{#map.source sourceId='highlighted-lot' options=highlightedLotSource as |source|}}
@@ -29,7 +33,7 @@
     {{/map.source}}
   {{/if}}
 
-  {{map.call 'fitBounds' mainMap.bounds}}
+  {{map.call 'fitBounds' mainMap.bounds fitBoundsOptions}}
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
