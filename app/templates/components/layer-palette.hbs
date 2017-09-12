@@ -1,12 +1,17 @@
-<h4 class="header-tiny" style="margin:4rem 0;">Layer Group Component</h4>
-<h4 class="header-tiny" style="margin:4rem 0;">Layer Group Component</h4>
-<h4 class="header-tiny" style="margin:4rem 0;">Layer Group Component</h4>
-<h4 class="header-tiny" style="margin:4rem 0;">Layer Group Component</h4>
-<h4 class="header-tiny" style="margin:4rem 0;">Layer Group Component</h4>
-<h4 class="header-tiny" style="margin:4rem 0;">Layer Group Component</h4>
-<h4 class="header-tiny" style="margin:4rem 0;">Layer Group Component</h4>
-<h4 class="header-tiny" style="margin:4rem 0;">Layer Group Component</h4>
-<h4 class="header-tiny" style="margin:4rem 0;">Layer Group Component</h4>
-<h4 class="header-tiny" style="margin:4rem 0;">Layer Group Component</h4>
-<h4 class="header-tiny" style="margin:4rem 0;">Layer Group Component</h4>
+{{#if closed}}
+  <button {{action (mut closed) (not closed)}} class="button hollow expanded no-margin hide-for-medium hide-for-print"> Edit Map Layers</button>
+{{/if}}
+<div class="{{if closed 'show-for-medium'}} hide-for-print">
+  <h4 class="header-tiny" style="margin:0 0 4rem 0;">Layer Group Component</h4>
+  <h4 class="header-tiny" style="margin:0 0 4rem 0;">Layer Group Component</h4>
+  <h4 class="header-tiny" style="margin:0 0 4rem 0;">Layer Group Component</h4>
+  <h4 class="header-tiny" style="margin:0 0 4rem 0;">Layer Group Component</h4>
+  <h4 class="header-tiny" style="margin:0 0 4rem 0;">Layer Group Component</h4>
+  <h4 class="header-tiny" style="margin:0 0 4rem 0;">Layer Group Component</h4>
+  <h4 class="header-tiny" style="margin:0 0 4rem 0;">Layer Group Component</h4>
+  <h4 class="header-tiny" style="margin:0 0 4rem 0;">Layer Group Component</h4>
+  <h4 class="header-tiny" style="margin:0 0 4rem 0;">Layer Group Component</h4>
+  <h4 class="header-tiny" style="margin:0 0 4rem 0;">Layer Group Component</h4>
+  <h4 class="header-tiny" style="margin:0 0 4rem 0;">Layer Group Component</h4>
+</div>
 {{yield}}
