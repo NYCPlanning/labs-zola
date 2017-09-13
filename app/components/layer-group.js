@@ -1,38 +1,48 @@
 import Ember from 'ember';
+import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { task } from 'ember-concurrency';
 import { ChildMixin } from 'ember-composability-tools';
 import carto from '../utils/carto';
+import SqlBuilder from '../utils/sql-builder';
 
 export default Ember.Component.extend(ChildMixin, {
-  init(...args) {
-    this._super(...args);
-    const { type, sql, minzoom = 0 } = this.get('config');
-
-    if (type === 'carto' && sql) {
-      carto.getVectorTileTemplate([sql])
-        .then(
-          template => ({
-            type: 'vector',
-            tiles: [template],
-            minzoom,
-          }),
-        )
-        .then(
-          (optionsObject) => {
-            this.setProperties({
-              'config.options': optionsObject,
-              resolved: true,
-            });
-          },
-        );
-    }
-  },
   tagName: '',
   visible: true,
-  resolved: false,
 
-  didInsertParent(...args) {
-    this._super(...args);
+  @computed('config.sql')
+  get sql() {
+    return this.get('config.sql');
+  },
+  set sql(value) {
+    this.set('config.sql', value);
+  },
 
-    // const parentMap = this.get('parentComponent.map');
+  @computed('sql')
+  configWithTemplate(sql) {
+    return this.get('templateTask').perform(sql);
+  },
+
+  templateTask: task(function* (sql) {
+    const { minzoom = 0 } = this.get('config');
+    return yield carto.getVectorTileTemplate([sql])
+      .then(
+        template => ({
+          type: 'vector',
+          tiles: [template],
+          minzoom,
+        }),
+      )
+      .then(
+        (optionsObject) => {
+          this.set('config.options', optionsObject);
+          return optionsObject;
+        },
+      );
+  }).restartable(),
+
+  actions: {
+    toggleVisibility() {
+      this.toggleProperty('visible');
+    },
   },
 });

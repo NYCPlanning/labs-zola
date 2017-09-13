@@ -1,4 +1,5 @@
-{{#each config as |group|}}
-  {{map.layer-group config=group}}
-{{/each}}
-{{yield}}
+<ul class='list'>
+  {{#each config as |group|}}
+    {{map.layer-group config=group}}
+  {{/each}}
+</ul>
