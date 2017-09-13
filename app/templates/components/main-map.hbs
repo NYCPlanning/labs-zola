@@ -8,7 +8,7 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}  
 
-  {{map.interactive-layers config=config}}
+  {{map.interactive-layers config=mapConfig}}
 
   {{#if highlightedLotFeatures}}
     {{#map.source 

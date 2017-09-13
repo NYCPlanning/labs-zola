@@ -17,14 +17,40 @@ const {
   selectedLotLayer }
   = APP;
 
+const mapConfig = [
+  {
+    id: 'pluto',
+    title: 'Land Use',
+    sql: plutoSQL,
+    minzoom: 12,
+    type: 'carto',
+    layers: [
+      { layer: plutoFillLayer },
+      { layer: plutoLineLayer },
+    ],
+  },
+  {
+    id: 'zoning',
+    title: 'Zoning',
+    sql: zoningSQL,
+    type: 'carto',
+    layers: [
+      {
+        layer: zdFillLayer,
+        before: 'waterway-label',
+      },
+      { layer: zdLineLayer,
+        before: 'waterway-label',
+      },
+      {
+        layer: zdLabelLayer,
+        before: 'waterway-label',
+      },
+    ],
+  },
+];
+
 const { service } = Ember.inject;
-const mbglProps = ['zoningSource',
-  'zdFillLayer',
-  'zdLineLayer',
-  'zdLabelLayer',
-  'plutoSource',
-  'plutoFillLayer',
-  'plutoLineLayer'];
 
 export default Ember.Component.extend({
   mainMap: service(),
@@ -34,6 +60,8 @@ export default Ember.Component.extend({
   lat: 40.7071266,
   lng: -74,
   zoom: 10.2,
+
+  mapConfig,
 
   @computed('mainMap.selected')
   fitBoundsOptions(selected) {
@@ -64,77 +92,6 @@ export default Ember.Component.extend({
     };
   },
   selectedLotLayer,
-
-  zoning: Ember.computed(...mbglProps, function() {
-    return {
-      id: 'zoning',
-      title: 'Zoning',
-      sql: zoningSQL,
-      type: 'carto',
-      layers: [
-        {
-          layer: zdFillLayer,
-          before: 'waterway-label',
-        },
-        { layer: zdLineLayer,
-          before: 'waterway-label',
-        },
-        {
-          layer: zdLabelLayer,
-          before: 'waterway-label',
-        },
-      ],
-    };
-  }),
-
-  pluto: Ember.computed(...mbglProps, function() {
-    return {
-      id: 'pluto',
-      title: 'Land Use',
-      sql: zoningSQL,
-      minzoom: 12,
-      type: 'carto',
-      layers: [
-        { layer: plutoFillLayer },
-        { layer: plutoLineLayer },
-      ],
-    };
-  }),
-
-  config: Ember.computed('pluto', 'zoning', function() {
-    return [
-      {
-        id: 'pluto',
-        title: 'Land Use',
-        sql: plutoSQL,
-        minzoom: 12,
-        type: 'carto',
-        layers: [
-          { layer: plutoFillLayer },
-          { layer: plutoLineLayer },
-        ],
-      },
-      {
-        id: 'zoning',
-        title: 'Zoning',
-        sql: zoningSQL,
-        type: 'carto',
-        layers: [
-          {
-            layer: zdFillLayer,
-            before: 'waterway-label',
-          },
-          { layer: zdLineLayer,
-            before: 'waterway-label',
-          },
-          {
-            layer: zdLabelLayer,
-            before: 'waterway-label',
-          },
-        ],
-      },
-    ];
-  }),
 
   actions: {
     handleMapLoad(map) {
