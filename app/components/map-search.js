@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task, timeout } from 'ember-concurrency';
-import mapzen from '../utils/mapzen';
 import bblDemux from '../utils/bbl-demux';
 
 const { service } = Ember.inject;
@@ -25,14 +24,7 @@ export default Ember.Component.extend({
     yield timeout(DEBOUNCE_MS);
     const URL = `https://zola-search-api.planninglabs.nyc/search?q=${searchTerms}`;
     return yield fetch(URL)
-      .then(data => data.json())
-      .then((results) => {
-        if (results.length) {
-          return results;
-        }
-
-        return mapzen(searchTerms);
-      });
+      .then(data => data.json());
   }).keepLatest(),
 
   @computed('results.value')
