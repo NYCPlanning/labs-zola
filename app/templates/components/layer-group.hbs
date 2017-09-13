@@ -1,7 +1,12 @@
-{{#map.source sourceId='zoning' options=zoningSource as |source|}}
-  {{source.layer layer=zdFillLayer before='waterway-label'}}
-  {{source.layer layer=zdLineLayer before='waterway-label'}}
-  {{source.layer layer=zdLabelLayer before='waterway-label'}}
-{{/map.source}}
-
-{{yield}}
+{{#if (and config resolved)}}
+  {{log config}}
+  {{#map.source 
+    sourceId=config.id 
+    options=config.options as |source|}}
+    {{#each config.layers as |layerConfig|}}
+      {{source.layer
+        layer=layerConfig.layer
+        before=layerConfig.before}}
+    {{/each}}
+  {{/map.source}}
+{{/if}}
