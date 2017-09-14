@@ -19,7 +19,7 @@
       {{/if}}
     </li>
     {{#each rows as |result|}}
-      <li class="result {{if (eq selected index) 'highlighted-result'}}" {{action 'goTo' result}}>
+      <li class="result {{if (eq selected result.id) 'highlighted-result'}}" {{action 'goTo' result}}>
         {{#if (eq type 'lot')}}
            {{fa-icon "map-marker"}} {{result.bbl}} <span class="subdued">{{result.label}}</span>
         {{else if (eq type 'zma')}}

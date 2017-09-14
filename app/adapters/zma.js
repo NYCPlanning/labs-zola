@@ -2,7 +2,7 @@ import DS from 'ember-data';
 import { buildSqlUrl } from '../utils/carto';
 
 const SQL = function(ulurpno) {
-  return `SELECT the_geom, ulurpno as id FROM support_nyzma WHERE ulurpno='${ulurpno}'`;
+  return `SELECT the_geom, ulurpno as id, project_na, effective, status, lucats FROM support_nyzma WHERE ulurpno='${ulurpno}'`;
 };
 
 export default DS.JSONAPIAdapter.extend({

@@ -24,7 +24,13 @@ export default Ember.Component.extend({
     yield timeout(DEBOUNCE_MS);
     const URL = `https://zola-search-api.planninglabs.nyc/search?q=${searchTerms}`;
     return yield fetch(URL)
-      .then(data => data.json());
+      .then(data => data.json())
+      .then(json => json.map(
+        (result, index) => {
+          const newResult = result;
+          newResult.id = index;
+          return result;
+        }));
   }).keepLatest(),
 
   @computed('results.value')
