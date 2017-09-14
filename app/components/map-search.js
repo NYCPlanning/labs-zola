@@ -91,6 +91,10 @@ export default Ember.Component.extend({
         this.transitionTo('lot', boro, block, lot);
       }
 
+      if (result.type === 'zma') {
+        this.transitionTo('zma', result.ulurpno);
+      }
+
       if (result.type === 'address') {
         const center = result.coordinates;
         mainMap.flyTo({
