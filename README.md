@@ -25,7 +25,33 @@ You will need the following things properly installed on your computer.
 
 ### Code Generators
 
-Make use of the many generators for code, try `ember help generate` for more details
+#### Adding Layer-Groups
+
+Labs ZoLa introduces a meta definition of the [MapboxGL API](mapbox.com/mapbox-gl-js/api/) which allows you to define groups of layers bound to a single source. This means that sources may have many layers, hence a "layer group". 
+
+There is a command for creating a layer-group:
+
+* `ember g layer-group <layer-group-name>`
+
+This will create a layer-grpoup definition file inside the layer-groups folder. Edit layer configuration there. To add it to the map, it must be explicitly imported and added as a layer. 
+
+To create a simple layer style definition, simply run:
+
+* `ember g layer <layer-name>`
+
+Import simply layer style definitions inside layer-groups, if necessary:
+
+javascript```
+// layer-groups/my-layer-group
+import myLayer from '../layers/my-layer';
+
+export default {
+  layers:[
+    layer: myLayer
+  ]
+}```
+
+Make use of the many other generators for code, try `ember help generate` for more details
 
 ### Running Tests
 
