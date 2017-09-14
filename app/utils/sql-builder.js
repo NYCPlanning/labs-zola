@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 class SqlBuilder {
   constructor(columns, tablename) {
     this.columns = columns;
