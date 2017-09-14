@@ -2,7 +2,7 @@
 
 <div class="site-main grid-x">
   <div class="cell large-7 xxlarge-8">
-    {{map-search transitionTo=transitionTo}}
+    {{map-search transitionTo=(action 'transitionTo')}}
     <div class="map-grid">
       {{main-map 
         routeToLot=(action 'routeToLot') 
