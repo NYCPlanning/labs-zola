@@ -12,14 +12,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{layer-group}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#layer-group}}
-      template block text
-    {{/layer-group}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), '(Show)');
 });

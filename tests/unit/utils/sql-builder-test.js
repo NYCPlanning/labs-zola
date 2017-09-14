@@ -5,6 +5,6 @@ module('Unit | Utility | sql builder');
 
 // Replace this with your real tests.
 test('it works', function(assert) {
-  let result = sqlBuilder();
+  let result = new sqlBuilder('id', 'table');
   assert.ok(result);
 });

@@ -19,7 +19,8 @@ class SqlBuilder {
         if (this[filter.type] === undefined) throw new Error(`Can't parse filterDimension of type '${filter.type}'`);
 
         const chunker = this[filter.type].bind(this);
-        chunks.push(chunker(dimension, filters)); // pass the current dimension AND the entire filters object to each chunker
+        // pass the current dimension AND the entire filters object to each chunker
+        chunks.push(chunker(dimension, filters));
       }
     });
 
@@ -33,7 +34,7 @@ class SqlBuilder {
   }
 
   // generic chunker for Checkboxes and Multiselects
-  multiSelect(dimension, filters) {
+  multiSelect(dimension, filters) { // eslint-disable-line
     const values = filters[dimension].values;
 
     const checkedValues = values.filter(value => value.checked === true);
@@ -49,7 +50,7 @@ class SqlBuilder {
   }
 
   // generic chunker for Checkboxes and Multiselects that does a LIKE instead of an equals
-  fuzzyMultiSelect(dimension, filters) {
+  fuzzyMultiSelect(dimension, filters) { // eslint-disable-line
     const values = filters[dimension].values;
 
     const checkedValues = values.filter(value => value.checked === true);
@@ -66,7 +67,7 @@ class SqlBuilder {
 
 
   // generic chunker for Date Range Sliders
-  dateRange(dimension, filters) {
+  dateRange(dimension, filters) { // eslint-disable-line
     const range = filters[dimension].values;
 
     const dateRangeFormatted = {
@@ -78,7 +79,7 @@ class SqlBuilder {
   }
 
   // generic chunker for number range sliders
-  numberRange(dimension, filters) {
+  numberRange(dimension, filters) { // eslint-disable-line
     const range = filters[dimension].values;
     return `(${dimension} >= '${range[0]}' AND ${dimension} <= '${range[1]}')`;
   }

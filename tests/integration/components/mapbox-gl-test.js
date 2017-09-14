@@ -13,13 +13,4 @@ test('it renders', function(assert) {
   this.render(hbs`{{mapbox-gl}}`);
 
   assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#mapbox-gl}}
-      template block text
-    {{/mapbox-gl}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });

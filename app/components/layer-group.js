@@ -1,13 +1,12 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task } from 'ember-concurrency';
-import { ChildMixin } from 'ember-composability-tools';
 import carto from '../utils/carto';
-import SqlBuilder from '../utils/sql-builder';
+// import SqlBuilder from '../utils/sql-builder';
 
 const { alias } = Ember.computed;
 
-export default Ember.Component.extend(ChildMixin, {
+export default Ember.Component.extend({
   init(...args) {
     this._super(...args);
     const config = this.get('config');
@@ -26,6 +25,7 @@ export default Ember.Component.extend(ChildMixin, {
 
   tagName: '',
   qps: null,
+  config: {},
 
   @computed('config.visible')
   visible() {
