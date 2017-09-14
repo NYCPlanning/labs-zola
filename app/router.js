@@ -8,6 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function () {
   this.route('lot', { path: 'lot/:boro/:block/:lot' });
+  this.route('zma', { path: 'zma/:ulurpno' });
   this.route('about');
   return null;
 });
