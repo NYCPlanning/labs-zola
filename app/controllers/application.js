@@ -1,11 +1,15 @@
 import Ember from 'ember';
 import QueryParams from 'ember-parachute';
 import bblDemux from '../utils/bbl-demux';
-import config from '../config/environment';
 
-const { mapConfig } = config;
+import pluto from '../layer-groups/pluto';
+import facilities from '../layer-groups/facilities';
+import aerialRaster from '../layer-groups/aerial-raster';
+import zoningDistricts from '../layer-groups/zoning-districts';
 
-const queryParams = mapConfig
+const layerGroups = [pluto, facilities, aerialRaster, zoningDistricts];
+
+const queryParams = layerGroups
   .mapBy('id')
   .reduce(
     (acc, cur) => {
@@ -17,18 +21,6 @@ const queryParams = mapConfig
     },
     {},
   );
-
-const filterNames = mapConfig
-  .mapBy('filters')
-  .filter(el => el)
-  .reduce(
-    (acc, curr) => acc.concat(curr),
-    [],
-  )
-  // need to namespace these
-  .mapBy('columnName');
-
-console.log(filterNames);
 
 export const mapQueryParams =
   new QueryParams(queryParams);
