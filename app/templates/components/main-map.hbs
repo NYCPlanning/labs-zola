@@ -11,7 +11,7 @@
                     zoom=zoom
                     center=(array lng lat))
   mapLoaded=(action 'handleMapLoad')
-  as |map|}}  
+  as |map|}}
   {{#if zoningSourcePromise.last.isSuccessful}}
     {{#map.source sourceId='zoning' options=zoningSource as |source|}}
       {{source.layer layer=zdFillLayer before='waterway-label'}}
@@ -21,14 +21,12 @@
   {{/if}}
 
   {{#ember-wormhole to='layers-menu'}}
-    <div class="layers-menu">
-      <ul class='list'>
-        {{map.layer-group config=pluto qps=qps}}
-        {{map.layer-group config=zoningDistricts qps=qps}}
-        {{map.layer-group config=aerialRaster qps=qps}}
-        {{map.layer-group config=facilities qps=qps}}
-      </ul>
-    </div>
+    <ul class='layers-list no-bullet'>
+      {{map.layer-group config=pluto qps=qps}}
+      {{map.layer-group config=zoningDistricts qps=qps}}
+      {{map.layer-group config=aerialRaster qps=qps}}
+      {{map.layer-group config=facilities qps=qps}}
+    </ul>
   {{/ember-wormhole}}
 
   {{#if highlightedLotFeatures}}
@@ -38,11 +36,11 @@
   {{/if}}
 
   {{#if mainMap.selected}}
-    {{#map.source 
-      sourceId='selected-lot' 
+    {{#map.source
+      sourceId='selected-lot'
       options=selectedLotSource as |source|}}
-      {{source.layer 
-        layer=selectedLotLayer 
+      {{source.layer
+        layer=selectedLotLayer
         after='waterway-label'}}
     {{/map.source}}
   {{/if}}
