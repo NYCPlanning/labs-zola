@@ -5,7 +5,7 @@ import bblDemux from '../utils/bbl-demux';
 
 const { service } = Ember.inject;
 
-const DEBOUNCE_MS = 100;
+const DEBOUNCE_MS = 50;
 
 export default Ember.Component.extend({
   classNames: ['search'],
