@@ -12,5 +12,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{layer-group}}`);
 
-  assert.equal(this.$().text().trim(), '(Show)');
+  assert.equal(this.$().text().trim(), 'Toggle Layer Group');
 });

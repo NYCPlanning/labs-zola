@@ -12,14 +12,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{layer-menu-item}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#layer-menu-item}}
-      template block text
-    {{/layer-menu-item}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), 'Toggle Layer Group');
 });
