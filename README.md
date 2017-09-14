@@ -41,7 +41,7 @@ To create a simple layer style definition, simply run:
 
 Import simply layer style definitions inside layer-groups, if necessary:
 
-javascript```
+```javascript
 // layer-groups/my-layer-group
 import myLayer from '../layers/my-layer';
 
@@ -49,7 +49,8 @@ export default {
   layers:[
     layer: myLayer
   ]
-}```
+}
+```
 
 Make use of the many other generators for code, try `ember help generate` for more details
 
