@@ -40,6 +40,7 @@
     "ember-data": "~2.14.3",
     "ember-decorators": "^1.2.2",
     "ember-export-application-global": "^2.0.0",
+    "ember-font-awesome": "^4.0.0-alpha.3",
     "ember-load-initializers": "^1.0.0",
     "ember-mapbox-gl": "^0.8.2",
     "ember-promise-helpers": "^1.0.3",
