@@ -26,19 +26,6 @@ test('map-search enter on first search result for lot', async function(assert) {
   );
 });
 
-test('map-search keydown and second result highlighted', async function(assert) {
-  await visit('/');
-  await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
-  await waitUntil(() => find('.has-results'), { timeout });
-  await keyEvent(SEARCH_INPUT_SELECTOR, 'keyup', 40);
-
-  pauseTest();
-  assert.equal(
-    find(resultAt(2)).className,
-    'highlighted-result',
-  );
-});
-
 test('map-search keydown, keyup, keyup -> first result highlighted', async function(assert) {
   await visit('/');
   await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
