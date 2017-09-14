@@ -11,21 +11,15 @@
                     zoom=zoom
                     center=(array lng lat))
   mapLoaded=(action 'handleMapLoad')
-  as |map|}}
-  {{#if zoningSourcePromise.last.isSuccessful}}
-    {{#map.source sourceId='zoning' options=zoningSource as |source|}}
-      {{source.layer layer=zdFillLayer before='waterway-label'}}
-      {{source.layer layer=zdLineLayer before='waterway-label'}}
-      {{source.layer layer=zdLabelLayer before='waterway-label'}}
-    {{/map.source}}
-  {{/if}}
+  as |map|}}  
 
-  {{#ember-wormhole to='layers-menu'}}
+  {{#ember-wormhole to=menuTo}}
     <ul class='layers-list no-bullet'>
       {{map.layer-group config=pluto qps=qps}}
       {{map.layer-group config=zoningDistricts qps=qps}}
       {{map.layer-group config=aerialRaster qps=qps}}
-      {{map.layer-group config=facilities qps=qps}}
+      {{map.layer-group config=commercialOverlays qps=qps}}
+      {{map.layer-group config=zoningMapAmendments qps=qps}}
     </ul>
   {{/ember-wormhole}}
 

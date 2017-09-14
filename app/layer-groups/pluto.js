@@ -1,6 +1,6 @@
 export default {
   id: 'pluto',
-  title: 'Land Use',
+  title: 'PLUTO (Tax Lots)',
   sql: 'SELECT the_geom_webmercator, bbl, address FROM support_mappluto',
   minzoom: 12,
   type: 'carto',

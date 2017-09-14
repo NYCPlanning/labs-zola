@@ -6,6 +6,8 @@ import pluto from '../layer-groups/pluto';
 import facilities from '../layer-groups/facilities';
 import aerialRaster from '../layer-groups/aerial-raster';
 import zoningDistricts from '../layer-groups/zoning-districts';
+import commercialOverlays from '../layer-groups/commercial-overlays';
+import zoningMapAmendments from '../layer-groups/zoning-map-amendments';
 
 import highlightedLotLayer from '../layers/highlighted-lot';
 import selectedLotLayer from '../layers/selected-lot';
@@ -21,11 +23,14 @@ export default Ember.Component.extend({
   lat: 40.7071266,
   lng: -74,
   zoom: 10.2,
+  menuTo: 'layers-menu',
 
   pluto,
   facilities,
   aerialRaster,
   zoningDistricts,
+  commercialOverlays,
+  zoningMapAmendments,
 
   mapConfig: [
     pluto, facilities, aerialRaster, zoningDistricts,
