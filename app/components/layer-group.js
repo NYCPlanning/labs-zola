@@ -5,9 +5,37 @@ import { ChildMixin } from 'ember-composability-tools';
 import carto from '../utils/carto';
 import SqlBuilder from '../utils/sql-builder';
 
+const { alias } = Ember.computed;
+
 export default Ember.Component.extend(ChildMixin, {
+  init(...args) {
+    this._super(...args);
+    const config = this.get('config');
+    const { id } = config;
+    const qps = this.get('qps');
+    const thisQP = this.get(`qps.${id}`);
+
+    if (qps) {
+      config.visible = thisQP;
+      this.set(
+        'visible',
+        alias(`qps.${id}`),
+      );
+    }
+  },
+
   tagName: '',
-  visible: true,
+  qps: null,
+
+  @computed('config.visible')
+  visible() {
+    return this.get('config.visible');
+  },
+
+  @computed('config.type')
+  isCarto(type) {
+    return type === 'carto';
+  },
 
   @computed('config.sql')
   get sql() {
@@ -39,6 +67,12 @@ export default Ember.Component.extend(ChildMixin, {
         },
       );
   }).restartable(),
+
+  @computed('config', 'isCarto')
+  sourceOptions(config, isCarto) {
+    if (isCarto) return this.get('configWithTemplate.value');
+    return config;
+  },
 
   actions: {
     toggleVisibility() {

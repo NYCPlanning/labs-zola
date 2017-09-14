@@ -1,8 +1,8 @@
- {{#if configWithTemplate.isSuccessful}}
+{{#if (or (and isCarto configWithTemplate.isSuccessful) (not isCarto))}}
   {{#if (and config visible)}}
     {{#map.source 
       sourceId=config.id 
-      options=configWithTemplate.value as |source|}}
+      options=sourceOptions as |source|}}
       {{#each config.layers as |layerConfig|}}
         {{source.layer
           layer=layerConfig.layer
@@ -12,7 +12,20 @@
   {{/if}}
 {{/if}}
 
-<li class='item' {{action 'toggleVisibility'}}>
-  {{layer-menu-item title=config.title config=group}}
+<li class='item'>
+  {{layer-menu-item 
+      title=config.title 
+      config=group
+      click=(action 'toggleVisibility')}}
   {{if visible '(Hide)' '(Show)'}}
+  {{if configWithTemplate.isPending '(Loading)'}}
+  {{#if visible}}
+    <ul>
+      {{#each config.filters as |filter|}}
+        {{#each filter.values as |value|}}
+          <li>{{value.label}}</li>
+        {{/each}}
+      {{/each}}
+    </ul>
+  {{/if}}
 </li>

@@ -182,6 +182,9 @@ const env = function (environment) {
           'fill-color': 'steelblue',
         },
       },
+
+      facilitiesSQL: 'SELECT the_geom_webmercator, facname, facdomain, uid FROM facdb_170522',
+      floodplain2050SQL: 'SELECT * FROM cdprofiles_floodplain_2050',
     },
   };
 
@@ -205,6 +208,144 @@ const env = function (environment) {
   }
 
   if (environment === 'production') {}; // eslint-disable-line
+
+  const mapConfig = [
+    {
+      id: 'pluto',
+      title: 'Land Use',
+      sql: ENV.APP.plutoSQL,
+      minzoom: 12,
+      type: 'carto',
+      layers: [
+        { layer: ENV.APP.plutoFillLayer },
+        { layer: ENV.APP.plutoLineLayer },
+      ],
+    },
+    {
+      id: 'zoning',
+      title: 'Zoning',
+      sql: ENV.APP.zoningSQL,
+      type: 'carto',
+      layers: [
+        {
+          layer: ENV.APP.zdFillLayer,
+          before: 'waterway-label',
+        },
+        { layer: ENV.APP.zdLineLayer,
+          before: 'waterway-label',
+        },
+        {
+          layer: ENV.APP.zdLabelLayer,
+          before: 'waterway-label',
+        },
+      ],
+      filters: [
+        {
+          columnName: 'proptype',
+          type: 'multiSelect',
+          disabled: true,
+          values: [
+            {
+              value: 'City Owned',
+              label: 'City Owned',
+            },
+            {
+              value: 'City Leased',
+              label: 'City Leased',
+            },
+            {
+              value: '',
+              label: 'Not Owned or Leased by City',
+            },
+          ],
+        },
+        {
+          columnName: 'birdType',
+          type: 'multiSelect',
+          disabled: true,
+          values: [
+            {
+              value: 'City Owned',
+              label: 'City Owned',
+            },
+            {
+              value: 'City Leased',
+              label: 'City Leased',
+            },
+            {
+              value: '',
+              label: 'Not Owned or Leased by City',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'facilities',
+      title: 'Facilities',
+      type: 'carto',
+      sql: ENV.APP.facilitiesSQL,
+      visible: true,
+      layers: [
+        {
+          layer: {
+            id: 'facilities-points-outline',
+            type: 'circle',
+            source: 'facilities',
+            'source-layer': 'layer0',
+            paint: {
+              'circle-radius': { stops: [[10, 3], [15, 7]] },
+              'circle-color': '#012700',
+              'circle-opacity': 0.7,
+            },
+          },
+        },
+      ],
+      filters: [
+        {
+          columnName: 'proptype',
+          type: 'multiSelect',
+          disabled: true,
+          values: [
+            {
+              value: 'City Owned',
+              label: 'City Owned',
+            },
+            {
+              value: 'City Leased',
+              label: 'City Leased',
+            },
+            {
+              value: '',
+              label: 'Not Owned or Leased by City',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'aerial-raster',
+      type: 'raster',
+      title: '2016 Aerial',
+      tiles: ['https://api.capitalplanning.nyc/tiles/doitt/tms/1.0.0/photo/2016/{z}/{x}/{y}.png'],
+      tileSize: 256,
+      maxzoom: 14,
+      visible: false,
+      layers: [
+        {
+          layer: {
+            id: 'landuse-raster',
+            type: 'raster',
+            source: 'aerial-raster',
+            maxzoom: 14,
+          },
+          before: 'zd',
+        },
+      ],
+    },
+  ];
+
+  ENV.mapConfig = mapConfig;
 
   return ENV;
 };

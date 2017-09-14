@@ -1,5 +1,9 @@
 {{site-header}}
-{{main-map routeToLot=(action 'routeToLot') transitionTo=(action 'transitionTo')}}
+{{main-map 
+  qps=qps
+  routeToLot=(action 'routeToLot') 
+  transitionTo=(action 'transitionTo')
+  }}
 {{#content-area}}
   {{outlet}}
 {{/content-area}}
