@@ -1,9 +1,18 @@
 {{site-header}}
-{{main-map 
-  qps=qps
-  routeToLot=(action 'routeToLot') 
-  transitionTo=(action 'transitionTo')
-  }}
-{{#content-area}}
-  {{outlet}}
-{{/content-area}}
+
+<div class="site-main grid-x">
+  <div class="cell large-7 xxlarge-8">
+    {{map-search transitionTo=transitionTo}}
+    <div class="map-grid">
+      {{main-map 
+        routeToLot=(action 'routeToLot') 
+        transitionTo=(action 'transitionTo')
+        qps=qps
+      }}
+      {{layer-palette}}
+    </div>
+  </div>
+  <div class="content-area cell large-5 large-cell-block-y xxlarge-4">
+    {{outlet}}
+  </div>
+</div>
