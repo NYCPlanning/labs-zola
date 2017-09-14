@@ -1,7 +1,7 @@
 export default {
-  id: 'pluto',
+  id: 'layer-id',
   type: 'fill',
-  source: '',
+  source: 'layer-id',
   paint: {
     'fill-opacity': 0.8,
     'fill-color': '#E86400',
