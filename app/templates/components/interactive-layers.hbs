@@ -1,0 +1,9 @@
+<ul class='list'>
+  {{#each config as |group|}}
+    {{map.layer-group 
+      config=group 
+      qps=qps}}
+  {{/each}}
+</ul>
+
+{{yield}}
