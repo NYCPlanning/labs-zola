@@ -2,7 +2,6 @@ import Ember from 'ember';
 import bblDemux from '../utils/bbl-demux';
 
 export default Ember.Controller.extend({
-
   actions: {
     transitionTo(...args) {
       this.transitionToRoute(...args);
