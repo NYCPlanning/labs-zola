@@ -8,7 +8,25 @@
       on=(component 'mapbox-gl-on' eventSource=map)
       popup=(component 'mapbox-gl-popup' map=map)
       source=(component 'mapbox-gl-source' map=map)
-    )}}
+      layer-group=(component 'layer-group' 
+        map=(hash
+          layer=(component 'mapbox-gl-layer' map=map)
+          source=(component 'mapbox-gl-source' map=map)
+        )
+      )
+      interactive-layers=(
+        component 'interactive-layers' 
+          map=(hash 
+            layer-group=(component 'layer-group' 
+              map=(hash
+                layer=(component 'mapbox-gl-layer' map=map)
+                source=(component 'mapbox-gl-source' map=map)
+              )
+            )
+          )
+        )
+      )
+    }}
   {{/if}}
 {{else}}
   {{yield to='inverse'}}
