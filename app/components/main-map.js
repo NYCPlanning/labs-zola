@@ -7,6 +7,21 @@ import carto from '../utils/carto';
 const { reads } = Ember.computed;
 const { service } = Ember.inject;
 
+const zmaSQL = 'SELECT the_geom_webmercator, ulurpno FROM support_nyzma';
+
+const zmaFillLayer = {
+  id: 'zma',
+  type: 'line',
+  source: 'zma',
+  'source-layer': 'layer0',
+  paint: {
+    'line-width': 2,
+    'line-color': 'red',
+    'line-dasharray': [1, 1],
+    'line-opacity': 0.6,
+  },
+};
+
 const zoningSQL = 'SELECT *, LEFT(zonedist, 2) as primaryzone FROM support_zoning_zd';
 const zdFillLayer = {
   id: 'zd',
@@ -236,6 +251,18 @@ export default Ember.Component.extend({
 
   plutoFillLayer,
   plutoLineLayer,
+
+  zmaSourcePromise: task(function* () {
+    return yield carto.getVectorTileTemplate([zmaSQL])
+      .then(zmaTemplate => ({
+        type: 'vector',
+        tiles: [zmaTemplate],
+      }));
+  }).restartable().on('didInsertElement'),
+
+  zmaSource: reads('zmaSourcePromise.last.value'),
+
+  zmaFillLayer,
 
   actions: {
     handleMapLoad(map) {
