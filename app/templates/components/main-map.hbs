@@ -3,7 +3,6 @@
   initOptions=(hash style='mapbox://styles/mapbox/light-v9'
                     zoom=zoom
                     center=(array lng lat))
-  mapLoaded=(action 'handleMapLoad')
   as |map|
 }}
   {{#if zoningSourcePromise.last.isSuccessful}}
@@ -21,7 +20,7 @@
     {{/map.source}}
   {{/if}}
 
-  {{#if highlightedLotFeatures}}
+{{!--   {{#if highlightedLotFeatures}}
     {{#map.source sourceId='highlighted-lot' options=highlightedLotSource as |source|}}
       {{source.layer layer=highlightedLotLayer before='waterway-label'}}
     {{/map.source}}
@@ -37,5 +36,5 @@
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
-
+ --}}
 {{/mapbox-gl}}
