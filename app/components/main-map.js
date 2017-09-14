@@ -273,6 +273,7 @@ export default Ember.Component.extend({
     },
 
     handleMouseleave() {
+      this.set('highlightedLotFeatures', []);
       this.set('mouseoverLocation', null);
     },
   },
