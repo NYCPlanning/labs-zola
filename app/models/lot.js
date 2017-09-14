@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import bbox from 'npm:@turf/bbox';
@@ -5,24 +6,95 @@ import bbox from 'npm:@turf/bbox';
 // columns requested from server
 // update to add more
 const LotColumnsSQL = [
+  'address',
   'bbl',
+  'bldgarea',
+  'block',
+  'borough',
+  'histdist',
+  'landmark',
+  'landuse',
+  'lot',
+  'lotarea',
+  'lotfront',
+  'numbldgs',
+  'numfloors',
+  'ownername',
+  'ownertype',
+  'policeprct',
+  'unitsres',
+  'unitstotal',
   'yearbuilt',
   'zonedist1',
   'zonedist2',
   'zonedist3',
   'zonedist4',
-  'lotarea',
 ];
+
+const boroughLookup = {
+  BX: 'Bronx',
+  BK: 'Brooklyn',
+  MN: 'Manhattan',
+  QN: 'Queens',
+  SI: 'Staten Island',
+};
+
+const ownertypeLookup = {
+  C: 'City',
+  M: 'Mixed City & Private',
+  O: 'Public Authority, State, or Federal',
+  P: 'Private',
+  X: 'Mixed',
+};
+
+const landuseLookup = {
+  '01': 'One &Two Family Buildings',
+  '02': 'Multi-Family Walk-Up Buildings',
+  '03': 'Multi-Family Elevator Buildings',
+  '04': 'Mixed Residential & Commercial Buildings',
+  '05': 'Commercial & Office Buildings',
+  '06': 'Industrial & Manufacturing',
+  '07': 'Transportation & Utility',
+  '08': 'Public Facilities & Institutions',
+  '09': 'Open Space & Outdoor Recreation',
+  10: 'Parking Facilities',
+  11: 'Vacant Land',
+};
 
 export default DS.Model.extend({
   geometry: DS.attr(),
-  bbl: DS.attr('string'),
+  address: DS.attr('string'),
+  bbl: DS.attr('number'),
+  bldgarea: DS.attr('number'),
+  block: DS.attr('number'),
+  borough: DS.attr('string'),
+  boroname: Ember.computed('borough', function() {
+    return boroughLookup[this.get('borough')];
+  }),
+  histdist: DS.attr('string'),
+  landmark: DS.attr('string'),
+  landuse: DS.attr('string'),
+  landusename: Ember.computed('landuse', function() {
+    return landuseLookup[this.get('landuse')];
+  }),
+  lot: DS.attr('number'),
+  lotarea: DS.attr('number'),
+  lotfront: DS.attr('number'),
+  numbldgs: DS.attr('number'),
+  numfloors: DS.attr('number'),
+  ownername: DS.attr('string'),
+  ownertype: DS.attr('string'),
+  ownertypename: Ember.computed('ownertype', function() {
+    return ownertypeLookup[this.get('ownertype')];
+  }),
+  policeprct: DS.attr('string'),
+  unitsres: DS.attr('number'),
+  unitstotal: DS.attr('number'),
   yearbuilt: DS.attr('string'),
   zonedist1: DS.attr('string'),
   zonedist2: DS.attr('string'),
   zonedist3: DS.attr('string'),
   zonedist4: DS.attr('string'),
-  lotarea: DS.attr('number'),
 
   @computed('geometry')
   bounds(geometry) {
