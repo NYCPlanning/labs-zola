@@ -1,8 +1,48 @@
 import Ember from 'ember';
+import QueryParams from 'ember-parachute';
 import bblDemux from '../utils/bbl-demux';
+import config from '../config/environment';
 
-export default Ember.Controller.extend({
+const { mapConfig } = config;
 
+const queryParams = mapConfig
+  .mapBy('id')
+  .reduce(
+    (acc, cur) => {
+      acc[cur] = {
+        defaultValue: (cur.visible === undefined) ? true : !!cur.visible,
+      };
+
+      return acc;
+    },
+    {},
+  );
+
+const filterNames = mapConfig
+  .mapBy('filters')
+  .filter(el => el)
+  .reduce(
+    (acc, curr) => acc.concat(curr),
+    [],
+  )
+  // need to namespace these
+  .mapBy('columnName');
+
+console.log(filterNames);
+
+export const mapQueryParams =
+  new QueryParams(queryParams);
+
+export default Ember.Controller.extend(mapQueryParams.Mixin, {
+  init(...args) {
+    this._super(...args);
+
+    const proxy = Ember.ObjectProxy.create({
+      content: this,
+    });
+
+    this.set('qps', proxy);
+  },
   actions: {
     transitionTo(...args) {
       this.transitionToRoute(...args);
@@ -15,6 +55,9 @@ export default Ember.Controller.extend({
         const { boro, block, lot } = bblDemux(bbl);
         this.transitionToRoute('lot', boro, block, lot);
       }
+    },
+    setQueryParam(property, value) {
+      this.set(property, value);
     },
   },
 });
