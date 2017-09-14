@@ -3,5 +3,46 @@
 // --------------------------------------------------
 
 .layer-palette {
+  // contains the .layers-menu and button to show/hide on mobile
   padding: rem-calc(6);
+  font-size: rem-calc(12);
+}
+
+#layers-menu {
+  // the element that shows/hides on mobile
+  margin: rem-calc(-6) rem-calc(-6) 0;
+}
+
+.layers-list {
+
+  li {
+    padding: rem-calc(6) rem-calc(8);
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($dark-gray,0.1);
+    }
+  }
+
+  .switch {
+    margin: 0 rem-calc(6) 0 0;
+  }
+}
+
+.layer-group {
+  padding-bottom: rem-calc(6);
+  border-bottom: 1px solid $medium-gray;
+
+  ul {
+    margin: 0 rem-calc(-8);
+
+    li {
+      padding-left: rem-calc(16);
+      border-top: 1px solid $white;
+    }
+  }
+}
+
+.layer-menu-item {
+  // display: inline-block;
 }
