@@ -3,53 +3,8 @@ import mapboxgl from 'mapbox-gl';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import config from '../config/environment';
 
-const { APP } = config;
-
-const {
-  zoningSQL,
-  zdFillLayer,
-  zdLineLayer,
-  zdLabelLayer,
-  plutoSQL,
-  plutoFillLayer,
-  plutoLineLayer,
-  highlightedLotLayer,
-  selectedLotLayer }
-  = APP;
-
-const mapConfig = [
-  {
-    id: 'pluto',
-    title: 'Land Use',
-    sql: plutoSQL,
-    minzoom: 12,
-    type: 'carto',
-    layers: [
-      { layer: plutoFillLayer },
-      { layer: plutoLineLayer },
-    ],
-  },
-  {
-    id: 'zoning',
-    title: 'Zoning',
-    sql: zoningSQL,
-    type: 'carto',
-    layers: [
-      {
-        layer: zdFillLayer,
-        before: 'waterway-label',
-      },
-      { layer: zdLineLayer,
-        before: 'waterway-label',
-      },
-      {
-        layer: zdLabelLayer,
-        before: 'waterway-label',
-      },
-    ],
-  },
-];
-
+const { mapConfig } = config;
+const { highlightedLotLayer, selectedLotLayer } = config.APP;
 const { service } = Ember.inject;
 
 export default Ember.Component.extend({
@@ -62,6 +17,7 @@ export default Ember.Component.extend({
   zoom: 10.2,
 
   mapConfig,
+  loading: true,
 
   @computed('mainMap.selected')
   fitBoundsOptions(selected) {
@@ -126,6 +82,21 @@ export default Ember.Component.extend({
     handleMouseleave() {
       this.set('highlightedLotFeatures', []);
       this.set('mouseoverLocation', null);
+    },
+    mapLoading(data) {
+      const localConfig = this.get('mapConfig');
+      const sourceIds = localConfig.mapBy('id');
+      const localSource = localConfig.findBy('id', data.sourceId);
+
+      if (localSource) {
+        if (data.dataType === 'source' &&
+            data.isSourceLoaded &&
+            sourceIds.includes(data.sourceId)) {
+          this.set('loading', false);
+        } else {
+          this.set('loading', true);
+        }
+      }
     },
   },
 });

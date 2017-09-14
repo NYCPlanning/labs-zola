@@ -1,5 +1,12 @@
 {{map-search transitionTo=transitionTo}}
 
+{{#if loading}}
+  <div class="spinner">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+{{/if}}
+
 {{#mapbox-gl
   id='main-map'
   initOptions=(hash style='mapbox://styles/mapbox/light-v9'
@@ -8,7 +15,9 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}  
 
-  {{map.interactive-layers config=mapConfig}}
+  {{map.interactive-layers 
+    config=mapConfig 
+    qps=qps}}
 
   {{#if highlightedLotFeatures}}
     {{#map.source 
@@ -32,6 +41,7 @@
 
   {{map.call 'fitBounds' mainMap.bounds}}
   {{map.on 'click' (action routeToLot)}}
+  {{map.on 'data' (action 'mapLoading')}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
 
