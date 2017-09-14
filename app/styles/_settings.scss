@@ -131,12 +131,12 @@ $block-grid-max: 8;
 // ------------------
 
 $header-font-family: $body-font-family;
-$header-font-weight: $global-weight-normal;
+$header-font-weight: $global-weight-bold;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-color: inherit;
-$header-lineheight: 1.4;
-$header-margin-bottom: 0.5rem;
+$header-lineheight: 1.3;
+$header-margin-bottom: 1.25em;
 $header-styles: (
   small: (
     'h1': ('font-size': 34),
@@ -757,13 +757,13 @@ $slider-radius: $global-radius;
 $switch-background: $medium-gray;
 $switch-background-active: $primary-color;
 $switch-height: 2rem;
-$switch-height-tiny: 1.5rem;
+$switch-height-tiny: rem-calc(14);
 $switch-height-small: 1.75rem;
 $switch-height-large: 2.5rem;
 $switch-radius: $global-radius;
 $switch-margin: $global-margin;
 $switch-paddle-background: $white;
-$switch-paddle-offset: 0.25rem;
+$switch-paddle-offset: rem-calc(2);
 $switch-paddle-radius: $global-radius;
 $switch-paddle-transition: all 0.25s ease-out;
 

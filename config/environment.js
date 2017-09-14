@@ -1,4 +1,3 @@
-
 const env = function (environment) {
   const ENV = {
     modulePrefix: 'labs-zola',
