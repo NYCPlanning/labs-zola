@@ -23,6 +23,7 @@ export default Ember.Component.extend({
   lat: 40.7071266,
   lng: -74,
   zoom: 10.2,
+  menuTo: 'layers-menu',
 
   pluto,
   facilities,

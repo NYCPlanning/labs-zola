@@ -9,7 +9,15 @@ import zoningDistricts from '../layer-groups/zoning-districts';
 import commercialOverlays from '../layer-groups/commercial-overlays';
 import zoningMapAmendments from '../layer-groups/zoning-map-amendments';
 
-const layerGroups = [pluto, facilities, aerialRaster, zoningDistricts, commercialOverlays, zoningMapAmendments];
+const layerGroups =
+  [
+    pluto,
+    facilities,
+    aerialRaster,
+    zoningDistricts,
+    commercialOverlays,
+    zoningMapAmendments,
+  ];
 
 const queryParams = layerGroups
   .mapBy('id')
