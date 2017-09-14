@@ -12,6 +12,13 @@
                     center=(array lng lat))
   mapLoaded=(action 'handleMapLoad')
   as |map|}}  
+  {{#if zoningSourcePromise.last.isSuccessful}}
+    {{#map.source sourceId='zoning' options=zoningSource as |source|}}
+      {{source.layer layer=zdFillLayer before='waterway-label'}}
+      {{source.layer layer=zdLineLayer before='waterway-label'}}
+      {{source.layer layer=zdLabelLayer before='waterway-label'}}
+    {{/map.source}}
+  {{/if}}
 
   {{#ember-wormhole to='layers-menu'}}
     <div class="layers-menu">
@@ -25,12 +32,8 @@
   {{/ember-wormhole}}
 
   {{#if highlightedLotFeatures}}
-    {{#map.source 
-      sourceId='highlighted-lot' 
-      options=highlightedLotSource as |source|}}
-      {{source.layer 
-        layer=highlightedLotLayer 
-        before='waterway-label'}}
+    {{#map.source sourceId='highlighted-lot' options=highlightedLotSource as |source|}}
+      {{source.layer layer=highlightedLotLayer before='waterway-label'}}
     {{/map.source}}
   {{/if}}
 

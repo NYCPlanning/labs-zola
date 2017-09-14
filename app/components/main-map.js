@@ -2,10 +2,14 @@ import Ember from 'ember';
 import mapboxgl from 'mapbox-gl';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
+
 import pluto from '../layer-groups/pluto';
 import facilities from '../layer-groups/facilities';
 import aerialRaster from '../layer-groups/aerial-raster';
 import zoningDistricts from '../layer-groups/zoning-districts';
+
+const { service } = Ember.inject;
+const { later } = Ember.run;
 
 import highlightedLotLayer from '../layers/highlighted-lot';
 import selectedLotLayer from '../layers/selected-lot';
@@ -68,7 +72,11 @@ export default Ember.Component.extend({
       mainMap.set('mapInstance', map);
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
       map.moveLayer('building');
-      setTimeout(() => { map.setPaintProperty('building', 'fill-opacity', 0.4); }, 1000);
+      later(() => {
+        if (map) {
+          map.setPaintProperty('building', 'fill-opacity', 0.4);
+        }
+      }, 1000);
     },
 
     handleMouseover(e) {
