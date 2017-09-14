@@ -11,6 +11,8 @@
     <li class="{{if (eq selected index) 'highlighted-result'}}" {{action 'goTo' result}}>
       {{#if (eq result.type 'lot')}}
         {{result.label}} (Lot)
+      {{else if (eq result.type 'zma')}}
+        {{result.label}} (Rezoning)
       {{else}}
         {{result.label}} (Address)
       {{/if}}
