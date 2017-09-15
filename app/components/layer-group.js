@@ -2,7 +2,6 @@ import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task } from 'ember-concurrency';
 import carto from '../utils/carto';
-// import SqlBuilder from '../utils/sql-builder';
 
 const { alias } = Ember.computed;
 
@@ -68,7 +67,7 @@ export default Ember.Component.extend({
       );
   }).restartable(),
 
-  @computed('config', 'isCarto')
+  @computed('config', 'isCarto', 'sql')
   sourceOptions(config, isCarto) {
     if (isCarto) return this.get('configWithTemplate.value');
     return config;
@@ -77,6 +76,10 @@ export default Ember.Component.extend({
   actions: {
     toggleVisibility() {
       this.toggleProperty('visible');
+    },
+    updateSql(sqlString) {
+      console.log(sqlString);
+      this.set('sql', sqlString);
     },
   },
 });
