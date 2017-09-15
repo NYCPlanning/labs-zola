@@ -2,7 +2,7 @@ import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('route:zma', 'Unit | Route | zma', {
   // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
+  needs: ['service:mainMap'],
 });
 
 test('it exists', function(assert) {
