@@ -11,6 +11,7 @@ const LotColumnsSQL = [
   'bldgarea',
   'block',
   'borough',
+  'cd',
   'histdist',
   'landmark',
   'landuse',
@@ -37,6 +38,14 @@ const boroughLookup = {
   MN: 'Manhattan',
   QN: 'Queens',
   SI: 'Staten Island',
+};
+
+const boroLookup = {
+  1: 'Manhattan',
+  2: 'Bronx',
+  3: 'Brooklyn',
+  4: 'Queens',
+  5: 'Staten Island',
 };
 
 const ownertypeLookup = {
@@ -70,6 +79,20 @@ export default DS.Model.extend({
   borough: DS.attr('string'),
   boroname: Ember.computed('borough', function() {
     return boroughLookup[this.get('borough')];
+  }),
+  cd: DS.attr('string'),
+  cdName: Ember.computed('cd', function() {
+    const borocd = this.get('cd');
+    const boro = borocd.substring(0, 1);
+    const cd = parseInt(borocd.substring(1, 3), 10).toString();
+    return `${boroLookup[boro]} ${cd}`;
+  }),
+  cdURLSegment: Ember.computed('cd', function() {
+    const borocd = this.get('cd');
+    const boro = borocd.substring(0, 1);
+    const cleanBorough = boroLookup[boro].toLowerCase().replace(/\s/g, '-');
+    const cd = parseInt(borocd.substring(1, 3), 10).toString();
+    return `${cleanBorough}/${cd}`;
   }),
   histdist: DS.attr('string'),
   landmark: DS.attr('string'),
