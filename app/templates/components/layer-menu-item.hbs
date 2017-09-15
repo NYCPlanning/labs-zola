@@ -1,18 +1,9 @@
-{{#if visible}}
 <div class="switch tiny float-left">
-  <input class="switch-input" type="checkbox" name="exampleSwitch" checked>
+  <input class="switch-input" type="checkbox" name="exampleSwitch" checked={{visible}}>
   <label class="switch-paddle" for="exampleSwitch">
     <span class="show-for-sr">Toggle Layer Group</span>
   </label>
 </div>
-{{else}}
-<div class="switch tiny float-left">
-  <input class="switch-input" type="checkbox" name="exampleSwitch">
-  <label class="switch-paddle" for="exampleSwitch">
-    <span class="show-for-sr">Toggle Layer Group</span>
-  </label>
-</div>
-{{/if}}
 
 {{title}}
 
