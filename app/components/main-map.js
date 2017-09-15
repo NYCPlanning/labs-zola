@@ -79,6 +79,12 @@ export default Ember.Component.extend({
           map.setPaintProperty('building', 'fill-opacity', 0.4);
         }
       }, 1000);
+
+      later(() => {
+        if (map) {
+          console.log(JSON.stringify(map.getStyle()));
+        }
+      }, 1000);
     },
 
     handleMouseover(e) {

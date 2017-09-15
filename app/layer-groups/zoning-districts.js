@@ -112,44 +112,5 @@ export default {
       before: 'waterway-label',
     },
   ],
-  filters: [
-    {
-      columnName: 'proptype',
-      type: 'multiSelect',
-      disabled: true,
-      values: [
-        {
-          value: 'City Owned',
-          label: 'City Owned',
-        },
-        {
-          value: 'City Leased',
-          label: 'City Leased',
-        },
-        {
-          value: '',
-          label: 'Not Owned or Leased by City',
-        },
-      ],
-    },
-    {
-      columnName: 'birdType',
-      type: 'multiSelect',
-      disabled: true,
-      values: [
-        {
-          value: 'City Owned',
-          label: 'City Owned',
-        },
-        {
-          value: 'City Leased',
-          label: 'City Leased',
-        },
-        {
-          value: '',
-          label: 'Not Owned or Leased by City',
-        },
-      ],
-    },
-  ],
+  filters: [],
 };
