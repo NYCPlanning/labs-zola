@@ -46,9 +46,9 @@ Import simply layer style definitions inside layer-groups, if necessary:
 import myLayer from '../layers/my-layer';
 
 export default {
-  layers:[
+  layers:[{
     layer: myLayer
-  ]
+  }]
 }
 ```
 
