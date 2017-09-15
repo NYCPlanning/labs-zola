@@ -5,12 +5,12 @@ moduleForComponent('layer-control-timeline', 'Integration | Component | layer co
   integration: true
 });
 
-test('it renders', function(assert) {
+// test('it renders', function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+//   // Set any properties with this.set('myProperty', 'value');
+//   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{layer-control-timeline}}`);
+//   this.render(hbs`{{layer-control-timeline}}`);
 
-  assert.equal(this.$().text().trim(), '2010-122017-09');
-});
+//   assert.equal(this.$().text().trim(), '2010-122017-09');
+// });
