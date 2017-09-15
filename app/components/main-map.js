@@ -38,11 +38,19 @@ export default Ember.Component.extend({
 
   loading: true,
 
+  debouncedDidResize(width) {
+    this.set('width', width);
+    this.updateChart();
+  },
+
   @computed('mainMap.selected')
-  fitBoundsOptions(selected) {
-    return {
-      padding: selected ? 80 : 0,
-    };
+  fitBoundsOptions() {
+    const el = this.$();
+    const height = el.height();
+    const width = el.width();
+
+    const padding = Math.min(height, width) / 2.5;
+    return { padding };
   },
 
   highlightedLotFeatures: [],
