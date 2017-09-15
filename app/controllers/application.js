@@ -20,13 +20,11 @@ const layerGroups =
   ];
 
 const queryParams = layerGroups
-  .mapBy('id')
   .reduce(
     (acc, cur) => {
-      acc[cur] = {
+      acc[cur.id] = {
         defaultValue: (cur.visible === undefined) ? true : !!cur.visible,
       };
-
       return acc;
     },
     {},

@@ -8,14 +8,18 @@ export default {
     {
       layer: {
         id: 'co',
-        type: 'fill',
+        type: 'line',
         source: 'co',
         'source-layer': 'layer0',
         paint: {
-          'fill-opacity': 1,
-          'fill-color': 'rgba(158, 0, 0, 0)',
-          'fill-antialias': true,
-          'fill-outline-color': 'rgba(255, 0, 0, 1)',
+          'line-width': {
+            stops: [
+              [13, 1],
+              [14, 3],
+            ],
+          },
+          'line-opacity': 0.3,
+          'line-color': 'rgba(255, 0, 0, 1)',
         },
       },
     },
@@ -30,6 +34,7 @@ export default {
           'text-halo-color': '#FFFFFF',
           'text-halo-width': 2,
           'text-halo-blur': 2,
+          'text-opacity': 0.6,
         },
         layout: {
           'symbol-placement': 'point',

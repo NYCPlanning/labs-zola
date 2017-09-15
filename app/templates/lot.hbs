@@ -1,16 +1,16 @@
 <label class="header-type">TAX LOT</label>
 {{#if model.landmark}}
-  <h1 class="header-large content-header">{{model.landmark}}</h1>
+  <h1 class="header-large content-header">{{model.landmark}} <span class="header-subtext">BBL {{model.bbl}}</span></h1>
   <h2 class="header-small content-subheader">{{model.address}}</h2>
 {{else}}
-  <h1 class="header-large">{{model.address}}</h1>
+  <h1 class="header-large">{{model.address}} <span class="header-subtext">BBL {{model.bbl}}</span></h1>
 {{/if}}
 
 <div class="data-grid">
   <div class="data-cell"><label class="data-label">Borough</label><span class="datum">{{model.boroname}}</span></div>
   <div class="data-cell"><label class="data-label">Block</label><span class="datum">{{model.block}}</span></div>
   <div class="data-cell"><label class="data-label">Lot</label><span class="datum">{{model.lot}}</span></div>
-  <div class="data-cell"><label class="data-label">Community District</label><span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{model.cdURLSegment}}" target="_blank">{{model.cdName}}</a></span></div>
+  <div class="data-cell"><label class="data-label">Community District</label><span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{model.cdURLSegment}}" target="_blank">{{fa-icon "external-link"}} {{model.cdName}}</a></span></div>
   <div class="data-cell"><label class="data-label">Police Precinct</label><span class="datum">{{model.policeprct}}</span></div>
 
   <div class="data-cell"><label class="data-label">Owner Type</label><span class="datum">{{if model.ownertypename model.ownertypename 'Unknown/Private'}}</span></div>
