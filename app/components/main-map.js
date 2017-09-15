@@ -38,11 +38,19 @@ export default Ember.Component.extend({
 
   loading: true,
 
+  debouncedDidResize(width) {
+    this.set('width', width);
+    this.updateChart();
+  },
+
   @computed('mainMap.selected')
   fitBoundsOptions(selected) {
-    return {
-      padding: selected ? 80 : 0,
-    };
+    const el = this.$();
+    const height = el.height();
+    const width = el.width();
+
+    const padding = Math.min(height, width) / 2.5;
+    return { padding: selected ? padding : 0 };
   },
 
   highlightedLotFeatures: [],
@@ -82,12 +90,16 @@ export default Ember.Component.extend({
     },
 
     handleMouseover(e) {
-      const features = e.target.queryRenderedFeatures(e.point, { layers: ['pluto-fill'] });
+      const map = e.target;
+
+      const layers = ['pluto-fill', 'zma-fill'].filter(layer => map.getLayer(layer));
+
+      const features = map.queryRenderedFeatures(e.point, { layers });
 
       if (features.length > 0) {
         const { bbl } = features[0].properties;
 
-        e.target.getCanvas().style.cursor = 'pointer';
+        map.getCanvas().style.cursor = 'pointer';
 
         const prevFeatures = this.get('highlightedLotFeatures');
 
@@ -95,7 +107,7 @@ export default Ember.Component.extend({
           this.set('highlightedLotFeatures', features);
         }
       } else {
-        e.target.getCanvas().style.cursor = '';
+        map.getCanvas().style.cursor = '';
 
         this.set('highlightedLotFeatures', []);
         this.set('mouseoverLocation', null);

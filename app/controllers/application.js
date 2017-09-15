@@ -20,13 +20,11 @@ const layerGroups =
   ];
 
 const queryParams = layerGroups
-  .mapBy('id')
   .reduce(
     (acc, cur) => {
-      acc[cur] = {
+      acc[cur.id] = {
         defaultValue: (cur.visible === undefined) ? true : !!cur.visible,
       };
-
       return acc;
     },
     {},
@@ -60,12 +58,19 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
       this.transitionToRoute(...args);
     },
     routeToLot(e) {
-      const feature = e.target.queryRenderedFeatures(e.point, { layers: ['pluto-fill'] })[0];
-      const { bbl } = feature.properties;
+      const map = e.target;
+      // only query layers that are available in the map
+      const layers = ['pluto-fill', 'zma-fill'].filter(layer => map.getLayer(layer));
+      const feature = map.queryRenderedFeatures(e.point, { layers })[0];
+      const { bbl, ulurpno } = feature.properties;
 
       if (bbl) {
         const { boro, block, lot } = bblDemux(bbl);
         this.transitionToRoute('lot', boro, block, lot);
+      }
+
+      if (ulurpno) {
+        this.transitionToRoute('zma', ulurpno);
       }
     },
     setQueryParam(property, value) {

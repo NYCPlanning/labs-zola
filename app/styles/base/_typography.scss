@@ -25,6 +25,16 @@ h6,
 .content-subheader {
 }
 
+.header-type {
+  color: $dark-gray;
+  font-weight:600;
+}
+
+.header-subtext {
+  color: $dark-gray;
+  font-size: .8rem;
+}
+
 //
 // Typograhpy helper classes
 // --------------------------------------------------
