@@ -12,14 +12,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{layer-control-timeline}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#layer-control-timeline}}
-      template block text
-    {{/layer-control-timeline}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), '2010-122017-09');
 });

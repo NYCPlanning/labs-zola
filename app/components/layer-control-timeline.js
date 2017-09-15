@@ -2,42 +2,45 @@ import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import moment from 'moment';
 
-const { alias } = Ember.computed;
+// const { alias } = Ember.computed;
 
 const defaultDate = 'YYYY-MM-DD';
+const defaultStart = [1293840000000, 1505499351000];
 
 const fromEpoch = function(number, format = defaultDate) {
   return moment(number).format(format);
 };
 
 export default Ember.Component.extend({
-  init(...args) {
-    this._super(...args);
+  // init(...args) {
+  //   this._super(...args);
 
-    const qps = this.get('qps');
-    const column = this.get('column');
-    const { id } = this.get('layer.config');
-    if (qps) {
-      const qpValue = this.get(`qps.${id}-${column}-slider`);
-      this.set(
-        'start',
-        alias(`qps.${id}-${column}-slider`),
-      );
+  //   const qps = this.get('qps');
+  //   const column = this.get('column');
+  //   const { id } = this.get('layer.config');
+  //   if (qps) {
+  //     const qpValue = this.get(`qps.${id}-${column}-slider`);
+  //     this.set(
+  //       'start',
+  //       alias(`qps.${id}-${column}-slider`),
+  //     );
 
-      Ember.run.next(() => {
-        this.get('layer.updateSql')(this.buildRangeSQL(qpValue));
-      });
-    }
-  },
+  //     Ember.run.next(() => {
+  //       this.get('layer.updateSql')(this.buildRangeSQL(qpValue));
+  //     });
+  //   }
+  // },
 
   format: {
-    to: number => { return fromEpoch(number, 'YYYY-MM'); },
-    from: number => { return fromEpoch(number, 'YYYY-MM'); },
+    to: number => fromEpoch(number, 'YYYY-MM'),
+    from: number => fromEpoch(number, 'YYYY-MM'),
   },
 
   column: '',
   layer: {},
-  start: [1293840000000, 1505499351000],
+  start: defaultStart,
+  min: defaultStart[0],
+  max: defaultStart[1],
 
   buildRangeSQL(value) {
     const column = this.get('column');
