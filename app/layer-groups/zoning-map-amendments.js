@@ -7,13 +7,30 @@ export default {
   layers: [
     {
       layer: {
-        id: 'zma',
+        id: 'zma-fill',
+        type: 'fill',
+        source: 'zoning-map-amendments',
+        'source-layer': 'layer0',
+        paint: {
+          'fill-color': 'lightblue',
+          'fill-opacity': 0.2,
+        },
+      },
+    },
+    {
+      layer: {
+        id: 'zma-line',
         type: 'line',
         source: 'zoning-map-amendments',
         'source-layer': 'layer0',
         paint: {
-          'line-width': 2,
-          'line-color': 'red',
+          'line-width': {
+            stops: [
+              [11, 1],
+              [12, 3],
+            ],
+          },
+          'line-color': 'blue',
           'line-dasharray': [1, 1],
           'line-opacity': 0.6,
         },

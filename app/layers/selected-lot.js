@@ -3,7 +3,7 @@ export default {
   type: 'fill',
   source: 'selected-lot',
   paint: {
-    'fill-opacity': 1,
+    'fill-opacity': 0.6,
     'fill-color': 'steelblue',
   },
 };
