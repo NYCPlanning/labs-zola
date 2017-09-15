@@ -22,6 +22,8 @@
       {{#map.layer-group config=zoningMapAmendments qps=qps as |group|}}
         {{#if group.visible}}
           {{group.timeline-control
+              min=1293840000000
+              max=2493072000000
               column='effective'}}
         {{/if}}
       {{/map.layer-group}}
