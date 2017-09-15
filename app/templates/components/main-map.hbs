@@ -11,15 +11,22 @@
                     zoom=zoom
                     center=(array lng lat))
   mapLoaded=(action 'handleMapLoad')
-  as |map|}}
+  as |map|}}  
 
   {{#ember-wormhole to=menuTo}}
     <ul class='layers-list no-bullet'>
       {{map.layer-group config=pluto qps=qps}}
       {{map.layer-group config=zoningDistricts qps=qps}}
-      {{map.layer-group config=commercialOverlays qps=qps}}
-      {{map.layer-group config=zoningMapAmendments qps=qps}}
       {{map.layer-group config=aerialRaster qps=qps}}
+      {{map.layer-group config=commercialOverlays qps=qps}}
+      {{#map.layer-group config=zoningMapAmendments qps=qps as |group|}}
+        {{#if group.visible}}
+          {{group.timeline-control
+              min=1293840000000
+              max=1505499351000
+              column='effective'}}
+        {{/if}}
+      {{/map.layer-group}}
     </ul>
   {{/ember-wormhole}}
 
@@ -45,7 +52,7 @@
     {{/map.source}}
   {{/if}}
 
-  {{map.call 'fitBounds' mainMap.bounds fitBoundsOptions}}
+  {{map.call 'fitBounds' mainMap.bounds}}
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
   {{map.on 'mousemove' (action 'handleMouseover')}}

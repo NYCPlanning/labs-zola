@@ -30,4 +30,17 @@
   {{/if}}
 </li>
 
-{{yield}}
+{{yield 
+  (hash 
+    timeline-control=
+      (component 'layer-control-timeline' layer=
+        (hash 
+          visible=visible
+          config=config
+          sql=sql
+          updateSql=(action 'updateSql')
+        )
+      )
+    visible=visible
+  )
+}}

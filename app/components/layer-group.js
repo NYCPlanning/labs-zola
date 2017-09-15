@@ -2,7 +2,6 @@ import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task } from 'ember-concurrency';
 import carto from '../utils/carto';
-// import SqlBuilder from '../utils/sql-builder';
 
 const { alias } = Ember.computed;
 
@@ -10,9 +9,13 @@ export default Ember.Component.extend({
   init(...args) {
     this._super(...args);
     const config = this.get('config');
-    const { id } = config;
+    const { id, sql } = config;
     const qps = this.get('qps');
     const thisQP = this.get(`qps.${id}`);
+
+    this.setProperties({
+      sql,
+    });
 
     if (qps) {
       config.visible = thisQP;
@@ -26,6 +29,7 @@ export default Ember.Component.extend({
   tagName: '',
   qps: null,
   config: {},
+  sql: '',
 
   @computed('config.visible')
   visible() {
@@ -35,14 +39,6 @@ export default Ember.Component.extend({
   @computed('config.type')
   isCarto(type) {
     return type === 'carto';
-  },
-
-  @computed('config.sql')
-  get sql() {
-    return this.get('config.sql');
-  },
-  set sql(value) {
-    this.set('config.sql', value);
   },
 
   @computed('sql')
@@ -68,7 +64,7 @@ export default Ember.Component.extend({
       );
   }).restartable(),
 
-  @computed('config', 'isCarto')
+  @computed('config', 'isCarto', 'sql')
   sourceOptions(config, isCarto) {
     if (isCarto) return this.get('configWithTemplate.value');
     return config;
@@ -77,6 +73,9 @@ export default Ember.Component.extend({
   actions: {
     toggleVisibility() {
       this.toggleProperty('visible');
+    },
+    updateSql(sqlString) {
+      this.set('sql', sqlString);
     },
   },
 });
