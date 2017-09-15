@@ -61,7 +61,7 @@ export default Ember.Component.extend({
     const incSelected = () => { this.set('selected', selected + 1); };
     const decSelected = () => { this.set('selected', selected - 1); };
 
-    if ([38, 40].includes(keyCode)) {
+    if ([38, 40, 27].includes(keyCode)) {
       const results = this.get('results.value');
 
       // up
@@ -76,6 +76,11 @@ export default Ember.Component.extend({
         if (results) {
           if (selected < resultsCount - 1) incSelected();
         }
+      }
+
+      // down
+      if (keyCode === 27) {
+        this.set('searchTerms', '');
       }
     }
   },
