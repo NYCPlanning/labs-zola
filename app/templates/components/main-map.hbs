@@ -11,7 +11,7 @@
                     zoom=zoom
                     center=(array lng lat))
   mapLoaded=(action 'handleMapLoad')
-  as |map|}}  
+  as |map|}}
 
   {{#ember-wormhole to=menuTo}}
     <ul class='layers-list no-bullet'>
@@ -52,7 +52,7 @@
     {{/map.source}}
   {{/if}}
 
-  {{map.call 'fitBounds' mainMap.bounds}}
+  {{map.call 'fitBounds' mainMap.bounds fitBoundsOptions}}
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
