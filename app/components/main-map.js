@@ -44,13 +44,13 @@ export default Ember.Component.extend({
   },
 
   @computed('mainMap.selected')
-  fitBoundsOptions() {
+  fitBoundsOptions(selected) {
     const el = this.$();
     const height = el.height();
     const width = el.width();
 
     const padding = Math.min(height, width) / 2.5;
-    return { padding };
+    return { padding: selected ? padding : 0 };
   },
 
   highlightedLotFeatures: [],
