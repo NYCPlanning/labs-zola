@@ -31,7 +31,7 @@ const queryParams = layerGroups
   );
 
 queryParams['zoning-map-amendments-effective-slider'] = {
-  defaultValue: [1293840000000, 2493072000000],
+  defaultValue: [1293840000000, 1505499351000],
   serialize([min, max]) {
     return [parseInt(min), parseInt(max)];
   },

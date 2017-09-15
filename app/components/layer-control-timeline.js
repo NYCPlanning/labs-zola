@@ -37,7 +37,7 @@ export default Ember.Component.extend({
 
   column: '',
   layer: {},
-  start: [1293840000000, 2493072000000],
+  start: [1293840000000, 1505499351000],
 
   buildRangeSQL(value) {
     const column = this.get('column');
