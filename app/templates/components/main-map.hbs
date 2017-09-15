@@ -23,6 +23,12 @@
     </ul>
   {{/ember-wormhole}}
 
+  {{#if zmaSourcePromise.last.isSuccessful}}
+    {{#map.source sourceId='zma' options=zmaSource as |source|}}
+      {{source.layer layer=zmaFillLayer before='waterway-label'}}
+    {{/map.source}}
+  {{/if}}
+
   {{#if highlightedLotFeatures}}
     {{#map.source sourceId='highlighted-lot' options=highlightedLotSource as |source|}}
       {{source.layer layer=highlightedLotLayer before='waterway-label'}}

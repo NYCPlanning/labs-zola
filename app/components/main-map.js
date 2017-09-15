@@ -41,7 +41,7 @@ export default Ember.Component.extend({
   @computed('mainMap.selected')
   fitBoundsOptions(selected) {
     return {
-      padding: selected ? 300 : 0,
+      padding: selected ? 80 : 0,
     };
   },
 

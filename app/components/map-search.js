@@ -1,12 +1,11 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task, timeout } from 'ember-concurrency';
-import mapzen from '../utils/mapzen';
-import searchPlutoLots from '../utils/search-pluto-lots';
+import bblDemux from '../utils/bbl-demux';
 
 const { service } = Ember.inject;
 
-const DEBOUNCE_MS = 250;
+const DEBOUNCE_MS = 100;
 
 export default Ember.Component.extend({
   classNames: ['search'],
@@ -23,14 +22,15 @@ export default Ember.Component.extend({
   debouncedResults: task(function* (searchTerms) {
     if (searchTerms.length < 3) this.cancel();
     yield timeout(DEBOUNCE_MS);
-    return yield searchPlutoLots(searchTerms)
-      .then((results) => {
-        if (results.length) {
-          return results;
-        }
-
-        return mapzen(searchTerms);
-      });
+    const URL = `https://zola-search-api.planninglabs.nyc/search?q=${searchTerms}`;
+    return yield fetch(URL)
+      .then(data => data.json())
+      .then(json => json.map(
+        (result, index) => {
+          const newResult = result;
+          newResult.id = index;
+          return result;
+        }));
   }).keepLatest(),
 
   @computed('results.value')
@@ -61,7 +61,7 @@ export default Ember.Component.extend({
     const incSelected = () => { this.set('selected', selected + 1); };
     const decSelected = () => { this.set('selected', selected - 1); };
 
-    if ([38, 40].includes(keyCode)) {
+    if ([38, 40, 27].includes(keyCode)) {
       const results = this.get('results.value');
 
       // up
@@ -77,6 +77,11 @@ export default Ember.Component.extend({
           if (selected < resultsCount - 1) incSelected();
         }
       }
+
+      // down
+      if (keyCode === 27) {
+        this.set('searchTerms', '');
+      }
     }
   },
 
@@ -85,7 +90,6 @@ export default Ember.Component.extend({
       this.set('searchTerms', '');
     },
     goTo(result) {
-      const { boro, block, lot } = result;
       const mainMap = this.get('mainMap.mapInstance');
 
       this.setProperties({
@@ -93,9 +97,17 @@ export default Ember.Component.extend({
         selected: 0,
       });
 
-      if (result.type === 'lot') this.transitionTo('lot', boro, block, lot);
+      if (result.type === 'lot') {
+        const { boro, block, lot } = bblDemux(result.bbl);
+        this.transitionTo('lot', boro, block, lot);
+      }
+
+      if (result.type === 'zma') {
+        this.transitionTo('zma', result.ulurpno);
+      }
+
       if (result.type === 'address') {
-        const center = result.geometry.coordinates;
+        const center = result.coordinates;
         mainMap.flyTo({
           center,
           zoom: 18,

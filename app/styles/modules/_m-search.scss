@@ -35,14 +35,25 @@
   opacity: 0;
   transition: opacity 0.3s;
 
+  @include breakpoint(large) {
+    max-width: 400px;
+  }
+
   &.has-results {
     opacity: 1;
   }
 
+  .results-header {
+    margin: rem-calc(10) 0 0;
+  }
+
   li {
-    color: $anchor-color;
     border-top: 1px solid $medium-gray;
     padding: $global-margin/2;
+  }
+
+  .result {
+    color: $anchor-color;
     cursor: pointer;
     transition: $button-transition;
 
@@ -50,6 +61,15 @@
       color: $anchor-color-hover;
       background-color: $light-gray;
     }
+  }
+
+  .subdued {
+    color: $dark-gray;
+  }
+
+  .fa {
+    font-size: rem-calc(16);
+    margin-right: 0.5rem;
   }
 }
 

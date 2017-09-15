@@ -10,7 +10,7 @@ const SEARCH_TERM_ADDRESS = '210 Humboldt';
 const SEARCH_RESULTS_LOADING_CLASS = '.search-results--loading';
 const timeout = 15000;
 const resultAt = function(x) {
-  return `${SEARCH_RESULTS_SELECTOR} li:nth-child(${x})`;
+  return `${SEARCH_RESULTS_SELECTOR} li:nth-child(${x + 1})`;
 };
 
 moduleForAcceptance('Acceptance | index');
@@ -33,9 +33,10 @@ test('map-search keydown, keyup, keyup -> first result highlighted', async funct
   await keyEvent(SEARCH_INPUT_SELECTOR, 'keyup', 40);
   await keyEvent(SEARCH_INPUT_SELECTOR, 'keyup', 38);
   await keyEvent(SEARCH_INPUT_SELECTOR, 'keyup', 38);
-  assert.equal(
-    find(resultAt(1)).className,
-    'highlighted-result',
+
+  assert.notEqual(
+    find(resultAt(1)).className.indexOf('highlighted-result'),
+    -1,
   );
 });
 
