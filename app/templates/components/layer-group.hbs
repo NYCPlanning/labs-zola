@@ -36,9 +36,12 @@
       (component 'layer-control-timeline' layer=
         (hash 
           visible=visible
-          config=config
-          sql=sql
-          updateSql=(action 'updateSql')
+        )
+      )
+    multi-select-control=
+      (component 'layer-multi-select-control' layer=
+        (hash 
+          visible=visible
         )
       )
     visible=visible
