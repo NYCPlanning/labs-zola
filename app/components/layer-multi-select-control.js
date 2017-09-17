@@ -9,6 +9,11 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
       .filterBy('checked')
       .mapBy('value');
   },
+
+  didInsertElement() {
+    this.send('checkboxChanged');
+  },
+
   actions: {
     checkboxChanged() {
       const values = this.get('allChecked');
