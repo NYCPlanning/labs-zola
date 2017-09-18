@@ -17,29 +17,40 @@
     <ul class='layers-list no-bullet'>
       {{map.layer-group config=pluto qps=qps}}
 
-      {{#map.layer-group config=zoningDistricts qps=qps as |group|}}
+      {{#map.layer-group 
+        config=zoningDistricts 
+        qps=qps as |group|}}
+
         {{#if group.visible}}
-          {{#group.multi-select-control column='primaryzone' as |multiSelect|}}
-            <ul>
-              {{#each (extract-layer-stops-for 'zd' zoningDistricts) as |stop|}}
-                <li>
-                  {{multiSelect.checkbox 
-                          value=(object-at 0 stop)
-                          checked=false}}
-                  {{fa-icon 'square' size='lg' color=(object-at 1 stop)}} 
-                  {{object-at 0 stop}}
-                </li>
-              {{/each}}
-            </ul>
+          {{#group.multi-select-control 
+            column='primaryzone' as |multiSelect|}}
+            {{#power-select-multiple
+              options=(await 
+                  (get-unique-options-for 'primaryzone' zoningDistricts.sql)
+                )
+              selected=multiSelect.allChecked
+              placeholder="Select Zones"
+              onchange=(queue 
+                  (action group.updateSql 'buildMultiSelectSQL' 'primaryzone')
+                  (action (mut multiSelect.allChecked))
+                )
+              as |name|
+            }}
+              {{name}}
+            {{/power-select-multiple}}
           {{/group.multi-select-control}}
         {{/if}}
       {{/map.layer-group}}
 
-      {{map.layer-group config=aerialRaster qps=qps}}
+      {{map.layer-group 
+        config=aerialRaster 
+        qps=qps}}
 
       {{#map.layer-group config=commercialOverlays qps=qps as |group|}}
         {{#if group.visible}}
-          {{#group.multi-select-control column='overlay' as |multiSelect|}}
+          {{#group.multi-select-control 
+
+            column='overlay' as |multiSelect|}}
             <ul>
               <li>
                 {{multiSelect.checkbox 
@@ -66,26 +77,36 @@
         {{/if}}
       {{/map.layer-group}}
 
-      {{#map.layer-group config=zoningMapAmendments qps=qps as |group|}}
+      {{#map.layer-group 
+        config=zoningMapAmendments 
+        qps=qps as |group|}}
+
         {{#if group.visible}}
           {{group.timeline-control
-              min=1293840000000
-              max=1505499351000
-              column='effective'}}
+              column='effective'
+              query-param='zma-effective'}}
         {{/if}}
       {{/map.layer-group}}
     </ul>
   {{/ember-wormhole}}
 
   {{#if zmaSourcePromise.last.isSuccessful}}
-    {{#map.source sourceId='zma' options=zmaSource as |source|}}
-      {{source.layer layer=zmaFillLayer before='waterway-label'}}
+    {{#map.source 
+      sourceId='zma' 
+      options=zmaSource as |source|}}
+      {{source.layer 
+        layer=zmaFillLayer 
+        before='waterway-label'}}
     {{/map.source}}
   {{/if}}
 
   {{#if highlightedLotFeatures}}
-    {{#map.source sourceId='highlighted-lot' options=highlightedLotSource as |source|}}
-      {{source.layer layer=highlightedLotLayer before='waterway-label'}}
+    {{#map.source 
+      sourceId='highlighted-lot' 
+      options=highlightedLotSource as |source|}}
+      {{source.layer 
+        layer=highlightedLotLayer 
+        before='waterway-label'}}
     {{/map.source}}
   {{/if}}
 

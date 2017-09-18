@@ -3,45 +3,44 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task } from 'ember-concurrency';
 import { ParentMixin } from 'ember-composability-tools';
 import carto from '../utils/carto';
+import queryParamMap from '../mixins/query-param-map';
 
 const { alias } = Ember.computed;
+const { warn } = Ember.Logger;
 
-export default Ember.Component.extend(ParentMixin, {
+export default Ember.Component.extend(ParentMixin, queryParamMap, {
   init(...args) {
     this._super(...args);
 
-    // console.log(this.get('childComponents'));
     if (this.get('childComponents.length') > 1) {
-      console.log('Warning: Only one layer-control per layer is supported.');
+      warn('Only one layer-control per layer is supported.');
     }
 
-    const config = this.get('config');
-    const { id, sql } = config;
-    const qps = this.get('qps');
-    const thisQP = this.get(`qps.${id}`);
+    const { config, qps } =
+      this.getProperties('config', 'qps');
+    const queryParam = this.get('query-param');
+    const thisQP = this.get(`qps.${queryParam}`);
+    const { sql } = config;
+    let { visible } = config;
+
+    if (qps) {
+      visible = thisQP;
+    }
 
     this.setProperties({
       sql,
+      visible,
     });
-
-    if (qps) {
-      config.visible = thisQP;
-      this.set(
-        'visible',
-        alias(`qps.${id}`),
-      );
-    }
   },
 
   tagName: '',
   qps: null,
   config: {},
   sql: '',
+  visible: true,
 
-  @computed('config.visible')
-  visible() {
-    return this.get('config.visible');
-  },
+  'query-param': alias('config.id'),
+  queryParamBoundKey: 'visible',
 
   @computed('config.type')
   isCarto(type) {
@@ -92,8 +91,8 @@ export default Ember.Component.extend(ParentMixin, {
 
   buildMultiSelectSQL(column = '', values = [0, 1] || ['a', 'b']) {
     let sql = this.get('config.sql');
-    const valuesCleaned = values.map(value => `'${value}'`).join(',');
 
+    const valuesCleaned = values.map(value => `'${value}'`).join(',');
     if (!Ember.isEmpty(values)) {
       sql += ` WHERE ${column} IN (${valuesCleaned})`;
     }
@@ -106,6 +105,7 @@ export default Ember.Component.extend(ParentMixin, {
       this.toggleProperty('visible');
     },
     updateSql(method, column, value) {
+      console.log(...arguments);
       const sql = this[method](column, value);
       this.set('sql', sql);
     },

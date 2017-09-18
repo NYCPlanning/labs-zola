@@ -2,31 +2,25 @@ import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import moment from 'moment';
 import { ChildMixin } from 'ember-composability-tools';
+import QueryParamMap from '../mixins/query-param-map';
 
-const { alias } = Ember.computed;
+const defaultFormat = 'YYYY-MM-DD';
+const defaultMax = new Date();
+const defaultStart = [1032370151000, defaultMax.getTime()];
 
-const defaultDate = 'YYYY-MM-DD';
-const defaultStart = [1293840000000, 1505499351000];
-
-const fromEpoch = function(number, format = defaultDate) {
+const fromEpoch = function(number, format = defaultFormat) {
   return moment(number).format(format);
 };
 
-export default Ember.Component.extend(ChildMixin, {
+export default Ember.Component.extend(ChildMixin, QueryParamMap, {
   init(...args) {
     this._super(...args);
 
     const qps = this.get('parentComponent.qps');
-    const column = this.get('column');
-    const { id } = this.get('parentComponent.config');
+    const queryParam = this.get('query-param');
 
     if (qps) {
-      const qpValue = this.get(`parentComponent.qps.${id}-${column}-slider`);
-
-      this.set(
-        'start',
-        alias(`parentComponent.qps.${id}-${column}-slider`),
-      );
+      const qpValue = this.get(`parentComponent.qps.${queryParam}`);
 
       Ember.run.next(() => {
         this.send('sliderChanged', qpValue);
@@ -43,6 +37,8 @@ export default Ember.Component.extend(ChildMixin, {
   start: defaultStart, // epoch time
   min: defaultStart[0],
   max: defaultStart[1],
+
+  queryParamBoundKey: 'start',
 
   actions: {
     sliderChanged(value) {
