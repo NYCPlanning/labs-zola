@@ -11,6 +11,9 @@ export default Ember.Component.extend(ParentMixin, {
     this._super(...args);
 
     // console.log(this.get('childComponents'));
+    if (this.get('childComponents.length') > 1) {
+      console.log('Warning: Only one layer-control per layer is supported.');
+    }
 
     const config = this.get('config');
     const { id, sql } = config;
@@ -89,7 +92,7 @@ export default Ember.Component.extend(ParentMixin, {
     if (!Ember.isEmpty(values)) {
       sql += ` WHERE ${column} IN (${valuesCleaned})`;
     }
-    
+    console.log(sql);
     return sql;
   },
 
