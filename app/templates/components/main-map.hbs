@@ -19,22 +19,19 @@
 
       {{#map.layer-group config=zoningDistricts qps=qps as |group|}}
         {{#if group.visible}}
-          {{#with (find-by 'layer.id' 'zd' zoningDistricts.layers) as |config|}}
-            {{!-- {{layer-static-legend legend=config.layer.paint.fill-color.stops}} --}}
-            {{#group.multi-select-control column='primaryzone' as |multiSelect|}}
-              <ul>
-                {{#each config.layer.paint.fill-color.stops as |stop|}}
-                  <li>
-                    {{multiSelect.checkbox 
-                            value=(object-at 0 stop)
-                            checked=false}}
-                    {{fa-icon 'square' size='lg' color=(object-at 1 stop)}} 
-                    {{object-at 0 stop}}
-                  </li>
-                {{/each}}
-              </ul>
-            {{/group.multi-select-control}}
-          {{/with}}
+          {{#group.multi-select-control column='primaryzone' as |multiSelect|}}
+            <ul>
+              {{#each (extract-layer-stops-for 'zd' zoningDistricts) as |stop|}}
+                <li>
+                  {{multiSelect.checkbox 
+                          value=(object-at 0 stop)
+                          checked=false}}
+                  {{fa-icon 'square' size='lg' color=(object-at 1 stop)}} 
+                  {{object-at 0 stop}}
+                </li>
+              {{/each}}
+            </ul>
+          {{/group.multi-select-control}}
         {{/if}}
       {{/map.layer-group}}
 
