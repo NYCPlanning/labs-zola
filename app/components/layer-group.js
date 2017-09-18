@@ -105,7 +105,6 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
       this.toggleProperty('visible');
     },
     updateSql(method, column, value) {
-      console.log(...arguments);
       const sql = this[method](column, value);
       this.set('sql', sql);
     },
