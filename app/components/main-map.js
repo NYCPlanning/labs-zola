@@ -2,12 +2,7 @@ import Ember from 'ember';
 import mapboxgl from 'mapbox-gl';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
-import pluto from '../layer-groups/pluto';
-import facilities from '../layer-groups/facilities';
-import aerialRaster from '../layer-groups/aerial-raster';
-import zoningDistricts from '../layer-groups/zoning-districts';
-import commercialOverlays from '../layer-groups/commercial-overlays';
-import zoningMapAmendments from '../layer-groups/zoning-map-amendments';
+import layerGroups from '../layer-groups';
 
 import highlightedLotLayer from '../layers/highlighted-lot';
 import selectedLotLayer from '../layers/selected-lot';
@@ -25,16 +20,9 @@ export default Ember.Component.extend({
   zoom: 10.2,
   menuTo: 'layers-menu',
 
-  pluto,
-  facilities,
-  aerialRaster,
-  zoningDistricts,
-  commercialOverlays,
-  zoningMapAmendments,
+  layerGroups,
 
-  mapConfig: [
-    pluto, facilities, aerialRaster, zoningDistricts,
-  ],
+  mapConfig: Object.keys(layerGroups).map(key => layerGroups[key]),
 
   loading: true,
 

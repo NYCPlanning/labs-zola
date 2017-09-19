@@ -1,5 +1,5 @@
 export default {
-  id: 'zoning',
+  id: 'zd',
   title: 'Zoning Districts',
   sql: 'SELECT *, LEFT(zonedist, 2) as primaryzone FROM support_zoning_zd',
   type: 'carto',
@@ -8,7 +8,7 @@ export default {
       layer: {
         id: 'zd',
         type: 'fill',
-        source: 'zoning',
+        source: 'zd',
         'source-layer': 'layer0',
         paint: {
           'fill-color': {

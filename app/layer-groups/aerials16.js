@@ -1,5 +1,5 @@
 export default {
-  id: 'aerial-raster',
+  id: 'aerials16',
   type: 'raster',
   title: '2016 Aerials',
   tiles: ['https://api.capitalplanning.nyc/tiles/doitt/tms/1.0.0/photo/2016/{z}/{x}/{y}.png'],
@@ -11,8 +11,7 @@ export default {
       layer: {
         id: 'landuse-raster',
         type: 'raster',
-        source: 'aerial-raster',
-        maxzoom: 14,
+        source: 'aerials16',
       },
       before: 'zd',
     },

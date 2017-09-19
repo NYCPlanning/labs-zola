@@ -15,11 +15,13 @@
 
   {{#ember-wormhole to=menuTo}}
     <ul class='layers-list no-bullet'>
-      {{map.layer-group config=pluto qps=qps}}
-      {{map.layer-group config=zoningDistricts qps=qps}}
-      {{map.layer-group config=aerialRaster qps=qps}}
-      {{map.layer-group config=commercialOverlays qps=qps}}
-      {{#map.layer-group config=zoningMapAmendments qps=qps as |group|}}
+      {{map.layer-group config=layerGroups.pluto qps=qps}}
+      {{map.layer-group config=layerGroups.zd qps=qps}}
+      {{map.layer-group config=layerGroups.sp qps=qps}}
+      {{map.layer-group config=layerGroups.spsd qps=qps}}
+      {{map.layer-group config=layerGroups.aerials16 qps=qps}}
+      {{map.layer-group config=layerGroups.co qps=qps}}
+      {{#map.layer-group config=layerGroups.zma qps=qps as |group|}}
         {{#if group.visible}}
           {{group.timeline-control
               min=1293840000000

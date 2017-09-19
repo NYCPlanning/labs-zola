@@ -1,5 +1,5 @@
 export default {
-  id: 'zoning-map-amendments',
+  id: 'zma',
   title: 'Zoning Map Amendments',
   type: 'carto',
   sql: 'SELECT the_geom_webmercator, ulurpno FROM support_nyzma',
@@ -21,7 +21,7 @@ export default {
       layer: {
         id: 'zma-line',
         type: 'line',
-        source: 'zoning-map-amendments',
+        source: 'zma',
         'source-layer': 'layer0',
         paint: {
           'line-width': {
