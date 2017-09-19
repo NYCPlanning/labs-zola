@@ -4,6 +4,7 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 export default Ember.Component.extend(ChildMixin, {
   classNames: 'flex-reverse',
+  
   @computed('parentComponent.childComponents', 'group')
   childComponents(childComponents, group) {
     return childComponents

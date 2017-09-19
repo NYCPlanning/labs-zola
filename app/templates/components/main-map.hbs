@@ -52,39 +52,39 @@
         {{#if group.visible}}
           {{#group.multi-select-control 
             column='overlay' as |multiSelect|}}
-            {{#cascading-checkbox 
-              group='C'
-              as |parent|}}
-              <ul>
+              <ul>      
+                <li>
+                  {{group-checkbox
+                    refs=(array 'c14' 'c24' 'c22' 'c13' 'c23')
+                    values=(array c14 c24 c22 c13 c23)
+                    scope=this}}
+                </li>
                 <li>
                   {{multiSelect.checkbox 
                       value='C1-4'
-                      group=parent.group
-                      checked=false}} C1-4 
+                      checked=c14}} C1-4 
                 </li>
                 <li>
                   {{multiSelect.checkbox 
                       value='C2-4'
-                      group=parent.group
-                      checked=false}} C2-4
+                      checked=c24}} C2-4
                 </li>
                 <li>
                   {{multiSelect.checkbox 
                       value='C2-2'
-                      group=parent.group
-                      checked=false}} C2-2
+                      checked=c22}} C2-2
                 </li>
                 <li>
                   {{multiSelect.checkbox 
                       value='C1-3'
-                      group=parent.group
-                      checked=false}} C1-3
+                      checked=c13}} C1-3
+                </li>
+                <li>
+                  {{multiSelect.checkbox 
+                      value='C2-3'
+                      checked=c23}} C2-3
                 </li>
               </ul>
-            {{/cascading-checkbox}}
-            {{multiSelect.checkbox 
-                value='C2-3'
-                checked=false}} C2-3
           {{/group.multi-select-control}}
         {{/if}}
       {{/map.layer-group}}
