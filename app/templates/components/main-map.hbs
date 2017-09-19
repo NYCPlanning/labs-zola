@@ -27,6 +27,11 @@
         classNames='layer-group clearfix'
         qps=qps as |group|}}
 
+        {{layer-menu-item
+            title=zoningDistricts.title
+            visible=group.visible
+            click=group.toggleVisibility}}
+
         {{#if group.visible}}
           {{#group.multi-select-control 
             column='primaryzone' as |multiSelect|}}
@@ -59,6 +64,12 @@
         tagName='li' 
         classNames='layer-group clearfix'
         qps=qps as |group|}}
+
+        {{layer-menu-item
+            title=commercialOverlays.title
+            visible=group.visible
+            click=group.toggleVisibility}}
+
         {{#if group.visible}}
           {{#group.multi-select-control 
             column='overlay' as |multiSelect|}}
@@ -104,6 +115,12 @@
         tagName='li' 
         classNames='layer-group clearfix'
         qps=qps as |group|}}
+
+        {{layer-menu-item
+            title=zoningMapAmendments.title
+            visible=group.visible
+            click=group.toggleVisibility}}
+
 
         {{#if group.visible}}
           {{group.timeline-control
