@@ -4,7 +4,7 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 export default Ember.Component.extend(ChildMixin, {
   classNames: 'flex-reverse',
-  
+
   @computed('parentComponent.childComponents', 'group')
   childComponents(childComponents, group) {
     return childComponents
@@ -28,7 +28,7 @@ export default Ember.Component.extend(ChildMixin, {
     return allChecked < numberCheckboxes && allChecked > 0;
   },
 
-  // required so childComponents ignores this component 
+  // required so childComponents ignores this component
   isWrapperComponent: true,
 
   actions: {

@@ -4,7 +4,9 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 const { Checkbox } = Ember;
 
 export default Checkbox.extend({
-  parentOf: null,
+  @computed scope() { return this; },
+  refs: [],
+  values: [],
 
   @computed('values.@each')
   get checked() {

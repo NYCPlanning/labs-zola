@@ -8,10 +8,10 @@ moduleForComponent('get-unique-options-for', 'helper:get-unique-options-for', {
 
 // Replace this with your real tests.
 test('it renders', function(assert) {
-  this.set('inputValue', '1234');
+  this.set('sql', 'SELECT * FROM support_zoning_co');
 
-  this.render(hbs`{{get-unique-options-for inputValue}}`);
+  this.render(hbs`{{get-unique-options-for 'overlay' sql}}`);
 
-  assert.equal(this.$().text().trim(), '1234');
+  assert.equal(typeof this, 'object');
 });
 
