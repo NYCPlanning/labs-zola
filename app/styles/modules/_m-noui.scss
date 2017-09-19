@@ -4,7 +4,7 @@
 
 .noUi-ltr {
   height: $slider-height;
-  margin: rem-calc(10) rem-calc(17) rem-calc(33) rem-calc(29);
+  margin: rem-calc(10) rem-calc(17) rem-calc(36) rem-calc(29);
 }
 
 .noUi-horizontal .noUi-handle {
@@ -41,4 +41,23 @@
   top: 100%;
   bottom: auto;
   padding: 0 rem-calc(4);
+  border: 0;
+  background-color: $dark-gray;
+  color: $white;
+  margin-top: rem-calc(6);
+  line-height: 1.5;
+
+  &::after {
+    content: '';
+    display: block;
+    border: rem-calc(6) solid transparent;
+    border-top-width: 0;
+    border-bottom-color: $dark-gray;
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    margin-left: rem-calc(-6);
+  }
 }
