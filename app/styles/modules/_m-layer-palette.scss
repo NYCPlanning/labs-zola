@@ -58,3 +58,8 @@
 .noUi-horizontal .noUi-tooltip {
   bottom: -150%;
 }
+
+.flex-reverse {
+  display: flex;
+  flex-direction: column-reverse;
+}

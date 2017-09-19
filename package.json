@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
+    "babel-plugin-wildcard": "^2.1.2",
     "broccoli-asset-rev": "^2.4.5",
     "broccoli-clean-css": "^1.1.0",
     "ember-ajax": "^3.0.0",
@@ -48,6 +49,7 @@
     "ember-mapbox-gl": "^0.8.2",
     "ember-native-dom-helpers": "^0.5.4",
     "ember-parachute": "^0.3.2",
+    "ember-power-select": "^1.9.6",
     "ember-promise-helpers": "^1.0.3",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.14.0",

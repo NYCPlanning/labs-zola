@@ -65,6 +65,9 @@ export default Ember.Component.extend({
   selectedLotLayer,
 
   actions: {
+    handleModified(...args) {
+      console.log(...args);
+    },
     handleMapLoad(map) {
       const mainMap = this.get('mainMap');
       mainMap.set('mapInstance', map);
