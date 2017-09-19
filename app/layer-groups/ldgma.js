@@ -3,7 +3,7 @@ export default {
   title: 'Low Density Growth Management Areas',
   visible: false,
   type: 'carto',
-  sql: 'SELECT the_geom_webmercator FROM ldgma',
+  sql: 'SELECT the_geom_webmercator FROM support_ldgma',
   layers: [
     {
       layer: {
