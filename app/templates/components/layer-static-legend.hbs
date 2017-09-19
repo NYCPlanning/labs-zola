@@ -1,0 +1,6 @@
+<ul>
+  {{#each legend as |key|}}
+    <li>{{fa-icon 'square' size='lg' color=(object-at 1 key)}} {{object-at 0 key}}</li>
+  {{/each}}
+</ul>
+{{yield}}

@@ -1,35 +1,32 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import moment from 'moment';
+import { ChildMixin } from 'ember-composability-tools';
+import QueryParamMap from '../mixins/query-param-map';
 
-// const { alias } = Ember.computed;
+const defaultFormat = 'YYYY-MM-DD';
+const defaultMax = new Date();
+const defaultStart = [1032370151000, defaultMax.getTime()];
 
-const defaultDate = 'YYYY-MM-DD';
-const defaultStart = [1293840000000, 1505499351000];
-
-const fromEpoch = function(number, format = defaultDate) {
+const fromEpoch = function(number, format = defaultFormat) {
   return moment(number).format(format);
 };
 
-export default Ember.Component.extend({
-  // init(...args) {
-  //   this._super(...args);
+export default Ember.Component.extend(ChildMixin, QueryParamMap, {
+  init(...args) {
+    this._super(...args);
 
-  //   const qps = this.get('qps');
-  //   const column = this.get('column');
-  //   const { id } = this.get('layer.config');
-  //   if (qps) {
-  //     const qpValue = this.get(`qps.${id}-${column}-slider`);
-  //     this.set(
-  //       'start',
-  //       alias(`qps.${id}-${column}-slider`),
-  //     );
+    const qps = this.get('parentComponent.qps');
+    const queryParam = this.get('query-param');
 
-  //     Ember.run.next(() => {
-  //       this.get('layer.updateSql')(this.buildRangeSQL(qpValue));
-  //     });
-  //   }
-  // },
+    if (qps) {
+      const qpValue = this.get(`parentComponent.qps.${queryParam}`);
+
+      Ember.run.next(() => {
+        this.send('sliderChanged', qpValue);
+      });
+    }
+  },
 
   format: {
     to: number => fromEpoch(number, 'YYYY-MM'),
@@ -37,27 +34,19 @@ export default Ember.Component.extend({
   },
 
   column: '',
-  layer: {},
-  start: defaultStart,
+  start: defaultStart, // epoch time
   min: defaultStart[0],
   max: defaultStart[1],
 
-  buildRangeSQL(value) {
-    const column = this.get('column');
-    const range = value.map(epoch => fromEpoch(epoch));
-    let sql = this.get('layer.config.sql');
-
-    sql += ` WHERE ${column} > '${range[0]}' AND ${column} < '${range[1]}'`;
-
-    return sql;
-  },
+  queryParamBoundKey: 'start',
 
   actions: {
     sliderChanged(value) {
-      const sql = this.buildRangeSQL(value);
+      const range = value.map(epoch => fromEpoch(epoch));
+      const column = this.get('column');
 
       this.set('start', value);
-      this.get('layer.updateSql')(sql);
+      this.get('parentComponent').send('updateSql', 'buildRangeSQL', column, range);
     },
   },
 });
