@@ -1,0 +1,11 @@
+{{yield (hash
+    allSelected=allSelected
+    group=group
+  )}}
+{{input 
+  type='checkbox' 
+  checked=selected
+  indeterminate=indeterminate
+  click=(action 'toggleChildren')
+}} 
+Select All

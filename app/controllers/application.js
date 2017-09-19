@@ -30,15 +30,28 @@ const queryParams = layerGroups
     {},
   );
 
-// queryParams['zoning-map-amendments-effective-slider'] = {
-//   defaultValue: [1293840000000, 1505499351000],
-//   serialize([min, max]) {
-//     return [parseInt(min), parseInt(max)];
-//   },
-//   deserialize([min, max]) {
-//     return [parseInt(min), parseInt(max)];
-//   },
-// };
+const defaultMax = new Date();
+const defaultStart = [1032370151000, defaultMax.getTime()];
+
+queryParams['zma-effective'] = {
+  defaultValue: defaultStart,
+  serialize([min, max]) {
+    return [min, max].map(val => parseInt(val, 10));
+  },
+  deserialize([min, max]) {
+    return [min, max].map(val => parseInt(val, 10));
+  },
+};
+
+queryParams['comm-type'] = {
+  defaultValue: '',
+  // serialize(value) {
+  //   return value.split(',');
+  // },
+  // deserialize(value) {
+  //   return value;
+  // },
+};
 
 export const mapQueryParams =
   new QueryParams(queryParams);
