@@ -15,10 +15,16 @@
 
   {{#ember-wormhole to=menuTo}}
     <ul class='layers-list no-bullet'>
-      {{map.layer-group config=pluto qps=qps}}
+      {{map.layer-group 
+        tagName='li' 
+        classNames='layer-group clearfix' 
+        config=pluto 
+        qps=qps}}
 
       {{#map.layer-group 
         config=zoningDistricts 
+        tagName='li' 
+        classNames='layer-group clearfix'
         qps=qps as |group|}}
 
         {{#if group.visible}}
@@ -44,10 +50,14 @@
 
       {{map.layer-group 
         config=aerialRaster 
+        tagName='li' 
+        classNames='layer-group clearfix'
         qps=qps}}
 
       {{#map.layer-group 
         config=commercialOverlays 
+        tagName='li' 
+        classNames='layer-group clearfix'
         qps=qps as |group|}}
         {{#if group.visible}}
           {{#group.multi-select-control 
@@ -91,6 +101,8 @@
 
       {{#map.layer-group 
         config=zoningMapAmendments 
+        tagName='li' 
+        classNames='layer-group clearfix'
         qps=qps as |group|}}
 
         {{#if group.visible}}

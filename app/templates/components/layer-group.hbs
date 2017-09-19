@@ -12,23 +12,21 @@
   {{/if}}
 {{/if}}
 
-<li class='layer-group clearfix'>
-  {{layer-menu-item
-      title=config.title
-      config=group
-      visible=visible
-      click=(action 'toggleVisibility')}}
-  {{if configWithTemplate.isPending '(Loading)'}}
-  {{#if visible}}
-    <ul class="no-bullet">
-      {{#each config.filters as |filter|}}
-        {{#each filter.values as |value|}}
-          <li>{{value.label}}</li>
-        {{/each}}
+{{layer-menu-item
+    title=config.title
+    config=group
+    visible=visible
+    click=(action 'toggleVisibility')}}
+{{if configWithTemplate.isPending '(Loading)'}}
+{{#if visible}}
+  <ul class="no-bullet">
+    {{#each config.filters as |filter|}}
+      {{#each filter.values as |value|}}
+        <li>{{value.label}}</li>
       {{/each}}
-    </ul>
-  {{/if}}
-</li>
+    {{/each}}
+  </ul>
+{{/if}}
 
 {{yield 
   (hash 

@@ -33,7 +33,7 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
     });
   },
 
-  tagName: '',
+  tagName: 'span',
   qps: null,
   config: {},
   sql: '',
