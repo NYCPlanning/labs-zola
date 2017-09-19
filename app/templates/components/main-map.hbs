@@ -1,4 +1,4 @@
-{{#if loading}}
+n{{#if loading}}
   <div class="spinner">
     <div class="double-bounce1"></div>
     <div class="double-bounce2"></div>
@@ -21,6 +21,17 @@
       {{map.layer-group config=layerGroups.spsd qps=qps}}
       {{map.layer-group config=layerGroups.aerials16 qps=qps}}
       {{map.layer-group config=layerGroups.co qps=qps}}
+      {{map.layer-group config=layerGroups.mih qps=qps}}
+      {{map.layer-group config=layerGroups.ih qps=qps}}
+      {{map.layer-group config=layerGroups.tz qps=qps}}
+      {{map.layer-group config=layerGroups.fresh qps=qps}}
+      {{map.layer-group config=layerGroups.sidewalkcafes qps=qps}}
+      {{map.layer-group config=layerGroups.ldgma qps=qps}}
+      {{map.layer-group config=layerGroups.czb qps=qps}}
+      {{map.layer-group config=layerGroups.wap qps=qps}}
+      {{map.layer-group config=layerGroups.sceniclandmarks qps=qps}}
+      {{map.layer-group config=layerGroups.historicdistricts qps=qps}}
+      {{map.layer-group config=layerGroups.landmarkpoints qps=qps}}
       {{#map.layer-group config=layerGroups.zma qps=qps as |group|}}
         {{#if group.visible}}
           {{group.timeline-control
