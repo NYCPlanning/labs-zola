@@ -14,16 +14,16 @@
   as |map|}}
 
   {{#ember-wormhole to=menuTo}}
-    <ul class='layers-list no-bullet'>
-      {{map.layer-group 
-        tagName='li' 
-        classNames='layer-group clearfix' 
-        config=pluto 
+    <ul class='layers-list'>
+      {{map.layer-group
+        tagName='li'
+        classNames='layer-group clearfix'
+        config=pluto
         qps=qps}}
 
-      {{#map.layer-group 
-        config=zoningDistricts 
-        tagName='li' 
+      {{#map.layer-group
+        config=zoningDistricts
+        tagName='li'
         classNames='layer-group clearfix'
         qps=qps as |group|}}
 
@@ -33,15 +33,15 @@
             click=group.toggleVisibility}}
 
         {{#if group.visible}}
-          {{#group.multi-select-control 
+          {{#group.multi-select-control
             column='primaryzone' as |multiSelect|}}
             {{#power-select-multiple
-              options=(await 
+              options=(await
                   (get-unique-options-for 'primaryzone' zoningDistricts.sql)
                 )
               selected=multiSelect.allChecked
               placeholder="Select Zones"
-              onchange=(queue 
+              onchange=(queue
                   (action group.updateSql 'buildMultiSelectSQL' 'primaryzone')
                   (action (mut multiSelect.allChecked))
                 )
@@ -53,15 +53,15 @@
         {{/if}}
       {{/map.layer-group}}
 
-      {{map.layer-group 
-        config=aerialRaster 
-        tagName='li' 
+      {{map.layer-group
+        config=aerialRaster
+        tagName='li'
         classNames='layer-group clearfix'
         qps=qps}}
 
-      {{#map.layer-group 
-        config=commercialOverlays 
-        tagName='li' 
+      {{#map.layer-group
+        config=commercialOverlays
+        tagName='li'
         classNames='layer-group clearfix'
         qps=qps as |group|}}
 
@@ -71,9 +71,9 @@
             click=group.toggleVisibility}}
 
         {{#if group.visible}}
-          {{#group.multi-select-control 
+          {{#group.multi-select-control
             column='overlay' as |multiSelect|}}
-              <ul>      
+              <ul>
                 <li>
                   {{group-checkbox
                     refs=(array 'c14' 'c24' 'c22' 'c13' 'c23')
@@ -81,27 +81,27 @@
                     scope=this}}
                 </li>
                 <li>
-                  {{multiSelect.checkbox 
+                  {{multiSelect.checkbox
                       value='C1-4'
-                      checked=c14}} C1-4 
+                      checked=c14}} C1-4
                 </li>
                 <li>
-                  {{multiSelect.checkbox 
+                  {{multiSelect.checkbox
                       value='C2-4'
                       checked=c24}} C2-4
                 </li>
                 <li>
-                  {{multiSelect.checkbox 
+                  {{multiSelect.checkbox
                       value='C2-2'
                       checked=c22}} C2-2
                 </li>
                 <li>
-                  {{multiSelect.checkbox 
+                  {{multiSelect.checkbox
                       value='C1-3'
                       checked=c13}} C1-3
                 </li>
                 <li>
-                  {{multiSelect.checkbox 
+                  {{multiSelect.checkbox
                       value='C2-3'
                       checked=c23}} C2-3
                 </li>
@@ -110,9 +110,9 @@
         {{/if}}
       {{/map.layer-group}}
 
-      {{#map.layer-group 
-        config=zoningMapAmendments 
-        tagName='li' 
+      {{#map.layer-group
+        config=zoningMapAmendments
+        tagName='li'
         classNames='layer-group clearfix'
         qps=qps as |group|}}
 
@@ -131,21 +131,21 @@
   {{/ember-wormhole}}
 
   {{#if zmaSourcePromise.last.isSuccessful}}
-    {{#map.source 
-      sourceId='zma' 
+    {{#map.source
+      sourceId='zma'
       options=zmaSource as |source|}}
-      {{source.layer 
-        layer=zmaFillLayer 
+      {{source.layer
+        layer=zmaFillLayer
         before='waterway-label'}}
     {{/map.source}}
   {{/if}}
 
   {{#if highlightedLotFeatures}}
-    {{#map.source 
-      sourceId='highlighted-lot' 
+    {{#map.source
+      sourceId='highlighted-lot'
       options=highlightedLotSource as |source|}}
-      {{source.layer 
-        layer=highlightedLotLayer 
+      {{source.layer
+        layer=highlightedLotLayer
         before='waterway-label'}}
     {{/map.source}}
   {{/if}}
