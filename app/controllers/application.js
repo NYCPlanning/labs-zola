@@ -2,31 +2,15 @@ import Ember from 'ember';
 import QueryParams from 'ember-parachute';
 import bblDemux from '../utils/bbl-demux';
 
-import pluto from '../layer-groups/pluto';
-import facilities from '../layer-groups/facilities';
-import aerialRaster from '../layer-groups/aerial-raster';
-import zoningDistricts from '../layer-groups/zoning-districts';
-import commercialOverlays from '../layer-groups/commercial-overlays';
-import zoningMapAmendments from '../layer-groups/zoning-map-amendments';
+import layerGroups from '../layer-groups';
 
 const { merge } = Ember;
 
-const layerGroups =
-  [
-    pluto,
-    facilities,
-    aerialRaster,
-    zoningDistricts,
-    commercialOverlays,
-    zoningMapAmendments,
-  ];
-
-// grab query params from layer configs
-const queryParams = layerGroups
+const queryParams = Object.keys(layerGroups)
   .reduce(
     (acc, cur) => {
-      acc[cur.id] = {
-        defaultValue: (cur.visible === undefined) ? true : !!cur.visible,
+      acc[layerGroups[cur].id] = {
+        defaultValue: (layerGroups[cur].visible === undefined) ? true : !!layerGroups[cur].visible,
       };
       return acc;
     },
