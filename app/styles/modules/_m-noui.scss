@@ -1,0 +1,63 @@
+// --------------------------------------------------
+// Module: noUI
+// --------------------------------------------------
+
+.noUi-ltr {
+  height: $slider-height;
+  margin: rem-calc(10) rem-calc(17) rem-calc(36) rem-calc(29);
+}
+
+.noUi-horizontal .noUi-handle {
+  height: $slider-handle-height;
+  width: $slider-handle-width;
+  border: none;
+  border-radius: rem-calc(3);
+  box-shadow: 0 0 rem-calc(5) rgba(0,0,0,0.3);
+
+  &::before,
+  &::after {
+    top: $slider-handle-height / 4;
+    height: $slider-handle-height / 2;
+    left: 50%;
+    margin-left: -2px;
+    background: $medium-gray;
+  }
+  &::after {
+    margin-left: 1px;
+  }
+}
+
+.noUi-connect {
+  background-color: $slider-fill-background;
+  box-shadow: none;
+}
+
+.noUi-horizontal .noUi-tooltip {
+  white-space: nowrap;
+  font-size: rem-calc(10);
+}
+
+.noUi-horizontal .noUi-tooltip {
+  top: 100%;
+  bottom: auto;
+  padding: 0 rem-calc(4);
+  border: 0;
+  background-color: $dark-gray;
+  color: $white;
+  margin-top: rem-calc(6);
+  line-height: 1.5;
+
+  &::after {
+    content: '';
+    display: block;
+    border: rem-calc(6) solid transparent;
+    border-top-width: 0;
+    border-bottom-color: $dark-gray;
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    margin-left: rem-calc(-6);
+  }
+}
