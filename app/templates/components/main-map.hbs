@@ -1,4 +1,4 @@
-{{#if loading}}
+n{{#if loading}}
   <div class="spinner">
     <div class="double-bounce1"></div>
     <div class="double-bounce2"></div>
@@ -14,21 +14,36 @@
   as |map|}}
 
   {{#ember-wormhole to=menuTo}}
-    <ul class='layers-list'>
+
+    <ul class='layers-list no-bullet'>
+      {{map.layer-group config=layerGroups.sp qps=qps}}
+      {{map.layer-group config=layerGroups.spsd qps=qps}}
+      {{map.layer-group config=layerGroups.mih qps=qps}}
+      {{map.layer-group config=layerGroups.ih qps=qps}}
+      {{map.layer-group config=layerGroups.tz qps=qps}}
+      {{map.layer-group config=layerGroups.fresh qps=qps}}
+      {{map.layer-group config=layerGroups.sidewalkcafes qps=qps}}
+      {{map.layer-group config=layerGroups.ldgma qps=qps}}
+      {{map.layer-group config=layerGroups.czb qps=qps}}
+      {{map.layer-group config=layerGroups.wap qps=qps}}
+      {{map.layer-group config=layerGroups.sceniclandmarks qps=qps}}
+      {{map.layer-group config=layerGroups.historicdistricts qps=qps}}
+      {{map.layer-group config=layerGroups.landmarkpoints qps=qps}}
       {{map.layer-group
         tagName='li'
         classNames='layer-group clearfix'
-        config=pluto
+        config=layerGroups.pluto
         qps=qps}}
 
+
       {{#map.layer-group
-        config=zoningDistricts
+        config=layerGroups.zd
         tagName='li'
         classNames='layer-group clearfix'
         qps=qps as |group|}}
 
         {{layer-menu-item
-            title=zoningDistricts.title
+            title=layerGroups.zd.title
             visible=group.visible
             click=group.toggleVisibility}}
 
@@ -37,7 +52,7 @@
             column='primaryzone' as |multiSelect|}}
             {{#power-select-multiple
               options=(await
-                  (get-unique-options-for 'primaryzone' zoningDistricts.sql)
+                  (get-unique-options-for 'primaryzone' layerGroups.zd.sql)
                 )
               selected=multiSelect.allChecked
               placeholder="Select Zones"
@@ -54,19 +69,19 @@
       {{/map.layer-group}}
 
       {{map.layer-group
-        config=aerialRaster
+        config=layerGroups.aerials16
         tagName='li'
         classNames='layer-group clearfix'
         qps=qps}}
 
       {{#map.layer-group
-        config=commercialOverlays
+        config=layerGroups.co
         tagName='li'
         classNames='layer-group clearfix'
         qps=qps as |group|}}
 
         {{layer-menu-item
-            title=commercialOverlays.title
+            title=layerGroups.co.title
             visible=group.visible
             click=group.toggleVisibility}}
 
@@ -111,13 +126,13 @@
       {{/map.layer-group}}
 
       {{#map.layer-group
-        config=zoningMapAmendments
+        config=layerGroups.zma
         tagName='li'
         classNames='layer-group clearfix'
         qps=qps as |group|}}
 
         {{layer-menu-item
-            title=zoningMapAmendments.title
+            title=layerGroups.zma.title
             visible=group.visible
             click=group.toggleVisibility}}
 
