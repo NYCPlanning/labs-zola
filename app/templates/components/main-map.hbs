@@ -14,6 +14,7 @@ n{{#if loading}}
   as |map|}}
 
   {{#ember-wormhole to=menuTo}}
+
     <ul class='layers-list no-bullet'>
       {{map.layer-group config=layerGroups.sp qps=qps}}
       {{map.layer-group config=layerGroups.spsd qps=qps}}
@@ -33,6 +34,7 @@ n{{#if loading}}
         classNames='layer-group clearfix'
         config=layerGroups.pluto
         qps=qps}}
+
 
       {{#map.layer-group
         config=layerGroups.zd

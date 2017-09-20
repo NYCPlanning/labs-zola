@@ -11,6 +11,15 @@
 #layers-menu {
   // the element that shows/hides on mobile
   margin: rem-calc(-6) rem-calc(-6) 0;
+
+  ul {
+    margin-left: 0;
+    list-style: none;
+  }
+
+  input {
+    margin-bottom: 0;
+  }
 }
 
 .layers-list {
@@ -33,7 +42,7 @@
   border-bottom: 1px solid $medium-gray;
 
   li {
-    padding: rem-calc(6) rem-calc(6) rem-calc(6) rem-calc(16);
+    padding: rem-calc(6);
     border-top: 1px solid $white;
   }
 }
@@ -44,19 +53,6 @@
   &:hover {
     background-color: rgba($dark-gray,0.1);
   }
-}
-
-.noUi-ltr {
-  margin: 30px;
-  margin-top: 20px;
-}
-
-.noUi-tooltip {
-  width: 60px;
-}
-
-.noUi-horizontal .noUi-tooltip {
-  bottom: -150%;
 }
 
 .flex-reverse {
