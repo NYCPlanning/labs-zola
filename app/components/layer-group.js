@@ -4,10 +4,10 @@ import { task } from 'ember-concurrency';
 import { ParentMixin } from 'ember-composability-tools';
 import carto from '../utils/carto';
 import queryParamMap from '../mixins/query-param-map';
+import replacePaintStyleIn from '../utils/replace-paint-style-in';
 
 const { alias } = Ember.computed;
 const { warn } = Ember.Logger;
-const { merge, set, get } = Ember;
 
 export default Ember.Component.extend(ParentMixin, queryParamMap, {
   init(...args) {
@@ -41,6 +41,13 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
   paintObject: {},
   visible: true,
 
+  @computed('isCarto', 'configWithTemplate.isSuccessful', 'config', 'visible')
+  isReady(isCarto, successful, config, visible) {
+    return !!(
+      ((isCarto && successful) || !isCarto) && (config && visible)
+    );
+  },
+
   'query-param': alias('config.id'),
   queryParamBoundKey: 'visible',
 
@@ -48,6 +55,8 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
   isCarto(type) {
     return type === 'carto';
   },
+
+  layers: alias('config.layers'),
 
   @computed('sql')
   configWithTemplate(sql) {
@@ -72,7 +81,7 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
       );
   }).restartable(),
 
-  @computed('config', 'isCarto', 'config.layers.@each.layer', 'sql')
+  @computed('config', 'isCarto', 'sql')
   sourceOptions(config, isCarto) {
     if (isCarto) return this.get('configWithTemplate.value');
     return config;
@@ -110,16 +119,20 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
       const sql = this[method](column, value);
       this.set('sql', sql);
     },
-    updatePaintFor(layerId, paintObject) {
-      const layers = this.get('config.layers');
-      const currentLayer = layers.findBy('layer.id', layerId);
-      const currentPaint = get(currentLayer, 'layer');
-      const targetLayer = layers.objectAt(0);
-      const targetPaint = get(targetLayer, 'layer');
-      const merged = merge(currentPaint, paintObject);
+    updatePaintFor(layerId, newPaintStyle) {
+      const config = this.get('config');
 
-      set(targetPaint, 'paint', merged);
-      console.log(layers);
+      this.set(
+        'config',
+        replacePaintStyleIn(
+          config,
+          layerId,
+          newPaintStyle,
+        ),
+      );
+
+      // hack
+      this.set('didUpdateLayers', Math.random());
     },
   },
 });

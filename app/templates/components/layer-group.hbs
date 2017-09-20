@@ -1,15 +1,14 @@
-{{#if (or (and isCarto configWithTemplate.isSuccessful) (not isCarto))}}
-  {{#if (and config visible)}}
-    {{#map.source
-      sourceId=config.id
-      options=sourceOptions as |source|}}
-      {{#each config.layers as |layerConfig|}}
-        {{source.layer
-          layer=layerConfig.layer
-          before=layerConfig.before}}
-      {{/each}}
-    {{/map.source}}
-  {{/if}}
+{{#if isReady}}
+  {{#map.source
+    sourceId=config.id
+    options=sourceOptions as |source|}}
+    {{#each config.layers as |layerConfig|}}
+      {{log layerConfig.layer.paint}} 
+      {{source.layer
+        layer=layerConfig.layer
+        didUpdateLayers=didUpdateLayers}}
+    {{/each}}
+  {{/map.source}}
 {{/if}}
 
 {{layer-menu-item
