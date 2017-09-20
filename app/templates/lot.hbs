@@ -31,6 +31,34 @@
   {{#if model.zonedist4}}<div class="data-cell"><label class="data-label">Zoning District 4:</label><span class="datum">{{model.zonedist4}}</span></div>{{/if}}
   <div class="data-cell"><label class="data-label">Zoning Map</label><span class="datum"><a href="#">[link]</a></span></div>
   <div class="data-cell"><label class="data-label">Historical Zoning Maps</label><span class="datum"><a href="#">[link]</a></span></div>
+
+  <form id="acris_form" target="_blank" action="https://a836-acris.nyc.gov/DS/DocumentSearch/BBLResult"
+   method="POST">
+    <input type="hidden" name="hid_SearchType" value="BBL" />
+    <input type="hidden" name="hid_borough" value="{{model.borocode}}" />
+    <input type="hidden" name="hid_block" value="{{model.block}}" />
+    <input type="hidden" name="hid_block_value" value="{{model.block}}" />
+    <input type="hidden" name="hid_lot" value="{{model.lot}}" />
+    <input type="hidden" name="hid_lot_value" value="{{model.lot}}" />
+    <input type="hidden" name="hid_unit" value="" />
+    <input type="hidden" name="hid_selectdate" value="To Current Date" />
+    <input type="hidden" name="hid_datefromm" value="" />
+    <input type="hidden" name="hid_datefromd" value="" />
+    <input type="hidden" name="hid_datefromy" value="" />
+    <input type="hidden" name="hid_datetom" value="" />
+    <input type="hidden" name="hid_datetom" value="" />
+    <input type="hidden" name="hid_datetom" value="" />
+    <input type="hidden" name="hid_doctype" value="All Document Classes" />
+    <input type="hidden" name="hid_doctype_name" value="All Document Classes" />
+    <input type="hidden" name="hid_max_rows" value="10" />
+    <input type="hidden" name="hid_page" value="1" />
+    <input type="hidden" name="hid_ReqID" value="" />
+    <input type="hidden" name="hid_ISIntranet" value="N" />
+    <input type="hidden" name="hid_sort" value="" />
+
+    <div class="data-cell"><label class="data-label">Property Sale Data (ACRIS)</label><span class="datum"><a href="javascript:{}" onclick="document.getElementById('acris_form').submit(); return false;">submit</a></span></div>
+
+  </form>
 </div>
 
 <hr>
