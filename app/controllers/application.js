@@ -9,6 +9,8 @@ import zoningDistricts from '../layer-groups/zoning-districts';
 import commercialOverlays from '../layer-groups/commercial-overlays';
 import zoningMapAmendments from '../layer-groups/zoning-map-amendments';
 
+const { merge } = Ember;
+
 const layerGroups =
   [
     pluto,
@@ -19,6 +21,7 @@ const layerGroups =
     zoningMapAmendments,
   ];
 
+// grab query params from layer configs
 const queryParams = layerGroups
   .reduce(
     (acc, cur) => {
@@ -33,6 +36,7 @@ const queryParams = layerGroups
 const defaultMax = new Date();
 const defaultStart = [1032370151000, defaultMax.getTime()];
 
+// define new query params here:
 queryParams['zma-effective'] = {
   defaultValue: defaultStart,
   serialize([min, max]) {
@@ -43,18 +47,17 @@ queryParams['zma-effective'] = {
   },
 };
 
-queryParams['comm-type'] = {
-  defaultValue: '',
-  // serialize(value) {
-  //   return value.split(',');
-  // },
-  // deserialize(value) {
-  //   return value;
-  // },
-};
-
 export const mapQueryParams =
-  new QueryParams(queryParams);
+  new QueryParams(
+    merge(
+      queryParams,
+      {
+        'comm-type': {
+          defaultValue: '',
+        },
+      },
+    ),
+  );
 
 export default Ember.Controller.extend(mapQueryParams.Mixin, {
   init(...args) {

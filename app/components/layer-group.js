@@ -7,6 +7,7 @@ import queryParamMap from '../mixins/query-param-map';
 
 const { alias } = Ember.computed;
 const { warn } = Ember.Logger;
+const { merge, set, get } = Ember;
 
 export default Ember.Component.extend(ParentMixin, queryParamMap, {
   init(...args) {
@@ -37,6 +38,7 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
   qps: null,
   config: {},
   sql: '',
+  paintObject: {},
   visible: true,
 
   'query-param': alias('config.id'),
@@ -70,7 +72,7 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
       );
   }).restartable(),
 
-  @computed('config', 'isCarto', 'sql')
+  @computed('config', 'isCarto', 'config.layers.@each.layer', 'sql')
   sourceOptions(config, isCarto) {
     if (isCarto) return this.get('configWithTemplate.value');
     return config;
@@ -107,6 +109,17 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
     updateSql(method, column, value) {
       const sql = this[method](column, value);
       this.set('sql', sql);
+    },
+    updatePaintFor(layerId, paintObject) {
+      const layers = this.get('config.layers');
+      const currentLayer = layers.findBy('layer.id', layerId);
+      const currentPaint = get(currentLayer, 'layer');
+      const targetLayer = layers.objectAt(0);
+      const targetPaint = get(targetLayer, 'layer');
+      const merged = merge(currentPaint, paintObject);
+
+      set(targetPaint, 'paint', merged);
+      console.log(layers);
     },
   },
 });

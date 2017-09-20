@@ -15,22 +15,22 @@
 
   {{#ember-wormhole to=menuTo}}
     <ul class='layers-list no-bullet'>
-      {{map.layer-group 
+      {{#map.layer-group 
         tagName='li' 
         classNames='layer-group clearfix' 
         config=pluto 
-        qps=qps}}
+        qps=qps as |group|}}
+        <button 
+        onclick={{action group.updatePaintFor 'pluto-fill' (hash fill-opacity=1)}}>
+          Remove Fill
+        </button>
+      {{/map.layer-group}}
 
       {{#map.layer-group 
         config=zoningDistricts 
         tagName='li' 
         classNames='layer-group clearfix'
         qps=qps as |group|}}
-
-        {{layer-menu-item
-            title=zoningDistricts.title
-            visible=group.visible
-            click=group.toggleVisibility}}
 
         {{#if group.visible}}
           {{#group.multi-select-control 
@@ -64,11 +64,6 @@
         tagName='li' 
         classNames='layer-group clearfix'
         qps=qps as |group|}}
-
-        {{layer-menu-item
-            title=commercialOverlays.title
-            visible=group.visible
-            click=group.toggleVisibility}}
 
         {{#if group.visible}}
           {{#group.multi-select-control 
@@ -115,11 +110,6 @@
         tagName='li' 
         classNames='layer-group clearfix'
         qps=qps as |group|}}
-
-        {{layer-menu-item
-            title=zoningMapAmendments.title
-            visible=group.visible
-            click=group.toggleVisibility}}
 
         {{#if group.visible}}
           {{group.timeline-control
