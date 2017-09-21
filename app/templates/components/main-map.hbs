@@ -19,7 +19,7 @@
       closed=false
       title='Zoning and Land Use'
     }}
-      {{#map.layer-group tagName='li' config=layerGroups.zd qps=qps as |group|}}
+      {{#map.layer-group tagName='li' config=layerGroups.zd visible=qps.zd as |group|}}
         {{#if group.visible}}
           {{#group.multi-select-control
             column='primaryzone' as |multiSelect|}}
@@ -41,9 +41,9 @@
         {{/if}}
       {{/map.layer-group}}
 
-      {{map.layer-group tagName='li' config=layerGroups.pluto qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.pluto visible=qps.pluto}}
 
-      {{#map.layer-group tagName='li' config=layerGroups.co qps=qps as |group|}}
+      {{#map.layer-group tagName='li' config=layerGroups.co visible=qps.co as |group|}}
         {{#if group.visible}}
           {{#group.multi-select-control
             column='overlay' as |multiSelect|}}
@@ -84,7 +84,7 @@
         {{/if}}
       {{/map.layer-group}}
 
-      {{#map.layer-group tagName='li' config=layerGroups.zma qps=qps as |group|}}
+      {{#map.layer-group tagName='li' config=layerGroups.zma visible=qps.zma as |group|}}
         {{#if group.visible}}
           {{group.timeline-control
               column='effective'
@@ -99,25 +99,25 @@
       closed=true
       title='Supporting Zoning Layers'
     }}
-      {{map.layer-group tagName='li' config=layerGroups.sp qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.sp visible=qps.visible}}
 
-      {{map.layer-group tagName='li' config=layerGroups.spsd qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.spsd visible=qps.visible}}
 
-      {{map.layer-group tagName='li' config=layerGroups.mih qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.mih visible=qps.visible}}
 
-      {{map.layer-group tagName='li' config=layerGroups.ih qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.ih visible=qps.visible}}
 
-      {{map.layer-group tagName='li' config=layerGroups.tz qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.tz visible=qps.visible}}
 
-      {{map.layer-group tagName='li' config=layerGroups.fresh qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.fresh visible=qps.visible}}
 
-      {{map.layer-group tagName='li' config=layerGroups.sidewalkcafes qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.sidewalkcafes visible=qps.visible}}
 
-      {{map.layer-group tagName='li' config=layerGroups.ldgma qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.ldgma visible=qps.visible}}
 
-      {{map.layer-group tagName='li' config=layerGroups.czb qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.czb visible=qps.visible}}
 
-      {{map.layer-group tagName='li' config=layerGroups.wap qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.wap visible=qps.visible}}
 
     {{/layer-palette-accordion}}
 
@@ -125,11 +125,11 @@
       closed=true
       title='Landmark & Historic'
     }}
-      {{map.layer-group tagName='li' config=layerGroups.sceniclandmarks qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.sceniclandmarks visible=qps.sceniclandmarks}}
 
-      {{map.layer-group tagName='li' config=layerGroups.historicdistricts qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.historicdistricts visible=qps.historicdistricts}}
 
-      {{map.layer-group tagName='li' config=layerGroups.landmarkpoints qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.landmarkpoints visible=qps.landmarkpoints}}
 
     {{/layer-palette-accordion}}
 
@@ -137,14 +137,14 @@
       closed=true
       title='Transportation'
     }}
-      {{map.layer-group tagName='li' config=layerGroups.subway qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.subway visible=qps.subway}}
     {{/layer-palette-accordion}}
 
     {{#layer-palette-accordion
       closed=true
       title='Basemaps'
     }}
-      {{map.layer-group tagName='li' config=layerGroups.aerials16 qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.aerials16 visible=qps.aerials16}}
     {{/layer-palette-accordion}}
 
   {{/ember-wormhole}}
@@ -170,7 +170,7 @@
   {{/if}}
 
   {{#hover-tooltip as |tooltip|}}
-    {{#if tooltip.layer}}
+    {{#if (eq tooltip.layer 'pluto-fill')}}
       {{tooltip.layer}}: {{tooltip.feature.properties.bbl}}
     {{/if}}
   {{/hover-tooltip}}
