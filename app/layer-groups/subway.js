@@ -192,12 +192,23 @@ export default {
     {
       layer: {
         id: 'subway_stations',
-        minzoom: 12,
+        minzoom: 11,
         'source-layer': 'layer1',
         type: 'circle',
         paint: {
           'circle-color': 'rgba(255, 255, 255, 1)',
-          'circle-opacity': 1,
+          'circle-opacity': {
+            stops: [
+              [11, 0],
+              [12, 1],
+            ],
+          },
+          'circle-stroke-opacity': {
+            stops: [
+              [11, 0],
+              [12, 1],
+            ],
+          },
           'circle-radius': {
             stops: [
               [10, 2],
@@ -212,7 +223,7 @@ export default {
     {
       layer: {
         id: 'subway_stations_labels',
-        minzoom: 14,
+        minzoom: 13,
         'source-layer': 'layer1',
         type: 'symbol',
         layout: {
@@ -227,6 +238,12 @@ export default {
           'text-halo-color': 'rgba(255, 255, 255, 1)',
           'text-halo-width': 1,
           'text-translate': [1, 20],
+          'text-opacity': {
+            stops: [
+              [13, 0],
+              [14, 1],
+            ],
+          },
         },
       },
     },
