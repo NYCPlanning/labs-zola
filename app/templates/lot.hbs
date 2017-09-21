@@ -1,9 +1,12 @@
-<label class="header-type">TAX LOT</label>
+<label class="header-label clearfix">
+  <span class="float-right"> BBL {{model.bbl}} </span>
+  <strong> TAX LOT </strong>
+</label>
 {{#if model.landmark}}
-  <h1 class="header-large content-header">{{model.landmark}} <span class="header-subtext">BBL {{model.bbl}}</span></h1>
+  <h1 class="header-large content-header">{{model.landmark}}</h1>
   <h2 class="header-small content-subheader">{{model.address}}</h2>
 {{else}}
-  <h1 class="header-large">{{model.address}} <span class="header-subtext">BBL {{model.bbl}}</span></h1>
+  <h1 class="header-large">{{model.address}}</h1>
 {{/if}}
 
 <div class="data-grid">
