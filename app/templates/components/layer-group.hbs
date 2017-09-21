@@ -1,24 +1,20 @@
-{{#if (or (and isCarto configWithTemplate.isSuccessful) (not isCarto))}}
-  {{#if (and config visible)}}
-    {{#map.source
-      sourceId=config.id
-      options=sourceOptions as |source|}}
-      {{#each config.layers as |layerConfig|}}
-        {{source.layer
-          layer=layerConfig.layer
-          before=layerConfig.before}}
-      {{/each}}
-    {{/map.source}}
-  {{/if}}
+{{#if isReady}}
+  {{#map.source
+    sourceId=config.id
+    options=sourceOptions as |source|}}
+    {{#each config.layers as |layerConfig|}}
+      {{source.layer
+        layer=layerConfig.layer
+        didUpdateLayers=didUpdateLayers}}
+    {{/each}}
+  {{/map.source}}
 {{/if}}
 
-{{#unless hasBlock}}
-  {{layer-menu-item
-    title=config.title
-    config=group
-    visible=visible
-    click=(action 'toggleVisibility')}}
-{{/unless}}
+{{layer-menu-item
+  title=config.title
+  config=group
+  visible=visible
+  click=(action 'toggleVisibility')}}
 
 {{yield 
   (hash 
@@ -29,6 +25,7 @@
         )
         qps=qps
       )
+
     multi-select-control=
       (component 'layer-multi-select-control' layer=
         (hash 
@@ -40,5 +37,6 @@
     updateSql=(action 'updateSql')
     isPending=configWithTemplate.isPending
     toggleVisibility=(action 'toggleVisibility')
+    updatePaintFor=(action 'updatePaintFor')
   )
 }}

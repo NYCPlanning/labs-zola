@@ -8,6 +8,8 @@ import queryParamMap from '../mixins/query-param-map';
 const { alias } = Ember.computed;
 const { warn } = Ember.Logger;
 
+const { copy, merge, set } = Ember;
+
 export default Ember.Component.extend(ParentMixin, queryParamMap, {
   init(...args) {
     this._super(...args);
@@ -37,7 +39,15 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
   qps: null,
   config: {},
   sql: '',
+  paintObject: {},
   visible: true,
+
+  @computed('isCarto', 'configWithTemplate.isSuccessful', 'config', 'visible')
+  isReady(isCarto, successful, config, visible) {
+    return !!(
+      ((isCarto && successful) || !isCarto) && (config && visible)
+    );
+  },
 
   'query-param': alias('config.id'),
   queryParamBoundKey: 'visible',
@@ -46,6 +56,8 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
   isCarto(type) {
     return type === 'carto';
   },
+
+  layers: alias('config.layers'),
 
   @computed('sql')
   configWithTemplate(sql) {
@@ -107,6 +119,14 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
     updateSql(method, column, value) {
       const sql = this[method](column, value);
       this.set('sql', sql);
+    },
+    updatePaintFor(layerId, newPaintStyle) {
+      const layers = this.get('config.layers');
+      const targetLayerIndex = layers.findIndex(el => el.layer.id === layerId);
+      const targetLayer = layers.objectAt(targetLayerIndex);
+      const copyTargetLayer = copy(targetLayer, true);
+      const formattedLayer = merge(copyTargetLayer.layer, { paint: newPaintStyle });
+      set(targetLayer, 'layer', formattedLayer);
     },
   },
 });
