@@ -73,7 +73,7 @@
 }
 
 .content-area {
-  position: relative;
+  // position: relative;
   z-index: 2;
   box-shadow: 0 -2px 0 rgba(0,0,0,0.1);
   background-color: $white;
@@ -83,6 +83,22 @@
     @include xy-cell-block($vertical:true);
     height: 100%;
     box-shadow: -4px 0 0 rgba(0,0,0,0.1);
+  }
+
+  & > .close-button {
+    display: none;
+
+    @include breakpoint(large) {
+      display: block;
+      position: fixed;
+      z-index: 2;
+      top: 6rem;
+      right: 41.66667%;
+      background-color: $white;
+      margin-right: -4px;
+      padding: 0.125rem 0.5rem 0.25rem;
+      box-shadow: -4px 4px 0 rgba(0,0,0,0.1);
+    }
   }
 }
 
