@@ -92,12 +92,15 @@
       display: block;
       position: fixed;
       z-index: 2;
-      top: 6rem;
+      top: 6.5rem;
       right: 41.66667%;
       background-color: $white;
       margin-right: -4px;
-      padding: 0.125rem 0.5rem 0.25rem;
+      padding: 0 rem-calc(6) rem-calc(3);
       box-shadow: -4px 4px 0 rgba(0,0,0,0.1);
+    }
+    @include breakpoint(xxlarge) {
+      right: 33.33333%;
     }
   }
 }
