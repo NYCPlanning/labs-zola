@@ -40,7 +40,7 @@ export default Ember.Component.extend(ParentMixin, {
   config: {},
   sql: '',
   paintObject: {},
-  visible: true,
+  visible: false,
   tooltip: false,
 
   hoveredFeature: reads('mapMouseover.hoveredFeature'),
