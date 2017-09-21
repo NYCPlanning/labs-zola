@@ -2,10 +2,12 @@ import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 const { get } = Ember;
+const { service } = Ember.inject;
 
 export default Ember.Service.extend({
+  registeredLayers: service(),
+
   currentEvent: null,
-  registeredLayers: [],
 
   @computed('currentEvent')
   mousePosition(event) {
@@ -26,7 +28,7 @@ export default Ember.Service.extend({
     return !!(x && y);
   },
 
-  @computed('registeredLayers.@each', 'currentEvent', 'mousePosition')
+  @computed('registeredLayers.visibleLayerIds.@each', 'currentEvent', 'mousePosition')
   hoveredFeature(layers, currentEvent) {
     if (currentEvent) {
       const map = currentEvent.target;

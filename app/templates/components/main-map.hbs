@@ -16,26 +16,25 @@
   {{#ember-wormhole to=menuTo}}
 
     <ul class='layers-list no-bullet'>
-      {{map.layer-group config=layerGroups.sp qps=qps}}
-      {{map.layer-group config=layerGroups.spsd qps=qps}}
-      {{map.layer-group config=layerGroups.mih qps=qps}}
-      {{map.layer-group config=layerGroups.ih qps=qps}}
-      {{map.layer-group config=layerGroups.tz qps=qps}}
-      {{map.layer-group config=layerGroups.fresh qps=qps}}
-      {{map.layer-group config=layerGroups.sidewalkcafes qps=qps}}
-      {{map.layer-group config=layerGroups.ldgma qps=qps}}
-      {{map.layer-group config=layerGroups.czb qps=qps}}
-      {{map.layer-group config=layerGroups.wap qps=qps}}
-      {{map.layer-group config=layerGroups.sceniclandmarks qps=qps}}
-      {{map.layer-group config=layerGroups.historicdistricts qps=qps}}
-      {{map.layer-group config=layerGroups.landmarkpoints qps=qps}}
+      {{map.layer-group config=layerGroups.sp visible=qps.sp}}
+      {{map.layer-group config=layerGroups.spsd visible=qps.spsd}}
+      {{map.layer-group config=layerGroups.mih visible=qps.mih}}
+      {{map.layer-group config=layerGroups.ih visible=qps.ih}}
+      {{map.layer-group config=layerGroups.tz visible=qps.tz}}
+      {{map.layer-group config=layerGroups.fresh visible=qps.fresh}}
+      {{map.layer-group config=layerGroups.sidewalkcafes visible=qps.sidewalkcafes}}
+      {{map.layer-group config=layerGroups.ldgma visible=qps.ldgma}}
+      {{map.layer-group config=layerGroups.czb visible=qps.czb}}
+      {{map.layer-group config=layerGroups.wap visible=qps.wap}}
+      {{map.layer-group config=layerGroups.sceniclandmarks visible=qps.sceniclandmarks}}
+      {{map.layer-group config=layerGroups.historicdistricts visible=qps.historicdistricts}}
+      {{map.layer-group config=layerGroups.landmarkpoints visible=qps.landmarkpoints}}
       {{map.layer-group
-
+        tooltip=true
         tagName='li'
         classNames='layer-group clearfix'
         config=layerGroups.pluto
-        qps=qps}}
-
+        visible=qps.pluto}}
 
       {{#map.layer-group
         config=layerGroups.zd
@@ -165,6 +164,12 @@
         before='waterway-label'}}
     {{/map.source}}
   {{/if}}
+
+  {{#hover-tooltip as |tooltip|}}
+    {{#if tooltip.layer}}
+      {{tooltip.layer}}: {{tooltip.feature.properties.bbl}}
+    {{/if}}
+  {{/hover-tooltip}}
 
   {{#if mainMap.selected}}
     {{#map.source

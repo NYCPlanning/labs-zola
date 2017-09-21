@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task } from 'ember-concurrency';
-import { ParentMixin } from 'ember-composability-tools';
+import { ParentMixin, ChildMixin } from 'ember-composability-tools';
 import carto from '../utils/carto';
 
 const { alias, reads } = Ember.computed;
@@ -10,24 +10,16 @@ const { service } = Ember.inject;
 
 const { copy, merge, set } = Ember;
 
-export default Ember.Component.extend(ParentMixin, {
-  mapMouseover: service(),
-
+export default Ember.Component.extend(ParentMixin, ChildMixin, {
   init(...args) {
     this._super(...args);
 
     const { config, mapMouseover, tooltip } =
       this.getProperties('config', 'mapMouseover', 'tooltip');
-    const { sql, visible } = config;
+    const { sql } = config;
 
     if (this.get('childComponents.length') > 1) {
       warn('Only one layer-control per layer is supported.');
-    }
-
-    if (tooltip) {
-      mapMouseover
-        .get('registeredLayers')
-        .pushObjects(this.get('layerIds'));
     }
 
     this.setProperties({
@@ -41,9 +33,6 @@ export default Ember.Component.extend(ParentMixin, {
   sql: '',
   paintObject: {},
   visible: false,
-  tooltip: false,
-
-  hoveredFeature: reads('mapMouseover.hoveredFeature'),
 
   @computed('config.layers.@each.id')
   layerIds(layers) {
