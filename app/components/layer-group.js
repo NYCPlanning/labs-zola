@@ -4,11 +4,11 @@ import { task } from 'ember-concurrency';
 import { ParentMixin, ChildMixin } from 'ember-composability-tools';
 import carto from '../utils/carto';
 
+const { copy, merge, set, inject } = Ember;
+
 const { alias, reads } = Ember.computed;
 const { warn } = Ember.Logger;
-const { service } = Ember.inject;
-
-const { copy, merge, set } = Ember;
+const { service } = inject;
 
 export default Ember.Component.extend(ParentMixin, ChildMixin, {
   init(...args) {
@@ -67,7 +67,7 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
 
   templateTask: task(function* (sql) {
     const { minzoom = 0 } = this.get('config');
-    return yield carto.getVectorTileTemplate([sql])
+    return yield carto.getVectorTileTemplate(sql)
       .then(
         template => ({
           type: 'vector',

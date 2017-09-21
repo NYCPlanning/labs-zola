@@ -36,6 +36,7 @@ export default {
   pluto,
   sceniclandmarks,
   spsd,
+  subway,
   tz,
   wap,
   zd,

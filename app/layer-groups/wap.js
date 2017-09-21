@@ -3,7 +3,7 @@ export default {
   title: 'Waterfront Access Plan',
   visible: false,
   type: 'carto',
-  sql: 'SELECT the_geom_webmercator, name FROM support_wap',
+  sql: ['SELECT the_geom_webmercator, name FROM support_wap'],
   layers: [
     {
       layer: {

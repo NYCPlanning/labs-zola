@@ -2,7 +2,7 @@ export default {
   id: 'facdb',
   title: 'Facilities',
   type: 'carto',
-  sql: 'SELECT the_geom_webmercator, facname, facdomain, uid FROM facdb_170522',
+  sql: ['SELECT the_geom_webmercator, facname, facdomain, uid FROM facdb_170522'],
   visible: true,
   layers: [
     {
