@@ -2,7 +2,7 @@ export default {
   id: 'zmacert',
   title: 'Pending Zoning Map Amendments',
   type: 'carto',
-  sql: 'SELECT the_geom_webmercator, ulurpno, status FROM support_nyzma WHERE status = \'Certified\'',
+  sql: ['SELECT the_geom_webmercator, ulurpno, status FROM support_nyzma WHERE status = \'Certified\''],
   visible: false,
   layers: [
     {
