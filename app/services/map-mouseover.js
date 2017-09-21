@@ -1,10 +1,24 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
+const { get } = Ember;
+
 export default Ember.Service.extend({
-  mousePosition: {
-    x: null,
-    y: null,
+  currentEvent: null,
+  registeredLayers: [],
+
+  @computed('currentEvent')
+  mousePosition(event) {
+    if (event) {
+      const { point: { x, y } } = event;
+
+      return {
+        x,
+        y,
+      };
+    }
+
+    return null;
   },
 
   @computed('mousePosition.x', 'mousePosition.y')
@@ -12,7 +26,25 @@ export default Ember.Service.extend({
     return !!(x && y);
   },
 
-  tooltipText: '',
+  @computed('registeredLayers.@each', 'currentEvent', 'mousePosition')
+  hoveredFeature(layers, currentEvent) {
+    if (currentEvent) {
+      const map = currentEvent.target;
+
+      return map
+        .queryRenderedFeatures(
+          currentEvent.point,
+          { layers },
+        )
+        .objectAt(0) || {};
+    }
+    return {};
+  },
+
+  @computed('hoveredFeature')
+  tooltipText(feature) {
+    return get(feature, 'properties.bbl');
+  },
 
   highlightedLotFeatures: [],
 

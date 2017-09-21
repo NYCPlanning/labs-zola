@@ -82,13 +82,13 @@ export default Ember.Component.extend({
       const mapMouseover = this.get('mapMouseover');
       const { point } = e;
       mapMouseover.highlighter(e);
-      mapMouseover.set('mousePosition', point);
+      mapMouseover.set('currentEvent', e);
     },
 
     handleMouseleave() {
       const mapMouseover = this.get('mapMouseover');
       mapMouseover.set('highlightedLotFeatures', []);
-      mapMouseover.set('mousePosition', { x: null, y: null });
+      mapMouseover.set('currentEvent', null);
     },
     mapLoading(data) {
       const localConfig = this.get('mapConfig');

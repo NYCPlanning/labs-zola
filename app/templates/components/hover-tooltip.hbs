@@ -2,7 +2,10 @@
   <div class="map-popup card" style={{style}}>
     <div class="card-section">
       {{#if hasBlock}} 
-        {{yield}}
+        {{yield (hash 
+          feature=feature
+          layer=layer
+        )}}
       {{else}}
         {{text}}
       {{/if}}

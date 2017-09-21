@@ -3,35 +3,35 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task } from 'ember-concurrency';
 import { ParentMixin } from 'ember-composability-tools';
 import carto from '../utils/carto';
-import queryParamMap from '../mixins/query-param-map';
 
-const { alias } = Ember.computed;
+const { alias, reads } = Ember.computed;
 const { warn } = Ember.Logger;
+const { service } = Ember.inject;
 
 const { copy, merge, set } = Ember;
 
-export default Ember.Component.extend(ParentMixin, queryParamMap, {
+export default Ember.Component.extend(ParentMixin, {
+  mapMouseover: service(),
+
   init(...args) {
     this._super(...args);
+
+    const { config, mapMouseover, tooltip } =
+      this.getProperties('config', 'mapMouseover', 'tooltip');
+    const { sql, visible } = config;
 
     if (this.get('childComponents.length') > 1) {
       warn('Only one layer-control per layer is supported.');
     }
 
-    const { config, qps } =
-      this.getProperties('config', 'qps');
-    const queryParam = this.get('query-param');
-    const thisQP = this.get(`qps.${queryParam}`);
-    const { sql } = config;
-    let { visible } = config;
-
-    if (qps) {
-      visible = thisQP;
+    if (tooltip) {
+      mapMouseover
+        .get('registeredLayers')
+        .pushObjects(this.get('layerIds'));
     }
 
     this.setProperties({
       sql,
-      visible,
     });
   },
 
@@ -41,6 +41,14 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
   sql: '',
   paintObject: {},
   visible: true,
+  tooltip: false,
+
+  hoveredFeature: reads('mapMouseover.hoveredFeature'),
+
+  @computed('config.layers.@each.id')
+  layerIds(layers) {
+    return layers.mapBy('layer.id');
+  },
 
   @computed('isCarto', 'configWithTemplate.isSuccessful', 'config', 'visible')
   isReady(isCarto, successful, config, visible) {

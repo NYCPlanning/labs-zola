@@ -2,21 +2,24 @@ import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 const { htmlSafe } = Ember.String;
+const { service } = Ember.inject;
+const { alias } = Ember.computed;
 
 export default Ember.Component.extend({
+  mapMouseover: service(),
+  feature: alias('mapMouseover.hoveredFeature'),
+  layer: alias('feature.layer.id'),
+  mousePosition: alias('mapMouseover.mousePosition'),
+
   text: '',
-  coordinates: {
-    x: null,
-    y: null,
-  },
   offset: -20,
 
-  @computed('coordinates.x', 'coordinates.y')
+  @computed('mousePosition.x', 'mousePosition.y')
   isReady(x, y) {
     return !!(x && y);
   },
 
-  @computed('coordinates.x', 'coordinates.y', 'offset')
+  @computed('mousePosition.x', 'mousePosition.y', 'offset')
   style(x, y, offset) {
     return htmlSafe(`
       top: ${y}px; 
