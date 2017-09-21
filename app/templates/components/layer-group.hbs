@@ -3,7 +3,6 @@
     sourceId=config.id
     options=sourceOptions as |source|}}
     {{#each config.layers as |layerConfig|}}
-      {{log layerConfig.layer.paint}} 
       {{source.layer
         layer=layerConfig.layer
         didUpdateLayers=didUpdateLayers}}

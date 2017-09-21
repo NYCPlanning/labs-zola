@@ -29,11 +29,13 @@
       {{map.layer-group tagName='li' config=layerGroups.sceniclandmarks qps=qps}}
       {{map.layer-group tagName='li' config=layerGroups.historicdistricts qps=qps}}
       {{map.layer-group tagName='li' config=layerGroups.landmarkpoints qps=qps}}
-      {{map.layer-group tagName='li'
+      {{#map.layer-group tagName='li'
         tagName='li'
         classNames='layer-group clearfix'
         config=layerGroups.pluto
-        qps=qps}}
+        qps=qps as |group|}}
+        <button onclick={{action group.updatePaintFor 'pluto-fill' (hash fill-color='#9932CC' fill-opacity=1)}}>Test Style switch</button>
+      {{/map.layer-group}}
 
 
       {{#map.layer-group

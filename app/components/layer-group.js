@@ -4,10 +4,11 @@ import { task } from 'ember-concurrency';
 import { ParentMixin } from 'ember-composability-tools';
 import carto from '../utils/carto';
 import queryParamMap from '../mixins/query-param-map';
-import replacePaintStyleIn from '../utils/replace-paint-style-in';
 
 const { alias } = Ember.computed;
 const { warn } = Ember.Logger;
+
+const { copy, merge, set } = Ember;
 
 export default Ember.Component.extend(ParentMixin, queryParamMap, {
   init(...args) {
@@ -120,19 +121,12 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
       this.set('sql', sql);
     },
     updatePaintFor(layerId, newPaintStyle) {
-      const config = this.get('config');
-
-      this.set(
-        'config',
-        replacePaintStyleIn(
-          config,
-          layerId,
-          newPaintStyle,
-        ),
-      );
-
-      // hack
-      this.set('didUpdateLayers', Math.random());
+      const layers = this.get('config.layers');
+      const targetLayerIndex = layers.findIndex(el => el.layer.id === layerId);
+      const targetLayer = layers.objectAt(targetLayerIndex);
+      const copyTargetLayer = copy(targetLayer, true);
+      const formattedLayer = merge(copyTargetLayer.layer, { paint: newPaintStyle });
+      set(targetLayer, 'layer', formattedLayer);
     },
   },
 });
