@@ -19,7 +19,7 @@
       closed=false
       title='Zoning and Land Use'
     }}
-      {{#map.layer-group config=layerGroups.zd qps=qps as |group|}}
+      {{#map.layer-group tagName='li' config=layerGroups.zd qps=qps as |group|}}
         {{#if group.visible}}
           {{#group.multi-select-control
             column='primaryzone' as |multiSelect|}}
@@ -41,9 +41,9 @@
         {{/if}}
       {{/map.layer-group}}
 
-      {{map.layer-group config=layerGroups.pluto qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.pluto qps=qps}}
 
-      {{#map.layer-group config=layerGroups.co qps=qps as |group|}}
+      {{#map.layer-group tagName='li' config=layerGroups.co qps=qps as |group|}}
         {{#if group.visible}}
           {{#group.multi-select-control
             column='overlay' as |multiSelect|}}
@@ -84,7 +84,7 @@
         {{/if}}
       {{/map.layer-group}}
 
-      {{#map.layer-group config=layerGroups.zma qps=qps as |group|}}
+      {{#map.layer-group tagName='li' config=layerGroups.zma qps=qps as |group|}}
         {{#if group.visible}}
           {{group.timeline-control
               column='effective'
@@ -92,6 +92,7 @@
         {{/if}}
       {{/map.layer-group}}
 
+      {{map.layer-group tagName='li' config=layerGroups.zmacert}}
     {{/layer-palette-accordion}}
 
     {{#layer-palette-accordion
@@ -143,7 +144,7 @@
       closed=true
       title='Basemaps'
     }}
-      {{map.layer-group config=layerGroups.aerials16 qps=qps}}
+      {{map.layer-group tagName='li' config=layerGroups.aerials16 qps=qps}}
     {{/layer-palette-accordion}}
 
   {{/ember-wormhole}}
