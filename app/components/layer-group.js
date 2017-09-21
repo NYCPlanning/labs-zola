@@ -4,17 +4,16 @@ import { task } from 'ember-concurrency';
 import { ParentMixin, ChildMixin } from 'ember-composability-tools';
 import carto from '../utils/carto';
 
-const { copy, merge, set, inject } = Ember;
+const { copy, merge, set } = Ember;
 
-const { alias, reads } = Ember.computed;
+const { alias } = Ember.computed;
 const { warn } = Ember.Logger;
-const { service } = inject;
 
 export default Ember.Component.extend(ParentMixin, ChildMixin, {
   init(...args) {
     this._super(...args);
 
-    const { config, mapMouseover, tooltip } =
+    const { config } =
       this.getProperties('config', 'mapMouseover', 'tooltip');
     const { sql } = config;
 

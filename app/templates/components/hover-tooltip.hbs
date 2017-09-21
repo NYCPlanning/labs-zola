@@ -1,14 +1,12 @@
-{{#if isReady}}
-  <div class="map-popup card" style={{style}}>
-    <div class="card-section">
-      {{#if hasBlock}} 
-        {{yield (hash 
-          feature=feature
-          layer=layer
-        )}}
-      {{else}}
-        {{text}}
-      {{/if}}
-    </div>
+<div class="map-popup card" style={{style}}>
+  <div class="card-section">
+    {{#if hasBlock}} 
+      {{yield (hash 
+        feature=feature
+        layer=layer
+      )}}
+    {{else}}
+      {{text}}
+    {{/if}}
   </div>
-{{/if}}
+</div>

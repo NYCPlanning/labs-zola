@@ -42,5 +42,4 @@ export default {
   zd,
   zma,
   zmacert,
-  subway,
 };
