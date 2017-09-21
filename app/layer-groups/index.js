@@ -13,6 +13,7 @@ import sp from './sp';
 import pluto from './pluto';
 import sceniclandmarks from './sceniclandmarks';
 import spsd from './spsd';
+import subway from './subway';
 import tz from './tz';
 import wap from './wap';
 import zd from './zd';
