@@ -22,6 +22,7 @@
   <div class="data-cell"><label class="data-label">Lot Frontage</label><span class="datum">{{if model.lotfront (concat model.lotfront ' ft') ''}}</span></div>
   <div class="data-cell"><label class="data-label">Year Built</label><span class="datum">{{model.yearbuilt}}</span></div>
   <div class="data-cell"><label class="data-label">Number of Buildings</label><span class="datum">{{model.numbldgs}}</span></div>
+  <div class="data-cell"><label class="data-label">Building Info {{info-tooltip tip="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"}}</label><span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.borocode}}&allblock={{model.block}}&alllot={{model.lot}}&go5=+GO+&requestid=0">{{fa-icon 'external-link'}} BISWEB </a></span></div>
   <div class="data-cell"><label class="data-label">Number of Floors</label><span class="datum">{{model.numfloors}}</span></div>
   <div class="data-cell"><label class="data-label">Gross Floor Area</label><span class="datum">{{if model.bldgarea (concat (numeral-format model.bldgarea '0,0') ' sq ft') ''}}</span></div>
   <div class="data-cell"><label class="data-label">Residential Units</label><span class="datum">{{model.unitsres}}</span></div>
