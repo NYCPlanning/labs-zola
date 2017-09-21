@@ -66,7 +66,7 @@ export default Ember.Component.extend(ParentMixin, queryParamMap, {
 
   templateTask: task(function* (sql) {
     const { minzoom = 0 } = this.get('config');
-    return yield carto.getVectorTileTemplate([sql])
+    return yield carto.getVectorTileTemplate(sql)
       .then(
         template => ({
           type: 'vector',
