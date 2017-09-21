@@ -3,7 +3,7 @@ export default {
   title: 'Transit Zones',
   visible: false,
   type: 'carto',
-  sql: 'SELECT the_geom_webmercator FROM support_tz',
+  sql: ['SELECT the_geom_webmercator FROM support_tz'],
   layers: [
     {
       layer: {

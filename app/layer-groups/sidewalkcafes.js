@@ -3,7 +3,7 @@ export default {
   title: 'Sidewalk Cafes',
   visible: false,
   type: 'carto', // raster, vector, geojson, or carto
-  sql: 'SELECT the_geom_webmercator FROM support_sidewalkcafes', // only if type = carto
+  sql: ['SELECT the_geom_webmercator FROM support_sidewalkcafes'], // only if type = carto
   layers: [
     {
       layer: {
