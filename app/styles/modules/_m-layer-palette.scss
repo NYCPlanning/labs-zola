@@ -3,6 +3,7 @@
 // --------------------------------------------------
 
 $layer-palette-padding: rem-calc(6);
+$layer-palette-hover-color: rgba($dark-gray,0.08);
 
 .layer-palette {
   // contains the .layers-menu and button to show/hide on mobile
@@ -28,7 +29,7 @@ $layer-palette-padding: rem-calc(6);
   border-bottom: 1px solid $medium-gray;
 
   &:hover {
-    background-color: rgba($dark-gray,0.1);
+    background-color: $layer-palette-hover-color;
   }
 }
 
@@ -40,7 +41,7 @@ $layer-palette-padding: rem-calc(6);
   cursor: pointer;
 
   &:hover {
-    background-color: rgba($dark-gray,0.1);
+    background-color: $layer-palette-hover-color;
     cursor: pointer;
     user-select: none;
   }
@@ -71,7 +72,28 @@ $layer-palette-padding: rem-calc(6);
 
   &:hover {
     cursor: pointer;
-    background-color: rgba($dark-gray,0.1);
+    background-color: $layer-palette-hover-color;
+  }
+
+}
+
+.layer-menu-item-controls {
+
+  label {
+    padding: 0 $layer-palette-padding;
+    font-size: inherit;
+    line-height: inherit;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $layer-palette-hover-color;
+    }
+  }
+
+  .nested {
+    label {
+      padding-left: $layer-palette-padding*3;
+    }
   }
 }
 
