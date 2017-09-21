@@ -2,7 +2,7 @@ export default {
   id: 'zma',
   title: 'Zoning Map Amendments',
   type: 'carto',
-  sql: ['SELECT the_geom_webmercator, ulurpno FROM support_nyzma'],
+  sql: 'SELECT the_geom_webmercator, ulurpno FROM support_nyzma',
   visible: false,
   layers: [
     {

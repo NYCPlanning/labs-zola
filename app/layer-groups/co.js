@@ -2,7 +2,7 @@ export default {
   id: 'co',
   title: 'Commercial Overlays',
   type: 'carto',
-  sql: ['SELECT * FROM support_zoning_co'],
+  sql: 'SELECT * FROM support_zoning_co',
   visible: true,
   layers: [
     {

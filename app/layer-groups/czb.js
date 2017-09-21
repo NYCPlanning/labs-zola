@@ -3,7 +3,7 @@ export default {
   title: 'Coastal Zone Boundary',
   visible: false,
   type: 'carto',
-  sql: ['SELECT the_geom_webmercator FROM support_czb'],
+  sql: 'SELECT the_geom_webmercator FROM support_czb',
   layers: [
     {
       layer: {

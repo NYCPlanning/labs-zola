@@ -3,7 +3,7 @@ export default {
   title: 'Scenic Landmarks',
   visible: false,
   type: 'carto',
-  sql: ['SELECT the_geom_webmercator, scen_lm_na FROM support_sceniclandmarks'],
+  sql: 'SELECT the_geom_webmercator, scen_lm_na FROM support_sceniclandmarks',
   layers: [
     {
       layer: {

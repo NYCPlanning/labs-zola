@@ -3,7 +3,7 @@ export default {
   title: 'Historic Districts',
   visible: false,
   type: 'carto', // raster, vector, geojson, or carto
-  sql: ['SELECT the_geom_webmercator, area_name FROM support_historicdistricts'],
+  sql: 'SELECT the_geom_webmercator, area_name FROM support_historicdistricts',
   layers: [
     {
       layer: {
