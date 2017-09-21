@@ -46,7 +46,7 @@
     "ember-export-application-global": "^2.0.0",
     "ember-font-awesome": "^4.0.0-alpha.3",
     "ember-load-initializers": "^1.0.0",
-    "ember-mapbox-gl": "^0.8.2",
+    "ember-mapbox-gl": "^0.8.4",
     "ember-native-dom-helpers": "^0.5.4",
     "ember-parachute": "^0.3.2",
     "ember-power-select": "^1.9.6",
