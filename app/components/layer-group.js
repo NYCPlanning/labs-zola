@@ -58,7 +58,11 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
 
   @computed('sql')
   configWithTemplate(sql) {
-    return this.get('templateTask').perform(sql);
+    if (sql) {
+      return this.get('templateTask').perform(sql);
+    }
+
+    return null;
   },
 
   templateTask: task(function* (sql) {
@@ -99,7 +103,7 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
   },
 
   buildMultiSelectSQL(column = '', values = [0, 1] || ['a', 'b']) {
-    let sql = this.get('config.sql');
+    let sql = this.get('config.sql')[0];
 
     const valuesCleaned = values.map(value => `'${value}'`).join(',');
     if (!Ember.isEmpty(values)) {
@@ -115,7 +119,7 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     },
     updateSql(method, column, value) {
       const sql = this[method](column, value);
-      this.set('sql', sql);
+      this.set('sql', [sql]);
     },
     updatePaintFor(layerId, newPaintStyle) {
       const layers = this.get('config.layers');

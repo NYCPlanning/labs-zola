@@ -76,6 +76,10 @@ export default DS.Model.extend({
   bbl: DS.attr('number'),
   bldgarea: DS.attr('number'),
   block: DS.attr('number'),
+  borocode: Ember.computed('cd', function() {
+    const borocd = this.get('cd');
+    return borocd.substring(0, 1);
+  }),
   borough: DS.attr('string'),
   boroname: Ember.computed('borough', function() {
     return boroughLookup[this.get('borough')];
