@@ -42,7 +42,14 @@ export default Ember.Component.extend(ChildMixin, QueryParamMap, {
 
   actions: {
     sliderChanged(value) {
-      const range = value.map(epoch => fromEpoch(epoch));
+      const range = value
+        .map(epoch => fromEpoch(epoch))
+        .map((date, i) => { // eslint-disable-line
+          if (i === 0) {
+            return moment(date).startOf('month').format(defaultFormat);
+          }
+          return moment(date).endOf('month').format(defaultFormat);
+        });
       const column = this.get('column');
 
       this.set('start', value);
