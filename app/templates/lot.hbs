@@ -1,48 +1,52 @@
-<label class="header-label clearfix">
-  <span class="float-right"> BBL {{model.bbl}} </span>
-  <strong> TAX LOT </strong>
-</label>
-{{#if model.landmark}}
-  <h1 class="header-large content-header">{{model.landmark}}</h1>
-  <h2 class="header-small content-subheader">{{model.address}}</h2>
-{{else}}
-  <h1 class="header-large">{{model.address}}</h1>
-{{/if}}
+<div class="content-area cell large-5 large-cell-block-y xxlarge-4">
+  {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
 
-<div class="data-grid">
-  <div class="data-cell"><label class="data-label">Borough</label><span class="datum">{{model.boroname}}</span></div>
-  <div class="data-cell"><label class="data-label">Block</label><span class="datum">{{model.block}}</span></div>
-  <div class="data-cell"><label class="data-label">Lot</label><span class="datum">{{model.lot}}</span></div>
-  <div class="data-cell"><label class="data-label">Community District</label><span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{model.cdURLSegment}}" target="_blank">{{fa-icon "external-link"}} {{model.cdName}}</a></span></div>
-  <div class="data-cell"><label class="data-label">Police Precinct</label><span class="datum">{{model.policeprct}}</span></div>
+  <label class="header-label clearfix">
+    <span class="float-right"> BBL {{model.bbl}} </span>
+    <strong> TAX LOT </strong>
+  </label>
+  {{#if model.landmark}}
+    <h1 class="header-large content-header">{{model.landmark}}</h1>
+    <h2 class="header-small content-subheader">{{model.address}}</h2>
+  {{else}}
+    <h1 class="header-large">{{model.address}}</h1>
+  {{/if}}
 
-  <div class="data-cell"><label class="data-label">Owner Type</label><span class="datum">{{if model.ownertypename model.ownertypename 'Unknown/Private'}}</span></div>
-  <div class="data-cell"><label class="data-label">Owner</label><span class="datum">{{model.ownername}}</span></div>
-  <div class="data-cell"><label class="data-label">Lot Area</label><span class="datum">{{if model.lotarea (concat (numeral-format model.lotarea '0,0') ' sq ft') ''}}</span></div>
-  <div class="data-cell"><label class="data-label">Lot Frontage</label><span class="datum">{{if model.lotfront (concat model.lotfront ' ft') ''}}</span></div>
-  <div class="data-cell"><label class="data-label">Year Built</label><span class="datum">{{model.yearbuilt}}</span></div>
-  <div class="data-cell"><label class="data-label">Number of Buildings</label><span class="datum">{{model.numbldgs}}</span></div>
-  <div class="data-cell"><label class="data-label">Number of Floors</label><span class="datum">{{model.numfloors}}</span></div>
-  <div class="data-cell"><label class="data-label">Gross Floor Area</label><span class="datum">{{if model.bldgarea (concat (numeral-format model.bldgarea '0,0') ' sq ft') ''}}</span></div>
-  <div class="data-cell"><label class="data-label">Residential Units</label><span class="datum">{{model.unitsres}}</span></div>
-  <div class="data-cell"><label class="data-label">Total # of Units</label><span class="datum">{{model.unitstotal}}</span></div>
-  <div class="data-cell"><label class="data-label">Land Use</label><span class="datum">{{model.landusename}}</span></div>
-  {{#if model.histdist}}<div class="data-cell shrink"><label class="data-label">Historic District</label><span class="datum">{{model.histdist}}</span></div>{{/if}}
-  {{#if model.zonedist1}}<div class="data-cell"><label class="data-label">Zoning District 1:</label><span class="datum">{{model.zonedist1}}</span></div>{{/if}}
-  {{#if model.zonedist2}}<div class="data-cell"><label class="data-label">Zoning District 2:</label><span class="datum">{{model.zonedist2}}</span></div>{{/if}}
-  {{#if model.zonedist3}}<div class="data-cell"><label class="data-label">Zoning District 3:</label><span class="datum">{{model.zonedist3}}</span></div>{{/if}}
-  {{#if model.zonedist4}}<div class="data-cell"><label class="data-label">Zoning District 4:</label><span class="datum">{{model.zonedist4}}</span></div>{{/if}}
-  <div class="data-cell"><label class="data-label">Zoning Map</label><span class="datum"><a href="#">[link]</a></span></div>
-  <div class="data-cell"><label class="data-label">Historical Zoning Maps</label><span class="datum"><a href="#">[link]</a></span></div>
+  <div class="data-grid">
+    <div class="data-cell"><label class="data-label">Borough</label><span class="datum">{{model.boroname}}</span></div>
+    <div class="data-cell"><label class="data-label">Block</label><span class="datum">{{model.block}}</span></div>
+    <div class="data-cell"><label class="data-label">Lot</label><span class="datum">{{model.lot}}</span></div>
+    <div class="data-cell"><label class="data-label">Community District</label><span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{model.cdURLSegment}}" target="_blank">{{fa-icon "external-link"}} {{model.cdName}}</a></span></div>
+    <div class="data-cell"><label class="data-label">Police Precinct</label><span class="datum">{{model.policeprct}}</span></div>
+
+    <div class="data-cell"><label class="data-label">Owner Type</label><span class="datum">{{if model.ownertypename model.ownertypename 'Unknown/Private'}}</span></div>
+    <div class="data-cell"><label class="data-label">Owner</label><span class="datum">{{model.ownername}}</span></div>
+    <div class="data-cell"><label class="data-label">Lot Area</label><span class="datum">{{if model.lotarea (concat (numeral-format model.lotarea '0,0') ' sq ft') ''}}</span></div>
+    <div class="data-cell"><label class="data-label">Lot Frontage</label><span class="datum">{{if model.lotfront (concat model.lotfront ' ft') ''}}</span></div>
+    <div class="data-cell"><label class="data-label">Year Built</label><span class="datum">{{model.yearbuilt}}</span></div>
+    <div class="data-cell"><label class="data-label">Number of Buildings</label><span class="datum">{{model.numbldgs}}</span></div>
+    <div class="data-cell"><label class="data-label">Number of Floors</label><span class="datum">{{model.numfloors}}</span></div>
+    <div class="data-cell"><label class="data-label">Gross Floor Area</label><span class="datum">{{if model.bldgarea (concat (numeral-format model.bldgarea '0,0') ' sq ft') ''}}</span></div>
+    <div class="data-cell"><label class="data-label">Residential Units</label><span class="datum">{{model.unitsres}}</span></div>
+    <div class="data-cell"><label class="data-label">Total # of Units</label><span class="datum">{{model.unitstotal}}</span></div>
+    <div class="data-cell"><label class="data-label">Land Use</label><span class="datum">{{model.landusename}}</span></div>
+    {{#if model.histdist}}<div class="data-cell shrink"><label class="data-label">Historic District</label><span class="datum">{{model.histdist}}</span></div>{{/if}}
+    {{#if model.zonedist1}}<div class="data-cell"><label class="data-label">Zoning District 1:</label><span class="datum">{{model.zonedist1}}</span></div>{{/if}}
+    {{#if model.zonedist2}}<div class="data-cell"><label class="data-label">Zoning District 2:</label><span class="datum">{{model.zonedist2}}</span></div>{{/if}}
+    {{#if model.zonedist3}}<div class="data-cell"><label class="data-label">Zoning District 3:</label><span class="datum">{{model.zonedist3}}</span></div>{{/if}}
+    {{#if model.zonedist4}}<div class="data-cell"><label class="data-label">Zoning District 4:</label><span class="datum">{{model.zonedist4}}</span></div>{{/if}}
+    <div class="data-cell"><label class="data-label">Zoning Map</label><span class="datum"><a href="#">[link]</a></span></div>
+    <div class="data-cell"><label class="data-label">Historical Zoning Maps</label><span class="datum"><a href="#">[link]</a></span></div>
+  </div>
+
+  <hr>
+
+  <h5>TO DO: </h5>
+  <p>Is it on a waterfront block or lot?</p>
+  <p>Is it in the FRESH program area</p>
+  <p>Coastal Zone Management Area</p>
+  <p>Lower Density Growth management Area</p>
+  <p>Mandatory &amp; Inclusionary Housing</p>
+  <p>Links to ACRIS and other Resources</p>
+  <p>Link directly to the search results for the BIS CofO</p>
 </div>
-
-<hr>
-
-<h5>TO DO: </h5>
-<p>Is it on a waterfront block or lot?</p>
-<p>Is it in the FRESH program area</p>
-<p>Coastal Zone Management Area</p>
-<p>Lower Density Growth management Area</p>
-<p>Mandatory &amp; Inclusionary Housing</p>
-<p>Links to ACRIS and other Resources</p>
-<p>Link directly to the search results for the BIS CofO</p>

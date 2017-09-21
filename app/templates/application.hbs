@@ -1,7 +1,7 @@
 {{site-header}}
 
 <div class="site-main grid-x">
-  <div class="navigation-area cell large-7 xxlarge-8">
+  <div class="navigation-area auto cell large-7 xxlarge-8">
     {{map-search transitionTo=(action 'transitionTo')}}
 
     <div class="map-grid">
@@ -13,8 +13,5 @@
       {{layer-palette}}
     </div>
   </div>
-  <div class="content-area cell large-5 large-cell-block-y xxlarge-4">
-    {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
-    {{outlet}}
-  </div>
+  {{outlet}}
 </div>
