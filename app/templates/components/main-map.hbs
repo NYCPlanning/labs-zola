@@ -15,10 +15,19 @@
 
   {{#ember-wormhole to=menuTo}}
 
-    <ul class='layers-list no-bullet'>
+    {{#layer-palette-accordion
+      closed=false
+      title='Accordion Title'
+    }}
       {{map.layer-group tagName='li' config=layerGroups.sp qps=qps}}
       {{map.layer-group tagName='li' config=layerGroups.spsd qps=qps}}
       {{map.layer-group tagName='li' config=layerGroups.mih qps=qps}}
+    {{/layer-palette-accordion}}
+
+    {{#layer-palette-accordion
+      closed=false
+      title='Accordion Title'
+    }}
       {{map.layer-group tagName='li' config=layerGroups.ih qps=qps}}
       {{map.layer-group tagName='li' config=layerGroups.tz qps=qps}}
       {{map.layer-group tagName='li' config=layerGroups.fresh qps=qps}}
@@ -31,21 +40,13 @@
       {{map.layer-group tagName='li' config=layerGroups.landmarkpoints qps=qps}}
       {{map.layer-group tagName='li'
         tagName='li'
-        classNames='layer-group clearfix'
         config=layerGroups.pluto
         qps=qps}}
-
 
       {{#map.layer-group
         config=layerGroups.zd
         tagName='li'
-        classNames='layer-group clearfix'
         qps=qps as |group|}}
-
-        {{layer-menu-item
-            title=layerGroups.zd.title
-            visible=group.visible
-            click=group.toggleVisibility}}
 
         {{#if group.visible}}
           {{#group.multi-select-control
@@ -71,19 +72,12 @@
       {{map.layer-group
         config=layerGroups.aerials16
         tagName='li'
-        classNames='layer-group clearfix'
         qps=qps}}
 
       {{#map.layer-group
         config=layerGroups.co
         tagName='li'
-        classNames='layer-group clearfix'
         qps=qps as |group|}}
-
-        {{layer-menu-item
-            title=layerGroups.co.title
-            visible=group.visible
-            click=group.toggleVisibility}}
 
         {{#if group.visible}}
           {{#group.multi-select-control
@@ -128,13 +122,7 @@
       {{#map.layer-group
         config=layerGroups.zma
         tagName='li'
-        classNames='layer-group clearfix'
         qps=qps as |group|}}
-
-        {{layer-menu-item
-            title=layerGroups.zma.title
-            visible=group.visible
-            click=group.toggleVisibility}}
 
         {{#if group.visible}}
           {{group.timeline-control
@@ -142,7 +130,8 @@
               query-param='zma-effective'}}
         {{/if}}
       {{/map.layer-group}}
-    </ul>
+    {{/layer-palette-accordion}}
+
   {{/ember-wormhole}}
 
   {{#if zmaSourcePromise.last.isSuccessful}}

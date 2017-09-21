@@ -2,15 +2,17 @@
 // Module: Layer Palette
 // --------------------------------------------------
 
+$layer-palette-padding: rem-calc(6);
+
 .layer-palette {
   // contains the .layers-menu and button to show/hide on mobile
-  padding: rem-calc(6);
-  font-size: rem-calc(12);
+  padding: $layer-palette-padding;
+  font-size: $small-font-size;
 }
 
 #layers-menu {
   // the element that shows/hides on mobile
-  margin: rem-calc(-6) rem-calc(-6) 0;
+  margin: $layer-palette-padding*-1 $layer-palette-padding*-1 0;
 
   ul {
     margin-left: 0;
@@ -22,39 +24,57 @@
   }
 }
 
-.layers-list {
-
-  li {
-    cursor: pointer;
-
-    &:hover {
-      background-color: rgba($dark-gray,0.1);
-    }
-  }
-
-  .switch {
-    margin: 0 rem-calc(6) 0 0;
-  }
-}
-
-.layer-group {
-  // padding-bottom: rem-calc(6);
+.layer-palette-accordion {
   border-bottom: 1px solid $medium-gray;
-
-  li {
-    padding: rem-calc(6);
-    border-top: 1px solid $white;
-  }
-}
-
-.layer-menu-item {
-  padding: rem-calc(6);
 
   &:hover {
     background-color: rgba($dark-gray,0.1);
   }
 }
 
+.layer-palette-accordion-title {
+  position: relative;
+  margin: 0;
+  padding: $layer-palette-padding;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba($dark-gray,0.1);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &::after {
+    @include css-triangle($accordionmenu-arrow-size, $accordionmenu-arrow-color, up);
+    position: absolute;
+    top: 50%;
+    margin-top: -1 * ($accordionmenu-arrow-size / 2);
+    #{$global-right}: 1rem;
+  }
+  &.closed::after {
+    @include css-triangle($accordionmenu-arrow-size, $accordionmenu-arrow-color, down);
+  }
+}
+
+.layers-collection {
+  margin: 0;
+
+  .switch {
+    margin: 0 $layer-palette-padding 0 0;
+  }
+}
+
+.layer-menu-item {
+  padding: $layer-palette-padding;
+  border-top: 1px solid $white;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba($dark-gray,0.1);
+  }
+}
+
+// TODO: There are flex clases built into Foundation for this purpose.
 .flex-reverse {
   display: flex;
   flex-direction: column-reverse;
