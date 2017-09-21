@@ -165,12 +165,6 @@
     {{/map.source}}
   {{/if}}
 
-  {{#if mapMouseover.hasMousePosition}}
-    {{hover-tooltip 
-      text='test'
-      coordinates=mapMouseover.mousePosition}}
-  {{/if}}
-
   {{#if mainMap.selected}}
     {{#map.source
       sourceId='selected-lot'

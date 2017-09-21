@@ -9,17 +9,18 @@ export default Ember.Component.extend({
     x: null,
     y: null,
   },
+  offset: -20,
 
   @computed('coordinates.x', 'coordinates.y')
   isReady(x, y) {
     return !!(x && y);
   },
 
-  @computed('coordinates.x', 'coordinates.y')
-  style(x, y) {
+  @computed('coordinates.x', 'coordinates.y', 'offset')
+  style(x, y, offset) {
     return htmlSafe(`
       top: ${y}px; 
-      left: ${x - 20}px;
+      left: ${x + offset}px;
     `);
   },
 });
