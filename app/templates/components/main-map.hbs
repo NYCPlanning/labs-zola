@@ -15,38 +15,11 @@
 
   {{#ember-wormhole to=menuTo}}
 
-    <ul class='layers-list no-bullet'>
-      {{map.layer-group tagName='li' config=layerGroups.sp qps=qps}}
-      {{map.layer-group tagName='li' config=layerGroups.spsd qps=qps}}
-      {{map.layer-group tagName='li' config=layerGroups.mih qps=qps}}
-      {{map.layer-group tagName='li' config=layerGroups.ih qps=qps}}
-      {{map.layer-group tagName='li' config=layerGroups.tz qps=qps}}
-      {{map.layer-group tagName='li' config=layerGroups.fresh qps=qps}}
-      {{map.layer-group tagName='li' config=layerGroups.sidewalkcafes qps=qps}}
-      {{map.layer-group tagName='li' config=layerGroups.ldgma qps=qps}}
-      {{map.layer-group tagName='li' config=layerGroups.czb qps=qps}}
-      {{map.layer-group tagName='li' config=layerGroups.wap qps=qps}}
-      {{map.layer-group tagName='li' config=layerGroups.sceniclandmarks qps=qps}}
-      {{map.layer-group tagName='li' config=layerGroups.historicdistricts qps=qps}}
-      {{map.layer-group tagName='li' config=layerGroups.landmarkpoints qps=qps}}
-      {{map.layer-group tagName='li'
-        tagName='li'
-        classNames='layer-group clearfix'
-        config=layerGroups.pluto
-        qps=qps}}
-
-
-      {{#map.layer-group
-        config=layerGroups.zd
-        tagName='li'
-        classNames='layer-group clearfix'
-        qps=qps as |group|}}
-
-        {{layer-menu-item
-            title=layerGroups.zd.title
-            visible=group.visible
-            click=group.toggleVisibility}}
-
+    {{#layer-palette-accordion
+      closed=false
+      title='Zoning and Land Use'
+    }}
+      {{#map.layer-group config=layerGroups.zd qps=qps as |group|}}
         {{#if group.visible}}
           {{#group.multi-select-control
             column='primaryzone' as |multiSelect|}}
@@ -68,23 +41,9 @@
         {{/if}}
       {{/map.layer-group}}
 
-      {{map.layer-group
-        config=layerGroups.aerials16
-        tagName='li'
-        classNames='layer-group clearfix'
-        qps=qps}}
+      {{map.layer-group config=layerGroups.pluto qps=qps}}
 
-      {{#map.layer-group
-        config=layerGroups.co
-        tagName='li'
-        classNames='layer-group clearfix'
-        qps=qps as |group|}}
-
-        {{layer-menu-item
-            title=layerGroups.co.title
-            visible=group.visible
-            click=group.toggleVisibility}}
-
+      {{#map.layer-group config=layerGroups.co qps=qps as |group|}}
         {{#if group.visible}}
           {{#group.multi-select-control
             column='overlay' as |multiSelect|}}
@@ -125,24 +84,68 @@
         {{/if}}
       {{/map.layer-group}}
 
-      {{#map.layer-group
-        config=layerGroups.zma
-        tagName='li'
-        classNames='layer-group clearfix'
-        qps=qps as |group|}}
-
-        {{layer-menu-item
-            title=layerGroups.zma.title
-            visible=group.visible
-            click=group.toggleVisibility}}
-
+      {{#map.layer-group config=layerGroups.zma qps=qps as |group|}}
         {{#if group.visible}}
           {{group.timeline-control
               column='effective'
               query-param='zma-effective'}}
         {{/if}}
       {{/map.layer-group}}
-    </ul>
+
+    {{/layer-palette-accordion}}
+
+    {{#layer-palette-accordion
+      closed=true
+      title='Supporting Zoning Layers'
+    }}
+      {{map.layer-group tagName='li' config=layerGroups.sp qps=qps}}
+
+      {{map.layer-group tagName='li' config=layerGroups.spsd qps=qps}}
+
+      {{map.layer-group tagName='li' config=layerGroups.mih qps=qps}}
+
+      {{map.layer-group tagName='li' config=layerGroups.ih qps=qps}}
+
+      {{map.layer-group tagName='li' config=layerGroups.tz qps=qps}}
+
+      {{map.layer-group tagName='li' config=layerGroups.fresh qps=qps}}
+
+      {{map.layer-group tagName='li' config=layerGroups.sidewalkcafes qps=qps}}
+
+      {{map.layer-group tagName='li' config=layerGroups.ldgma qps=qps}}
+
+      {{map.layer-group tagName='li' config=layerGroups.czb qps=qps}}
+
+      {{map.layer-group tagName='li' config=layerGroups.wap qps=qps}}
+
+    {{/layer-palette-accordion}}
+
+    {{#layer-palette-accordion
+      closed=true
+      title='Landmark & Historic'
+    }}
+      {{map.layer-group tagName='li' config=layerGroups.sceniclandmarks qps=qps}}
+
+      {{map.layer-group tagName='li' config=layerGroups.historicdistricts qps=qps}}
+
+      {{map.layer-group tagName='li' config=layerGroups.landmarkpoints qps=qps}}
+
+    {{/layer-palette-accordion}}
+
+    {{#layer-palette-accordion
+      closed=true
+      title='Transportation'
+    }}
+      {{map.layer-group tagName='li' config=layerGroups.subway qps=qps}}
+    {{/layer-palette-accordion}}
+
+    {{#layer-palette-accordion
+      closed=true
+      title='Basemaps'
+    }}
+      {{map.layer-group config=layerGroups.aerials16 qps=qps}}
+    {{/layer-palette-accordion}}
+
   {{/ember-wormhole}}
 
   {{#if zmaSourcePromise.last.isSuccessful}}

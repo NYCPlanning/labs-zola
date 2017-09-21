@@ -3,7 +3,7 @@ export default {
   title: 'Landmarks',
   visible: false,
   type: 'carto', // raster, vector, geojson, or carto
-  sql: 'SELECT the_geom_webmercator, lm_name FROM landmarkpoints WHERE lm_type = \'Individual Landmark\' OR lm_type = \'Interior Landmark\'',
+  sql: ['SELECT the_geom_webmercator, lm_name FROM landmarkpoints WHERE lm_type = \'Individual Landmark\' OR lm_type = \'Interior Landmark\''],
   layers: [
     {
       layer: {

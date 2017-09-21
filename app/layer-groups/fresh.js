@@ -3,7 +3,7 @@ export default {
   title: 'FRESH Zones',
   visible: false,
   type: 'carto',
-  sql: 'SELECT the_geom_webmercator, name FROM support_fresh',
+  sql: ['SELECT the_geom_webmercator, name FROM support_fresh'],
   layers: [
     {
       layer: {

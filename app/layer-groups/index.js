@@ -13,6 +13,7 @@ import sp from '../layer-groups/sp';
 import pluto from '../layer-groups/pluto';
 import sceniclandmarks from '../layer-groups/sceniclandmarks';
 import spsd from '../layer-groups/spsd';
+import subway from '../layer-groups/subway';
 import tz from '../layer-groups/tz';
 import wap from '../layer-groups/wap';
 import zd from '../layer-groups/zd';
@@ -34,6 +35,7 @@ export default {
   pluto,
   sceniclandmarks,
   spsd,
+  subway,
   tz,
   wap,
   zd,
