@@ -3,7 +3,7 @@ export default {
   title: 'Special Purpose Districts',
   visible: false,
   type: 'carto', // raster, vector, geojson, or carto
-  sql: 'SELECT the_geom_webmercator, sdname FROM support_nysp',
+  sql: ['SELECT the_geom_webmercator, sdname FROM support_nysp'],
   layers: [
     {
       layer: {

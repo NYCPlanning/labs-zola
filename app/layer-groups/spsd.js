@@ -3,7 +3,7 @@ export default {
   title: 'Special Purpose Subdistricts',
   visible: false,
   type: 'carto', // raster, vector, geojson, or carto
-  sql: 'SELECT the_geom_webmercator, spname FROM support_nysp_sd',
+  sql: ['SELECT the_geom_webmercator, spname FROM support_nysp_sd'],
   layers: [
     {
       layer: {
