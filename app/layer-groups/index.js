@@ -1,23 +1,23 @@
-import aerials16 from '../layer-groups/aerials16';
-import co from '../layer-groups/co';
-import czb from '../layer-groups/czb';
-import facdb from '../layer-groups/facdb';
-import fresh from '../layer-groups/fresh';
-import historicdistricts from '../layer-groups/historicdistricts';
-import ih from '../layer-groups/ih';
-import landmarkpoints from '../layer-groups/landmarkpoints';
-import ldgma from '../layer-groups/ldgma';
-import mih from '../layer-groups/mih';
-import sidewalkcafes from '../layer-groups/sidewalkcafes';
-import sp from '../layer-groups/sp';
-import pluto from '../layer-groups/pluto';
-import sceniclandmarks from '../layer-groups/sceniclandmarks';
-import spsd from '../layer-groups/spsd';
-import subway from '../layer-groups/subway';
-import tz from '../layer-groups/tz';
-import wap from '../layer-groups/wap';
-import zd from '../layer-groups/zd';
-import zma from '../layer-groups/zma';
+import aerials16 from './aerials16';
+import co from './co';
+import czb from './czb';
+import facdb from './facdb';
+import fresh from './fresh';
+import historicdistricts from './historicdistricts';
+import ih from './ih';
+import landmarkpoints from './landmarkpoints';
+import ldgma from './ldgma';
+import mih from './mih';
+import sidewalkcafes from './sidewalkcafes';
+import sp from './sp';
+import pluto from './pluto';
+import sceniclandmarks from './sceniclandmarks';
+import spsd from './spsd';
+import tz from './tz';
+import wap from './wap';
+import zd from './zd';
+import zma from './zma';
+import zmacert from './zmacert';
 
 export default {
   aerials16,
@@ -40,4 +40,5 @@ export default {
   wap,
   zd,
   zma,
+  zmacert,
 };
