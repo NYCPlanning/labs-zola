@@ -3,7 +3,7 @@ export default {
   title: 'Inclusionary Housing',
   visible: false,
   type: 'carto', // raster, vector, geojson, or carto
-  sql: 'SELECT the_geom_webmercator, projectnam FROM support_ih', // only if type = carto
+  sql: ['SELECT the_geom_webmercator, projectnam FROM support_ih'], // only if type = carto
   layers: [
     {
       layer: {
