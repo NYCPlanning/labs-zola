@@ -155,14 +155,20 @@
     {{/map.source}}
   {{/if}}
 
-  {{#if highlightedLotFeatures}}
+  {{#if mapMouseover.highlightedLotFeatures}}
     {{#map.source
       sourceId='highlighted-lot'
-      options=highlightedLotSource as |source|}}
+      options=mapMouseover.highlightedLotSource as |source|}}
       {{source.layer
         layer=highlightedLotLayer
         before='waterway-label'}}
     {{/map.source}}
+  {{/if}}
+
+  {{#if mapMouseover.hasMousePosition}}
+    {{hover-tooltip 
+      text='test'
+      coordinates=mapMouseover.mousePosition}}
   {{/if}}
 
   {{#if mainMap.selected}}
