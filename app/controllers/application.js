@@ -4,16 +4,7 @@ import bblDemux from '../utils/bbl-demux';
 
 import layerGroups from '../layer-groups';
 
-// const queryParams = layerGroups
-//   .reduce(
-//     (acc, cur) => {
-//       acc[cur.id] = {
-//         defaultValue: (cur.visible === undefined) ? true : !!cur.visible,
-//       };
-//       return acc;
-//     },
-//     {},
-//   );
+const { merge } = Ember;
 
 const queryParams = Object.keys(layerGroups)
   .reduce(
@@ -29,6 +20,7 @@ const queryParams = Object.keys(layerGroups)
 const defaultMax = new Date();
 const defaultStart = [1032370151000, defaultMax.getTime()];
 
+// define new query params here:
 queryParams['zma-effective'] = {
   defaultValue: defaultStart,
   serialize([min, max]) {
@@ -39,18 +31,17 @@ queryParams['zma-effective'] = {
   },
 };
 
-queryParams['comm-type'] = {
-  defaultValue: '',
-  // serialize(value) {
-  //   return value.split(',');
-  // },
-  // deserialize(value) {
-  //   return value;
-  // },
-};
-
 export const mapQueryParams =
-  new QueryParams(queryParams);
+  new QueryParams(
+    merge(
+      queryParams,
+      {
+        'comm-type': {
+          defaultValue: '',
+        },
+      },
+    ),
+  );
 
 export default Ember.Controller.extend(mapQueryParams.Mixin, {
   init(...args) {
