@@ -5,7 +5,10 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import layerGroups from '../layer-groups';
 
 import highlightedLotLayer from '../layers/highlighted-lot';
-import selectedLotLayer from '../layers/selected-lot';
+import selectedLayers from '../layers/selected-lot';
+
+const selectedFillLayer = selectedLayers.fill;
+const selectedLineLayer = selectedLayers.line;
 
 const { later } = Ember.run;
 const { service } = Ember.inject;
@@ -34,13 +37,16 @@ export default Ember.Component.extend({
 
   @computed('mainMap.selected')
   fitBoundsOptions(selected) {
-    const type = selected._internalModel.modelName;
-    const el = this.$();
-    const height = el.height();
-    const width = el.width();
+    if (selected) {
+      const type = selected._internalModel.modelName;
+      const el = this.$();
+      const height = el.height();
+      const width = el.width();
 
-    const padding = Math.min(height, width) / 2.5;
-    return { padding: selected && (type !== 'zoning-district') ? padding : 0 };
+      const padding = Math.min(height, width) / 2.5;
+      return { padding: selected && (type !== 'zoning-district') ? padding : 0 };
+    }
+    return null;
   },
 
   highlightedLotFeatures: [],
@@ -64,7 +70,8 @@ export default Ember.Component.extend({
       data: selected.get('geometry'),
     };
   },
-  selectedLotLayer,
+  selectedFillLayer,
+  selectedLineLayer,
 
   actions: {
     handleMapLoad(map) {
