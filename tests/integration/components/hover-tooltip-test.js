@@ -13,13 +13,4 @@ test('it renders', function(assert) {
   this.render(hbs`{{hover-tooltip}}`);
 
   assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#hover-tooltip}}
-      template block text
-    {{/hover-tooltip}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });

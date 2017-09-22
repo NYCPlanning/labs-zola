@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { ParentMixin, ChildMixin } from 'ember-composability-tools';
+import { ParentMixin } from 'ember-composability-tools';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 export default Ember.Component.extend(ParentMixin, {
@@ -10,9 +10,9 @@ export default Ember.Component.extend(ParentMixin, {
       .mapBy('value');
   },
 
-  // didInsertElement() {
-  //   this.send('selectionChanged');
-  // },
+  didInsertElement() {
+    this.send('selectionChanged');
+  },
 
   queryParamBoundKey: 'allChecked',
 
