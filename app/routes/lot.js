@@ -15,4 +15,15 @@ export default Ember.Route.extend({
     const mainMap = this.get('mainMap');
     mainMap.set('selected', model);
   },
+
+  actions: {
+    didTransition() {
+      const mapInstance = this.get('mainMap.mapInstance');
+      if (mapInstance) {
+        Ember.run.later(() => {
+          mapInstance.resize();
+        }, 1000);
+      }
+    },
+  },
 });

@@ -26,7 +26,7 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     });
   },
 
-  tagName: 'span',
+  tagName: '',
   qps: null,
   config: {},
   sql: '',
@@ -117,6 +117,7 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
       this.toggleProperty('visible');
     },
     updateSql(method, column, value) {
+      console.log(...arguments);
       const sql = this[method](column, value);
       this.set('sql', [sql]);
     },

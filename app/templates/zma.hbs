@@ -1,11 +1,14 @@
+<div class="content-area cell large-5 large-cell-block-y xxlarge-4">
+  {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
 
-<label class="header-type">ZONING MAP AMENDMENT</label>
-<h1 class="header-large">{{model.project_na}}</h1>
+  <label class="header-type">ZONING MAP AMENDMENT</label>
+  <h1 class="header-large">{{model.project_na}}</h1>
 
-<div class="data-grid">
-  <div class="data-cell"><label class="data-label">ULURP Number</label><span class="datum">{{model.id}}</span></div>
-  <div class="data-cell"><label class="data-label">Effective</label><span class="datum">{{model.effectiveDisplay}}</span></div>
-  <div class="data-cell"><label class="data-label">Status</label><span class="datum">{{model.status}}</span></div>
-  <div class="data-cell"><label class="data-label">Land Use Application</label><span class="datum"><a target="_blank" href="http://a030-lucats.nyc.gov/lucats/DirectAccess.aspx?ULURPNO={{model.lucats}}">{{fa-icon "external-link"}} {{model.lucats}}</a></span></div>
-  <div class="data-cell"><label class="data-label">Zoning Sketch Map</label><span class="datum"><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/sketchmaps/skz{{model.id}}.pdf">{{fa-icon "file-pdf-o"}} {{model.id}}</a></span></div>
+  <div class="data-grid">
+    <div class="data-cell"><label class="data-label">ULURP Number</label><span class="datum">{{model.id}}</span></div>
+    <div class="data-cell"><label class="data-label">Effective</label><span class="datum">{{model.effectiveDisplay}}</span></div>
+    <div class="data-cell"><label class="data-label">Status</label><span class="datum">{{model.status}}</span></div>
+    <div class="data-cell"><label class="data-label">Land Use Application</label><span class="datum"><a target="_blank" href="http://a030-lucats.nyc.gov/lucats/DirectAccess.aspx?ULURPNO={{model.lucats}}">{{fa-icon "external-link"}} {{model.lucats}}</a></span></div>
+    <div class="data-cell"><label class="data-label">Zoning Sketch Map</label><span class="datum"><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/sketchmaps/skz{{model.id}}.pdf">{{fa-icon "file-pdf-o"}} {{model.id}}</a></span></div>
+  </div>
 </div>

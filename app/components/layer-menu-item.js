@@ -24,5 +24,9 @@ export default Ember.Component.extend(ParentMixin, {
     toggleVisibility() {
       this.toggleProperty('visible');
     },
+    updateSql(method, column, value) {
+      const layer = this.get('layer');
+      layer.send('updateSql', method, column, value);
+    },
   },
 });

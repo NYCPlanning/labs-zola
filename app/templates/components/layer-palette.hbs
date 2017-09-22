@@ -7,12 +7,30 @@
   {{#layer-palette-accordion
     closed=false
     title='Zoning and Land Use'}}
+    {{#layer-menu-item
+      for='zd' as |item|}}
+      {{#if item.layer.visible}}
+        {{#item.multi-select
+          column='primaryzone' as |multiSelect|}}
+          {{#power-select-multiple
+            options=(await
+                (get-unique-options-for 'primaryzone' item.layer.config.sql)
+              )
+            selected=multiSelect.allChecked
+            placeholder="Select Zones"
+            onchange=(queue
+                (action item.updateSql 'buildMultiSelectSQL' 'primaryzone')
+                (action (mut multiSelect.allChecked))
+              )
+            as |name|
+          }}
+            {{name}}
+          {{/power-select-multiple}}
+        {{/item.multi-select}}
+      {{/if}}
+    {{/layer-menu-item}}
 
-    {{layer-menu-item
-      for='pluto'}}
-
-    {{layer-menu-item
-      for='zd'}}
+    {{layer-menu-item for='pluto'}}
 
     {{#layer-menu-item
       for='co'
@@ -71,7 +89,21 @@
             </ul>
         {{/layer-multi-select-control}}
       {{/if}}
+<<<<<<< HEAD
     {{/layer-menu-item}}
+=======
+    {{/layer-menu-item}}
+
+    {{#layer-menu-item for='zma' as |item|}}
+      {{#if item.layer.visible}}
+        {{item.range-slider
+            column='effective'
+            query-param='zma-effective'}}
+      {{/if}}
+    {{/layer-menu-item}}
+
+    {{layer-menu-item for='zmacert'}}
+>>>>>>> 431b6b513b8cb631a1a558b25f6da86b8158ea9c
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion

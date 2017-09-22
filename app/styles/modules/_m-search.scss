@@ -3,14 +3,14 @@
 // --------------------------------------------------
 
 .search {
-  background-color: $white;
+  background-color: $light-gray;
   padding: rem-calc(9) rem-calc(6) rem-calc(6);
   box-shadow: 0 2px 0 rgba(0,0,0,0.1);
   position: relative;
   z-index: 2;
 
   @include breakpoint(large) {
-    padding-right: rem-calc(9);
+    padding-right: rem-calc(38);
   }
 
   input {
@@ -19,6 +19,9 @@
 
   .close-button {
     margin-top: rem-calc(2);
+    @include breakpoint(large) {
+      right: rem-calc(48);
+    }
   }
 }
 
@@ -91,4 +94,8 @@
   bottom: auto;
   left: 0;
   box-shadow: 0 2px 0 rgba(0,0,0,0.1);
+
+  @include breakpoint(large) {
+    max-width: 400px;
+  }
 }
