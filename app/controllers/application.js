@@ -77,5 +77,8 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
     setQueryParam(property, value) {
       this.set(property, value);
     },
+    resetAll() {
+      this.resetQueryParams();
+    },
   },
 });
