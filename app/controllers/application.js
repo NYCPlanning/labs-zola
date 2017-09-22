@@ -53,6 +53,7 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
 
     this.set('qps', proxy);
   },
+
   actions: {
     transitionTo(...args) {
       this.transitionToRoute(...args);
@@ -79,6 +80,9 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
     },
     setQueryParam(property, value) {
       this.set(property, value);
+    },
+    resetAll() {
+      this.resetQueryParams();
     },
   },
 });

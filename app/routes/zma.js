@@ -13,4 +13,11 @@ export default Ember.Route.extend({
     const mainMap = this.get('mainMap');
     mainMap.set('selected', model);
   },
+
+  actions: {
+    willTransition() {
+      const application = this.controllerFor('application');
+      application.resetQueryParams();
+    },
+  },
 });
