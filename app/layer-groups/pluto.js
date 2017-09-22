@@ -1,7 +1,7 @@
 export default {
   id: 'pluto',
   title: 'PLUTO (Tax Lots)',
-  sql: 'SELECT the_geom_webmercator, bbl, landuse, address FROM support_mappluto',
+  sql: ['SELECT the_geom_webmercator, bbl, landuse, address FROM support_mappluto'],
   minzoom: 12,
   type: 'carto',
   layers: [
@@ -34,6 +34,8 @@ export default {
           'fill-opacity': 0.2,
         },
       },
+      highlightable: true,
+      tooltipTemplate: '{{address}}',
     },
     {
       layer: {

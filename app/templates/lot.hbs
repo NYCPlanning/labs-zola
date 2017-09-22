@@ -18,13 +18,13 @@
     <div class="data-cell"><label class="data-label">Lot</label><span class="datum">{{model.lot}}</span></div>
     <div class="data-cell"><label class="data-label">Community District</label><span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{model.cdURLSegment}}" target="_blank">{{fa-icon "external-link"}} {{model.cdName}}</a></span></div>
     <div class="data-cell"><label class="data-label">Police Precinct</label><span class="datum">{{model.policeprct}}</span></div>
-
     <div class="data-cell"><label class="data-label">Owner Type</label><span class="datum">{{if model.ownertypename model.ownertypename 'Unknown/Private'}}</span></div>
     <div class="data-cell"><label class="data-label">Owner</label><span class="datum">{{model.ownername}}</span></div>
     <div class="data-cell"><label class="data-label">Lot Area</label><span class="datum">{{if model.lotarea (concat (numeral-format model.lotarea '0,0') ' sq ft') ''}}</span></div>
     <div class="data-cell"><label class="data-label">Lot Frontage</label><span class="datum">{{if model.lotfront (concat model.lotfront ' ft') ''}}</span></div>
     <div class="data-cell"><label class="data-label">Year Built</label><span class="datum">{{model.yearbuilt}}</span></div>
     <div class="data-cell"><label class="data-label">Number of Buildings</label><span class="datum">{{model.numbldgs}}</span></div>
+    <div class="data-cell"><label class="data-label">Building Info {{info-tooltip tip="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"}}</label><span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.borocode}}&allblock={{model.block}}&alllot={{model.lot}}&go5=+GO+&requestid=0">{{fa-icon 'external-link'}} BISWEB </a></span></div>
     <div class="data-cell"><label class="data-label">Number of Floors</label><span class="datum">{{model.numfloors}}</span></div>
     <div class="data-cell"><label class="data-label">Gross Floor Area</label><span class="datum">{{if model.bldgarea (concat (numeral-format model.bldgarea '0,0') ' sq ft') ''}}</span></div>
     <div class="data-cell"><label class="data-label">Residential Units</label><span class="datum">{{model.unitsres}}</span></div>
@@ -37,6 +37,33 @@
     {{#if model.zonedist4}}<div class="data-cell"><label class="data-label">Zoning District 4:</label><span class="datum">{{model.zonedist4}}</span></div>{{/if}}
     <div class="data-cell"><label class="data-label">Zoning Map</label><span class="datum"><a href="#">[link]</a></span></div>
     <div class="data-cell"><label class="data-label">Historical Zoning Maps</label><span class="datum"><a href="#">[link]</a></span></div>
+
+    <form id="acris_form" class="data-cell" target="_blank" action="https://a836-acris.nyc.gov/DS/DocumentSearch/BBLResult"
+     method="POST">
+      <input type="hidden" name="hid_SearchType" value="BBL" />
+      <input type="hidden" name="hid_borough" value="{{model.borocode}}" />
+      <input type="hidden" name="hid_block" value="{{model.block}}" />
+      <input type="hidden" name="hid_block_value" value="{{model.block}}" />
+      <input type="hidden" name="hid_lot" value="{{model.lot}}" />
+      <input type="hidden" name="hid_lot_value" value="{{model.lot}}" />
+      <input type="hidden" name="hid_unit" value="" />
+      <input type="hidden" name="hid_selectdate" value="To Current Date" />
+      <input type="hidden" name="hid_datefromm" value="" />
+      <input type="hidden" name="hid_datefromd" value="" />
+      <input type="hidden" name="hid_datefromy" value="" />
+      <input type="hidden" name="hid_datetom" value="" />
+      <input type="hidden" name="hid_datetom" value="" />
+      <input type="hidden" name="hid_datetom" value="" />
+      <input type="hidden" name="hid_doctype" value="All Document Classes" />
+      <input type="hidden" name="hid_doctype_name" value="All Document Classes" />
+      <input type="hidden" name="hid_max_rows" value="10" />
+      <input type="hidden" name="hid_page" value="1" />
+      <input type="hidden" name="hid_ReqID" value="" />
+      <input type="hidden" name="hid_ISIntranet" value="N" />
+      <input type="hidden" name="hid_sort" value="" />
+      <label class="data-label">Property Records</label>
+      <span class="datum"><a href="javascript:{}" onclick="document.getElementById('acris_form').submit(); return false;">{{fa-icon "external-link"}} View ACRIS </a></span>
+    </form>
   </div>
 
   <hr>

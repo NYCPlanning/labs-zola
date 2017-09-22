@@ -12,6 +12,7 @@ const { service } = Ember.inject;
 
 export default Ember.Component.extend({
   mainMap: service(),
+  mapMouseover: service(),
 
   classNames: ['map-container'],
 
@@ -78,33 +79,14 @@ export default Ember.Component.extend({
     },
 
     handleMouseover(e) {
-      const map = e.target;
-
-      const layers = ['pluto-fill', 'zma-fill'].filter(layer => map.getLayer(layer));
-
-      const features = map.queryRenderedFeatures(e.point, { layers });
-
-      if (features.length > 0) {
-        const { bbl } = features[0].properties;
-
-        map.getCanvas().style.cursor = 'pointer';
-
-        const prevFeatures = this.get('highlightedLotFeatures');
-
-        if (prevFeatures.length < 1 || prevFeatures[0].properties.bbl !== bbl) {
-          this.set('highlightedLotFeatures', features);
-        }
-      } else {
-        map.getCanvas().style.cursor = '';
-
-        this.set('highlightedLotFeatures', []);
-        this.set('mouseoverLocation', null);
-      }
+      const mapMouseover = this.get('mapMouseover');
+      mapMouseover.highlighter(e);
     },
 
     handleMouseleave() {
-      this.set('highlightedLotFeatures', []);
-      this.set('mouseoverLocation', null);
+      const mapMouseover = this.get('mapMouseover');
+      mapMouseover.set('highlightedLotFeatures', []);
+      mapMouseover.set('currentEvent', null);
     },
     mapLoading(data) {
       const localConfig = this.get('mapConfig');

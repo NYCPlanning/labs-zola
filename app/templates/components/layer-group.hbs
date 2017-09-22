@@ -10,12 +10,6 @@
   {{/map.source}}
 {{/if}}
 
-{{layer-menu-item
-  title=config.title
-  config=group
-  visible=visible
-  click=(action 'toggleVisibility')}}
-
 {{yield 
   (hash 
     timeline-control=
@@ -32,6 +26,12 @@
           visible=visible
         )
         qps=qps
+      )
+    tooltip=
+      (component 'layer-tooltip' layer=
+        (hash
+          visible=visible
+        )
       )
     visible=visible
     updateSql=(action 'updateSql')

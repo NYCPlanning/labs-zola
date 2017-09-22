@@ -1,9 +1,8 @@
 import Ember from 'ember';
-import { ParentMixin, ChildMixin } from 'ember-composability-tools';
-// import QueryParamMap from '../mixins/query-param-map';
+import { ParentMixin } from 'ember-composability-tools';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
-export default Ember.Component.extend(ParentMixin, ChildMixin, {
+export default Ember.Component.extend(ParentMixin, {
   @computed('childComponents.@each.selected')
   allChecked() {
     return this.get('childComponents')

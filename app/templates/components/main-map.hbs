@@ -13,141 +13,105 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
-  {{#ember-wormhole to=menuTo}}
+      {{map.layer-group config=layerGroups.zd visible=qps.zd}}
 
-    {{#layer-palette-accordion
-      closed=false
-      title='Zoning and Land Use'
-    }}
-      {{#map.layer-group config=layerGroups.zd qps=qps as |group|}}
-        {{#if group.visible}}
-          {{#group.multi-select-control
-            column='primaryzone' as |multiSelect|}}
-            {{#power-select-multiple
-              options=(await
-                  (get-unique-options-for 'primaryzone' layerGroups.zd.sql)
-                )
-              selected=multiSelect.allChecked
-              placeholder="Select Zones"
-              onchange=(queue
-                  (action group.updateSql 'buildMultiSelectSQL' 'primaryzone')
-                  (action (mut multiSelect.allChecked))
-                )
-              as |name|
-            }}
-              {{name}}
-            {{/power-select-multiple}}
-          {{/group.multi-select-control}}
-        {{/if}}
-      {{/map.layer-group}}
+      {{map.layer-group config=layerGroups.pluto visible=qps.pluto}}
 
-      {{map.layer-group config=layerGroups.pluto qps=qps}}
-
-      {{#map.layer-group config=layerGroups.co qps=qps as |group|}}
-        {{#if group.visible}}
+      {{#map.layer-group config=layerGroups.co visible=qps.co as |group|}}
+       {{!--  {{#if group.visible}}
           {{#group.multi-select-control
             column='overlay' as |multiSelect|}}
-              <ul>
+              <ul class="layer-menu-item-controls">
                 <li>
+                  <label>
                   {{group-checkbox
                     refs=(array 'c14' 'c24' 'c22' 'c13' 'c23')
                     values=(array c14 c24 c22 c13 c23)
-                    scope=this}}
-                </li>
-                <li>
-                  {{multiSelect.checkbox
-                      value='C1-4'
-                      checked=c14}} C1-4
-                </li>
-                <li>
-                  {{multiSelect.checkbox
-                      value='C2-4'
-                      checked=c24}} C2-4
-                </li>
-                <li>
-                  {{multiSelect.checkbox
-                      value='C2-2'
-                      checked=c22}} C2-2
-                </li>
-                <li>
-                  {{multiSelect.checkbox
-                      value='C1-3'
-                      checked=c13}} C1-3
-                </li>
-                <li>
-                  {{multiSelect.checkbox
-                      value='C2-3'
-                      checked=c23}} C2-3
+                    scope=this}} Select All
+                  </label>
+                  <ul class="nested">
+                    <li>
+                      <label>
+                      {{multiSelect.checkbox
+                          value='C1-4'
+                          checked=c14}} C1-4
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                      {{multiSelect.checkbox
+                          value='C2-4'
+                          checked=c24}} C2-4
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                      {{multiSelect.checkbox
+                          value='C2-2'
+                          checked=c22}} C2-2
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                      {{multiSelect.checkbox
+                          value='C1-3'
+                          checked=c13}} C1-3
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                      {{multiSelect.checkbox
+                          value='C2-3'
+                          checked=c23}} C2-3
+                      </label>
+                    </li>
+                  </ul>
                 </li>
               </ul>
           {{/group.multi-select-control}}
-        {{/if}}
+        {{/if}} --}}
       {{/map.layer-group}}
 
-      {{#map.layer-group config=layerGroups.zma qps=qps as |group|}}
-        {{#if group.visible}}
+      {{#map.layer-group config=layerGroups.zma visible=qps.zma as |group|}}
+{{!--         {{#if group.visible}}
           {{group.timeline-control
               column='effective'
               query-param='zma-effective'}}
-        {{/if}}
+        {{/if}} --}}
       {{/map.layer-group}}
 
-    {{/layer-palette-accordion}}
+      {{map.layer-group config=layerGroups.zmacert}}
 
-    {{#layer-palette-accordion
-      closed=true
-      title='Supporting Zoning Layers'
-    }}
-      {{map.layer-group tagName='li' config=layerGroups.sp qps=qps}}
+      {{map.layer-group config=layerGroups.sp visible=qps.sp}}
 
-      {{map.layer-group tagName='li' config=layerGroups.spsd qps=qps}}
+      {{map.layer-group config=layerGroups.spsd visible=qps.spsd}}
 
-      {{map.layer-group tagName='li' config=layerGroups.mih qps=qps}}
+      {{map.layer-group config=layerGroups.mih visible=qps.mih}}
 
-      {{map.layer-group tagName='li' config=layerGroups.ih qps=qps}}
+      {{map.layer-group config=layerGroups.ih visible=qps.ih}}
 
-      {{map.layer-group tagName='li' config=layerGroups.tz qps=qps}}
+      {{map.layer-group config=layerGroups.tz visible=qps.tz}}
 
-      {{map.layer-group tagName='li' config=layerGroups.fresh qps=qps}}
+      {{map.layer-group config=layerGroups.fresh visible=qps.fresh}}
 
-      {{map.layer-group tagName='li' config=layerGroups.sidewalkcafes qps=qps}}
+      {{map.layer-group config=layerGroups.sidewalkcafes visible=qps.sidewalkcafes}}
 
-      {{map.layer-group tagName='li' config=layerGroups.ldgma qps=qps}}
+      {{map.layer-group config=layerGroups.ldgma visible=qps.ldgma}}
 
-      {{map.layer-group tagName='li' config=layerGroups.czb qps=qps}}
+      {{map.layer-group config=layerGroups.czb visible=qps.czb}}
 
-      {{map.layer-group tagName='li' config=layerGroups.wap qps=qps}}
+      {{map.layer-group config=layerGroups.wap visible=qps.wap}}
 
-    {{/layer-palette-accordion}}
+      {{map.layer-group config=layerGroups.sceniclandmarks visible=qps.sceniclandmarks}}
 
-    {{#layer-palette-accordion
-      closed=true
-      title='Landmark & Historic'
-    }}
-      {{map.layer-group tagName='li' config=layerGroups.sceniclandmarks qps=qps}}
+      {{map.layer-group config=layerGroups.historicdistricts visible=qps.historicdistricts}}
 
-      {{map.layer-group tagName='li' config=layerGroups.historicdistricts qps=qps}}
+      {{map.layer-group config=layerGroups.landmarkpoints visible=qps.landmarkpoints}}
 
-      {{map.layer-group tagName='li' config=layerGroups.landmarkpoints qps=qps}}
+      {{map.layer-group config=layerGroups.subway visible=qps.subway}}
 
-    {{/layer-palette-accordion}}
-
-    {{#layer-palette-accordion
-      closed=true
-      title='Transportation'
-    }}
-      {{map.layer-group tagName='li' config=layerGroups.subway qps=qps}}
-    {{/layer-palette-accordion}}
-
-    {{#layer-palette-accordion
-      closed=true
-      title='Basemaps'
-    }}
-      {{map.layer-group config=layerGroups.aerials16 qps=qps}}
-    {{/layer-palette-accordion}}
-
-  {{/ember-wormhole}}
-
+      {{map.layer-group config=layerGroups.aerials16 visible=qps.aerials16}}
+{{!-- 
   {{#if zmaSourcePromise.last.isSuccessful}}
     {{#map.source
       sourceId='zma'
@@ -156,17 +120,19 @@
         layer=zmaFillLayer
         before='waterway-label'}}
     {{/map.source}}
-  {{/if}}
+  {{/if}} --}}
 
-  {{#if highlightedLotFeatures}}
+  {{#if mapMouseover.highlightedLotFeatures}}
     {{#map.source
       sourceId='highlighted-lot'
-      options=highlightedLotSource as |source|}}
+      options=mapMouseover.highlightedLotSource as |source|}}
       {{source.layer
         layer=highlightedLotLayer
         before='waterway-label'}}
     {{/map.source}}
   {{/if}}
+
+  {{hover-tooltip}}
 
   {{#if mainMap.selected}}
     {{#map.source

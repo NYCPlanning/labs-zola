@@ -1,10 +1,15 @@
-<div class="switch tiny float-left">
-  <input class="switch-input" type="checkbox" name="exampleSwitch" checked={{visible}}>
-  <label class="switch-paddle" for="exampleSwitch">
-    <span class="show-for-sr">Toggle Layer Group</span>
-  </label>
-</div>
+{{#if layer}}
+  <div class="layer-menu-item" {{action 'toggleVisibility'}}>
+    <div class="switch tiny float-left">
+      <input class="switch-input" type="checkbox" name="exampleSwitch" checked={{visible}}>
+      <label class="switch-paddle" for="exampleSwitch">
+        <span class="show-for-sr">Toggle Layer Group</span>
+      </label>
+    </div>
+    {{title}}
+  </div>
 
-{{title}}
-
-{{yield}}
+  {{yield (hash
+    layer=layer
+    )}}
+{{/if}}
