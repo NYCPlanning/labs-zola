@@ -30,6 +30,9 @@
     {{/layer-menu-item}}
 
     {{#layer-menu-item for='pluto' as |item|}}
+      {{#if (lt mainMap.currentZoom item.layer.minzoom)}}
+        {{info-tooltip iconName='warning' tip='Zoom in more to see'}}
+      {{/if}}
       {{#if item.layer.visible}}
         <div class="layer-menu-item"
           onclick={{queue
@@ -107,8 +110,7 @@
     {{#layer-menu-item for='zma' as |item|}}
       {{#if item.layer.visible}}
         {{item.range-slider
-            column='effective'
-            query-param='zma-effective'}}
+            column='effective'}}
       {{/if}}
     {{/layer-menu-item}}
 

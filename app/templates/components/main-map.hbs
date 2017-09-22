@@ -21,7 +21,7 @@
 
   {{map.layer-group config=layerGroups.zma visible=qps.zma}}
 
-  {{map.layer-group config=layerGroups.zmacert}}
+  {{map.layer-group config=layerGroups.zmacert visible=qps.zmacert}}
 
   {{map.layer-group config=layerGroups.sp visible=qps.sp}}
 
@@ -93,6 +93,7 @@
   {{map.call 'fitBounds' mainMap.bounds fitBoundsOptions}}
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
+  {{map.on 'zoomend' (action 'handleZoomend')}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
 

@@ -25,5 +25,9 @@ export default Ember.Route.extend({
         }, 1000);
       }
     },
+    willTransition() {
+      const application = this.controllerFor('application');
+      application.resetQueryParams();
+    },
   },
 });

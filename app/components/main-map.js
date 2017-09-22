@@ -96,6 +96,12 @@ export default Ember.Component.extend({
       mapMouseover.set('highlightedLotFeatures', []);
       mapMouseover.set('currentEvent', null);
     },
+
+    handleZoomend(event) {
+      const mainMap = this.get('mainMap');
+      mainMap.set('currentZoom', event.target.getZoom());
+    },
+
     mapLoading(data) {
       const localConfig = this.get('mapConfig');
       const sourceIds = localConfig.mapBy('id');
