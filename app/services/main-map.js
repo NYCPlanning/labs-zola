@@ -5,7 +5,7 @@ const { computed } = Ember;
 
 export default Ember.Service.extend({
   mapInstance: null,
-  
+
   // currently selected lot, usually a Lot model
   selected: null,
   bounds: computed('selected', function() {
