@@ -4,8 +4,12 @@ import bbox from 'npm:@turf/bbox';
 
 export default DS.Model.extend({
   geometry: DS.attr(),
-  zonedist: DS.attr('string'),
 
+  @computed('id')
+  primaryzone(id) {
+    const primary = id.match(/\w\d*/)[0].toLowerCase();
+    return primary;
+  },
 
   @computed('geometry')
   bounds(geometry) {

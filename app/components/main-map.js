@@ -34,12 +34,13 @@ export default Ember.Component.extend({
 
   @computed('mainMap.selected')
   fitBoundsOptions(selected) {
+    const type = selected._internalModel.modelName;
     const el = this.$();
     const height = el.height();
     const width = el.width();
 
     const padding = Math.min(height, width) / 2.5;
-    return { padding: selected ? padding : 0 };
+    return { padding: selected && (type !== 'zoning-district') ? padding : 0 };
   },
 
   highlightedLotFeatures: [],
