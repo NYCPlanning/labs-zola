@@ -3,6 +3,8 @@
   <button class="close-button" aria-label="Clear Search" type="button" {{action 'clear'}}>
     <span aria-hidden="true">&times;</span>
   </button>
+{{else}}
+  <span class="search-icon">{{fa-icon "search"}}</span>
 {{/if}}
 
 
