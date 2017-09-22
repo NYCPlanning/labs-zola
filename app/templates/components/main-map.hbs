@@ -70,8 +70,11 @@
       sourceId='selected-lot'
       options=selectedLotSource as |source|}}
       {{source.layer
-        layer=selectedLotLayer
-        after='waterway-label'}}
+        layer=selectedFillLayer
+        before='waterway-label'}}
+        {{source.layer
+          layer=selectedLineLayer
+          before='waterway-label'}}
     {{/map.source}}
   {{/if}}
 
