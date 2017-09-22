@@ -9,6 +9,8 @@ export default Ember.Service.extend({
 
   currentEvent: null,
 
+  tooltipTemplate: '',
+
   @computed('currentEvent')
   mousePosition(event) {
     if (event) {
@@ -63,26 +65,29 @@ export default Ember.Service.extend({
 
   highlighter(e) {
     const map = e.target;
+    this.set('currentEvent', e);
 
-    const layers = ['pluto-fill', 'zma-fill'].filter(layer => map.getLayer(layer));
+    // of all registered layers, we only want to query the ones
+    // that exist on the map AND are highlightable
 
+    const layers = this.get('registeredLayers.highlightableAndVisibleLayerIds');
     const features = map.queryRenderedFeatures(e.point, { layers });
 
-    if (features.length > 0) {
-      const { bbl } = features[0].properties;
 
+    if (features.length > 0) {
       map.getCanvas().style.cursor = 'pointer';
 
-      const prevFeatures = this.get('highlightedLotFeatures');
 
-      if (prevFeatures.length < 1 || prevFeatures[0].properties.bbl !== bbl) {
-        this.set('highlightedLotFeatures', features);
-      }
+      const thisFeature = features[0];
+      const prevFeature = this.get('highlightedLotFeatures')[0];
+      if (!prevFeature || thisFeature.id !== prevFeature.id) this.set('highlightedLotFeatures', [thisFeature]);
+
+
+      this.set('tooltipTemplate', this.get('registeredLayers').getTooltipTemplate(thisFeature.layer.id));
     } else {
       map.getCanvas().style.cursor = '';
 
       this.set('highlightedLotFeatures', []);
-      this.set('mouseoverLocation', null);
     }
   },
 });

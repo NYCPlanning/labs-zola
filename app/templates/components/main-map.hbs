@@ -183,11 +183,7 @@
     {{/map.source}}
   {{/if}}
 
-  {{#hover-tooltip as |tooltip|}}
-    {{#if (eq tooltip.layer 'pluto-fill')}}
-      {{tooltip.layer}}: {{tooltip.feature.properties.bbl}}
-    {{/if}}
-  {{/hover-tooltip}}
+  {{hover-tooltip}}
 
   {{#if mainMap.selected}}
     {{#map.source
