@@ -97,6 +97,32 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
   }
 }
 
+.layer-warning {
+  float: right;
+  margin: 0 0 0 $layer-palette-padding;
+  position: relative;
+
+  .fa {
+    color: $dcp-yellow;
+  }
+
+  .layer-warning--text {
+    display: none;
+  }
+
+  &:hover .layer-warning--text {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: 50%;
+    background-color: $white;
+    padding: $layer-palette-padding;
+    border: 1px solid $dcp-yellow;
+    white-space: nowrap;
+  }
+}
+
 // TODO: There are flex clases built into Foundation for this purpose.
 .flex-reverse {
   display: flex;

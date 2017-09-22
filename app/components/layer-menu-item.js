@@ -7,6 +7,7 @@ const { alias } = Ember.computed;
 
 export default Ember.Component.extend(ParentMixin, {
   registeredLayers: service(),
+  mainMap: service(),
   visible: alias('layer.visible'),
   tagName: 'li',
 
