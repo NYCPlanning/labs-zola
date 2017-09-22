@@ -1,6 +1,10 @@
 {{#if layer}}
   <div class="layer-menu-item" {{action 'toggleVisibility'}}>
-    {{switch-toggle checked=visible}} 
+    <span class="layer-warning">
+      {{fa-icon 'exclamation-triangle'}}
+      <span class="layer-warning--text">Oops! Something broke.</span>
+    </span>
+    {{switch-toggle checked=visible}}
     {{title}}
   </div>
   {{yield (hash
