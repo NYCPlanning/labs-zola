@@ -119,7 +119,7 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
     background-color: $white;
     padding: $layer-palette-padding;
     border: 1px solid $dcp-yellow;
-    white-space: nowrap;
+    font-size: $small-font-size;
   }
 }
 
