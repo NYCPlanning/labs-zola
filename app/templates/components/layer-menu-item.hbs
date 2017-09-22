@@ -8,8 +8,10 @@
     </div>
     {{title}}
   </div>
-
   {{yield (hash
     layer=layer
+    updateSql=(action 'updateSql')
+    multi-select=(component 'layer-multi-select-control' parentComponent=this.layer)
+    range-slider=(component 'layer-control-timeline' parentComponent=this.layer)
     )}}
 {{/if}}
