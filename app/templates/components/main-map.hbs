@@ -13,35 +13,13 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
-  {{#ember-wormhole to=menuTo}}
+  {{!-- {{#ember-wormhole to=menuTo}} --}}
 
-    {{#layer-palette-accordion
-      closed=false
-      title='Zoning and Land Use'
-    }}
-      {{#map.layer-group tagName='li' config=layerGroups.zd visible=qps.zd as |group|}}
-        {{#if group.visible}}
-          {{#group.multi-select-control
-            column='primaryzone' as |multiSelect|}}
-            {{#power-select-multiple
-              options=(await
-                  (get-unique-options-for 'primaryzone' layerGroups.zd.sql)
-                )
-              selected=multiSelect.allChecked
-              placeholder="Select Zones"
-              onchange=(queue
-                  (action group.updateSql 'buildMultiSelectSQL' 'primaryzone')
-                  (action (mut multiSelect.allChecked))
-                )
-              as |name|
-            }}
-              {{name}}
-            {{/power-select-multiple}}
-          {{/group.multi-select-control}}
-        {{/if}}
-      {{/map.layer-group}}
 
-      {{map.layer-group tagName='li' config=layerGroups.pluto visible=qps.pluto}}
+      {{map.layer-group config=layerGroups.zd visible=qps.zd}}
+      {{map.layer-group config=layerGroups.co visible=qps.co}}
+
+{{!--       {{map.layer-group tagName='li' config=layerGroups.pluto visible=qps.pluto}}
 
       {{#map.layer-group tagName='li' config=layerGroups.co visible=qps.co as |group|}}
         {{#if group.visible}}
@@ -106,10 +84,9 @@
         {{/if}}
       {{/map.layer-group}}
 
-      {{map.layer-group tagName='li' config=layerGroups.zmacert}}
-    {{/layer-palette-accordion}}
+      {{map.layer-group tagName='li' config=layerGroups.zmacert}} --}}
 
-    {{#layer-palette-accordion
+{{!--     {{#layer-palette-accordion
       closed=true
       title='Supporting Zoning Layers'
     }}
@@ -159,9 +136,9 @@
       title='Basemaps'
     }}
       {{map.layer-group tagName='li' config=layerGroups.aerials16 visible=qps.aerials16}}
-    {{/layer-palette-accordion}}
+    {{/layer-palette-accordion}} --}}
 
-  {{/ember-wormhole}}
+  {{!-- {{/ember-wormhole}} --}}
 
   {{#if zmaSourcePromise.last.isSuccessful}}
     {{#map.source

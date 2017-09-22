@@ -19,6 +19,11 @@ export default Ember.Service.extend({
   },
 
   @computed('layers.@each')
+  layerGroupIds(layers) {
+    return layers.mapBy('config.id');
+  },
+
+  @computed('layers.@each')
   layerIds(layers) {
     return flattenedIds(layers);
   },
@@ -29,6 +34,6 @@ export default Ember.Service.extend({
   },
 
   findLayer(id) {
-    return this.get('layers').filterBy('config.id', id);
+    return this.get('layers').findBy('config.id', id);
   },
 });
