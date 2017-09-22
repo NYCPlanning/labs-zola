@@ -8,4 +8,16 @@ export default Ember.Route.extend({
   afterModel() {
     this.get('mainMap').resetBounds();
   },
+
+  actions: {
+    didTransition() {
+      const mapInstance = this.get('mainMap.mapInstance');
+      console.log(mapInstance);
+      if (mapInstance) {
+        Ember.run.later(() => {
+          mapInstance.resize();
+        }, 1000);
+      }
+    },
+  },
 });
