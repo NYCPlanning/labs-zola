@@ -31,14 +31,14 @@
 
     {{#layer-menu-item for='pluto' as |item|}}
       {{#if item.layer.visible}}
-        <div class="layer-menu-item" 
-          onclick={{queue 
-            (action 'toggleFill') 
-            (action item.updatePaintFor 
-              'pluto-fill' 
+        <div class="layer-menu-item"
+          onclick={{queue
+            (action 'toggleFill')
+            (action item.updatePaintFor
+              'pluto-fill'
               (if plutoFill (hash fill-opacity=0) (hash fill-opacity=0.2))
             )}}>
-          {{input type='checkbox' 
+          {{input type='checkbox'
             checked=plutoFill}}
           Toggle Land Use Colors
         </div>
@@ -157,6 +157,20 @@
     {{layer-menu-item
       for='subway'}}
   {{/layer-palette-accordion}}
+
+  {{#layer-palette-accordion
+    closed=true
+    title='Administrative Boundaries'}}
+    {{layer-menu-item
+      for='boroughs'}}
+    {{layer-menu-item
+      for='communitydistricts'}}
+    {{layer-menu-item
+      for='nyccouncildistricts'}}
+    {{layer-menu-item
+      for='nta'}}
+  {{/layer-palette-accordion}}
+
   {{#layer-palette-accordion
     closed=true
     title='Basemaps'}}

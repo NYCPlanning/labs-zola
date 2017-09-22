@@ -1,5 +1,7 @@
 import aerials16 from './aerials16';
+import boroughs from './boroughs';
 import co from './co';
+import communitydistricts from './communitydistricts';
 import czb from './czb';
 import facdb from './facdb';
 import fresh from './fresh';
@@ -8,6 +10,8 @@ import ih from './ih';
 import landmarkpoints from './landmarkpoints';
 import ldgma from './ldgma';
 import mih from './mih';
+import nta from './nta';
+import nyccouncildistricts from './nyccouncildistricts';
 import sidewalkcafes from './sidewalkcafes';
 import sp from './sp';
 import pluto from './pluto';
@@ -22,7 +26,9 @@ import zmacert from './zmacert';
 
 export default {
   aerials16,
+  boroughs,
   co,
+  communitydistricts,
   czb,
   facdb,
   fresh,
@@ -31,6 +37,8 @@ export default {
   landmarkpoints,
   ldgma,
   mih,
+  nta,
+  nyccouncildistricts,
   sidewalkcafes,
   sp,
   pluto,
