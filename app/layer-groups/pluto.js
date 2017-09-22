@@ -34,6 +34,8 @@ export default {
           'fill-opacity': 0.2,
         },
       },
+      highlightable: true,
+      tooltipTemplate: '{{address}}',
     },
     {
       layer: {

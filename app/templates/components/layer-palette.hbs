@@ -4,5 +4,120 @@
   <button {{action (mut closed) (not closed)}} class="close-button" aria-label="Close Map Layers" type="button"><span aria-hidden="true">&times;</span></button>
 {{/if}}
 <div id="layers-menu" class="{{if closed 'show-for-medium'}} hide-for-print">
+  {{#layer-palette-accordion
+    closed=false
+    title='Zoning and Land Use'}}
+
+    {{layer-menu-item
+      for='zd'}}
+
+    {{#layer-menu-item
+      for='co' 
+      as |item|}}
+      {{#if item.layer.visible}}
+        {{#layer-multi-select-control
+          column='overlay' 
+          parentComponent=item.layer
+          as |multiSelect|}}
+            <ul class="layer-menu-item-controls">
+              <li>
+                <label>
+                {{group-checkbox
+                  refs=(array 'c14' 'c24' 'c22' 'c13' 'c23')
+                  values=(array c14 c24 c22 c13 c23)
+                  scope=this}} Select All
+                </label>
+                <ul class="nested">
+                  <li>
+                    <label>
+                    {{multiSelect.checkbox
+                        value='C1-4'
+                        checked=c14}} C1-4
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                    {{multiSelect.checkbox
+                        value='C2-4'
+                        checked=c24}} C2-4
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                    {{multiSelect.checkbox
+                        value='C2-2'
+                        checked=c22}} C2-2
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                    {{multiSelect.checkbox
+                        value='C1-3'
+                        checked=c13}} C1-3
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                    {{multiSelect.checkbox
+                        value='C2-3'
+                        checked=c23}} C2-3
+                    </label>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+        {{/layer-multi-select-control}}
+      {{/if}}
+    {{/layer-menu-item}} 
+  {{/layer-palette-accordion}}
+
+  {{#layer-palette-accordion
+    closed=true
+    title='Supporting Zoning Layers'
+    as |item|}}
+    {{layer-menu-item
+      for='sp'}}
+    {{layer-menu-item
+      for='spsd'}}
+    {{layer-menu-item
+      for='mih'}}
+    {{layer-menu-item
+      for='ih'}}
+    {{layer-menu-item
+      for='tz'}}
+    {{layer-menu-item
+      for='fresh'}}
+    {{layer-menu-item
+      for='sidewalkcafes'}}
+    {{layer-menu-item
+      for='ldgma'}}
+    {{layer-menu-item
+      for='czb'}}
+    {{layer-menu-item
+      for='wap'}}
+  {{/layer-palette-accordion}}
+  {{#layer-palette-accordion
+    closed=true
+    title='Landmark & Historic'}}
+    {{layer-menu-item
+      for='sceniclandmarks'}}
+    {{layer-menu-item
+      for='historicdistricts'}}
+    {{layer-menu-item
+      for='landmarkpoints'}}
+  {{/layer-palette-accordion}}
+  {{#layer-palette-accordion
+    closed=true
+    title='Transportation'
+  }}
+    {{layer-menu-item
+      for='subway'}}
+  {{/layer-palette-accordion}}
+  {{#layer-palette-accordion
+    closed=true
+    title='Basemaps'}}
+    {{layer-menu-item
+      for='aerials16'}}
+  {{/layer-palette-accordion}}
 </div>
 {{yield}}
