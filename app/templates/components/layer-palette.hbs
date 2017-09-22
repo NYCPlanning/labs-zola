@@ -33,11 +33,11 @@
     {{layer-menu-item for='pluto'}}
 
     {{#layer-menu-item
-      for='co' 
+      for='co'
       as |item|}}
       {{#if item.layer.visible}}
         {{#layer-multi-select-control
-          column='overlay' 
+          column='overlay'
           parentComponent=item.layer
           as |multiSelect|}}
             <ul class="layer-menu-item-controls">
@@ -89,7 +89,7 @@
             </ul>
         {{/layer-multi-select-control}}
       {{/if}}
-    {{/layer-menu-item}} 
+    {{/layer-menu-item}}
 
     {{#layer-menu-item for='zma' as |item|}}
       {{#if item.layer.visible}}

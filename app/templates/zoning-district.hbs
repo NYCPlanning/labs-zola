@@ -1,0 +1,11 @@
+<div class="content-area cell large-5 large-cell-block-y xxlarge-4">
+  {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
+
+  <label class="header-type">ZONING DISTRICT</label>
+  <h1 class="header-large">{{model.id}}</h1>
+
+  <p>More Info About this Zoning type</p>
+  <a href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{model.primaryzone}}.page" target="_blank">Link</a>
+</div>
+
+{{outlet}}

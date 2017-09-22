@@ -6,7 +6,7 @@ export default {
   layers: [
     {
       layer: {
-        id: 'zd',
+        id: 'zd-fill',
         type: 'fill',
         source: 'zd',
         'source-layer': 'layer0',
@@ -43,7 +43,8 @@ export default {
           'fill-antialias': true,
         },
       },
-      before: 'waterway-label',
+      highlightable: true,
+      tooltipTemplate: '{{zonedist}}',
     },
     {
       layer: {
