@@ -1,8 +1,8 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:zoningdistrict', 'Unit | Route | zoningdistrict', {
+moduleFor('route:zoning-district', 'Unit | Route | zoning-district', {
   // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
+  needs: ['service:main-map']
 });
 
 test('it exists', function(assert) {
