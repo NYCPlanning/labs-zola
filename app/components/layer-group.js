@@ -34,7 +34,8 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
   @computed('config.layers')
   minzoom(layers) {
     const allZooms = layers.map(layer => layer.layer.minzoom).filter(zoom => !!zoom);
-    return Math.min(...allZooms);
+    if (allZooms.length) return Math.min(...allZooms);
+    return false;
   },
 
   @computed('config.layers.@each.id')
