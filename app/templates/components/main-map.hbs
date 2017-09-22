@@ -13,6 +13,8 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
+  {{map.layer-group config=layerGroups.aerials16 visible=qps.aerials16}}
+
   {{map.layer-group config=layerGroups.zd visible=qps.zd}}
 
   {{map.layer-group config=layerGroups.pluto visible=qps.pluto}}
@@ -62,8 +64,6 @@
   {{map.layer-group config=layerGroups.assemblydistricts visible=qps.assemblydistricts}}
 
   {{map.layer-group config=layerGroups.nta visible=qps.nta}}
-
-  {{map.layer-group config=layerGroups.aerials16 visible=qps.aerials16}}
 
   {{#if mapMouseover.highlightedLotFeatures}}
     {{#map.source
