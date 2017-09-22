@@ -28,6 +28,6 @@ export default Ember.Route.extend({
     willTransition() {
       const application = this.controllerFor('application');
       application.resetQueryParams();
-    }
+    },
   },
 });
