@@ -23,7 +23,7 @@ export default {
         id: 'nysenatedistricts-label',
         type: 'symbol',
         'source-layer': 'layer0',
-        minzoom: 12,
+        minzoom: 10,
         paint: paint.labels,
         layout: labelLayout('stsendist'),
       },

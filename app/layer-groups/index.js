@@ -1,4 +1,5 @@
 import aerials16 from './aerials16';
+import assemblydistricts from './assemblydistricts';
 import boroughs from './boroughs';
 import co from './co';
 import communitydistricts from './communitydistricts';
@@ -11,6 +12,7 @@ import landmarkpoints from './landmarkpoints';
 import ldgma from './ldgma';
 import mih from './mih';
 import nta from './nta';
+import nysenatedistricts from './nysenatedistricts';
 import nyccouncildistricts from './nyccouncildistricts';
 import sidewalkcafes from './sidewalkcafes';
 import sp from './sp';
@@ -26,6 +28,7 @@ import zmacert from './zmacert';
 
 export default {
   aerials16,
+  assemblydistricts,
   boroughs,
   co,
   communitydistricts,
@@ -38,6 +41,7 @@ export default {
   ldgma,
   mih,
   nta,
+  nysenatedistricts,
   nyccouncildistricts,
   sidewalkcafes,
   sp,
