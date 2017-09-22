@@ -81,6 +81,7 @@
   {{map.call 'fitBounds' mainMap.bounds fitBoundsOptions}}
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
+  {{map.on 'zoomend' (action 'handleZoomend')}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
 

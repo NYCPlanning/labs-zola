@@ -13,8 +13,7 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
   init(...args) {
     this._super(...args);
 
-    const { config } =
-      this.getProperties('config', 'mapMouseover', 'tooltip');
+    const config = this.get('config');
     const { sql } = config;
 
     if (this.get('childComponents.length') > 1) {
@@ -31,6 +30,12 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
   config: {},
   sql: '',
   visible: false,
+
+  @computed('config.layers')
+  minzoom(layers) {
+    const allZooms = layers.map(layer => layer.layer.minzoom).filter(zoom => !!zoom);
+    return Math.min(...allZooms);
+  },
 
   @computed('config.layers.@each.id')
   layerIds(layers) {
