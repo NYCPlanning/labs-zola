@@ -17,19 +17,19 @@ const queryParams = Object.keys(layerGroups)
     {},
   );
 
-const defaultMax = new Date();
-const defaultStart = [1032370151000, defaultMax.getTime()];
+// const defaultMax = new Date();
+// const defaultStart = [1032370151000, defaultMax.getTime()];
 
 // define new query params here:
-queryParams['zma-effective'] = {
-  defaultValue: defaultStart,
-  serialize([min, max]) {
-    return [min, max].map(val => parseInt(val, 10));
-  },
-  deserialize([min, max]) {
-    return [min, max].map(val => parseInt(val, 10));
-  },
-};
+// queryParams['zma-effective'] = {
+//   defaultValue: defaultStart,
+//   serialize([min, max]) {
+//     return [min, max].map(val => parseInt(val, 10));
+//   },
+//   deserialize([min, max]) {
+//     return [min, max].map(val => parseInt(val, 10));
+//   },
+// };
 
 export const mapQueryParams =
   new QueryParams(

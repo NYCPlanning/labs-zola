@@ -28,5 +28,9 @@ export default Ember.Component.extend(ParentMixin, {
       const layer = this.get('layer');
       layer.send('updateSql', method, column, value);
     },
+    updatePaintFor(id, paintObject) {
+      const layer = this.get('layer');
+      layer.send('updatePaintFor', id, paintObject);
+    },
   },
 });

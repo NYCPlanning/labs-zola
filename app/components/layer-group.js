@@ -30,7 +30,6 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
   qps: null,
   config: {},
   sql: '',
-  paintObject: {},
   visible: false,
 
   @computed('config.layers.@each.id')
@@ -125,8 +124,8 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
       const targetLayerIndex = layers.findIndex(el => el.layer.id === layerId);
       const targetLayer = layers.objectAt(targetLayerIndex);
       const copyTargetLayer = copy(targetLayer, true);
-      const formattedLayer = merge(copyTargetLayer.layer, { paint: newPaintStyle });
-      set(targetLayer, 'layer', formattedLayer);
+      copyTargetLayer.layer.paint = merge(copyTargetLayer.layer.paint, newPaintStyle);
+      set(targetLayer, 'layer', copyTargetLayer.layer);
     },
   },
 });
