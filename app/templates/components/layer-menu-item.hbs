@@ -3,7 +3,7 @@
     {{#if (and layer.minzoom (lt mainMap.currentZoom layer.minzoom))}}
       <span class="layer-warning">
         {{fa-icon 'exclamation-triangle'}}
-        <span class="layer-warning--text">Some nformation may not visible at this zoom level.</span>
+        <span class="layer-warning--text">Some information may not visible at this zoom level.</span>
       </span>
     {{/if}}
     {{switch-toggle checked=visible}}
