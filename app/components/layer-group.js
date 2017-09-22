@@ -26,7 +26,7 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     });
   },
 
-  tagName: 'span',
+  tagName: '',
   qps: null,
   config: {},
   sql: '',
