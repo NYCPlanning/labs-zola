@@ -7,88 +7,117 @@
   {{#layer-palette-accordion
     closed=false
     title='Zoning and Land Use'}}
-    {{#layer-menu-item
-      for='zd' 
-      as |item|}}
-      {{item.title}}
-    {{/layer-menu-item}}
+
+    {{layer-menu-item
+      for='zd'}}
 
     {{#layer-menu-item
       for='co' 
       as |item|}}
-
-      {{#layer-multi-select-control
-        column='overlay' 
-        parentComponent=item.layer
-        as |multiSelect|}}
-          <ul class="layer-menu-item-controls">
-            <li>
-              <label>
-              {{group-checkbox
-                refs=(array 'c14' 'c24' 'c22' 'c13' 'c23')
-                values=(array c14 c24 c22 c13 c23)
-                scope=this}} Select All
-              </label>
-              <ul class="nested">
-                <li>
-                  <label>
-                  {{multiSelect.checkbox
-                      value='C1-4'
-                      checked=c14}} C1-4
-                  </label>
-                </li>
-                <li>
-                  <label>
-                  {{multiSelect.checkbox
-                      value='C2-4'
-                      checked=c24}} C2-4
-                  </label>
-                </li>
-                <li>
-                  <label>
-                  {{multiSelect.checkbox
-                      value='C2-2'
-                      checked=c22}} C2-2
-                  </label>
-                </li>
-                <li>
-                  <label>
-                  {{multiSelect.checkbox
-                      value='C1-3'
-                      checked=c13}} C1-3
-                  </label>
-                </li>
-                <li>
-                  <label>
-                  {{multiSelect.checkbox
-                      value='C2-3'
-                      checked=c23}} C2-3
-                  </label>
-                </li>
-              </ul>
-            </li>
-          </ul>
-      {{/layer-multi-select-control}}
+      {{#if item.layer.visible}}
+        {{#layer-multi-select-control
+          column='overlay' 
+          parentComponent=item.layer
+          as |multiSelect|}}
+            <ul class="layer-menu-item-controls">
+              <li>
+                <label>
+                {{group-checkbox
+                  refs=(array 'c14' 'c24' 'c22' 'c13' 'c23')
+                  values=(array c14 c24 c22 c13 c23)
+                  scope=this}} Select All
+                </label>
+                <ul class="nested">
+                  <li>
+                    <label>
+                    {{multiSelect.checkbox
+                        value='C1-4'
+                        checked=c14}} C1-4
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                    {{multiSelect.checkbox
+                        value='C2-4'
+                        checked=c24}} C2-4
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                    {{multiSelect.checkbox
+                        value='C2-2'
+                        checked=c22}} C2-2
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                    {{multiSelect.checkbox
+                        value='C1-3'
+                        checked=c13}} C1-3
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                    {{multiSelect.checkbox
+                        value='C2-3'
+                        checked=c23}} C2-3
+                    </label>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+        {{/layer-multi-select-control}}
+      {{/if}}
     {{/layer-menu-item}} 
   {{/layer-palette-accordion}}
-{{!--   {{#if group.visible}}
-    {{#group.multi-select-control
-      column='primaryzone' as |multiSelect|}}
-      {{#power-select-multiple
-        options=(await
-            (get-unique-options-for 'primaryzone' layerGroups.zd.sql)
-          )
-        selected=multiSelect.allChecked
-        placeholder="Select Zones"
-        onchange=(queue
-            (action group.updateSql 'buildMultiSelectSQL' 'primaryzone')
-            (action (mut multiSelect.allChecked))
-          )
-        as |name|
-      }}
-        {{name}}
-      {{/power-select-multiple}}
-    {{/group.multi-select-control}}
-  {{/if}} --}}
+
+  {{#layer-palette-accordion
+    closed=true
+    title='Supporting Zoning Layers'
+    as |item|}}
+    {{layer-menu-item
+      for='sp'}}
+    {{layer-menu-item
+      for='spsd'}}
+    {{layer-menu-item
+      for='mih'}}
+    {{layer-menu-item
+      for='ih'}}
+    {{layer-menu-item
+      for='tz'}}
+    {{layer-menu-item
+      for='fresh'}}
+    {{layer-menu-item
+      for='sidewalkcafes'}}
+    {{layer-menu-item
+      for='ldgma'}}
+    {{layer-menu-item
+      for='czb'}}
+    {{layer-menu-item
+      for='wap'}}
+  {{/layer-palette-accordion}}
+  {{#layer-palette-accordion
+    closed=true
+    title='Landmark & Historic'}}
+    {{layer-menu-item
+      for='sceniclandmarks'}}
+    {{layer-menu-item
+      for='historicdistricts'}}
+    {{layer-menu-item
+      for='landmarkpoints'}}
+  {{/layer-palette-accordion}}
+  {{#layer-palette-accordion
+    closed=true
+    title='Transportation'
+  }}
+    {{layer-menu-item
+      for='subway'}}
+  {{/layer-palette-accordion}}
+  {{#layer-palette-accordion
+    closed=true
+    title='Basemaps'}}
+    {{layer-menu-item
+      for='aerials16'}}
+  {{/layer-palette-accordion}}
 </div>
 {{yield}}

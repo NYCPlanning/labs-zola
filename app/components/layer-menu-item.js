@@ -7,9 +7,8 @@ const { alias } = Ember.computed;
 
 export default Ember.Component.extend(ParentMixin, {
   registeredLayers: service(),
-  classNames: ['layer-menu-item'],
   visible: alias('layer.visible'),
-  tagName: '',
+  tagName: 'li',
 
   @computed('for', 'registeredLayers.layers.@each')
   layer(layerId, layers) {
