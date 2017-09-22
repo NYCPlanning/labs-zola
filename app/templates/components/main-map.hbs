@@ -70,14 +70,18 @@
       sourceId='selected-lot'
       options=selectedLotSource as |source|}}
       {{source.layer
-        layer=selectedLotLayer
-        after='waterway-label'}}
+        layer=selectedFillLayer
+        before='waterway-label'}}
+        {{source.layer
+          layer=selectedLineLayer
+          before='waterway-label'}}
     {{/map.source}}
   {{/if}}
 
   {{map.call 'fitBounds' mainMap.bounds fitBoundsOptions}}
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
+  {{map.on 'zoomend' (action 'handleZoomend')}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
 

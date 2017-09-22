@@ -32,8 +32,6 @@
 
   @include breakpoint(large) {
     height: 100%;
-    padding-top: 3.375rem;
-    margin-top: -3.375rem;
     overflow: hidden;
   }
 }
@@ -46,11 +44,12 @@
 
   @include breakpoint(medium) {
     height: 100%;
-    width: calc(100% - 12rem);
+    width: calc(100% - 13rem);
   }
 
   @include breakpoint(large) {
     order: 2;
+    width: calc(100% - 15rem);
   }
 
   @include breakpoint(xlarge) {
@@ -58,6 +57,7 @@
   }
 }
 
+// .search-and-layers {
 .layer-palette {
   @include xy-cell-static(full,false,0);
   position: relative;
@@ -66,12 +66,14 @@
 
   @include breakpoint(medium) {
     @include xy-cell-block($vertical:true);
-    width: 12rem;
+    width: 13rem;
     box-shadow: -2px 0 0 rgba(0,0,0,0.1);
   }
 
   @include breakpoint(large) {
+    margin-top: 3.375rem;
     order: 1;
+    width: 15rem;
     box-shadow: 2px 0 0 rgba(0,0,0,0.1);
   }
 

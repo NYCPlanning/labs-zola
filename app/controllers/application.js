@@ -17,19 +17,19 @@ const queryParams = Object.keys(layerGroups)
     {},
   );
 
-const defaultMax = new Date();
-const defaultStart = [1032370151000, defaultMax.getTime()];
+// const defaultMax = new Date();
+// const defaultStart = [1032370151000, defaultMax.getTime()];
 
 // define new query params here:
-queryParams['zma-effective'] = {
-  defaultValue: defaultStart,
-  serialize([min, max]) {
-    return [min, max].map(val => parseInt(val, 10));
-  },
-  deserialize([min, max]) {
-    return [min, max].map(val => parseInt(val, 10));
-  },
-};
+// queryParams['zma-effective'] = {
+//   defaultValue: defaultStart,
+//   serialize([min, max]) {
+//     return [min, max].map(val => parseInt(val, 10));
+//   },
+//   deserialize([min, max]) {
+//     return [min, max].map(val => parseInt(val, 10));
+//   },
+// };
 
 export const mapQueryParams =
   new QueryParams(
@@ -61,9 +61,9 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
     routeToLot(e) {
       const map = e.target;
       // only query layers that are available in the map
-      const layers = ['pluto-fill', 'zma-fill'].filter(layer => map.getLayer(layer));
+      const layers = ['pluto-fill', 'zma-fill', 'zd-fill'].filter(layer => map.getLayer(layer));
       const feature = map.queryRenderedFeatures(e.point, { layers })[0];
-      const { bbl, ulurpno } = feature.properties;
+      const { bbl, ulurpno, zonedist } = feature.properties;
 
       if (bbl) {
         const { boro, block, lot } = bblDemux(bbl);
@@ -72,6 +72,10 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
 
       if (ulurpno) {
         this.transitionToRoute('zma', ulurpno);
+      }
+
+      if (zonedist) {
+        this.transitionToRoute('zoning-district', zonedist);
       }
     },
     setQueryParam(property, value) {

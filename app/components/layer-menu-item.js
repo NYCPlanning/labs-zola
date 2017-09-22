@@ -7,6 +7,7 @@ const { alias } = Ember.computed;
 
 export default Ember.Component.extend(ParentMixin, {
   registeredLayers: service(),
+  mainMap: service(),
   visible: alias('layer.visible'),
   tagName: 'li',
 
@@ -27,6 +28,10 @@ export default Ember.Component.extend(ParentMixin, {
     updateSql(method, column, value) {
       const layer = this.get('layer');
       layer.send('updateSql', method, column, value);
+    },
+    updatePaintFor(id, paintObject) {
+      const layer = this.get('layer');
+      layer.send('updatePaintFor', id, paintObject);
     },
   },
 });

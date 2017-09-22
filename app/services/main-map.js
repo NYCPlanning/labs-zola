@@ -8,6 +8,7 @@ export default Ember.Service.extend({
 
   // currently selected lot, usually a Lot model
   selected: null,
+  currentZoom: null,
   bounds: computed('selected', function() {
     const selected = this.get('selected');
     if (selected) {

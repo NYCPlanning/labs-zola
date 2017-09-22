@@ -10,7 +10,15 @@
   z-index: 2;
 
   @include breakpoint(large) {
-    padding-right: rem-calc(38);
+    position: fixed;
+    top: 6rem;
+    left: 0;
+    width: 15rem;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.1), 2px 0 0 rgba(0,0,0,0.1);
+  }
+
+  @include breakpoint(xlarge) {
+    width: 17.5rem;
   }
 
   input {
@@ -19,9 +27,14 @@
 
   .close-button {
     margin-top: rem-calc(2);
-    @include breakpoint(large) {
-      right: rem-calc(48);
-    }
+  }
+
+  .search-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: $medium-gray;
+    pointer-events: none;
   }
 }
 
@@ -39,7 +52,10 @@
   transition: opacity 0.3s;
 
   @include breakpoint(large) {
-    max-width: 400px;
+    width: auto;
+    right: -4rem;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+    padding: 0 rem-calc(6) rem-calc(6);
   }
 
   &.has-results {
@@ -49,10 +65,16 @@
   .results-header {
     margin: rem-calc(10) 0 0;
   }
+  li:first-child .results-header {
+    margin-top: 0;
+  }
 
   li {
-    border-top: 1px solid $medium-gray;
     padding: $global-margin/2;
+  }
+
+  li:not(:first-child) {
+    border-top: 1px solid $medium-gray;
   }
 
   .result {
@@ -96,6 +118,10 @@
   box-shadow: 0 2px 0 rgba(0,0,0,0.1);
 
   @include breakpoint(large) {
-    max-width: 400px;
+    border-top: 0;
+    width: auto;
+    padding: rem-calc(6);
+    color: $body-font-color;
+    font-weight: $global-weight-bold;
   }
 }

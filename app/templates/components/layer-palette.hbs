@@ -22,22 +22,38 @@
                 (action item.updateSql 'buildMultiSelectSQL' 'primaryzone')
                 (action (mut multiSelect.allChecked))
               )
-            as |name|
-          }}
+            as |name|}}
             {{name}}
           {{/power-select-multiple}}
         {{/item.multi-select}}
       {{/if}}
     {{/layer-menu-item}}
 
-    {{layer-menu-item for='pluto'}}
+    {{#layer-menu-item for='pluto' as |item|}}
+      {{#if (lt mainMap.currentZoom item.layer.minzoom)}}
+        {{info-tooltip iconName='warning' tip='Zoom in more to see'}}
+      {{/if}}
+      {{#if item.layer.visible}}
+        <div class="layer-menu-item"
+          onclick={{queue
+            (action 'toggleFill')
+            (action item.updatePaintFor
+              'pluto-fill'
+              (if plutoFill (hash fill-opacity=0) (hash fill-opacity=0.2))
+            )}}>
+          {{input type='checkbox'
+            checked=plutoFill}}
+          Toggle Land Use Colors
+        </div>
+      {{/if}}
+    {{/layer-menu-item}}
 
     {{#layer-menu-item
-      for='co' 
+      for='co'
       as |item|}}
       {{#if item.layer.visible}}
         {{#layer-multi-select-control
-          column='overlay' 
+          column='overlay'
           parentComponent=item.layer
           as |multiSelect|}}
             <ul class="layer-menu-item-controls">
@@ -89,7 +105,7 @@
             </ul>
         {{/layer-multi-select-control}}
       {{/if}}
-    {{/layer-menu-item}} 
+    {{/layer-menu-item}}
 
     {{#layer-menu-item for='zma' as |item|}}
       {{#if item.layer.visible}}
