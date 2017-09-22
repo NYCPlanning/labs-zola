@@ -23,6 +23,10 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
   input {
     margin-bottom: 0;
   }
+
+  .ember-power-select-trigger {
+    margin: 0 $layer-palette-padding $layer-palette-padding;
+  }
 }
 
 .layer-palette-accordion {
@@ -95,6 +99,7 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
       padding-left: $layer-palette-padding*3;
     }
   }
+
 }
 
 .layer-warning {
