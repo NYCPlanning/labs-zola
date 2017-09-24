@@ -69,7 +69,7 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     const position = allLayerGroups.map(layerGroup => layerGroup.config.id).indexOf(this.get('config.id'));
 
     // walk all layergroups that should be displayed above this one
-    for (let i = position + 1; i < allLayerGroups.length; i += 1) {
+    for (let i = position - 1; i > 0; i -= 1) {
       const config = allLayerGroups[i].config;
       const bottomLayer = config.layers[0].layer.id;
       const map = this.get('mainMap.mapInstance');
