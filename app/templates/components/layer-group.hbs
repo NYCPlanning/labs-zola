@@ -5,16 +5,18 @@
     {{#each config.layers as |layerConfig|}}
       {{source.layer
         layer=layerConfig.layer
-        didUpdateLayers=didUpdateLayers}}
+        didUpdateLayers=didUpdateLayers
+        before=before
+      }}
     {{/each}}
   {{/map.source}}
 {{/if}}
 
-{{yield 
-  (hash 
+{{yield
+  (hash
     timeline-control=
       (component 'layer-control-timeline' layer=
-        (hash 
+        (hash
           visible=visible
         )
         qps=qps
@@ -22,7 +24,7 @@
 
     multi-select-control=
       (component 'layer-multi-select-control' layer=
-        (hash 
+        (hash
           visible=visible
         )
         qps=qps

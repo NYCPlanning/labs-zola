@@ -13,13 +13,12 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
+
+
+
   {{map.layer-group config=layerGroups.aerials16 visible=qps.aerials16}}
 
   {{map.layer-group config=layerGroups.zd visible=qps.zd}}
-
-  {{map.layer-group config=layerGroups.pluto visible=qps.pluto}}
-
-  {{map.layer-group config=layerGroups.co visible=qps.co}}
 
   {{map.layer-group config=layerGroups.zma visible=qps.zma}}
 
@@ -50,6 +49,10 @@
   {{map.layer-group config=layerGroups.historicdistricts visible=qps.historicdistricts}}
 
   {{map.layer-group config=layerGroups.landmarkpoints visible=qps.landmarkpoints}}
+
+  {{map.layer-group config=layerGroups.co visible=qps.co}}
+
+  {{map.layer-group config=layerGroups.pluto visible=qps.pluto}}
 
   {{map.layer-group config=layerGroups.subway visible=qps.subway}}
 
@@ -84,9 +87,9 @@
       {{source.layer
         layer=selectedFillLayer
         before='waterway-label'}}
-        {{source.layer
-          layer=selectedLineLayer
-          before='waterway-label'}}
+      {{source.layer
+        layer=selectedLineLayer
+        before='waterway-label'}}
     {{/map.source}}
   {{/if}}
 
