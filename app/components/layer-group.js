@@ -3,6 +3,7 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task } from 'ember-concurrency';
 import { ParentMixin, ChildMixin } from 'ember-composability-tools';
 import carto from '../utils/carto';
+import layerGroups from '../layer-groups';
 
 const { copy, merge, set } = Ember;
 
@@ -14,6 +15,11 @@ const { warn } = Ember.Logger;
 export default Ember.Component.extend(ParentMixin, ChildMixin, {
   init(...args) {
     this._super(...args);
+
+    const layerID = this.get('for');
+    if (layerID) {
+      this.set('config', layerGroups[layerID.camelize()]);
+    }
 
     const config = this.get('config');
     const { sql } = config;
