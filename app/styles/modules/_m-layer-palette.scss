@@ -128,6 +128,20 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
   }
 }
 
+.layer-key {
+  padding: $layer-palette-padding;
+  font-size: rem-calc(10);
+  line-height: 1.2;
+
+  li {
+    padding: 0 0 $layer-palette-padding/2;
+  }
+
+  .fa {
+    margin-right: $layer-palette-padding;
+  }
+}
+
 // TODO: There are flex clases built into Foundation for this purpose.
 .flex-reverse {
   display: flex;
