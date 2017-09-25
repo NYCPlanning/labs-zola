@@ -3,7 +3,7 @@ import adminBoundaryStyles from '../helpers/admin-boundary-styles';
 const { paint, layout, labelLayout } = adminBoundaryStyles;
 
 export default {
-  id: 'nta',
+  id: 'neighborhood-tabulation-areas',
   title: 'Neighborhood Tabulation Areas',
   visible: false,
   type: 'carto', // raster, vector, geojson, or carto

@@ -1,5 +1,5 @@
 export default {
-  id: 'co',
+  id: 'commercial-overlays',
   title: 'Commercial Overlays',
   type: 'carto',
   sql: ['SELECT * FROM support_zoning_co'],

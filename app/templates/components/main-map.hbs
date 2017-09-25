@@ -16,57 +16,57 @@
 
 
 
-    {{map.layer-group config=layerGroups.nta visible=qps.nta}}
+  {{map.layer-group for='neighborhood-tabulation-areas' visible=qps.neighborhood-tabulation-areas}}
 
-  {{map.layer-group config=layerGroups.assemblydistricts visible=qps.assemblydistricts}}
+  {{map.layer-group for='assemblydistricts' visible=qps.assemblydistricts}}
 
-  {{map.layer-group config=layerGroups.nysenatedistricts visible=qps.nysenatedistricts}}
+  {{map.layer-group for='nysenatedistricts' visible=qps.nysenatedistricts}}
 
-  {{map.layer-group config=layerGroups.nyccouncildistricts visible=qps.nyccouncildistricts}}
+  {{map.layer-group for='nyccouncildistricts' visible=qps.nyccouncildistricts}}
 
-  {{map.layer-group config=layerGroups.communitydistricts visible=qps.communitydistricts}}
+  {{map.layer-group for='communitydistricts' visible=qps.communitydistricts}}
 
-  {{map.layer-group config=layerGroups.boroughs visible=qps.boroughs}}
+  {{map.layer-group for='boroughs' visible=qps.boroughs}}
 
-  {{map.layer-group config=layerGroups.subway visible=qps.subway}}
+  {{map.layer-group for='subway' visible=qps.subway}}
 
-  {{map.layer-group config=layerGroups.pluto visible=qps.pluto}}
+  {{map.layer-group for='pluto' visible=qps.pluto}}
 
-  {{map.layer-group config=layerGroups.co visible=qps.co}}
+  {{map.layer-group for='commercial-overlays' visible=qps.commercial-overlays}}
 
-  {{map.layer-group config=layerGroups.landmarkpoints visible=qps.landmarkpoints}}
+  {{map.layer-group for='landmarkpoints' visible=qps.landmarkpoints}}
 
-  {{map.layer-group config=layerGroups.historicdistricts visible=qps.historicdistricts}}
+  {{map.layer-group for='historicdistricts' visible=qps.historicdistricts}}
 
-  {{map.layer-group config=layerGroups.sceniclandmarks visible=qps.sceniclandmarks}}
+  {{map.layer-group for='sceniclandmarks' visible=qps.sceniclandmarks}}
 
-  {{map.layer-group config=layerGroups.wap visible=qps.wap}}
+  {{map.layer-group for='waterfront-access-plan' visible=qps.waterfront-access-plan}}
 
-  {{map.layer-group config=layerGroups.czb visible=qps.czb}}
+  {{map.layer-group for='coastal-zone-boundary' visible=qps.coastal-zone-boundary}}
 
-  {{map.layer-group config=layerGroups.ldgma visible=qps.ldgma}}
+  {{map.layer-group for='low-density-growth-mgmt-areas' visible=qps.low-density-growth-mgmt-areas}}
 
-  {{map.layer-group config=layerGroups.sidewalkcafes visible=qps.sidewalkcafes}}
+  {{map.layer-group for='sidewalkcafes' visible=qps.sidewalkcafes}}
 
-  {{map.layer-group config=layerGroups.fresh visible=qps.fresh}}
+  {{map.layer-group for='fresh' visible=qps.fresh}}
 
-  {{map.layer-group config=layerGroups.tz visible=qps.tz}}
+  {{map.layer-group for='transit-zones' visible=qps.transit-zones}}
 
-  {{map.layer-group config=layerGroups.ih visible=qps.ih}}
+  {{map.layer-group for='inclusionary-housing' visible=qps.inclusionary-housing}}
 
-  {{map.layer-group config=layerGroups.mih visible=qps.mih}}
+  {{map.layer-group for='mandatory-inclusionary-housing' visible=qps.mandatory-inclusionary-housing}}
 
-  {{map.layer-group config=layerGroups.spsd visible=qps.spsd}}
+  {{map.layer-group for='special-purpose-subdistricts' visible=qps.special-purpose-subdistricts}}
 
-  {{map.layer-group config=layerGroups.sp visible=qps.sp}}
+  {{map.layer-group for='special-purpose-districts' visible=qps.special-purpose-districts}}
 
-  {{map.layer-group config=layerGroups.zmacert visible=qps.zmacert}}
+  {{map.layer-group for='zoning-map-amendments-pending' visible=qps.zoning-map-amendments-pending}}
 
-  {{map.layer-group config=layerGroups.zma visible=qps.zma}}
+  {{map.layer-group for='zoning-map-amendments' visible=qps.zoning-map-amendments}}
 
-  {{map.layer-group config=layerGroups.zd visible=qps.zd}}
+  {{map.layer-group for='zoning-districts' visible=qps.zoning-districts}}
 
-  {{map.layer-group config=layerGroups.aerials16 visible=qps.aerials16}}
+  {{map.layer-group for='aerials16' visible=qps.aerials16}}
 
   {{#if mapMouseover.highlightedLotFeatures}}
     {{#map.source

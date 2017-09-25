@@ -1,19 +1,18 @@
 export default {
-  id: 'ldgma',
-  title: 'Low Density Growth Management Areas',
+  id: 'waterfront-access-plan',
+  title: 'Waterfront Access Plan',
   visible: false,
   type: 'carto',
-  sql: ['SELECT the_geom_webmercator FROM support_ldgma'],
+  sql: ['SELECT the_geom_webmercator, name FROM support_wap'],
   layers: [
     {
       layer: {
-        id: 'ldgma-line',
+        id: 'wap-line',
         type: 'line',
-        source: 'layer-group-id',
         'source-layer': 'layer0',
         paint: {
           'line-width': 2,
-          'line-color': 'orange',
+          'line-color': 'red',
         },
       },
     },
