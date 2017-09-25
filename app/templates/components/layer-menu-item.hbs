@@ -1,6 +1,6 @@
 {{#if layer}}
   <div class="layer-menu-item" {{action 'toggleVisibility'}}>
-    {{#if (and layer.minzoom (lt mainMap.currentZoom layer.minzoom))}}
+    {{#if warning}}
       <span class="layer-warning">
         {{fa-icon 'exclamation-triangle'}}
         <span class="layer-warning--text">Some&nbsp;information may not visible at this zoom&nbsp;level.</span>

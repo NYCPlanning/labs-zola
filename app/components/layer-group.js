@@ -6,6 +6,8 @@ import carto from '../utils/carto';
 
 const { copy, merge, set } = Ember;
 
+const { service } = Ember.inject;
+
 const { alias } = Ember.computed;
 const { warn } = Ember.Logger;
 
@@ -24,6 +26,9 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
       sql,
     });
   },
+
+  registeredLayers: service(),
+  mainMap: service(),
 
   tagName: '',
   qps: null,
@@ -44,9 +49,9 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
   },
 
   @computed('isCarto', 'configWithTemplate.isSuccessful', 'config', 'visible')
-  isReady(isCarto, successful, config, visible) {
+  isReady(isCarto, successful, config) {
     return !!(
-      ((isCarto && successful) || !isCarto) && (config && visible)
+      ((isCarto && successful) || !isCarto) && config
     );
   },
 
@@ -56,6 +61,27 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
   @computed('config.type')
   isCarto(type) {
     return type === 'carto';
+  },
+
+  @computed('registeredLayers.visibleLayerIds')
+  before() {
+    const allLayerGroups = this.get('registeredLayers.layers');
+    const position = allLayerGroups.map(layerGroup => layerGroup.config.id).indexOf(this.get('config.id'));
+
+    // walk all layergroups that should be displayed above this one
+    for (let i = position - 1; i > 0; i -= 1) {
+      const config = allLayerGroups[i].config;
+      const bottomLayer = config.layers[0].layer.id;
+      const map = this.get('mainMap.mapInstance');
+
+      // if the bottom-most layer of the layergroup exists on the map, use it as the 'before'
+      if (map.getLayer(bottomLayer)) {
+        return bottomLayer;
+      }
+    }
+
+    // if we can't find any before when walking the layergroups, use this 'global before'
+    return 'waterway-label';
   },
 
   layers: alias('config.layers'),
