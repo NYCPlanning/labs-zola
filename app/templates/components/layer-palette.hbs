@@ -11,6 +11,7 @@
       for='zoning-districts' as |item|}}
       {{#if item.layer.visible}}
         {{#item.multi-select
+          allChecked=qps.allChecked
           column='primaryzone' as |multiSelect|}}
           {{#power-select-multiple
             options=(await
@@ -75,30 +76,31 @@
             <ul class="layer-menu-item--group-checkboxes">
               <li>
                 <label>{{group-checkbox
-                  refs=(array 'c11' 'c12' 'c13' 'c14' 'c15')
-                  values=(array c11 c12 c13 c14 c15)
-                  scope=this}}Select All C1</label>
+                  refs=(array 'qps.c11' 'qps.c12' 'qps.c13' 'qps.c14' 'qps.c15')
+                  values=(array qps.c11 qps.c12 qps.c13 qps.c14 qps.c15)
+                  scope=qps}}Select All C1</label>
                 <ul class="nested columns-2">
-                  <li><label>{{multiSelect.checkbox value='C1-1' checked=c11}}C1-1</label></li>
-                  <li><label>{{multiSelect.checkbox value='C1-2' checked=c12}}C1-2</label></li>
-                  <li><label>{{multiSelect.checkbox value='C1-3' checked=c13}}C1-3</label></li>
-                  <li><label>{{multiSelect.checkbox value='C1-4' checked=c14}}C1-4</label></li>
-                  <li><label>{{multiSelect.checkbox value='C1-5' checked=c15}}C1-5</label></li>
+                  <li><label>{{multiSelect.checkbox value='C1-1' checked=qps.c11}}C1-1</label></li>
+                  <li><label>{{multiSelect.checkbox value='C1-2' checked=qps.c12}}C1-2</label></li>
+                  <li><label>{{multiSelect.checkbox value='C1-3' checked=qps.c13}}C1-3</label></li>
+                  <li><label>{{multiSelect.checkbox value='C1-4' checked=qps.c14}}C1-4</label></li>
+                  <li><label>{{multiSelect.checkbox value='C1-5' checked=qps.c15}}C1-5</label></li>
                 </ul>
               </li>
             </ul>
+
             <ul class="layer-menu-item--group-checkboxes">
               <li>
                 <label>{{group-checkbox
-                  refs=(array 'c21' 'c22' 'c23' 'c24' 'c25')
-                  values=(array c21 c22 c23 c24 c25)
-                  scope=this}}Select All C2</label>
+                  refs=(array 'qps.c21' 'qps.c22' 'qps.c23' 'qps.c24' 'qps.c25')
+                  values=(array qps.c21 qps.c22 qps.c23 qps.c24 qps.c25)
+                  scope=qps}}Select All C2</label>
                 <ul class="nested columns-2">
-                  <li><label>{{multiSelect.checkbox value='C2-1' checked=c21}}C2-1</label></li>
-                  <li><label>{{multiSelect.checkbox value='C2-2' checked=c22}}C2-2</label></li>
-                  <li><label>{{multiSelect.checkbox value='C2-3' checked=c23}}C2-3</label></li>
-                  <li><label>{{multiSelect.checkbox value='C2-4' checked=c24}}C2-4</label></li>
-                  <li><label>{{multiSelect.checkbox value='C2-5' checked=c25}}C2-5</label></li>
+                  <li><label>{{multiSelect.checkbox value='C2-1' checked=qps.c21}}C2-1</label></li>
+                  <li><label>{{multiSelect.checkbox value='C2-2' checked=qps.c22}}C2-2</label></li>
+                  <li><label>{{multiSelect.checkbox value='C2-3' checked=qps.c23}}C2-3</label></li>
+                  <li><label>{{multiSelect.checkbox value='C2-4' checked=qps.c24}}C2-4</label></li>
+                  <li><label>{{multiSelect.checkbox value='C2-5' checked=qps.c25}}C2-5</label></li>
                 </ul>
               </li>
             </ul>
