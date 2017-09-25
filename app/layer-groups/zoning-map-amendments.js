@@ -1,13 +1,13 @@
 export default {
-  id: 'zmacert',
-  title: 'Pending Zoning Map Amendments',
+  id: 'zoning-map-amendments',
+  title: 'Zoning Map Amendments',
   type: 'carto',
-  sql: ['SELECT the_geom_webmercator, ulurpno, status FROM support_nyzma WHERE status = \'Certified\''],
+  sql: ['SELECT the_geom_webmercator, ulurpno, status, project_na FROM support_nyzma'],
   visible: false,
   layers: [
     {
       layer: {
-        id: 'zmacert-line',
+        id: 'zma-line',
         type: 'line',
         source: 'zma',
         'source-layer': 'layer0',
@@ -26,14 +26,16 @@ export default {
     },
     {
       layer: {
-        id: 'zmacert-fill',
+        id: 'zma-fill',
         type: 'fill',
         'source-layer': 'layer0',
         paint: {
-          'fill-color': '#B01F1F',
+          'fill-color': '#9FC73E',
           'fill-opacity': 0.6,
         },
       },
+      highlightable: true,
+      tooltipTemplate: '{{project_na}} - {{status}}',
     },
   ],
 };

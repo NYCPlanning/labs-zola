@@ -1,15 +1,14 @@
 export default {
-  id: 'spsd',
-  title: 'Special Purpose Subdistricts',
+  id: 'coastal-zone-boundary',
+  title: 'Coastal Zone Boundary',
   visible: false,
-  type: 'carto', // raster, vector, geojson, or carto
-  sql: ['SELECT the_geom_webmercator, spname FROM support_nysp_sd'],
+  type: 'carto',
+  sql: ['SELECT the_geom_webmercator FROM support_czb'],
   layers: [
     {
       layer: {
-        id: 'zoning-sp-sd-line',
+        id: 'czb-line',
         type: 'line',
-        source: 'spsd',
         'source-layer': 'layer0',
         paint: {
           'line-width': 2,

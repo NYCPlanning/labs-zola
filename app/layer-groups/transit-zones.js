@@ -1,5 +1,5 @@
 export default {
-  id: 'tz',
+  id: 'transit-zones',
   title: 'Transit Zones',
   visible: false,
   type: 'carto',

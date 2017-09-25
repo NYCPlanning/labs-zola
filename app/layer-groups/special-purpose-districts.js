@@ -1,5 +1,5 @@
 export default {
-  id: 'sp',
+  id: 'special-purpose-districts',
   title: 'Special Purpose Districts',
   visible: false,
   type: 'carto', // raster, vector, geojson, or carto

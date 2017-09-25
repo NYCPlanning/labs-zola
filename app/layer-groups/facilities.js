@@ -1,5 +1,5 @@
 export default {
-  id: 'facdb',
+  id: 'facilities',
   title: 'Facilities',
   type: 'carto',
   sql: ['SELECT the_geom_webmercator, facname, facdomain, uid FROM facdb_170522'],
@@ -9,7 +9,7 @@ export default {
       layer: {
         id: 'facilities-points-outline',
         type: 'circle',
-        source: 'facdb',
+        source: 'facilities',
         'source-layer': 'layer0',
         paint: {
           'circle-radius': { stops: [[10, 3], [15, 7]] },
