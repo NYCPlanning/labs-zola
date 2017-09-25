@@ -81,7 +81,7 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
 
 }
 
-.layer-menu-item-controls {
+.layer-menu-item--group-checkboxes {
 
   label {
     padding: 0 $layer-palette-padding;
@@ -95,8 +95,20 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
   }
 
   .nested {
+    margin-bottom: $layer-palette-padding/2;
+
     label {
       padding-left: $layer-palette-padding*3;
+    }
+
+    &.columns-2 {
+      padding: 0 $layer-palette-padding*2 0 $layer-palette-padding*3;
+      column-count: 2;
+      column-gap: $layer-palette-padding;
+
+      label {
+        padding-left: $layer-palette-padding;
+      }
     }
   }
 

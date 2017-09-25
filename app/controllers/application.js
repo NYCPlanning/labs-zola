@@ -17,20 +17,7 @@ const queryParams = Object.keys(layerGroups)
     {},
   );
 
-// const defaultMax = new Date();
-// const defaultStart = [1032370151000, defaultMax.getTime()];
-
 // define new query params here:
-// queryParams['zma-effective'] = {
-//   defaultValue: defaultStart,
-//   serialize([min, max]) {
-//     return [min, max].map(val => parseInt(val, 10));
-//   },
-//   deserialize([min, max]) {
-//     return [min, max].map(val => parseInt(val, 10));
-//   },
-// };
-
 export const mapQueryParams =
   new QueryParams(
     merge(
@@ -38,6 +25,39 @@ export const mapQueryParams =
       {
         'comm-type': {
           defaultValue: '',
+        },
+        c11: {
+          defaultValue: true,
+        },
+        c12: {
+          defaultValue: true,
+        },
+        c13: {
+          defaultValue: true,
+        },
+        c14: {
+          defaultValue: true,
+        },
+        c15: {
+          defaultValue: true,
+        },
+        c21: {
+          defaultValue: true,
+        },
+        c22: {
+          defaultValue: true,
+        },
+        c23: {
+          defaultValue: true,
+        },
+        c24: {
+          defaultValue: true,
+        },
+        c25: {
+          defaultValue: true,
+        },
+        allChecked: {
+          defaultValue: [],
         },
       },
     ),
