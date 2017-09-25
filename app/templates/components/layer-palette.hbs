@@ -11,6 +11,7 @@
       for='zoning-districts' as |item|}}
       {{#if item.layer.visible}}
         {{#item.multi-select
+          allChecked=qps.allChecked
           column='primaryzone' as |multiSelect|}}
           {{#power-select-multiple
             options=(await
@@ -76,44 +77,44 @@
               <li>
                 <label>
                 {{group-checkbox
-                  refs=(array 'c14' 'c24' 'c22' 'c13' 'c23')
-                  values=(array c14 c24 c22 c13 c23)
-                  scope=this}} Select All
+                  refs=(array 'qps.c14' 'qps.c24' 'qps.c22' 'qps.c13' 'qps.c23')
+                  values=(array qps.c14 qps.c24 qps.c22 qps.c13 qps.c23)
+                  scope=qps}} Select All
                 </label>
                 <ul class="nested">
                   <li>
                     <label>
                     {{multiSelect.checkbox
                         value='C1-4'
-                        checked=c14}} C1-4
+                        checked=qps.c14}} C1-4
                     </label>
                   </li>
                   <li>
                     <label>
                     {{multiSelect.checkbox
                         value='C2-4'
-                        checked=c24}} C2-4
+                        checked=qps.c24}} C2-4
                     </label>
                   </li>
                   <li>
                     <label>
                     {{multiSelect.checkbox
                         value='C2-2'
-                        checked=c22}} C2-2
+                        checked=qps.c22}} C2-2
                     </label>
                   </li>
                   <li>
                     <label>
                     {{multiSelect.checkbox
                         value='C1-3'
-                        checked=c13}} C1-3
+                        checked=qps.c13}} C1-3
                     </label>
                   </li>
                   <li>
                     <label>
                     {{multiSelect.checkbox
                         value='C2-3'
-                        checked=c23}} C2-3
+                        checked=qps.c23}} C2-3
                     </label>
                   </li>
                 </ul>
