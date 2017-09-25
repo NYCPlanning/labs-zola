@@ -44,9 +44,9 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
   },
 
   @computed('isCarto', 'configWithTemplate.isSuccessful', 'config', 'visible')
-  isReady(isCarto, successful, config, visible) {
+  isReady(isCarto, successful, config) {
     return !!(
-      ((isCarto && successful) || !isCarto) && (config && visible)
+      ((isCarto && successful) || !isCarto) && config
     );
   },
 

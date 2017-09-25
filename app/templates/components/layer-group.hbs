@@ -2,11 +2,13 @@
   {{#map.source
     sourceId=config.id
     options=sourceOptions as |source|}}
-    {{#each config.layers as |layerConfig|}}
-      {{source.layer
-        layer=layerConfig.layer
-        didUpdateLayers=didUpdateLayers}}
-    {{/each}}
+    {{#if visible}}
+      {{#each config.layers as |layerConfig|}}
+        {{source.layer
+          layer=layerConfig.layer
+          didUpdateLayers=didUpdateLayers}}
+      {{/each}}
+    {{/if}}
   {{/map.source}}
 {{/if}}
 
