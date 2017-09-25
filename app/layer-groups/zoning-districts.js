@@ -1,5 +1,5 @@
 export default {
-  id: 'zd',
+  id: 'zoning-districts',
   title: 'Zoning Districts',
   sql: ['SELECT * FROM (SELECT *, LEFT(zonedist, 2) as primaryzone FROM support_zoning_zd) a'],
   visible: true,
@@ -9,7 +9,7 @@ export default {
       layer: {
         id: 'zd-fill',
         type: 'fill',
-        source: 'zd',
+        source: 'zoning-districts',
         'source-layer': 'layer0',
         paint: {
           'fill-color': {
@@ -51,7 +51,7 @@ export default {
       layer: {
         id: 'zd-lines',
         type: 'line',
-        source: 'zoning',
+        source: 'zoning-districts',
         'source-layer': 'layer0',
         paint: {
           'line-opacity': {
@@ -73,7 +73,7 @@ export default {
     {
       layer: {
         id: 'zd_labels',
-        source: 'zoning',
+        source: 'zoning-districts',
         type: 'symbol',
         'source-layer': 'layer0',
         paint: {

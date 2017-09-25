@@ -8,7 +8,7 @@
     closed=false
     title='Zoning and Land Use'}}
     {{#layer-menu-item
-      for='zd' as |item|}}
+      for='zoning-districts' as |item|}}
       {{#if item.layer.visible}}
         {{#item.multi-select
           column='primaryzone' as |multiSelect|}}
@@ -65,7 +65,7 @@
     {{/layer-menu-item}}
 
     {{#layer-menu-item
-      for='co'
+      for='commercial-overlays'
       as |item|}}
       {{#if item.layer.visible}}
         {{#layer-multi-select-control
@@ -123,14 +123,14 @@
       {{/if}}
     {{/layer-menu-item}}
 
-    {{#layer-menu-item for='zma' as |item|}}
+    {{#layer-menu-item for='zoning-map-amendments' as |item|}}
       {{#if item.layer.visible}}
         {{item.range-slider
             column='effective'}}
       {{/if}}
     {{/layer-menu-item}}
 
-    {{layer-menu-item for='zmacert'}}
+    {{layer-menu-item for='zoning-map-amendments-pending'}}
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
@@ -138,25 +138,25 @@
     title='Supporting Zoning Layers'
     as |item|}}
     {{layer-menu-item
-      for='sp'}}
+      for='special-purpose-districts'}}
     {{layer-menu-item
-      for='spsd'}}
+      for='special-purpose-subdistricts'}}
     {{layer-menu-item
-      for='mih'}}
+      for='mandatory-inclusionary-housing'}}
     {{layer-menu-item
-      for='ih'}}
+      for='inclusionary-housing'}}
     {{layer-menu-item
-      for='tz'}}
+      for='transit-zones'}}
     {{layer-menu-item
       for='fresh'}}
     {{layer-menu-item
       for='sidewalkcafes'}}
     {{layer-menu-item
-      for='ldgma'}}
+      for='low-density-growth-mgmt-areas'}}
     {{layer-menu-item
-      for='czb'}}
+      for='coastal-zone-boundary'}}
     {{layer-menu-item
-      for='wap'}}
+      for='waterfront-access-plan'}}
   {{/layer-palette-accordion}}
   {{#layer-palette-accordion
     closed=true
@@ -190,7 +190,7 @@
     {{layer-menu-item
       for='assemblydistricts'}}
     {{layer-menu-item
-      for='nta'}}
+      for='neighborhood-tabulation-areas'}}
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
