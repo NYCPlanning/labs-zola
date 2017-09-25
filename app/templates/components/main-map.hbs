@@ -13,57 +13,60 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
-  {{map.layer-group config=layerGroups.aerials16 visible=qps.aerials16}}
 
-  {{map.layer-group config=layerGroups.zd visible=qps.zd}}
+
+
+    {{map.layer-group config=layerGroups.nta visible=qps.nta}}
+
+  {{map.layer-group config=layerGroups.assemblydistricts visible=qps.assemblydistricts}}
+
+  {{map.layer-group config=layerGroups.nysenatedistricts visible=qps.nysenatedistricts}}
+
+  {{map.layer-group config=layerGroups.nyccouncildistricts visible=qps.nyccouncildistricts}}
+
+  {{map.layer-group config=layerGroups.communitydistricts visible=qps.communitydistricts}}
+
+  {{map.layer-group config=layerGroups.boroughs visible=qps.boroughs}}
+
+  {{map.layer-group config=layerGroups.subway visible=qps.subway}}
 
   {{map.layer-group config=layerGroups.pluto visible=qps.pluto}}
 
   {{map.layer-group config=layerGroups.co visible=qps.co}}
 
-  {{map.layer-group config=layerGroups.zma visible=qps.zma}}
-
-  {{map.layer-group config=layerGroups.zmacert visible=qps.zmacert}}
-
-  {{map.layer-group config=layerGroups.sp visible=qps.sp}}
-
-  {{map.layer-group config=layerGroups.spsd visible=qps.spsd}}
-
-  {{map.layer-group config=layerGroups.mih visible=qps.mih}}
-
-  {{map.layer-group config=layerGroups.ih visible=qps.ih}}
-
-  {{map.layer-group config=layerGroups.tz visible=qps.tz}}
-
-  {{map.layer-group config=layerGroups.fresh visible=qps.fresh}}
-
-  {{map.layer-group config=layerGroups.sidewalkcafes visible=qps.sidewalkcafes}}
-
-  {{map.layer-group config=layerGroups.ldgma visible=qps.ldgma}}
-
-  {{map.layer-group config=layerGroups.czb visible=qps.czb}}
-
-  {{map.layer-group config=layerGroups.wap visible=qps.wap}}
-
-  {{map.layer-group config=layerGroups.sceniclandmarks visible=qps.sceniclandmarks}}
+  {{map.layer-group config=layerGroups.landmarkpoints visible=qps.landmarkpoints}}
 
   {{map.layer-group config=layerGroups.historicdistricts visible=qps.historicdistricts}}
 
-  {{map.layer-group config=layerGroups.landmarkpoints visible=qps.landmarkpoints}}
+  {{map.layer-group config=layerGroups.sceniclandmarks visible=qps.sceniclandmarks}}
 
-  {{map.layer-group config=layerGroups.subway visible=qps.subway}}
+  {{map.layer-group config=layerGroups.wap visible=qps.wap}}
 
-  {{map.layer-group config=layerGroups.boroughs visible=qps.boroughs}}
+  {{map.layer-group config=layerGroups.czb visible=qps.czb}}
 
-  {{map.layer-group config=layerGroups.communitydistricts visible=qps.communitydistricts}}
+  {{map.layer-group config=layerGroups.ldgma visible=qps.ldgma}}
 
-  {{map.layer-group config=layerGroups.nyccouncildistricts visible=qps.nyccouncildistricts}}
+  {{map.layer-group config=layerGroups.sidewalkcafes visible=qps.sidewalkcafes}}
 
-  {{map.layer-group config=layerGroups.nysenatedistricts visible=qps.nysenatedistricts}}
+  {{map.layer-group config=layerGroups.fresh visible=qps.fresh}}
 
-  {{map.layer-group config=layerGroups.assemblydistricts visible=qps.assemblydistricts}}
+  {{map.layer-group config=layerGroups.tz visible=qps.tz}}
 
-  {{map.layer-group config=layerGroups.nta visible=qps.nta}}
+  {{map.layer-group config=layerGroups.ih visible=qps.ih}}
+
+  {{map.layer-group config=layerGroups.mih visible=qps.mih}}
+
+  {{map.layer-group config=layerGroups.spsd visible=qps.spsd}}
+
+  {{map.layer-group config=layerGroups.sp visible=qps.sp}}
+
+  {{map.layer-group config=layerGroups.zmacert visible=qps.zmacert}}
+
+  {{map.layer-group config=layerGroups.zma visible=qps.zma}}
+
+  {{map.layer-group config=layerGroups.zd visible=qps.zd}}
+
+  {{map.layer-group config=layerGroups.aerials16 visible=qps.aerials16}}
 
   {{#if mapMouseover.highlightedLotFeatures}}
     {{#map.source
@@ -84,9 +87,9 @@
       {{source.layer
         layer=selectedFillLayer
         before='waterway-label'}}
-        {{source.layer
-          layer=selectedLineLayer
-          before='waterway-label'}}
+      {{source.layer
+        layer=selectedLineLayer
+        before='waterway-label'}}
     {{/map.source}}
   {{/if}}
 

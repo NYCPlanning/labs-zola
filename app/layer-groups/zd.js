@@ -2,6 +2,7 @@ export default {
   id: 'zd',
   title: 'Zoning Districts',
   sql: ['SELECT * FROM (SELECT *, LEFT(zonedist, 2) as primaryzone FROM support_zoning_zd) a'],
+  visible: true,
   type: 'carto',
   layers: [
     {

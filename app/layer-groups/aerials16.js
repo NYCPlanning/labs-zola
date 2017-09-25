@@ -8,7 +8,7 @@ export default {
   layers: [
     {
       layer: {
-        id: 'landuse-raster',
+        id: 'aerials16-raster',
         type: 'raster',
       },
       before: 'zd',
