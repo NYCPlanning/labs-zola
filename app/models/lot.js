@@ -57,7 +57,7 @@ const ownertypeLookup = {
 };
 
 const landuseLookup = {
-  '01': 'One &Two Family Buildings',
+  '01': 'One & Two Family Buildings',
   '02': 'Multi-Family Walk-Up Buildings',
   '03': 'Multi-Family Elevator Buildings',
   '04': 'Mixed Residential & Commercial Buildings',
