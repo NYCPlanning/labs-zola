@@ -21,6 +21,11 @@ export default Ember.Component.extend(ParentMixin, {
     return title;
   },
 
+  @computed('layer.minzoom', 'layer.visible', 'mainMap.currentZoom')
+  warning(minzoom, visible, currentZoom) {
+    return (minzoom && visible && (currentZoom < minzoom));
+  },
+
   actions: {
     toggleVisibility() {
       this.toggleProperty('visible');
