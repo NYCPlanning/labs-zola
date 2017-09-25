@@ -69,9 +69,9 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     return type === 'carto';
   },
 
-  @computed('registeredLayers.visibleLayerIds')
-  before() {
-    const allLayerGroups = this.get('registeredLayers.layers');
+  @computed('registeredLayers.layers')
+  before(allLayerGroups) {
+    // const allLayerGroups = this.get('registeredLayers.layers');
     const position = allLayerGroups.map(layerGroup => layerGroup.config.id).indexOf(this.get('config.id'));
 
     // walk all layergroups that should be displayed above this one
