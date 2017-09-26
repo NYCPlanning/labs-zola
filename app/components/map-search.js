@@ -13,6 +13,7 @@ export default Ember.Component.extend({
   transitionTo: null,
   selected: 0,
   mainMap: service(),
+  focused: false,
 
   @computed('searchTerms')
   results(searchTerms) {
@@ -94,7 +95,6 @@ export default Ember.Component.extend({
       const mapInstance = mainMap.get('mapInstance');
 
       this.setProperties({
-        searchTerms: '',
         selected: 0,
       });
 
@@ -116,6 +116,12 @@ export default Ember.Component.extend({
           zoom: 15,
         });
       }
+    },
+    handleFocusIn() {
+      this.set('focused', true);
+    },
+    handleFocusOut() {
+      this.set('focused', false);
     },
   },
 });

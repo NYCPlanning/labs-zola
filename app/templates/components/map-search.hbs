@@ -1,4 +1,9 @@
-{{input type='text' placeholder='Search...' value=searchTerms}}
+{{input type='text' 
+  placeholder='Search...' 
+  value=searchTerms 
+  focus-in=(action 'handleFocusIn')
+  focus-out=(action 'handleFocusOut')}}
+
 {{#if searchTerms}}
   <button class="close-button" aria-label="Clear Search" type="button" {{action 'clear'}}>
     <span aria-hidden="true">&times;</span>
@@ -6,9 +11,8 @@
 {{else}}
   <span class="search-icon">{{fa-icon "search"}}</span>
 {{/if}}
-
-
-<ul class="search-results no-bullet {{if resultsCount 'has-results'}}">
+{{log focused}}
+<ul class="search-results no-bullet {{if (and resultsCount focused) 'has-results'}}">
   {{#if (is-fulfilled results)}}
     {{#each-in (group-by "type" results.value) as |type rows|}}
       <li>
