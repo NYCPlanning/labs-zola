@@ -25,7 +25,7 @@
         {{#if (eq type 'lot')}}
            <span class="icon tax-lot"></span> {{result.bbl}} <span class="subdued">{{result.label}}</span>
         {{else if (eq type 'zma')}}
-          {{fa-icon "file"}} {{result.ulurpno}} <span class="subdued">{{result.label}}</span>
+          <span class="icon polygon"></span> {{result.ulurpno}} <span class="subdued">{{result.label}}</span>
         {{else}}
           {{fa-icon "map-pin"}} {{result.label}}
         {{/if}}

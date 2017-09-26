@@ -4,17 +4,16 @@
 
 .icon {
   display: inline-block;
-  margin-right: 0.25em;
   vertical-align: middle;
   position: relative;
 
   &.tax-lot {
     width: 0.5em;
     height: 1.2em;
-    transform: rotate(10deg);
+    transform: rotate(20deg);
     border: 0.2em solid $primary-color;
     border-radius: 0.1em;
-    margin: -0.2em 0.8em 0 0.3em;
+    margin: -0.3em 0.8em 0 0.3em;
 
     &::before,
     &::after {
@@ -38,6 +37,33 @@
       left: 100%;
       margin-left: 0.3em;
       border-right-width: 0;
+    }
+  }
+
+  &.polygon {
+    height: 1.2em;
+    width: 0;
+    border-radius: 0.1em;
+    border-right: 0.6em solid $primary-color;
+    border-top: 0.25em solid transparent;
+    border-bottom: 0.25em solid transparent;
+    transform: rotate(20deg);
+    margin: 0 0.6em 0 0.5em;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -0.25em;
+      right: -0.6em;
+      bottom: auto;
+      left: auto;
+      background-color: $primary-color;
+      border-radius: 0.1em;
+    	height: 0.6em;
+    	width: 1em;
+      transform: skew(-25deg);
+      transform-origin: 100% 0;
     }
   }
 }
