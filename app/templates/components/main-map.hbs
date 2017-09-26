@@ -95,6 +95,13 @@
     {{/map.source}}
   {{/if}}
 
+  {{#if mainMap.currentAddress}}
+    {{log mainMap.addressSource}}
+    {{#map.source sourceId='currentAddress' options=mainMap.addressSource as |source|}}
+      {{source.layer layer=mainMap.pointLayer}}
+    {{/map.source}}
+  {{/if}}
+
   {{map.call 'fitBounds' mainMap.bounds fitBoundsOptions}}
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}

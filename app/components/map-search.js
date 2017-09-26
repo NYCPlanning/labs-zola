@@ -90,7 +90,8 @@ export default Ember.Component.extend({
       this.set('searchTerms', '');
     },
     goTo(result) {
-      const mainMap = this.get('mainMap.mapInstance');
+      const mainMap = this.get('mainMap');
+      const mapInstance = mainMap.get('mapInstance');
 
       this.setProperties({
         searchTerms: '',
@@ -108,7 +109,8 @@ export default Ember.Component.extend({
 
       if (result.type === 'address') {
         const center = result.coordinates;
-        mainMap.flyTo({
+        mainMap.set('currentAddress', center);
+        mapInstance.flyTo({
           center,
           zoom: 18,
         });
