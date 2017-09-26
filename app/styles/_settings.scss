@@ -252,13 +252,13 @@ $accordionmenu-arrow-size: 6px;
 // 9. Badge
 // --------
 
-$badge-background: $primary-color;
-$badge-color: $white;
-$badge-color-alt: $black;
+$badge-background: $secondary-color;
+$badge-color: $black;
+$badge-color-alt: $white;
 $badge-palette: $foundation-palette;
-$badge-padding: 0.3em;
-$badge-minwidth: 2.1em;
-$badge-font-size: 0.6rem;
+$badge-padding: rem-calc(1);
+$badge-minwidth: rem-calc(17);
+$badge-font-size: rem-calc(10);
 
 // 10. Breadcrumbs
 // ---------------

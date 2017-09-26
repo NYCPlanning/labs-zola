@@ -1,11 +1,11 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
-import { ParentMixin } from 'ember-composability-tools';
+import { ParentMixin, ChildMixin } from 'ember-composability-tools';
 
 const { service } = Ember.inject;
 const { alias } = Ember.computed;
 
-export default Ember.Component.extend(ParentMixin, {
+export default Ember.Component.extend(ParentMixin, ChildMixin, {
   registeredLayers: service(),
   mainMap: service(),
   visible: alias('layer.visible'),

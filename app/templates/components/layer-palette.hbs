@@ -3,6 +3,7 @@
 {{else}}
   <button {{action (mut closed) (not closed)}} class="close-button" aria-label="Close Map Layers" type="button"><span aria-hidden="true">&times;</span></button>
 {{/if}}
+
 <div id="layers-menu" class="{{if closed 'show-for-medium'}} hide-for-print">
   {{#layer-palette-accordion
     closed=false
