@@ -13,6 +13,11 @@ export default Ember.Service.extend({
 
   @computed('selected')
   bounds(selected) {
+    const mapInstance = this.get('mapInstance');
+    if (mapInstance) {
+      mapInstance.resize();
+    }
+
     if (selected) {
       return selected.get('bounds');
     }
@@ -34,6 +39,10 @@ export default Ember.Service.extend({
   },
 
   resetBounds() {
+    const mapInstance = this.get('mapInstance');
+    if (mapInstance) {
+      mapInstance.resize();
+    }
     this.set('selected', null);
   },
 });

@@ -110,9 +110,10 @@ export default Ember.Component.extend({
       if (result.type === 'address') {
         const center = result.coordinates;
         mainMap.set('currentAddress', center);
+        this.transitionTo('index');
         mapInstance.flyTo({
           center,
-          zoom: 18,
+          zoom: 15,
         });
       }
     },
