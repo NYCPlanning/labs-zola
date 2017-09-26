@@ -31,7 +31,7 @@ export default {
               ['11', '#555555'],
             ],
           },
-          'fill-opacity': 0.7,
+          'fill-opacity': 0,
         },
       },
       highlightable: true,
