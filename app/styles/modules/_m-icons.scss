@@ -1,0 +1,43 @@
+// --------------------------------------------------
+// Module: Icons
+// --------------------------------------------------
+
+.icon {
+  display: inline-block;
+  margin-right: 0.25em;
+  vertical-align: middle;
+  position: relative;
+
+  &.tax-lot {
+    width: 0.5em;
+    height: 1.2em;
+    transform: rotate(10deg);
+    border: 0.2em solid $primary-color;
+    border-radius: 0.1em;
+    margin: -0.2em 0.8em 0 0.3em;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -0.2em;
+      right: auto;
+      bottom: -0.2em;
+      left: auto;
+      border: 0.1em solid $primary-color;
+      width: 0.2em;
+      border-radius: 0.1em;
+    }
+    &::before {
+      right: 100%;
+      margin-right: 0.3em;
+      border-left-width: 0;
+    }
+    &::after {
+      left: 100%;
+      margin-left: 0.3em;
+      border-right-width: 0;
+    }
+  }
+}
