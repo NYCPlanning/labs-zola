@@ -14,3 +14,31 @@ test('it renders', function(assert) {
 
   assert.ok(this);
 });
+
+test('it indicates whether information may be hidden', function(assert) {
+
+  // Set any properties with this.set('myProperty', 'value');
+  // Handle any actions with this.on('myAction', function(val) { ... });
+
+  this.set('fakeMap', {
+    currentZoom: 8,
+  });
+
+  this.set('fakeLimitedZoomLayer', {
+    minzoom: 15,
+    visible: true,
+  });
+
+  this.set('fakeLayer', {
+    visible: true,
+  });
+
+  this.render(hbs`
+    {{#layer-palette-accordion}}
+      {{layer-menu-item mainMap=fakeMap layer=fakeLimitedZoomLayer}}
+      {{layer-menu-item mainMap=fakeMap layer=fakeLayer}}
+    {{/layer-palette-accordion}}
+  `);
+
+  assert.equal(this.$('.layer-warning').length, 1);
+});

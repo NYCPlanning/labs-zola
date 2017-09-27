@@ -96,6 +96,7 @@ export default Ember.Component.extend({
 
       this.setProperties({
         selected: 0,
+        focused: false,
       });
 
       if (result.type === 'lot') {
@@ -111,10 +112,13 @@ export default Ember.Component.extend({
         const center = result.coordinates;
         mainMap.set('currentAddress', center);
         this.transitionTo('index');
-        mapInstance.flyTo({
-          center,
-          zoom: 15,
-        });
+
+        if (mapInstance) {
+          mapInstance.flyTo({
+            center,
+            zoom: 15,
+          });
+        }
       }
     },
     handleFocusIn() {
