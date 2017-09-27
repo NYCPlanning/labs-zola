@@ -1,4 +1,9 @@
-{{input type='text' placeholder='Search...' value=searchTerms}}
+{{input type='text'
+  placeholder='Search...'
+  value=searchTerms
+  focus-in=(action 'handleFocusIn')
+  focus-out=(action 'handleFocusOut')}}
+
 {{#if searchTerms}}
   <button class="close-button" aria-label="Clear Search" type="button" {{action 'clear'}}>
     <span aria-hidden="true">&times;</span>
@@ -6,32 +11,31 @@
 {{else}}
   <span class="search-icon">{{fa-icon "search"}}</span>
 {{/if}}
-
-
-<ul class="search-results no-bullet {{if resultsCount 'has-results'}}">
+{{log focused}}
+<ul class="search-results no-bullet{{if resultsCount ' has-results'}}{{if focused ' focused'}}">
   {{#if (is-fulfilled results)}}
-  {{#each-in (group-by "type" results.value) as |type rows|}}
-    <li>
-      {{#if (eq type 'lot')}}
-        <h4 class="header-small results-header">Show Tax Lot Details</h4>
-      {{else if (eq type 'zma')}}
-        <h4 class="header-small results-header">Show Zoning Change Details</h4>
-      {{else}}
-        <h4 class="header-small results-header">Zoom to Address</h4>
-      {{/if}}
-    </li>
-    {{#each rows as |result|}}
-      <li class="result {{if (eq selected result.id) 'highlighted-result'}}" {{action 'goTo' result}}>
+    {{#each-in (group-by "type" results.value) as |type rows|}}
+      <li>
         {{#if (eq type 'lot')}}
-           {{fa-icon "map-marker"}} {{result.bbl}} <span class="subdued">{{result.label}}</span>
+          <h4 class="header-small results-header">Show Tax Lot Details</h4>
         {{else if (eq type 'zma')}}
-          {{fa-icon "folder-open"}} {{result.ulurpno}} <span class="subdued">{{result.label}}</span>
+          <h4 class="header-small results-header">Show Zoning Change Details</h4>
         {{else}}
-          {{fa-icon "arrow-circle-right"}} {{result.label}}
+          <h4 class="header-small results-header">Zoom to Address</h4>
         {{/if}}
       </li>
-    {{/each}}
- {{/each-in}}
+      {{#each rows as |result|}}
+        <li class="result {{if (eq selected result.id) 'highlighted-result'}}" {{action 'goTo' result}}>
+          {{#if (eq type 'lot')}}
+             {{fa-icon "map-marker"}} {{result.bbl}} <span class="subdued">{{result.label}}</span>
+          {{else if (eq type 'zma')}}
+            {{fa-icon "folder-open"}} {{result.ulurpno}} <span class="subdued">{{result.label}}</span>
+          {{else}}
+            {{fa-icon "arrow-circle-right"}} {{result.label}}
+          {{/if}}
+        </li>
+      {{/each}}
+   {{/each-in}}
  {{/if}}
 
 </ul>
