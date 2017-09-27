@@ -1,8 +1,6 @@
-{{#if closed}}
-  <button {{action (mut closed) (not closed)}} class="button hollow expanded no-margin hide-for-medium hide-for-print"> Edit Map Layers</button>
-{{else}}
-  <button {{action (mut closed) (not closed)}} class="close-button" aria-label="Close Map Layers" type="button"><span aria-hidden="true">&times;</span></button>
-{{/if}}
+<button {{action (mut closed) (not closed)}} class="button hollow expanded hide-for-medium hide-for-print{{if closed ' no-margin'}}">
+  {{#if closed}}Edit Map Layers{{else}}Close Map Layers{{/if}}
+</button>
 
 <div id="layers-menu" class="{{if closed 'show-for-medium'}} hide-for-print">
   {{#layer-palette-accordion
