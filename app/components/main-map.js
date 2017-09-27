@@ -12,6 +12,9 @@ const selectedLineLayer = selectedLayers.line;
 
 const { later } = Ember.run;
 const { service } = Ember.inject;
+const {
+  getOwner
+} = Ember;
 
 export default Ember.Component.extend({
   mainMap: service(),
@@ -43,8 +46,18 @@ export default Ember.Component.extend({
       const height = el.height();
       const width = el.width();
 
+      const fullWidth = $('.navigation-area').width();
+      console.log(fullWidth)
+      const contentWidth = (fullWidth / 12) * 5
+      console.log('mapwidth', width, contentWidth);
+
+      const offset = -((width - contentWidth) / 2);
+
       const padding = Math.min(height, width) / 2.5;
-      return { padding: selected && (type !== 'zoning-district') ? padding : 0 };
+      return {
+        padding: selected && (type !== 'zoning-district') ? padding : 0,
+        offset: [offset, 0],
+      };
     }
     return null;
   },
@@ -72,6 +85,17 @@ export default Ember.Component.extend({
   },
   selectedFillLayer,
   selectedLineLayer,
+
+  // didRender() {
+  //   const map = this.get('mainMap').mapInstance;
+  //   const bounds = this.get('mainMap').bounds;
+  //   const route =  getOwner(this).lookup('controller:application').currentPath;
+  //   console.log(route, bounds)
+  //   if (route === 'lot') {
+  //     console.log('calling fitbounds')
+  //     map.fitBounds(bounds);
+  //   }
+  // },
 
   actions: {
     handleMapLoad(map) {

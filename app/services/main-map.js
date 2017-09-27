@@ -38,6 +38,10 @@ export default Ember.Service.extend({
     };
   },
 
+  fitBounds() {
+    console.log('fitBounds')
+  },
+
   resetBounds() {
     const mapInstance = this.get('mapInstance');
     if (mapInstance) {
