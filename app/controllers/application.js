@@ -23,42 +23,40 @@ export const mapQueryParams =
     merge(
       queryParams,
       {
-        'comm-type': {
-          defaultValue: '',
-        },
-        c11: {
-          defaultValue: true,
-        },
-        c12: {
-          defaultValue: true,
-        },
-        c13: {
-          defaultValue: true,
-        },
-        c14: {
-          defaultValue: true,
-        },
-        c15: {
-          defaultValue: true,
-        },
-        c21: {
-          defaultValue: true,
-        },
-        c22: {
-          defaultValue: true,
-        },
-        c23: {
-          defaultValue: true,
-        },
-        c24: {
-          defaultValue: true,
-        },
-        c25: {
-          defaultValue: true,
-        },
-        allChecked: {
-          defaultValue: [],
-        },
+        'comm-type': { defaultValue: '' },
+        BP: { defaultValue: true },
+        C1: { defaultValue: true },
+        C2: { defaultValue: true },
+        C3: { defaultValue: true },
+        C4: { defaultValue: true },
+        C5: { defaultValue: true },
+        C6: { defaultValue: true },
+        C7: { defaultValue: true },
+        C8: { defaultValue: true },
+        M1: { defaultValue: true },
+        M2: { defaultValue: true },
+        M3: { defaultValue: true },
+        PA: { defaultValue: true },
+        R1: { defaultValue: true },
+        R2: { defaultValue: true },
+        R3: { defaultValue: true },
+        R4: { defaultValue: true },
+        R5: { defaultValue: true },
+        R6: { defaultValue: true },
+        R7: { defaultValue: true },
+        R8: { defaultValue: true },
+        R9: { defaultValue: true },
+        c11: { defaultValue: true },
+        c12: { defaultValue: true },
+        c13: { defaultValue: true },
+        c14: { defaultValue: true },
+        c15: { defaultValue: true },
+        c21: { defaultValue: true },
+        c22: { defaultValue: true },
+        c23: { defaultValue: true },
+        c24: { defaultValue: true },
+        c25: { defaultValue: true },
+        allChecked: { defaultValue: [] },
       },
     ),
   );

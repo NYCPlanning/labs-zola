@@ -108,6 +108,18 @@ export default Ember.Component.extend({
         this.transitionTo('zma', result.ulurpno);
       }
 
+      if (result.type === 'zoning-district') {
+        this.transitionTo('zoning-district', result.zonedist);
+      }
+
+      if (result.type === 'neighborhood') {
+        const center = result.coordinates;
+        mainMap.flyTo({
+          center,
+          zoom: 14,
+        });
+      }
+
       if (result.type === 'address') {
         const center = result.coordinates;
         mainMap.set('currentAddress', center);
