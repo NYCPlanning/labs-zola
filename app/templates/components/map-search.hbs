@@ -1,4 +1,9 @@
-{{input type='text' placeholder='Search...' value=searchTerms}}
+{{input type='text'
+  placeholder='Search...'
+  value=searchTerms
+  focus-in=(action 'handleFocusIn')
+  focus-out=(action 'handleFocusOut')}}
+
 {{#if searchTerms}}
   <button class="close-button" aria-label="Clear Search" type="button" {{action 'clear'}}>
     <span aria-hidden="true">&times;</span>
@@ -6,41 +11,36 @@
 {{else}}
   <span class="search-icon">{{fa-icon "search"}}</span>
 {{/if}}
-
-
-<ul class="search-results no-bullet {{if resultsCount 'has-results'}}">
+{{log focused}}
+<ul class="search-results no-bullet{{if resultsCount ' has-results'}}{{if focused ' focused'}}">
   {{#if (is-fulfilled results)}}
   {{#each-in (group-by "type" results.value) as |type rows|}}
     <li>
       {{#if (eq type 'lot')}}
-        <h4 class="header-small results-header">Show Tax Lot Details</h4>
+        <h4 class="header-small results-header">View Tax Lot Information</h4>
       {{else if (eq type 'zma')}}
-        <h4 class="header-small results-header">Show Zoning Change Details</h4>
-      {{else if (eq type 'zoning-district')}}
-        <h4 class="header-small results-header">Show Zoning District Details</h4>
+        <h4 class="header-small results-header">View Zoning Change Information</h4>
       {{else if (eq type 'neighborhood')}}
         <h4 class="header-small results-header">Go to Neighborhood</h4>
       {{else}}
-        <h4 class="header-small results-header">Zoom to Address</h4>
+        <h4 class="header-small results-header">Add Map Pin</h4>
       {{/if}}
     </li>
     {{#each rows as |result|}}
       <li class="result {{if (eq selected result.id) 'highlighted-result'}}" {{action 'goTo' result}}>
         {{#if (eq type 'lot')}}
-           {{fa-icon "map-marker"}} {{result.bbl}} <span class="subdued">{{result.label}}</span>
+           <span class="icon tax-lot"></span> {{result.bbl}} <span class="subdued">{{result.label}}</span>
         {{else if (eq type 'zma')}}
-          {{fa-icon "folder-open"}} {{result.ulurpno}} <span class="subdued">{{result.label}}</span>
-        {{else if (eq type 'zoning-district')}}
-          {{fa-icon "folder-open"}} {{result.zonedist}} <span class="subdued">{{result.label}}</span>
+          <span class="icon polygon"></span> {{result.ulurpno}} <span class="subdued">{{result.label}}</span>
         {{else if (eq type 'neighborhood')}}
-          {{fa-icon "folder-open"}} {{result.label}}
+          {{fa-icon "home"}}{{fa-icon "building"}} {{result.label}}
         {{else}}
-          {{fa-icon "arrow-circle-right"}} {{result.label}}
+          {{fa-icon "map-pin"}} {{result.label}}
         {{/if}}
       </li>
     {{/each}}
- {{/each-in}}
- {{/if}}
+  {{/each-in}}
+{{/if}}
 
 </ul>
 {{#if (is-pending results)}}

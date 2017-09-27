@@ -4,6 +4,7 @@ export default {
   visible: false,
   type: 'carto',
   sql: ['SELECT the_geom_webmercator FROM support_tz'],
+  titleTooltip: 'Areas where parking requirements are eliminated or reduced for affordable and senior housing units',
   layers: [
     {
       layer: {

@@ -44,18 +44,22 @@
   width: 100%;
   position: absolute;
   top: 100%;
-  right: 0;
+  right: auto;
   bottom: auto;
-  left: 0;
+  left: -200%; // hide by default, show with .focused
   box-shadow: 0 2px 0 rgba(0,0,0,0.1);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.5s, left 0;
+  transition-delay: 0.2s;
 
   @include breakpoint(large) {
-    width: auto;
-    right: -4rem;
+    width: 22rem;
     box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
     padding: 0 rem-calc(6) rem-calc(6);
+  }
+
+  &.focused {
+    left: 0;
   }
 
   &.has-results {
@@ -82,9 +86,11 @@
     cursor: pointer;
     transition: $button-transition;
 
-    &:hover {
+    &:hover,
+    &.highlighted-result {
       color: $anchor-color-hover;
-      background-color: $light-gray;
+      background-color: $a11y-yellow;
+      // box-shadow: inset rem-calc(-6) 0 0 $primary-color;
     }
   }
 

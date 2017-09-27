@@ -13,6 +13,7 @@ export default Ember.Component.extend({
   transitionTo: null,
   selected: 0,
   mainMap: service(),
+  focused: false,
 
   @computed('searchTerms')
   results(searchTerms) {
@@ -90,10 +91,10 @@ export default Ember.Component.extend({
       this.set('searchTerms', '');
     },
     goTo(result) {
-      const mainMap = this.get('mainMap.mapInstance');
+      const mainMap = this.get('mainMap');
+      const mapInstance = mainMap.get('mapInstance');
 
       this.setProperties({
-        searchTerms: '',
         selected: 0,
       });
 
@@ -120,11 +121,19 @@ export default Ember.Component.extend({
 
       if (result.type === 'address') {
         const center = result.coordinates;
-        mainMap.flyTo({
+        mainMap.set('currentAddress', center);
+        this.transitionTo('index');
+        mapInstance.flyTo({
           center,
-          zoom: 18,
+          zoom: 15,
         });
       }
+    },
+    handleFocusIn() {
+      this.set('focused', true);
+    },
+    handleFocusOut() {
+      this.set('focused', false);
     },
   },
 });
