@@ -30,6 +30,7 @@ const LotColumnsSQL = [
   'zonedist2',
   'zonedist3',
   'zonedist4',
+  'zonemap',
 ];
 
 const boroughLookup = {
@@ -122,6 +123,7 @@ export default DS.Model.extend({
   zonedist2: DS.attr('string'),
   zonedist3: DS.attr('string'),
   zonedist4: DS.attr('string'),
+  zonemap: DS.attr('string'),
 
   @computed('geometry')
   bounds(geometry) {
