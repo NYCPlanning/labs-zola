@@ -1,6 +1,6 @@
-{{input type='text' 
-  placeholder='Search...' 
-  value=searchTerms 
+{{input type='text'
+  placeholder='Search...'
+  value=searchTerms
   focus-in=(action 'handleFocusIn')
   focus-out=(action 'handleFocusOut')}}
 
@@ -12,7 +12,7 @@
   <span class="search-icon">{{fa-icon "search"}}</span>
 {{/if}}
 {{log focused}}
-<ul class="search-results no-bullet {{if (and resultsCount focused) 'has-results'}}">
+<ul class="search-results no-bullet{{if resultsCount ' has-results'}}{{if focused ' focused'}}">
   {{#if (is-fulfilled results)}}
     {{#each-in (group-by "type" results.value) as |type rows|}}
       <li>
