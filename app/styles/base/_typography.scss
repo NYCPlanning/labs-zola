@@ -31,12 +31,41 @@ h6,
 
 
 //
+// Buttons
+// --------------------------------------------------
+button {
+  cursor: pointer;
+
+  &.save-button {
+    color: $medium-gray;
+    float: right;
+    font-size: rem-calc(12);
+    padding: 0.25rem 0.5rem;
+
+    .fa {
+      font-size: rem-calc(16);
+      vertical-align: middle;
+    }
+
+    &.saved .fa {
+      color: $success-color;
+    }
+  }
+}
+
+
+//
 // Badges
 // --------------------------------------------------
 .badge {
   font-weight: $global-weight-normal;
   line-height: 1.5;
   vertical-align: middle;
+
+  &.sup {
+    position: relative;
+    transform: translate(0, -50%);
+  }
 }
 
 
