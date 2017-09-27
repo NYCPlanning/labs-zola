@@ -29,8 +29,19 @@ h6,
   color: $dark-gray;
 }
 
+
 //
-// Typograhpy helper classes
+// Badges
+// --------------------------------------------------
+.badge {
+  font-weight: $global-weight-normal;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+
+//
+// Typography helper classes
 // --------------------------------------------------
 .nowrap {
   white-space: nowrap;
