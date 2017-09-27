@@ -7,7 +7,7 @@
       </span>
     {{/if}}
     {{switch-toggle checked=visible}}
-    {{title}}
+    {{title}} {{#if titleTooltip}}{{info-tooltip tip=titleTooltip}}{{/if}}
   </div>
   {{yield (hash
     layer=layer
