@@ -12,9 +12,6 @@ const selectedLineLayer = selectedLayers.line;
 
 const { later } = Ember.run;
 const { service } = Ember.inject;
-const {
-  getOwner
-} = Ember;
 
 export default Ember.Component.extend({
   mainMap: service(),
@@ -47,10 +44,8 @@ export default Ember.Component.extend({
       const width = el.width();
 
       const fullWidth = $('.navigation-area').width();
-      console.log(fullWidth)
-      const contentWidth = (fullWidth / 12) * 5
-      console.log('mapwidth', width, contentWidth);
-
+      // width of content area on large screens is 5/12 of full
+      const contentWidth = (fullWidth / 12) * 5;
       const offset = -((width - contentWidth) / 2);
 
       const padding = Math.min(height, width) / 2.5;
@@ -76,6 +71,11 @@ export default Ember.Component.extend({
   },
   highlightedLotLayer,
 
+  @computed('mainMap.shouldFitBounds')
+  shouldFitBounds(shouldFitBounds) {
+    return shouldFitBounds;
+  },
+
   @computed('mainMap.selected')
   selectedLotSource(selected) {
     return {
@@ -85,17 +85,6 @@ export default Ember.Component.extend({
   },
   selectedFillLayer,
   selectedLineLayer,
-
-  // didRender() {
-  //   const map = this.get('mainMap').mapInstance;
-  //   const bounds = this.get('mainMap').bounds;
-  //   const route =  getOwner(this).lookup('controller:application').currentPath;
-  //   console.log(route, bounds)
-  //   if (route === 'lot') {
-  //     console.log('calling fitbounds')
-  //     map.fitBounds(bounds);
-  //   }
-  // },
 
   actions: {
     handleMapLoad(map) {

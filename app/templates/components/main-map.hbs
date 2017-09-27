@@ -9,7 +9,8 @@
   id='main-map'
   initOptions=(hash style='mapbox://styles/mapbox/light-v9'
                     zoom=zoom
-                    center=(array lng lat))
+                    center=(array lng lat)
+                    hash=true)
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
@@ -82,6 +83,7 @@
 
   {{hover-tooltip}}
 
+  {{log mainMap.selected}}
   {{#if mainMap.selected}}
     {{#map.source
       sourceId='selected-lot'
@@ -102,7 +104,9 @@
     {{/map.source}}
   {{/if}}
 
-  {{map.call 'fitBounds' mainMap.bounds fitBoundsOptions}}
+  {{#if shouldFitBounds}}
+    {{map.call 'fitBounds' mainMap.bounds fitBoundsOptions}}
+  {{/if}}
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
   {{map.on 'zoomend' (action 'handleZoomend')}}

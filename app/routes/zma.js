@@ -15,9 +15,8 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    willTransition() {
-      const application = this.controllerFor('application');
-      application.resetQueryParams();
+    didTransition() {
+      this.get('mainMap').set('shouldFitBounds', true);
     },
   },
 });

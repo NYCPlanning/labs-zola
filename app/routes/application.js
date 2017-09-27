@@ -7,4 +7,8 @@ export default Ember.Route.extend({
   afterModel() {
     this.get('mainMap').resetBounds();
   },
+
+  didTransition() {
+    this.get('mainMap').set('selected', null);
+  }
 });

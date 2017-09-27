@@ -13,4 +13,10 @@ export default Ember.Route.extend({
     const mainMap = this.get('mainMap');
     mainMap.set('selected', model);
   },
+
+  actions: {
+    didTransition() {
+      this.get('mainMap').set('shouldFitBounds', true);
+    },
+  },
 });
