@@ -88,6 +88,7 @@
   box-shadow: 0 -2px 0 rgba(0,0,0,0.1);
   background-color: $white;
   padding: $global-margin;
+  min-height: calc(50vh - 9.375rem);
 
   @include breakpoint(large) {
     @include xy-cell-block($vertical:true);
