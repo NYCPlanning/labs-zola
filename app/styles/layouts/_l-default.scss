@@ -90,6 +90,8 @@
   padding: $global-margin;
   position: absolute;
   right: 0;
+  min-height: calc(50vh - 9.375rem);
+
 
   @include breakpoint(large) {
     @include xy-cell-block($vertical:true);
