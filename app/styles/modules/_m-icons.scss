@@ -1,0 +1,69 @@
+// --------------------------------------------------
+// Module: Icons
+// --------------------------------------------------
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+
+  &.tax-lot {
+    width: 0.5em;
+    height: 1.2em;
+    transform: rotate(20deg);
+    border: 0.2em solid $primary-color;
+    border-radius: 0.1em;
+    margin: -0.3em 0.8em 0 0.3em;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -0.2em;
+      right: auto;
+      bottom: -0.2em;
+      left: auto;
+      border: 0.1em solid $primary-color;
+      width: 0.2em;
+      border-radius: 0.1em;
+    }
+    &::before {
+      right: 100%;
+      margin-right: 0.3em;
+      border-left-width: 0;
+    }
+    &::after {
+      left: 100%;
+      margin-left: 0.3em;
+      border-right-width: 0;
+    }
+  }
+
+  &.polygon {
+    height: 1.2em;
+    width: 0;
+    border-radius: 0.1em;
+    border-right: 0.6em solid $primary-color;
+    border-top: 0.25em solid transparent;
+    border-bottom: 0.25em solid transparent;
+    transform: rotate(20deg);
+    margin: 0 0.6em 0 0.5em;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -0.25em;
+      right: -0.6em;
+      bottom: auto;
+      left: auto;
+      background-color: $primary-color;
+      border-radius: 0.1em;
+    	height: 0.6em;
+    	width: 1em;
+      transform: skew(-25deg);
+      transform-origin: 100% 0;
+    }
+  }
+}
