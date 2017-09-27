@@ -21,6 +21,11 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     return title;
   },
 
+  @computed('layer.config.titleTooltip')
+  titleTooltip(titleTooltip) {
+    return titleTooltip;
+  },
+
   @computed('layer.minzoom', 'layer.visible', 'mainMap.currentZoom')
   warning(minzoom, visible, currentZoom) {
     return (minzoom && visible && (currentZoom < minzoom));
