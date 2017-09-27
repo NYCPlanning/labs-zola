@@ -6,6 +6,7 @@ export default {
   sql: [
     'SELECT the_geom_webmercator, rt_symbol FROM support_trans_mta_subway_routes',
     'SELECT the_geom_webmercator, name FROM support_trans_mta_subway_stops',
+    'SELECT the_geom_webmercator FROM support_trans_mta_subway_entrances',
   ],
   layers: [
     {
@@ -201,12 +202,14 @@ export default {
             stops: [
               [11, 0],
               [12, 1],
+
             ],
           },
           'circle-stroke-opacity': {
             stops: [
               [11, 0],
               [12, 1],
+
             ],
           },
           'circle-radius': {
@@ -242,6 +245,55 @@ export default {
             stops: [
               [13, 0],
               [14, 1],
+            ],
+          },
+        },
+      },
+    },
+    {
+      layer: {
+        id: 'subway_entrances',
+        minzoom: 15,
+        'source-layer': 'layer2',
+        type: 'symbol',
+        layout: {
+          'icon-image': 'rail-15',
+          'icon-allow-overlap': true,
+          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+          'text-anchor': 'top',
+        },
+        paint: {
+          'icon-opacity': {
+            stops: [
+              [15.5, 0],
+              [16.5, 1],
+            ],
+          },
+        },
+      },
+    },
+    {
+      layer: {
+        id: 'subway_entrances_labels',
+        minzoom: 15,
+        'source-layer': 'layer2',
+        type: 'symbol',
+        layout: {
+          'text-field': 'Entrance',
+          'symbol-placement': 'point',
+          'symbol-spacing': 250,
+          'symbol-avoid-edges': false,
+          'text-size': 8,
+          'text-offset': [0, 2],
+          'text-anchor': 'center',
+        },
+        paint: {
+          'text-halo-color': 'rgba(255, 255, 255, 1)',
+          'text-halo-width': 1,
+          'text-opacity': {
+            stops: [
+              [15.5, 0],
+              [16.5, 1],
             ],
           },
         },
