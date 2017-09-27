@@ -101,7 +101,8 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
       padding-left: $layer-palette-padding*3;
     }
 
-    &.columns-2 {
+    &.columns-2,
+    &.columns-3 {
       padding: 0 $layer-palette-padding*2 0 $layer-palette-padding*3;
       column-count: 2;
       column-gap: $layer-palette-padding;
@@ -109,6 +110,9 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
       label {
         padding-left: $layer-palette-padding;
       }
+    }
+    &.columns-3 {
+      column-count: 3;
     }
   }
 
