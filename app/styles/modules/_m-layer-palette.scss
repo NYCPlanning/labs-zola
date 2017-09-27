@@ -83,6 +83,10 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
 
 .layer-menu-item--group-checkboxes {
 
+  > li {
+    margin-bottom: $layer-palette-padding;
+  }
+
   label {
     padding: 0 $layer-palette-padding;
     font-size: inherit;

@@ -18,11 +18,10 @@
             <ul class="layer-menu-item--group-checkboxes">
               <li>
                 <label>{{group-checkbox
-                  refs=(array 'qps.BP' 'qps.C1' 'qps.C2' 'qps.C3' 'qps.C4' 'qps.C5' 'qps.C6' 'qps.C7' 'qps.C8' 'qps.M1' 'qps.M2' 'qps.M3' 'qps.PA' 'qps.R1' 'qps.R2' 'qps.R3' 'qps.R4' 'qps.R5' 'qps.R6' 'qps.R7' 'qps.R8' 'qps.R9')
-                  values=(array qps.BP qps.C1 qps.C2 qps.C3 qps.C4 qps.C5 qps.C6 qps.C7 qps.C8 qps.M1 qps.M2 qps.M3 qps.PA qps.R1 qps.R2 qps.R3 qps.R4 qps.R5 qps.R6 qps.R7 qps.R8 qps.R9)
-                  scope=qps}}Select All</label>
+                  refs=(array 'qps.C1' 'qps.C2' 'qps.C3' 'qps.C4' 'qps.C5' 'qps.C6' 'qps.C7' 'qps.C8')
+                  values=(array qps.C1 qps.C2 qps.C3 qps.C4 qps.C5 qps.C6 qps.C7 qps.C8)
+                  scope=qps}}Select All Commercial Districts</label>
                 <ul class="nested columns-3">
-                  <li><label>{{multiSelect.checkbox value='BP' checked=qps.BP}}BP</label></li>
                   <li><label>{{multiSelect.checkbox value='C1' checked=qps.C1}}C1</label></li>
                   <li><label>{{multiSelect.checkbox value='C2' checked=qps.C2}}C2</label></li>
                   <li><label>{{multiSelect.checkbox value='C3' checked=qps.C3}}C3</label></li>
@@ -31,10 +30,25 @@
                   <li><label>{{multiSelect.checkbox value='C6' checked=qps.C6}}C6</label></li>
                   <li><label>{{multiSelect.checkbox value='C7' checked=qps.C7}}C7</label></li>
                   <li><label>{{multiSelect.checkbox value='C8' checked=qps.C8}}C8</label></li>
+                </ul>
+              </li>
+              <li>
+                <label>{{group-checkbox
+                  refs=(array 'qps.M1' 'qps.M2' 'qps.M3')
+                  values=(array qps.M1 qps.M2 qps.M3)
+                  scope=qps}}Select All Manufacturing Districts</label>
+                <ul class="nested columns-3">
                   <li><label>{{multiSelect.checkbox value='M1' checked=qps.M1}}M1</label></li>
                   <li><label>{{multiSelect.checkbox value='M2' checked=qps.M2}}M2</label></li>
                   <li><label>{{multiSelect.checkbox value='M3' checked=qps.M3}}M3</label></li>
-                  <li><label>{{multiSelect.checkbox value='PA' checked=qps.PA}}PA</label></li>
+                </ul>
+              </li>
+              <li>
+                <label>{{group-checkbox
+                  refs=(array 'qps.R1' 'qps.R2' 'qps.R3' 'qps.R4' 'qps.R5' 'qps.R6' 'qps.R7' 'qps.R8' 'qps.R9')
+                  values=(array qps.R1 qps.R2 qps.R3 qps.R4 qps.R5 qps.R6 qps.R7 qps.R8 qps.R9)
+                  scope=qps}}Select All Residential Districts</label>
+                <ul class="nested columns-3">
                   <li><label>{{multiSelect.checkbox value='R1' checked=qps.R1}}R1</label></li>
                   <li><label>{{multiSelect.checkbox value='R2' checked=qps.R2}}R2</label></li>
                   <li><label>{{multiSelect.checkbox value='R3' checked=qps.R3}}R3</label></li>
@@ -46,6 +60,8 @@
                   <li><label>{{multiSelect.checkbox value='R9' checked=qps.R9}}R9</label></li>
                 </ul>
               </li>
+              <li><label>{{multiSelect.checkbox value='PA' checked=qps.PA}}Parks</label></li>
+              <li><label>{{multiSelect.checkbox value='BP' checked=qps.BP}}Battery Park</label></li>
             </ul>
         {{/layer-multi-select-control}}
       {{/if}}
@@ -108,9 +124,6 @@
                   <li><label>{{multiSelect.checkbox value='C1-5' checked=qps.c15}}C1-5</label></li>
                 </ul>
               </li>
-            </ul>
-
-            <ul class="layer-menu-item--group-checkboxes">
               <li>
                 <label>{{group-checkbox
                   refs=(array 'qps.c21' 'qps.c22' 'qps.c23' 'qps.c24' 'qps.c25')
