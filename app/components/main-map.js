@@ -84,7 +84,7 @@ export default Ember.Component.extend({
       const mainMap = this.get('mainMap');
       mainMap.set('mapInstance', map);
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
-      map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-right');
+      map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
       map.moveLayer('building');
       later(() => {
         if (map) {
