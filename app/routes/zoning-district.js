@@ -18,10 +18,4 @@ export default Ember.Route.extend({
       this.set('mainMap.shouldFitBounds', true);
     },
   },
-
-  actions: {
-    didTransition() {
-      this.get('mainMap').set('shouldFitBounds', true);
-    },
-  },
 });
