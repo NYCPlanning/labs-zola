@@ -83,7 +83,6 @@
 
   {{hover-tooltip}}
 
-  {{log mainMap.selected}}
   {{#if mainMap.selected}}
     {{#map.source
       sourceId='selected-lot'
@@ -98,14 +97,13 @@
   {{/if}}
 
   {{#if mainMap.currentAddress}}
-    {{log mainMap.addressSource}}
     {{#map.source sourceId='currentAddress' options=mainMap.addressSource as |source|}}
       {{source.layer layer=mainMap.pointLayer}}
     {{/map.source}}
   {{/if}}
 
   {{#if shouldFitBounds}}
-    {{map.call 'fitBounds' mainMap.bounds fitBoundsOptions}}
+    {{map.call 'fitBounds' mainMap.bounds isSelectedBoundsOptions}}
   {{/if}}
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
