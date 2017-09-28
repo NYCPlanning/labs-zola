@@ -3,7 +3,9 @@ export default {
   type: 'circle',
   source: 'currentAddress',
   paint: {
-    'circle-radius': 6,
-    'circle-color': 'blue',
+    'circle-radius': 8,
+    'circle-color': '#00A1F9',
+    'circle-stroke-width': 2,
+    'circle-stroke-color': '#FFFFFF',
   },
 };

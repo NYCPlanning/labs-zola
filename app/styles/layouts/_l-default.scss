@@ -134,3 +134,8 @@
     display: none;
   }
 }
+
+// HACK: dot and pulse misalign without this.
+.mapboxgl-user-location-dot {
+  box-sizing: initial;
+}
