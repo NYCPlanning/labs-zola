@@ -4,8 +4,8 @@ const selectedLayers = {
     type: 'fill',
     source: 'selected-lot',
     paint: {
-      'fill-opacity': 0,
-      'fill-color': 'steelblue',
+      'fill-opacity': 0.1,
+      'fill-color': 'red',
     },
   },
   line: {
@@ -13,12 +13,12 @@ const selectedLayers = {
     type: 'line',
     source: 'selected-lot',
     paint: {
-      'line-opacity': 1,
+      'line-opacity': 0.6,
       // 'line-dasharray': [1, 1],
       'line-color': 'red',
       'line-width': {
         stops: [
-          [13, 1.5],
+          [13, 1],
           [14, 4],
           [15, 6],
         ],
