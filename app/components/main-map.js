@@ -42,8 +42,8 @@ export default Ember.Component.extend({
       const fullWidth = window.innerWidth;
       // width of content area on large screens is 5/12 of full
       const contentWidth = (fullWidth / 12) * 5;
-      const offset = -((width - contentWidth) / 2);
-
+      // on small screens, no offset
+      const offset = fullWidth < 1024 ? 0 : -((width - contentWidth) / 2);
       const padding = Math.min(height, (width - contentWidth)) / 2.5;
       return {
         padding: selected && (type !== 'zoning-district') ? padding : 0,
