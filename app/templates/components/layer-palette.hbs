@@ -219,9 +219,9 @@
       for='aerials16'}}
   {{/layer-palette-accordion}}
 
-  <button {{action resetQueryParams}} class="reset-map-button">
+  <a {{action resetQueryParams}} class="button reset-map-button" disabled={{isDefault}}>
     Reset Map Layers
-  </button>
+  </a>
 
 </div>
 {{yield}}
