@@ -9,6 +9,9 @@ module.exports = {
   env: {
     browser: true
   },
+  globals:{
+    '$': true,
+  },
   rules: {
     'import/no-extraneous-dependencies': 0,
     'import/no-unresolved': 0,

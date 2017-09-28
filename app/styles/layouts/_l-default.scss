@@ -90,10 +90,13 @@
   padding: $global-margin;
   min-height: calc(50vh - 9.375rem);
 
+
   @include breakpoint(large) {
     @include xy-cell-block($vertical:true);
     height: 100%;
     box-shadow: -4px 0 0 rgba(0,0,0,0.1);
+    position: absolute;
+    right: 0;
   }
 
   & > .close-button {
