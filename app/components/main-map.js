@@ -93,7 +93,7 @@ export default Ember.Component.extend({
       });
 
       geoLocateControl.on('geolocate', () => {
-        this.transitionTo('/');
+        this.sendAction('transitionTo', '/');
       });
 
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
