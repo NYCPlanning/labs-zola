@@ -7,8 +7,11 @@ export default Ember.Route.extend({
 
   actions: {
     didTransition() {
-      this.get('mainMap').set('selected', null);
-      this.get('mainMap').set('shouldFitBounds', false);
+      this.get('mainMap')
+        .setProperties({
+          selected: null,
+          shouldFitBounds: false,
+        });
     },
   },
 });
