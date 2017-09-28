@@ -10,6 +10,7 @@ import selectedLayers from '../layers/selected-lot';
 const selectedFillLayer = selectedLayers.fill;
 const selectedLineLayer = selectedLayers.line;
 
+const { alias } = Ember.computed;
 const { later } = Ember.run;
 const { service } = Ember.inject;
 
@@ -30,21 +31,24 @@ export default Ember.Component.extend({
 
   loading: true,
 
-  debouncedDidResize(width) {
-    this.set('width', width);
-    this.updateChart();
-  },
-
   @computed('mainMap.selected')
-  fitBoundsOptions(selected) {
+  isSelectedBoundsOptions(selected) {
     if (selected) {
-      const type = selected._internalModel.modelName;
+      const type = selected.constructor.modelName;
       const el = this.$();
       const height = el.height();
       const width = el.width();
 
-      const padding = Math.min(height, width) / 2.5;
-      return { padding: selected && (type !== 'zoning-district') ? padding : 0 };
+      const fullWidth = window.innerWidth;
+      // width of content area on large screens is 5/12 of full
+      const contentWidth = (fullWidth / 12) * 5;
+      const offset = -((width - contentWidth) / 2);
+
+      const padding = Math.min(height, (width - contentWidth)) / 2.5;
+      return {
+        padding: selected && (type !== 'zoning-district') ? padding : 0,
+        offset: [offset, 0],
+      };
     }
     return null;
   },
@@ -62,6 +66,8 @@ export default Ember.Component.extend({
     };
   },
   highlightedLotLayer,
+
+  shouldFitBounds: alias('mainMap.shouldFitBounds'),
 
   @computed('mainMap.selected')
   selectedLotSource(selected) {

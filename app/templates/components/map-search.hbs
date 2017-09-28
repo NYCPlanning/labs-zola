@@ -11,7 +11,6 @@
 {{else}}
   <span class="search-icon">{{fa-icon "search"}}</span>
 {{/if}}
-{{log focused}}
 <ul class="search-results no-bullet{{if resultsCount ' has-results'}}{{if focused ' focused'}}">
   {{#if (is-fulfilled results)}}
   {{#each-in (group-by "type" results.value) as |type rows|}}

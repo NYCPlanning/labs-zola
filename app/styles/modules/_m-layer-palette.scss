@@ -162,6 +162,19 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
   }
 }
 
+.reset-map-button {
+  @include button(
+    true,
+    scale-color($light-gray, $lightness: -5%), 
+    scale-color($light-gray, $lightness: -20%),
+    $primary-color,
+    solid
+  );
+  font-size: rem-calc(12);
+  margin: $layer-palette-padding*2;
+  width: calc(100% - #{$layer-palette-padding*4})
+}
+
 // TODO: There are flex clases built into Foundation for this purpose.
 .flex-reverse {
   display: flex;
