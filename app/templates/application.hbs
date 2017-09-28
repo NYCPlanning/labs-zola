@@ -10,7 +10,10 @@
         transitionTo=(action 'transitionTo')
         qps=qps
       }}
-      {{layer-palette qps=qps}}
+      {{log qpsDidChange}}
+      {{layer-palette 
+        qps=qps 
+        resetQueryParams=(action 'resetQueryParams')}}
     </div>
   </div>
   {{outlet}}

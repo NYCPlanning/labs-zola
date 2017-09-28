@@ -4,7 +4,7 @@ import bblDemux from '../utils/bbl-demux';
 
 import layerGroups from '../layer-groups';
 
-const { merge } = Ember;
+const { merge, computed: { or } } = Ember;
 
 const queryParams = Object.keys(layerGroups)
   .reduce(
@@ -98,6 +98,9 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
     },
     setQueryParam(property, value) {
       this.set(property, value);
+    },
+    resetQueryParams() {
+      this.resetQueryParams();
     },
     resetAll() {
       this.resetQueryParams();
