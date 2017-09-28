@@ -76,22 +76,30 @@ export default Ember.Component.extend({
       data: selected.get('geometry'),
     };
   },
+
   selectedFillLayer,
   selectedLineLayer,
-
-  controlOptions: new mapboxgl.GeolocateControl({
-    positionOptions: {
-      enableHighAccuracy: true,
-    },
-    trackUserLocation: true,
-  }),
 
   actions: {
     handleMapLoad(map) {
       const mainMap = this.get('mainMap');
       mainMap.set('mapInstance', map);
+
+      const geoLocateControl = new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true,
+        },
+        trackUserLocation: true,
+      });
+
+      geoLocateControl.on('geolocate', () => {
+        this.transitionTo('/');
+      });
+
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
       map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
+      map.addControl(geoLocateControl, 'top-left');
+
       map.moveLayer('building');
       later(() => {
         if (map) {
