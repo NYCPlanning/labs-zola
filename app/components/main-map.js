@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import mapboxgl from 'mapbox-gl';
-import ResizeAware from 'ember-resize/mixins/resize-aware';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 import layerGroups from '../layer-groups';
@@ -15,7 +14,7 @@ const { alias } = Ember.computed;
 const { later } = Ember.run;
 const { service } = Ember.inject;
 
-export default Ember.Component.extend(ResizeAware, {
+export default Ember.Component.extend({
   mainMap: service(),
   mapMouseover: service(),
 
@@ -32,14 +31,10 @@ export default Ember.Component.extend(ResizeAware, {
 
   loading: true,
 
-  debouncedDidResize(width) {
-    console.log(width);
-  },
-
   @computed('mainMap.selected')
   isSelectedBoundsOptions(selected) {
     if (selected) {
-      const type = selected._internalModel.modelName;
+      const type = selected.constructor.modelName;
       const el = this.$();
       const height = el.height();
       const width = el.width();
