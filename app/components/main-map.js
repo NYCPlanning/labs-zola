@@ -44,7 +44,7 @@ export default Ember.Component.extend({
       const contentWidth = (fullWidth / 12) * 5;
       const offset = -((width - contentWidth) / 2);
 
-      const padding = Math.min(height, width) / 2.5;
+      const padding = Math.min(height, (width - contentWidth)) / 2.5;
       return {
         padding: selected && (type !== 'zoning-district') ? padding : 0,
         offset: [offset, 0],
