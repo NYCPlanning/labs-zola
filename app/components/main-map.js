@@ -79,6 +79,13 @@ export default Ember.Component.extend({
   selectedFillLayer,
   selectedLineLayer,
 
+  controlOptions: new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true,
+    },
+    trackUserLocation: true,
+  }),
+
   actions: {
     handleMapLoad(map) {
       const mainMap = this.get('mainMap');
