@@ -3,7 +3,7 @@ export default {
   title: 'Commercial Overlays',
   type: 'carto',
   sql: ['SELECT * FROM support_zoning_co'],
-  visible: true,
+  visible: false,
   layers: [
     {
       layer: {
