@@ -91,6 +91,7 @@ export default Ember.Component.extend({
       this.set('searchTerms', '');
     },
     goTo(result) {
+      console.log('result', result)
       const mainMap = this.get('mainMap');
       const mapInstance = mainMap.get('mapInstance');
 
@@ -109,7 +110,7 @@ export default Ember.Component.extend({
       }
 
       if (result.type === 'zoning-district') {
-        this.transitionTo('zoning-district', result.zonedist);
+        this.transitionTo('zoning-district', result.label);
       }
 
       if (result.type === 'neighborhood') {
