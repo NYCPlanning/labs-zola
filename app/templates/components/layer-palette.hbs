@@ -59,7 +59,7 @@
                 </ul>
               </li>
               <li><label>{{multiSelect.checkbox value='PA' checked=qps.PA}}Parks</label></li>
-              <li><label>{{multiSelect.checkbox value='BP' checked=qps.BP}}Battery Park</label></li>
+              <li><label>{{multiSelect.checkbox value='BP' checked=qps.BP}}Battery Park City</label></li>
             </ul>
         {{/layer-multi-select-control}}
       {{/if}}
@@ -219,7 +219,9 @@
       for='aerials16'}}
   {{/layer-palette-accordion}}
 
-  <button class="reset-map-button">Reset Map Layers</button>
+  <a {{action resetQueryParams}} class="button gray small reset-map-button" disabled={{isDefault}}>
+    {{fa-icon "undo"}} Reset Map Layers
+  </a>
 
 </div>
 {{yield}}

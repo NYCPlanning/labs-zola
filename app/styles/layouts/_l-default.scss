@@ -88,6 +88,8 @@
   box-shadow: 0 -2px 0 rgba(0,0,0,0.1);
   background-color: $white;
   padding: $global-margin;
+  position: absolute;
+  right: 0;
   min-height: calc(50vh - 9.375rem);
 
 
@@ -131,4 +133,9 @@
   .content-area {
     display: none;
   }
+}
+
+// HACK: dot and pulse misalign without this.
+.mapboxgl-user-location-dot {
+  box-sizing: initial;
 }

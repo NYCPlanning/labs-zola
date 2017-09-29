@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import QueryParams from 'ember-parachute';
 import bblDemux from '../utils/bbl-demux';
+import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 import layerGroups from '../layer-groups';
 
@@ -72,6 +73,13 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
     this.set('qps', proxy);
   },
 
+  @computed('queryParamsState')
+  isDefault(state) {
+    const values = Object.values(state);
+
+    return values.isEvery('changed', false);
+  },
+
   actions: {
     transitionTo(...args) {
       this.transitionToRoute(...args);
@@ -98,6 +106,9 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
     },
     setQueryParam(property, value) {
       this.set(property, value);
+    },
+    resetQueryParams() {
+      this.resetQueryParams();
     },
     resetAll() {
       this.resetQueryParams();
