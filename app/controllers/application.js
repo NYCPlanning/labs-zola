@@ -5,7 +5,7 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 import layerGroups from '../layer-groups';
 
-const { merge, computed: { or } } = Ember;
+const { merge } = Ember;
 
 const queryParams = Object.keys(layerGroups)
   .reduce(
