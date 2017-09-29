@@ -19,10 +19,13 @@ const selectedLayers = {
       'line-width': {
         stops: [
           [13, 1],
-          [14, 4],
-          [15, 6],
+          [15, 4],
         ],
       },
+      'line-dasharray': [0, 1.5],
+    },
+    layout: {
+      'line-cap': 'round',
     },
   },
 };
