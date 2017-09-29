@@ -1,5 +1,5 @@
 {{site-header resetAll=(action 'resetAll')}}
-
+{{log isDefault}}
 <div class="site-main grid-x">
   <div class="navigation-area cell large-auto">
     {{map-search transitionTo=(action 'transitionTo')}}
@@ -10,7 +10,11 @@
         transitionTo=(action 'transitionTo')
         qps=qps
       }}
-      {{layer-palette qps=qps}}
+
+      {{layer-palette 
+        qps=qps 
+        isDefault=isDefault
+        resetQueryParams=(action 'resetQueryParams')}}
     </div>
   </div>
   {{outlet}}
