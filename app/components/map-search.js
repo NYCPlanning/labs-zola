@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import fetch from 'fetch';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task, timeout } from 'ember-concurrency';
 import bblDemux from '../utils/bbl-demux';
