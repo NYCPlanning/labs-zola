@@ -40,7 +40,12 @@ export default {
               ['R9', '#f2f618'],
             ],
           },
-          'fill-opacity': 0.3,
+          'fill-opacity': {
+            stops: [
+              [15, 0.3],
+              [16, 0],
+            ],
+          },
           'fill-antialias': true,
         },
       },
