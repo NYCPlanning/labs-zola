@@ -91,7 +91,6 @@ export default Ember.Component.extend({
       this.set('searchTerms', '');
     },
     goTo(result) {
-      console.log('result', result)
       const mainMap = this.get('mainMap');
       const mapInstance = mainMap.get('mapInstance');
 
