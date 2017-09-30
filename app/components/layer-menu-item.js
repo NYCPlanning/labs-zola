@@ -13,7 +13,9 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
 
   @computed('for', 'registeredLayers.layers.@each')
   layer(layerId, layers) {
-    return layers.findBy('config.id', layerId);
+    const layer = layers.findBy('config.id', layerId);
+    console.log('layer', layer)
+    return layer
   },
 
   @computed('layer.config.title')
