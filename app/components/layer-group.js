@@ -100,17 +100,17 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     return config;
   },
 
-  buildRangeSQL(column = '', range = [0, 1] || ['a', 'b']) {
-    let sql = this.get('config.sql');
+  buildRangeSQL(sql, column = '', range = [0, 1] || ['a', 'b']) {
+    let newSql = sql;
     let cleanRange = range;
 
     if (typeof range[0] === 'string') {
       cleanRange = cleanRange.map(step => `'${step}'`);
     }
 
-    sql += ` WHERE ${column} > ${cleanRange[0]} AND ${column} < ${cleanRange[1]}`;
+    newSql += ` WHERE ${column} > ${cleanRange[0]} AND ${column} < ${cleanRange[1]}`;
 
-    return sql;
+    return newSql;
   },
 
   buildMultiSelectSQL(sql, column = '', values = [0, 1] || ['a', 'b']) {

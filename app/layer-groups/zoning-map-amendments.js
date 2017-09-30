@@ -1,16 +1,14 @@
 export default {
   id: 'zoning-map-amendments',
   title: 'Zoning Map Amendments',
-  type: 'carto',
-  sql: ['SELECT the_geom_webmercator, ulurpno, status, project_na FROM support_nyzma'],
   visible: false,
   layers: [
     {
       layer: {
         id: 'zma-line',
         type: 'line',
-        source: 'zma',
-        'source-layer': 'layer0',
+        source: 'zoning-map-amendments',
+        'source-layer': 'zoning-map-amendments',
         paint: {
           'line-width': {
             stops: [
@@ -28,7 +26,8 @@ export default {
       layer: {
         id: 'zma-fill',
         type: 'fill',
-        'source-layer': 'layer0',
+        source: 'zoning-map-amendments',
+        'source-layer': 'zoning-map-amendments',
         paint: {
           'fill-color': '#9FC73E',
           'fill-opacity': 0.6,

@@ -139,16 +139,17 @@
             </ul>
         {{/layer-multi-select-control}}
       {{/if}}
-    {{/layer-menu-item}}
+    {{/layer-menu-item}} --}}
 
     {{#layer-menu-item for='zoning-map-amendments' as |item|}}
       {{#if item.layer.visible}}
         {{item.range-slider
+            source='zoning-map-amendments'
             column='effective'}}
       {{/if}}
     {{/layer-menu-item}}
 
-    {{layer-menu-item for='zoning-map-amendments-pending'}} --}}
+    {{!-- {{layer-menu-item for='zoning-map-amendments-pending'}} --}}
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion

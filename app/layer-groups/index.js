@@ -54,6 +54,6 @@ export default {
   transitZones,
   waterfrontAccessPlan,
   zoningDistricts,
-  // zoningMapAmendments,
+  zoningMapAmendments,
   // zoningMapAmendmentsPending,
 };
