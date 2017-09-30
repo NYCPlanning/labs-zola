@@ -5,7 +5,6 @@ import commercialOverlays from './commercial-overlays';
 import communityDistricts from './communitydistricts';
 import coastalZoneBoundary from './coastal-zone-boundary';
 import digitalTaxMap from './digital-tax-map';
-import facilities from './facilities';
 import fresh from './fresh';
 import historicDistricts from './historic-districts';
 import inclusionaryHousing from './inclusionary-housing';
@@ -35,7 +34,6 @@ export default {
   communityDistricts,
   coastalZoneBoundary,
   digitalTaxMap,
-  // facilities,
   fresh,
   historicDistricts,
   inclusionaryHousing,
