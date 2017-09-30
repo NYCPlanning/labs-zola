@@ -1,7 +1,5 @@
-{{log visible}}
 {{#if visible}}
   {{#each config.layers as |layerConfig|}}
-    {{log layerConfig.layer}}
     {{map.layer
       layer=layerConfig.layer
       didUpdateLayers=didUpdateLayers
