@@ -122,6 +122,15 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
   @computed('config', 'isCarto', 'sql')
   sourceOptions(config, isCarto) {
     if (isCarto) return this.get('configWithTemplate.value');
+
+    if (config.type === 'raster') {
+      return {
+        type: 'raster',
+        tiles: config.tiles,
+        tileSize: config.tileSize,
+      };
+    }
+
     return config;
   },
 
