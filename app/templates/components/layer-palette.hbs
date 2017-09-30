@@ -101,11 +101,12 @@
       {{/if}}
     {{/layer-menu-item}}
 
-    {{!-- {{#layer-menu-item
+    {{#layer-menu-item
       for='commercial-overlays'
       as |item|}}
       {{#if item.layer.visible}}
         {{#layer-multi-select-control
+          source='commercial-overlays'
           column='overlay'
           parentComponent=item.layer
           as |multiSelect|}}
@@ -139,7 +140,7 @@
             </ul>
         {{/layer-multi-select-control}}
       {{/if}}
-    {{/layer-menu-item}} --}}
+    {{/layer-menu-item}}
 
     {{#layer-menu-item for='zoning-map-amendments' as |item|}}
       {{#if item.layer.visible}}
@@ -149,7 +150,7 @@
       {{/if}}
     {{/layer-menu-item}}
 
-    {{!-- {{layer-menu-item for='zoning-map-amendments-pending'}} --}}
+    {{layer-menu-item for='zoning-map-amendments-pending'}}
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion

@@ -31,7 +31,7 @@ export default {
   aerials16,
   assemblydistricts,
   boroughs,
-  // commercialOverlays,
+  commercialOverlays,
   communityDistricts,
   coastalZoneBoundary,
   digitalTaxMap,
@@ -55,5 +55,5 @@ export default {
   waterfrontAccessPlan,
   zoningDistricts,
   zoningMapAmendments,
-  // zoningMapAmendmentsPending,
+  zoningMapAmendmentsPending,
 };

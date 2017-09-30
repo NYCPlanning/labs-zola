@@ -42,5 +42,9 @@ export default {
       id: 'waterfront-access-plan',
       sql: 'SELECT the_geom_webmercator, name FROM support_wap',
     },
+    {
+      id: 'zoning-map-amendments-pending',
+      sql: 'SELECT the_geom_webmercator, ulurpno, status FROM support_nyzma WHERE status = \'Certified\'',
+    },
   ],
 };
