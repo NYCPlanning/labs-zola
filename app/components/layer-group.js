@@ -21,16 +21,9 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
       this.set('config', layerGroups[layerID.camelize()]);
     }
 
-    const config = this.get('config');
-    const { sql } = config;
-
     if (this.get('childComponents.length') > 1) {
       warn('Only one layer-control per layer is supported.');
     }
-
-    this.setProperties({
-      sql,
-    });
   },
 
   registeredLayers: service(),
