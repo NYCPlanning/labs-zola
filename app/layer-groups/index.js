@@ -47,7 +47,7 @@ export default {
   // nyccouncildistricts,
   // sidewalkcafes,
   // specialPurposeDistricts,
-  // pluto,
+  pluto,
   // sceniclandmarks,
   // specialPurposeSubdistricts,
   // subway,

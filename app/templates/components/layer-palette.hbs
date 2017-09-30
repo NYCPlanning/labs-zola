@@ -3,10 +3,10 @@
 </button>
 
 <div id="layers-menu" class="{{if closed 'show-for-medium'}} hide-for-print">
-  {{!-- {{#layer-palette-accordion
+  {{#layer-palette-accordion
     closed=false
     title='Zoning and Land Use'}}
-    {{#layer-menu-item
+    {{!-- {{#layer-menu-item
       for='zoning-districts' as |item|}}
       {{#if item.layer.visible}}
         {{#layer-multi-select-control
@@ -63,7 +63,7 @@
             </ul>
         {{/layer-multi-select-control}}
       {{/if}}
-    {{/layer-menu-item}}
+    {{/layer-menu-item}} --}}
 
     {{#layer-menu-item for='pluto' as |item|}}
       {{#if (lt mainMap.currentZoom item.layer.minzoom)}}
@@ -100,7 +100,7 @@
       {{/if}}
     {{/layer-menu-item}}
 
-    {{#layer-menu-item
+    {{!-- {{#layer-menu-item
       for='commercial-overlays'
       as |item|}}
       {{#if item.layer.visible}}
@@ -147,10 +147,10 @@
       {{/if}}
     {{/layer-menu-item}}
 
-    {{layer-menu-item for='zoning-map-amendments-pending'}}
+    {{layer-menu-item for='zoning-map-amendments-pending'}} --}}
   {{/layer-palette-accordion}}
 
-  {{#layer-palette-accordion
+  {{!-- {{#layer-palette-accordion
     closed=true
     title='Supporting Zoning Layers'
     as |item|}}

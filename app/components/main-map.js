@@ -97,7 +97,7 @@ export default Ember.Component.extend({
         tiles: [template],
         minzoom,
       }));
-  }).restartable(),
+  }),
 
   actions: {
     handleMapLoad(map) {
