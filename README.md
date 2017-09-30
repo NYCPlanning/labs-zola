@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/NYCPlanning/labs-zola.svg?style=svg)](https://circleci.com/gh/NYCPlanning/labs-zola)
+
 # labs-zola
 
 This README outlines the details of collaborating on this Ember application.
