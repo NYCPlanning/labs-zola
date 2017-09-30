@@ -3,7 +3,7 @@
 </button>
 
 <div id="layers-menu" class="{{if closed 'show-for-medium'}} hide-for-print">
-  {{#layer-palette-accordion
+  {{!-- {{#layer-palette-accordion
     closed=false
     title='Zoning and Land Use'}}
     {{#layer-menu-item
@@ -191,33 +191,33 @@
   }}
     {{layer-menu-item
       for='subway'}}
-  {{/layer-palette-accordion}}
+  {{/layer-palette-accordion}} --}}
 
   {{#layer-palette-accordion
     closed=true
     title='Administrative Boundaries'}}
+    {{!-- {{layer-menu-item
+      for='boroughs'}} --}}
     {{layer-menu-item
-      for='boroughs'}}
-    {{layer-menu-item
-      for='communitydistricts'}}
-    {{layer-menu-item
-      for='nyccouncildistricts'}}
-    {{layer-menu-item
-      for='nysenatedistricts'}}
-    {{layer-menu-item
-      for='assemblydistricts'}}
+      for='community-districts'}}
+    {{!-- {{layer-menu-item
+      for='nyccouncildistricts'}} --}}
+    {{!-- {{layer-menu-item
+      for='nysenatedistricts'}} --}}
+    {{!-- {{layer-menu-item
+      for='assemblydistricts'}} --}}
     {{layer-menu-item
       for='neighborhood-tabulation-areas'}}
   {{/layer-palette-accordion}}
 
-  {{#layer-palette-accordion
+  {{!-- {{#layer-palette-accordion
     closed=true
     title='Basemaps'}}
     {{layer-menu-item
       for='digital-tax-map'}}
     {{layer-menu-item
       for='aerials16'}}
-  {{/layer-palette-accordion}}
+  {{/layer-palette-accordion}} --}}
 
   <a {{action resetQueryParams}} class="button gray small reset-map-button" disabled={{isDefault}}>
     {{fa-icon "undo"}} Reset Map Layers

@@ -1,11 +1,14 @@
 import Ember from 'ember';
 import mapboxgl from 'mapbox-gl';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { task } from 'ember-concurrency';
 
+import carto from '../utils/carto2';
 import layerGroups from '../layer-groups';
 
 import highlightedLotLayer from '../layers/highlighted-lot';
 import selectedLayers from '../layers/selected-lot';
+import sources from '../sources';
 
 const selectedFillLayer = selectedLayers.fill;
 const selectedLineLayer = selectedLayers.line;
@@ -30,6 +33,7 @@ export default Ember.Component.extend({
   mapConfig: Object.keys(layerGroups).map(key => layerGroups[key]),
 
   loading: true,
+  sourcesLoaded: false,
 
   @computed('mainMap.selected')
   isSelectedBoundsOptions(selected) {
@@ -80,8 +84,24 @@ export default Ember.Component.extend({
   selectedFillLayer,
   selectedLineLayer,
 
+  configWithTemplate(config) {
+    return this.get('templateTask').perform(config);
+  },
+
+  templateTask: task(function* (config) {
+    const { minzoom = 0 } = config;
+    return yield carto.getVectorTileTemplate(config['source-layers'])
+      .then(template => ({
+        id: config.id,
+        type: 'vector',
+        tiles: [template],
+        minzoom,
+      }));
+  }).restartable(),
+
   actions: {
     handleMapLoad(map) {
+      window.map = map;
       const mainMap = this.get('mainMap');
       mainMap.set('mapInstance', map);
 
@@ -99,6 +119,25 @@ export default Ember.Component.extend({
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
       map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
       map.addControl(geoLocateControl, 'top-left');
+
+
+      // add sources
+      const sourcePromises = Object.keys(sources).map((key) => {
+        const source = sources[key];
+        if (source.type === 'cartovector') {
+          return this.configWithTemplate(source)
+            .then((sourceConfig) => {
+              map.addSource(sourceConfig.id, sourceConfig);
+            });
+        }
+
+        // handle non-carto sources here
+      });
+
+      Promise.all(sourcePromises)
+        .then(() => {
+          this.set('sourcesLoaded', true);
+        });
 
       map.moveLayer('building');
       later(() => {

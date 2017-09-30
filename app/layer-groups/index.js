@@ -2,7 +2,7 @@ import aerials16 from './aerials16';
 import assemblydistricts from './assemblydistricts';
 import boroughs from './boroughs';
 import commercialOverlays from './commercial-overlays';
-import communitydistricts from './communitydistricts';
+import communityDistricts from './communitydistricts';
 import coastalZoneBoundary from './coastal-zone-boundary';
 import digitalTaxMap from './digital-tax-map';
 import facilities from './facilities';
@@ -28,32 +28,32 @@ import zoningMapAmendments from './zoning-map-amendments';
 import zoningMapAmendmentsPending from './zoning-map-amendments-pending';
 
 export default {
-  aerials16,
-  assemblydistricts,
-  boroughs,
-  commercialOverlays,
-  communitydistricts,
-  coastalZoneBoundary,
-  digitalTaxMap,
-  facilities,
-  fresh,
-  historicdistricts,
-  inclusionaryHousing,
-  landmarkpoints,
-  lowDensityGrowthMgmtAreas,
-  mandatoryInclusionaryHousing,
+  // aerials16,
+  // assemblydistricts,
+  // boroughs,
+  // commercialOverlays,
+  communityDistricts,
+  // coastalZoneBoundary,
+  // digitalTaxMap,
+  // facilities,
+  // fresh,
+  // historicdistricts,
+  // inclusionaryHousing,
+  // landmarkpoints,
+  // lowDensityGrowthMgmtAreas,
+  // mandatoryInclusionaryHousing,
   neighborhoodTabulationAreas,
-  nysenatedistricts,
-  nyccouncildistricts,
-  sidewalkcafes,
-  specialPurposeDistricts,
-  pluto,
-  sceniclandmarks,
-  specialPurposeSubdistricts,
-  subway,
-  transitZones,
-  waterfrontAccessPlan,
-  zoningDistricts,
-  zoningMapAmendments,
-  zoningMapAmendmentsPending,
+  // nysenatedistricts,
+  // nyccouncildistricts,
+  // sidewalkcafes,
+  // specialPurposeDistricts,
+  // pluto,
+  // sceniclandmarks,
+  // specialPurposeSubdistricts,
+  // subway,
+  // transitZones,
+  // waterfrontAccessPlan,
+  // zoningDistricts,
+  // zoningMapAmendments,
+  // zoningMapAmendmentsPending,
 };

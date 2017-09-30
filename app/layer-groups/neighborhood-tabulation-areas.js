@@ -6,17 +6,13 @@ export default {
   id: 'neighborhood-tabulation-areas',
   title: 'Neighborhood Tabulation Areas',
   visible: false,
-  type: 'carto', // raster, vector, geojson, or carto
-  sql: [
-    'SELECT the_geom_webmercator, ntaname FROM support_admin_ntaboundaries WHERE ntaname NOT ILIKE \'park-cemetery-etc%\'',
-    'SELECT ST_Centroid(the_geom_webmercator) as the_geom_webmercator, ntaname FROM support_admin_ntaboundaries WHERE ntaname NOT ILIKE \'park-cemetery-etc%\'',
-  ],
   layers: [
     {
       layer: {
         id: 'nta-line',
         type: 'line',
-        'source-layer': 'layer0',
+        source: 'adminBoundaries',
+        'source-layer': 'neighborhood-tabulation-areas',
         paint: paint.lines,
         layout: layout.lines,
       },
@@ -25,7 +21,8 @@ export default {
       layer: {
         id: 'nta-label',
         type: 'symbol',
-        'source-layer': 'layer1',
+        source: 'adminBoundaries',
+        'source-layer': 'neighborhood-tabulation-areas-centroids',
         minzoom: 12,
         paint: paint.labels,
         layout: labelLayout('ntaname'),
