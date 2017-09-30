@@ -120,23 +120,30 @@ export default Ember.Component.extend({
       map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
       map.addControl(geoLocateControl, 'top-left');
 
-      // add sources
-      const sourcePromises = Object.keys(sources).map((key) => {
-        const source = sources[key];
-        if (source.type === 'cartovector') {
+      // add carto sources
+      const cartoSourcePromises = Object.keys(sources)
+        .filter(key => sources[key].type === 'cartovector')
+        .map((key) => {
+          const source = sources[key];
           return this.configWithTemplate(source)
             .then((sourceConfig) => {
               map.addSource(sourceConfig.id, sourceConfig);
             });
-        }
+        });
 
-        // handle non-carto sources here
-      });
-
-      Promise.all(sourcePromises)
+      Promise.all(cartoSourcePromises)
         .then(() => {
           this.set('sourcesLoaded', true);
         });
+
+      // add raster sources
+      Object.keys(sources)
+        .filter(key => sources[key].type === 'raster')
+        .forEach((key) => {
+          const source = sources[key];
+          map.addSource(source.id, source);
+        });
+
 
       map.moveLayer('building');
       later(() => {

@@ -28,13 +28,13 @@ import zoningMapAmendments from './zoning-map-amendments';
 import zoningMapAmendmentsPending from './zoning-map-amendments-pending';
 
 export default {
-  // aerials16,
+  aerials16,
   assemblydistricts,
   boroughs,
   // commercialOverlays,
   communityDistricts,
   // coastalZoneBoundary,
-  // digitalTaxMap,
+  digitalTaxMap,
   // facilities,
   // fresh,
   // historicdistricts,
