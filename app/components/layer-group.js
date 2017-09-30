@@ -17,7 +17,6 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     this._super(...args);
 
     const layerID = this.get('for');
-    console.log(layerID.camelize(), layerGroups[layerID.camelize()])
     if (layerID) {
       this.set('config', layerGroups[layerID.camelize()]);
     }
