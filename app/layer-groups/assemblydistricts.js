@@ -6,14 +6,13 @@ export default {
   id: 'assemblydistricts',
   title: 'New York State Assembly Districts',
   visible: false,
-  type: 'carto', // raster, vector, geojson, or carto
-  sql: ['SELECT the_geom_webmercator, assemdist FROM support_admin_assemblydistricts'],
   layers: [
     {
       layer: {
         id: 'assemblydistricts-line',
         type: 'line',
-        'source-layer': 'layer0',
+        source: 'adminBoundaries',
+        'source-layer': 'ny-assembly-districts',
         paint: paint.lines,
         layout: layout.lines,
       },
@@ -22,7 +21,8 @@ export default {
       layer: {
         id: 'assemblydistricts-label',
         type: 'symbol',
-        'source-layer': 'layer0',
+        source: 'adminBoundaries',
+        'source-layer': 'ny-assembly-districts',
         minzoom: 10,
         paint: paint.labels,
         layout: labelLayout('assemdist'),

@@ -29,8 +29,8 @@ import zoningMapAmendmentsPending from './zoning-map-amendments-pending';
 
 export default {
   // aerials16,
-  // assemblydistricts,
-  // boroughs,
+  assemblydistricts,
+  boroughs,
   // commercialOverlays,
   communityDistricts,
   // coastalZoneBoundary,
@@ -43,8 +43,8 @@ export default {
   // lowDensityGrowthMgmtAreas,
   // mandatoryInclusionaryHousing,
   neighborhoodTabulationAreas,
-  // nysenatedistricts,
-  // nyccouncildistricts,
+  nysenatedistricts,
+  nyccouncildistricts,
   // sidewalkcafes,
   // specialPurposeDistricts,
   pluto,

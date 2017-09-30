@@ -27,5 +27,25 @@ export default {
       id: 'neighborhood-tabulation-areas-centroids',
       sql: 'SELECT ST_Centroid(the_geom_webmercator) as the_geom_webmercator, ntaname FROM support_admin_ntaboundaries WHERE ntaname NOT ILIKE \'park-cemetery-etc%\'',
     },
+
+    {
+      id: 'boroughs',
+      sql: 'SELECT the_geom_webmercator, boroname FROM support_admin_boroboundaries',
+    },
+
+    {
+      id: 'nyc-council-districts',
+      sql: 'SELECT the_geom_webmercator, coundist FROM support_admin_nyccouncildistricts',
+    },
+
+    {
+      id: 'ny-senate-districts',
+      sql: 'SELECT the_geom_webmercator, stsendist FROM support_admin_nysenatedistricts',
+    },
+
+    {
+      id: 'ny-assembly-districts',
+      sql: 'SELECT the_geom_webmercator, assemdist FROM support_admin_assemblydistricts',
+    },
   ],
 };

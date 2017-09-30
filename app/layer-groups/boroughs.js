@@ -6,14 +6,13 @@ export default {
   id: 'boroughs',
   title: 'Boroughs',
   visible: false,
-  type: 'carto', // raster, vector, geojson, or carto
-  sql: ['SELECT the_geom_webmercator, boroname FROM support_admin_boroboundaries'],
   layers: [
     {
       layer: {
         id: 'boroughs-line',
         type: 'line',
-        'source-layer': 'layer0',
+        source: 'adminBoundaries',
+        'source-layer': 'boroughs',
         paint: paint.lines,
         layout: layout.lines,
       },
@@ -22,7 +21,8 @@ export default {
       layer: {
         id: 'boroughs-label',
         type: 'symbol',
-        'source-layer': 'layer0',
+        source: 'adminBoundaries',
+        'source-layer': 'boroughs',
         paint: paint.labels,
         layout: labelLayout('boroname'),
       },
