@@ -2,7 +2,7 @@ import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task } from 'ember-concurrency';
 import { ParentMixin, ChildMixin } from 'ember-composability-tools';
-import carto from '../utils/carto';
+import carto from '../utils/carto2';
 import layerGroups from '../layer-groups';
 import sources from '../sources';
 
@@ -86,33 +86,6 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
 
   layers: alias('config.layers'),
 
-  @computed('sql')
-  configWithTemplate(sql) {
-    if (sql) {
-      return this.get('templateTask').perform(sql);
-    }
-
-    return null;
-  },
-
-  templateTask: task(function* (sql) {
-    const { minzoom = 0 } = this.get('config');
-    return yield carto.getVectorTileTemplate(sql)
-      .then(
-        template => ({
-          type: 'vector',
-          tiles: [template],
-          minzoom,
-        }),
-      )
-      .then(
-        (optionsObject) => {
-          this.set('config.options', optionsObject);
-          return optionsObject;
-        },
-      );
-  }).restartable(),
-
   @computed('config', 'isCarto', 'sql')
   sourceOptions(config, isCarto) {
     if (isCarto) return this.get('configWithTemplate.value');
@@ -141,26 +114,34 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     return sql;
   },
 
-  buildMultiSelectSQL(source, column = '', values = [0, 1] || ['a', 'b']) {
-    let sql = sources[source.camelize()]['source-layers'][0].sql;
-
+  buildMultiSelectSQL(sql, column = '', values = [0, 1] || ['a', 'b']) {
+    let newSql = sql;
     const valuesCleaned = values.map(value => `'${value}'`).join(',');
     if (!Ember.isEmpty(values)) {
-      sql += ` WHERE ${column} IN (${valuesCleaned})`;
+      newSql += ` WHERE ${column} IN (${valuesCleaned})`;
     }
-
-    return sql;
+    return newSql;
   },
 
   actions: {
     toggleVisibility() {
       this.toggleProperty('visible');
     },
-    updateSql(method, source, column, value) {
-      console.log(method, source, column, value)
-      const sql = this[method](source, column, value);
+    updateSql(method, sourceId, column, value) {
+      console.log(method, sourceId, column, value)
+      const source = sources[sourceId.camelize()];
+      const sourceLayer = source['source-layers'][0];
+      const sql = this[method](sourceLayer.sql, column, value);
 
       // get a new template and update the source tiles
+
+      carto.getVectorTileTemplate([{
+        id: sourceLayer.id,
+        sql,
+      }])
+        .then((template) => {
+          console.log(template)
+        });
     },
     updatePaintFor(layerId, newPaintStyle) {
       const layers = this.get('config.layers');
