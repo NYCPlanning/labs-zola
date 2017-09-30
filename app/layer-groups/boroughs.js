@@ -11,7 +11,7 @@ export default {
       layer: {
         id: 'boroughs-line',
         type: 'line',
-        source: 'adminBoundaries',
+        source: 'admin-boundaries',
         'source-layer': 'boroughs',
         paint: paint.lines,
         layout: layout.lines,
@@ -21,7 +21,7 @@ export default {
       layer: {
         id: 'boroughs-label',
         type: 'symbol',
-        source: 'adminBoundaries',
+        source: 'admin-boundaries',
         'source-layer': 'boroughs',
         paint: paint.labels,
         layout: labelLayout('boroname'),

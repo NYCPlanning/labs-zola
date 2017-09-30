@@ -11,7 +11,7 @@ export default {
       layer: {
         id: 'nyccouncildistricts-line',
         type: 'line',
-        source: 'adminBoundaries',
+        source: 'admin-boundaries',
         'source-layer': 'nyc-council-districts',
         paint: paint.lines,
         layout: layout.lines,
@@ -21,7 +21,7 @@ export default {
       layer: {
         id: 'nyccouncildistricts-label',
         type: 'symbol',
-        source: 'adminBoundaries',
+        source: 'admin-boundaries',
         'source-layer': 'nyc-council-districts',
         paint: paint.labels,
         layout: labelLayout('coundist'),

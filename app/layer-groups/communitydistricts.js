@@ -11,7 +11,7 @@ export default {
       layer: {
         id: 'community-districts-line',
         type: 'line',
-        source: 'adminBoundaries',
+        source: 'admin-boundaries',
         'source-layer': 'community-districts',
         paint: paint.lines,
         layout: layout.lines,
@@ -21,7 +21,7 @@ export default {
       layer: {
         id: 'community-districts-label',
         type: 'symbol',
-        source: 'adminBoundaries',
+        source: 'admin-boundaries',
         'source-layer': 'community-districts',
         minzoom: 11,
         paint: paint.labels,

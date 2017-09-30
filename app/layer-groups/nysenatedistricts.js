@@ -11,7 +11,7 @@ export default {
       layer: {
         id: 'nysenatedistricts-line',
         type: 'line',
-        source: 'adminBoundaries',
+        source: 'admin-boundaries',
         'source-layer': 'ny-senate-districts',
         paint: paint.lines,
         layout: layout.lines,
@@ -21,7 +21,7 @@ export default {
       layer: {
         id: 'nysenatedistricts-label',
         type: 'symbol',
-        source: 'adminBoundaries',
+        source: 'admin-boundaries',
         'source-layer': 'ny-senate-districts',
         minzoom: 10,
         paint: paint.labels,

@@ -1,5 +1,5 @@
 export default {
-  id: 'adminBoundaries',
+  id: 'admin-boundaries',
   type: 'cartovector',
   'source-layers': [
     {

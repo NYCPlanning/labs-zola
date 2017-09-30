@@ -11,7 +11,7 @@ export default {
       layer: {
         id: 'assemblydistricts-line',
         type: 'line',
-        source: 'adminBoundaries',
+        source: 'admin-boundaries',
         'source-layer': 'ny-assembly-districts',
         paint: paint.lines,
         layout: layout.lines,
@@ -21,7 +21,7 @@ export default {
       layer: {
         id: 'assemblydistricts-label',
         type: 'symbol',
-        source: 'adminBoundaries',
+        source: 'admin-boundaries',
         'source-layer': 'ny-assembly-districts',
         minzoom: 10,
         paint: paint.labels,
