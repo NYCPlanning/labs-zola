@@ -4,6 +4,7 @@ import { task } from 'ember-concurrency';
 import { ParentMixin, ChildMixin } from 'ember-composability-tools';
 import carto from '../utils/carto';
 import layerGroups from '../layer-groups';
+import sources from '../sources';
 
 const { copy, merge, set } = Ember;
 
@@ -140,8 +141,8 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     return sql;
   },
 
-  buildMultiSelectSQL(column = '', values = [0, 1] || ['a', 'b']) {
-    let sql = this.get('config.sql')[0];
+  buildMultiSelectSQL(source, column = '', values = [0, 1] || ['a', 'b']) {
+    let sql = sources[source.camelize()]['source-layers'][0].sql;
 
     const valuesCleaned = values.map(value => `'${value}'`).join(',');
     if (!Ember.isEmpty(values)) {
@@ -155,9 +156,11 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     toggleVisibility() {
       this.toggleProperty('visible');
     },
-    updateSql(method, column, value) {
-      const sql = this[method](column, value);
-      this.set('sql', [sql]);
+    updateSql(method, source, column, value) {
+      console.log(method, source, column, value)
+      const sql = this[method](source, column, value);
+
+      // get a new template and update the source tiles
     },
     updatePaintFor(layerId, newPaintStyle) {
       const layers = this.get('config.layers');

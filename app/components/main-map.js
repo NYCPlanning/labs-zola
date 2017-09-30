@@ -120,7 +120,7 @@ export default Ember.Component.extend({
       map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
       map.addControl(geoLocateControl, 'top-left');
 
-
+      console.log(sources)
       // add sources
       const sourcePromises = Object.keys(sources).map((key) => {
         const source = sources[key];

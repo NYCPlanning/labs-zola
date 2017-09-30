@@ -19,10 +19,11 @@ export default Ember.Component.extend(ParentMixin, {
   actions: {
     selectionChanged() {
       const values = this.get('allChecked');
+      const source = this.get('source');
       const column = this.get('column');
 
       this.get('parentComponent')
-        .send('updateSql', 'buildMultiSelectSQL', column, values);
+        .send('updateSql', 'buildMultiSelectSQL', source, column, values);
     },
   },
 });

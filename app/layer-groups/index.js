@@ -53,7 +53,7 @@ export default {
   // subway,
   // transitZones,
   // waterfrontAccessPlan,
-  // zoningDistricts,
+  zoningDistricts,
   // zoningMapAmendments,
   // zoningMapAmendmentsPending,
 };

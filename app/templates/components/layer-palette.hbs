@@ -6,11 +6,12 @@
   {{#layer-palette-accordion
     closed=false
     title='Zoning and Land Use'}}
-    {{!-- {{#layer-menu-item
+    {{#layer-menu-item
       for='zoning-districts' as |item|}}
       {{#if item.layer.visible}}
         {{#layer-multi-select-control
           column='primaryzone'
+          source='zoning-districts'
           parentComponent=item.layer
           as |multiSelect|}}
             <ul class="layer-menu-item--group-checkboxes">
@@ -63,7 +64,7 @@
             </ul>
         {{/layer-multi-select-control}}
       {{/if}}
-    {{/layer-menu-item}} --}}
+    {{/layer-menu-item}}
 
     {{#layer-menu-item for='pluto' as |item|}}
       {{#if (lt mainMap.currentZoom item.layer.minzoom)}}
