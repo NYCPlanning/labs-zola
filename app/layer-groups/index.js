@@ -50,7 +50,7 @@ export default {
   pluto,
   // sceniclandmarks,
   specialPurposeSubdistricts,
-  // subway,
+  subway,
   transitZones,
   waterfrontAccessPlan,
   zoningDistricts,

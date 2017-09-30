@@ -3,6 +3,7 @@ import adminBoundaries from './admin-boundaries';
 import digitalTaxMap from './digital-tax-map';
 import pluto from './pluto';
 import supportingZoning from './supporting-zoning';
+import transportation from './transportation';
 import zoningDistricts from './zoning-districts';
 
 export default {
@@ -11,5 +12,6 @@ export default {
   digitalTaxMap,
   pluto,
   supportingZoning,
+  transportation,
   zoningDistricts,
 };
