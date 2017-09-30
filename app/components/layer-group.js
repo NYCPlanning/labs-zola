@@ -140,7 +140,11 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
         sql,
       }])
         .then((template) => {
-          console.log(template)
+          // replace this source's tiles
+          const map = this.get('mainMap').mapInstance;
+          const newStyle = map.getStyle();
+          newStyle.sources[sourceId].tiles = [template];
+          map.setStyle(newStyle);
         });
     },
     updatePaintFor(layerId, newPaintStyle) {

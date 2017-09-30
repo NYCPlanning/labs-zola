@@ -10,6 +10,8 @@ export default Ember.Component.extend(ParentMixin, {
       .mapBy('value');
   },
 
+  values: [],
+
   didInsertElement() {
     this.send('selectionChanged');
   },
@@ -22,8 +24,13 @@ export default Ember.Component.extend(ParentMixin, {
       const source = this.get('source');
       const column = this.get('column');
 
-      this.get('parentComponent')
-        .send('updateSql', 'buildMultiSelectSQL', source, column, values);
+      const previousValues = this.get('values');
+      if (JSON.stringify(values) !== JSON.stringify(previousValues)) {
+        this.get('parentComponent')
+          .send('updateSql', 'buildMultiSelectSQL', source, column, values);
+      }
+
+      this.set('values', values);
     },
   },
 });
