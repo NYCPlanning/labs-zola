@@ -221,6 +221,12 @@
     {{layer-menu-item
       for='aerials-16'}}
   {{/layer-palette-accordion}}
+  {{#layer-palette-accordion
+    closed=true
+    title='3D Buildings'}}
+    {{layer-menu-item
+      for='threed-buildings'}}
+  {{/layer-palette-accordion}}
 
   <a {{action resetQueryParams}} class="button gray small reset-map-button" disabled={{isDefault}}>
     {{fa-icon "undo"}} Reset Map Layers

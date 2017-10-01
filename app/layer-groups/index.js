@@ -20,6 +20,7 @@ import pluto from './pluto';
 import scenicLandmarks from './scenic-landmarks';
 import specialPurposeSubdistricts from './special-purpose-subdistricts';
 import subway from './subway';
+import threedBuildings from './threed-buildings';
 import transitZones from './transit-zones';
 import waterfrontAccessPlan from './waterfront-access-plan';
 import zoningDistricts from './zoning-districts';
@@ -49,6 +50,7 @@ export default {
   scenicLandmarks,
   specialPurposeSubdistricts,
   subway,
+  threedBuildings,
   transitZones,
   waterfrontAccessPlan,
   zoningDistricts,

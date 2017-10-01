@@ -145,12 +145,8 @@ export default Ember.Component.extend({
         });
 
 
-      map.moveLayer('building');
-      later(() => {
-        if (map) {
-          map.setPaintProperty('building', 'fill-opacity', 0.4);
-        }
-      }, 1000);
+      // get rid of default building layer
+      map.removeLayer('building');
     },
 
     handleMouseover(e) {
