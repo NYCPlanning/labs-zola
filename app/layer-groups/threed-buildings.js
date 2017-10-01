@@ -1,7 +1,7 @@
 export default {
   id: 'threed-buildings',
   title: '3D Buildings',
-  visible: true,
+  visible: false,
   layers: [
     {
       layer: {
