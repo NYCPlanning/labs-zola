@@ -14,7 +14,6 @@ const selectedFillLayer = selectedLayers.fill;
 const selectedLineLayer = selectedLayers.line;
 
 const { alias } = Ember.computed;
-const { later } = Ember.run;
 const { service } = Ember.inject;
 
 export default Ember.Component.extend({
