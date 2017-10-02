@@ -21,6 +21,25 @@ const env = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+    metricsAdapters: [
+      {
+        name: 'GoogleAnalytics',
+        environments: ['development', 'production'],
+        config: {
+          id: 'UA-84250233-8',
+          // Use `analytics_debug.js` in development
+          debug: environment === 'development',
+          // Use verbose tracing of GA events
+          trace: environment === 'development',
+          // Ensure development env hits aren't sent to GA
+          sendHitTask: environment !== 'development',
+        },
+      },
+    ],
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' www.google-analytics.com",
+    },
   };
 
   if (environment === 'development') {
