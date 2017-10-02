@@ -4,7 +4,7 @@ export default {
   'source-layers': [
     {
       id: 'zoning-map-amendments',
-      sql: 'SELECT the_geom_webmercator, ulurpno, status, project_na FROM support_nyzma',
+      sql: 'SELECT * FROM (SELECT the_geom_webmercator, to_char(effective, \'MM/DD/YYYY\') as effective, ulurpno, status, project_na FROM support_nyzma WHERE status = \'Adopted\') a',
     },
   ],
 };
