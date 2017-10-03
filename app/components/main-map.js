@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import mapboxgl from 'mapbox-gl';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import sources from '../sources';
 
 import layerGroups from '../layer-groups';
 
@@ -11,7 +12,6 @@ const selectedFillLayer = selectedLayers.fill;
 const selectedLineLayer = selectedLayers.line;
 
 const { alias } = Ember.computed;
-const { later } = Ember.run;
 const { service } = Ember.inject;
 
 export default Ember.Component.extend({
@@ -30,6 +30,8 @@ export default Ember.Component.extend({
   mapConfig: Object.keys(layerGroups).map(key => layerGroups[key]),
 
   loading: true,
+  sourcesLoaded: true,
+  cartoSources: [],
 
   @computed('mainMap.selected')
   isSelectedBoundsOptions(selected) {
@@ -82,9 +84,24 @@ export default Ember.Component.extend({
 
   actions: {
     handleMapLoad(map) {
+      window.map = map;
       const mainMap = this.get('mainMap');
       mainMap.set('mapInstance', map);
 
+      // add carto sources
+      this.get('cartoSources').forEach((sourceConfig) => {
+        map.addSource(sourceConfig.id, sourceConfig);
+      });
+
+      // add raster sources
+      Object.keys(sources)
+        .filter(key => sources[key].type === 'raster')
+        .forEach((key) => {
+          const source = sources[key];
+          map.addSource(source.id, source);
+        });
+
+      // setup controls
       const geoLocateControl = new mapboxgl.GeolocateControl({
         positionOptions: {
           enableHighAccuracy: true,
@@ -100,12 +117,8 @@ export default Ember.Component.extend({
       map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
       map.addControl(geoLocateControl, 'top-left');
 
-      map.moveLayer('building');
-      later(() => {
-        if (map) {
-          map.setPaintProperty('building', 'fill-opacity', 0.4);
-        }
-      }, 1000);
+      // get rid of default building layer
+      map.removeLayer('building');
     },
 
     handleMouseover(e) {

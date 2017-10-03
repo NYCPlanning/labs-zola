@@ -6,14 +6,13 @@ export default {
   id: 'nyccouncildistricts',
   title: 'NYC Council Districts',
   visible: false,
-  type: 'carto',
-  sql: ['SELECT the_geom_webmercator, coundist FROM support_admin_nyccouncildistricts'],
   layers: [
     {
       layer: {
         id: 'nyccouncildistricts-line',
         type: 'line',
-        'source-layer': 'layer0',
+        source: 'admin-boundaries',
+        'source-layer': 'nyc-council-districts',
         paint: paint.lines,
         layout: layout.lines,
       },
@@ -22,7 +21,8 @@ export default {
       layer: {
         id: 'nyccouncildistricts-label',
         type: 'symbol',
-        'source-layer': 'layer0',
+        source: 'admin-boundaries',
+        'source-layer': 'nyc-council-districts',
         paint: paint.labels,
         layout: labelLayout('coundist'),
       },

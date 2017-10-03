@@ -1,15 +1,15 @@
 import aerials16 from './aerials16';
 import assemblydistricts from './assemblydistricts';
 import boroughs from './boroughs';
+import buildingFootprints from './building-footprints';
 import commercialOverlays from './commercial-overlays';
-import communitydistricts from './communitydistricts';
+import communityDistricts from './communitydistricts';
 import coastalZoneBoundary from './coastal-zone-boundary';
 import digitalTaxMap from './digital-tax-map';
-import facilities from './facilities';
 import fresh from './fresh';
-import historicdistricts from './historicdistricts';
+import historicDistricts from './historic-districts';
 import inclusionaryHousing from './inclusionary-housing';
-import landmarkpoints from './landmarkpoints';
+import landmarks from './landmarks';
 import lowDensityGrowthMgmtAreas from './low-density-growth-mgmt-areas';
 import mandatoryInclusionaryHousing from './mandatory-inclusionary-housing';
 import neighborhoodTabulationAreas from './neighborhood-tabulation-areas';
@@ -18,9 +18,10 @@ import nyccouncildistricts from './nyccouncildistricts';
 import sidewalkcafes from './sidewalkcafes';
 import specialPurposeDistricts from './special-purpose-districts';
 import pluto from './pluto';
-import sceniclandmarks from './sceniclandmarks';
+import scenicLandmarks from './scenic-landmarks';
 import specialPurposeSubdistricts from './special-purpose-subdistricts';
 import subway from './subway';
+import threedBuildings from './threed-buildings';
 import transitZones from './transit-zones';
 import waterfrontAccessPlan from './waterfront-access-plan';
 import zoningDistricts from './zoning-districts';
@@ -31,15 +32,15 @@ export default {
   aerials16,
   assemblydistricts,
   boroughs,
+  buildingFootprints,
   commercialOverlays,
-  communitydistricts,
+  communityDistricts,
   coastalZoneBoundary,
   digitalTaxMap,
-  facilities,
   fresh,
-  historicdistricts,
+  historicDistricts,
   inclusionaryHousing,
-  landmarkpoints,
+  landmarks,
   lowDensityGrowthMgmtAreas,
   mandatoryInclusionaryHousing,
   neighborhoodTabulationAreas,
@@ -48,9 +49,10 @@ export default {
   sidewalkcafes,
   specialPurposeDistricts,
   pluto,
-  sceniclandmarks,
+  scenicLandmarks,
   specialPurposeSubdistricts,
   subway,
+  threedBuildings,
   transitZones,
   waterfrontAccessPlan,
   zoningDistricts,

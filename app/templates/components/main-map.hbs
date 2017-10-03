@@ -14,8 +14,7 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
-  {{!-- {{map.call 'addControl' controlOptions 'top-left'}} --}}
-
+  {{map.layer-group for='threed-buildings' visible=qps.threed-buildings}}
 
   {{map.layer-group for='neighborhood-tabulation-areas' visible=qps.neighborhood-tabulation-areas}}
 
@@ -25,21 +24,23 @@
 
   {{map.layer-group for='nyccouncildistricts' visible=qps.nyccouncildistricts}}
 
-  {{map.layer-group for='communitydistricts' visible=qps.communitydistricts}}
+  {{map.layer-group for='community-districts' visible=qps.community-districts}}
 
   {{map.layer-group for='boroughs' visible=qps.boroughs}}
 
   {{map.layer-group for='subway' visible=qps.subway}}
 
+  {{map.layer-group for='building-footprints' visible=qps.building-footprints}}
+
   {{map.layer-group for='pluto' visible=qps.pluto}}
 
   {{map.layer-group for='commercial-overlays' visible=qps.commercial-overlays}}
 
-  {{map.layer-group for='landmarkpoints' visible=qps.landmarkpoints}}
+  {{map.layer-group for='landmarks' visible=qps.landmarks}}
 
-  {{map.layer-group for='historicdistricts' visible=qps.historicdistricts}}
+  {{map.layer-group for='historic-districts' visible=qps.historic-districts}}
 
-  {{map.layer-group for='sceniclandmarks' visible=qps.sceniclandmarks}}
+  {{map.layer-group for='scenic-landmarks' visible=qps.scenic-landmarks}}
 
   {{map.layer-group for='waterfront-access-plan' visible=qps.waterfront-access-plan}}
 
@@ -67,9 +68,11 @@
 
   {{map.layer-group for='zoning-districts' visible=qps.zoning-districts}}
 
+  {{!-- BASEMAPS --}}
+
   {{map.layer-group for='digital-tax-map' visible=qps.digital-tax-map}}
 
-  {{map.layer-group for='aerials16' visible=qps.aerials16}}
+  {{map.layer-group for='aerials-16' visible=qps.aerials-16}}
 
   {{#if mapMouseover.highlightedLotFeatures}}
     {{#map.source

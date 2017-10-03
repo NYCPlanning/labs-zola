@@ -20,8 +20,8 @@ test('map-search enter on first search result for lot', async function(assert) {
   await visit('/');
   await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
   await waitUntil(() => find('.has-results'), { timeout });
-  await keyEvent(SEARCH_INPUT_SELECTOR, 'click');
-  await keyEvent(SEARCH_INPUT_SELECTOR, 'keypress', 13);
+  await keyEvent('.tax-lot', 'click');
+  // await keyEvent(SEARCH_INPUT_SELECTOR, 'keypress', 13);
 
   assert.equal(
     (currentURL().indexOf(LOT_URL_ROOT) > -1),

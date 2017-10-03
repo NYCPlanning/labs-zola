@@ -51,9 +51,10 @@ export default Ember.Component.extend(ChildMixin, QueryParamMap, {
           return moment(date).endOf('month').format(defaultFormat);
         });
       const column = this.get('column');
+      const source = this.get('source');
 
       this.set('start', value);
-      this.get('parentComponent').send('updateSql', 'buildRangeSQL', column, range);
+      this.get('parentComponent').send('updateSql', 'buildRangeSQL', source, column, range);
     },
   },
 });
