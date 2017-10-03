@@ -11,7 +11,7 @@ Router.map(function () {
   this.route('zma', { path: 'zma/:ulurpno' });
   this.route('zoning-district', { path: 'zoning-district/:zonedist' });
   this.route('about');
-  return null;
+  this.route('bookmarks');
 });
 
 export default Router;
