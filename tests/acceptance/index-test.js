@@ -5,7 +5,7 @@ import { click, fillIn, find, findAll, keyEvent, waitUntil, triggerEvent } from 
 const SEARCH_INPUT_SELECTOR = '.search input';
 const SEARCH_RESULTS_SELECTOR = '.search-results';
 const LOT_URL_ROOT = '/lot';
-const SEARCH_TERM_LOT = '120 Broadway';
+const SEARCH_TERM_LOT = '1000477501';
 const SEARCH_TERM_ADDRESS = '210 Humboldt';
 const SEARCH_RESULTS_LOADING_CLASS = '.search-results--loading';
 const FONT_AWESOME_MAP_PIN = '.fa-map-pin';
