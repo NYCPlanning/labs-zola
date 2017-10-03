@@ -34,7 +34,7 @@ export default {
         },
       },
       highlightable: true,
-      tooltipTemplate: '{{project_na}} - {{status}}',
+      tooltipTemplate: '{{{project_na}}} - Effective {{{effectiveformatted}}}',
     },
   ],
 };

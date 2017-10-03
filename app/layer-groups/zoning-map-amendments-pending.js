@@ -33,6 +33,8 @@ export default {
           'fill-opacity': 0.6,
         },
       },
+      highlightable: true,
+      tooltipTemplate: '{{{project_na}}}',
     },
   ],
 };
