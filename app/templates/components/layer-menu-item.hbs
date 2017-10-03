@@ -8,7 +8,7 @@
     {{/if}}
     {{switch-toggle checked=visible}}
     {{title}}
-    {{#if legendColor}}<span class="layer-group-legend" style="border-color:{{legendColor}};"></span>{{/if}}
+    {{#if visible}}{{#if legendColor}}<span class="layer-group-legend" style="border-color:{{legendColor}};"></span>{{/if}}{{/if}}
     {{#if titleTooltip}}{{info-tooltip tip=titleTooltip}}{{/if}}
   </div>
   {{yield (hash
