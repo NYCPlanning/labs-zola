@@ -1,16 +1,14 @@
 export default {
   id: 'zoning-districts',
   title: 'Zoning Districts',
-  sql: ['SELECT * FROM (SELECT *, LEFT(zonedist, 2) as primaryzone FROM support_zoning_zd) a'],
   visible: true,
-  type: 'carto',
   layers: [
     {
       layer: {
         id: 'zd-fill',
         type: 'fill',
         source: 'zoning-districts',
-        'source-layer': 'layer0',
+        'source-layer': 'zoning-districts',
         paint: {
           'fill-color': {
             property: 'primaryzone',
@@ -57,7 +55,7 @@ export default {
         id: 'zd-lines',
         type: 'line',
         source: 'zoning-districts',
-        'source-layer': 'layer0',
+        'source-layer': 'zoning-districts',
         paint: {
           'line-opacity': {
             stops: [
@@ -80,7 +78,7 @@ export default {
         id: 'zd_labels',
         source: 'zoning-districts',
         type: 'symbol',
-        'source-layer': 'layer0',
+        'source-layer': 'zoning-districts',
         paint: {
           'text-color': '#626262',
           'text-halo-color': '#FFFFFF',

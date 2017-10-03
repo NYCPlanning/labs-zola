@@ -87,7 +87,7 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
     routeToLot(e) {
       const map = e.target;
       // only query layers that are available in the map
-      const layers = ['pluto-fill', 'zma-fill', 'zd-fill'].filter(layer => map.getLayer(layer));
+      const layers = ['pluto-fill', 'zma-fill', 'zmacert-fill', 'zd-fill'].filter(layer => map.getLayer(layer));
       const feature = map.queryRenderedFeatures(e.point, { layers })[0];
       const { bbl, ulurpno, zonedist } = feature.properties;
 
