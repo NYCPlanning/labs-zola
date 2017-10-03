@@ -138,7 +138,7 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
       }])
         .then((template) => {
           // replace this source's tiles
-          const map = this.get('mainMap').mapInstance;
+          const map = this.get('mainMap.mapInstance');
           const newStyle = map.getStyle();
           newStyle.sources[sourceId].tiles = [template];
           map.setStyle(newStyle);
