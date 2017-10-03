@@ -115,9 +115,9 @@ export default Ember.Component.extend({
 
       if (result.type === 'neighborhood') {
         const center = result.coordinates;
-        mainMap.flyTo({
+        mapInstance.flyTo({
           center,
-          zoom: 14,
+          zoom: 13,
         });
       }
 
