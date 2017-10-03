@@ -5,8 +5,27 @@ const { paint, layout, labelLayout } = adminBoundaryStyles;
 export default {
   id: 'community-districts',
   title: 'Community Districts',
+  legendColor: '#76F578',
   visible: false,
   layers: [
+    {
+      layer: {
+        id: 'community-districts-line-glow',
+        type: 'line',
+        source: 'admin-boundaries',
+        'source-layer': 'community-districts',
+        paint: {
+          'line-color': '#76F578',
+          'line-opacity': 0.2,
+          'line-width': {
+            stops: [
+              [11, 3],
+              [16, 6],
+            ],
+          },
+        },
+      },
+    },
     {
       layer: {
         id: 'community-districts-line',
