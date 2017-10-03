@@ -1,10 +1,12 @@
 {{site-header resetAll=(action 'resetAll')}}
+{{log model}}
 <div class="site-main grid-x">
   <div class="navigation-area cell large-auto">
     {{map-search transitionTo=(action 'transitionTo')}}
 
     <div class="map-grid">
       {{main-map
+        cartoSources=model
         routeToLot=(action 'routeToLot')
         transitionTo=(action 'transitionTo')
         qps=qps
