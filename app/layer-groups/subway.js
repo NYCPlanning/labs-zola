@@ -2,17 +2,12 @@ export default {
   id: 'subway',
   title: 'Subways',
   visible: true,
-  type: 'carto', // raster, vector, geojson, or carto
-  sql: [
-    'SELECT the_geom_webmercator, rt_symbol FROM support_trans_mta_subway_routes',
-    'SELECT the_geom_webmercator, name FROM support_trans_mta_subway_stops',
-    'SELECT the_geom_webmercator FROM support_trans_mta_subway_entrances',
-  ],
   layers: [
     {
       layer: {
         id: 'subway_green',
-        'source-layer': 'layer0',
+        source: 'transportation',
+        'source-layer': 'subway-routes',
         type: 'line',
         filter: [
           'all',
@@ -32,7 +27,8 @@ export default {
     {
       layer: {
         id: 'subway_yellow',
-        'source-layer': 'layer0',
+        source: 'transportation',
+        'source-layer': 'subway-routes',
         type: 'line',
         filter: [
           'all',
@@ -52,8 +48,8 @@ export default {
     {
       layer: {
         id: 'subway_gray',
-        'source-layer': 'layer0',
-        type: 'line',
+        source: 'transportation',
+        'source-layer': 'subway-routes',
         filter: [
           'all',
           ['==', 'rt_symbol', 'L'],
@@ -72,7 +68,8 @@ export default {
     {
       layer: {
         id: 'subway_brown',
-        'source-layer': 'layer0',
+        source: 'transportation',
+        'source-layer': 'subway-routes',
         type: 'line',
         filter: [
           'all',
@@ -92,7 +89,8 @@ export default {
     {
       layer: {
         id: 'subway_light_green',
-        'source-layer': 'layer0',
+        source: 'transportation',
+        'source-layer': 'subway-routes',
         type: 'line',
         filter: [
           'all',
@@ -112,7 +110,8 @@ export default {
     {
       layer: {
         id: 'subway_orange',
-        'source-layer': 'layer0',
+        source: 'transportation',
+        'source-layer': 'subway-routes',
         type: 'line',
         filter: [
           'all',
@@ -132,7 +131,8 @@ export default {
     {
       layer: {
         id: 'subway_blue',
-        'source-layer': 'layer0',
+        source: 'transportation',
+        'source-layer': 'subway-routes',
         type: 'line',
         filter: [
           'any',
@@ -153,7 +153,8 @@ export default {
     {
       layer: {
         id: 'subway_purple',
-        'source-layer': 'layer0',
+        source: 'transportation',
+        'source-layer': 'subway-routes',
         type: 'line',
         filter: [
           'all',
@@ -173,7 +174,8 @@ export default {
     {
       layer: {
         id: 'subway_red',
-        'source-layer': 'layer0',
+        source: 'transportation',
+        'source-layer': 'subway-routes',
         type: 'line',
         filter: [
           'all',
@@ -194,7 +196,8 @@ export default {
       layer: {
         id: 'subway_stations',
         minzoom: 11,
-        'source-layer': 'layer1',
+        source: 'transportation',
+        'source-layer': 'subway-stops',
         type: 'circle',
         paint: {
           'circle-color': 'rgba(255, 255, 255, 1)',
@@ -227,7 +230,8 @@ export default {
       layer: {
         id: 'subway_stations_labels',
         minzoom: 13,
-        'source-layer': 'layer1',
+        source: 'transportation',
+        'source-layer': 'subway-stops',
         type: 'symbol',
         layout: {
           'text-field': '{name}',
@@ -254,7 +258,8 @@ export default {
       layer: {
         id: 'subway_entrances',
         minzoom: 15,
-        'source-layer': 'layer2',
+        source: 'transportation',
+        'source-layer': 'subway-entrances',
         type: 'symbol',
         layout: {
           'icon-image': 'rail-15',
@@ -276,7 +281,8 @@ export default {
       layer: {
         id: 'subway_entrances_labels',
         minzoom: 15,
-        'source-layer': 'layer2',
+        source: 'transportation',
+        'source-layer': 'subway-entrances',
         type: 'symbol',
         layout: {
           'text-field': 'Entrance',

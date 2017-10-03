@@ -1,17 +1,10 @@
-{{#if isReady}}
-  {{#map.source
-    sourceId=config.id
-    options=sourceOptions as |source|}}
-
-    {{#if visible}}
-      {{#each config.layers as |layerConfig|}}
-        {{source.layer
-          layer=layerConfig.layer
-          didUpdateLayers=didUpdateLayers
-          before=before}}
-      {{/each}}
-    {{/if}}
-  {{/map.source}}
+{{#if visible}}
+  {{#each config.layers as |layerConfig|}}
+    {{map.layer
+      layer=layerConfig.layer
+      didUpdateLayers=didUpdateLayers
+      before=before}}
+  {{/each}}
 {{/if}}
 
 {{yield

@@ -6,43 +6,48 @@
   <label class="header-label clearfix">
     TAX LOT <span class="medium-gray">|</span> BBL {{model.bbl}}
   </label>
-  {{#if model.landmark}}
-    <h1 class="header-large content-header">{{model.landmark}}</h1>
-    <h2 class="header-small content-subheader">{{model.address}}</h2>
-  {{else}}
-    <h1 class="header-large">{{model.address}}</h1>
-  {{/if}}
+  <h1 class="content-header">
+    {{#if model.landmark}}<span class="landmark">{{model.landmark}}</span>{{/if}}
+    <span class="address">{{model.address}}, {{model.zipcode}}</span>
+  </h1>
 
-  <div class="data-grid">
-    <div class="data-cell"><label class="data-label">Borough</label><span class="datum">{{model.boroname}}</span></div>
-    <div class="data-cell"><label class="data-label">Block</label><span class="datum">{{model.block}}</span></div>
-    <div class="data-cell"><label class="data-label">Lot</label><span class="datum">{{model.lot}}</span></div>
-    <div class="data-cell"><label class="data-label">Community District</label><span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{model.cdURLSegment}}" target="_blank">{{fa-icon "external-link"}} {{model.cdName}}</a></span></div>
-    <div class="data-cell"><label class="data-label">Police Precinct</label><span class="datum">{{model.policeprct}}</span></div>
-    <div class="data-cell"><label class="data-label">Owner Type</label><span class="datum">{{if model.ownertypename model.ownertypename 'Unknown/Private'}}</span></div>
-    <div class="data-cell"><label class="data-label">Owner</label><span class="datum">{{model.ownername}}</span></div>
-    <div class="data-cell"><label class="data-label">Lot Area</label><span class="datum">{{if model.lotarea (concat (numeral-format model.lotarea '0,0') ' sq ft') ''}}</span></div>
-    <div class="data-cell"><label class="data-label">Lot Frontage</label><span class="datum">{{if model.lotfront (concat model.lotfront ' ft') ''}}</span></div>
-    <div class="data-cell"><label class="data-label">Year Built</label><span class="datum">{{model.yearbuilt}}</span></div>
-    <div class="data-cell"><label class="data-label">Number of Buildings</label><span class="datum">{{model.numbldgs}}</span></div>
-    <div class="data-cell"><label class="data-label">Building Info {{info-tooltip tip="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"}}</label><span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.borocode}}&allblock={{model.block}}&alllot={{model.lot}}&go5=+GO+&requestid=0">{{fa-icon 'external-link'}} BISWEB </a></span></div>
-    <div class="data-cell"><label class="data-label">Number of Floors</label><span class="datum">{{model.numfloors}}</span></div>
-    <div class="data-cell"><label class="data-label">Gross Floor Area</label><span class="datum">{{if model.bldgarea (concat (numeral-format model.bldgarea '0,0') ' sq ft') ''}}</span></div>
-    <div class="data-cell"><label class="data-label">Residential Units</label><span class="datum">{{model.unitsres}}</span></div>
-    <div class="data-cell"><label class="data-label">Total # of Units</label><span class="datum">{{model.unitstotal}}</span></div>
-    <div class="data-cell"><label class="data-label">Land Use</label><span class="datum">{{model.landusename}}</span></div>
-    {{#if model.histdist}}<div class="data-cell shrink"><label class="data-label">Historic District</label><span class="datum">{{model.histdist}}</span></div>{{/if}}
-    {{#if model.zonedist1}}<div class="data-cell"><label class="data-label">Zoning District 1:</label><span class="datum">{{model.zonedist1}}</span></div>{{/if}}
-    {{#if model.zonedist2}}<div class="data-cell"><label class="data-label">Zoning District 2:</label><span class="datum">{{model.zonedist2}}</span></div>{{/if}}
-    {{#if model.zonedist3}}<div class="data-cell"><label class="data-label">Zoning District 3:</label><span class="datum">{{model.zonedist3}}</span></div>{{/if}}
-    {{#if model.zonedist4}}<div class="data-cell"><label class="data-label">Zoning District 4:</label><span class="datum">{{model.zonedist4}}</span></div>{{/if}}
-    <div class="data-cell"><label class="data-label">Digital Tax Map</label><span class="datum"><a href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{model.bbl}}">{{fa-icon "external-link"}} DTM</a></span></div>
-    <div class="data-cell"><label class="data-label">Zoning Map</label><span class="datum"><a href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{model.zonemap}}.pdf">{{fa-icon "file-pdf-o"}} PDF</a></span></div>
+  <div class="data-grid"><label class="data-label">Borough</label><span class="datum">{{model.borocode}} <small>({{model.boroname}})</small></span></div>
+  <div class="data-grid"><label class="data-label">Block</label><span class="datum">{{model.block}}</span></div>
+  <div class="data-grid"><label class="data-label">Lot</label><span class="datum">{{model.lot}}</span></div>
+  {{#if model.cdURLSegment}}<div class="data-grid"><label class="data-label">Community District</label><span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{model.cdURLSegment}}" target="_blank">{{fa-icon "external-link"}} {{model.cdName}}</a></span></div>{{/if}}
+  {{#if model.ownertypename}}<div class="data-grid"><label class="data-label">Owner Type</label><span class="datum">{{if model.ownertypename model.ownertypename 'Unknown/Private'}}</span></div>{{/if}}
+  {{#if model.ownername}}<div class="data-grid"><label class="data-label">Owner</label><span class="datum">{{model.ownername}}</span></div>{{/if}}
 
-    <div class="data-cell"><label class="data-label">Historical Zoning Maps</label><span class="datum"><a href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{model.zonemap}}.pdf">{{fa-icon "file-pdf-o"}} PDF</a></span></div>
+  <hr>
 
-    <form id="acris_form" class="data-cell" target="_blank" action="https://a836-acris.nyc.gov/DS/DocumentSearch/BBLResult"
-     method="POST">
+  <h5>Zoning Information</h5>
+
+  {{#if model.histdist}}<div class="data-grid shrink"><label class="data-label">Historic District</label><span class="datum">{{model.histdist}}</span></div>{{/if}}
+  {{#if model.zonedist1}}<div class="data-grid"><label class="data-label">Zoning District{{if model.zonedist2 's'}}:</label><span class="datum">{{model.zonedist1}}{{if model.zonedist2 (concat ', ' model.zonedist2) ''}}{{if model.zonedist3 (concat ', ' model.zonedist3) ''}}{{if model.zonedist4 (concat ', ' model.zonedist4) ''}}</span></div>{{/if}}
+  {{#if model.bbl}}<div class="data-grid"><label class="data-label">Digital Tax Map</label><span class="datum"><a href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{model.bbl}}">{{fa-icon "external-link"}} DTM</a></span></div>{{/if}}
+  {{#if model.zonemap}}<div class="data-grid"><label class="data-label">Zoning Map</label><span class="datum"><a href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{model.zonemap}}.pdf">{{fa-icon "file-pdf-o"}} PDF</a></span></div>{{/if}}
+  {{#if model.zonemap}}<div class="data-grid"><label class="data-label">Historical Zoning Maps</label><span class="datum"><a href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{model.zonemap}}.pdf">{{fa-icon "file-pdf-o"}} PDF</a></span></div>{{/if}}
+
+  <hr>
+
+  <h5>Building Information</h5>
+
+  {{#if model.landusename}}<div class="data-grid"><label class="data-label">Land Use</label><span class="datum">{{model.landusename}}</span></div>{{/if}}
+  {{#if model.lotarea}}<div class="data-grid"><label class="data-label">Lot Area</label><span class="datum">{{if model.lotarea (concat (numeral-format model.lotarea '0,0') ' sq ft') ''}}</span></div>{{/if}}
+  {{#if model.lotfront}}<div class="data-grid"><label class="data-label">Lot Frontage</label><span class="datum">{{if model.lotfront (concat model.lotfront ' ft') ''}}</span></div>{{/if}}
+  {{#if model.lotdepth}}<div class="data-grid"><label class="data-label">Lot Depth</label><span class="datum">{{if model.lotdepth (concat model.lotdepth ' ft') ''}}</span></div>{{/if}}
+  {{#if model.yearbuilt}}<div class="data-grid"><label class="data-label">Year Built</label><span class="datum">{{model.yearbuilt}}</span></div>{{/if}}
+  {{#if model.yearalter1}}<div class="data-grid"><label class="data-label">Year{{if model.yearalter2 's'}} Altered</label><span class="datum">{{model.yearalter1}}{{if model.yearalter2 (concat ', ' model.yearalter2) ''}}</span></div>{{/if}}
+  {{#if model.bldgclass}}<div class="data-grid"><label class="data-label">Building Class</label><span class="datum">{{model.bldgclass}}</span></div>{{/if}}
+  {{#if model.numbldgs}}<div class="data-grid"><label class="data-label">Number of Buildings</label><span class="datum">{{model.numbldgs}}</span></div>{{/if}}
+  {{#if model.numfloors}}<div class="data-grid"><label class="data-label">Number of Floors</label><span class="datum">{{model.numfloors}}</span></div>{{/if}}
+  {{#if model.bldgarea}}<div class="data-grid"><label class="data-label">Gross Floor Area</label><span class="datum">{{if model.bldgarea (concat (numeral-format model.bldgarea '0,0') ' sq ft') ''}}</span></div>{{/if}}
+  {{#if model.unitstotal}}<div class="data-grid"><label class="data-label">Total # of Units</label><span class="datum">{{model.unitstotal}}</span></div>{{/if}}
+  {{#if model.unitsres}}<div class="data-grid"><label class="data-label">Residential Units</label><span class="datum">{{model.unitsres}}</span></div>{{/if}}
+  {{#if model.condono}}<div class="data-grid"><label class="data-label">Condominium Number</label><span class="datum">{{model.condono}}</span></div>{{/if}}
+  <div class="data-grid"><label class="data-label">Building Info {{info-tooltip tip="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"}}</label><span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.borocode}}&allblock={{model.block}}&alllot={{model.lot}}&go5=+GO+&requestid=0">{{fa-icon 'external-link'}} BISWEB </a></span></div>
+  {{#if model.borocode}}
+    <form id="acris_form" class="data-grid" target="_blank" action="https://a836-acris.nyc.gov/DS/DocumentSearch/BBLResult" method="POST">
       <input type="hidden" name="hid_SearchType" value="BBL" />
       <input type="hidden" name="hid_borough" value="{{model.borocode}}" />
       <input type="hidden" name="hid_block" value="{{model.block}}" />
@@ -67,6 +72,17 @@
       <label class="data-label">Property Records</label>
       <span class="datum"><a href="javascript:{}" onclick="document.getElementById('acris_form').submit(); return false;">{{fa-icon "external-link"}} View ACRIS </a></span>
     </form>
-  </div>
+  {{/if}}
 
+  <hr>
+
+  <h5>District Information</h5>
+
+  {{#if model.policeprct}}<div class="data-grid"><label class="data-label">Police Precinct</label><span class="datum">{{model.policeprct}}</span></div>{{/if}}
+  {{#if model.firecomp}}<div class="data-grid"><label class="data-label">Fire Company</label><span class="datum">{{model.firecomp}}</span></div>{{/if}}
+  {{#if model.schooldist}}<div class="data-grid"><label class="data-label">School District</label><span class="datum">{{model.schooldist}}</span></div>{{/if}}
+  {{#if model.council}}<div class="data-grid"><label class="data-label">City Council District</label><span class="datum"><a href="https://council.nyc.gov/district-{{model.council}}/" target="_blank">{{fa-icon "external-link"}} Council District {{model.council}}</a></span></div>{{/if}}
+  {{#if model.sanitboro}}<div class="data-grid"><label class="data-label">Sanitation Borough</label><span class="datum">{{model.sanitboro}}</span></div>{{/if}}
+  {{#if model.sanitdistr}}<div class="data-grid"><label class="data-label">Sanitation District</label><span class="datum">{{model.sanitdistr}}</span></div>{{/if}}
+  {{#if model.sanitsub}}<div class="data-grid"><label class="data-label">Sanitation Subsection</label><span class="datum">{{model.sanitsub}}</span></div>{{/if}}
 </div>

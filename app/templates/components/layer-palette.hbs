@@ -11,6 +11,7 @@
       {{#if item.layer.visible}}
         {{#layer-multi-select-control
           column='primaryzone'
+          source='zoning-districts'
           parentComponent=item.layer
           as |multiSelect|}}
             <ul class="layer-menu-item--group-checkboxes">
@@ -105,6 +106,7 @@
       as |item|}}
       {{#if item.layer.visible}}
         {{#layer-multi-select-control
+          source='commercial-overlays'
           column='overlay'
           parentComponent=item.layer
           as |multiSelect|}}
@@ -143,6 +145,7 @@
     {{#layer-menu-item for='zoning-map-amendments' as |item|}}
       {{#if item.layer.visible}}
         {{item.range-slider
+            source='zoning-map-amendments'
             column='effective'}}
       {{/if}}
     {{/layer-menu-item}}
@@ -179,11 +182,11 @@
     closed=true
     title='Landmark & Historic'}}
     {{layer-menu-item
-      for='sceniclandmarks'}}
+      for='scenic-landmarks'}}
     {{layer-menu-item
-      for='historicdistricts'}}
+      for='historic-districts'}}
     {{layer-menu-item
-      for='landmarkpoints'}}
+      for='landmarks'}}
   {{/layer-palette-accordion}}
   {{#layer-palette-accordion
     closed=true
@@ -199,7 +202,7 @@
     {{layer-menu-item
       for='boroughs'}}
     {{layer-menu-item
-      for='communitydistricts'}}
+      for='community-districts'}}
     {{layer-menu-item
       for='nyccouncildistricts'}}
     {{layer-menu-item
@@ -216,7 +219,15 @@
     {{layer-menu-item
       for='digital-tax-map'}}
     {{layer-menu-item
-      for='aerials16'}}
+      for='aerials-16'}}
+  {{/layer-palette-accordion}}
+  {{#layer-palette-accordion
+    closed=true
+    title='Buildings'}}
+    {{layer-menu-item
+      for='building-footprints'}}
+    {{layer-menu-item
+      for='threed-buildings'}}
   {{/layer-palette-accordion}}
 
   <a {{action resetQueryParams}} class="button gray small reset-map-button" disabled={{isDefault}}>

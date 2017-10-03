@@ -20,9 +20,19 @@ h6,
 }
 
 .content-header {
-  margin: 0;
-}
-.content-subheader {
+  @extend h3;
+  margin-bottom: rem-calc(10);
+
+  .landmark {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .landmark + .address {
+    display: block;
+    @extend h4;
+    margin-bottom: 0;
+  }
 }
 
 .header-label {
@@ -105,68 +115,58 @@ button {
 //
 // Data Grid
 // --------------------------------------------------
-$data-grid-margin: rem-calc(10);
 .data-grid {
   @include xy-grid;
+  padding: rem-calc(4) 0;
+
+  &:hover {
+    background-color: $light-gray;
+  }
 
   @include breakpoint(medium) {
     @include xy-gutters(
-      $gutters:$data-grid-margin,
-      $gutter-type:margin,
-      $gutter-position:right left,
-      $negative:true
-    );
-  }
-}
-
-.data-cell {
-  @include xy-cell-static(full,false,0);
-  margin-bottom: $data-grid-margin;
-  border: 1px solid $light-gray;
-
-  @include breakpoint(medium) {
-    @include xy-cell-static(
-      $size:4,
-      $gutter-output:true,
-      $gutters:$data-grid-margin,
-      $gutter-type:margin,
-      $breakpoint:null,
-      $vertical:false
-    );
-  }
-
-  @include breakpoint(large) {
-    @include xy-cell-static(
-      $size:6,
-      $gutter-output:true,
-      $gutters:$data-grid-margin,
-      $gutter-type:margin,
-      $breakpoint:null,
-      $vertical:false
-    );
-  }
-
-  @include breakpoint(xlarge) {
-    @include xy-cell-static(
-      $size:4,
-      $gutter-output:true,
-      $gutters:$data-grid-margin,
-      $gutter-type:margin,
-      $breakpoint:null,
-      $vertical:false
+      $gutters: rem-calc(10),
+      $gutter-type: margin,
+      $gutter-position: right left,
+      $negative: true
     );
   }
 
   .data-label {
+    @include xy-cell-static(full,false,0);
+    padding: rem-calc(2) rem-calc(4);
     background-color: $light-gray;
+    color: $dark-gray;
     font-size: rem-calc(10);
-    padding: rem-calc(2) rem-calc(5);
+    line-height: 1.2;
+
+    @include breakpoint(medium) {
+      @include xy-cell-static(
+        $size: 4,
+        $gutter-output: true,
+        $gutters: rem-calc(10),
+        $gutter-type: margin,
+        $breakpoint: null,
+        $vertical: false
+      );
+    }
+
   }
 
   .datum {
-    display: block;
-    padding: rem-calc(3) rem-calc(5);
+    @include xy-cell-static(full,false,0);
     font-size: rem-calc(14);
     line-height: 1.2;
+
+    @include breakpoint(medium) {
+      @include xy-cell-static(
+        $size: 8,
+        $gutter-output: true,
+        $gutters: rem-calc(10),
+        $gutter-type: margin,
+        $breakpoint: null,
+        $vertical: false
+      );
+    }
   }
 }
