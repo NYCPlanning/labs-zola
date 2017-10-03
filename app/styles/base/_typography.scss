@@ -37,6 +37,7 @@ h6,
 
 .header-label {
   color: $dark-gray;
+  font-size: rem-calc(13);
 }
 
 
@@ -61,8 +62,14 @@ h6,
 }
 
 .text-small {
-  font-size: rem-calc(12);
+  font-size: rem-calc(13);
   line-height: 1.7;
+}
+
+.pipe {
+  opacity: 0.25;
+  margin-right: 0.25em;
+  margin-left: 0.25em;
 }
 
 .light-gray { color: $light-gray; }
@@ -83,12 +90,46 @@ h6,
 .lu-silver { color: $lu-silver; }
 .lu-gray { color: $lu-gray; }
 
+
+//
+// Lot Styles
+// --------------------------------------------------
+.lot-section-header {
+  margin: 1rem 0 rem-calc(6);
+}
+
+.lot-zoning-info {
+  font-size: rem-calc(13);
+}
+
+.lot-zoning-list {
+  margin: $paragraph-margin-bottom/2 0;
+  list-style: none;
+
+  li {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .menu-text {
+    font-weight: $global-weight-bold;
+    padding: rem-calc(4) 0;
+  }
+
+  .button {
+    font-size: rem-calc(13);
+    padding: rem-calc(4) rem-calc(6);
+    margin: 0;
+  }
+}
+
+
 //
 // Data Grid
 // --------------------------------------------------
 .data-grid {
   @include xy-grid;
-  padding: rem-calc(4) 0;
+  padding: rem-calc(3) 0;
 
   &:hover {
     background-color: $light-gray;
@@ -126,7 +167,7 @@ h6,
 
   .datum {
     @include xy-cell-static(full,false,0);
-    font-size: rem-calc(14);
+    font-size: rem-calc(13);
     line-height: 1.2;
 
     @include breakpoint(medium) {
