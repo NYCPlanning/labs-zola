@@ -9,23 +9,35 @@ const LotColumnsSQL = [
   'address',
   'bbl',
   'bldgarea',
+  'bldgclass',
   'block',
   'borough',
   'cd',
+  'condono',
+  'council',
+  'firecomp',
   'histdist',
   'landmark',
   'landuse',
   'lot',
   'lotarea',
+  'lotdepth',
   'lotfront',
   'numbldgs',
   'numfloors',
   'ownername',
   'ownertype',
   'policeprct',
+  'sanitboro',
+  // 'sanitdist', // TODO: Adding this column breaks the app. 
+  'sanitsub',
+  'schooldist',
   'unitsres',
   'unitstotal',
   'yearbuilt',
+  'yearalter1',
+  'yearalter2',
+  'zipcode',
   'zonedist1',
   'zonedist2',
   'zonedist3',
@@ -76,6 +88,7 @@ export default DS.Model.extend({
   address: DS.attr('string'),
   bbl: DS.attr('number'),
   bldgarea: DS.attr('number'),
+  bldgclass: DS.attr('string'),
   block: DS.attr('number'),
   borocode: Ember.computed('cd', function() {
     const borocd = this.get('cd');
@@ -90,7 +103,7 @@ export default DS.Model.extend({
     const borocd = this.get('cd');
     const boro = borocd.substring(0, 1);
     const cd = parseInt(borocd.substring(1, 3), 10).toString();
-    return `${boroLookup[boro]} ${cd}`;
+    return `${boroLookup[boro]} Community District ${cd}`;
   }),
   cdURLSegment: Ember.computed('cd', function() {
     const borocd = this.get('cd');
@@ -99,6 +112,9 @@ export default DS.Model.extend({
     const cd = parseInt(borocd.substring(1, 3), 10).toString();
     return `${cleanBorough}/${cd}`;
   }),
+  condono: DS.attr('number'),
+  council: DS.attr('string'),
+  firecomp: DS.attr('string'),
   histdist: DS.attr('string'),
   landmark: DS.attr('string'),
   landuse: DS.attr('string'),
@@ -107,6 +123,7 @@ export default DS.Model.extend({
   }),
   lot: DS.attr('number'),
   lotarea: DS.attr('number'),
+  lotdepth: DS.attr('number'),
   lotfront: DS.attr('number'),
   numbldgs: DS.attr('number'),
   numfloors: DS.attr('number'),
@@ -116,9 +133,16 @@ export default DS.Model.extend({
     return ownertypeLookup[this.get('ownertype')];
   }),
   policeprct: DS.attr('string'),
+  sanitboro: DS.attr('string'),
+  sanitdist: DS.attr('string'),
+  sanitsub: DS.attr('string'),
+  schooldist: DS.attr('string'),
   unitsres: DS.attr('number'),
   unitstotal: DS.attr('number'),
   yearbuilt: DS.attr('string'),
+  yearalter1: DS.attr('number'),
+  yearalter2: DS.attr('number'),
+  zipcode: DS.attr('number'),
   zonedist1: DS.attr('string'),
   zonedist2: DS.attr('string'),
   zonedist3: DS.attr('string'),
