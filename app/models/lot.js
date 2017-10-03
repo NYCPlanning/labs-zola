@@ -29,7 +29,7 @@ const LotColumnsSQL = [
   'ownertype',
   'policeprct',
   'sanitboro',
-  // 'sanitdist', // TODO: Adding this column breaks the app. 
+  'sanitdistr',
   'sanitsub',
   'schooldist',
   'unitsres',
@@ -134,7 +134,7 @@ export default DS.Model.extend({
   }),
   policeprct: DS.attr('string'),
   sanitboro: DS.attr('string'),
-  sanitdist: DS.attr('string'),
+  sanitdistr: DS.attr('string'),
   sanitsub: DS.attr('string'),
   schooldist: DS.attr('string'),
   unitsres: DS.attr('number'),
