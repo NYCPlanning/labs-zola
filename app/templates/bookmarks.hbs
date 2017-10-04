@@ -3,9 +3,9 @@
     <h3>Map Pins</h3>
     <ul class="no-bullet">
       {{#each resolvedPins as |pin|}} 
-        <li {{action 'flyTo' pin.coordinates}}>
+        <li {{action 'flyTo' pin.coordinates}} class="map-bookmark">
           {{fa-icon "map-pin"}} {{pin.title}} 
-          <button class="float-right lu-red" {{action 'deleteBookmark' pin}}>&times;</button>
+          <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' pin}}>&times;</button>
         </li>
       {{/each}}
     </ul>
@@ -15,7 +15,7 @@
     <h3>Tax Lots</h3>
     <ul class="no-bullet">
       {{#each resolvedLots as |lot|}} 
-        <li>
+        <li class="lot-bookmark">
           <span class="icon tax-lot"></span> 
           {{#if (await lot.lot)}}
             {{#link-to 'lot' lot.lot}}
@@ -25,7 +25,7 @@
               </span>
             {{/link-to}}
           {{/if}}
-          <button class="float-right lu-red" {{action 'deleteBookmark' lot}}>
+          <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' lot}}>
             &times;
           </button>
         </li>
@@ -37,7 +37,7 @@
     <h3>Zoning Map Amendments</h3>
     <ul class="no-bullet">
       {{#each resolvedAmendments as |zma|}} 
-        <li>
+        <li class="zma-bookmark">
           {{#if (await zma.zma)}}
             {{#link-to 'zma' zma.zma.id}}
               {{log zma.zma}}
@@ -46,15 +46,17 @@
               <span class="dark-gray">{{zma.subtitle}}</span>
             {{/link-to}}
           {{/if}}
-          <button class="float-right lu-red" {{action 'deleteBookmark' zma}}>&times;</button>
+          <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' zma}}>&times;</button>
         </li>
       {{/each}}
     </ul>
   {{/if}}
 
   {{#unless model.length}}
-    <h1>You haven't bookmarked anything.</h1>
-    <p>You can add bookmarks to this page by clicking the [fa-bookmark] icon on other pages &mdash; like Lots and Zoning Map Amendments. From this page you can quickly navigate to all of your bookmarked information.</p>
+    <div class="no-bookmarks">
+      <h1>You haven't bookmarked anything.</h1>
+      <p>You can add bookmarks to this page by clicking the [fa-bookmark] icon on other pages &mdash; like Lots and Zoning Map Amendments. From this page you can quickly navigate to all of your bookmarked information.</p>
+    </div>
   {{/unless}}
 
   {{outlet}}
