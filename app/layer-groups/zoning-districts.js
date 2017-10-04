@@ -48,7 +48,7 @@ export default {
         },
       },
       highlightable: true,
-      tooltipTemplate: '{{zonedist}}',
+      tooltipTemplate: 'Zoning District {{zonedist}}',
     },
     {
       layer: {
