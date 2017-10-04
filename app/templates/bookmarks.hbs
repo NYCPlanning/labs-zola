@@ -2,9 +2,9 @@
   {{#if (await pins) as |resolvedPins|}}
     <h3>Map Pins</h3>
     <ul class="no-bullet">
-      {{#each resolvedPins as |pin|}} 
+      {{#each resolvedPins as |pin|}}
         <li {{action 'flyTo' pin.coordinates}} class="map-bookmark">
-          {{fa-icon "map-pin"}} {{pin.title}} 
+          {{fa-icon "map-pin"}} {{pin.title}}
           <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' pin}}>&times;</button>
         </li>
       {{/each}}
@@ -14,9 +14,9 @@
   {{#if (await lots) as |resolvedLots|}}
     <h3>Tax Lots</h3>
     <ul class="no-bullet">
-      {{#each resolvedLots as |lot|}} 
+      {{#each resolvedLots as |lot|}}
         <li class="lot-bookmark">
-          <span class="icon tax-lot"></span> 
+          <span class="icon tax-lot"></span>
           {{#if (await lot.lot)}}
             {{#link-to 'lot' lot.lot}}
               {{lot.title}}
@@ -36,12 +36,12 @@
   {{#if (await amendments) as |resolvedAmendments|}}
     <h3>Zoning Map Amendments</h3>
     <ul class="no-bullet">
-      {{#each resolvedAmendments as |zma|}} 
+      {{#each resolvedAmendments as |zma|}}
         <li class="zma-bookmark">
           {{#if (await zma.zma)}}
             {{#link-to 'zma' zma.zma.id}}
               {{log zma.zma}}
-              <span class="icon polygon"></span> 
+              <span class="icon polygon"></span>
               {{zma.title}}
               <span class="dark-gray">{{zma.subtitle}}</span>
             {{/link-to}}
@@ -54,8 +54,11 @@
 
   {{#unless model.length}}
     <div class="no-bookmarks">
-      <h1>You haven't bookmarked anything.</h1>
-      <p>You can add bookmarks to this page by clicking the [fa-bookmark] icon on other pages &mdash; like Lots and Zoning Map Amendments. From this page you can quickly navigate to all of your bookmarked information.</p>
+      <div class="align-self-middle large-text-center">
+        <h1 class="header-large">You haven't bookmarked&nbsp;anything.</h1>
+        <p>You can add bookmarks to this page by clicking the {{fa-icon "bookmark"}} icon on other pages&mdash;like Tax Lots and Zoning Map Amendments.</p>
+        <p>From this page you can quickly navigate to all of your bookmarked&nbsp;information.</p>
+      </div>
     </div>
   {{/unless}}
 

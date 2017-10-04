@@ -76,7 +76,7 @@
     font-size: 0.75rem;
   }
 
-  .fa {
+  .fa:not(.fa-bookmark) {
     font-size: rem-calc(16);
     margin-right: 0.5rem;
   }
