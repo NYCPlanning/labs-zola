@@ -186,3 +186,14 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
   border-left-width: 0;
   opacity: 0.75;
 }
+
+.layer-group-legend-circle {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 0.5rem;
+  vertical-align: middle;
+  position: relative;
+  top: -0.1em;
+  opacity: 0.6;
+}
