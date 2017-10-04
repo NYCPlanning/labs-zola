@@ -52,6 +52,28 @@ button {
     font-size: rem-calc(12);
     padding: 0.25rem 0.5rem;
     outline: 0;
+    position: relative;
+    transition: padding 0.5s;
+
+    &.saved {
+      padding-right: 2.5rem;
+    }
+
+    .state {
+      color: darken($success-color, 30%);
+      font-size: rem-calc(10);
+      line-height: rem-calc(12);
+      font-weight: $global-weight-bold;
+      position: absolute;
+      top: 50%;
+      left: 1.5rem;
+      margin-top: rem-calc(-6);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    &.saved .state {
+      opacity: 1;
+    }
 
     .fa {
       color: darken($medium-gray, 20%);
@@ -66,11 +88,10 @@ button {
     &.saved .fa {
       color: $success-color;
 
-      &:hover {
-        color: darken($success-color, 10%);
-      }
+      // &:hover {
+      //   color: darken($success-color, 10%);
+      // }
     }
-
   }
 }
 
