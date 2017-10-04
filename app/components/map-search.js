@@ -110,14 +110,15 @@ export default Ember.Component.extend({
       }
 
       if (result.type === 'zoning-district') {
+        mainMap.set('shouldFitBounds', true);
         this.transitionTo('zoning-district', result.label);
       }
 
       if (result.type === 'neighborhood') {
         const center = result.coordinates;
-        mainMap.flyTo({
+        mapInstance.flyTo({
           center,
-          zoom: 14,
+          zoom: 13,
         });
       }
 

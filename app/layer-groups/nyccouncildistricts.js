@@ -5,8 +5,27 @@ const { paint, layout, labelLayout } = adminBoundaryStyles;
 export default {
   id: 'nyccouncildistricts',
   title: 'NYC Council Districts',
+  legendColor: '#76CAF5',
   visible: false,
   layers: [
+    {
+      layer: {
+        id: 'nyccouncildistricts-line-glow',
+        type: 'line',
+        source: 'admin-boundaries',
+        'source-layer': 'nyc-council-districts',
+        paint: {
+          'line-color': '#76CAF5',
+          'line-opacity': 1,
+          'line-width': {
+            stops: [
+              [11, 3],
+              [16, 6],
+            ],
+          },
+        },
+      },
+    },
     {
       layer: {
         id: 'nyccouncildistricts-line',

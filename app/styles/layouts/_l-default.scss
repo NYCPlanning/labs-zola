@@ -2,6 +2,13 @@
 // Default Layout
 // --------------------------------------------------
 
+html, body {
+  @include breakpoint(large) {
+    max-height: 100vh;
+    overflow: hidden;
+  }
+}
+
 .site-header {
   position: relative;
   z-index: 2;
@@ -83,12 +90,11 @@
 }
 
 .content-area {
-  // position: relative;
+  position: relative;
   z-index: 2;
   box-shadow: 0 -2px 0 rgba(0,0,0,0.1);
   background-color: $white;
   padding: $global-margin;
-  position: absolute;
   right: 0;
   min-height: calc(50vh - 9.375rem);
 
