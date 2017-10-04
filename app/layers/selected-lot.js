@@ -4,28 +4,36 @@ const selectedLayers = {
     type: 'fill',
     source: 'selected-lot',
     paint: {
-      'fill-opacity': 0.1,
-      'fill-color': 'red',
+      'fill-opacity': 0.3,
+      'fill-color': 'rgba(113, 113, 113, 1)',
     },
   },
   line: {
     id: 'selected-line',
     type: 'line',
     source: 'selected-lot',
-    paint: {
-      'line-opacity': 0.6,
-      // 'line-dasharray': [1, 1],
-      'line-color': 'red',
-      'line-width': {
-        stops: [
-          [13, 1],
-          [15, 4],
-        ],
-      },
-      'line-dasharray': [0, 1.5],
-    },
     layout: {
       'line-cap': 'round',
+    },
+    paint: {
+      'line-opacity': 0.6,
+      'line-color': 'rgba(41, 34, 191, 1)',
+      'line-width': {
+        stops: [
+          [
+            13,
+            1.5,
+          ],
+          [
+            15,
+            8,
+          ],
+        ],
+      },
+      'line-dasharray': [
+        2,
+        1.5,
+      ],
     },
   },
 };

@@ -1,6 +1,8 @@
 import Ember from 'ember';
+import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 const { service } = Ember.inject;
+const { alias } = Ember.computed;
 
 export default Ember.Route.extend({
   mainMap: service(),
@@ -13,9 +15,13 @@ export default Ember.Route.extend({
     this.set('mainMap.selected', model);
   },
 
+  bounds: alias('mainMap.bounds'),
+
   actions: {
-    didTransition() {
-      this.set('mainMap.shouldFitBounds', true);
+    fitBounds() {
+      const mainMap = this.get('mainMap');
+      const map = mainMap.mapInstance;
+      map.fitBounds(this.get('bounds'));
     },
   },
 });
