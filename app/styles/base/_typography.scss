@@ -48,19 +48,29 @@ button {
   cursor: pointer;
 
   &.save-button {
-    color: $medium-gray;
     float: right;
     font-size: rem-calc(12);
     padding: 0.25rem 0.5rem;
+    outline: 0;
 
     .fa {
+      color: darken($medium-gray, 20%);
       font-size: rem-calc(16);
       vertical-align: middle;
+
+      &:hover {
+        color: darken($medium-gray, 30%);
+      }
     }
 
     &.saved .fa {
       color: $success-color;
+
+      &:hover {
+        color: darken($success-color, 10%);
+      }
     }
+
   }
 }
 
