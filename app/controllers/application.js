@@ -5,6 +5,7 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 import layerGroups from '../layer-groups';
 
+const { service } = Ember.inject;
 const { merge } = Ember;
 
 const queryParams = Object.keys(layerGroups)
@@ -73,6 +74,8 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
     this.set('qps', proxy);
   },
 
+  mainMap: service(),
+
   @computed('queryParamsState')
   isDefault(state) {
     const values = Object.values(state);
@@ -101,6 +104,8 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
       }
 
       if (zonedist) {
+        const mainMap = this.get('mainMap');
+        mainMap.set('shouldFitBounds', false);
         this.transitionToRoute('zoning-district', zonedist);
       }
     },
