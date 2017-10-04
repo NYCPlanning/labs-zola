@@ -79,6 +79,7 @@ button {
       color: darken($medium-gray, 20%);
       font-size: rem-calc(16);
       vertical-align: middle;
+      transition: color 0.5s;
 
       &:hover {
         color: darken($medium-gray, 30%);
