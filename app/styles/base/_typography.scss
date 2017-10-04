@@ -111,6 +111,15 @@ button {
   margin-left: 0.25em;
 }
 
+.link {
+  cursor: pointer;
+  color: $anchor-color;
+
+  &:hover {
+    color:$anchor-color-hover;
+  }
+}
+
 .light-gray { color: $light-gray; }
 .medium-gray { color: $medium-gray; }
 .dark-gray { color: $dark-gray; }

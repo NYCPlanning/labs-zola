@@ -4,7 +4,7 @@
     <ul class="no-bullet">
       {{#each resolvedPins as |pin|}}
         <li {{action 'flyTo' pin.coordinates}} class="map-bookmark">
-          {{fa-icon "map-pin"}} {{pin.title}}
+          <span class="map-bookmark link">{{fa-icon "map-pin"}} {{pin.title}}</span>
           <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' pin}}>&times;</button>
         </li>
       {{/each}}
