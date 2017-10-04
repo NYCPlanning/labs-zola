@@ -172,3 +172,17 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
   display: flex;
   flex-direction: column-reverse;
 }
+
+.layer-group-legend {
+  display: inline-block;
+  width: 1rem;
+  height: rem-calc(6);
+  vertical-align: middle;
+  position: relative;
+  top: -0.1em;
+  background-color: #444;
+  border: rem-calc(2) solid #fff;
+  border-right-width: 0;
+  border-left-width: 0;
+  opacity: 0.75;
+}
