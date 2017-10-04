@@ -19,7 +19,7 @@
                 <label>{{group-checkbox
                   refs=(array 'qps.C1' 'qps.C2' 'qps.C3' 'qps.C4' 'qps.C5' 'qps.C6' 'qps.C7' 'qps.C8')
                   values=(array qps.C1 qps.C2 qps.C3 qps.C4 qps.C5 qps.C6 qps.C7 qps.C8)
-                  scope=qps}}Select All Commercial Districts</label>
+                  scope=qps}}Commercial Districts <span style="background-color:#ff0000;" class="icon polygon legend-icon"></span></label>
                 <ul class="nested columns-3">
                   <li><label>{{multiSelect.checkbox value='C1' checked=qps.C1}}C1</label></li>
                   <li><label>{{multiSelect.checkbox value='C2' checked=qps.C2}}C2</label></li>
@@ -35,7 +35,7 @@
                 <label>{{group-checkbox
                   refs=(array 'qps.M1' 'qps.M2' 'qps.M3')
                   values=(array qps.M1 qps.M2 qps.M3)
-                  scope=qps}}Select All Manufacturing Districts</label>
+                  scope=qps}}Manufacturing Districts <span style="background-color:#e362fb;" class="icon polygon legend-icon"></span></label>
                 <ul class="nested columns-3">
                   <li><label>{{multiSelect.checkbox value='M1' checked=qps.M1}}M1</label></li>
                   <li><label>{{multiSelect.checkbox value='M2' checked=qps.M2}}M2</label></li>
@@ -46,7 +46,7 @@
                 <label>{{group-checkbox
                   refs=(array 'qps.R1' 'qps.R2' 'qps.R3' 'qps.R4' 'qps.R5' 'qps.R6' 'qps.R7' 'qps.R8' 'qps.R9')
                   values=(array qps.R1 qps.R2 qps.R3 qps.R4 qps.R5 qps.R6 qps.R7 qps.R8 qps.R9)
-                  scope=qps}}Select All Residential Districts</label>
+                  scope=qps}}Residential Districts  <span style="background-color:#f2f618;" class="icon polygon legend-icon"></span></label>
                 <ul class="nested columns-3">
                   <li><label>{{multiSelect.checkbox value='R1' checked=qps.R1}}R1</label></li>
                   <li><label>{{multiSelect.checkbox value='R2' checked=qps.R2}}R2</label></li>
@@ -59,8 +59,8 @@
                   <li><label>{{multiSelect.checkbox value='R9' checked=qps.R9}}R9</label></li>
                 </ul>
               </li>
-              <li><label>{{multiSelect.checkbox value='PA' checked=qps.PA}}Parks</label></li>
-              <li><label>{{multiSelect.checkbox value='BP' checked=qps.BP}}Battery Park City</label></li>
+              <li><label>{{multiSelect.checkbox value='PA' checked=qps.PA}}Parks <span style="background-color:#78D271;" class="icon polygon legend-icon"></span></label></li>
+              <li><label>{{multiSelect.checkbox value='BP' checked=qps.BP}}Battery Park City <span style="background-color:#666666;" class="icon polygon legend-icon"></span></label></li>
             </ul>
         {{/layer-multi-select-control}}
       {{/if}}
