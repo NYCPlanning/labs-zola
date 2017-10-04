@@ -8,7 +8,7 @@ export default {
     },
     {
       id: 'special-purpose-subdistricts',
-      sql: 'SELECT the_geom_webmercator, spname FROM support_nysp_sd',
+      sql: 'SELECT the_geom_webmercator, spname, subdist FROM support_nysp_sd',
     },
     {
       id: 'mandatory-inclusionary-housing',
