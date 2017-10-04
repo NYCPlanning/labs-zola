@@ -1,24 +1,61 @@
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4 bookmarks">
-  {{!-- <h1>{{fa-icon "bookmark"}} My List</h1> --}}
+  {{#if (await pins) as |resolvedPins|}}
+    <h3>Map Pins</h3>
+    <ul class="no-bullet">
+      {{#each resolvedPins as |pin|}} 
+        <li {{action 'flyTo' pin.coordinates}}>
+          {{fa-icon "map-pin"}} {{pin.title}} 
+          <button class="float-right lu-red" {{action 'deleteBookmark' pin}}>&times;</button>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
 
-  <h3>Map Pins</h3>
-  <ul class="no-bullet">
-    <li><a href="#">{{fa-icon "map-pin"}} 200 Broadway, Manhattan, New York, NY, USA</a> <button class="float-right lu-red">&times;</button></li>
-  </ul>
+  {{#if (await lots) as |resolvedLots|}}
+    <h3>Tax Lots</h3>
+    <ul class="no-bullet">
+      {{#each resolvedLots as |lot|}} 
+        <li>
+          <span class="icon tax-lot"></span> 
+          {{#if (await lot.lot)}}
+            {{#link-to 'lot' lot.lot}}
+              {{lot.title}}
+              <span class="dark-gray">
+                {{lot.subtitle}}
+              </span>
+            {{/link-to}}
+          {{/if}}
+          <button class="float-right lu-red" {{action 'deleteBookmark' lot}}>
+            &times;
+          </button>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
 
-  <h3>Tax Lots</h3>
-  <ul class="no-bullet">
-    <li><span class="icon tax-lot"></span> <a href="#">4060760032 <span class="dark-gray">200-05 34 Avenue, Queens</span></a> <button class="float-right lu-red">&times;</button></li>
-    <li><span class="icon tax-lot"></span> <a href="#">2034370001 <span class="dark-gray">2000 Cornell Avenue, Bronx</span></a> <button class="float-right lu-red">&times;</button></li>
-    <li><span class="icon tax-lot"></span> <a href="#">2030950004 <span class="dark-gray">2004 Crotona Avenue, Bronx</span></a> <button class="float-right lu-red">&times;</button></li>
-    <li><span class="icon tax-lot"></span> <a href="#">3072990050 <span class="dark-gray">2005 Avenue T, Brooklyn</span></a> <button class="float-right lu-red">&times;</button></li>
-  </ul>
+  {{#if (await amendments) as |resolvedAmendments|}}
+    <h3>Zoning Map Amendments</h3>
+    <ul class="no-bullet">
+      {{#each resolvedAmendments as |zma|}} 
+        <li>
+          {{#if (await zma.zma)}}
+            {{#link-to 'zma' zma.zma.id}}
+              {{log zma.zma}}
+              <span class="icon polygon"></span> 
+              {{zma.title}}
+              <span class="dark-gray">{{zma.subtitle}}</span>
+            {{/link-to}}
+          {{/if}}
+          <button class="float-right lu-red" {{action 'deleteBookmark' zma}}>&times;</button>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
 
-  <h3>Zoning Map Amendments</h3>
-  <ul class="no-bullet">
-    <li><a href="#"><span class="icon polygon"></span> 120033zmm <span class="dark-gray">Rudin West Village Project</span></a> <button class="float-right lu-red">&times;</button></li>
-    <li><a href="#"><span class="icon polygon"></span> 020087zmq <span class="dark-gray">Vernon Blvd Rezoning</span></a> <button class="float-right lu-red">&times;</button></li>
-  </ul>
+  {{#unless model.length}}
+    <h1>You haven't bookmarked anything.</h1>
+    <p>You can add bookmarks to this page by clicking the [fa-bookmark] icon on other pages &mdash; like Lots and Zoning Map Amendments. From this page you can quickly navigate to all of your bookmarked information.</p>
+  {{/unless}}
 
   {{outlet}}
 

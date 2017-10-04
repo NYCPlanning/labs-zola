@@ -6,7 +6,7 @@ const Router = Ember.Router.extend({
   rootURL: config.rootURL,
 });
 
-Router.map(function () {
+Router.map(function () { // eslint-disable-line
   this.route('lot', { path: 'lot/:boro/:block/:lot' });
   this.route('zma', { path: 'zma/:ulurpno' });
   this.route('zoning-district', { path: 'zoning-district/:zonedist' });

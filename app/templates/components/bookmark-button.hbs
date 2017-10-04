@@ -1,2 +1,2 @@
-<button class="save-button{{if saved 'saved'}}">{{fa-icon "bookmark"}}</button>
+<button class="save-button {{if saved 'saved'}}" onclick={{action 'toggleSaved'}}>{{fa-icon "bookmark"}}</button>
 {{yield}}

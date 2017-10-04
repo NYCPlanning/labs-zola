@@ -1,7 +1,9 @@
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4">
   {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
 
-  <button class="save-button saved">{{fa-icon "bookmark"}}</button>
+  {{bookmark-button 
+    bookmark=(await model.bookmark)
+    createBookmark=(action 'createBookmark')}}
 
   <label class="header-label clearfix">
     TAX LOT <span class="medium-gray">|</span> BBL {{model.bbl}}

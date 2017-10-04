@@ -124,6 +124,7 @@ export default Ember.Component.extend({
       if (result.type === 'address') {
         const center = result.coordinates;
         mainMap.set('currentAddress', center);
+        this.saveAddress({ title: result.label, recordType: 'address', coordinates: result.coordinates });
         this.transitionTo('index');
 
         if (mapInstance) {

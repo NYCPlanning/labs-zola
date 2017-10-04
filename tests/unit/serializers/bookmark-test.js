@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('bookmark', 'Unit | Serializer | bookmark', {
   // Specify the other units that are required for this test.
-  needs: ['serializer:bookmark']
+  needs: ['serializer:bookmark', 'adapter:bookmark', 'model:bookmark']
 });
 
 // Replace this with your real tests.

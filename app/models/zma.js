@@ -20,4 +20,6 @@ export default DS.Model.extend({
   bounds(geometry) {
     return bbox(geometry);
   },
+
+  bookmark: DS.belongsTo('bookmark'),
 });

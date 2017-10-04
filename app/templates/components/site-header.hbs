@@ -12,7 +12,14 @@
       <nav role="navigation">
         <ul class="vertical large-horizontal menu">
           <li>{{link-to 'About' 'about'}}</li>
-          <li>{{#link-to 'bookmarks'}}{{fa-icon "bookmark"}} Saved <span class="badge sup">7</span>{{/link-to}}</li>
+          <li>
+            {{#link-to 'bookmarks'}}{{fa-icon "bookmark"}}
+              Saved 
+              {{#if count}}
+                <span class="badge sup">{{count}}</span>
+              {{/if}}
+            {{/link-to}}
+          </li>
         </ul>
       </nav>
     </div>

@@ -5,7 +5,7 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 import layerGroups from '../layer-groups';
 
-const { merge } = Ember;
+const { merge, set } = Ember;
 
 const queryParams = Object.keys(layerGroups)
   .reduce(
@@ -83,6 +83,10 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
   actions: {
     transitionTo(...args) {
       this.transitionToRoute(...args);
+    },
+    saveAddress(address) {
+      set(address, 'type', 'address');
+      this.store.createRecord('bookmark', address).save();
     },
     routeToLot(e) {
       const map = e.target;
