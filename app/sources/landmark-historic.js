@@ -4,7 +4,7 @@ export default {
   'source-layers': [
     {
       id: 'historic-districts',
-      sql: 'SELECT the_geom_webmercator, area_name FROM support_historicdistricts',
+      sql: 'SELECT the_geom_webmercator, area_name FROM support_historicdistricts WHERE status_of = \'DESIGNATED\'',
     },
     {
       id: 'landmarks',
