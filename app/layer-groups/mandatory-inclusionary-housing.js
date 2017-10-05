@@ -1,19 +1,18 @@
+import { lineStyle, fillStyle } from '../helpers/polygon-layer-styles';
+
 export default {
   id: 'mandatory-inclusionary-housing',
   title: 'Mandatory Inclusionary Housing',
   visible: false,
   layers: [
     {
-      layer: {
-        id: 'mih-line',
-        type: 'line',
-        source: 'supporting-zoning',
-        'source-layer': 'mandatory-inclusionary-housing',
-        paint: {
-          'line-width': 2,
-          'line-color': 'orange',
-        },
-      },
+      layer: lineStyle('mandatory-inclusionary-housing-line', 'supporting-zoning', 'mandatory-inclusionary-housing', 'rgba(82, 22, 124, 1)'),
+    },
+
+    {
+      layer: fillStyle('mandatory-inclusionary-housing-fill', 'supporting-zoning', 'mandatory-inclusionary-housing', 'rgba(82, 22, 124, 1)'),
+      highlightable: true,
+      tooltipTemplate: '{{projectnam}} - {{mih_option}}',
     },
   ],
 };

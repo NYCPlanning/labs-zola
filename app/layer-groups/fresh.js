@@ -1,3 +1,5 @@
+import { lineStyle, fillStyle } from '../helpers/polygon-layer-styles';
+
 export default {
   id: 'fresh',
   title: 'FRESH Zones',
@@ -5,16 +7,12 @@ export default {
   visible: false,
   layers: [
     {
-      layer: {
-        id: 'fresh-line',
-        type: 'line',
-        source: 'supporting-zoning',
-        'source-layer': 'fresh',
-        paint: {
-          'line-width': 2,
-          'line-color': 'steelblue',
-        },
-      },
+      layer: lineStyle('fresh-line', 'supporting-zoning', 'fresh', 'steelblue'),
+    },
+    {
+      layer: fillStyle('fresh-fill', 'supporting-zoning', 'fresh', 'steelblue'),
+      highlightable: true,
+      tooltipTemplate: 'FRESH - {{{name}}}',
     },
   ],
 };

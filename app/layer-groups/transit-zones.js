@@ -1,3 +1,5 @@
+import { lineStyle, fillStyle } from '../helpers/polygon-layer-styles';
+
 export default {
   id: 'transit-zones',
   title: 'Transit Zones',
@@ -5,16 +7,12 @@ export default {
   titleTooltip: 'Areas where parking requirements are eliminated or reduced for affordable and senior housing units',
   layers: [
     {
-      layer: {
-        id: 'tz-line',
-        type: 'line',
-        source: 'supporting-zoning',
-        'source-layer': 'transit-zones',
-        paint: {
-          'line-width': 2,
-          'line-color': 'purple',
-        },
-      },
+      layer: lineStyle('transit-zones-line', 'supporting-zoning', 'transit-zones', 'purple'),
+    },
+    {
+      layer: fillStyle('transit-zones-fill', 'supporting-zoning', 'transit-zones', 'purple'),
+      highlightable: true,
+      tooltipTemplate: 'Transit Zone',
     },
   ],
 };
