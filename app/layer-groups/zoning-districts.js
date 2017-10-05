@@ -49,6 +49,7 @@ export default {
         },
       },
       highlightable: true,
+      clickable: true,
       tooltipTemplate: 'Zoning District {{zonedist}}',
     },
     {
@@ -115,8 +116,6 @@ export default {
           },
         },
       },
-      before: 'waterway-label',
     },
   ],
-  filters: [],
 };

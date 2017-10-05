@@ -18,7 +18,6 @@ import nyccouncildistricts from './nyccouncildistricts';
 import sidewalkcafes from './sidewalkcafes';
 import specialPurposeDistricts from './special-purpose-districts';
 import pluto from './pluto';
-import scenicLandmarks from './scenic-landmarks';
 import specialPurposeSubdistricts from './special-purpose-subdistricts';
 import subway from './subway';
 import threedBuildings from './threed-buildings';
@@ -49,7 +48,6 @@ export default {
   sidewalkcafes,
   specialPurposeDistricts,
   pluto,
-  scenicLandmarks,
   specialPurposeSubdistricts,
   subway,
   threedBuildings,
