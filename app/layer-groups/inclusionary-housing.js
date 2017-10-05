@@ -1,6 +1,6 @@
 import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
 
-const legendColor = 'rgba(227, 142, 48, 1)';
+const legendColor = '#E57300';
 
 export default {
   id: 'inclusionary-housing',

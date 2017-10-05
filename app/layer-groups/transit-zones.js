@@ -1,6 +1,6 @@
 import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
 
-const legendColor = 'purple';
+const legendColor = '#E6D62E';
 
 export default {
   id: 'transit-zones',

@@ -1,6 +1,7 @@
 import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
 
-const legendColor = 'rgba(124, 159, 238, 1)';
+const legendColor = '#5DC6E4';
+
 export default {
   id: 'coastal-zone-boundary',
   title: 'Coastal Zone Boundary',

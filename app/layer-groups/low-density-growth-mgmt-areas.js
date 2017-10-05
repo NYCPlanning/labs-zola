@@ -1,6 +1,6 @@
 import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
 
-const legendColor = 'rgba(255, 127, 0, 1)';
+const legendColor = '#9D47B2';
 
 export default {
   id: 'low-density-growth-mgmt-areas',
