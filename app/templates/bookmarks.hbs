@@ -1,6 +1,6 @@
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4 bookmarks">
-  {{#if (await bookmarksSettled)}}
 
+  {{#if (await bookmarksSettled)}}
     {{#each-in (group-by 'recordType.content' model) as |key values|}}
       {{#if (eq key 'lot')}}
         <h3>Tax Lots</h3>
@@ -39,20 +39,24 @@
         <ul class="no-bullet">
           {{#each values as |pin|}} 
             <li {{action 'flyTo' pin.coordinates}} class="map-bookmark">
-              {{fa-icon "map-pin"}} {{pin.address}} 
+              <span class="map-bookmark link">
+                {{fa-icon "map-pin"}} {{pin.address}} 
+              </span>
               <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' pin}}>&times;</button>
             </li>
           {{/each}}
         </ul>
       {{/if}}
-
     {{/each-in}}
   {{/if}}
 
   {{#unless model.length}}
     <div class="no-bookmarks">
-      <h1>You haven't bookmarked anything.</h1>
-      <p>You can add bookmarks to this page by clicking the [fa-bookmark] icon on other pages &mdash; like Lots and Zoning Map Amendments. From this page you can quickly navigate to all of your bookmarked information.</p>
+      <div class="align-self-middle large-text-center">
+        <h1 class="header-large">You haven't bookmarked&nbsp;anything.</h1>
+        <p>You can add bookmarks to this page by clicking the {{fa-icon "bookmark"}} icon on other pages&mdash;like Tax Lots and Zoning Map Amendments.</p>
+        <p>From this page you can quickly navigate to all of your bookmarked&nbsp;information.</p>
+      </div>
     </div>
   {{/unless}}
 
