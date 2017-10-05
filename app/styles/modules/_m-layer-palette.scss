@@ -81,6 +81,15 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
 
 }
 
+.checkbox-wrapper {
+  padding: $layer-palette-padding/2 $layer-palette-padding;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $layer-palette-hover-color;
+  }
+}
+
 .layer-menu-item--group-checkboxes {
 
   > li {
@@ -149,7 +158,7 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
 }
 
 .layer-key {
-  padding: $layer-palette-padding;
+  padding: 0 $layer-palette-padding $layer-palette-padding;
   font-size: rem-calc(10);
   line-height: 1.2;
 
