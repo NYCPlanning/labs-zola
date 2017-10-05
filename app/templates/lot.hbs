@@ -24,14 +24,10 @@
       {{#if model.zonedist4}}<li>{{link-to model.zonedist4 'zoning-district' model.zonedist4 classNames="button"}}</li>{{/if}}
     </ul>
   {{/if}}
-  {{#if model.overlay1}}
-    <ul class="lot-zoning-list">
-      <li class="menu-text">Commercial Overlay{{if model.overlay2 's'}}:</li>
-      {{#if model.overlay1}}<li><a href="" class="button">{{model.overlay1}}</a></li>{{/if}}
-      {{#if model.overlay2}}<li><a href="" class="button">{{model.overlay2}}</a></li>{{/if}}
-    </ul>
-  {{/if}}
   <ul class="no-bullet text-small">
+    {{#if model.overlay1}}
+      <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" class="">{{fa-icon "external-link"}} Commercial Overlay{{if model.overlay2 's'}}</a>: <strong>{{model.overlay1}}</strong>{{#if model.overlay2}}, <strong>{{model.overlay2}}</strong>{{/if}}
+    {{/if}}
     {{#if model.histdist}}<li>{{model.histdist}}</li>{{/if}}
     {{#if model.bbl}}<li><a target="_blank" href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{model.bbl}}">{{fa-icon "external-link"}} Digital Tax Map</a></li>{{/if}}
     {{#if model.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{model.zonemap}}.pdf">{{fa-icon "external-link"}} Zoning Map <small>(PDF)</small></a></li>{{/if}}
