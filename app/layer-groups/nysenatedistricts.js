@@ -1,10 +1,11 @@
-import adminBoundaryStyles from '../helpers/admin-boundary-styles';
+import adminBoundaryStyles from '../utils/admin-boundary-styles';
 
 const { paint, layout, labelLayout } = adminBoundaryStyles;
 
 export default {
   id: 'nysenatedistricts',
   title: 'New York State Senate Districts',
+  legendIcon: 'admin-line',
   legendColor: '#E4F576',
   visible: false,
   layers: [

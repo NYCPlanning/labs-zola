@@ -1,10 +1,11 @@
-import adminBoundaryStyles from '../helpers/admin-boundary-styles';
+import adminBoundaryStyles from '../utils/admin-boundary-styles';
 
 const { paint, layout, labelLayout } = adminBoundaryStyles;
 
 export default {
   id: 'nyccouncildistricts',
   title: 'NYC Council Districts',
+  legendIcon: 'admin-line',
   legendColor: '#76CAF5',
   visible: false,
   layers: [
