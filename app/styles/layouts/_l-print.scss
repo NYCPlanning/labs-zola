@@ -1,3 +1,35 @@
 // --------------------------------------------------
 // Print Layout
 // --------------------------------------------------
+
+@media print {
+
+  // html {
+  //   font-size: 8pt;
+  // }
+
+  a[href]:after {
+    content: '' !important;
+  }
+
+  .branding a {
+    text-decoration: none !important;
+  }
+
+  .map-grid {
+    height: 4in;
+  }
+
+  .map-container,
+  #main-map {
+    width: 100% !important;
+  }
+
+  .mapboxgl-ctrl-logo,
+  .mapboxgl-ctrl-top-left,
+  .mapboxgl-ctrl-attrib {
+    display: none !important;
+  }
+
+
+}
