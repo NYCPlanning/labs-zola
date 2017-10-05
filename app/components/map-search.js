@@ -9,7 +9,7 @@ const { service } = Ember.inject;
 const DEBOUNCE_MS = 100;
 
 export default Ember.Component.extend({
-  classNames: ['search'],
+  classNames: ['search hide-for-print'],
   searchTerms: '',
   transitionTo: null,
   selected: 0,
