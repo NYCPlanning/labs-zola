@@ -2,6 +2,7 @@ export default {
   id: 'zoning-districts',
   title: 'Zoning Districts',
   visible: true,
+  titleTooltip: 'A zoning district is a residential, commercial or manufac­turing area of the city within which zoning regulations govern land use and building bulk.',
   layers: [
     {
       layer: {

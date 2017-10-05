@@ -1,6 +1,7 @@
 export default {
   id: 'landmarks',
   title: 'Landmarks',
+  titleTooltip: 'Sites with landmark status granted by the NYC Landmarks Preservation Commission',
   visible: false,
   layers: [
     {

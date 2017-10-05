@@ -1,6 +1,7 @@
 export default {
   id: 'commercial-overlays',
   title: 'Commercial Overlays',
+  titleTooltip: 'A commercial overlay is a C1 or C2 district mapped within residential districts to serve local retail needs.',
   visible: false,
   layers: [
     {

@@ -1,6 +1,7 @@
 export default {
   id: 'threed-buildings',
   title: '3D Buildings',
+  titleTooltip: 'Extruded building height from OpenStreetMap data',
   visible: false,
   layers: [
     {
