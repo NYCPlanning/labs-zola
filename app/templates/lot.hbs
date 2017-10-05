@@ -1,7 +1,7 @@
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4">
   {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
 
-  {{bookmark-button 
+  {{bookmark-button
     bookmark=(await model.bookmark)
     createBookmark=(action 'createBookmark')}}
 
@@ -22,6 +22,13 @@
       {{#if model.zonedist2}}<li>{{link-to model.zonedist2 'zoning-district' model.zonedist2 classNames="button"}}</li>{{/if}}
       {{#if model.zonedist3}}<li>{{link-to model.zonedist3 'zoning-district' model.zonedist3 classNames="button"}}</li>{{/if}}
       {{#if model.zonedist4}}<li>{{link-to model.zonedist4 'zoning-district' model.zonedist4 classNames="button"}}</li>{{/if}}
+    </ul>
+  {{/if}}
+  {{#if model.overlay1}}
+    <ul class="lot-zoning-list">
+      <li class="menu-text">Commercial Overlay{{if model.overlay2 's'}}:</li>
+      {{#if model.overlay1}}<li><a href="" class="button">{{model.overlay1}}</a></li>{{/if}}
+      {{#if model.overlay2}}<li><a href="" class="button">{{model.overlay2}}</a></li>{{/if}}
     </ul>
   {{/if}}
   <ul class="no-bullet text-small">

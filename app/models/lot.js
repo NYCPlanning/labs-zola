@@ -31,6 +31,8 @@ const LotColumnsSQL = [
   'numfloors',
   'ownername',
   'ownertype',
+  'overlay1',
+  'overlay2',
   'policeprct',
   'sanitboro',
   'sanitdistr',
@@ -137,6 +139,8 @@ export default Bookmarkable.extend({
   ownertypename: Ember.computed('ownertype', function() {
     return ownertypeLookup[this.get('ownertype')];
   }),
+  overlay1: DS.attr('string'),
+  overlay2: DS.attr('string'),
   policeprct: DS.attr('string'),
   sanitboro: DS.attr('string'),
   sanitdistr: DS.attr('string'),
