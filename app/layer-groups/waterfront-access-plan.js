@@ -5,6 +5,7 @@ const legendColor = '#00A4D2';
 export default {
   id: 'waterfront-access-plan',
   title: 'Waterfront Access Plan',
+  titleTooltip: 'These areas reflect site-specific modification of waterfront public access requirements for waterfront parcels with unique conditions and opportunities.',
   visible: false,
   legendIcon: 'polygon',
   legendColor,

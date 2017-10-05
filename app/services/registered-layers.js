@@ -44,6 +44,17 @@ export default Ember.Service.extend({
       );
   },
 
+  @computed('currentlyVisible')
+  clickableAndVisibleLayerIds(layers) {
+    // return an array of layerids that are both visible and highlightable
+    return layers
+      .map(layer => layer.config.layers.filter(l => l.clickable).map(l => l.layer.id))
+      .reduce(
+        (accumulator, curr) => (accumulator.concat(curr)),
+        [],
+      );
+  },
+
   getTooltipTemplate(id) {
     // find the layer with this id, return its tooltipTemplate
     const layer = this.get('layers').reduce(

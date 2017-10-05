@@ -5,6 +5,7 @@ const legendColor = '#9D47B2';
 export default {
   id: 'low-density-growth-mgmt-areas',
   title: 'Low Density Growth Management Areas',
+  titleTooltip: 'These districts aim to match future development to the capacity of supporting services and infrastructure in parts of the city experiencing rapid growth.',
   visible: false,
   legendIcon: 'polygon',
   legendColor,
