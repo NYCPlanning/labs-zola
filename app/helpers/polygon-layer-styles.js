@@ -4,13 +4,15 @@ const lineStyle = (id, source, sourceLayer, color) => ({
   source,
   'source-layer': sourceLayer,
   paint: {
-    'line-width': 2,
+    'line-width': {
+      stops: [
+        [11, 1],
+        [12, 3],
+      ],
+    },
     'line-color': color,
-    'line-dasharray': [1, 2],
-  },
-  layout: {
-    'line-cap': 'round',
-    'line-join': 'miter',
+    'line-dasharray': [1, 1],
+    'line-opacity': 0.6,
   },
 });
 
