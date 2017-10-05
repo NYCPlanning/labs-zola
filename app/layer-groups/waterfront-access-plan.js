@@ -1,6 +1,6 @@
 import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
 
-const legendColor = 'rgba(18, 0, 255, 1)';
+const legendColor = '#00A4D2';
 
 export default {
   id: 'waterfront-access-plan',

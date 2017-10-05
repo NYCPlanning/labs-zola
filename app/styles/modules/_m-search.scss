@@ -23,6 +23,7 @@
 
   input {
     margin: 0;
+    padding-right: 2rem;
   }
 
   .close-button {
@@ -96,22 +97,6 @@
 
   .subdued {
     color: $dark-gray;
-  }
-
-  .fa {
-    font-size: rem-calc(16);
-    margin-right: 0.5rem;
-
-    &.fa-home {
-      font-size: rem-calc(11);
-      margin-right: rem-calc(-1);
-      position: relative;
-      bottom: rem-calc(-2);
-    }
-
-    &.fa-building {
-      font-size: rem-calc(14);
-    }
   }
 }
 

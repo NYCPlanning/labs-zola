@@ -26,7 +26,7 @@ export default {
               ],
             ],
           },
-          'line-color': 'rgba(40, 173, 21, 1)',
+          'line-color': '#28AD15',
         },
         filter: [
           'all',
@@ -61,7 +61,7 @@ export default {
               ],
             ],
           },
-          'line-color': 'rgba(198, 33, 196, 1)',
+          'line-color': '#CC3DCA',
         },
         filter: [
           'all',
@@ -99,7 +99,7 @@ export default {
               ],
             ],
           },
-          'line-color': 'rgba(33, 107, 198, 1)',
+          'line-color': '#216BC6',
         },
         filter: [
           'all',

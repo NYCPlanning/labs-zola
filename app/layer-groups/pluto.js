@@ -1,6 +1,6 @@
 export default {
   id: 'pluto',
-  title: 'PLUTO (Tax Lots)',
+  title: 'Tax Lots',
   layers: [
     {
       layer: {

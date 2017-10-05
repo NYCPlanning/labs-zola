@@ -1,6 +1,6 @@
 import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
 
-const legendColor = 'steelblue';
+const legendColor = '#32EE5A';
 
 export default {
   id: 'fresh',

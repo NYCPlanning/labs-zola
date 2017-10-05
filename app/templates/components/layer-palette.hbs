@@ -71,32 +71,32 @@
         {{info-tooltip iconName='warning' tip='Zoom in more to see'}}
       {{/if}}
       {{#if item.layer.visible}}
-        <div class="layer-menu-item"
+        <div class="checkbox-wrapper"
           onclick={{queue
-            (action 'toggleFill')
-            (action item.updatePaintFor
-              'pluto-fill'
-              (if plutoFill (hash fill-opacity=0.7) (hash fill-opacity=0))
-            )}}>
+          (action 'toggleFill')
+          (action item.updatePaintFor
+            'pluto-fill'
+            (if plutoFill (hash fill-opacity=0.7) (hash fill-opacity=0))
+          )}}>
           {{input type='checkbox'
             checked=plutoFill}}
           Show Land Use Colors
         </div>
         {{#if plutoFill}}
-        <ul class="layer-key">
-          <li><span style="color:#FEFFA8;">{{fa-icon "square"}}</span>One &amp; Two Family Buildings</li>
-          <li><span style="color:#FCB842;">{{fa-icon "square"}}</span>Multi-Family Walk-Up Buildings</li>
-          <li><span style="color:#B16E00;">{{fa-icon "square"}}</span>Multi-Family Elevator Buildings</li>
-          <li><span style="color:#ff8341;">{{fa-icon "square"}}</span>Mixed Residential &amp; Commercial Buildings</li>
-          <li><span style="color:#fc2929;">{{fa-icon "square"}}</span>Commercial &amp; Office Buildings</li>
-          <li><span style="color:#E362FB;">{{fa-icon "square"}}</span>Industrial &amp; Manufacturing</li>
-          <li><span style="color:#E0BEEB;">{{fa-icon "square"}}</span>Transportation &amp; Utility</li>
-          <li><span style="color:#44A3D5;">{{fa-icon "square"}}</span>Public Facilities &amp; Institutions</li>
-          <li><span style="color:#78D271;">{{fa-icon "square"}}</span>Open Space &amp; Outdoor Recreation</li>
-          <li><span style="color:#BAB8B6;">{{fa-icon "square"}}</span>Parking Facilities</li>
-          <li><span style="color:#555555;">{{fa-icon "square"}}</span>Vacant Land</li>
-          <li><span style="color:#222222;">{{fa-icon "square"}}</span>Other</li>
-        </ul>
+          <ul class="layer-key">
+            <li><span style="color:#FEFFA8;">{{fa-icon "square"}}</span>One &amp; Two Family Buildings</li>
+            <li><span style="color:#FCB842;">{{fa-icon "square"}}</span>Multi-Family Walk-Up Buildings</li>
+            <li><span style="color:#B16E00;">{{fa-icon "square"}}</span>Multi-Family Elevator Buildings</li>
+            <li><span style="color:#ff8341;">{{fa-icon "square"}}</span>Mixed Residential &amp; Commercial Buildings</li>
+            <li><span style="color:#fc2929;">{{fa-icon "square"}}</span>Commercial &amp; Office Buildings</li>
+            <li><span style="color:#E362FB;">{{fa-icon "square"}}</span>Industrial &amp; Manufacturing</li>
+            <li><span style="color:#E0BEEB;">{{fa-icon "square"}}</span>Transportation &amp; Utility</li>
+            <li><span style="color:#44A3D5;">{{fa-icon "square"}}</span>Public Facilities &amp; Institutions</li>
+            <li><span style="color:#78D271;">{{fa-icon "square"}}</span>Open Space &amp; Outdoor Recreation</li>
+            <li><span style="color:#BAB8B6;">{{fa-icon "square"}}</span>Parking Facilities</li>
+            <li><span style="color:#555555;">{{fa-icon "square"}}</span>Vacant Land</li>
+            <li><span style="color:#222222;">{{fa-icon "square"}}</span>Other</li>
+          </ul>
         {{/if}}
       {{/if}}
     {{/layer-menu-item}}
@@ -172,9 +172,9 @@
     {{#layer-menu-item for='sidewalkcafes' as |item|}}
       {{#if item.layer.visible}}
         <ul class="layer-key">
-          <li><span style="color:rgba(40, 173, 21, 1);">{{fa-icon "square"}}</span>All Cafes Permitted</li>
-          <li><span style="color:rgba(198, 33, 196, 1);">{{fa-icon "square"}}</span>Small Cafes Permitted</li>
-          <li><span style="color:rgba(33, 107, 198, 1);">{{fa-icon "square"}}</span>Unenclosed and Small Cafes Permitted</li>
+          <li><span style="color:#28AD15;">{{fa-icon "square"}}</span>All Cafes Permitted</li>
+          <li><span style="color:#CC3DCA;">{{fa-icon "square"}}</span>Small Cafes Permitted</li>
+          <li><span style="color:#216BC6;">{{fa-icon "square"}}</span>Unenclosed and Small Cafes Permitted</li>
         </ul>
       {{/if}}
     {{/layer-menu-item}}

@@ -1,0 +1,5 @@
+<button class="save-button bookmark-save-button hide-for-print {{if saved 'saved'}}" onclick={{action 'toggleSaved'}}>
+  {{fa-icon "bookmark"}}
+  <span class="state">{{#if saved}}SAVED{{/if}}</span>
+</button>
+{{yield}}

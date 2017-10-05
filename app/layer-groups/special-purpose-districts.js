@@ -1,6 +1,6 @@
 import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
 
-const legendColor = 'rgba(21, 83, 30, 1)';
+const legendColor = '#5E6633';
 
 export default {
   id: 'special-purpose-districts',

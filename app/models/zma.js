@@ -3,7 +3,9 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import bbox from 'npm:@turf/bbox';
 import moment from 'moment';
 
-export default DS.Model.extend({
+import Bookmarkable from './bookmark';
+
+export default Bookmarkable.extend({
   geometry: DS.attr(),
   ulurpno: DS.attr('string'),
   project_na: DS.attr('string'),
