@@ -1,55 +1,52 @@
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4 bookmarks">
-  {{#if (await pins) as |resolvedPins|}}
-    <h3>Map Pins</h3>
-    <ul class="no-bullet">
-      {{#each resolvedPins as |pin|}} 
-        <li {{action 'flyTo' pin.coordinates}} class="map-bookmark">
-          {{fa-icon "map-pin"}} {{pin.title}} 
-          <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' pin}}>&times;</button>
-        </li>
-      {{/each}}
-    </ul>
-  {{/if}}
+  {{#if (await bookmarksSettled)}}
 
-  {{#if (await lots) as |resolvedLots|}}
-    <h3>Tax Lots</h3>
-    <ul class="no-bullet">
-      {{#each resolvedLots as |lot|}} 
-        <li class="lot-bookmark">
-          <span class="icon tax-lot"></span> 
-          {{#if (await lot.lot)}}
-            {{#link-to 'lot' lot.lot}}
-              {{lot.title}}
-              <span class="dark-gray">
-                {{lot.subtitle}}
-              </span>
-            {{/link-to}}
-          {{/if}}
-          <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' lot}}>
-            &times;
-          </button>
-        </li>
-      {{/each}}
-    </ul>
-  {{/if}}
+    {{#each-in (group-by 'recordType.content' model) as |key values|}}
+      {{#if (eq key 'lot')}}
+        <h3>Tax Lots</h3>
+        <ul class="no-bullet">
+          {{#each values as |lot|}} 
+            <li class="lot-bookmark">
+              <span class="icon tax-lot"></span> 
+                {{#link-to 'lot' lot.bookmark}}
+                  {{lot.bookmark.address}}
+                  <span class="dark-gray">
+                    {{lot.bookmark.bbl}}
+                  </span>
+                {{/link-to}}
+              <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' lot}}>
+                &times;
+              </button>
+            </li>
+          {{/each}}
+        </ul>
+      {{else if (eq key 'zma')}}
+        <h3>Zoning Map Amendments</h3>
+        <ul class="no-bullet">
+          {{#each values as |zma|}} 
+            <li class="zma-bookmark">
+              {{#link-to 'zma' zma.bookmark.id}}
+                <span class="icon polygon"></span> 
+                {{zma.bookmark.project_na}}
+                <span class="dark-gray">{{zma.bookmark.lucats}}</span>
+              {{/link-to}}
+              <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' zma}}>&times;</button>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <h3>Map Pins</h3>
+        <ul class="no-bullet">
+          {{#each values as |pin|}} 
+            <li {{action 'flyTo' pin.coordinates}} class="map-bookmark">
+              {{fa-icon "map-pin"}} {{pin.address}} 
+              <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' pin}}>&times;</button>
+            </li>
+          {{/each}}
+        </ul>
+      {{/if}}
 
-  {{#if (await amendments) as |resolvedAmendments|}}
-    <h3>Zoning Map Amendments</h3>
-    <ul class="no-bullet">
-      {{#each resolvedAmendments as |zma|}} 
-        <li class="zma-bookmark">
-          {{#if (await zma.zma)}}
-            {{#link-to 'zma' zma.zma.id}}
-              {{log zma.zma}}
-              <span class="icon polygon"></span> 
-              {{zma.title}}
-              <span class="dark-gray">{{zma.subtitle}}</span>
-            {{/link-to}}
-          {{/if}}
-          <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' zma}}>&times;</button>
-        </li>
-      {{/each}}
-    </ul>
+    {{/each-in}}
   {{/if}}
 
   {{#unless model.length}}

@@ -5,8 +5,7 @@ export default Ember.Controller.extend({
   actions: {
     createBookmark() {
       const lot = this.get('model');
-      const record = { lot, title: lot.get('bbl'), subtitle: lot.get('address') };
-      this.store.createRecord('bookmark', record).save();
+      this.store.createRecord('bookmark', { bookmark: lot }).save();
     },
   },
 });

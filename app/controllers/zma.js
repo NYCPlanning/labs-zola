@@ -6,9 +6,7 @@ export default Ember.Controller.extend({
       const zma = this.get('model');
       this.store.createRecord(
         'bookmark',
-        { zma,
-          title: zma.get('ulurpno'),
-          subtitle: zma.get('project_na') },
+        { bookmark: zma },
       ).save();
     },
   },

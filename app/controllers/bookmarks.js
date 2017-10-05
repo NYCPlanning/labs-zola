@@ -12,55 +12,9 @@ export default Ember.Controller.extend({
   // aggregate operations (like filtering)
   @computed('model.[]')
   bookmarksSettled(bookmarks) {
-    // setup a promise that resolves when all sub-promises resolve
-    return new Promise((resolve) => {
-      // pluck out those promises
-      const promises = bookmarks.mapBy('recordType');
+    const promises = bookmarks.mapBy('recordType');
 
-      // set the models values
-      bookmarks.forEach((bmark) => {
-        const recordType = bmark.get('recordType');
-
-        // on re-compute, it isn't a promise anymore
-        if (recordType.then) {
-          bmark.get('recordType')
-            .then((resolvedType) => {
-              const bmarkModified = bmark;
-              bmarkModified.recordType = resolvedType;
-            });
-        }
-      });
-
-      // resolve the outer promise when all these
-      // have settled
-      Promise.all(promises).then(() => {
-        resolve(bookmarks);
-      });
-    });
-  },
-
-  @computed('bookmarksSettled')
-  lots(bookmarks) {
-    return bookmarks.then(
-      resolved => resolved
-        .filter(mark => (mark.recordType === 'lot')),
-    );
-  },
-
-  @computed('bookmarksSettled')
-  pins(bookmarks) {
-    return bookmarks.then(
-      resolved => resolved
-        .filter(mark => (mark.recordType === 'address')),
-    );
-  },
-
-  @computed('bookmarksSettled')
-  amendments(bookmarks) {
-    return bookmarks.then(
-      resolved => resolved
-        .filter(mark => (mark.recordType === 'zma')),
-    );
+    return Promise.all(promises);
   },
 
   actions: {

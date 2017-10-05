@@ -26,7 +26,13 @@ export default Ember.Route.extend({
 
     return RSVP.hash({
       cartoSources: Promise.all(cartoSourcePromises),
-      bookmarks: this.store.findAll('bookmark'),
+      bookmarks: this.store.findAll('bookmark')
+        .then((bookmarks) => {
+          // invoke their bookmarks so they're
+          // ready for the whole application
+          bookmarks.invoke('get', 'bookmark');
+          return bookmarks;
+        }),
     });
   },
 

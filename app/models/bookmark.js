@@ -1,32 +1,24 @@
 import DS from 'ember-data';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
-import { Promise } from 'rsvp';
 
-const { attr, belongsTo } = DS;
+const { PromiseObject } = DS;
 
 export default DS.Model.extend({
-  title: attr('string'),
-  subtitle: attr('string'),
+  bookmark: DS.belongsTo('bookmark'),
 
-  // optional
-  coordinates: attr(),
+  address: DS.attr('string'),
+  coordinates: DS.attr(),
 
-  // this must be updated to include other bookmarkables
-  @computed('lot', 'zma')
-  recordType(...args) {
-    return Promise.all(args).then(([lot, zma]) => {
-      if (lot) {
-        return lot.get('constructor.modelName');
-      }
+  @computed('bookmark')
+  recordType(bookmark) {
+    return PromiseObject.create({
+      promise: bookmark.then((bmark) => {
+        if (bmark) {
+          return bmark.get('constructor.modelName');
+        }
 
-      if (zma) {
-        return zma.get('constructor.modelName');
-      }
-
-      return 'address';
+        return 'address';
+      }),
     });
   },
-
-  lot: belongsTo('lot'),
-  zma: belongsTo('zma'),
 });
