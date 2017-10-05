@@ -169,8 +169,15 @@
       for='transit-zones'}}
     {{layer-menu-item
       for='fresh'}}
-    {{layer-menu-item
-      for='sidewalkcafes'}}
+    {{#layer-menu-item for='sidewalkcafes' as |item|}}
+      {{#if item.layer.visible}}
+        <ul class="layer-key">
+          <li><span style="color:rgba(40, 173, 21, 1);">{{fa-icon "square"}}</span>All Cafes Permitted</li>
+          <li><span style="color:rgba(198, 33, 196, 1);">{{fa-icon "square"}}</span>Small Cafes Permitted</li>
+          <li><span style="color:rgba(33, 107, 198, 1);">{{fa-icon "square"}}</span>Unenclosed and Small Cafes Permitted</li>
+        </ul>
+      {{/if}}
+    {{/layer-menu-item}}
     {{layer-menu-item
       for='low-density-growth-mgmt-areas'}}
     {{layer-menu-item

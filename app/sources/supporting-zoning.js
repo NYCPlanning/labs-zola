@@ -28,7 +28,7 @@ export default {
     },
     {
       id: 'sidewalk-cafes',
-      sql: 'SELECT the_geom_webmercator FROM support_sidewalkcafes',
+      sql: 'SELECT the_geom_webmercator, cafetype FROM support_sidewalkcafes',
     },
     {
       id: 'low-density-growth-mgmt-areas',
