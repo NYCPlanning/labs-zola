@@ -1,4 +1,4 @@
-import { lineStyle, fillStyle } from '../helpers/polygon-layer-styles';
+import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
 
 const legendColor = 'purple';
 
