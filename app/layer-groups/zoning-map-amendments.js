@@ -1,7 +1,11 @@
+const legendColor = '#9FC73E';
+
 export default {
   id: 'zoning-map-amendments',
   title: 'Zoning Map Amendments',
   visible: false,
+  legendIcon: 'polygon',
+  legendColor,
   layers: [
     {
       layer: {
@@ -16,7 +20,7 @@ export default {
               [12, 3],
             ],
           },
-          'line-color': 'gray',
+          'line-color': legendColor,
           'line-dasharray': [1, 1],
           'line-opacity': 0.6,
         },
@@ -29,7 +33,7 @@ export default {
         source: 'zoning-map-amendments',
         'source-layer': 'zoning-map-amendments',
         paint: {
-          'fill-color': '#9FC73E',
+          'fill-color': legendColor,
           'fill-opacity': 0.6,
         },
       },
