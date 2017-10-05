@@ -3,6 +3,7 @@ const legendColor = '#B01F1F';
 export default {
   id: 'zoning-map-amendments-pending',
   title: 'Pending Zoning Map Amendments',
+  titleTooltip: 'Changes to zoning that have not yet been adopted',
   visible: false,
   legendIcon: 'polygon',
   legendColor,

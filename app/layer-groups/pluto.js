@@ -1,6 +1,7 @@
 export default {
   id: 'pluto',
   title: 'Tax Lots',
+  titleTooltip: 'A tax lot is a parcel of land identified with a unique borough, block and lot number for property tax purposes.',
   layers: [
     {
       layer: {
