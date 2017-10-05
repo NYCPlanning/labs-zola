@@ -104,10 +104,12 @@ export default Ember.Component.extend({
 
       if (result.type === 'lot') {
         const { boro, block, lot } = bblDemux(result.bbl);
+        this.set('searchTerms', result.bbl);
         this.transitionTo('lot', boro, block, lot);
       }
 
       if (result.type === 'zma') {
+        this.set('searchTerms', result.label);
         this.transitionTo('zma', result.ulurpno);
       }
 
@@ -117,6 +119,7 @@ export default Ember.Component.extend({
       }
 
       if (result.type === 'neighborhood') {
+        this.set('searchTerms', result.neighbourhood);
         const center = result.coordinates;
         mapInstance.flyTo({
           center,
