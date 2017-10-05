@@ -38,6 +38,7 @@ export default {
         },
       },
       highlightable: true,
+      clickable: true,
       tooltipTemplate: '{{{project_na}}} - Effective {{{effectiveformatted}}}',
     },
   ],

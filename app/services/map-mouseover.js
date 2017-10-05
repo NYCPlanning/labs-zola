@@ -10,6 +10,7 @@ export default Ember.Service.extend({
   currentEvent: null,
 
   tooltipTemplate: '',
+  highlightedLayer: null,
 
   @computed('currentEvent')
   mousePosition(event) {
@@ -84,13 +85,17 @@ export default Ember.Service.extend({
         this.set('highlightedLotFeatures', [thisFeature]);
         // move the layer
         const layerId = thisFeature.layer.id;
+        this.set('highlightedLayer', layerId);
+
         const beforeLayerId = map.getStyle().layers.reduce((acc, curr) => {
           if (curr.id === layerId) return 'hit';
           if (acc === 'hit') return curr;
           return acc;
         }).id;
 
-        map.moveLayer('highlighted-lot', beforeLayerId);
+        if (map.getLayer('highlighted-lot')) {
+          map.moveLayer('highlighted-lot', beforeLayerId);
+        }
       }
 
       this.set('tooltipTemplate', this.get('registeredLayers').getTooltipTemplate(thisFeature.layer.id));
