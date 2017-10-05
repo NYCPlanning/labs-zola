@@ -1,10 +1,11 @@
-import adminBoundaryStyles from '../helpers/admin-boundary-styles';
+import adminBoundaryStyles from '../utils/admin-boundary-styles';
 
 const { paint, layout } = adminBoundaryStyles;
 
 export default {
   id: 'boroughs',
   title: 'Boroughs',
+  legendIcon: 'admin-line',
   legendColor: '#F5B176',
   visible: false,
   layers: [
