@@ -5,6 +5,7 @@ const { paint, layout } = adminBoundaryStyles;
 export default {
   id: 'boroughs',
   title: 'Boroughs',
+  legendIcon: 'admin-line',
   legendColor: '#F5B176',
   visible: false,
   layers: [

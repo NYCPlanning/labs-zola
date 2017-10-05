@@ -8,7 +8,17 @@
     {{/if}}
     {{switch-toggle checked=visible}}
     {{title}}
-    {{#if visible}}{{#if legendColor}}<span class="layer-group-legend" style="border-color:{{legendColor}};"></span>{{/if}}{{/if}}
+    {{#if visible}}
+      {{#with legendIcon as |legendIcon|}}
+        {{#if (eq legendIcon 'admin-line')}}
+          <span class="layer-group-legend" style="border-color:{{legendColor}};"></span>
+        {{/if}}
+        {{#if (eq legendIcon 'polygon')}}
+          <span class="icon polygon legend-icon" style="opacity: 0.4; background-color:{{legendColor}};"></span>
+        {{/if}}
+      {{/with}}
+    {{/if}}
+
     {{#if titleTooltip}}{{info-tooltip tip=titleTooltip}}{{/if}}
   </div>
   {{yield (hash

@@ -5,6 +5,7 @@ const { paint, layout, labelLayout } = adminBoundaryStyles;
 export default {
   id: 'community-districts',
   title: 'Community Districts',
+  legendIcon: 'admin-line',
   legendColor: '#76F578',
   visible: false,
   layers: [
