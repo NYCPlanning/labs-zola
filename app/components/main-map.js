@@ -109,10 +109,6 @@ export default Ember.Component.extend({
         trackUserLocation: true,
       });
 
-      geoLocateControl.on('geolocate', () => {
-        this.sendAction('transitionTo', 'application');
-      });
-
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
       map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
       map.addControl(geoLocateControl, 'top-left');
