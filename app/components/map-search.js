@@ -95,6 +95,8 @@ export default Ember.Component.extend({
       const mainMap = this.get('mainMap');
       const mapInstance = mainMap.get('mapInstance');
 
+      this.$('.map-search-input').blur();
+
       this.setProperties({
         selected: 0,
         focused: false,
