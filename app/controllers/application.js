@@ -99,9 +99,7 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
 
 
       const layers = this.get('registeredLayers.clickableAndVisibleLayerIds');
-      console.log('clickablevisible', layers)
       const feature = map.queryRenderedFeatures(e.point, { layers })[0];
-      console.log(feature)
 
       const highlightedLayer = this.get('mapMouseover.highlightedLayer');
 
