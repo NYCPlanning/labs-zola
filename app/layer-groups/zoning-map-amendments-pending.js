@@ -1,7 +1,11 @@
+const legendColor = '#B01F1F';
+
 export default {
   id: 'zoning-map-amendments-pending',
   title: 'Pending Zoning Map Amendments',
   visible: false,
+  legendIcon: 'polygon',
+  legendColor,
   layers: [
     {
       layer: {
@@ -16,7 +20,7 @@ export default {
               [12, 3],
             ],
           },
-          'line-color': 'gray',
+          'line-color': legendColor,
           'line-dasharray': [1, 1],
           'line-opacity': 0.6,
         },
@@ -29,7 +33,7 @@ export default {
         source: 'supporting-zoning',
         'source-layer': 'zoning-map-amendments-pending',
         paint: {
-          'fill-color': '#B01F1F',
+          'fill-color': legendColor,
           'fill-opacity': 0.6,
         },
       },

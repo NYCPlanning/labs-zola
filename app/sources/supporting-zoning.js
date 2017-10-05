@@ -8,11 +8,11 @@ export default {
     },
     {
       id: 'special-purpose-subdistricts',
-      sql: 'SELECT the_geom_webmercator, spname FROM support_nysp_sd',
+      sql: 'SELECT the_geom_webmercator, spname, subdist FROM support_nysp_sd',
     },
     {
       id: 'mandatory-inclusionary-housing',
-      sql: 'SELECT the_geom_webmercator, projectnam FROM support_mih',
+      sql: 'SELECT the_geom_webmercator, projectnam, mih_option FROM support_mih',
     },
     {
       id: 'inclusionary-housing',
@@ -28,7 +28,7 @@ export default {
     },
     {
       id: 'sidewalk-cafes',
-      sql: 'SELECT the_geom_webmercator FROM support_sidewalkcafes',
+      sql: 'SELECT the_geom_webmercator, cafetype FROM support_sidewalkcafes',
     },
     {
       id: 'low-density-growth-mgmt-areas',

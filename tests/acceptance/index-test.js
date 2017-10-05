@@ -16,7 +16,7 @@ const resultAt = function(x) {
 
 moduleForAcceptance('Acceptance | index');
 
-test('map-search enter on first search result for lot', async function(assert) {
+test('map-search enter on first search result', async function(assert) {
   await visit('/');
   await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
   await waitUntil(() => find('.has-results'), { timeout });
@@ -24,7 +24,7 @@ test('map-search enter on first search result for lot', async function(assert) {
   // await keyEvent(SEARCH_INPUT_SELECTOR, 'keypress', 13);
 
   assert.equal(
-    (currentURL().indexOf(LOT_URL_ROOT) > -1),
+    (currentURL().indexOf('/') > -1),
     true,
   );
 });

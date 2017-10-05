@@ -3,6 +3,10 @@ import DS from 'ember-data';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import bbox from 'npm:@turf/bbox';
 
+import Bookmarkable from './bookmark';
+
+const { alias } = Ember.computed;
+
 // columns requested from server
 // update to add more
 const LotColumnsSQL = [
@@ -83,7 +87,7 @@ const landuseLookup = {
   11: 'Vacant Land',
 };
 
-export default DS.Model.extend({
+export default Bookmarkable.extend({
   geometry: DS.attr(),
   address: DS.attr('string'),
   bbl: DS.attr('number'),
@@ -94,6 +98,7 @@ export default DS.Model.extend({
     const borocd = this.get('cd');
     return borocd.substring(0, 1);
   }),
+  boro: alias('borocode'),
   borough: DS.attr('string'),
   boroname: Ember.computed('borough', function() {
     return boroughLookup[this.get('borough')];
