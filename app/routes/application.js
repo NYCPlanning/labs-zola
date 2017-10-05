@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import RSVP from 'rsvp';
 import sources from '../sources';
 import carto from '../utils/carto2';
 
@@ -23,7 +24,16 @@ export default Ember.Route.extend({
           }));
       });
 
-    return Promise.all(cartoSourcePromises);
+    return RSVP.hash({
+      cartoSources: Promise.all(cartoSourcePromises),
+      bookmarks: this.store.findAll('bookmark')
+        .then((bookmarks) => {
+          // invoke their bookmarks so they're
+          // ready for the whole application
+          bookmarks.invoke('get', 'bookmark');
+          return bookmarks;
+        }),
+    });
   },
 
   afterModel() {

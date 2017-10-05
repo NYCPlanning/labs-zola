@@ -1,9 +1,12 @@
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4">
   {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
 
+  {{bookmark-button 
+    bookmark=(await model.bookmark)
+    createBookmark=(action 'createBookmark')}}
+
   <label class="header-label clearfix">
-    <span class="float-right"> BBL {{model.bbl}} </span>
-    <strong> TAX LOT </strong>
+    TAX LOT <span class="medium-gray">|</span> BBL {{model.bbl}}
   </label>
   <h1 class="content-header">
     {{#if model.landmark}}<span class="landmark">{{model.landmark}}</span>{{/if}}
