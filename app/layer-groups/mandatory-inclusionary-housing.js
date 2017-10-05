@@ -1,19 +1,22 @@
+import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
+
+const legendColor = '#CC3D5D';
+
 export default {
   id: 'mandatory-inclusionary-housing',
   title: 'Mandatory Inclusionary Housing',
   visible: false,
+  legendIcon: 'polygon',
+  legendColor,
   layers: [
     {
-      layer: {
-        id: 'mih-line',
-        type: 'line',
-        source: 'supporting-zoning',
-        'source-layer': 'mandatory-inclusionary-housing',
-        paint: {
-          'line-width': 2,
-          'line-color': 'orange',
-        },
-      },
+      layer: lineStyle('mandatory-inclusionary-housing-line', 'supporting-zoning', 'mandatory-inclusionary-housing', legendColor),
+    },
+
+    {
+      layer: fillStyle('mandatory-inclusionary-housing-fill', 'supporting-zoning', 'mandatory-inclusionary-housing', legendColor),
+      highlightable: true,
+      tooltipTemplate: '{{projectnam}} - {{mih_option}}',
     },
   ],
 };

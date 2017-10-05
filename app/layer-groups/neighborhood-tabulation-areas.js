@@ -1,10 +1,11 @@
-import adminBoundaryStyles from '../helpers/admin-boundary-styles';
+import adminBoundaryStyles from '../utils/admin-boundary-styles';
 
 const { paint, layout, labelLayout } = adminBoundaryStyles;
 
 export default {
   id: 'neighborhood-tabulation-areas',
   title: 'Neighborhood Tabulation Areas',
+  legendIcon: 'admin-line',
   legendColor: '#F576CC',
   visible: false,
   layers: [
