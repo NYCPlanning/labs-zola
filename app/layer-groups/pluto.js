@@ -32,6 +32,7 @@ export default {
         },
       },
       highlightable: true,
+      clickable: true,
       tooltipTemplate: '{{address}}',
     },
     {

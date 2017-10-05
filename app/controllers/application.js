@@ -75,6 +75,8 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
   },
 
   mainMap: service(),
+  registeredLayers: service(),
+  mapMouseover: service(),
 
   @computed('queryParamsState')
   isDefault(state) {
@@ -94,23 +96,30 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
     routeToLot(e) {
       const map = e.target;
       // only query layers that are available in the map
-      const layers = ['pluto-fill', 'zma-fill', 'zmacert-fill', 'zd-fill'].filter(layer => map.getLayer(layer));
+
+
+      const layers = this.get('registeredLayers.clickableAndVisibleLayerIds');
       const feature = map.queryRenderedFeatures(e.point, { layers })[0];
-      const { bbl, ulurpno, zonedist } = feature.properties;
 
-      if (bbl) {
-        const { boro, block, lot } = bblDemux(bbl);
-        this.transitionToRoute('lot', boro, block, lot);
-      }
+      const highlightedLayer = this.get('mapMouseover.highlightedLayer');
 
-      if (ulurpno) {
-        this.transitionToRoute('zma', ulurpno);
-      }
+      if (highlightedLayer === feature.layer.id) {
+        const { bbl, ulurpno, zonedist } = feature.properties;
 
-      if (zonedist) {
-        const mainMap = this.get('mainMap');
-        mainMap.set('shouldFitBounds', false);
-        this.transitionToRoute('zoning-district', zonedist);
+        if (bbl) {
+          const { boro, block, lot } = bblDemux(bbl);
+          this.transitionToRoute('lot', boro, block, lot);
+        }
+
+        if (ulurpno) {
+          this.transitionToRoute('zma', ulurpno);
+        }
+
+        if (zonedist) {
+          const mainMap = this.get('mainMap');
+          mainMap.set('shouldFitBounds', false);
+          this.transitionToRoute('zoning-district', zonedist);
+        }
       }
     },
     setQueryParam(property, value) {
