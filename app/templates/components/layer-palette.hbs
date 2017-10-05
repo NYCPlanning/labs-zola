@@ -192,8 +192,14 @@
       for='scenic-landmarks'}}
     {{layer-menu-item
       for='historic-districts'}}
-    {{layer-menu-item
-      for='landmarks'}}
+    {{#layer-menu-item for='landmarks' as |item|}}
+    {{#if item.layer.visible}}
+      <ul class="layer-key">
+        <li><span style="color:rgba(147, 245, 201, 1);">{{fa-icon "square"}}</span>Individual Landmarks</li>
+        <li><span style="color:rgba(152, 152, 247, 1);">{{fa-icon "square"}}</span>Interior Landmarks</li>
+      </ul>
+    {{/if}}
+    {{/layer-menu-item}}
   {{/layer-palette-accordion}}
   {{#layer-palette-accordion
     closed=true

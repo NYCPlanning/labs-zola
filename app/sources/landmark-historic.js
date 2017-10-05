@@ -8,7 +8,7 @@ export default {
     },
     {
       id: 'landmarks',
-      sql: 'SELECT the_geom_webmercator, lm_name FROM landmarkpoints WHERE lm_type = \'Individual Landmark\' OR lm_type = \'Interior Landmark\'',
+      sql: 'SELECT the_geom_webmercator, lm_name, lm_type FROM landmarkpoints WHERE lm_type = \'Individual Landmark\' OR lm_type = \'Interior Landmark\'',
     },
     {
       id: 'scenic-landmarks',
