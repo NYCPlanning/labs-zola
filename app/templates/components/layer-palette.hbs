@@ -189,14 +189,13 @@
     closed=true
     title='Landmark & Historic'}}
     {{layer-menu-item
-      for='scenic-landmarks'}}
-    {{layer-menu-item
       for='historic-districts'}}
     {{#layer-menu-item for='landmarks' as |item|}}
     {{#if item.layer.visible}}
       <ul class="layer-key">
-        <li><span style="color:rgba(147, 245, 201, 1);">{{fa-icon "square"}}</span>Individual Landmarks</li>
-        <li><span style="color:rgba(152, 152, 247, 1);">{{fa-icon "square"}}</span>Interior Landmarks</li>
+        <li><span style="color:rgba(147, 245, 201, 1);">{{fa-icon "circle"}}</span>Individual Landmarks</li>
+        <li><span style="color:rgba(152, 152, 247, 1);">{{fa-icon "circle"}}</span>Interior Landmarks</li>
+        <li><span style="color:purple;">{{fa-icon "square"}}</span>Scenic Landmarks</li>
       </ul>
     {{/if}}
     {{/layer-menu-item}}

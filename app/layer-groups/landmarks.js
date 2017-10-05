@@ -1,3 +1,7 @@
+import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
+
+const legendColor = 'purple';
+
 export default {
   id: 'landmarks',
   title: 'Landmarks',
@@ -37,6 +41,14 @@ export default {
       },
       highlightable: true,
       tooltipTemplate: '{{{lm_name}}}',
+    },
+    {
+      layer: lineStyle('scenic-landmarks-line', 'landmark-historic', 'scenic-landmarks', legendColor),
+    },
+    {
+      layer: fillStyle('scenic-landmarks-fill', 'landmark-historic', 'scenic-landmarks', legendColor),
+      highlightable: true,
+      tooltipTemplate: '{{{scen_lm_na}}}',
     },
   ],
 };
