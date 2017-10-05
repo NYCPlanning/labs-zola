@@ -9,7 +9,7 @@ const { service } = Ember.inject;
 const DEBOUNCE_MS = 100;
 
 export default Ember.Component.extend({
-  classNames: ['search'],
+  classNames: ['search hide-for-print'],
   searchTerms: '',
   transitionTo: null,
   selected: 0,
@@ -104,10 +104,12 @@ export default Ember.Component.extend({
 
       if (result.type === 'lot') {
         const { boro, block, lot } = bblDemux(result.bbl);
+        this.set('searchTerms', result.bbl);
         this.transitionTo('lot', boro, block, lot);
       }
 
       if (result.type === 'zma') {
+        this.set('searchTerms', result.label);
         this.transitionTo('zma', result.ulurpno);
       }
 
@@ -117,6 +119,7 @@ export default Ember.Component.extend({
       }
 
       if (result.type === 'neighborhood') {
+        this.set('searchTerms', result.neighbourhood);
         const center = result.coordinates;
         mapInstance.flyTo({
           center,
@@ -127,6 +130,8 @@ export default Ember.Component.extend({
       if (result.type === 'address') {
         const center = result.coordinates;
         mainMap.set('currentAddress', center);
+
+        this.set('searchTerms', result.label);
         this.saveAddress({ address: result.label, coordinates: result.coordinates });
         this.transitionTo('index');
 
