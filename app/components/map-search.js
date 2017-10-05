@@ -110,6 +110,7 @@ export default Ember.Component.extend({
       }
 
       if (result.type === 'zoning-district') {
+        mainMap.set('shouldFitBounds', true);
         this.transitionTo('zoning-district', result.label);
       }
 

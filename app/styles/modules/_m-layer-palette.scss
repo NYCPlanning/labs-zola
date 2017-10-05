@@ -186,3 +186,15 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
   border-left-width: 0;
   opacity: 0.75;
 }
+
+.legend-icon {
+
+  &.polygon {
+    opacity: 0.6;
+    margin: 0 0.75em;
+
+    input:not(:checked):not(:indeterminate) ~ & {
+      display: none;
+    }
+  }
+}
