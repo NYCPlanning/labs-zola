@@ -42,12 +42,73 @@ h6,
 
 
 //
+// Buttons
+// --------------------------------------------------
+button {
+  cursor: pointer;
+
+  &.save-button {
+    float: right;
+    font-size: rem-calc(12);
+    padding: 0.25rem 0.5rem;
+    outline: 0;
+    position: relative;
+    transition: padding 0.5s;
+
+    &.saved {
+      padding-right: 2.5rem;
+    }
+
+    .state {
+      color: darken($success-color, 30%);
+      font-size: rem-calc(10);
+      line-height: rem-calc(12);
+      font-weight: $global-weight-bold;
+      position: absolute;
+      top: 50%;
+      left: 1.5rem;
+      margin-top: rem-calc(-6);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    &.saved .state {
+      opacity: 1;
+    }
+
+    .fa {
+      color: darken($medium-gray, 20%);
+      font-size: rem-calc(16);
+      vertical-align: middle;
+      transition: color 0.5s;
+
+      &:hover {
+        color: darken($medium-gray, 30%);
+      }
+    }
+
+    &.saved .fa {
+      color: $success-color;
+
+      // &:hover {
+      //   color: darken($success-color, 10%);
+      // }
+    }
+  }
+}
+
+
+//
 // Badges
 // --------------------------------------------------
 .badge {
   font-weight: $global-weight-normal;
   line-height: 1.5;
   vertical-align: middle;
+
+  &.sup {
+    position: relative;
+    transform: translate(0, -50%);
+  }
 }
 
 
@@ -70,6 +131,15 @@ h6,
   opacity: 0.25;
   margin-right: 0.25em;
   margin-left: 0.25em;
+}
+
+.link {
+  cursor: pointer;
+  color: $anchor-color;
+
+  &:hover {
+    color:$anchor-color-hover;
+  }
 }
 
 .light-gray { color: $light-gray; }

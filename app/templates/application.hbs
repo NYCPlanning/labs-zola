@@ -1,12 +1,12 @@
-{{site-header resetAll=(action 'resetAll')}}
-{{log model}}
+{{site-header count=model.bookmarks.length resetAll=(action 'resetAll')}}
+
 <div class="site-main grid-x">
   <div class="navigation-area cell large-auto">
-    {{map-search transitionTo=(action 'transitionTo')}}
+    {{map-search transitionTo=(action 'transitionTo') saveAddress=(action 'saveAddress')}}
 
     <div class="map-grid">
       {{main-map
-        cartoSources=model
+        cartoSources=model.cartoSources
         routeToLot=(action 'routeToLot')
         transitionTo=(action 'transitionTo')
         qps=qps

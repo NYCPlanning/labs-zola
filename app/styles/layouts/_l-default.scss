@@ -145,3 +145,11 @@ html, body {
 .mapboxgl-user-location-dot {
   box-sizing: initial;
 }
+
+.no-bookmarks {
+  @include breakpoint(large) {
+    color: $dark-gray;
+    height: 100%;
+    display: flex;
+  }
+}
