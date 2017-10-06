@@ -34,6 +34,19 @@ $logo-height-medium: rem-calc(36);
     }
   }
 
+  .site-subtitle {
+    font-size: 0.5em;
+    font-weight: $global-weight-normal;
+    color: $dark-gray;
+    @include breakpoint(large) {
+      font-size: 0.7em;
+      letter-spacing: -0.02em;
+    }
+  }
+  a:hover .site-subtitle {
+    color: $anchor-color;
+  }
+
   .menu {
     a {
       color: $dark-gray;
