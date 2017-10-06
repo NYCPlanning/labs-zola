@@ -196,44 +196,25 @@
     {{/if}}
     {{/layer-menu-item}}
   {{/layer-palette-accordion}}
-  {{#layer-palette-accordion
-    closed=true
-    title='Transportation'
-  }}
-    {{layer-menu-item
-      for='subway'}}
-  {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
     closed=true
     title='Administrative Boundaries'}}
-    {{layer-menu-item
-      for='boroughs'}}
-    {{layer-menu-item
-      for='community-districts'}}
-    {{layer-menu-item
-      for='nyccouncildistricts'}}
-    {{layer-menu-item
-      for='nysenatedistricts'}}
-    {{layer-menu-item
-      for='assemblydistricts'}}
-    {{layer-menu-item
-      for='neighborhood-tabulation-areas'}}
+    {{layer-menu-item for='boroughs'}}
+    {{layer-menu-item for='community-districts'}}
+    {{layer-menu-item for='nyccouncildistricts'}}
+    {{layer-menu-item for='nysenatedistricts'}}
+    {{layer-menu-item for='assemblydistricts'}}
+    {{layer-menu-item for='neighborhood-tabulation-areas'}}
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
     closed=true
     title='Basemaps'}}
-    {{layer-menu-item
-      for='aerials-16'}}
-  {{/layer-palette-accordion}}
-  {{#layer-palette-accordion
-    closed=true
-    title='Buildings'}}
-    {{layer-menu-item
-      for='building-footprints'}}
-    {{layer-menu-item
-      for='threed-buildings'}}
+    {{layer-menu-item for='subway'}}
+    {{layer-menu-item for='building-footprints'}}
+    {{layer-menu-item for='threed-buildings'}}
+    {{layer-menu-item for='aerials-16'}}
   {{/layer-palette-accordion}}
 
   <a {{action resetQueryParams}} class="button gray small reset-map-button" disabled={{isDefault}}>
