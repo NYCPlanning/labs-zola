@@ -2,7 +2,7 @@ import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('route:special-purpose-district', 'Unit | Route | special purpose district', {
   // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
+  needs: ['service:mainMap']
 });
 
 test('it exists', function(assert) {
