@@ -199,7 +199,7 @@ $abbr-underline: 1px dotted $black;
 // 5. Typography Helpers
 // ---------------------
 
-$lead-font-size: $global-font-size * 1.5;
+$lead-font-size: rem-calc(20);
 $lead-lineheight: 1.4;
 $subheader-lineheight: 1.4;
 $subheader-color: inherit;
