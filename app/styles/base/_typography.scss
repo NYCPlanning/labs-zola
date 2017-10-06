@@ -121,10 +121,18 @@ button {
 .no-margin {
   margin: 0 !important;
 }
+.small-margin-bottom {
+  margin-bottom: rem-calc(5);
+}
 
 .text-small {
   font-size: rem-calc(13);
   line-height: 1.7;
+}
+
+.text-tiny {
+  font-size: rem-calc(10);
+  line-height: 1.5;
 }
 
 .pipe {
