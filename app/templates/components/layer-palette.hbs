@@ -157,18 +157,12 @@
     closed=true
     title='Supporting Zoning Layers'
     as |item|}}
-    {{layer-menu-item
-      for='special-purpose-districts'}}
-    {{layer-menu-item
-      for='special-purpose-subdistricts'}}
-    {{layer-menu-item
-      for='mandatory-inclusionary-housing'}}
-    {{layer-menu-item
-      for='inclusionary-housing'}}
-    {{layer-menu-item
-      for='transit-zones'}}
-    {{layer-menu-item
-      for='fresh'}}
+    {{layer-menu-item for='special-purpose-districts'}}
+    {{layer-menu-item for='special-purpose-subdistricts'}}
+    {{layer-menu-item for='mandatory-inclusionary-housing'}}
+    {{layer-menu-item for='inclusionary-housing'}}
+    {{layer-menu-item for='transit-zones'}}
+    {{layer-menu-item for='fresh'}}
     {{#layer-menu-item for='sidewalkcafes' as |item|}}
       {{#if item.layer.visible}}
         <ul class="layer-key">
@@ -178,14 +172,10 @@
         </ul>
       {{/if}}
     {{/layer-menu-item}}
-    {{layer-menu-item
-      for='low-density-growth-mgmt-areas'}}
-    {{layer-menu-item
-      for='coastal-zone-boundary'}}
-    {{layer-menu-item
-      for='waterfront-access-plan'}}
-    {{layer-menu-item
-      for='historic-districts'}}
+    {{layer-menu-item for='low-density-growth-mgmt-areas'}}
+    {{layer-menu-item for='coastal-zone-boundary'}}
+    {{layer-menu-item for='waterfront-access-plan'}}
+    {{layer-menu-item for='historic-districts'}}
     {{#layer-menu-item for='landmarks' as |item|}}
     {{#if item.layer.visible}}
       <ul class="layer-key">
@@ -196,44 +186,25 @@
     {{/if}}
     {{/layer-menu-item}}
   {{/layer-palette-accordion}}
-  {{#layer-palette-accordion
-    closed=true
-    title='Transportation'
-  }}
-    {{layer-menu-item
-      for='subway'}}
-  {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
     closed=true
     title='Administrative Boundaries'}}
-    {{layer-menu-item
-      for='boroughs'}}
-    {{layer-menu-item
-      for='community-districts'}}
-    {{layer-menu-item
-      for='nyccouncildistricts'}}
-    {{layer-menu-item
-      for='nysenatedistricts'}}
-    {{layer-menu-item
-      for='assemblydistricts'}}
-    {{layer-menu-item
-      for='neighborhood-tabulation-areas'}}
+    {{layer-menu-item for='boroughs'}}
+    {{layer-menu-item for='community-districts'}}
+    {{layer-menu-item for='nyccouncildistricts'}}
+    {{layer-menu-item for='nysenatedistricts'}}
+    {{layer-menu-item for='assemblydistricts'}}
+    {{layer-menu-item for='neighborhood-tabulation-areas'}}
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
     closed=true
     title='Basemaps'}}
-    {{layer-menu-item
-      for='aerials-16'}}
-  {{/layer-palette-accordion}}
-  {{#layer-palette-accordion
-    closed=true
-    title='Buildings'}}
-    {{layer-menu-item
-      for='building-footprints'}}
-    {{layer-menu-item
-      for='threed-buildings'}}
+    {{layer-menu-item for='subway'}}
+    {{layer-menu-item for='building-footprints'}}
+    {{layer-menu-item for='threed-buildings'}}
+    {{layer-menu-item for='aerials-16'}}
   {{/layer-palette-accordion}}
 
   <a {{action resetQueryParams}} class="button gray small reset-map-button" disabled={{isDefault}}>
