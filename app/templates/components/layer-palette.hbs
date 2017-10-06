@@ -157,18 +157,12 @@
     closed=true
     title='Supporting Zoning Layers'
     as |item|}}
-    {{layer-menu-item
-      for='special-purpose-districts'}}
-    {{layer-menu-item
-      for='special-purpose-subdistricts'}}
-    {{layer-menu-item
-      for='mandatory-inclusionary-housing'}}
-    {{layer-menu-item
-      for='inclusionary-housing'}}
-    {{layer-menu-item
-      for='transit-zones'}}
-    {{layer-menu-item
-      for='fresh'}}
+    {{layer-menu-item for='special-purpose-districts'}}
+    {{layer-menu-item for='special-purpose-subdistricts'}}
+    {{layer-menu-item for='mandatory-inclusionary-housing'}}
+    {{layer-menu-item for='inclusionary-housing'}}
+    {{layer-menu-item for='transit-zones'}}
+    {{layer-menu-item for='fresh'}}
     {{#layer-menu-item for='sidewalkcafes' as |item|}}
       {{#if item.layer.visible}}
         <ul class="layer-key">
@@ -178,14 +172,10 @@
         </ul>
       {{/if}}
     {{/layer-menu-item}}
-    {{layer-menu-item
-      for='low-density-growth-mgmt-areas'}}
-    {{layer-menu-item
-      for='coastal-zone-boundary'}}
-    {{layer-menu-item
-      for='waterfront-access-plan'}}
-    {{layer-menu-item
-      for='historic-districts'}}
+    {{layer-menu-item for='low-density-growth-mgmt-areas'}}
+    {{layer-menu-item for='coastal-zone-boundary'}}
+    {{layer-menu-item for='waterfront-access-plan'}}
+    {{layer-menu-item for='historic-districts'}}
     {{#layer-menu-item for='landmarks' as |item|}}
     {{#if item.layer.visible}}
       <ul class="layer-key">
