@@ -142,6 +142,11 @@ export default Ember.Component.extend({
           });
         }
       }
+
+      if (result.type === 'special-purpose-district') {
+        this.set('searchTerms', result.sdname);
+        this.transitionTo('special-purpose-district', result.cartodb_id);
+      }
     },
     handleFocusIn() {
       this.set('focused', true);
