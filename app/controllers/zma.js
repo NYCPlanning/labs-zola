@@ -1,13 +1,5 @@
 import Ember from 'ember';
+import Bookmarkable from '../mixins/bookmarkable';
 
-export default Ember.Controller.extend({
-  actions: {
-    createBookmark() {
-      const zma = this.get('model');
-      this.store.createRecord(
-        'bookmark',
-        { bookmark: zma },
-      ).save();
-    },
-  },
+export default Ember.Controller.extend(Bookmarkable, {
 });

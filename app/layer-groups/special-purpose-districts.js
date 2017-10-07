@@ -17,6 +17,7 @@ export default {
     {
       layer: fillStyle('zoning-sp-fill', 'supporting-zoning', 'special-purpose-districts', legendColor),
       highlightable: true,
+      clickable: true,
       tooltipTemplate: '{{sdname}}',
     },
   ],
