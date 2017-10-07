@@ -119,6 +119,24 @@ export default Ember.Component.extend({
 
       // get rid of default building layer
       map.removeLayer('building');
+
+      map.addSource('ee', {
+        type: 'image',
+        url: 'img/ht.png',
+        coordinates: [
+          [-74.0030685, 40.7335205],
+          [-74.0030515, 40.7335205],
+          [-74.0030515, 40.7335085],
+          [-74.0030685, 40.7335085],
+        ],
+      });
+
+      map.addLayer({
+        id: 'ee',
+        source: 'ee',
+        type: 'raster',
+        minzoom: 17,
+      });
     },
 
     handleMouseover(e) {
