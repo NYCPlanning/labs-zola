@@ -49,6 +49,20 @@
             </li>
           {{/each}}
         </ul>
+      {{else if (eq key 'special-purpose-subdistrict')}}
+        <h3>Special Purpose Subdistricts</h3>
+        <ul class="no-bullet">
+          {{#each values as |spd|}}
+            <li class="spd-bookmark">
+              {{#link-to 'special-purpose-subdistricts' spd.bookmark.id}}
+                <span class="icon polygon"></span>
+                {{spd.bookmark.spname}}
+                <span class="dark-gray">{{spd.bookmark.splbl}}</span>
+              {{/link-to}}
+              <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' spd}}>&times;</button>
+            </li>
+          {{/each}}
+        </ul>
       {{else}}
         <h3>Map Pins</h3>
         <ul class="no-bullet">
