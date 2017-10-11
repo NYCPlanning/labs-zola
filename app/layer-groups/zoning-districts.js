@@ -63,6 +63,7 @@ export default {
             stops: [
               [12, 0],
               [13, 0.2],
+              [16, 0.5],
             ],
           },
           'line-width': {
@@ -82,20 +83,19 @@ export default {
         type: 'symbol',
         'source-layer': 'zoning-districts',
         paint: {
-          'text-color': '#626262',
+          'text-color': {
+            stops: [
+              [15, '#626262'],
+              [16, '#444'],
+            ],
+          },
           'text-halo-color': '#FFFFFF',
           'text-halo-width': 2,
           'text-halo-blur': 2,
           'text-opacity': {
             stops: [
-              [
-                12,
-                0,
-              ],
-              [
-                13,
-                1,
-              ],
+              [12, 0],
+              [13, 1],
             ],
           },
         },
