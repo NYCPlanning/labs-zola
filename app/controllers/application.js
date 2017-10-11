@@ -102,30 +102,32 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
 
       const highlightedLayer = this.get('mapMouseover.highlightedLayer');
 
-      if (highlightedLayer === feature.layer.id) {
-        const { bbl, ulurpno, zonedist, sdlbl, splbl, cartodb_id } = feature.properties;
+      if (feature) {
+        if (highlightedLayer === feature.layer.id) {
+          const { bbl, ulurpno, zonedist, sdlbl, splbl, cartodb_id } = feature.properties;
 
-        if (bbl) {
-          const { boro, block, lot } = bblDemux(bbl);
-          this.transitionToRoute('lot', boro, block, lot);
-        }
+          if (bbl) {
+            const { boro, block, lot } = bblDemux(bbl);
+            this.transitionToRoute('lot', boro, block, lot);
+          }
 
-        if (ulurpno) {
-          this.transitionToRoute('zma', ulurpno);
-        }
+          if (ulurpno) {
+            this.transitionToRoute('zma', ulurpno);
+          }
 
-        if (zonedist) {
-          const mainMap = this.get('mainMap');
-          mainMap.set('shouldFitBounds', false);
-          this.transitionToRoute('zoning-district', zonedist);
-        }
+          if (zonedist) {
+            const mainMap = this.get('mainMap');
+            mainMap.set('shouldFitBounds', false);
+            this.transitionToRoute('zoning-district', zonedist);
+          }
 
-        if (sdlbl) {
-          this.transitionToRoute('special-purpose-district', cartodb_id);
-        }
+          if (sdlbl) {
+            this.transitionToRoute('special-purpose-district', cartodb_id);
+          }
 
-        if (splbl) {
-          this.transitionToRoute('special-purpose-subdistricts', cartodb_id);
+          if (splbl) {
+            this.transitionToRoute('special-purpose-subdistricts', cartodb_id);
+          }
         }
       }
     },
