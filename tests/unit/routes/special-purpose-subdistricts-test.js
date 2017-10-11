@@ -1,8 +1,8 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:bookmarks', 'Unit | Route | bookmarks', {
+moduleFor('route:special-purpose-subdistricts', 'Unit | Route | special purpose subdistricts', {
   // Specify the other units that are required for this test.
-  needs: ['service:mainMap'],
+  needs: ['service:mainMap']
 });
 
 test('it exists', function(assert) {

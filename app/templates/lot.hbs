@@ -44,7 +44,7 @@
   {{#if model.lotdepth}}<div class="data-grid"><label class="data-label">Lot Depth</label><span class="datum">{{if model.lotdepth (concat model.lotdepth ' ft') ''}}</span></div>{{/if}}
   {{#if model.yearbuilt}}<div class="data-grid"><label class="data-label">Year Built</label><span class="datum">{{model.yearbuilt}}</span></div>{{/if}}
   {{#if model.yearalter1}}<div class="data-grid"><label class="data-label">Year{{if model.yearalter2 's'}} Altered</label><span class="datum">{{model.yearalter1}}{{if model.yearalter2 (concat ', ' model.yearalter2) ''}}</span></div>{{/if}}
-  {{#if model.bldgclass}}<div class="data-grid"><label class="data-label">Building Class</label><span class="datum">{{model.bldgclass}}</span></div>{{/if}}
+  {{#if model.bldgclassname}}<div class="data-grid"><label class="data-label">Building Class</label><span class="datum">{{model.bldgclassname}}{{#if model.bldgclass}}&nbsp;<span class="dark-gray">({{model.bldgclass}})</span>{{/if}}</span></div>{{/if}}
   {{#if model.numbldgs}}<div class="data-grid"><label class="data-label">Number of Buildings</label><span class="datum">{{model.numbldgs}}</span></div>{{/if}}
   {{#if model.numfloors}}<div class="data-grid"><label class="data-label">Number of Floors</label><span class="datum">{{model.numfloors}}</span></div>{{/if}}
   {{#if model.bldgarea}}<div class="data-grid"><label class="data-label">Gross Floor Area</label><span class="datum">{{if model.bldgarea (concat (numeral-format model.bldgarea '0,0') ' sq ft') ''}}</span></div>{{/if}}
