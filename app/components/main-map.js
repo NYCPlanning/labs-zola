@@ -1,6 +1,10 @@
 import Ember from 'ember';
 import mapboxgl from 'mapbox-gl';
+import MapboxDraw from 'mapbox-gl-draw';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import area from 'npm:@turf/area';
+import lineDistance from 'npm:@turf/line-distance';
+
 import sources from '../sources';
 
 import layerGroups from '../layer-groups';
@@ -13,6 +17,31 @@ const selectedLineLayer = selectedLayers.line;
 
 const { alias } = Ember.computed;
 const { service } = Ember.inject;
+
+// Custom Control
+const MeasurementText = function() { };
+
+MeasurementText.prototype.onAdd = function(map) {
+  this._map = map;
+  this._container = document.createElement('div');
+  // this._container.className = 'mapboxgl-ctrl mapboxgl-ctrl-group';
+  this._container.id = 'measurement-text';
+  return this._container;
+};
+
+MeasurementText.prototype.onRemove = function () {
+  this._container.parentNode.removeChild(this._container);
+  this._map = undefined;
+};
+
+const draw = new MapboxDraw({
+  displayControlsDefault: false,
+  controls: {
+    polygon: true,
+    trash: true,
+    line_string: true,
+  },
+});
 
 export default Ember.Component.extend({
   mainMap: service(),
@@ -31,6 +60,8 @@ export default Ember.Component.extend({
 
   loading: true,
   sourcesLoaded: true,
+  currentMeasurement: null,
+  measurementUnit: '',
   cartoSources: [],
 
   @computed('mainMap.selected')
@@ -111,6 +142,8 @@ export default Ember.Component.extend({
 
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
       map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
+      map.addControl(draw, 'top-left');
+      map.addControl(new MeasurementText, 'top-left');
       map.addControl(geoLocateControl, 'top-left');
 
       // get rid of default building layer
@@ -149,6 +182,28 @@ export default Ember.Component.extend({
     handleZoomend(event) {
       const mainMap = this.get('mainMap');
       mainMap.set('currentZoom', event.target.getZoom());
+    },
+
+    handleMeasurement(e) {
+      let current = draw.getAll();
+      const { features } = current;
+      const conversion = 0.3048;
+
+      if (e.type === 'draw.delete') {
+        this.set('currentMeasurement', null);
+        draw.deleteAll();
+      } else {
+        if (features.length > 1) {
+          draw.delete(features[0].id);
+          current = draw.getAll();
+        }
+
+        const areaCalculation = area(current) / conversion;
+        const distanceCalculation = (lineDistance(current) * 1000) / conversion;
+        const measurement = areaCalculation || distanceCalculation;
+        this.set('currentMeasurement', measurement);
+        this.set('measurementUnit', areaCalculation ? 'sq ft' : 'ft');
+      }
     },
 
     mapLoading(data) {

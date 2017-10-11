@@ -10,6 +10,7 @@ export default Ember.Service.extend({
   // currently selected lot, usually a Lot model
   selected: null,
   currentZoom: null,
+  currentMeasurement: null,
 
   @computed('selected')
   bounds(selected) {

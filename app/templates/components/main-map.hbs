@@ -105,10 +105,26 @@
     {{map.call 'fitBounds' mainMap.bounds isSelectedBoundsOptions}}
   {{/if}}
 
+  {{#if currentMeasurement}}
+    {{#ember-wormhole to="measurement-text"}}
+      <div class="mapboxgl-ctrl mapboxgl-ctrl-group">
+        <div class="mapboxgl-ctrl-icon">
+          <span>Measurement:</span>
+          <div>
+            {{numeral-format currentMeasurement '0,0'}} {{measurementUnit}}
+          </div>
+        </div>
+      </div>
+    {{/ember-wormhole}}
+  {{/if}}
+
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
   {{map.on 'zoomend' (action 'handleZoomend')}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
+  {{map.on 'draw.create' (action 'handleMeasurement')}}
+  {{map.on 'draw.update' (action 'handleMeasurement')}}
+  {{map.on 'draw.delete' (action 'handleMeasurement')}}
 
 {{/mapbox-gl}}
