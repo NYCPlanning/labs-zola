@@ -103,7 +103,7 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
       const highlightedLayer = this.get('mapMouseover.highlightedLayer');
 
       if (highlightedLayer === feature.layer.id) {
-        const { bbl, ulurpno, zonedist, sdlbl, cartodb_id } = feature.properties;
+        const { bbl, ulurpno, zonedist, sdlbl, splbl, cartodb_id } = feature.properties;
 
         if (bbl) {
           const { boro, block, lot } = bblDemux(bbl);
@@ -122,6 +122,10 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
 
         if (sdlbl) {
           this.transitionToRoute('special-purpose-district', cartodb_id);
+        }
+
+        if (splbl) {
+          this.transitionToRoute('special-purpose-subdistricts', cartodb_id);
         }
       }
     },
