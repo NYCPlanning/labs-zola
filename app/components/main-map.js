@@ -143,7 +143,7 @@ export default Ember.Component.extend({
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
       map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
       map.addControl(draw, 'top-left');
-      map.addControl(new MeasurementText, 'top-left');
+      map.addControl(new MeasurementText(), 'top-left');
       map.addControl(geoLocateControl, 'top-left');
 
       // get rid of default building layer
