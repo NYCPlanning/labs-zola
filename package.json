@@ -67,6 +67,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "foundation-sites": "^6.4.3",
+    "liquid-fire": "^0.28.0",
     "loader.js": "^4.2.3",
     "mapbox-gl": "^0.40.1"
   },
