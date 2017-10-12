@@ -6,6 +6,41 @@
   {{#layer-palette-accordion
     closed=false
     title='Zoning and Land Use'}}
+    {{#layer-menu-item for='pluto' as |item|}}
+      {{#if (lt mainMap.currentZoom item.layer.minzoom)}}
+        {{info-tooltip iconName='warning' tip='Zoom in more to see'}}
+      {{/if}}
+      {{#if item.layer.visible}}
+        <div class="checkbox-wrapper"
+          onclick={{queue
+          (action 'toggleFill')
+          (action item.updatePaintFor
+            'pluto-fill'
+            (if plutoFill (hash fill-opacity=0.7) (hash fill-opacity=0))
+          )}}>
+          {{input type='checkbox'
+            checked=plutoFill}}
+          Show Land Use Colors
+        </div>
+        {{#if plutoFill}}
+          <ul class="layer-key">
+            <li><span style="color:#FEFFA8;">{{fa-icon "square"}}</span>One &amp; Two Family Buildings</li>
+            <li><span style="color:#FCB842;">{{fa-icon "square"}}</span>Multi-Family Walk-Up Buildings</li>
+            <li><span style="color:#B16E00;">{{fa-icon "square"}}</span>Multi-Family Elevator Buildings</li>
+            <li><span style="color:#ff8341;">{{fa-icon "square"}}</span>Mixed Residential &amp; Commercial Buildings</li>
+            <li><span style="color:#fc2929;">{{fa-icon "square"}}</span>Commercial &amp; Office Buildings</li>
+            <li><span style="color:#E362FB;">{{fa-icon "square"}}</span>Industrial &amp; Manufacturing</li>
+            <li><span style="color:#E0BEEB;">{{fa-icon "square"}}</span>Transportation &amp; Utility</li>
+            <li><span style="color:#44A3D5;">{{fa-icon "square"}}</span>Public Facilities &amp; Institutions</li>
+            <li><span style="color:#78D271;">{{fa-icon "square"}}</span>Open Space &amp; Outdoor Recreation</li>
+            <li><span style="color:#BAB8B6;">{{fa-icon "square"}}</span>Parking Facilities</li>
+            <li><span style="color:#555555;">{{fa-icon "square"}}</span>Vacant Land</li>
+            <li><span style="color:#222222;">{{fa-icon "square"}}</span>Other</li>
+          </ul>
+        {{/if}}
+      {{/if}}
+    {{/layer-menu-item}}
+
     {{#layer-menu-item
       for='zoning-districts' as |item|}}
       {{#if item.layer.visible}}
@@ -63,41 +98,6 @@
               <li><label>{{multiSelect.checkbox value='BP' checked=qps.BP}}Battery Park City <span style="background-color:#666666;" class="icon polygon legend-icon"></span></label></li>
             </ul>
         {{/layer-multi-select-control}}
-      {{/if}}
-    {{/layer-menu-item}}
-
-    {{#layer-menu-item for='pluto' as |item|}}
-      {{#if (lt mainMap.currentZoom item.layer.minzoom)}}
-        {{info-tooltip iconName='warning' tip='Zoom in more to see'}}
-      {{/if}}
-      {{#if item.layer.visible}}
-        <div class="checkbox-wrapper"
-          onclick={{queue
-          (action 'toggleFill')
-          (action item.updatePaintFor
-            'pluto-fill'
-            (if plutoFill (hash fill-opacity=0.7) (hash fill-opacity=0))
-          )}}>
-          {{input type='checkbox'
-            checked=plutoFill}}
-          Show Land Use Colors
-        </div>
-        {{#if plutoFill}}
-          <ul class="layer-key">
-            <li><span style="color:#FEFFA8;">{{fa-icon "square"}}</span>One &amp; Two Family Buildings</li>
-            <li><span style="color:#FCB842;">{{fa-icon "square"}}</span>Multi-Family Walk-Up Buildings</li>
-            <li><span style="color:#B16E00;">{{fa-icon "square"}}</span>Multi-Family Elevator Buildings</li>
-            <li><span style="color:#ff8341;">{{fa-icon "square"}}</span>Mixed Residential &amp; Commercial Buildings</li>
-            <li><span style="color:#fc2929;">{{fa-icon "square"}}</span>Commercial &amp; Office Buildings</li>
-            <li><span style="color:#E362FB;">{{fa-icon "square"}}</span>Industrial &amp; Manufacturing</li>
-            <li><span style="color:#E0BEEB;">{{fa-icon "square"}}</span>Transportation &amp; Utility</li>
-            <li><span style="color:#44A3D5;">{{fa-icon "square"}}</span>Public Facilities &amp; Institutions</li>
-            <li><span style="color:#78D271;">{{fa-icon "square"}}</span>Open Space &amp; Outdoor Recreation</li>
-            <li><span style="color:#BAB8B6;">{{fa-icon "square"}}</span>Parking Facilities</li>
-            <li><span style="color:#555555;">{{fa-icon "square"}}</span>Vacant Land</li>
-            <li><span style="color:#222222;">{{fa-icon "square"}}</span>Other</li>
-          </ul>
-        {{/if}}
       {{/if}}
     {{/layer-menu-item}}
 
