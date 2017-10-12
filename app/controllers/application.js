@@ -95,13 +95,15 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
     },
     routeToLot(e) {
       const map = e.target;
-      // only query layers that are available in the map
+      const mainMap = this.get('mainMap');
 
+      if (mainMap.get('isDrawing')) return;
+
+      // only query layers that are available in the map
       const layers = this.get('registeredLayers.clickableAndVisibleLayerIds');
       const feature = map.queryRenderedFeatures(e.point, { layers })[0];
 
       const highlightedLayer = this.get('mapMouseover.highlightedLayer');
-
       if (feature) {
         if (highlightedLayer === feature.layer.id) {
           const { bbl, ulurpno, zonedist, sdlbl, splbl, cartodb_id } = feature.properties;
@@ -116,7 +118,6 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
           }
 
           if (zonedist) {
-            const mainMap = this.get('mainMap');
             mainMap.set('shouldFitBounds', false);
             this.transitionToRoute('zoning-district', zonedist);
           }

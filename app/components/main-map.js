@@ -62,6 +62,7 @@ export default Ember.Component.extend({
   sourcesLoaded: true,
   currentMeasurement: null,
   measurementUnit: '',
+
   cartoSources: [],
 
   @computed('mainMap.selected')
@@ -143,7 +144,7 @@ export default Ember.Component.extend({
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
       map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
       map.addControl(draw, 'top-left');
-      map.addControl(new MeasurementText(), 'top-left');
+      map.addControl(new MeasurementText, 'top-left');
       map.addControl(geoLocateControl, 'top-left');
 
       // get rid of default building layer
@@ -203,6 +204,16 @@ export default Ember.Component.extend({
         const measurement = areaCalculation || distanceCalculation;
         this.set('currentMeasurement', measurement);
         this.set('measurementUnit', areaCalculation ? 'sq ft' : 'ft');
+      }
+    },
+
+    handleMeasurementModeChange(e) {
+      const mainMap = this.get('mainMap');
+
+      if (e.mode === 'simple_select') {
+        mainMap.set('isDrawing', false);
+      } else {
+        mainMap.set('isDrawing', true);
       }
     },
 

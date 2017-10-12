@@ -126,5 +126,6 @@
   {{map.on 'draw.create' (action 'handleMeasurement')}}
   {{map.on 'draw.update' (action 'handleMeasurement')}}
   {{map.on 'draw.delete' (action 'handleMeasurement')}}
+  {{map.on 'draw.modechange' (action 'handleMeasurementModeChange')}}
 
 {{/mapbox-gl}}

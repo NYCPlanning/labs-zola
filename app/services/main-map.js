@@ -11,6 +11,7 @@ export default Ember.Service.extend({
   selected: null,
   currentZoom: null,
   currentMeasurement: null,
+  isDrawing: false,
 
   @computed('selected')
   bounds(selected) {
