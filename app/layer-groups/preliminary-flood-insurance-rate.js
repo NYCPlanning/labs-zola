@@ -1,7 +1,7 @@
 export default {
   id: 'preliminary-flood-insurance-rate',
   title: 'Preliminary Flood Insurance Rate Maps 2015',
-  visible: true,
+  visible: false,
   layers: [
     {
       layer: {
