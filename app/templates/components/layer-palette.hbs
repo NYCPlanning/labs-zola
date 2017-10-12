@@ -162,13 +162,21 @@
     {{layer-menu-item for='mandatory-inclusionary-housing'}}
     {{layer-menu-item for='inclusionary-housing'}}
     {{layer-menu-item for='transit-zones'}}
-    {{layer-menu-item for='fresh'}}
+    {{#layer-menu-item for='fresh' as |item|}}
+      {{#if item.layer.visible}}
+      <ul class="layer-key">
+        <li><span style="color:#0B9390;opacity:0.4;">{{fa-icon "square"}}</span>Zoning incentives</li>
+        <li><span style="color:#30BF4E;opacity:0.4;">{{fa-icon "square"}}</span>Zoning and discretionary tax incentives</li>
+        <li><span style="color:#8FE339;opacity:0.4;">{{fa-icon "square"}}</span>Discretionary tax incentives</li>
+      </ul>
+      {{/if}}
+    {{/layer-menu-item}}
     {{#layer-menu-item for='sidewalkcafes' as |item|}}
       {{#if item.layer.visible}}
         <ul class="layer-key">
-          <li><span style="color:#28AD15;">{{fa-icon "square"}}</span>All Cafes Permitted</li>
-          <li><span style="color:#CC3DCA;">{{fa-icon "square"}}</span>Small Cafes Permitted</li>
-          <li><span style="color:#216BC6;">{{fa-icon "square"}}</span>Unenclosed and Small Cafes Permitted</li>
+          <li><span style="color:#28AD15;">{{fa-icon "minus"}}</span>All Cafes Permitted</li>
+          <li><span style="color:#CC3DCA;">{{fa-icon "minus"}}</span>Small Cafes Permitted</li>
+          <li><span style="color:#216BC6;">{{fa-icon "minus"}}</span>Unenclosed and Small Cafes Permitted</li>
         </ul>
       {{/if}}
     {{/layer-menu-item}}
