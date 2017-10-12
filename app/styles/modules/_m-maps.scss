@@ -77,3 +77,15 @@
     line-height: $global-lineheight;
   }
 }
+
+// Drawing
+#measurement-text {
+  position: absolute;
+  top: 140px;
+  left: 35px;
+
+  .mapboxgl-ctrl-icon {
+    line-height: 1.3;
+    padding: rem-calc(8) rem-calc(10);
+  }
+}
