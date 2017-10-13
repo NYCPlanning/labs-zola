@@ -30,6 +30,7 @@ export default Ember.Component.extend({
   mapConfig: Object.keys(layerGroups).map(key => layerGroups[key]),
 
   loading: true,
+  findMeDismissed: false,
   sourcesLoaded: true,
   cartoSources: [],
 
@@ -83,6 +84,19 @@ export default Ember.Component.extend({
   selectedLineLayer,
 
   actions: {
+    locateMe() {
+      const geolocateButton = document.querySelectorAll('.mapboxgl-ctrl-geolocate')[0];
+
+      if (geolocateButton) {
+        geolocateButton.click();
+        this.set('findMeDismissed', true);
+      }
+    },
+
+    dismissFindMe() {
+      this.set('findMeDismissed', true);
+    },
+
     handleMapLoad(map) {
       window.map = map;
       const mainMap = this.get('mainMap');

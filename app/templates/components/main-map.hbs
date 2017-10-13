@@ -113,4 +113,9 @@
 
 {{/mapbox-gl}}
 
-{{#unless find-me-is-dismissed}}<div class="find-me"><button {{action 'locate-me'}} class="button hide-for-medium hide-for-print no-margin">Locate&nbsp;Me</button><button {{action 'dismiss-find-me'}} class="button hide-for-medium hide-for-print no-margin">&times;</button></div>{{/unless}}
+{{#unless findMeDismissed}}
+  <div class="find-me">
+    <button {{action 'locateMe'}} class="button hide-for-medium hide-for-print no-margin">Locate&nbsp;Me</button>
+    <button {{action 'dismissFindMe'}} class="button hide-for-medium hide-for-print no-margin">&times;</button>
+  </div>
+{{/unless}}
