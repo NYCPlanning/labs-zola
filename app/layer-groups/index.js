@@ -5,6 +5,7 @@ import buildingFootprints from './building-footprints';
 import commercialOverlays from './commercial-overlays';
 import communityDistricts from './communitydistricts';
 import coastalZoneBoundary from './coastal-zone-boundary';
+import effectiveFloodInsuranceRate2007 from './effective-flood-insurance-rate-2007';
 import fresh from './fresh';
 import historicDistricts from './historic-districts';
 import inclusionaryHousing from './inclusionary-housing';
@@ -17,6 +18,7 @@ import nyccouncildistricts from './nyccouncildistricts';
 import sidewalkcafes from './sidewalkcafes';
 import specialPurposeDistricts from './special-purpose-districts';
 import pluto from './pluto';
+import preliminaryFloodInsuranceRate from './preliminary-flood-insurance-rate';
 import specialPurposeSubdistricts from './special-purpose-subdistricts';
 import subway from './subway';
 import threedBuildings from './threed-buildings';
@@ -34,6 +36,7 @@ export default {
   commercialOverlays,
   communityDistricts,
   coastalZoneBoundary,
+  effectiveFloodInsuranceRate2007,
   fresh,
   historicDistricts,
   inclusionaryHousing,
@@ -46,6 +49,7 @@ export default {
   sidewalkcafes,
   specialPurposeDistricts,
   pluto,
+  preliminaryFloodInsuranceRate,
   specialPurposeSubdistricts,
   subway,
   threedBuildings,

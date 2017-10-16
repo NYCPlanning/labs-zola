@@ -185,13 +185,31 @@
     {{layer-menu-item for='waterfront-access-plan'}}
     {{layer-menu-item for='historic-districts'}}
     {{#layer-menu-item for='landmarks' as |item|}}
-    {{#if item.layer.visible}}
-      <ul class="layer-key">
-        <li><span style="color:rgba(147, 245, 201, 1);">{{fa-icon "circle"}}</span>Individual Landmarks</li>
-        <li><span style="color:rgba(152, 152, 247, 1);">{{fa-icon "circle"}}</span>Interior Landmarks</li>
-        <li><span style="color:purple;">{{fa-icon "square"}}</span>Scenic Landmarks</li>
-      </ul>
-    {{/if}}
+      {{#if item.layer.visible}}
+        <ul class="layer-key">
+          <li><span style="color:rgba(147, 245, 201, 1);">{{fa-icon "circle"}}</span>Individual Landmarks</li>
+          <li><span style="color:rgba(152, 152, 247, 1);">{{fa-icon "circle"}}</span>Interior Landmarks</li>
+          <li><span style="color:purple;">{{fa-icon "square"}}</span>Scenic Landmarks</li>
+        </ul>
+      {{/if}}
+    {{/layer-menu-item}}
+    {{#layer-menu-item for='effective-flood-insurance-rate-2007' as |item|}}
+      {{#if item.layer.visible}}
+        <ul class="layer-key">
+          <li><span style="color:#0084a8;">{{fa-icon "circle"}}</span>V Zone</li>
+          <li><span style="color:#00a9e6;">{{fa-icon "circle"}}</span>A Zone</li>
+          <li><span style="color:#00ffc5;">{{fa-icon "circle"}}</span>Shaded X Zone</li>
+        </ul>
+      {{/if}}
+    {{/layer-menu-item}}
+    {{#layer-menu-item for='preliminary-flood-insurance-rate' as |item|}}
+      {{#if item.layer.visible}}
+        <ul class="layer-key">
+          <li><span style="color:#0084a8;">{{fa-icon "circle"}}</span>V Zone</li>
+          <li><span style="color:#00a9e6;">{{fa-icon "circle"}}</span>A Zone</li>
+          <li><span style="color:#00ffc5;">{{fa-icon "circle"}}</span>Shaded X Zone</li>
+        </ul>
+      {{/if}}
     {{/layer-menu-item}}
   {{/layer-palette-accordion}}
 
