@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: 'sup',
+  tagName: 'span',
   iconName: 'info-circle',
   tip: '',
 });

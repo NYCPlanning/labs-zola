@@ -2,10 +2,16 @@
 // Default Layout
 // --------------------------------------------------
 
-html, body {
-  @include breakpoint(large) {
-    max-height: 100vh;
-    overflow: hidden;
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  html, & {
+    @include breakpoint(large) {
+      max-height: 100vh;
+      overflow: hidden;
+    }
   }
 }
 

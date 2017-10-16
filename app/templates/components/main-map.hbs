@@ -48,6 +48,10 @@
 
   {{map.layer-group for='sidewalkcafes' visible=qps.sidewalkcafes}}
 
+  {{map.layer-group for='effective-flood-insurance-rate-2007' visible=qps.effective-flood-insurance-rate-2007}}
+
+  {{map.layer-group for='preliminary-flood-insurance-rate' visible=qps.preliminary-flood-insurance-rate}}
+
   {{map.layer-group for='fresh' visible=qps.fresh}}
 
   {{map.layer-group for='transit-zones' visible=qps.transit-zones}}
@@ -105,11 +109,28 @@
     {{map.call 'fitBounds' mainMap.bounds isSelectedBoundsOptions}}
   {{/if}}
 
+  {{#if currentMeasurement}}
+    {{#ember-wormhole to="measurement-text"}}
+      <div class="mapboxgl-ctrl mapboxgl-ctrl-group">
+        <div class="mapboxgl-ctrl-icon">
+          <strong>Measurement:</strong>
+          <div>
+            {{numeral-format currentMeasurement '0,0'}} {{measurementUnit}}
+          </div>
+        </div>
+      </div>
+    {{/ember-wormhole}}
+  {{/if}}
+
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
   {{map.on 'zoomend' (action 'handleZoomend')}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
+  {{map.on 'draw.create' (action 'handleMeasurement')}}
+  {{map.on 'draw.update' (action 'handleMeasurement')}}
+  {{map.on 'draw.delete' (action 'handleMeasurement')}}
+  {{map.on 'draw.modechange' (action 'handleMeasurementModeChange')}}
 
 {{/mapbox-gl}}
 

@@ -1,13 +1,30 @@
 {{#if layer}}
   <div class="layer-menu-item" {{action 'toggleVisibility'}}>
-    {{#if warning}}
-      <span class="layer-warning">
-        {{fa-icon 'exclamation-triangle'}}
-        <span class="layer-warning--text">Some&nbsp;information may not visible at this zoom&nbsp;level.</span>
+
+    {{#if (or warning titleTooltip)}}
+      <span class="layer-tooltips-container">
+        {{#if warning}}
+          {{info-tooltip
+            iconName='warning'
+            tip='Some information may not visible at this zoom level.'
+            classNames='layer-warning'
+            tooltipClass='tooltip--layer-warning'
+          }}
+        {{/if}}
+        {{#if titleTooltip}}
+          {{info-tooltip
+            tip=titleTooltip
+            classNames='layer-info'
+            tooltipClass='tooltip--layer-info'
+          }}
+        {{/if}}
       </span>
     {{/if}}
+
     {{switch-toggle checked=visible}}
-    {{title}} {{#if titleTooltip}}{{info-tooltip tip=titleTooltip}}{{/if}}
+
+    {{title}}
+
     {{#if visible}}
       {{#with legendIcon as |legendIcon|}}
         {{#if (eq legendIcon 'admin-line')}}
