@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import trackPage from '../mixins/track-page';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 const { service } = Ember.inject;
@@ -25,4 +24,4 @@ export default Ember.Route.extend({
       map.fitBounds(this.get('bounds'));
     },
   },
-}, trackPage);
+});

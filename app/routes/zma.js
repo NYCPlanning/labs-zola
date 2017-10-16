@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import trackPage from '../mixins/track-page';
 
 const { service } = Ember.inject;
 
@@ -19,4 +18,4 @@ export default Ember.Route.extend({
       this.set('mainMap.shouldFitBounds', true);
     },
   },
-}, trackPage);
+});

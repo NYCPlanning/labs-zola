@@ -5,16 +5,17 @@ const { get,
 
 export default Ember.Mixin.create({
   metrics: Ember.inject.service(),
-  actions: {
-    didTransition(...args) {
-      this._super(...args);
-      this._trackPage();
-    },
+
+  didTransition(...args) {
+    this._super(...args);
+    this._trackPage();
   },
+
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
+      console.log('tracking page...');
       const page = this.get('url');
-      const title = this.getWithDefault('routeName', 'unknown');
+      const title = this.getWithDefault('currentRouteName', 'unknown');
       get(this, 'metrics').trackPage({ page, title });
     });
   },

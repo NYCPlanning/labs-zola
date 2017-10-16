@@ -14,6 +14,7 @@ export default Ember.Component.extend({
   transitionTo: null,
   selected: 0,
   mainMap: service(),
+  metrics: service(),
   focused: false,
 
   @computed('searchTerms')

@@ -1,6 +1,4 @@
 import Ember from 'ember';
-import trackPage from '../mixins/track-page';
-
 const { service } = Ember.inject;
 
 export default Ember.Route.extend({
@@ -15,4 +13,4 @@ export default Ember.Route.extend({
         });
     },
   },
-}, trackPage);
+});
