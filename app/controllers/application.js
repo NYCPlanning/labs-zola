@@ -90,8 +90,18 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
       this.transitionToRoute(...args);
     },
     saveAddress(address) {
+      const bookmarks = this.store.peekAll('bookmark');
+
+      const isUnique =
+        bookmarks.every(
+          bookmark => bookmark.get('address') !== address.address,
+        );
+
       set(address, 'type', 'address');
-      this.store.createRecord('bookmark', address).save();
+
+      if (isUnique) {
+        this.store.createRecord('bookmark', address).save();
+      }
     },
     routeToLot(e) {
       const map = e.target;
