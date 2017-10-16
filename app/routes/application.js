@@ -8,6 +8,12 @@ const { service } = Ember.inject;
 export default Ember.Route.extend({
   mainMap: service(),
 
+  beforeModel() {
+    if (!window.location.hash) {
+      this.transitionTo('about');
+    }
+  },
+
   model() {
     const cartoSourcePromises = Object.keys(sources)
       .filter(key => sources[key].type === 'cartovector')
