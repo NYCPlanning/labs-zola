@@ -8,8 +8,9 @@ const { service } = Ember.inject;
 export default Ember.Route.extend({
   mainMap: service(),
 
-  beforeModel() {
-    if (!window.location.hash) {
+  beforeModel(transition) {
+    console.log(transition);
+    if (transition.intent.url === '/') {
       this.transitionTo('about');
     }
   },
