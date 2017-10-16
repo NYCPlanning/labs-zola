@@ -1,0 +1,32 @@
+// --------------------------------------------------
+// Module: Tooltips
+// --------------------------------------------------
+
+.layer-tooltips-container {
+  float: right;
+  margin: rem-calc(-6) rem-calc(-6) 0 rem-calc(6);
+  position: relative;
+
+  .ember-tooltip-or-popover-target {
+    padding: rem-calc(6);
+    float: left;
+  }
+}
+
+.layer-warning .fa {
+  color: darken($dcp-yellow,25%);
+}
+
+.layer-info .fa {
+  color: $a11y-orange;
+}
+
+.ember-tooltip {
+  text-shadow: none;
+
+  &.tooltip--layer-warning {
+  }
+
+  &.tooltip--layer-info {
+  }
+}

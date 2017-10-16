@@ -5,7 +5,8 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 import layerGroups from '../layer-groups';
 
-const { merge } = Ember;
+const { service } = Ember.inject;
+const { merge, set } = Ember;
 
 const queryParams = Object.keys(layerGroups)
   .reduce(
@@ -73,6 +74,10 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
     this.set('qps', proxy);
   },
 
+  mainMap: service(),
+  registeredLayers: service(),
+  mapMouseover: service(),
+
   @computed('queryParamsState')
   isDefault(state) {
     const values = Object.values(state);
@@ -84,24 +89,57 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
     transitionTo(...args) {
       this.transitionToRoute(...args);
     },
+    saveAddress(address) {
+      const bookmarks = this.store.peekAll('bookmark');
+
+      const isUnique =
+        bookmarks.every(
+          bookmark => bookmark.get('address') !== address.address,
+        );
+
+      set(address, 'type', 'address');
+
+      if (isUnique) {
+        this.store.createRecord('bookmark', address).save();
+      }
+    },
     routeToLot(e) {
       const map = e.target;
+      const mainMap = this.get('mainMap');
+
+      if (mainMap.get('isDrawing')) return;
+
       // only query layers that are available in the map
-      const layers = ['pluto-fill', 'zma-fill', 'zd-fill'].filter(layer => map.getLayer(layer));
+      const layers = this.get('registeredLayers.clickableAndVisibleLayerIds');
       const feature = map.queryRenderedFeatures(e.point, { layers })[0];
-      const { bbl, ulurpno, zonedist } = feature.properties;
 
-      if (bbl) {
-        const { boro, block, lot } = bblDemux(bbl);
-        this.transitionToRoute('lot', boro, block, lot);
-      }
+      const highlightedLayer = this.get('mapMouseover.highlightedLayer');
+      if (feature) {
+        if (highlightedLayer === feature.layer.id) {
+          const { bbl, ulurpno, zonedist, sdlbl, splbl, cartodb_id } = feature.properties;
 
-      if (ulurpno) {
-        this.transitionToRoute('zma', ulurpno);
-      }
+          if (bbl) {
+            const { boro, block, lot } = bblDemux(bbl);
+            this.transitionToRoute('lot', boro, block, lot);
+          }
 
-      if (zonedist) {
-        this.transitionToRoute('zoning-district', zonedist);
+          if (ulurpno) {
+            this.transitionToRoute('zma', ulurpno);
+          }
+
+          if (zonedist) {
+            mainMap.set('shouldFitBounds', false);
+            this.transitionToRoute('zoning-district', zonedist);
+          }
+
+          if (sdlbl) {
+            this.transitionToRoute('special-purpose-district', cartodb_id);
+          }
+
+          if (splbl) {
+            this.transitionToRoute('special-purpose-subdistricts', cartodb_id);
+          }
+        }
       }
     },
     setQueryParam(property, value) {

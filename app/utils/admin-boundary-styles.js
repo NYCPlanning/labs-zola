@@ -1,12 +1,12 @@
 const adminBoundaryStyles = {
   paint: {
     lines: {
-      'line-color': '#717171',
-      'line-opacity': 0.7,
+      'line-color': '#444',
+      'line-opacity': 0.3,
       'line-width': {
         stops: [
-          [9, 1],
-          [14, 4],
+          [11, 1],
+          [16, 3],
         ],
       },
     },

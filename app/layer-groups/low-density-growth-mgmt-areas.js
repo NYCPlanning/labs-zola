@@ -1,21 +1,22 @@
+import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
+
+const legendColor = '#9D47B2';
+
 export default {
   id: 'low-density-growth-mgmt-areas',
   title: 'Low Density Growth Management Areas',
+  titleTooltip: 'These districts aim to match future development to the capacity of supporting services and infrastructure in parts of the city experiencing rapid growth.',
   visible: false,
-  type: 'carto',
-  sql: ['SELECT the_geom_webmercator FROM support_ldgma'],
+  legendIcon: 'polygon',
+  legendColor,
   layers: [
     {
-      layer: {
-        id: 'ldgma-line',
-        type: 'line',
-        source: 'layer-group-id',
-        'source-layer': 'layer0',
-        paint: {
-          'line-width': 2,
-          'line-color': 'orange',
-        },
-      },
+      layer: lineStyle('low-density-growth-mgmt-areas-line', 'supporting-zoning', 'low-density-growth-mgmt-areas', legendColor),
+    },
+    {
+      layer: fillStyle('low-density-growth-mgmt-areas-fill', 'supporting-zoning', 'low-density-growth-mgmt-areas', legendColor),
+      highlightable: true,
+      tooltipTemplate: 'Low Density Growth Management Area',
     },
   ],
 };

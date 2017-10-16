@@ -10,6 +10,7 @@ export default Ember.Service.extend({
   currentEvent: null,
 
   tooltipTemplate: '',
+  highlightedLayer: null,
 
   @computed('currentEvent')
   mousePosition(event) {
@@ -73,15 +74,29 @@ export default Ember.Service.extend({
     const layers = this.get('registeredLayers.highlightableAndVisibleLayerIds');
     const features = map.queryRenderedFeatures(e.point, { layers });
 
-
     if (features.length > 0) {
       map.getCanvas().style.cursor = 'pointer';
 
 
       const thisFeature = features[0];
-      const prevFeature = this.get('highlightedLotFeatures')[0];
-      if (!prevFeature || thisFeature.id !== prevFeature.id) this.set('highlightedLotFeatures', [thisFeature]);
 
+      const prevFeature = this.get('highlightedLotFeatures')[0];
+      if (!prevFeature || thisFeature.id !== prevFeature.id) {
+        this.set('highlightedLotFeatures', [thisFeature]);
+        // move the layer
+        const layerId = thisFeature.layer.id;
+        this.set('highlightedLayer', layerId);
+
+        const beforeLayerId = map.getStyle().layers.reduce((acc, curr) => {
+          if (curr.id === layerId) return 'hit';
+          if (acc === 'hit') return curr;
+          return acc;
+        }).id;
+
+        if (map.getLayer('highlighted-lot')) {
+          map.moveLayer('highlighted-lot', beforeLayerId);
+        }
+      }
 
       this.set('tooltipTemplate', this.get('registeredLayers').getTooltipTemplate(thisFeature.layer.id));
     } else {

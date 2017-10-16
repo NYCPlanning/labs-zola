@@ -1,19 +1,38 @@
-import adminBoundaryStyles from '../helpers/admin-boundary-styles';
+import adminBoundaryStyles from '../utils/admin-boundary-styles';
 
 const { paint, layout, labelLayout } = adminBoundaryStyles;
 
 export default {
   id: 'nyccouncildistricts',
   title: 'NYC Council Districts',
+  legendIcon: 'admin-line',
+  legendColor: '#76CAF5',
   visible: false,
-  type: 'carto',
-  sql: ['SELECT the_geom_webmercator, coundist FROM support_admin_nyccouncildistricts'],
   layers: [
+    {
+      layer: {
+        id: 'nyccouncildistricts-line-glow',
+        type: 'line',
+        source: 'admin-boundaries',
+        'source-layer': 'nyc-council-districts',
+        paint: {
+          'line-color': '#76CAF5',
+          'line-opacity': 1,
+          'line-width': {
+            stops: [
+              [11, 3],
+              [16, 6],
+            ],
+          },
+        },
+      },
+    },
     {
       layer: {
         id: 'nyccouncildistricts-line',
         type: 'line',
-        'source-layer': 'layer0',
+        source: 'admin-boundaries',
+        'source-layer': 'nyc-council-districts',
         paint: paint.lines,
         layout: layout.lines,
       },
@@ -22,7 +41,8 @@ export default {
       layer: {
         id: 'nyccouncildistricts-label',
         type: 'symbol',
-        'source-layer': 'layer0',
+        source: 'admin-boundaries',
+        'source-layer': 'nyc-council-districts',
         paint: paint.labels,
         layout: labelLayout('coundist'),
       },

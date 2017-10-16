@@ -1,9 +1,7 @@
 export default {
   id: 'pluto',
-  title: 'PLUTO (Tax Lots)',
-  sql: ['SELECT the_geom_webmercator, bbl, landuse, address FROM support_mappluto'],
-  minzoom: 12,
-  type: 'carto',
+  title: 'Tax Lots',
+  titleTooltip: 'A tax lot is a parcel of land identified with a unique borough, block and lot number for property tax purposes.',
   layers: [
     {
       layer: {
@@ -11,7 +9,7 @@ export default {
         type: 'fill',
         source: 'pluto',
         minzoom: 15,
-        'source-layer': 'layer0',
+        'source-layer': 'pluto',
         paint: {
           'fill-outline-color': '#cdcdcd',
           'fill-color': {
@@ -35,6 +33,7 @@ export default {
         },
       },
       highlightable: true,
+      clickable: true,
       tooltipTemplate: '{{address}}',
     },
     {
@@ -43,7 +42,7 @@ export default {
         type: 'line',
         source: 'pluto',
         minzoom: 15,
-        'source-layer': 'layer0',
+        'source-layer': 'pluto',
         paint: {
           'line-width': 0.5,
           'line-color': 'rgba(130, 130, 130, 1)',

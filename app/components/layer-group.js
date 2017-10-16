@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
-import { task } from 'ember-concurrency';
 import { ParentMixin, ChildMixin } from 'ember-composability-tools';
-import carto from '../utils/carto';
+import carto from '../utils/carto2';
 import layerGroups from '../layer-groups';
+import sources from '../sources';
 
 const { copy, merge, set } = Ember;
 
@@ -21,16 +21,9 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
       this.set('config', layerGroups[layerID.camelize()]);
     }
 
-    const config = this.get('config');
-    const { sql } = config;
-
     if (this.get('childComponents.length') > 1) {
       warn('Only one layer-control per layer is supported.');
     }
-
-    this.setProperties({
-      sql,
-    });
   },
 
   registeredLayers: service(),
@@ -92,70 +85,64 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
 
   layers: alias('config.layers'),
 
-  @computed('sql')
-  configWithTemplate(sql) {
-    if (sql) {
-      return this.get('templateTask').perform(sql);
-    }
-
-    return null;
-  },
-
-  templateTask: task(function* (sql) {
-    const { minzoom = 0 } = this.get('config');
-    return yield carto.getVectorTileTemplate(sql)
-      .then(
-        template => ({
-          type: 'vector',
-          tiles: [template],
-          minzoom,
-        }),
-      )
-      .then(
-        (optionsObject) => {
-          this.set('config.options', optionsObject);
-          return optionsObject;
-        },
-      );
-  }).restartable(),
-
   @computed('config', 'isCarto', 'sql')
   sourceOptions(config, isCarto) {
     if (isCarto) return this.get('configWithTemplate.value');
+
+    if (config.type === 'raster') {
+      return {
+        type: 'raster',
+        tiles: config.tiles,
+        tileSize: config.tileSize,
+      };
+    }
+
     return config;
   },
 
-  buildRangeSQL(column = '', range = [0, 1] || ['a', 'b']) {
-    let sql = this.get('config.sql');
+  buildRangeSQL(sql, column = '', range = [0, 1] || ['a', 'b']) {
+    let newSql = sql;
     let cleanRange = range;
 
     if (typeof range[0] === 'string') {
       cleanRange = cleanRange.map(step => `'${step}'`);
     }
 
-    sql += ` WHERE ${column} > ${cleanRange[0]} AND ${column} < ${cleanRange[1]}`;
+    newSql += ` WHERE ${column} > ${cleanRange[0]} AND ${column} < ${cleanRange[1]}`;
 
-    return sql;
+    return newSql;
   },
 
-  buildMultiSelectSQL(column = '', values = [0, 1] || ['a', 'b']) {
-    let sql = this.get('config.sql')[0];
-
+  buildMultiSelectSQL(sql, column = '', values = [0, 1] || ['a', 'b']) {
+    let newSql = sql;
     const valuesCleaned = values.map(value => `'${value}'`).join(',');
     if (!Ember.isEmpty(values)) {
-      sql += ` WHERE ${column} IN (${valuesCleaned})`;
+      newSql += ` WHERE ${column} IN (${valuesCleaned})`;
     }
-
-    return sql;
+    return newSql;
   },
 
   actions: {
     toggleVisibility() {
       this.toggleProperty('visible');
     },
-    updateSql(method, column, value) {
-      const sql = this[method](column, value);
-      this.set('sql', [sql]);
+    updateSql(method, sourceId, column, value) {
+      const source = sources[sourceId.camelize()];
+      const sourceLayer = source['source-layers'][0];
+      const sql = this[method](sourceLayer.sql, column, value);
+
+      // get a new template and update the source tiles
+      carto.getVectorTileTemplate([{
+        id: sourceLayer.id,
+        sql,
+      }])
+        .then((template) => {
+          // replace this source's tiles
+          const map = this.get('mainMap.mapInstance');
+          const newStyle = map.getStyle();
+          newStyle.sources[sourceId].tiles = [template];
+          map.setStyle(newStyle);
+        });
     },
     updatePaintFor(layerId, newPaintStyle) {
       const layers = this.get('config.layers');

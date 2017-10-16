@@ -1,30 +1,40 @@
-import adminBoundaryStyles from '../helpers/admin-boundary-styles';
+import adminBoundaryStyles from '../utils/admin-boundary-styles';
 
-const { paint, layout, labelLayout } = adminBoundaryStyles;
+const { paint, layout } = adminBoundaryStyles;
 
 export default {
   id: 'boroughs',
   title: 'Boroughs',
+  legendIcon: 'admin-line',
+  legendColor: '#F5B176',
   visible: false,
-  type: 'carto', // raster, vector, geojson, or carto
-  sql: ['SELECT the_geom_webmercator, boroname FROM support_admin_boroboundaries'],
   layers: [
     {
       layer: {
-        id: 'boroughs-line',
+        id: 'boroughs-line-glow',
         type: 'line',
-        'source-layer': 'layer0',
-        paint: paint.lines,
-        layout: layout.lines,
+        source: 'admin-boundaries',
+        'source-layer': 'boroughs',
+        paint: {
+          'line-color': '#F5B176',
+          'line-opacity': 0.2,
+          'line-width': {
+            stops: [
+              [11, 3],
+              [16, 6],
+            ],
+          },
+        },
       },
     },
     {
       layer: {
-        id: 'boroughs-label',
-        type: 'symbol',
-        'source-layer': 'layer0',
-        paint: paint.labels,
-        layout: labelLayout('boroname'),
+        id: 'boroughs-line',
+        type: 'line',
+        source: 'admin-boundaries',
+        'source-layer': 'boroughs',
+        paint: paint.lines,
+        layout: layout.lines,
       },
     },
   ],

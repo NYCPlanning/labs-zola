@@ -1,16 +1,15 @@
 export default {
   id: 'zoning-districts',
   title: 'Zoning Districts',
-  sql: ['SELECT * FROM (SELECT *, LEFT(zonedist, 2) as primaryzone FROM support_zoning_zd) a'],
   visible: true,
-  type: 'carto',
+  titleTooltip: 'A zoning district is a residential, commercial or manufac­turing area of the city within which zoning regulations govern land use and building bulk.',
   layers: [
     {
       layer: {
         id: 'zd-fill',
         type: 'fill',
         source: 'zoning-districts',
-        'source-layer': 'layer0',
+        'source-layer': 'zoning-districts',
         paint: {
           'fill-color': {
             property: 'primaryzone',
@@ -50,19 +49,21 @@ export default {
         },
       },
       highlightable: true,
-      tooltipTemplate: '{{zonedist}}',
+      clickable: true,
+      tooltipTemplate: 'Zoning District {{zonedist}}',
     },
     {
       layer: {
         id: 'zd-lines',
         type: 'line',
         source: 'zoning-districts',
-        'source-layer': 'layer0',
+        'source-layer': 'zoning-districts',
         paint: {
           'line-opacity': {
             stops: [
               [12, 0],
               [13, 0.2],
+              [16, 0.5],
             ],
           },
           'line-width': {
@@ -80,22 +81,21 @@ export default {
         id: 'zd_labels',
         source: 'zoning-districts',
         type: 'symbol',
-        'source-layer': 'layer0',
+        'source-layer': 'zoning-districts',
         paint: {
-          'text-color': '#626262',
+          'text-color': {
+            stops: [
+              [15, '#626262'],
+              [16, '#444'],
+            ],
+          },
           'text-halo-color': '#FFFFFF',
           'text-halo-width': 2,
           'text-halo-blur': 2,
           'text-opacity': {
             stops: [
-              [
-                12,
-                0,
-              ],
-              [
-                13,
-                1,
-              ],
+              [12, 0],
+              [13, 1],
             ],
           },
         },
@@ -116,8 +116,6 @@ export default {
           },
         },
       },
-      before: 'waterway-label',
     },
   ],
-  filters: [],
 };

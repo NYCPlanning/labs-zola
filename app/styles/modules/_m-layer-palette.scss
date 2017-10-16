@@ -81,6 +81,15 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
 
 }
 
+.checkbox-wrapper {
+  padding: $layer-palette-padding/2 $layer-palette-padding;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $layer-palette-hover-color;
+  }
+}
+
 .layer-menu-item--group-checkboxes {
 
   > li {
@@ -122,34 +131,8 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
 
 }
 
-.layer-warning {
-  float: right;
-  margin: 0 0 0 $layer-palette-padding;
-  position: relative;
-
-  .fa {
-    color: $dcp-yellow;
-  }
-
-  .layer-warning--text {
-    display: none;
-  }
-
-  &:hover .layer-warning--text {
-    display: block;
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    right: 50%;
-    background-color: $white;
-    padding: $layer-palette-padding;
-    border: 1px solid $dcp-yellow;
-    font-size: $small-font-size;
-  }
-}
-
 .layer-key {
-  padding: $layer-palette-padding;
+  padding: 0 $layer-palette-padding $layer-palette-padding;
   font-size: rem-calc(10);
   line-height: 1.2;
 
@@ -171,4 +154,30 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
 .flex-reverse {
   display: flex;
   flex-direction: column-reverse;
+}
+
+.layer-group-legend {
+  display: inline-block;
+  width: 1rem;
+  height: rem-calc(6);
+  vertical-align: middle;
+  position: relative;
+  top: -0.1em;
+  background-color: #444;
+  border: rem-calc(2) solid #fff;
+  border-right-width: 0;
+  border-left-width: 0;
+  opacity: 0.75;
+}
+
+.legend-icon {
+
+  &.polygon {
+    opacity: 0.6;
+    margin: 0 0.75em;
+
+    input:not(:checked):not(:indeterminate) ~ & {
+      display: none;
+    }
+  }
 }

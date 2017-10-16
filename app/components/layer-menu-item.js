@@ -21,6 +21,16 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     return title;
   },
 
+  @computed('layer.config.legendIcon')
+  legendIcon(legendIcon) {
+    return legendIcon;
+  },
+
+  @computed('layer.config.legendColor')
+  legendColor(legendColor) {
+    return legendColor;
+  },
+
   @computed('layer.config.titleTooltip')
   titleTooltip(titleTooltip) {
     return titleTooltip;

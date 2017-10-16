@@ -1,0 +1,20 @@
+<div class="content-area cell large-5 large-cell-block-y xxlarge-4">
+  {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
+
+  {{bookmark-button
+    bookmark=(await model.bookmark)
+    createBookmark=(action 'createBookmark')}}
+
+  <label class="header-label clearfix">
+    Special Purpose District <span class="medium-gray">|</span> {{model.sdlbl}}
+  </label>
+
+  <h1 class="content-header">
+    <span class="spd-header">{{model.sdname}}</span>
+  </h1>
+
+  <p>Since 1969, the City Planning Commission has designated special zoning districts in response to areas of the City with unique characteristics. Each special district stipulates zoning requirements and incentives tailored to specific conditions that may not lend themselves to generalized zoning and standard development.</p>
+  <p><a href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-citywide.page" target="_blank">Learn More</a></p>
+</div>
+
+{{outlet}}

@@ -23,6 +23,7 @@
 
   input {
     margin: 0;
+    padding-right: 2rem;
   }
 
   .close-button {
@@ -56,6 +57,8 @@
     width: 22rem;
     box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
     padding: 0 rem-calc(6) rem-calc(6);
+    max-height: calc(100vh - 9.375rem);
+    overflow: auto;
   }
 
   &.focused {
@@ -96,22 +99,6 @@
 
   .subdued {
     color: $dark-gray;
-  }
-
-  .fa {
-    font-size: rem-calc(16);
-    margin-right: 0.5rem;
-
-    &.fa-home {
-      font-size: rem-calc(11);
-      margin-right: rem-calc(-1);
-      position: relative;
-      bottom: rem-calc(-2);
-    }
-
-    &.fa-building {
-      font-size: rem-calc(14);
-    }
   }
 }
 

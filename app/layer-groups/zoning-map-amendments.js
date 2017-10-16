@@ -1,16 +1,19 @@
+const legendColor = '#9FC73E';
+
 export default {
   id: 'zoning-map-amendments',
   title: 'Zoning Map Amendments',
-  type: 'carto',
-  sql: ['SELECT the_geom_webmercator, ulurpno, status, project_na FROM support_nyzma'],
+  titleTooltip: 'Changes to zoning that have been adopted since 2002',
   visible: false,
+  legendIcon: 'polygon',
+  legendColor,
   layers: [
     {
       layer: {
         id: 'zma-line',
         type: 'line',
-        source: 'zma',
-        'source-layer': 'layer0',
+        source: 'zoning-map-amendments',
+        'source-layer': 'zoning-map-amendments',
         paint: {
           'line-width': {
             stops: [
@@ -18,7 +21,7 @@ export default {
               [12, 3],
             ],
           },
-          'line-color': 'gray',
+          'line-color': legendColor,
           'line-dasharray': [1, 1],
           'line-opacity': 0.6,
         },
@@ -28,14 +31,16 @@ export default {
       layer: {
         id: 'zma-fill',
         type: 'fill',
-        'source-layer': 'layer0',
+        source: 'zoning-map-amendments',
+        'source-layer': 'zoning-map-amendments',
         paint: {
-          'fill-color': '#9FC73E',
+          'fill-color': legendColor,
           'fill-opacity': 0.6,
         },
       },
       highlightable: true,
-      tooltipTemplate: '{{project_na}} - {{status}}',
+      clickable: true,
+      tooltipTemplate: '{{{project_na}}} - Effective {{{effectiveformatted}}}',
     },
   ],
 };

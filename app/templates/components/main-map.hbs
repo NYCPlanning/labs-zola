@@ -14,8 +14,7 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
-  {{!-- {{map.call 'addControl' controlOptions 'top-left'}} --}}
-
+  {{map.layer-group for='threed-buildings' visible=qps.threed-buildings}}
 
   {{map.layer-group for='neighborhood-tabulation-areas' visible=qps.neighborhood-tabulation-areas}}
 
@@ -25,21 +24,21 @@
 
   {{map.layer-group for='nyccouncildistricts' visible=qps.nyccouncildistricts}}
 
-  {{map.layer-group for='communitydistricts' visible=qps.communitydistricts}}
+  {{map.layer-group for='community-districts' visible=qps.community-districts}}
 
   {{map.layer-group for='boroughs' visible=qps.boroughs}}
 
   {{map.layer-group for='subway' visible=qps.subway}}
 
+  {{map.layer-group for='building-footprints' visible=qps.building-footprints}}
+
+  {{map.layer-group for='landmarks' visible=qps.landmarks}}
+
   {{map.layer-group for='pluto' visible=qps.pluto}}
 
   {{map.layer-group for='commercial-overlays' visible=qps.commercial-overlays}}
 
-  {{map.layer-group for='landmarkpoints' visible=qps.landmarkpoints}}
-
-  {{map.layer-group for='historicdistricts' visible=qps.historicdistricts}}
-
-  {{map.layer-group for='sceniclandmarks' visible=qps.sceniclandmarks}}
+  {{map.layer-group for='historic-districts' visible=qps.historic-districts}}
 
   {{map.layer-group for='waterfront-access-plan' visible=qps.waterfront-access-plan}}
 
@@ -48,6 +47,10 @@
   {{map.layer-group for='low-density-growth-mgmt-areas' visible=qps.low-density-growth-mgmt-areas}}
 
   {{map.layer-group for='sidewalkcafes' visible=qps.sidewalkcafes}}
+
+  {{map.layer-group for='effective-flood-insurance-rate-2007' visible=qps.effective-flood-insurance-rate-2007}}
+
+  {{map.layer-group for='preliminary-flood-insurance-rate' visible=qps.preliminary-flood-insurance-rate}}
 
   {{map.layer-group for='fresh' visible=qps.fresh}}
 
@@ -67,9 +70,9 @@
 
   {{map.layer-group for='zoning-districts' visible=qps.zoning-districts}}
 
-  {{map.layer-group for='digital-tax-map' visible=qps.digital-tax-map}}
+  {{!-- BASEMAPS --}}
 
-  {{map.layer-group for='aerials16' visible=qps.aerials16}}
+  {{map.layer-group for='aerials-16' visible=qps.aerials-16}}
 
   {{#if mapMouseover.highlightedLotFeatures}}
     {{#map.source
@@ -106,10 +109,34 @@
     {{map.call 'fitBounds' mainMap.bounds isSelectedBoundsOptions}}
   {{/if}}
 
+  {{#if currentMeasurement}}
+    {{#ember-wormhole to="measurement-text"}}
+      <div class="mapboxgl-ctrl mapboxgl-ctrl-group">
+        <div class="mapboxgl-ctrl-icon">
+          <strong>Measurement:</strong>
+          <div>
+            {{numeral-format currentMeasurement '0,0'}} {{measurementUnit}}
+          </div>
+        </div>
+      </div>
+    {{/ember-wormhole}}
+  {{/if}}
+
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
   {{map.on 'zoomend' (action 'handleZoomend')}}
   {{map.on 'mousemove' (action 'handleMouseover')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
+  {{map.on 'draw.create' (action 'handleMeasurement')}}
+  {{map.on 'draw.update' (action 'handleMeasurement')}}
+  {{map.on 'draw.delete' (action 'handleMeasurement')}}
+  {{map.on 'draw.modechange' (action 'handleMeasurementModeChange')}}
 
 {{/mapbox-gl}}
+
+{{#unless findMeDismissed}}
+  <div class="find-me">
+    <button {{action 'locateMe'}} class="button hide-for-medium hide-for-print no-margin">Locate&nbsp;Me</button>
+    <button {{action 'dismissFindMe'}} class="button hide-for-medium hide-for-print no-margin">&times;</button>
+  </div>
+{{/unless}}

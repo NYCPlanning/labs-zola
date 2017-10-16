@@ -1,3 +1,22 @@
 # http://www.robotstxt.org
 User-agent: *
 Disallow:
+
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_0.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_1.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_2.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_3.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_4.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_5.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_6.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_7.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_8.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_9.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_10.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_11.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_12.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_13.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_14.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_15.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_16.txt
+sitemap: https://zola.planning.nyc.gov/sitemap/sitemap_lot_17.txt

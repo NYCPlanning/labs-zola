@@ -97,7 +97,7 @@ $global-flexbox: true;
 $global-prototype-breakpoints: false;
 $global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
-$print-transparent-backgrounds: true;
+$print-transparent-backgrounds: false;
 
 @include add-foundation-colors;
 
@@ -111,7 +111,7 @@ $breakpoints: (
   xlarge: 1200px,
   xxlarge: 1440px,
 );
-$print-breakpoint: large;
+$print-breakpoint: medium;
 $breakpoint-classes: (small medium large xlarge xxlarge);
 
 // 3. The Grid
@@ -199,7 +199,7 @@ $abbr-underline: 1px dotted $black;
 // 5. Typography Helpers
 // ---------------------
 
-$lead-font-size: $global-font-size * 1.5;
+$lead-font-size: rem-calc(20);
 $lead-lineheight: 1.4;
 $subheader-lineheight: 1.4;
 $subheader-color: inherit;

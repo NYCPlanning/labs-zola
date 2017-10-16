@@ -1,21 +1,23 @@
+import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
+
+const legendColor = '#8DA610';
+
 export default {
   id: 'special-purpose-subdistricts',
   title: 'Special Purpose Subdistricts',
+  titleTooltip: 'The regulations for special purpose districts are designed to supplement and modify the underlying zoning in order to respond to distinctive neighborhoods with particular issues and goals.',
   visible: false,
-  type: 'carto', // raster, vector, geojson, or carto
-  sql: ['SELECT the_geom_webmercator, spname FROM support_nysp_sd'],
+  legendIcon: 'polygon',
+  legendColor,
   layers: [
     {
-      layer: {
-        id: 'zoning-sp-sd-line',
-        type: 'line',
-        source: 'spsd',
-        'source-layer': 'layer0',
-        paint: {
-          'line-width': 2,
-          'line-color': 'green',
-        },
-      },
+      layer: lineStyle('zoning-sp-sd-line', 'supporting-zoning', 'special-purpose-subdistricts', legendColor),
+    },
+    {
+      layer: fillStyle('zoning-sp-sd-fill', 'supporting-zoning', 'special-purpose-subdistricts', legendColor),
+      highlightable: true,
+      clickable: true,
+      tooltipTemplate: '{{spname}} - {{subdist}}',
     },
   ],
 };

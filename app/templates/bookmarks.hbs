@@ -1,0 +1,94 @@
+<div class="content-area cell large-5 large-cell-block-y xxlarge-4 bookmarks">
+  {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
+
+  {{#if (await bookmarksSettled)}}
+    {{#each-in (group-by 'recordType.content' model) as |key values|}}
+      {{#if (eq key 'lot')}}
+        <h3>Tax Lots</h3>
+        <ul class="no-bullet">
+          {{#each values as |lot|}}
+            <li class="lot-bookmark">
+              <span class="icon tax-lot"></span>
+                {{#link-to 'lot' lot.bookmark}}
+                  {{lot.bookmark.address}}
+                  <span class="dark-gray">
+                    {{lot.bookmark.bbl}}
+                  </span>
+                {{/link-to}}
+              <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' lot}}>
+                &times;
+              </button>
+            </li>
+          {{/each}}
+        </ul>
+      {{else if (eq key 'zma')}}
+        <h3>Zoning Map Amendments</h3>
+        <ul class="no-bullet">
+          {{#each values as |zma|}}
+            <li class="zma-bookmark">
+              {{#link-to 'zma' zma.bookmark.id}}
+                <span class="icon polygon"></span>
+                {{zma.bookmark.project_na}}
+                <span class="dark-gray">{{zma.bookmark.lucats}}</span>
+              {{/link-to}}
+              <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' zma}}>&times;</button>
+            </li>
+          {{/each}}
+        </ul>
+      {{else if (eq key 'special-purpose-district')}}
+        <h3>Special Purpose Districts</h3>
+        <ul class="no-bullet">
+          {{#each values as |spd|}}
+            <li class="spd-bookmark">
+              {{#link-to 'special-purpose-district' spd.bookmark.id}}
+                <span class="icon polygon"></span>
+                {{spd.bookmark.sdname}}
+                <span class="dark-gray">{{spd.bookmark.sdlbl}}</span>
+              {{/link-to}}
+              <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' spd}}>&times;</button>
+            </li>
+          {{/each}}
+        </ul>
+      {{else if (eq key 'special-purpose-subdistrict')}}
+        <h3>Special Purpose Subdistricts</h3>
+        <ul class="no-bullet">
+          {{#each values as |spd|}}
+            <li class="spd-bookmark">
+              {{#link-to 'special-purpose-subdistricts' spd.bookmark.id}}
+                <span class="icon polygon"></span>
+                {{spd.bookmark.spname}}
+                <span class="dark-gray">{{spd.bookmark.splbl}}</span>
+              {{/link-to}}
+              <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' spd}}>&times;</button>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <h3>Map Pins</h3>
+        <ul class="no-bullet">
+          {{#each values as |pin|}}
+            <li {{action 'flyTo' pin.coordinates}} class="map-bookmark">
+              <span class="map-bookmark link">
+                {{fa-icon "map-pin"}} {{pin.address}}
+              </span>
+              <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' pin}}>&times;</button>
+            </li>
+          {{/each}}
+        </ul>
+      {{/if}}
+    {{/each-in}}
+  {{/if}}
+
+  {{#unless model.length}}
+    <div class="no-bookmarks">
+      <div class="align-self-middle large-text-center">
+        <h1 class="header-large">You haven't bookmarked&nbsp;anything.</h1>
+        <p>You can add bookmarks to this page by clicking the {{fa-icon "bookmark"}} icon on other pages&mdash;like Tax Lots and Zoning Map Amendments.</p>
+        <p>From this page you can quickly navigate to all of your bookmarked&nbsp;information.</p>
+      </div>
+    </div>
+  {{/unless}}
+
+  {{outlet}}
+
+</div>

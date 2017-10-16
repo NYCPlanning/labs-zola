@@ -1,16 +1,15 @@
 export default {
   id: 'commercial-overlays',
   title: 'Commercial Overlays',
-  type: 'carto',
-  sql: ['SELECT * FROM support_zoning_co'],
+  titleTooltip: 'A commercial overlay is a C1 or C2 district mapped within residential districts to serve local retail needs.',
   visible: false,
   layers: [
     {
       layer: {
         id: 'co',
         type: 'line',
-        source: 'co',
-        'source-layer': 'layer0',
+        source: 'commercial-overlays',
+        'source-layer': 'commercial-overlays',
         paint: {
           'line-width': {
             stops: [
@@ -26,9 +25,9 @@ export default {
     {
       layer: {
         id: 'co_labels',
-        source: 'co',
         type: 'symbol',
-        'source-layer': 'layer0',
+        source: 'commercial-overlays',
+        'source-layer': 'commercial-overlays',
         paint: {
           'text-color': 'rgba(200, 0, 0, 1)',
           'text-halo-color': '#FFFFFF',

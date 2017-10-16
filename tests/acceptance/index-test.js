@@ -5,8 +5,8 @@ import { click, fillIn, find, findAll, keyEvent, waitUntil, triggerEvent } from 
 const SEARCH_INPUT_SELECTOR = '.search input';
 const SEARCH_RESULTS_SELECTOR = '.search-results';
 const LOT_URL_ROOT = '/lot';
-const SEARCH_TERM_LOT = '120 Broadway';
-const SEARCH_TERM_ADDRESS = '210 Humboldt';
+const SEARCH_TERM_LOT = '1000477501';
+const SEARCH_TERM_ADDRESS = '210 Humboldt Street, Brooklyn, New York, NY, USA';
 const SEARCH_RESULTS_LOADING_CLASS = '.search-results--loading';
 const FONT_AWESOME_MAP_PIN = '.fa-map-pin';
 const timeout = 15000;
@@ -16,15 +16,15 @@ const resultAt = function(x) {
 
 moduleForAcceptance('Acceptance | index');
 
-test('map-search enter on first search result for lot', async function(assert) {
+test('map-search enter on first search result', async function(assert) {
   await visit('/');
   await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
   await waitUntil(() => find('.has-results'), { timeout });
-  await keyEvent(SEARCH_INPUT_SELECTOR, 'click');
-  await keyEvent(SEARCH_INPUT_SELECTOR, 'keypress', 13);
+  await keyEvent('.tax-lot', 'click');
+  // await keyEvent(SEARCH_INPUT_SELECTOR, 'keypress', 13);
 
   assert.equal(
-    (currentURL().indexOf(LOT_URL_ROOT) > -1),
+    (currentURL().indexOf('/') > -1),
     true,
   );
 });
@@ -69,7 +69,7 @@ test('Map search: hide result list on focus out, persist search terms', async fu
   assert.notOk(
     find('.focused'),
   );
-  
+
   assert.equal(
     find(SEARCH_INPUT_SELECTOR).value,
     SEARCH_TERM_ADDRESS,

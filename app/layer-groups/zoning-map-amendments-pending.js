@@ -1,16 +1,19 @@
+const legendColor = '#B01F1F';
+
 export default {
   id: 'zoning-map-amendments-pending',
   title: 'Pending Zoning Map Amendments',
-  type: 'carto',
-  sql: ['SELECT the_geom_webmercator, ulurpno, status FROM support_nyzma WHERE status = \'Certified\''],
+  titleTooltip: 'Changes to zoning that have not yet been adopted',
   visible: false,
+  legendIcon: 'polygon',
+  legendColor,
   layers: [
     {
       layer: {
         id: 'zmacert-line',
         type: 'line',
-        source: 'zma',
-        'source-layer': 'layer0',
+        source: 'supporting-zoning',
+        'source-layer': 'zoning-map-amendments-pending',
         paint: {
           'line-width': {
             stops: [
@@ -18,7 +21,7 @@ export default {
               [12, 3],
             ],
           },
-          'line-color': 'gray',
+          'line-color': legendColor,
           'line-dasharray': [1, 1],
           'line-opacity': 0.6,
         },
@@ -28,12 +31,16 @@ export default {
       layer: {
         id: 'zmacert-fill',
         type: 'fill',
-        'source-layer': 'layer0',
+        source: 'supporting-zoning',
+        'source-layer': 'zoning-map-amendments-pending',
         paint: {
-          'fill-color': '#B01F1F',
+          'fill-color': legendColor,
           'fill-opacity': 0.6,
         },
       },
+      highlightable: true,
+      clickable: true,
+      tooltipTemplate: '{{{project_na}}}',
     },
   ],
 };

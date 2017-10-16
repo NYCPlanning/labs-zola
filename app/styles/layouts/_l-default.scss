@@ -2,6 +2,19 @@
 // Default Layout
 // --------------------------------------------------
 
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  html, & {
+    @include breakpoint(large) {
+      max-height: 100vh;
+      overflow: hidden;
+    }
+  }
+}
+
 .site-header {
   position: relative;
   z-index: 2;
@@ -83,12 +96,11 @@
 }
 
 .content-area {
-  // position: relative;
+  position: relative;
   z-index: 2;
   box-shadow: 0 -2px 0 rgba(0,0,0,0.1);
   background-color: $white;
   padding: $global-margin;
-  position: absolute;
   right: 0;
   min-height: calc(50vh - 9.375rem);
 
@@ -138,4 +150,12 @@
 // HACK: dot and pulse misalign without this.
 .mapboxgl-user-location-dot {
   box-sizing: initial;
+}
+
+.no-bookmarks {
+  @include breakpoint(large) {
+    color: $dark-gray;
+    height: 100%;
+    display: flex;
+  }
 }

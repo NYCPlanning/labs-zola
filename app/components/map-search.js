@@ -9,7 +9,7 @@ const { service } = Ember.inject;
 const DEBOUNCE_MS = 100;
 
 export default Ember.Component.extend({
-  classNames: ['search'],
+  classNames: ['search hide-for-print'],
   searchTerms: '',
   transitionTo: null,
   selected: 0,
@@ -95,6 +95,8 @@ export default Ember.Component.extend({
       const mainMap = this.get('mainMap');
       const mapInstance = mainMap.get('mapInstance');
 
+      this.$('.map-search-input').blur();
+
       this.setProperties({
         selected: 0,
         focused: false,
@@ -102,28 +104,35 @@ export default Ember.Component.extend({
 
       if (result.type === 'lot') {
         const { boro, block, lot } = bblDemux(result.bbl);
+        this.set('searchTerms', result.bbl);
         this.transitionTo('lot', boro, block, lot);
       }
 
       if (result.type === 'zma') {
+        this.set('searchTerms', result.label);
         this.transitionTo('zma', result.ulurpno);
       }
 
       if (result.type === 'zoning-district') {
+        mainMap.set('shouldFitBounds', true);
         this.transitionTo('zoning-district', result.label);
       }
 
       if (result.type === 'neighborhood') {
+        this.set('searchTerms', result.neighbourhood);
         const center = result.coordinates;
-        mainMap.flyTo({
+        mapInstance.flyTo({
           center,
-          zoom: 14,
+          zoom: 13,
         });
       }
 
       if (result.type === 'address') {
         const center = result.coordinates;
         mainMap.set('currentAddress', center);
+
+        this.set('searchTerms', result.label);
+        this.saveAddress({ address: result.label, coordinates: result.coordinates });
         this.transitionTo('index');
 
         if (mapInstance) {
@@ -132,6 +141,11 @@ export default Ember.Component.extend({
             zoom: 15,
           });
         }
+      }
+
+      if (result.type === 'special-purpose-district') {
+        this.set('searchTerms', result.sdname);
+        this.transitionTo('special-purpose-district', result.cartodb_id);
       }
     },
     handleFocusIn() {

@@ -1,20 +1,22 @@
+import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
+
+const legendColor = '#00A4D2';
+
 export default {
   id: 'waterfront-access-plan',
   title: 'Waterfront Access Plan',
+  titleTooltip: 'These areas reflect site-specific modification of waterfront public access requirements for waterfront parcels with unique conditions and opportunities.',
   visible: false,
-  type: 'carto',
-  sql: ['SELECT the_geom_webmercator, name FROM support_wap'],
+  legendIcon: 'polygon',
+  legendColor,
   layers: [
     {
-      layer: {
-        id: 'wap-line',
-        type: 'line',
-        'source-layer': 'layer0',
-        paint: {
-          'line-width': 2,
-          'line-color': 'red',
-        },
-      },
+      layer: lineStyle('waterfront-access-plan-line', 'supporting-zoning', 'waterfront-access-plan', legendColor),
+    },
+    {
+      layer: fillStyle('waterfront-access-plan-fill', 'supporting-zoning', 'waterfront-access-plan', legendColor),
+      highlightable: true,
+      tooltipTemplate: 'Waterfront Access Plan - {{{name}}}',
     },
   ],
 };

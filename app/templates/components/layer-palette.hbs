@@ -6,11 +6,47 @@
   {{#layer-palette-accordion
     closed=false
     title='Zoning and Land Use'}}
+    {{#layer-menu-item for='pluto' as |item|}}
+      {{#if (lt mainMap.currentZoom item.layer.minzoom)}}
+        {{info-tooltip iconName='warning' tip='Zoom in more to see'}}
+      {{/if}}
+      {{#if item.layer.visible}}
+        <div class="checkbox-wrapper"
+          onclick={{queue
+          (action 'toggleFill')
+          (action item.updatePaintFor
+            'pluto-fill'
+            (if plutoFill (hash fill-opacity=0.7) (hash fill-opacity=0))
+          )}}>
+          {{input type='checkbox'
+            checked=plutoFill}}
+          Show Land Use Colors
+        </div>
+        {{#if plutoFill}}
+          <ul class="layer-key">
+            <li><span style="color:#FEFFA8;">{{fa-icon "square"}}</span>One &amp; Two Family Buildings</li>
+            <li><span style="color:#FCB842;">{{fa-icon "square"}}</span>Multi-Family Walk-Up Buildings</li>
+            <li><span style="color:#B16E00;">{{fa-icon "square"}}</span>Multi-Family Elevator Buildings</li>
+            <li><span style="color:#ff8341;">{{fa-icon "square"}}</span>Mixed Residential &amp; Commercial Buildings</li>
+            <li><span style="color:#fc2929;">{{fa-icon "square"}}</span>Commercial &amp; Office Buildings</li>
+            <li><span style="color:#E362FB;">{{fa-icon "square"}}</span>Industrial &amp; Manufacturing</li>
+            <li><span style="color:#E0BEEB;">{{fa-icon "square"}}</span>Transportation &amp; Utility</li>
+            <li><span style="color:#44A3D5;">{{fa-icon "square"}}</span>Public Facilities &amp; Institutions</li>
+            <li><span style="color:#78D271;">{{fa-icon "square"}}</span>Open Space &amp; Outdoor Recreation</li>
+            <li><span style="color:#BAB8B6;">{{fa-icon "square"}}</span>Parking Facilities</li>
+            <li><span style="color:#555555;">{{fa-icon "square"}}</span>Vacant Land</li>
+            <li><span style="color:#222222;">{{fa-icon "square"}}</span>Other</li>
+          </ul>
+        {{/if}}
+      {{/if}}
+    {{/layer-menu-item}}
+
     {{#layer-menu-item
       for='zoning-districts' as |item|}}
       {{#if item.layer.visible}}
         {{#layer-multi-select-control
           column='primaryzone'
+          source='zoning-districts'
           parentComponent=item.layer
           as |multiSelect|}}
             <ul class="layer-menu-item--group-checkboxes">
@@ -18,7 +54,7 @@
                 <label>{{group-checkbox
                   refs=(array 'qps.C1' 'qps.C2' 'qps.C3' 'qps.C4' 'qps.C5' 'qps.C6' 'qps.C7' 'qps.C8')
                   values=(array qps.C1 qps.C2 qps.C3 qps.C4 qps.C5 qps.C6 qps.C7 qps.C8)
-                  scope=qps}}Select All Commercial Districts</label>
+                  scope=qps}}Commercial Districts <span style="background-color:#ff0000;" class="icon polygon legend-icon"></span></label>
                 <ul class="nested columns-3">
                   <li><label>{{multiSelect.checkbox value='C1' checked=qps.C1}}C1</label></li>
                   <li><label>{{multiSelect.checkbox value='C2' checked=qps.C2}}C2</label></li>
@@ -34,7 +70,7 @@
                 <label>{{group-checkbox
                   refs=(array 'qps.M1' 'qps.M2' 'qps.M3')
                   values=(array qps.M1 qps.M2 qps.M3)
-                  scope=qps}}Select All Manufacturing Districts</label>
+                  scope=qps}}Manufacturing Districts <span style="background-color:#e362fb;" class="icon polygon legend-icon"></span></label>
                 <ul class="nested columns-3">
                   <li><label>{{multiSelect.checkbox value='M1' checked=qps.M1}}M1</label></li>
                   <li><label>{{multiSelect.checkbox value='M2' checked=qps.M2}}M2</label></li>
@@ -45,7 +81,7 @@
                 <label>{{group-checkbox
                   refs=(array 'qps.R1' 'qps.R2' 'qps.R3' 'qps.R4' 'qps.R5' 'qps.R6' 'qps.R7' 'qps.R8' 'qps.R9')
                   values=(array qps.R1 qps.R2 qps.R3 qps.R4 qps.R5 qps.R6 qps.R7 qps.R8 qps.R9)
-                  scope=qps}}Select All Residential Districts</label>
+                  scope=qps}}Residential Districts  <span style="background-color:#f2f618;" class="icon polygon legend-icon"></span></label>
                 <ul class="nested columns-3">
                   <li><label>{{multiSelect.checkbox value='R1' checked=qps.R1}}R1</label></li>
                   <li><label>{{multiSelect.checkbox value='R2' checked=qps.R2}}R2</label></li>
@@ -58,45 +94,10 @@
                   <li><label>{{multiSelect.checkbox value='R9' checked=qps.R9}}R9</label></li>
                 </ul>
               </li>
-              <li><label>{{multiSelect.checkbox value='PA' checked=qps.PA}}Parks</label></li>
-              <li><label>{{multiSelect.checkbox value='BP' checked=qps.BP}}Battery Park City</label></li>
+              <li><label>{{multiSelect.checkbox value='PA' checked=qps.PA}}Parks <span style="background-color:#78D271;" class="icon polygon legend-icon"></span></label></li>
+              <li><label>{{multiSelect.checkbox value='BP' checked=qps.BP}}Battery Park City <span style="background-color:#666666;" class="icon polygon legend-icon"></span></label></li>
             </ul>
         {{/layer-multi-select-control}}
-      {{/if}}
-    {{/layer-menu-item}}
-
-    {{#layer-menu-item for='pluto' as |item|}}
-      {{#if (lt mainMap.currentZoom item.layer.minzoom)}}
-        {{info-tooltip iconName='warning' tip='Zoom in more to see'}}
-      {{/if}}
-      {{#if item.layer.visible}}
-        <div class="layer-menu-item"
-          onclick={{queue
-            (action 'toggleFill')
-            (action item.updatePaintFor
-              'pluto-fill'
-              (if plutoFill (hash fill-opacity=0.7) (hash fill-opacity=0))
-            )}}>
-          {{input type='checkbox'
-            checked=plutoFill}}
-          Show Land Use Colors
-        </div>
-        {{#if plutoFill}}
-        <ul class="layer-key">
-          <li><span style="color:#FEFFA8;">{{fa-icon "square"}}</span>One &amp; Two Family Buildings</li>
-          <li><span style="color:#FCB842;">{{fa-icon "square"}}</span>Multi-Family Walk-Up Buildings</li>
-          <li><span style="color:#B16E00;">{{fa-icon "square"}}</span>Multi-Family Elevator Buildings</li>
-          <li><span style="color:#ff8341;">{{fa-icon "square"}}</span>Mixed Residential &amp; Commercial Buildings</li>
-          <li><span style="color:#fc2929;">{{fa-icon "square"}}</span>Commercial &amp; Office Buildings</li>
-          <li><span style="color:#E362FB;">{{fa-icon "square"}}</span>Industrial &amp; Manufacturing</li>
-          <li><span style="color:#E0BEEB;">{{fa-icon "square"}}</span>Transportation &amp; Utility</li>
-          <li><span style="color:#44A3D5;">{{fa-icon "square"}}</span>Public Facilities &amp; Institutions</li>
-          <li><span style="color:#78D271;">{{fa-icon "square"}}</span>Open Space &amp; Outdoor Recreation</li>
-          <li><span style="color:#BAB8B6;">{{fa-icon "square"}}</span>Parking Facilities</li>
-          <li><span style="color:#555555;">{{fa-icon "square"}}</span>Vacant Land</li>
-          <li><span style="color:#222222;">{{fa-icon "square"}}</span>Other</li>
-        </ul>
-        {{/if}}
       {{/if}}
     {{/layer-menu-item}}
 
@@ -105,6 +106,7 @@
       as |item|}}
       {{#if item.layer.visible}}
         {{#layer-multi-select-control
+          source='commercial-overlays'
           column='overlay'
           parentComponent=item.layer
           as |multiSelect|}}
@@ -143,6 +145,7 @@
     {{#layer-menu-item for='zoning-map-amendments' as |item|}}
       {{#if item.layer.visible}}
         {{item.range-slider
+            source='zoning-map-amendments'
             column='effective'}}
       {{/if}}
     {{/layer-menu-item}}
@@ -154,69 +157,80 @@
     closed=true
     title='Supporting Zoning Layers'
     as |item|}}
-    {{layer-menu-item
-      for='special-purpose-districts'}}
-    {{layer-menu-item
-      for='special-purpose-subdistricts'}}
-    {{layer-menu-item
-      for='mandatory-inclusionary-housing'}}
-    {{layer-menu-item
-      for='inclusionary-housing'}}
-    {{layer-menu-item
-      for='transit-zones'}}
-    {{layer-menu-item
-      for='fresh'}}
-    {{layer-menu-item
-      for='sidewalkcafes'}}
-    {{layer-menu-item
-      for='low-density-growth-mgmt-areas'}}
-    {{layer-menu-item
-      for='coastal-zone-boundary'}}
-    {{layer-menu-item
-      for='waterfront-access-plan'}}
-  {{/layer-palette-accordion}}
-  {{#layer-palette-accordion
-    closed=true
-    title='Landmark & Historic'}}
-    {{layer-menu-item
-      for='sceniclandmarks'}}
-    {{layer-menu-item
-      for='historicdistricts'}}
-    {{layer-menu-item
-      for='landmarkpoints'}}
-  {{/layer-palette-accordion}}
-  {{#layer-palette-accordion
-    closed=true
-    title='Transportation'
-  }}
-    {{layer-menu-item
-      for='subway'}}
+    {{layer-menu-item for='special-purpose-districts'}}
+    {{layer-menu-item for='special-purpose-subdistricts'}}
+    {{layer-menu-item for='mandatory-inclusionary-housing'}}
+    {{layer-menu-item for='inclusionary-housing'}}
+    {{layer-menu-item for='transit-zones'}}
+    {{#layer-menu-item for='fresh' as |item|}}
+      {{#if item.layer.visible}}
+      <ul class="layer-key">
+        <li><span style="color:#0B9390;opacity:0.4;">{{fa-icon "square"}}</span>Zoning incentives</li>
+        <li><span style="color:#30BF4E;opacity:0.4;">{{fa-icon "square"}}</span>Zoning and discretionary tax incentives</li>
+        <li><span style="color:#8FE339;opacity:0.4;">{{fa-icon "square"}}</span>Discretionary tax incentives</li>
+      </ul>
+      {{/if}}
+    {{/layer-menu-item}}
+    {{#layer-menu-item for='sidewalkcafes' as |item|}}
+      {{#if item.layer.visible}}
+        <ul class="layer-key">
+          <li><span style="color:#28AD15;">{{fa-icon "minus"}}</span>All Cafes Permitted</li>
+          <li><span style="color:#CC3DCA;">{{fa-icon "minus"}}</span>Small Cafes Permitted</li>
+          <li><span style="color:#216BC6;">{{fa-icon "minus"}}</span>Unenclosed and Small Cafes Permitted</li>
+        </ul>
+      {{/if}}
+    {{/layer-menu-item}}
+    {{layer-menu-item for='low-density-growth-mgmt-areas'}}
+    {{layer-menu-item for='coastal-zone-boundary'}}
+    {{layer-menu-item for='waterfront-access-plan'}}
+    {{layer-menu-item for='historic-districts'}}
+    {{#layer-menu-item for='landmarks' as |item|}}
+      {{#if item.layer.visible}}
+        <ul class="layer-key">
+          <li><span style="color:rgba(147, 245, 201, 1);">{{fa-icon "circle"}}</span>Individual Landmarks</li>
+          <li><span style="color:rgba(152, 152, 247, 1);">{{fa-icon "circle"}}</span>Interior Landmarks</li>
+          <li><span style="color:purple;">{{fa-icon "square"}}</span>Scenic Landmarks</li>
+        </ul>
+      {{/if}}
+    {{/layer-menu-item}}
+    {{#layer-menu-item for='effective-flood-insurance-rate-2007' as |item|}}
+      {{#if item.layer.visible}}
+        <ul class="layer-key">
+          <li><span style="color:#0084a8;">{{fa-icon "circle"}}</span>V Zone</li>
+          <li><span style="color:#00a9e6;">{{fa-icon "circle"}}</span>A Zone</li>
+          <li><span style="color:#00ffc5;">{{fa-icon "circle"}}</span>Shaded X Zone</li>
+        </ul>
+      {{/if}}
+    {{/layer-menu-item}}
+    {{#layer-menu-item for='preliminary-flood-insurance-rate' as |item|}}
+      {{#if item.layer.visible}}
+        <ul class="layer-key">
+          <li><span style="color:#0084a8;">{{fa-icon "circle"}}</span>V Zone</li>
+          <li><span style="color:#00a9e6;">{{fa-icon "circle"}}</span>A Zone</li>
+          <li><span style="color:#00ffc5;">{{fa-icon "circle"}}</span>Shaded X Zone</li>
+        </ul>
+      {{/if}}
+    {{/layer-menu-item}}
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
     closed=true
     title='Administrative Boundaries'}}
-    {{layer-menu-item
-      for='boroughs'}}
-    {{layer-menu-item
-      for='communitydistricts'}}
-    {{layer-menu-item
-      for='nyccouncildistricts'}}
-    {{layer-menu-item
-      for='nysenatedistricts'}}
-    {{layer-menu-item
-      for='assemblydistricts'}}
-    {{layer-menu-item
-      for='neighborhood-tabulation-areas'}}
+    {{layer-menu-item for='boroughs'}}
+    {{layer-menu-item for='community-districts'}}
+    {{layer-menu-item for='nyccouncildistricts'}}
+    {{layer-menu-item for='nysenatedistricts'}}
+    {{layer-menu-item for='assemblydistricts'}}
+    {{layer-menu-item for='neighborhood-tabulation-areas'}}
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
     closed=true
     title='Basemaps'}}
-    {{layer-menu-item
-      for='digital-tax-map'}}
-    {{layer-menu-item
-      for='aerials16'}}
+    {{layer-menu-item for='subway'}}
+    {{layer-menu-item for='building-footprints'}}
+    {{layer-menu-item for='threed-buildings'}}
+    {{layer-menu-item for='aerials-16'}}
   {{/layer-palette-accordion}}
 
   <a {{action resetQueryParams}} class="button gray small reset-map-button" disabled={{isDefault}}>

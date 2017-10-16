@@ -1,8 +1,8 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('zma', 'Unit | Serializer | zma', {
+moduleForModel('bookmark', 'Unit | Serializer | bookmark', {
   // Specify the other units that are required for this test.
-  needs: ['serializer:zma']
+  needs: ['serializer:bookmark', 'adapter:bookmark', 'model:bookmark']
 });
 
 // Replace this with your real tests.

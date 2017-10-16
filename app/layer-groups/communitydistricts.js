@@ -1,39 +1,48 @@
-import adminBoundaryStyles from '../helpers/admin-boundary-styles';
+import adminBoundaryStyles from '../utils/admin-boundary-styles';
 
 const { paint, layout, labelLayout } = adminBoundaryStyles;
 
 export default {
-  id: 'communitydistricts',
+  id: 'community-districts',
   title: 'Community Districts',
+  legendIcon: 'admin-line',
+  legendColor: '#76F578',
   visible: false,
-  type: 'carto', // raster, vector, geojson, or carto
-  sql: [
-    `SELECT the_geom_webmercator, borocd,
-      CASE
-        WHEN LEFT(borocd::text, 1) = '1' THEN 'Manhattan ' || borocd % 100
-        WHEN LEFT(borocd::text, 1) = '2' THEN 'Bronx ' || borocd % 100
-        WHEN LEFT(borocd::text, 1) = '3' THEN 'Brooklyn ' || borocd % 100
-        WHEN LEFT(borocd::text, 1) = '4' THEN 'Queens ' || borocd % 100
-        WHEN LEFT(borocd::text, 1) = '5' THEN 'Staten Island ' || borocd % 100
-      END as boro_district
-    FROM support_admin_cdboundaries
-    WHERE borocd % 100 < 20`,
-  ],
   layers: [
     {
       layer: {
-        id: 'communitydistricts-line',
+        id: 'community-districts-line-glow',
         type: 'line',
-        'source-layer': 'layer0',
+        source: 'admin-boundaries',
+        'source-layer': 'community-districts',
+        paint: {
+          'line-color': '#76F578',
+          'line-opacity': 0.2,
+          'line-width': {
+            stops: [
+              [11, 3],
+              [16, 6],
+            ],
+          },
+        },
+      },
+    },
+    {
+      layer: {
+        id: 'community-districts-line',
+        type: 'line',
+        source: 'admin-boundaries',
+        'source-layer': 'community-districts',
         paint: paint.lines,
         layout: layout.lines,
       },
     },
     {
       layer: {
-        id: 'communitydistricts-label',
+        id: 'community-districts-label',
         type: 'symbol',
-        'source-layer': 'layer0',
+        source: 'admin-boundaries',
+        'source-layer': 'community-districts',
         minzoom: 11,
         paint: paint.labels,
         layout: labelLayout('boro_district'),

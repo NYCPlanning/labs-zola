@@ -20,13 +20,80 @@ h6,
 }
 
 .content-header {
-  margin: 0;
-}
-.content-subheader {
+  @extend h3;
+  margin-bottom: rem-calc(10);
+
+  .landmark {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .landmark + .address {
+    display: block;
+    @extend h4;
+    margin-bottom: 0;
+  }
 }
 
 .header-label {
   color: $dark-gray;
+  font-size: rem-calc(13);
+}
+
+
+//
+// Buttons
+// --------------------------------------------------
+button {
+  cursor: pointer;
+
+  &.save-button {
+    float: right;
+    font-size: rem-calc(12);
+    padding: 0.25rem 0.5rem;
+    outline: 0;
+    position: relative;
+    transition: padding 0.5s;
+
+    &.saved {
+      padding-right: 2.5rem;
+    }
+
+    .state {
+      color: darken($success-color, 30%);
+      font-size: rem-calc(10);
+      line-height: rem-calc(12);
+      font-weight: $global-weight-bold;
+      position: absolute;
+      top: 50%;
+      left: 1.5rem;
+      margin-top: rem-calc(-6);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    &.saved .state {
+      opacity: 1;
+    }
+
+    .fa {
+      color: darken($medium-gray, 20%);
+      font-size: rem-calc(16);
+      vertical-align: middle;
+      transition: color 0.5s;
+
+      &:hover {
+        color: darken($medium-gray, 30%);
+      }
+    }
+
+    &.saved .fa {
+      color: $success-color;
+
+      // &:hover {
+      //   color: darken($success-color, 10%);
+      // }
+    }
+  }
 }
 
 
@@ -37,6 +104,11 @@ h6,
   font-weight: $global-weight-normal;
   line-height: 1.5;
   vertical-align: middle;
+
+  &.sup {
+    position: relative;
+    transform: translate(0, -50%);
+  }
 }
 
 
@@ -49,10 +121,33 @@ h6,
 .no-margin {
   margin: 0 !important;
 }
+.small-margin-bottom {
+  margin-bottom: rem-calc(5);
+}
 
 .text-small {
-  font-size: rem-calc(12);
+  font-size: rem-calc(13);
   line-height: 1.7;
+}
+
+.text-tiny {
+  font-size: rem-calc(10);
+  line-height: 1.5;
+}
+
+.pipe {
+  opacity: 0.25;
+  margin-right: 0.25em;
+  margin-left: 0.25em;
+}
+
+.link {
+  cursor: pointer;
+  color: $anchor-color;
+
+  &:hover {
+    color:$anchor-color-hover;
+  }
 }
 
 .light-gray { color: $light-gray; }
@@ -73,71 +168,103 @@ h6,
 .lu-silver { color: $lu-silver; }
 .lu-gray { color: $lu-gray; }
 
-//
-// Data Grid
-// --------------------------------------------------
-$data-grid-margin: rem-calc(10);
-.data-grid {
-  @include xy-grid;
 
-  @include breakpoint(medium) {
-    @include xy-gutters(
-      $gutters:$data-grid-margin,
-      $gutter-type:margin,
-      $gutter-position:right left,
-      $negative:true
-    );
+//
+// Lot Styles
+// --------------------------------------------------
+.lot-section-header {
+  margin: 1rem 0 rem-calc(6);
+}
+
+.lot-zoning-info {
+  font-size: rem-calc(13);
+}
+
+.lot-zoning-list {
+  margin: $paragraph-margin-bottom/2 0;
+  list-style: none;
+
+  li {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .menu-text {
+    font-weight: $global-weight-bold;
+    padding: rem-calc(4) 0;
+  }
+
+  .button {
+    font-size: rem-calc(13);
+    padding: rem-calc(4) rem-calc(6);
+    margin: 0;
   }
 }
 
-.data-cell {
-  @include xy-cell-static(full,false,0);
-  margin-bottom: $data-grid-margin;
-  border: 1px solid $light-gray;
+
+//
+// Data Grid
+// --------------------------------------------------
+.data-grid {
+  @include xy-grid;
+  padding: rem-calc(3) 0;
+
+  &:hover {
+    background-color: $light-gray;
+  }
 
   @include breakpoint(medium) {
-    @include xy-cell-static(
-      $size:4,
-      $gutter-output:true,
-      $gutters:$data-grid-margin,
-      $gutter-type:margin,
-      $breakpoint:null,
-      $vertical:false
-    );
-  }
-
-  @include breakpoint(large) {
-    @include xy-cell-static(
-      $size:6,
-      $gutter-output:true,
-      $gutters:$data-grid-margin,
-      $gutter-type:margin,
-      $breakpoint:null,
-      $vertical:false
-    );
-  }
-
-  @include breakpoint(xlarge) {
-    @include xy-cell-static(
-      $size:4,
-      $gutter-output:true,
-      $gutters:$data-grid-margin,
-      $gutter-type:margin,
-      $breakpoint:null,
-      $vertical:false
+    @include xy-gutters(
+      $gutters: rem-calc(10),
+      $gutter-type: margin,
+      $gutter-position: right left,
+      $negative: true
     );
   }
 
   .data-label {
+    @include xy-cell-static(full,false,0);
+    padding: rem-calc(2) rem-calc(4);
     background-color: $light-gray;
+    color: $dark-gray;
     font-size: rem-calc(10);
-    padding: rem-calc(2) rem-calc(5);
+    line-height: 1.2;
+
+    @include breakpoint(medium) {
+      @include xy-cell-static(
+        $size: 4,
+        $gutter-output: true,
+        $gutters: rem-calc(10),
+        $gutter-type: margin,
+        $breakpoint: null,
+        $vertical: false
+      );
+    }
+
   }
 
   .datum {
-    display: block;
-    padding: rem-calc(3) rem-calc(5);
-    font-size: rem-calc(14);
+    @include xy-cell-static(full,false,0);
+    font-size: rem-calc(13);
     line-height: 1.2;
+
+    @include breakpoint(medium) {
+      @include xy-cell-static(
+        $size: 8,
+        $gutter-output: true,
+        $gutters: rem-calc(10),
+        $gutter-type: margin,
+        $breakpoint: null,
+        $vertical: false
+      );
+    }
   }
+}
+
+
+//
+// Ember Tooltip
+// --------------------------------------------------
+.ember-tooltip {
+  font-size: rem-calc(10);
 }
