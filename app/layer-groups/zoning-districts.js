@@ -37,6 +37,7 @@ export default {
               ['R7', '#f3f63e'],
               ['R8', '#f3f62b'],
               ['R9', '#f2f618'],
+              ['R10', '#F0F614'],
             ],
           },
           'fill-opacity': {
