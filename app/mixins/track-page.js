@@ -13,7 +13,6 @@ export default Ember.Mixin.create({
 
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
-      console.log('tracking page...');
       const page = this.get('url');
       const title = this.getWithDefault('currentRouteName', 'unknown');
       get(this, 'metrics').trackPage({ page, title });

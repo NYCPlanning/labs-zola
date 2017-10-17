@@ -3,6 +3,8 @@ import fetch from 'fetch';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task, timeout } from 'ember-concurrency';
 import bblDemux from '../utils/bbl-demux';
+import trackEvent from '../utils/track-event';
+
 
 const { service } = Ember.inject;
 
@@ -14,7 +16,6 @@ export default Ember.Component.extend({
   transitionTo: null,
   selected: 0,
   mainMap: service(),
-  metrics: service(),
   focused: false,
 
   @computed('searchTerms')
@@ -92,6 +93,8 @@ export default Ember.Component.extend({
     clear() {
       this.set('searchTerms', '');
     },
+
+    @trackEvent('Map Search', 'Clicked result')
     goTo(result) {
       const mainMap = this.get('mainMap');
       const mapInstance = mainMap.get('mapInstance');
