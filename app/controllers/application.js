@@ -3,7 +3,7 @@ import QueryParams from 'ember-parachute';
 import bblDemux from '../utils/bbl-demux';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
-import trackEvent from '../utils/track-event';
+import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 import layerGroups from '../layer-groups';
 
@@ -143,7 +143,7 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
             this.transitionToRoute('special-purpose-subdistricts', cartodb_id);
           }
         }
-      } 
+      }
     },
     setQueryParam(property, value) {
       this.set(property, value);

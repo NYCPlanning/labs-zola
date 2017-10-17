@@ -5,16 +5,6 @@ moduleForComponent('layer-menu-item', 'Integration | Component | layer menu item
   integration: true
 });
 
-test('it renders', function(assert) {
-
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{#layer-palette-accordion}}{{layer-menu-item title='test'}}{{/layer-palette-accordion}}`);
-
-  assert.ok(this);
-});
-
 test('it indicates whether information may be hidden', function(assert) {
 
   // Set any properties with this.set('myProperty', 'value');
@@ -27,10 +17,16 @@ test('it indicates whether information may be hidden', function(assert) {
   this.set('fakeLimitedZoomLayer', {
     minzoom: 15,
     visible: true,
+    config: {
+      title: 'test',
+    },
   });
 
   this.set('fakeLayer', {
     visible: true,
+    config: {
+      title: 'test',
+    },
   });
 
   this.render(hbs`

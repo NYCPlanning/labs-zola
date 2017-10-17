@@ -3,7 +3,7 @@ import fetch from 'fetch';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task, timeout } from 'ember-concurrency';
 import bblDemux from '../utils/bbl-demux';
-import trackEvent from '../utils/track-event';
+import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 
 const { service } = Ember.inject;

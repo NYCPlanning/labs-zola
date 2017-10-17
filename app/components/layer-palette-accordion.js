@@ -1,12 +1,13 @@
 import Ember from 'ember';
 import { ParentMixin } from 'ember-composability-tools';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
-import trackEvent from '../utils/track-event';
+import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 
 export default Ember.Component.extend(ParentMixin, {
   classNames: ['layer-palette-accordion'],
   closed: true,
+  title: '',
 
   didInsertElement() {
     this.set('numberVisible', Ember.computed('childComponents.@each.visible', function() {
@@ -16,7 +17,7 @@ export default Ember.Component.extend(ParentMixin, {
   },
 
   actions: {
-    @trackEvent('Layer Palette', 'Toggle')
+    @trackEvent('Toggle Accordion', 'title', 'closed')
     toggleClosed() {
       this.toggleProperty('closed');
     },
