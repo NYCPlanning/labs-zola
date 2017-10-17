@@ -16,6 +16,7 @@ export default Ember.Component.extend({
   transitionTo: null,
   selected: 0,
   mainMap: service(),
+  metrics: service(),
   focused: false,
 
   @computed('searchTerms')
@@ -27,6 +28,16 @@ export default Ember.Component.extend({
     if (searchTerms.length < 3) this.cancel();
     yield timeout(DEBOUNCE_MS);
     const URL = `https://zola-search-api.planninglabs.nyc/search?q=${searchTerms}`;
+
+    this.get('metrics').trackEvent(
+      'GoogleAnalytics',
+      {
+        eventCategory: 'Search',
+        eventAction: 'Received Results for Search Terms',
+        eventLabel: searchTerms,
+      },
+    );
+
     return yield fetch(URL)
       .then(data => data.json())
       .then(json => json.map(
@@ -94,7 +105,7 @@ export default Ember.Component.extend({
       this.set('searchTerms', '');
     },
 
-    @trackEvent('Map Search', 'Clicked result')
+    @trackEvent('Map Search', 'Clicked result', 'searchTerms')
     goTo(result) {
       const mainMap = this.get('mainMap');
       const mapInstance = mainMap.get('mapInstance');
@@ -152,9 +163,13 @@ export default Ember.Component.extend({
         this.transitionTo('special-purpose-district', result.cartodb_id);
       }
     },
+
+    @trackEvent('Search', 'Focused In', 'searchTerms')
     handleFocusIn() {
       this.set('focused', true);
     },
+
+    @trackEvent('Search', 'Focused Out', 'searchTerms')
     handleFocusOut() {
       this.set('focused', false);
     },

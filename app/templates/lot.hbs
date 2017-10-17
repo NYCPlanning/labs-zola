@@ -1,5 +1,7 @@
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4">
-  {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
+  {{#link-to 'index' classNames='close-button'}}
+    <span aria-hidden="true">&times;</span>
+  {{/link-to}}
 
   {{bookmark-button
     bookmark=(await model.bookmark)

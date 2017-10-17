@@ -149,7 +149,7 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
       this.set(property, value);
     },
 
-    @trackEvent('Layer Palette', 'Reset query params')
+    @trackEvent('Layer Palette', 'Reset query params', 'isDefault')
     resetQueryParams() {
       this.resetQueryParams();
     },
