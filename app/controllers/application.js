@@ -48,6 +48,7 @@ export const mapQueryParams =
         R7: { defaultValue: true },
         R8: { defaultValue: true },
         R9: { defaultValue: true },
+        R10: { defaultValue: true },
         c11: { defaultValue: true },
         c12: { defaultValue: true },
         c13: { defaultValue: true },
