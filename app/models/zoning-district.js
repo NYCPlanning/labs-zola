@@ -30,6 +30,7 @@ const zoningDescriptions = {
   c3: 'C3 and C3A districts permit waterfront recreational activities, primarily boating and fishing, in areas along the waterfront that are usually adjacent to residential districts. In addition to facilities for docking, renting, servicing and storing fishing and pleasure boats, permitted activities include aquatic sports equipment sales and rentals, bicycle shops, ice cream stores and public and private beaches. These waterfront uses are listed in Use Group 14. C3 and C3A districts also permit residences and community facilities (Use Groups 1–4). C3A districts are mapped in Staten Island and the Throgs Neck area of the Bronx. C3 districts are found on City Island and along Mill Basin in Brooklyn.',
 
   c4: 'C4 districts are mapped in regional commercial centers, such as Flushing in Queens and the Hub in the Bronx, that are located outside of the central business districts. In these areas, specialty and department stores, theaters and other commercial and office uses serve a larger region and generate more traffic than neighborhood shopping areas. Use Groups 5, 6, 8, 9, 10 and 12, which include most retail establishments, are permitted in C4 districts. Uses that would interrupt the desired continuous retail frontage, such as home maintenance and repair service stores listed in Use Group 7, are not allowed.',
+
   c5: 'C5 is a central commercial district with continuous retail frontage intended for offices and retail establishments that serve the entire metropolitan region. Famous shopping streets, such as Fifth Avenue, Madison Avenue and East 57th Street are C5 districts. Parts of Lower Manhattan, Downtown Brooklyn and Long Island City are also within C5 districts.',
 
   c6: 'C6 districts permit a wide range of high-bulk commercial uses requiring a central ­location. Most C6 districts are in Manhattan, Downtown Brooklyn and Downtown Jamaica; a C6-3D district is mapped in the Civic Center area of the Bronx. Corporate headquarters, large hotels, department stores and entertainment facilities in high-rise mixed buildings are permitted in C6 districts.',
@@ -43,7 +44,6 @@ const zoningDescriptions = {
   m2: 'M2 districts occupy the middle ground between light and heavy industrial areas. The four M2 districts, with different floor area ratios (FAR) and parking requirements, are mapped mainly in the city’s older industrial areas along the waterfront. M2-1 districts, for example, are mapped along much of Brooklyn’s Red Hook and Sunset Park waterfronts. Manhattan’s Hudson River piers, including the Passenger Ship Terminal and many municipal facilities, are within M2-3 districts.',
 
   m3: 'M3 districts are designated for areas with heavy industries that generate noise, traffic or pollutants. Typical uses include power plants, solid waste transfer facilities and recycling plants, and fuel supply depots. Even in M3 districts, uses with potential nuisance effects are required to conform to minimum performance standards.',
-
 };
 
 export default DS.Model.extend({
@@ -57,7 +57,6 @@ export default DS.Model.extend({
 
   @computed('primaryzone')
   description(primaryzone) {
-    console.log(primaryzone);
     return zoningDescriptions[primaryzone];
   },
 
