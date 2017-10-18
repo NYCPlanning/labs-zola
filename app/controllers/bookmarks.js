@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { Promise } from 'rsvp';
+import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 const { service } = Ember.inject;
 
@@ -18,6 +19,8 @@ export default Ember.Controller.extend({
   },
 
   actions: {
+
+    @trackEvent('Bookmark', 'Delete')
     deleteBookmark(record) {
       record.deleteRecord();
       record.save();
