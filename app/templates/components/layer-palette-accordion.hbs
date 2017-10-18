@@ -1,4 +1,4 @@
-<h5 {{action (mut closed) (not closed)}} class="layer-palette-accordion-title {{if closed 'closed'}}">
+<h5 {{action 'toggleClosed'}} class="layer-palette-accordion-title {{if closed 'closed'}}">
   {{title}}
   {{#if numberVisible}}
     <span class="badge">{{numberVisible}}</span>
