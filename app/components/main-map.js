@@ -45,6 +45,7 @@ const draw = new MapboxDraw({
 export default Ember.Component.extend({
   mainMap: service(),
   mapMouseover: service(),
+  metrics: service(),
 
   classNames: ['map-container'],
 
@@ -147,6 +148,7 @@ export default Ember.Component.extend({
         });
 
       // setup controls
+      const navigationControl = new mapboxgl.NavigationControl();
       const geoLocateControl = new mapboxgl.GeolocateControl({
         positionOptions: {
           enableHighAccuracy: true,
@@ -154,7 +156,15 @@ export default Ember.Component.extend({
         trackUserLocation: true,
       });
 
-      map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+      // GA
+      geoLocateControl.on('trackuserlocationstart', () => {
+        this.get('metrics').trackEvent(
+          'GoogleAnalytics',
+          { eventCategory: 'Map', eventAction: 'Geolocate' },
+        );
+      });
+
+      map.addControl(navigationControl, 'top-left');
       map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
       map.addControl(geoLocateControl, 'top-left');
       map.addControl(draw, 'top-left');
