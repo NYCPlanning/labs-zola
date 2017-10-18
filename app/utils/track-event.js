@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { service } = Ember.inject;
+const { isEmpty, inject: { service } } = Ember;
 
 export default function trackEvent(eventCategory, incAction, incLabel, eventValue) {
   return (target, name, desc) => {
@@ -21,15 +21,15 @@ export default function trackEvent(eventCategory, incAction, incLabel, eventValu
       if (eventAction) {
         const actionIdentifier = this.get(eventAction);
 
-        if (actionIdentifier !== undefined) {
+        if (!isEmpty(actionIdentifier)) {
           eventAction = actionIdentifier;
         }
       }
 
       if (eventLabel) {
         const labelIdentifier = this.get(eventLabel);
-
-        if (labelIdentifier !== undefined) {
+        console.log(labelIdentifier);
+        if (!isEmpty(labelIdentifier)) {
           eventLabel = labelIdentifier;
         }
       }
