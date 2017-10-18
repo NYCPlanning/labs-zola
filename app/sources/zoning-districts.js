@@ -4,7 +4,7 @@ export default {
   'source-layers': [
     {
       id: 'zoning-districts',
-      sql: 'SELECT * FROM (SELECT *, LEFT(zonedist, 2) as primaryzone FROM support_zoning_zd) a',
+      sql: "SELECT * FROM (SELECT *, split_part(zonedist, '-', 1) as primaryzone FROM support_zoning_zd) a",
     },
   ],
 };
