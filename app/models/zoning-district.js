@@ -36,13 +36,13 @@ const zoningDescriptions = {
   r6b: 'R6B contextual districts are often traditional row house districts, which preserve the scale and harmonious streetscape of medium-density neighborhoods of four-story attached buildings developed during the 19th century.',
   r7: 'R7 zoning districts are medium-density apartment house districts that encourage lower apartment buildings on smaller lots and, on larger lots, taller buildings with less lot coverage.',
   r7a: 'R7A contextual districts produce high lot coverage, seven- to nine-story apartment buildings set at or near the street line designed to be compatible with older buildings in medium-density neighborhoods.',
-  r7b: 'R7B contextual districts generally produce six- to seven- story apartment buildings in medium-density neighborhoods.',
+  r7b: 'R7B contextual districts generally produce six- to seven-story apartment buildings in medium-density neighborhoods.',
   r7d: 'R7D contextual districts promote new medium-density contextual development along transit corridors that range between 10 and 11 stories.',
-  r7x: 'R7X contextual districts are flexible medium-density districts that generally produce 12- to 14- story buildings.',
+  r7x: 'R7X contextual districts are flexible medium-density districts that generally produce 12- to 14-story buildings.',
   r8: 'R8 zoning districts are high-density apartment house districts that encourage mid-rise apartment buildings on smaller lots and, on larger lots, taller buildings with less lot coverage.',
   r8a: 'R8A contextual districts are high-density districts designed to produce apartment buildings at heights of roughly twelve to fourteen stories.',
   r8b: 'R8B contextual districts are designed to preserve the character and scale of taller rowhouse neighborhoods.',
-  r8x: 'R8X contextual districts are flexible high-density districts that generally produce 15- to 17- story buildings.',
+  r8x: 'R8X contextual districts are flexible high-density districts that generally produce 15- to 17-story buildings.',
   r9: 'R9 districts are high-density districts that permit a wide range of building types including towers.',
   r9a: 'R9A contextual districts are high-density districts designed to produce new buildings between 13 and 17 stories that mimics older, high street wall buildings in high-density neighborhoods.',
   r9d: 'R9D contextual districts are high-density districts that permit towers that sit on a contextual base.',
@@ -68,8 +68,6 @@ const zoningAbbr = {
   R5D: 'r5d',
   R6A: 'r6a',
   R6B: 'r6b',
-  'R7-1': 'r7',
-  'R7-2': 'r7',
   R7A: 'r7a',
   R7B: 'r7b',
   R7D: 'r7d',
@@ -78,10 +76,10 @@ const zoningAbbr = {
   R8B: 'r8b',
   R8X: 'r8x',
   R9A: 'r9a',
-  R9D: 'r9d',
+  R9D: 'r9d', // R9D does not have a route
   R9X: 'r9x',
   R10A: 'r10a',
-  R10X: 'r10x',
+  R10X: 'r10x', // R910X does not have a route
   BPC: 'bpc',
 };
 
