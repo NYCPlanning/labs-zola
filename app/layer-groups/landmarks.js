@@ -5,7 +5,7 @@ const legendColor = 'purple';
 export default {
   id: 'landmarks',
   title: 'Landmarks',
-  titleTooltip: 'Sites with landmark status granted by the NYC Landmarks Preservation Commission',
+  titleTooltip: 'Sites designated by the NYC Landmarks Preservation Commission that possess historical significance and to which special zoning regulations apply',
   visible: false,
   layers: [
     {
