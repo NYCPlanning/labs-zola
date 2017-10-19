@@ -5,7 +5,7 @@ const legendColor = '#5E6633';
 export default {
   id: 'special-purpose-districts',
   title: 'Special Purpose Districts',
-  titleTooltip: 'The regulations for special purpose districts are designed to supplement and modify the underlying zoning in order to respond to distinctive neighborhoods with particular issues and goals.',
+  titleTooltip: 'The regulations for special purpose districts are designed to supplement and modify the underlying zoning in order to respond to distinctive neighborhoods with particular issues and goals',
   visible: false,
   legendIcon: 'polygon',
   legendColor,

@@ -1,7 +1,7 @@
 export default {
   id: 'sidewalkcafes',
   title: 'Sidewalk Cafes',
-  titleTooltip: 'A sidewalk cafe is a portion of an eating or drinking estab­lishment that is located on a public sidewalk. Sidewalk cafe regulations are administered by the Department of Consumer Affairs.',
+  titleTooltip: 'Areas where different types of sidewalk cafes are permitted on public sidewalks',
   visible: false,
   layers: [
     {

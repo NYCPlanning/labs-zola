@@ -4,7 +4,7 @@ const { paint, layout, labelLayout } = adminBoundaryStyles;
 
 export default {
   id: 'nysenatedistricts',
-  title: 'New York State Senate Districts',
+  title: 'NY State Senate Districts',
   legendIcon: 'admin-line',
   legendColor: '#E4F576',
   visible: false,

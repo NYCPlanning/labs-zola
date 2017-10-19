@@ -4,8 +4,8 @@ const legendColor = '#9D47B2';
 
 export default {
   id: 'low-density-growth-mgmt-areas',
-  title: 'Low Density Growth Management Areas',
-  titleTooltip: 'These districts aim to match future development to the capacity of supporting services and infrastructure in parts of the city experiencing rapid growth.',
+  title: 'Lower Density Growth Management Areas',
+  titleTooltip: 'Areas where special zoning controls intend to limit growth and better match available infrastructure and services in lower-density areas experiencing rapid development',
   visible: false,
   legendIcon: 'polygon',
   legendColor,
@@ -16,7 +16,7 @@ export default {
     {
       layer: fillStyle('low-density-growth-mgmt-areas-fill', 'supporting-zoning', 'low-density-growth-mgmt-areas', legendColor),
       highlightable: true,
-      tooltipTemplate: 'Low Density Growth Management Area',
+      tooltipTemplate: 'Lower Density Growth Management Area',
     },
   ],
 };

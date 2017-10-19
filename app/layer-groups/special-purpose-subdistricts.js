@@ -5,7 +5,7 @@ const legendColor = '#8DA610';
 export default {
   id: 'special-purpose-subdistricts',
   title: 'Special Purpose Subdistricts',
-  titleTooltip: 'The regulations for special purpose districts are designed to supplement and modify the underlying zoning in order to respond to distinctive neighborhoods with particular issues and goals.',
+  titleTooltip: 'Areas within Special Purpose Districts where unique rules apply',
   visible: false,
   legendIcon: 'polygon',
   legendColor,
