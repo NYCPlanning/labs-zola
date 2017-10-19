@@ -24,6 +24,29 @@
       {{#if model.zonedist2}}<li>{{link-to model.zonedist2 'zoning-district' model.zonedist2 classNames="button"}}</li>{{/if}}
       {{#if model.zonedist3}}<li>{{link-to model.zonedist3 'zoning-district' model.zonedist3 classNames="button"}}</li>{{/if}}
       {{#if model.zonedist4}}<li>{{link-to model.zonedist4 'zoning-district' model.zonedist4 classNames="button"}}</li>{{/if}}
+      {{#if model.spdist1}}
+        <li>
+          {{link-to-intersecting model.spdist1 'special-purpose-district' 'support_nysp' model.geometry classNames="button"}}
+        </li>
+      {{/if}}
+
+      {{#if model.spdist2}}
+        <li>
+          {{link-to-intersecting model.spdist2 'special-purpose-district' 'support_nysp' model.geometry classNames="button"}}
+        </li>
+      {{/if}}
+
+      {{#if model.spdist3}}
+        <li>
+          {{link-to-intersecting model.spdist3 'special-purpose-district' 'support_nysp' model.geometry classNames="button"}}
+        </li>
+      {{/if}}
+
+      {{#if model.spdist4}}
+        <li>
+          {{link-to-intersecting model.spdist4 'special-purpose-district' 'support_nysp' model.geometry classNames="button"}}
+        </li>
+      {{/if}}
     </ul>
   {{/if}}
   <ul class="no-bullet text-small">

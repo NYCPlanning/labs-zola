@@ -28,7 +28,7 @@ const env = function (environment) {
         config: {
           id: 'UA-84250233-8',
           // Use `analytics_debug.js` in development
-          debug: environment === 'development',
+          debug: false,
           // Use verbose tracing of GA events
           trace: false,
           // Ensure development env hits aren't sent to GA

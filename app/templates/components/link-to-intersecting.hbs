@@ -1,0 +1,9 @@
+{{#if hasBlock}}
+  {{yield (hash resultingFeature)}}
+{{else}}
+  {{#if (await resultingFeature) as |id|}} 
+    {{#if id}}    
+      {{link-to 'Special District' route id classNames=classNames}}
+    {{/if}}
+  {{/if}}
+{{/if}}
