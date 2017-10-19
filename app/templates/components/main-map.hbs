@@ -48,6 +48,10 @@
 
   {{map.layer-group for='sidewalkcafes' visible=qps.sidewalkcafes}}
 
+  {{map.layer-group for='effective-flood-insurance-rate-2007' visible=qps.effective-flood-insurance-rate-2007}}
+
+  {{map.layer-group for='preliminary-flood-insurance-rate' visible=qps.preliminary-flood-insurance-rate}}
+
   {{map.layer-group for='fresh' visible=qps.fresh}}
 
   {{map.layer-group for='transit-zones' visible=qps.transit-zones}}
@@ -129,3 +133,10 @@
   {{map.on 'draw.modechange' (action 'handleMeasurementModeChange')}}
 
 {{/mapbox-gl}}
+
+{{#unless findMeDismissed}}
+  <div class="find-me">
+    <button {{action 'locateMe'}} class="button hide-for-medium hide-for-print no-margin">Locate&nbsp;Me</button>
+    <button {{action 'dismissFindMe'}} class="button hide-for-medium hide-for-print no-margin">&times;</button>
+  </div>
+{{/unless}}

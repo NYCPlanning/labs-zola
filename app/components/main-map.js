@@ -24,7 +24,6 @@ const MeasurementText = function() { };
 MeasurementText.prototype.onAdd = function(map) {
   this._map = map;
   this._container = document.createElement('div');
-  // this._container.className = 'mapboxgl-ctrl mapboxgl-ctrl-group';
   this._container.id = 'measurement-text';
   return this._container;
 };
@@ -46,6 +45,7 @@ const draw = new MapboxDraw({
 export default Ember.Component.extend({
   mainMap: service(),
   mapMouseover: service(),
+  metrics: service(),
 
   classNames: ['map-container'],
 
@@ -59,6 +59,7 @@ export default Ember.Component.extend({
   mapConfig: Object.keys(layerGroups).map(key => layerGroups[key]),
 
   loading: true,
+  findMeDismissed: false,
   sourcesLoaded: true,
   currentMeasurement: null,
   measurementUnit: '',
@@ -115,6 +116,19 @@ export default Ember.Component.extend({
   selectedLineLayer,
 
   actions: {
+    locateMe() {
+      const geolocateButton = document.querySelectorAll('.mapboxgl-ctrl-geolocate')[0];
+
+      if (geolocateButton) {
+        geolocateButton.click();
+        this.set('findMeDismissed', true);
+      }
+    },
+
+    dismissFindMe() {
+      this.set('findMeDismissed', true);
+    },
+
     handleMapLoad(map) {
       window.map = map;
       const mainMap = this.get('mainMap');
@@ -134,6 +148,7 @@ export default Ember.Component.extend({
         });
 
       // setup controls
+      const navigationControl = new mapboxgl.NavigationControl();
       const geoLocateControl = new mapboxgl.GeolocateControl({
         positionOptions: {
           enableHighAccuracy: true,
@@ -141,7 +156,15 @@ export default Ember.Component.extend({
         trackUserLocation: true,
       });
 
-      map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+      // GA
+      geoLocateControl.on('trackuserlocationstart', () => {
+        this.get('metrics').trackEvent(
+          'GoogleAnalytics',
+          { eventCategory: 'Map', eventAction: 'Geolocate' },
+        );
+      });
+
+      map.addControl(navigationControl, 'top-left');
       map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
       map.addControl(geoLocateControl, 'top-left');
       map.addControl(draw, 'top-left');
