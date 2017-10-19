@@ -36,7 +36,7 @@
     {{#if model.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{model.zonemap}}.pdf">{{fa-icon "external-link"}} Historical Zoning Maps <small>(PDF)</small></a></li>{{/if}}
   </ul>
 
-  <h3 class="header-small lot-section-header">Lot Details</h3>
+  <h3 class="header-small lot-section-header">Available Lot Details</h3>
 
   {{#if model.ownertypename}}<div class="data-grid"><label class="data-label">Owner Type</label><span class="datum">{{if model.ownertypename model.ownertypename 'Unknown/Private'}}</span></div>{{/if}}
   {{#if model.ownername}}<div class="data-grid"><label class="data-label">Owner</label><span class="datum">{{model.ownername}}</span></div>{{/if}}
