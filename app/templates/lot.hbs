@@ -30,7 +30,7 @@
     {{#if model.overlay1}}
       <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" class="">{{fa-icon "external-link"}} Commercial Overlay{{if model.overlay2 's'}}</a>: <strong>{{model.overlay1}}</strong>{{#if model.overlay2}}, <strong>{{model.overlay2}}</strong>{{/if}}
     {{/if}}
-    {{#if model.histdist}}<li>{{model.histdist}}</li>{{/if}}
+    {{#if model.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a>: <strong>{{model.histdist}}</strong></li>{{/if}}
     {{#if model.bbl}}<li><a target="_blank" href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{model.bbl}}">{{fa-icon "external-link"}} Digital Tax Map</a></li>{{/if}}
     {{#if model.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{model.zonemap}}.pdf">{{fa-icon "external-link"}} Zoning Map <small>(PDF)</small></a></li>{{/if}}
     {{#if model.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{model.zonemap}}.pdf">{{fa-icon "external-link"}} Historical Zoning Maps <small>(PDF)</small></a></li>{{/if}}
