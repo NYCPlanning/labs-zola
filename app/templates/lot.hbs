@@ -19,7 +19,7 @@
 
   {{#if model.zonedist1}}
     <ul class="lot-zoning-list">
-      <li class="menu-text">Zoning District{{if model.zonedist2 's'}}:</li>
+      <li class="menu-text">Zoning District{{if (or model.zonedist2 model.spdist1) 's'}}:</li>
       {{#if model.zonedist1}}<li>{{link-to model.zonedist1 'zoning-district' model.zonedist1 classNames="button"}}</li>{{/if}}
       {{#if model.zonedist2}}<li>{{link-to model.zonedist2 'zoning-district' model.zonedist2 classNames="button"}}</li>{{/if}}
       {{#if model.zonedist3}}<li>{{link-to model.zonedist3 'zoning-district' model.zonedist3 classNames="button"}}</li>{{/if}}
