@@ -105,6 +105,14 @@
         </a>
       </li>
     {{/link-to-intersecting}}
+
+    {{#link-to-intersecting table='floodplain' geometry=model.geometry as |link|}}
+      <li>
+        <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
+          {{fa-icon "external-link"}} Flood Zone
+        </a>
+      </li>
+    {{/link-to-intersecting}}
   </ul>
 
   <h3 class="header-small lot-section-header">Available Lot Details</h3>
