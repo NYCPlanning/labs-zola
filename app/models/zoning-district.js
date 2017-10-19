@@ -79,7 +79,7 @@ const zoningAbbr = {
   R9D: 'r9d', // R9D does not have a route
   R9X: 'r9x',
   R10A: 'r10a',
-  R10X: 'r10x', // R910X does not have a route
+  R10X: 'r10x', // R10X does not have a route
   BPC: 'bpc',
 };
 
