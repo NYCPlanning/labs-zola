@@ -1,5 +1,7 @@
 {{#if hasBlock}}
-  {{yield (hash resultingFeature)}}
+  {{#if (await resultingFeature) as |id|}} 
+    {{yield (hash resultingFeature=id)}}
+  {{/if}}
 {{else}}
   {{#if (await resultingFeature) as |id|}} 
     {{#if id}}    
