@@ -4,7 +4,14 @@ export default {
   'source-layers': [
     {
       id: 'zoning-districts',
-      sql: "SELECT * FROM (SELECT *, split_part(zonedist, '-', 1) as primaryzone FROM support_zoning_zd) a",
+      sql: `SELECT * FROM (
+              SELECT *, CASE 
+                WHEN SUBSTRING(zonedist, 3, 1) = '-' THEN LEFT(zonedist, 2)
+                WHEN SUBSTRING(zonedist, 3, 1) ~ E'[A-Z]' THEN LEFT(zonedist, 2)
+                WHEN SUBSTRING(zonedist, 3, 1) ~ E'[0-9]' THEN LEFT(zonedist, 3)
+                ELSE zonedist
+              END as primaryzone FROM support_zoning_zd
+            ) a`,
     },
   ],
 };
