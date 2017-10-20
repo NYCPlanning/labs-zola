@@ -50,84 +50,81 @@
     </ul>
   {{/if}}
 
-  <h6 class="no-margin-">Intersecting Map Layers:</h6>
-  <ul class="no-bullet text-small">
-    {{#if model.overlay1}}
-      <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" class="">{{fa-icon "external-link"}} Commercial Overlay{{if model.overlay2 's'}}</a>: <strong>{{model.overlay1}}</strong>{{#if model.overlay2}}, <strong>{{model.overlay2}}</strong>{{/if}}
-    {{/if}}
-    {{#if model.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a>: <strong>{{model.histdist}}</strong></li>{{/if}}
-
-    {{#link-to-intersecting table='support_ih' geometry=model.geometry as |link|}}
-      <li>
-        <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page">
-          {{fa-icon "external-link"}} Inclusionary Housing Zone
-        </a>
-      </li>
-    {{/link-to-intersecting}}
-
-    {{#link-to-intersecting table='support_tz' geometry=model.geometry as |link|}}
-      <li>
-        <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone">
-          {{fa-icon "external-link"}} Transit Zone
-        </a>
-      </li>
-    {{/link-to-intersecting}}
-
-    {{#link-to-intersecting table='support_fresh' geometry=model.geometry as |link|}}
-      <li>
-        <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page">
-          {{fa-icon "external-link"}} Fresh Zone
-        </a>
-      </li>
-    {{/link-to-intersecting}}
-
-    {{#link-to-intersecting table='support_wap' geometry=model.geometry as |link|}}
-      <li>
-        <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan">
-          {{fa-icon "external-link"}} Waterfront Access Plan
-        </a>
-      </li>
-    {{/link-to-intersecting}}
-
-    {{#link-to-intersecting table='support_czb' geometry=model.geometry as |link|}}
-      <li>
-        <a target="_blank" href="http://www1.nyc.gov/site/planning/applicants/wrp/wrpcoastalmaps.page">
-          {{fa-icon "external-link"}} Coastal Zone
-        </a>
-      </li>
-    {{/link-to-intersecting}}
-
-    {{#link-to-intersecting table='support_ldgma' geometry=model.geometry as |link|}}
-      <li>
-        <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page">
-          {{fa-icon "external-link"}} Lower Density Growth Management Zone
-        </a>
-      </li>
-    {{/link-to-intersecting}}
-
-    {{#link-to-intersecting table='floodplain' geometry=model.geometry as |link|}}
-      <li>
-        <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
-          {{fa-icon "external-link"}} Flood Zone
-        </a> <small class="dark-gray">Preliminary Flood Insurance Rate Maps 2015</small>
-      </li>
-    {{/link-to-intersecting}}
-
-    {{#link-to-intersecting table='firms_100_year_floodplain_2007' geometry=model.geometry as |link|}}
-      <li>
-        <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
-          {{fa-icon "external-link"}} Flood Zone
-        </a> <small class="dark-gray">Effective Flood Insurance Rate Maps 2007</small>
-      </li>
-    {{/link-to-intersecting}}
-  </ul>
-
-  <h6 class="no-margin-">Zoning Details:</h6>
-  <ul class="no-bullet text-small">
-    {{#if model.bbl}}<li><a target="_blank" href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{model.bbl}}">{{fa-icon "external-link"}} Digital Tax Map</a></li>{{/if}}
-    {{#if model.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{model.zonemap}}.pdf">{{fa-icon "external-link"}} Zoning Map <small>(PDF)</small></a></li>{{/if}}
-    {{#if model.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{model.zonemap}}.pdf">{{fa-icon "external-link"}} Historical Zoning Maps <small>(PDF)</small></a></li>{{/if}}
-  </ul>
+  <div class="grid-x grid-margin-x">
+    <div class="cell large-auto">
+      <h6 class="no-margin-">Intersecting Map Layers:</h6>
+      <ul class="no-bullet text-small">
+        {{#if model.overlay1}}
+          <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" class="">{{fa-icon "external-link"}} Commercial Overlay{{if model.overlay2 's'}}</a> <small class="dark-gray">{{model.overlay1}}</small>{{#if model.overlay2}}, <small class="dark-gray">{{model.overlay2}}</small>{{/if}}
+        {{/if}}
+        {{#if model.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a> <small class="dark-gray">{{model.histdist}}</small></li>{{/if}}
+        {{#link-to-intersecting table='support_ih' geometry=model.geometry as |link|}}
+          <li>
+            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page">
+              {{fa-icon "external-link"}} Inclusionary Housing Zone
+            </a>
+          </li>
+        {{/link-to-intersecting}}
+        {{#link-to-intersecting table='support_tz' geometry=model.geometry as |link|}}
+          <li>
+            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone">
+              {{fa-icon "external-link"}} Transit Zone
+            </a>
+          </li>
+        {{/link-to-intersecting}}
+        {{#link-to-intersecting table='support_fresh' geometry=model.geometry as |link|}}
+          <li>
+            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page">
+              {{fa-icon "external-link"}} Fresh Zone
+            </a>
+          </li>
+        {{/link-to-intersecting}}
+        {{#link-to-intersecting table='support_wap' geometry=model.geometry as |link|}}
+          <li>
+            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan">
+              {{fa-icon "external-link"}} Waterfront Access Plan
+            </a>
+          </li>
+        {{/link-to-intersecting}}
+        {{#link-to-intersecting table='support_czb' geometry=model.geometry as |link|}}
+          <li>
+            <a target="_blank" href="http://www1.nyc.gov/site/planning/applicants/wrp/wrpcoastalmaps.page">
+              {{fa-icon "external-link"}} Coastal Zone
+            </a>
+          </li>
+        {{/link-to-intersecting}}
+        {{#link-to-intersecting table='support_ldgma' geometry=model.geometry as |link|}}
+          <li>
+            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page">
+              {{fa-icon "external-link"}} Lower Density Growth Management Zone
+            </a>
+          </li>
+        {{/link-to-intersecting}}
+        {{#link-to-intersecting table='floodplain' geometry=model.geometry as |link|}}
+          <li>
+            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
+              {{fa-icon "external-link"}} Flood Zone
+            </a> <small class="dark-gray">2015</small>
+          </li>
+        {{/link-to-intersecting}}
+        {{#link-to-intersecting table='firms_100_year_floodplain_2007' geometry=model.geometry as |link|}}
+          <li>
+            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
+              {{fa-icon "external-link"}} Flood Zone
+            </a> <small class="dark-gray">2007</small>
+          </li>
+        {{/link-to-intersecting}}
+      </ul>
+    </div>
+    <div class="cell large-auto">
+      <h6 class="no-margin-">Zoning Details:</h6>
+      <ul class="no-bullet text-small">
+        {{#if model.bbl}}<li><a target="_blank" href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{model.bbl}}">{{fa-icon "external-link"}} Digital Tax Map</a></li>{{/if}}
+        {{#if model.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{model.zonemap}}.pdf">{{fa-icon "external-link"}} Zoning Map <small>(PDF)</small></a></li>{{/if}}
+        {{#if model.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{model.zonemap}}.pdf">{{fa-icon "external-link"}} Historical Zoning Maps <small>(PDF)</small></a></li>{{/if}}
+      </ul>
+    </div>
+  </div>
 
   <h3 class="header-small lot-section-header">Available Lot Details</h3>
 
