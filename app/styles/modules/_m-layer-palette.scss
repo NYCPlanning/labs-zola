@@ -67,6 +67,18 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
 
   .switch {
     margin: 0 $layer-palette-padding 0 0;
+
+    &.tiny .switch-paddle {
+      width: 1.25rem;
+    }
+
+    &.tiny .switch-paddle::after {
+      width: 0.5rem;
+    }
+
+    &.tiny input:checked ~ .switch-paddle::after {
+      left: 0.625rem;
+    }
   }
 }
 
