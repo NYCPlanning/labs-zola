@@ -4,7 +4,7 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 const { PromiseObject } = DS;
 
 export default DS.Model.extend({
-  bookmark: DS.belongsTo('bookmark'),
+  bookmark: DS.belongsTo('bookmark', { inverse: 'bookmark' }),
 
   address: DS.attr('string'),
   coordinates: DS.attr(),
