@@ -4,8 +4,8 @@ const legendColor = '#CC3D5D';
 
 export default {
   id: 'mandatory-inclusionary-housing',
-  title: 'Mandatory Inclusionary Housing',
-  titleTooltip: 'Developments, enlargements, and conversions above 10 units or 12,500 square feet in these areas will be required to set aside a percentage of floor area for permanently affordable housing.',
+  title: 'Mandatory Inclusionary Housing Areas',
+  titleTooltip: 'Areas where developments, enlargements and conversions over a certain size are required to set aside a percentage of floor area for permanently affordable housing',
   visible: false,
   legendIcon: 'polygon',
   legendColor,

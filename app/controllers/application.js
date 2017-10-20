@@ -3,6 +3,8 @@ import QueryParams from 'ember-parachute';
 import bblDemux from '../utils/bbl-demux';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
+import trackEvent from '../utils/track-event'; // eslint-disable-line
+
 import layerGroups from '../layer-groups';
 
 const { service } = Ember.inject;
@@ -48,6 +50,7 @@ export const mapQueryParams =
         R7: { defaultValue: true },
         R8: { defaultValue: true },
         R9: { defaultValue: true },
+        R10: { defaultValue: true },
         c11: { defaultValue: true },
         c12: { defaultValue: true },
         c13: { defaultValue: true },
@@ -114,6 +117,7 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
       const feature = map.queryRenderedFeatures(e.point, { layers })[0];
 
       const highlightedLayer = this.get('mapMouseover.highlightedLayer');
+
       if (feature) {
         if (highlightedLayer === feature.layer.id) {
           const { bbl, ulurpno, zonedist, sdlbl, splbl, cartodb_id } = feature.properties;
@@ -145,10 +149,9 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
     setQueryParam(property, value) {
       this.set(property, value);
     },
+
+    @trackEvent('Layer Palette', 'Reset query params', 'isDefault')
     resetQueryParams() {
-      this.resetQueryParams();
-    },
-    resetAll() {
       this.resetQueryParams();
     },
   },

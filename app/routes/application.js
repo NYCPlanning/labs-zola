@@ -9,7 +9,6 @@ export default Ember.Route.extend({
   mainMap: service(),
 
   beforeModel(transition) {
-    console.log(transition);
     if (transition.intent.url === '/') {
       this.transitionTo('about');
     }

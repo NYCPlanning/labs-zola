@@ -4,7 +4,7 @@ const { paint, layout, labelLayout } = adminBoundaryStyles;
 
 export default {
   id: 'assemblydistricts',
-  title: 'New York State Assembly Districts',
+  title: 'NY State Assembly Districts',
   legendIcon: 'admin-line',
   legendColor: '#8A76F5',
   visible: false,

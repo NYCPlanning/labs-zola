@@ -1,7 +1,7 @@
 export default {
   id: 'building-footprints',
   title: 'Building Footprints',
-  titleTooltip: 'Building Footprints based on OpenStreetMap data',
+  titleTooltip: 'Building footprints based on OpenStreetMap data',
   visible: false,
   layers: [
     {

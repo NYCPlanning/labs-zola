@@ -5,6 +5,7 @@ const legendColor = 'steelblue';
 export default {
   id: 'historic-districts',
   title: 'Historic Districts',
+  titleTooltip: 'Areas designated by the NYC Landmarks Preservation Commission that possess historical significance and to which special zoning regulations apply',
   visible: false,
   legendIcon: 'polygon',
   legendColor,
