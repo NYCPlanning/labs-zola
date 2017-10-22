@@ -1,0 +1,5 @@
+{{#if (await intersectingLayers) as |layers|}}
+  {{yield layers numberIntersecting}}
+{{else}}
+  Calculating...
+{{/if}}

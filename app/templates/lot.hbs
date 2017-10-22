@@ -58,62 +58,73 @@
           <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" class="">{{fa-icon "external-link"}} Commercial Overlay{{if model.overlay2 's'}}</a> <small class="dark-gray">{{model.overlay1}}</small>{{#if model.overlay2}}, <small class="dark-gray">{{model.overlay2}}</small>{{/if}}
         {{/if}}
         {{#if model.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a> <small class="dark-gray">{{model.histdist}}</small></li>{{/if}}
-        {{#link-to-intersecting table='support_ih' geometry=model.geometry as |link|}}
-          <li>
-            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page">
-              {{fa-icon "external-link"}} Inclusionary Housing Zone
-            </a>
-          </li>
-        {{/link-to-intersecting}}
-        {{#link-to-intersecting table='support_tz' geometry=model.geometry as |link|}}
-          <li>
-            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone">
-              {{fa-icon "external-link"}} Transit Zone
-            </a>
-          </li>
-        {{/link-to-intersecting}}
-        {{#link-to-intersecting table='support_fresh' geometry=model.geometry as |link|}}
-          <li>
-            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page">
-              {{fa-icon "external-link"}} Fresh Zone
-            </a>
-          </li>
-        {{/link-to-intersecting}}
-        {{#link-to-intersecting table='support_wap' geometry=model.geometry as |link|}}
-          <li>
-            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan">
-              {{fa-icon "external-link"}} Waterfront Access Plan
-            </a>
-          </li>
-        {{/link-to-intersecting}}
-        {{#link-to-intersecting table='support_czb' geometry=model.geometry as |link|}}
-          <li>
-            <a target="_blank" href="http://www1.nyc.gov/site/planning/applicants/wrp/wrpcoastalmaps.page">
-              {{fa-icon "external-link"}} Coastal Zone
-            </a>
-          </li>
-        {{/link-to-intersecting}}
-        {{#link-to-intersecting table='support_ldgma' geometry=model.geometry as |link|}}
-          <li>
-            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page">
-              {{fa-icon "external-link"}} Lower Density Growth Management Zone
-            </a>
-          </li>
-        {{/link-to-intersecting}}
-        {{#link-to-intersecting table='floodplain' geometry=model.geometry as |link|}}
-          <li>
-            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
-              {{fa-icon "external-link"}} Flood Zone
-            </a> <small class="dark-gray">2015</small>
-          </li>
-        {{/link-to-intersecting}}
-        {{#link-to-intersecting table='firms_100_year_floodplain_2007' geometry=model.geometry as |link|}}
-          <li>
-            <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
-              {{fa-icon "external-link"}} Flood Zone
-            </a> <small class="dark-gray">2007</small>
-          </li>
-        {{/link-to-intersecting}}
+
+        {{#intersecting-layers 
+            tables=(array 'support_ih' 'support_tz' 'support_fresh' 'support_wap' 'support_czb' 'support_ldgma' 'floodplain' 'firms_100_year_floodplain_2007') 
+            geometry=model.geometry as |layers numberIntersecting|}}
+
+          {{#if layers.support_ih}}
+            <li>
+              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page">
+                {{fa-icon "external-link"}} Inclusionary Housing Zone
+              </a>
+            </li>
+          {{/if}}
+          {{#if layers.support_tz}}
+            <li>
+              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone">
+                {{fa-icon "external-link"}} Transit Zone
+              </a>
+            </li>
+          {{/if}}
+          {{#if layers.support_fresh}}
+            <li>
+              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page">
+                {{fa-icon "external-link"}} Fresh Zone
+              </a>
+            </li>
+          {{/if}}
+          {{#if layers.support_wap}}
+            <li>
+              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan">
+                {{fa-icon "external-link"}} Waterfront Access Plan
+              </a>
+            </li>
+          {{/if}}
+          {{#if layers.support_czb}}
+            <li>
+              <a target="_blank" href="http://www1.nyc.gov/site/planning/applicants/wrp/wrpcoastalmaps.page">
+                {{fa-icon "external-link"}} Coastal Zone
+              </a>
+            </li>
+          {{/if}}
+          {{#if layers.support_ldgma}}
+            <li>
+              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page">
+                {{fa-icon "external-link"}} Lower Density Growth Management Zone
+              </a>
+            </li>
+          {{/if}}
+          {{#if layers.floodplain}}
+            <li>
+              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
+                {{fa-icon "external-link"}} Flood Zone
+              </a> <small class="dark-gray">2015</small>
+            </li>
+          {{/if}}
+          {{#if layers.firms_100_year_floodplain_2007}}
+            <li>
+              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
+                {{fa-icon "external-link"}} Flood Zone
+              </a> <small class="dark-gray">2007</small>
+            </li>
+          {{/if}}
+
+          {{#unless numberIntersecting}}
+            None found
+          {{/unless}}
+
+        {{/intersecting-layers}}
       </ul>
     </div>
     <div class="cell medium-shrink">
