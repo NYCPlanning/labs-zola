@@ -10,7 +10,6 @@ export default {
         source: 'effective-flood-insurance-rate-2007',
         'source-layer': 'effective-flood-insurance-rate-2007',
         paint: {
-          'fill-outline-color': '#cdcdcd',
           'fill-color': {
             property: 'fld_zone',
             type: 'categorical',

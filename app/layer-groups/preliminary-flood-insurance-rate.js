@@ -10,7 +10,6 @@ export default {
         source: 'preliminary-flood-insurance-rate',
         'source-layer': 'preliminary-flood-insurance-rate',
         paint: {
-          'fill-outline-color': '#cdcdcd',
           'fill-color': {
             property: 'fld_zone',
             type: 'categorical',
