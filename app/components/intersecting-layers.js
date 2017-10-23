@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { task } from 'ember-concurrency';
 import carto from '../utils/carto';
 
 const { get, RSVP } = Ember;
@@ -19,8 +20,7 @@ export default Ember.Component.extend({
   geometry: null,
   tables: [],
 
-  @computed('tables.@each', 'geometry', 'responseIdentifier')
-  intersectingLayers(tables, geometry, responseIdentifier) {
+  calculateIntersections: task(function* (tables, geometry, responseIdentifier) {
     const hash = {};
 
     tables.forEach((table) => {
@@ -28,15 +28,24 @@ export default Ember.Component.extend({
         .then((response => get(response[0] || {}, responseIdentifier)));
     });
 
-    return RSVP.hash(hash);
+    return yield RSVP.hash(hash);
+  }).keepLatest(),
+
+  @computed('tables.@each', 'geometry', 'responseIdentifier')
+  intersectingLayers(...args) {
+    return this.get('calculateIntersections').perform(...args);
   },
 
-  @computed('intersectingLayers')
+  @computed('intersectingLayers.value')
   numberIntersecting(intersectingLayers) {
-    const truthyValues = Object
-      .values(intersectingLayers)
-      .filter(val => val);
+    if (intersectingLayers) {
+      const truthyValues = Object
+        .values(intersectingLayers)
+        .filter(val => val);
 
-    return get(truthyValues, 'length');
+      return get(truthyValues, 'length');
+    }
+
+    return 0;
   },
 });

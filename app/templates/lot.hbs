@@ -120,7 +120,7 @@
             </li>
           {{/if}}
 
-          {{#unless numberIntersecting}}
+          {{#unless (or numberIntersecting model.histdist model.overlay1)}}
             None found
           {{/unless}}
 
