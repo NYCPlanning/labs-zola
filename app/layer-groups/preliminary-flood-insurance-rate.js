@@ -1,7 +1,6 @@
 export default {
   id: 'preliminary-flood-insurance-rate',
   title: 'Preliminary Flood Insurance Rate Maps 2015',
-  titleTooltip: 'V Zone: portion of the 1% annual chance floodplain subject to high velocity wave action (a breaking wave 3 feet high or larger); A Zone: A portion of the area subject to flooding from the 1% annual chance flood; Shaded X Zone: The area of moderate flood risk outside the regulatory 1% annual chance flood but within the limits of the 0.2% annual chance flood level (the 500-year floodplain). ',
   visible: false,
   layers: [
     {
