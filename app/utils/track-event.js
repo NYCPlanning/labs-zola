@@ -28,7 +28,6 @@ export default function trackEvent(eventCategory, incAction, incLabel, eventValu
 
       if (eventLabel) {
         const labelIdentifier = this.get(eventLabel);
-        console.log(labelIdentifier);
         if (!isEmpty(labelIdentifier)) {
           eventLabel = labelIdentifier;
         }
