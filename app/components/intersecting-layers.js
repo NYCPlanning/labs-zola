@@ -29,7 +29,7 @@ export default Ember.Component.extend({
     });
 
     return yield RSVP.hash(hash);
-  }).keepLatest(),
+  }).restartable(),
 
   @computed('tables.@each', 'geometry', 'responseIdentifier')
   intersectingLayers(...args) {
