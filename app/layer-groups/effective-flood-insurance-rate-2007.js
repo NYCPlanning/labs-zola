@@ -1,6 +1,7 @@
 export default {
   id: 'effective-flood-insurance-rate-2007',
   title: 'Effective Flood Insurance Rate Maps 2007',
+  titleTooltip: 'The Effective Flood Insurance Rate Maps (FIRMs), first adopted by New York City in 1983 and last updated in 2007, establish the floodplain currently subject to the National Flood Insurance Program purchase requirements.',
   visible: false,
   layers: [
     {
