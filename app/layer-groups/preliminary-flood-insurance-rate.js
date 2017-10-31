@@ -1,6 +1,7 @@
 export default {
   id: 'preliminary-flood-insurance-rate',
   title: 'Preliminary Flood Insurance Rate Maps 2015',
+  titleTooltip: 'Released in 2015 as part of a citywide flood map update, the Preliminary FIRMs establish the 1% annual chance floodplain, also sometimes called the Special Flood Hazard Area or 100-year floodplain, currently in force for building code and zoning purposes.',
   visible: false,
   layers: [
     {
@@ -10,21 +11,20 @@ export default {
         source: 'preliminary-flood-insurance-rate',
         'source-layer': 'preliminary-flood-insurance-rate',
         paint: {
-          'fill-outline-color': '#cdcdcd',
           'fill-color': {
             property: 'fld_zone',
             type: 'categorical',
             stops: [
-              ['VE', '#0084a8'],
-              ['AE', '#00a9e6'],
+              ['V', '#0084a8'],
               ['A', '#00a9e6'],
-              ['AO', '#00a9e6'],
-              ['0.2 PCT ANNUAL CHANCE FLOOD HAZARD', '#00ffc5'],
+              ['Shaded X', '#00ffc5'],
             ],
           },
           'fill-opacity': 0.7,
         },
       },
+      highlightable: true,
+      tooltipTemplate: '2015 {{fld_zone}} Zone',
     },
   ],
 };
