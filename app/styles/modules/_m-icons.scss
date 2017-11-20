@@ -65,7 +65,7 @@
   }
 }
 
-.search-results .fa {
+.search-results .fa:not(.fa-home) {
   font-size: rem-calc(16);
   margin-right: 0.5rem;
 }
@@ -76,7 +76,7 @@
     font-size: 0.75rem;
   }
 
-  .fa:not(.fa-bookmark) {
+  .fa:not(.fa-bookmark):not(.fa-home) {
     font-size: rem-calc(16);
     margin-right: 0.5rem;
   }
