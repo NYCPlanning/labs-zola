@@ -145,6 +145,7 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
           }
 
           if (overlay) {
+            mainMap.set('shouldFitBounds', false);
             this.transitionToRoute('commercial-overlays', overlay);
           }
         }
