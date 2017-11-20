@@ -15,7 +15,7 @@
     <span class="address">{{model.address}}, {{model.zipcode}}</span>
   </h1>
 
-  <p class="text-small dark-gray">Borough {{model.borocode}}&nbsp;({{model.boroname}}) <span class="pipe">|</span> Block {{model.block}} <span class="pipe">|</span> Lot {{model.lot}}</p>
+  <p class="text-small dark-gray">{{model.boroname}}&nbsp;(Borough {{model.borocode}}) <span class="pipe">|</span> Block {{model.block}} <span class="pipe">|</span> Lot {{model.lot}}</p>
 
   {{#if model.zonedist1}}
     <ul class="lot-zoning-list">
