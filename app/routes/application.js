@@ -43,3 +43,18 @@ export default Ember.Route.extend({
     this.get('mainMap').resetBounds();
   },
 });
+
+Ember.Route.reopen({
+  activate: function() {
+    let cssClass = this.toCssClass();
+    if (cssClass !== 'application') {
+      Ember.$('body').addClass(cssClass);
+    }
+  },
+  deactivate: function() {
+    Ember.$('body').removeClass(this.toCssClass());
+  },
+  toCssClass: function() {
+    return this.routeName.replace(/\./g, '-').dasherize();
+  }
+});

@@ -70,6 +70,21 @@ body {
   }
 }
 
+body.index {
+  @include breakpoint(small only) {
+    .map-grid,
+    .map-container {
+      height: calc(100vh - 14rem);
+    }
+  }
+
+  @include breakpoint(medium) {
+    .map-grid {
+      height: 100vh;
+    }
+  }
+}
+
 // .search-and-layers {
 .layer-palette {
   @include xy-cell-static(full,false,0);
