@@ -120,7 +120,7 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
 
       if (feature) {
         if (highlightedLayer === feature.layer.id) {
-          const { bbl, ulurpno, zonedist, sdlbl, splbl, cartodb_id } = feature.properties;
+          const { bbl, ulurpno, zonedist, sdlbl, splbl, overlay, cartodb_id } = feature.properties;
 
           if (bbl) {
             const { boro, block, lot } = bblDemux(bbl);
@@ -142,6 +142,10 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
 
           if (splbl) {
             this.transitionToRoute('special-purpose-subdistricts', cartodb_id);
+          }
+
+          if (overlay) {
+            this.transitionToRoute('commercial-overlays', overlay);
           }
         }
       }
