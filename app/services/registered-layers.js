@@ -46,7 +46,7 @@ export default Ember.Service.extend({
 
   @computed('currentlyVisible')
   clickableAndVisibleLayerIds(layers) {
-    // return an array of layerids that are both visible and highlightable
+    // return an array of layerids that are both visible and clickable
     return layers
       .map(layer => layer.config.layers.filter(l => l.clickable).map(l => l.layer.id))
       .reduce(
