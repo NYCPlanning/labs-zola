@@ -2,6 +2,11 @@
 // Module: Search
 // --------------------------------------------------
 
+.search-container {
+  position: relative;
+  z-index: 2;
+}
+
 .search {
   background-color: $light-gray;
   padding: rem-calc(9) rem-calc(6) rem-calc(6);

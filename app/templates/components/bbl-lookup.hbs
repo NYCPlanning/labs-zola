@@ -1,0 +1,31 @@
+<span {{action (mut closed) (not closed)}} class="bbl-lookup-toggle button tiny gray text-orange expanded no-margin">
+  {{#if closed}}
+    {{fa-icon 'chevron-down'}}
+  {{else}}
+    {{fa-icon 'chevron-up'}}
+  {{/if}}
+  BBL Lookup
+</span>
+
+{{#unless closed}}
+<div class="bbl-lookup-form">
+  <select>
+    <option value="1">Manhattan</option>
+    <option value="2">Bronx</option>
+    <option value="3">Brooklyn</option>
+    <option value="4">Queens</option>
+    <option value="5">Staten Island</option>
+  </select>
+  <div class="grid-x">
+    <div class="cell auto block-container">
+      <input type="text" placeholder="Block">
+    </div>
+    <div class="cell auto lot-container">
+      <input type="text" placeholder="Lot">
+    </div>
+  </div>
+  <input type="submit" value="Go to BBL" class="button small expanded">
+</div>
+{{/unless}}
+
+{{yield}}
