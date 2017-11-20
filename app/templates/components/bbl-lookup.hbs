@@ -9,22 +9,26 @@
 
 {{#unless closed}}
 <div class="bbl-lookup-form">
-  <select>
+  <!-- <select>
     <option value="1">Manhattan</option>
     <option value="2">Bronx</option>
     <option value="3">Brooklyn</option>
     <option value="4">Queens</option>
     <option value="5">Staten Island</option>
-  </select>
+  </select> -->
+  {{#power-select selected=boro onchange=(action (mut boro)) options=(array '1' '2' '3' '4' '5') as |option|}}
+    {{option.name}}
+  {{/power-select}}
   <div class="grid-x">
     <div class="cell auto block-container">
-      <input type="text" placeholder="Block">
+      <!-- <input type="text" placeholder="Block"> -->
+      {{input type='text' value=block}}
     </div>
     <div class="cell auto lot-container">
-      <input type="text" placeholder="Lot">
+      {{input type='text' value=lot}}
     </div>
   </div>
-  <input type="submit" value="Go to BBL" class="button small expanded">
+  <input type="submit" value="Go to BBL" class="button small expanded" onclick={{action 'checkBBL'}}>
 </div>
 {{/unless}}
 

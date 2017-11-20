@@ -1,5 +1,5 @@
 {{site-header count=model.bookmarks.length resetAll=(action 'resetQueryParams')}}
-
+{{log model}}
 <div class="site-main grid-x">
   <div class="navigation-area cell large-auto">
     {{map-search transitionTo=(action 'transitionTo') saveAddress=(action 'saveAddress')}}
