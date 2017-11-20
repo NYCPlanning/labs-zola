@@ -3,7 +3,7 @@
   <label class="header-type">ZONING DISTRICT</label>
   <h1 class="header-large">{{model.id}}</h1>
   <p>{{model.description}}</p>
-  <p><a href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{model.primaryzone}}.page" target="_blank">{{fa-icon "external-link"}} Learn more about {{model.id}} districts&hellip;</a></p>
+  <p><a href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzoneURL}}.page" target="_blank">{{fa-icon "external-link"}} Learn more about {{model.id}} districts&hellip;</a></p>
   <button {{action "fitBounds"}} class="button tiny hollow">Fit map to all {{model.id}} districts</button>
 </div>
 {{outlet}}
