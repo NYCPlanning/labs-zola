@@ -46,5 +46,13 @@ export default {
       id: 'zoning-map-amendments-pending',
       sql: 'SELECT the_geom_webmercator, ulurpno, status, project_na FROM support_nyzma WHERE status = \'Certified\'',
     },
+    {
+      id: 'limited-height-districts',
+      sql: 'SELECT the_geom_webmercator, lhlbl FROM limited_height_districts',
+    },
+    {
+      id: 'business-improvement-districts',
+      sql: 'SELECT the_geom_webmercator, bid FROM business_improvement_districts',
+    },
   ],
 };

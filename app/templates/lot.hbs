@@ -15,15 +15,15 @@
     <span class="address">{{model.address}}, {{model.zipcode}}</span>
   </h1>
 
-  <p class="text-small dark-gray">Borough {{model.borocode}}&nbsp;({{model.boroname}}) <span class="pipe">|</span> Block {{model.block}} <span class="pipe">|</span> Lot {{model.lot}}</p>
+  <p class="text-small dark-gray">{{model.boroname}}&nbsp;(Borough {{model.borocode}}) <span class="pipe">|</span> Block {{model.block}} <span class="pipe">|</span> Lot {{model.lot}}</p>
 
   {{#if model.zonedist1}}
     <ul class="lot-zoning-list">
       <li class="menu-text">Zoning District{{if (or model.zonedist2 model.spdist1) 's'}}:</li>
-      {{#if model.zonedist1}}<li>{{link-to model.zonedist1 'zoning-district' model.zonedist1 classNames="button"}}</li>{{/if}}
-      {{#if model.zonedist2}}<li>{{link-to model.zonedist2 'zoning-district' model.zonedist2 classNames="button"}}</li>{{/if}}
-      {{#if model.zonedist3}}<li>{{link-to model.zonedist3 'zoning-district' model.zonedist3 classNames="button"}}</li>{{/if}}
-      {{#if model.zonedist4}}<li>{{link-to model.zonedist4 'zoning-district' model.zonedist4 classNames="button"}}</li>{{/if}}
+      {{#if model.zonedist1}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone1}}.page" class="button">{{fa-icon 'external-link'}} {{model.zonedist1}}</a></li>{{/if}}
+      {{#if model.zonedist2}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone2}}.page" class="button">{{fa-icon 'external-link'}} {{model.zonedist2}}</a></li>{{/if}}
+      {{#if model.zonedist3}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone3}}.page" class="button">{{fa-icon 'external-link'}} {{model.zonedist3}}</a></li>{{/if}}
+      {{#if model.zonedist4}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone4}}.page" class="button">{{fa-icon 'external-link'}} {{model.zonedist4}}</a></li>{{/if}}
       {{#if model.spdist1}}
         <li>
           {{link-to-intersecting model.spdist1 'special-purpose-district' 'support_nysp' model.geometry classNames="button"}}
@@ -59,8 +59,8 @@
         {{/if}}
         {{#if model.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a> <small class="dark-gray">{{model.histdist}}</small></li>{{/if}}
 
-        {{#intersecting-layers 
-            tables=(array 'support_ih' 'support_tz' 'support_fresh' 'support_wap' 'support_czb' 'support_ldgma' 'support_waterfront_pfirm15' 'support_waterfront_effective07' 'support_mih') 
+        {{#intersecting-layers
+            tables=(array 'support_ih' 'support_tz' 'support_fresh' 'support_wap' 'support_czb' 'support_ldgma' 'support_waterfront_pfirm15' 'support_waterfront_effective07' 'support_mih')
             geometry=model.geometry as |layers numberIntersecting|}}
 
           {{#if layers.support_ih}}
@@ -70,7 +70,7 @@
               </a>
             </li>
           {{/if}}
-          
+
           {{#if layers.support_tz}}
             <li>
               <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone">
@@ -97,7 +97,7 @@
 
           {{#if layers.support_czb}}
             <li>
-              <a target="_blank" href="http://www1.nyc.gov/site/planning/applicants/wrp/wrpcoastalmaps.page">
+              <a target="_blank" href="http://www1.nyc.gov/site/planning/applicants/wrp/wrp.page">
                 {{fa-icon "external-link"}} Coastal Zone
               </a>
             </li>
@@ -140,6 +140,7 @@
           {{/unless}}
 
         {{/intersecting-layers}}
+
       </ul>
     </div>
     <div class="cell medium-shrink">
