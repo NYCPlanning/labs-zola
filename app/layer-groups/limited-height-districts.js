@@ -5,7 +5,7 @@ const legendColor = '#76420a';
 export default {
   id: 'limited-height-districts',
   title: 'Limited Height District',
-  titleTooltip: 'Lorem Ipsum',
+  titleTooltip: 'A limited height district may be superimposed on an area designated as an historic district by the Landmarks Preservation Commission. It is mapped in areas of the Upper East Side, Gramercy Park, Brooklyn Heights and Cobble Hill. The maximum building height is 50 feet in a LH-1 district, 60 feet in a LH-1A district, 70 feet in a LH-2 district and 100 feet in a LH-3 district.',
   visible: false,
   legendIcon: 'polygon',
   legendColor,
