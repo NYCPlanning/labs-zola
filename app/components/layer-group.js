@@ -130,7 +130,7 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
       const source = sources[sourceId.camelize()];
       const sourceLayer = source['source-layers'][0];
       const sql = this[method](sourceLayer.sql, column, value);
-      console.log(sql);
+
       // get a new template and update the source tiles
       carto.getVectorTileTemplate([{
         id: sourceLayer.id,

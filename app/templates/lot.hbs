@@ -60,7 +60,7 @@
         {{#if model.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a> <small class="dark-gray">{{model.histdist}}</small></li>{{/if}}
 
         {{#intersecting-layers 
-            tables=(array 'support_ih' 'support_tz' 'support_fresh' 'support_wap' 'support_czb' 'support_ldgma' 'floodplain' 'firms_100_year_floodplain_2007' 'support_mih') 
+            tables=(array 'support_ih' 'support_tz' 'support_fresh' 'support_wap' 'support_czb' 'support_ldgma' 'support_waterfront_pfirm15' 'support_waterfront_effective07' 'support_mih') 
             geometry=model.geometry as |layers numberIntersecting|}}
 
           {{#if layers.support_ih}}
@@ -111,19 +111,19 @@
             </li>
           {{/if}}
 
-          {{#if layers.floodplain}}
-            <li>
-              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
-                {{fa-icon "external-link"}} Flood Zone
-              </a> <small class="dark-gray">2015</small>
-            </li>
-          {{/if}}
-
           {{#if layers.firms_100_year_floodplain_2007}}
             <li>
               <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
                 {{fa-icon "external-link"}} Flood Zone
-              </a> <small class="dark-gray">2007</small>
+              </a> <small class="dark-gray">Effective Flood Insurance Rate Maps 2007</small>
+            </li>
+          {{/if}}
+
+          {{#if layers.floodplain}}
+            <li>
+              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
+                {{fa-icon "external-link"}} Flood Zone
+              </a> <small class="dark-gray">Preliminary Flood Insurance Rate Maps 2015</small>
             </li>
           {{/if}}
 
