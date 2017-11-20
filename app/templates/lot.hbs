@@ -20,10 +20,10 @@
   {{#if model.zonedist1}}
     <ul class="lot-zoning-list">
       <li class="menu-text">Zoning District{{if (or model.zonedist2 model.spdist1) 's'}}:</li>
-      {{#if model.zonedist1}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone1}}.page" class="button">{{model.zonedist1}}</a></li>{{/if}}
-      {{#if model.zonedist2}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone2}}.page" class="button">{{model.zonedist2}}</a></li>{{/if}}
-      {{#if model.zonedist3}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone3}}.page" class="button">{{model.zonedist3}}</a></li>{{/if}}
-      {{#if model.zonedist4}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone4}}.page" class="button">{{model.zonedist4}}</a></li>{{/if}}
+      {{#if model.zonedist1}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone1}}.page" class="button">{{fa-icon 'external-link'}} {{model.zonedist1}}</a></li>{{/if}}
+      {{#if model.zonedist2}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone2}}.page" class="button">{{fa-icon 'external-link'}} {{model.zonedist2}}</a></li>{{/if}}
+      {{#if model.zonedist3}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone3}}.page" class="button">{{fa-icon 'external-link'}} {{model.zonedist3}}</a></li>{{/if}}
+      {{#if model.zonedist4}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone4}}.page" class="button">{{fa-icon 'external-link'}} {{model.zonedist4}}</a></li>{{/if}}
       {{#if model.spdist1}}
         <li>
           {{link-to-intersecting model.spdist1 'special-purpose-district' 'support_nysp' model.geometry classNames="button"}}
