@@ -162,6 +162,11 @@ export default Ember.Component.extend({
         this.set('searchTerms', result.sdname);
         this.transitionTo('special-purpose-district', result.cartodb_id);
       }
+
+      if (result.type === 'commercial-overlay') {
+        this.set('searchTerms', result.coname);
+        this.transitionTo('commercial-overlay', result.overlay);
+      }
     },
 
     @trackEvent('Search', 'Focused In', 'searchTerms')
