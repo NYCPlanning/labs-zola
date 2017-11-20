@@ -105,7 +105,7 @@
     {{/map.source}}
   {{/if}}
   {{#if shouldFitBounds}}
-    {{map.call 'fitBounds' mainMap.bounds isSelectedBoundsOptions}}
+    {{map.call 'fitBounds' mainMap.bounds mainMap.isSelectedBoundsOptions}}
   {{/if}}
 
   {{#if currentMeasurement}}
