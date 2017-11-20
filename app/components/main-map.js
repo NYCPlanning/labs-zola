@@ -175,7 +175,7 @@ export default Ember.Component.extend({
 
       map.addSource('ee', {
         type: 'image',
-        url: 'img/ht.png',
+        url: '/img/ht.png',
         coordinates: [
           [-74.0030685, 40.7335205],
           [-74.0030515, 40.7335205],
