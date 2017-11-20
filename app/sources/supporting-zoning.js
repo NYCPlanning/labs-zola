@@ -50,5 +50,9 @@ export default {
       id: 'limited-height-districts',
       sql: 'SELECT the_geom_webmercator, lhlbl FROM limited_height_districts',
     },
+    {
+      id: 'business-improvement-districts',
+      sql: 'SELECT the_geom_webmercator, bid FROM business_improvement_districts',
+    },
   ],
 };

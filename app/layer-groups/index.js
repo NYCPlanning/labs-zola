@@ -2,6 +2,7 @@ import aerials16 from './aerials16';
 import assemblydistricts from './assemblydistricts';
 import boroughs from './boroughs';
 import buildingFootprints from './building-footprints';
+import businessImprovementDistricts from './business-improvement-districts';
 import commercialOverlays from './commercial-overlays';
 import communityDistricts from './communitydistricts';
 import coastalZoneBoundary from './coastal-zone-boundary';
@@ -34,6 +35,7 @@ export default {
   assemblydistricts,
   boroughs,
   buildingFootprints,
+  businessImprovementDistricts,
   commercialOverlays,
   communityDistricts,
   coastalZoneBoundary,
