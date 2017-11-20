@@ -152,14 +152,15 @@
     {{/layer-menu-item}}
 
     {{layer-menu-item for='zoning-map-amendments-pending'}}
+    {{layer-menu-item for='special-purpose-districts'}}
+    {{layer-menu-item for='special-purpose-subdistricts'}}
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
     closed=true
     title='Supporting Zoning Layers'
     as |item|}}
-    {{layer-menu-item for='special-purpose-districts'}}
-    {{layer-menu-item for='special-purpose-subdistricts'}}
+
     {{layer-menu-item for='mandatory-inclusionary-housing'}}
     {{layer-menu-item for='inclusionary-housing'}}
     {{layer-menu-item for='transit-zones'}}
