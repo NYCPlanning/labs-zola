@@ -114,7 +114,11 @@ body {
   }
 
   & > .close-button {
-    display: none;
+    position: relative;
+    top: -1rem;
+    right: -0.5rem;
+    float: right;
+    margin: 0.5rem;
 
     @include breakpoint(large) {
       display: block;
