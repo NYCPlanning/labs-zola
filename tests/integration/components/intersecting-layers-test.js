@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('yield-intersecting-features', 'Integration | Component | yield intersecting features', {
+moduleForComponent('intersecting-layers', 'Integration | Component | intersecting layers', {
   integration: true
 });
 
@@ -10,15 +10,15 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{yield-intersecting-features}}`);
+  this.render(hbs`{{intersecting-layers}}`);
 
   assert.equal(this.$().text().trim(), '');
 
   // Template block usage:
   this.render(hbs`
-    {{#yield-intersecting-features}}
+    {{#intersecting-layers}}
       template block text
-    {{/yield-intersecting-features}}
+    {{/intersecting-layers}}
   `);
 
   assert.equal(this.$().text().trim(), 'template block text');
