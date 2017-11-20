@@ -164,7 +164,7 @@ export default Ember.Component.extend({
       }
 
       if (result.type === 'commercial-overlay') {
-        this.set('searchTerms', result.coname);
+        this.set('searchTerms', result.label);
         this.transitionTo('commercial-overlay', result.overlay);
       }
     },
