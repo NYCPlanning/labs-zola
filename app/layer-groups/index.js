@@ -10,6 +10,7 @@ import fresh from './fresh';
 import historicDistricts from './historic-districts';
 import inclusionaryHousing from './inclusionary-housing';
 import landmarks from './landmarks';
+import limitedHeightDistricts from './limited-height-districts';
 import lowDensityGrowthMgmtAreas from './low-density-growth-mgmt-areas';
 import mandatoryInclusionaryHousing from './mandatory-inclusionary-housing';
 import neighborhoodTabulationAreas from './neighborhood-tabulation-areas';
@@ -41,6 +42,7 @@ export default {
   historicDistricts,
   inclusionaryHousing,
   landmarks,
+  limitedHeightDistricts,
   lowDensityGrowthMgmtAreas,
   mandatoryInclusionaryHousing,
   neighborhoodTabulationAreas,
