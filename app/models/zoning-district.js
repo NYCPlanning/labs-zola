@@ -88,6 +88,7 @@ export default DS.Model.extend({
 
   @computed('id')
   primaryzone(id) {
+    // convert R6A to r6
     const primary = id.match(/\w\d*/)[0].toLowerCase();
     return primary;
   },

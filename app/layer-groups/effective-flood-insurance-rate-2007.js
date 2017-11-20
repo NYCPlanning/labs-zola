@@ -17,7 +17,6 @@ export default {
             stops: [
               ['V', '#0084a8'],
               ['A', '#00a9e6'],
-              ['Shaded X', '#00ffc5'],
             ],
           },
           'fill-opacity': 0.7,
