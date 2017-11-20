@@ -86,7 +86,7 @@ export default Ember.Service.extend({
         this.set('highlightedLayer', layerId);
 
         // set to pointer if the layer-group is also clickable
-        if (clickable.indexOf(layerId) > -1) map.getCanvas().style.cursor = 'pointer';
+        map.getCanvas().style.cursor = (clickable.indexOf(layerId) > -1) ? 'pointer' : '';
 
         const beforeLayerId = map.getStyle().layers.reduce((acc, curr) => {
           if (curr.id === layerId) return 'hit';
