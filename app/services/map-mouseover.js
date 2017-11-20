@@ -72,12 +72,10 @@ export default Ember.Service.extend({
     // that exist on the map AND are highlightable
 
     const layers = this.get('registeredLayers.highlightableAndVisibleLayerIds');
+    const clickable = this.get('registeredLayers.clickableAndVisibleLayerIds');
     const features = map.queryRenderedFeatures(e.point, { layers });
 
     if (features.length > 0) {
-      map.getCanvas().style.cursor = 'pointer';
-
-
       const thisFeature = features[0];
 
       const prevFeature = this.get('highlightedLotFeatures')[0];
@@ -86,6 +84,9 @@ export default Ember.Service.extend({
         // move the layer
         const layerId = thisFeature.layer.id;
         this.set('highlightedLayer', layerId);
+
+        // set to pointer if the layer-group is also clickable
+        if (clickable.indexOf(layerId) > -1) map.getCanvas().style.cursor = 'pointer';
 
         const beforeLayerId = map.getStyle().layers.reduce((acc, curr) => {
           if (curr.id === layerId) return 'hit';
