@@ -11,9 +11,9 @@
     <div id="responsive-menu" class="cell large-shrink {{if closed 'show-for-large'}} hide-for-print" data-toggler=".show-for-large">
       <nav role="navigation">
         <ul class="vertical large-horizontal menu">
-          <li>{{link-to 'About' 'about'}}</li>
+          <li>{{link-to 'About' 'about' click=(action (mut closed))}}</li>
           <li class="saved-bookmarks-counter">
-            {{#link-to 'bookmarks'}}{{fa-icon "bookmark"}}
+            {{#link-to 'bookmarks' click=(action (mut closed))}}{{fa-icon "bookmark"}}
               Saved
               {{#if count}}
                 <span class="badge sup">{{count}}</span>
