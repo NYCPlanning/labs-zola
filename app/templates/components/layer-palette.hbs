@@ -229,7 +229,11 @@
     title='Basemaps'}}
     {{layer-menu-item for='subway'}}
     {{layer-menu-item for='building-footprints'}}
-    {{layer-menu-item for='threed-buildings'}}
+    {{#layer-menu-item for='threed-buildings' as |item|}}
+      {{#if item.layer.visible}}
+        Click and drag the compass arrow (<span class="mapboxgl-ctrl-icon mapboxgl-ctrl-compass"><span class="mapboxgl-ctrl-compass-arrow" style="transform: rotate(0deg);"></span></span>) to adjust the pitch and bearing of the map.
+      {{/if}}
+    {{/layer-menu-item}}
     {{layer-menu-item for='aerials-16'}}
   {{/layer-palette-accordion}}
 
