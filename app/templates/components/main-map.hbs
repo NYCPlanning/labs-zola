@@ -14,7 +14,7 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
-  {{map.layer-group for='threed-buildings' visible=qps.threed-buildings}}
+  {{map.layer-group for='threed-buildings' visible=qps.threed-buildings didToggleVisibility=(action 'adjustBuildingsLayer')}}
 
   {{map.layer-group for='neighborhood-tabulation-areas' visible=qps.neighborhood-tabulation-areas}}
 
