@@ -133,6 +133,10 @@
 }
 
 // Drawing
+.mapbox-gl-draw_ctrl-draw-btn.active {
+  background-color: rgba(0,0,0,0.05);
+}
+
 #measurement-text {
   position: absolute;
   top: 140px;
