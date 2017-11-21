@@ -12,6 +12,7 @@
       <nav role="navigation">
         <ul class="vertical large-horizontal menu">
           <li>{{link-to 'About' 'about' click=(action (mut closed))}}</li>
+          <li>{{link-to 'Features' 'features' click=(action (mut closed))}}</li>
           <li class="saved-bookmarks-counter">
             {{#link-to 'bookmarks' click=(action (mut closed))}}{{fa-icon "bookmark"}}
               Saved
