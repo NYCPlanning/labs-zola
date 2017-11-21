@@ -25,7 +25,12 @@ export default {
           ],
         ],
         paint: {
-          'fill-opacity': 0.3,
+          'fill-opacity': {
+            stops: [
+              [15, 0],
+              [16, 0.3],
+            ],
+          },
           'fill-outline-color': 'rgba(12, 12, 12, 1)',
           'fill-color': 'rgba(175, 175, 175, 1)',
         },
