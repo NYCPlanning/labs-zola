@@ -9,31 +9,26 @@
 
 {{#unless closed}}
 <div class="bbl-lookup-form">
-  <!-- <select>
-    <option value="1">Manhattan</option>
-    <option value="2">Bronx</option>
-    <option value="3">Brooklyn</option>
-    <option value="4">Queens</option>
-    <option value="5">Staten Island</option>
-  </select> -->
-
-
-  {{#power-select options=boroOptions selected=boro searchField='name' onchange=(action 'setBorocode') as |boro|}}
-    {{boro.name}}
-  {{/power-select}}
+  <div class="bbl-power-select">
+    <label>Borough</label>
+    {{#power-select options=boroOptions searchEnabled=false selected=boro searchField='name' onchange=(action 'setBorocode') as |boro|}}
+      {{boro.name}}
+    {{/power-select}}
+  </div>
   <div class="grid-x">
     <div class="cell auto block-container">
-      <!-- <input type="text" placeholder="Block"> -->
-      {{input type='text' value=block}}
+      <label>Block
+        {{input type='number' value=block}}
+      </label>
     </div>
     <div class="cell auto lot-container">
-      {{input type='text' value=lot}}
+      <label>Lot
+        {{input type='number' value=lot}}
+      </label>
     </div>
   </div>
-  <div class="grid-x ">
-    <p class="lu-red"><{{errorMessage}}</p>
-  </div>
-  <input type="submit" value="Go to BBL" class="button small expanded" onclick={{action 'checkBBL'}}>
+  {{#if errorMessage}}<p class="lu-red"><{{errorMessage}}</p>{{/if}}
+  <input type="submit" value="Go to BBL" class="button small expanded no-margin" onclick={{action 'checkBBL'}}>
 </div>
 {{/unless}}
 
