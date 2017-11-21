@@ -16,8 +16,10 @@
     <option value="4">Queens</option>
     <option value="5">Staten Island</option>
   </select> -->
-  {{#power-select selected=boro onchange=(action (mut boro)) options=(array '1' '2' '3' '4' '5') as |option|}}
-    {{option.name}}
+
+
+  {{#power-select options=boroOptions selected=boro searchField='name' onchange=(action 'setBorocode') as |boro|}}
+    {{boro.name}}
   {{/power-select}}
   <div class="grid-x">
     <div class="cell auto block-container">
@@ -27,6 +29,9 @@
     <div class="cell auto lot-container">
       {{input type='text' value=lot}}
     </div>
+  </div>
+  <div class="grid-x ">
+    <p class="lu-red"><{{errorMessage}}</p>
   </div>
   <input type="submit" value="Go to BBL" class="button small expanded" onclick={{action 'checkBBL'}}>
 </div>
