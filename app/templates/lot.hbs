@@ -31,7 +31,7 @@
       {{/if}}
 
       {{#if model.spdist2}}
-        <li>  
+        <li>
           {{link-to-intersecting (concat 'Special District: ' model.spdist2) 'special-purpose-district' 'support_nysp' model.geometry classNames="button"}}
         </li>
       {{/if}}
@@ -64,7 +64,7 @@
 
   <div class="grid-x grid-margin-x">
     <div class="cell medium-shrink">
-      <h6 class="no-margin-">Intersecting Map Layers {{info-tooltip tip="Intersecting layers information is for general use and should be verified for official purposes"}}:</h6>
+      <h6 class="no-margin-">Intersecting Map Layers {{info-tooltip tip="These intersections should be independently verified and should not be relied upon to determine the zoning rules applicable to a property."}}:</h6>
       <ul class="no-bullet text-small">
         {{#if model.overlay1}}
           <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" class="">{{fa-icon "external-link"}} Commercial Overlay{{if model.overlay2 's'}}</a> <small class="dark-gray">{{model.overlay1}}</small>{{#if model.overlay2}}, <small class="dark-gray">{{model.overlay2}}</small>{{/if}}
