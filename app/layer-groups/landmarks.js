@@ -7,6 +7,11 @@ export default {
   title: 'Landmarks',
   titleTooltip: 'Sites designated by the NYC Landmarks Preservation Commission that possess historical significance and to which special zoning regulations apply',
   visible: false,
+  meta: {
+    description: 'Individual Landmarks Shapefile, NYC Open Data Portal',
+    url: 'https://data.cityofnewyork.us/Housing-Development/Individual-Landmarks/ch5p-r223/data',
+    updated_at: 'September 2017',
+  },
   layers: [
     {
       layer: {

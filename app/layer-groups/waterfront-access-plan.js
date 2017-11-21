@@ -9,6 +9,11 @@ export default {
   visible: false,
   legendIcon: 'polygon',
   legendColor,
+  meta: {
+    description: 'Waterfront Access Plan release 2011.1, Bytes of the Big Apple',
+    url: 'https://www1.nyc.gov/site/planning/data-maps/open-data.page',
+    updated_at: 'September 2017',
+  },
   layers: [
     {
       layer: lineStyle('waterfront-access-plan-line', 'supporting-zoning', 'waterfront-access-plan', legendColor),

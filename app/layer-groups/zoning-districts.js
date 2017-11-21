@@ -3,6 +3,11 @@ export default {
   title: 'Zoning Districts',
   visible: true,
   titleTooltip: 'A zoning district is a residential, commercial or manufac­turing area of the city within which zoning regulations govern land use and building bulk.',
+  meta: {
+    description: 'NYC GIS Zoning Features October 2017, Bytes of the Big Apple',
+    url: 'https://www1.nyc.gov/site/planning/data-maps/open-data.page',
+    updated_at: '21 November 2017',
+  },
   layers: [
     {
       layer: {

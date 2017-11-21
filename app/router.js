@@ -7,7 +7,8 @@ const Router = Ember.Router.extend(trackPage, {
   rootURL: config.rootURL,
 });
 
-Router.map(function () {  // eslint-disable-line
+Router.map(function () {
+  // eslint-disable-line
   this.route('lot', { path: 'lot/:boro/:block/:lot' });
   this.route('zma', { path: 'zma/:ulurpno' });
   this.route('zoning-district', { path: 'zoning-district/:zonedist' });
@@ -15,6 +16,7 @@ Router.map(function () {  // eslint-disable-line
   this.route('special-purpose-subdistricts', { path: 'special-purpose-subdistrict/:id' });
   this.route('about');
   this.route('bookmarks');
+  this.route('data');
 });
 
 export default Router;
