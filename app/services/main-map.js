@@ -41,6 +41,28 @@ export default Ember.Service.extend({
     };
   },
 
+  @computed('selected')
+  isSelectedBoundsOptions(selected) {
+    const el = $('.map-container');
+    const height = el.height();
+    const width = el.width();
+
+    const fullWidth = window.innerWidth;
+    // width of content area on large screens is 5/12 of full
+    const contentWidth = (fullWidth / 12) * 5;
+    // on small screens, no offset
+    const offset = fullWidth < 1024 ? 0 : -((width - contentWidth) / 2);
+    const padding = Math.min(height, (width - contentWidth)) / 2.5;
+
+    // get type of selected feature so we can do dynamic padding
+    const type = selected ? selected.constructor.modelName : null;
+
+    return {
+      padding: selected && (type !== 'zoning-district') ? padding : 0,
+      offset: [offset, 0],
+    };
+  },
+
   resetBounds() {
     const mapInstance = this.get('mapInstance');
     if (mapInstance) {

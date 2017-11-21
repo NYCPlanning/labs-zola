@@ -15,7 +15,10 @@ export default Bookmarkable.extend({
 
   @computed('effective')
   effectiveDisplay(effective) {
-    return moment(effective).format('LL');
+    if (effective) {
+      return moment(effective).format('LL');
+    }
+    return 'To be determined';
   },
 
   @computed('geometry')
