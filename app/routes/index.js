@@ -12,6 +12,7 @@ export default Ember.Route.extend({
           selected: null,
           shouldFitBounds: false,
         });
+      this.get('mainMap').mapInstance.resize();
     },
   },
 });
