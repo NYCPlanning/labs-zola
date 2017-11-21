@@ -3,11 +3,6 @@
 // --------------------------------------------------
 
 .search-container {
-  position: relative;
-  z-index: 2;
-}
-
-.search {
   background-color: $light-gray;
   padding: rem-calc(9) rem-calc(6) rem-calc(6);
   box-shadow: 0 2px 0 rgba(0,0,0,0.1);
@@ -26,6 +21,10 @@
     width: 18rem;
   }
 
+  .search {
+    position: relative;
+    z-index: 2;
+  }
   .map-search-input {
     margin: 0;
     padding-right: 2rem;
