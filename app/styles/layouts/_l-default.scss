@@ -71,6 +71,8 @@ body {
 }
 
 body.index {
+  overflow: hidden;
+
   @include breakpoint(small only) {
     .map-grid,
     .map-container {
@@ -79,8 +81,16 @@ body.index {
   }
 
   @include breakpoint(medium) {
-    .map-grid {
-      height: 100vh;
+    .map-grid,
+    .map-container {
+      height: calc(100vh - 11.25rem);
+    }
+  }
+
+  @include breakpoint(large) {
+    .map-grid,
+    .map-container {
+      height: 100%;
     }
   }
 }
