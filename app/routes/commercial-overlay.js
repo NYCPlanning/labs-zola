@@ -19,7 +19,8 @@ export default Ember.Route.extend({
     fitBounds() {
       const mainMap = this.get('mainMap');
       const map = mainMap.mapInstance;
-      map.fitBounds(this.get('bounds'));
+      const fitBoundsOptions = mainMap.get('isSelectedBoundsOptions');
+      map.fitBounds(this.get('bounds'), fitBoundsOptions);
     },
   },
 });
