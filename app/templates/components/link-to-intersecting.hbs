@@ -5,7 +5,7 @@
 {{else}}
   {{#if (await resultingFeature) as |id|}} 
     {{#if id}}    
-      {{link-to 'Special District' route id classNames=classNames}}
+      {{link-to string route id classNames=classNames}}
     {{/if}}
   {{/if}}
 {{/if}}

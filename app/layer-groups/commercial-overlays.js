@@ -6,6 +6,22 @@ export default {
   layers: [
     {
       layer: {
+        id: 'co-fill',
+        type: 'fill',
+        source: 'commercial-overlays',
+        minzoom: 12,
+        'source-layer': 'commercial-overlays',
+        paint: {
+          'fill-outline-color': '#cdcdcd',
+          'fill-opacity': 0,
+        },
+      },
+      highlightable: true,
+      clickable: true,
+      tooltipTemplate: '{{overlay}}',
+    },
+    {
+      layer: {
         id: 'co',
         type: 'line',
         source: 'commercial-overlays',
