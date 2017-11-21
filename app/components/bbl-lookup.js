@@ -41,7 +41,7 @@ export default Ember.Component.extend({
 
           this.transitionTo('lot', code, block, lot);
         } else {
-          this.set('errorMessage', 'BBL doesn\'t exist');
+          this.set('errorMessage', 'The BBL does not exist.');
         }
       });
     },
