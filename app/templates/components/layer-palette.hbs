@@ -1,5 +1,5 @@
 <button {{action (mut closed) (not closed)}} class="button hollow expanded hide-for-medium hide-for-print{{if closed ' no-margin'}}">
-  {{#if closed}}Edit Map Layers{{else}}Close Map Layers{{/if}}
+  {{#if closed}}{{fa-icon 'chevron-down'}} Edit Map Layers{{else}}{{fa-icon 'chevron-up'}} Close Map Layers{{/if}}
 </button>
 
 <div id="layers-menu" class="{{if closed 'show-for-medium'}} hide-for-print">
