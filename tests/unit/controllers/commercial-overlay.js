@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('controller:commercial-overlays', 'Unit | Controller | commercial overlays', {
+moduleFor('controller:commercial-overlay', 'Unit | Controller | commercial overlay', {
   // Specify the other units that are required for this test.
   needs: ['service:metrics']
 });
