@@ -13,7 +13,7 @@ Router.map(function () {  // eslint-disable-line
   this.route('zoning-district', { path: 'zoning-district/:zonedist' });
   this.route('special-purpose-district', { path: 'special-purpose-district/:id' });
   this.route('special-purpose-subdistricts', { path: 'special-purpose-subdistrict/:id' });
-  this.route('commercial-overlays', { path: 'commercial-overlays/:id' });
+  this.route('commercial-overlay', { path: 'commercial-overlay/:id' });
   this.route('about');
   this.route('bookmarks');
 });
