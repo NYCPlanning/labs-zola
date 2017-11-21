@@ -58,7 +58,7 @@ export default Ember.Service.extend({
     const type = selected ? selected.constructor.modelName : null;
 
     return {
-      padding: selected && (type !== 'zoning-district') ? padding : 0,
+      padding: selected && (type !== 'zoning-district') && (type !== 'commercial-overlay') ? padding : 0,
       offset: [offset, 0],
     };
   },
