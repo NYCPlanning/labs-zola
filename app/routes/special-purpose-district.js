@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import trackPage from '../mixins/track-page'; // eslint-disable-line
 
 const { service } = Ember.inject;
 
