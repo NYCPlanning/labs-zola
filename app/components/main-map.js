@@ -66,28 +66,6 @@ export default Ember.Component.extend({
 
   cartoSources: [],
 
-  @computed('mainMap.selected')
-  isSelectedBoundsOptions(selected) {
-    const el = this.$();
-    const height = el.height();
-    const width = el.width();
-
-    const fullWidth = window.innerWidth;
-    // width of content area on large screens is 5/12 of full
-    const contentWidth = (fullWidth / 12) * 5;
-    // on small screens, no offset
-    const offset = fullWidth < 1024 ? 0 : -((width - contentWidth) / 2);
-    const padding = Math.min(height, (width - contentWidth)) / 2.5;
-
-    // get type of selected feature so we can do dynamic padding
-    const type = selected ? selected.constructor.modelName : null;
-
-    return {
-      padding: selected && (type !== 'zoning-district') ? padding : 0,
-      offset: [offset, 0],
-    };
-  },
-
   highlightedLotFeatures: [],
 
   @computed('highlightedLotFeatures')
@@ -116,6 +94,15 @@ export default Ember.Component.extend({
   selectedLineLayer,
 
   actions: {
+    adjustBuildingsLayer(visible) {
+      const map = this.get('mainMap.mapInstance');
+      if (visible) {
+        map.flyTo({ pitch: 45 });
+      } else {
+        map.flyTo({ pitch: 0 });
+      }
+    },
+
     locateMe() {
       const geolocateButton = document.querySelectorAll('.mapboxgl-ctrl-geolocate')[0];
 

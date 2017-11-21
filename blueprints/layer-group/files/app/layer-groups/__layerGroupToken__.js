@@ -1,9 +1,10 @@
 export default {
   id: 'layer-group-id',
   title: 'Layer Group',
+  titleTooltip: 'Lorem Ipsum',
   visible: true,
-  type: 'carto', // raster, vector, geojson, or carto
-  // sql: '', // only if type = carto
+  legendIcon: 'polygon',
+  legendColor: 'steelblue',
   layers: [
     {
       layer: {

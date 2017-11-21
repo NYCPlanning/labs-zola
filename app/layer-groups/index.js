@@ -2,6 +2,7 @@ import aerials16 from './aerials16';
 import assemblydistricts from './assemblydistricts';
 import boroughs from './boroughs';
 import buildingFootprints from './building-footprints';
+import businessImprovementDistricts from './business-improvement-districts';
 import commercialOverlays from './commercial-overlays';
 import communityDistricts from './communitydistricts';
 import coastalZoneBoundary from './coastal-zone-boundary';
@@ -10,6 +11,7 @@ import fresh from './fresh';
 import historicDistricts from './historic-districts';
 import inclusionaryHousing from './inclusionary-housing';
 import landmarks from './landmarks';
+import limitedHeightDistricts from './limited-height-districts';
 import lowDensityGrowthMgmtAreas from './low-density-growth-mgmt-areas';
 import mandatoryInclusionaryHousing from './mandatory-inclusionary-housing';
 import neighborhoodTabulationAreas from './neighborhood-tabulation-areas';
@@ -33,6 +35,7 @@ export default {
   assemblydistricts,
   boroughs,
   buildingFootprints,
+  businessImprovementDistricts,
   commercialOverlays,
   communityDistricts,
   coastalZoneBoundary,
@@ -41,6 +44,7 @@ export default {
   historicDistricts,
   inclusionaryHousing,
   landmarks,
+  limitedHeightDistricts,
   lowDensityGrowthMgmtAreas,
   mandatoryInclusionaryHousing,
   neighborhoodTabulationAreas,

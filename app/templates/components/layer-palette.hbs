@@ -154,6 +154,7 @@
     {{layer-menu-item for='zoning-map-amendments-pending'}}
     {{layer-menu-item for='special-purpose-districts'}}
     {{layer-menu-item for='special-purpose-subdistricts'}}
+    {{layer-menu-item for='limited-height-districts'}}
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
@@ -211,6 +212,7 @@
         </ul>
       {{/if}}
     {{/layer-menu-item}}
+    {{layer-menu-item for='business-improvement-districts'}}
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
@@ -229,7 +231,14 @@
     title='Basemaps'}}
     {{layer-menu-item for='subway'}}
     {{layer-menu-item for='building-footprints'}}
-    {{layer-menu-item for='threed-buildings'}}
+    {{#layer-menu-item for='threed-buildings' as |item|}}
+      {{#if item.layer.visible}}
+      <ul class="layer-key">
+        <li>Drag the compass arrow (<span style="padding: 0; margin-right: -5px; margin-left: -5px;" class="mapboxgl-ctrl-icon mapboxgl-ctrl-compass"><span style="transform: rotate(0deg) scale(0.7); margin: 0; transform-origin: 50% 100%; position: relative; top: 0.25rem; margin-top: -8px;" class="mapboxgl-ctrl-compass-arrow"></span></span>) to adjust the bearing of the map. Click to reset north.</li>
+        <li>CTRL + drag the map (or CTRL + arrow keys) to adjust both pitch and bearing.</li>
+      </ul>
+      {{/if}}
+    {{/layer-menu-item}}
     {{layer-menu-item for='aerials-16'}}
   {{/layer-palette-accordion}}
 
