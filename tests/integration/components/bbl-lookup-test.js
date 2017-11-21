@@ -12,14 +12,5 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{bbl-lookup}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#bbl-lookup}}
-      template block text
-    {{/bbl-lookup}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), 'BBL Lookup');
 });
