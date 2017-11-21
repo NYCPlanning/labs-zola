@@ -7,12 +7,12 @@ export default Ember.Route.extend({
 
   actions: {
     didTransition() {
-      this.get('mainMap')
-        .setProperties({
-          selected: null,
-          shouldFitBounds: false,
-        });
-      this.get('mainMap').mapInstance.resize();
+      const mainMap = this.get('mainMap');
+      mainMap.setProperties({
+        selected: null,
+        shouldFitBounds: false,
+      });
+      if (mainMap.mapInstance) mainMap.mapInstance.resize();
     },
   },
 });
