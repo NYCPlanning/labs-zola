@@ -3,17 +3,20 @@ import fetch from 'fetch';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task, timeout } from 'ember-concurrency';
 import bblDemux from '../utils/bbl-demux';
+import trackEvent from '../utils/track-event'; // eslint-disable-line
+
 
 const { service } = Ember.inject;
 
 const DEBOUNCE_MS = 100;
 
 export default Ember.Component.extend({
-  classNames: ['search hide-for-print'],
+  classNames: ['search'],
   searchTerms: '',
   transitionTo: null,
   selected: 0,
   mainMap: service(),
+  metrics: service(),
   focused: false,
 
   @computed('searchTerms')
@@ -25,6 +28,16 @@ export default Ember.Component.extend({
     if (searchTerms.length < 3) this.cancel();
     yield timeout(DEBOUNCE_MS);
     const URL = `https://zola-search-api.planninglabs.nyc/search?q=${searchTerms}`;
+
+    this.get('metrics').trackEvent(
+      'GoogleAnalytics',
+      {
+        eventCategory: 'Search',
+        eventAction: 'Received Results for Search Terms',
+        eventLabel: searchTerms,
+      },
+    );
+
     return yield fetch(URL)
       .then(data => data.json())
       .then(json => json.map(
@@ -91,6 +104,8 @@ export default Ember.Component.extend({
     clear() {
       this.set('searchTerms', '');
     },
+
+    @trackEvent('Map Search', 'Clicked result', 'searchTerms')
     goTo(result) {
       const mainMap = this.get('mainMap');
       const mapInstance = mainMap.get('mapInstance');
@@ -147,10 +162,19 @@ export default Ember.Component.extend({
         this.set('searchTerms', result.sdname);
         this.transitionTo('special-purpose-district', result.cartodb_id);
       }
+
+      if (result.type === 'commercial-overlay') {
+        this.set('searchTerms', result.label);
+        this.transitionTo('commercial-overlay', result.overlay);
+      }
     },
+
+    @trackEvent('Search', 'Focused In', 'searchTerms')
     handleFocusIn() {
       this.set('focused', true);
     },
+
+    @trackEvent('Search', 'Focused Out', 'searchTerms')
     handleFocusOut() {
       this.set('focused', false);
     },

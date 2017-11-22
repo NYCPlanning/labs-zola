@@ -2,7 +2,7 @@
 // Module: Search
 // --------------------------------------------------
 
-.search {
+.search-container {
   background-color: $light-gray;
   padding: rem-calc(9) rem-calc(6) rem-calc(6);
   box-shadow: 0 2px 0 rgba(0,0,0,0.1);
@@ -18,22 +18,27 @@
   }
 
   @include breakpoint(xlarge) {
-    width: 17.5rem;
+    width: 18rem;
   }
 
-  input {
+  .search {
+    position: relative;
+    z-index: 2;
+  }
+  .map-search-input {
     margin: 0;
     padding-right: 2rem;
   }
 
   .close-button {
-    margin-top: rem-calc(2);
+    margin-top: rem-calc(-7);
+    margin-right: rem-calc(-6);
   }
 
   .search-icon {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: rem-calc(7);
+    right: rem-calc(10);
     color: $medium-gray;
     pointer-events: none;
   }

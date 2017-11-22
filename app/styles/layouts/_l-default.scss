@@ -2,10 +2,16 @@
 // Default Layout
 // --------------------------------------------------
 
-html, body {
-  @include breakpoint(large) {
-    max-height: 100vh;
-    overflow: hidden;
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  html, & {
+    @include breakpoint(large) {
+      max-height: 100vh;
+      overflow: hidden;
+    }
   }
 }
 
@@ -60,7 +66,32 @@ html, body {
   }
 
   @include breakpoint(xlarge) {
-    width: calc(100% - 17.5rem);
+    width: calc(100% - 18rem);
+  }
+}
+
+body.index {
+  overflow: hidden;
+
+  @include breakpoint(small only) {
+    .map-grid,
+    .map-container {
+      height: calc(100vh - 14rem);
+    }
+  }
+
+  @include breakpoint(medium) {
+    .map-grid,
+    .map-container {
+      height: calc(100vh - 11.25rem);
+    }
+  }
+
+  @include breakpoint(large) {
+    .map-grid,
+    .map-container {
+      height: 100%;
+    }
   }
 }
 
@@ -78,14 +109,14 @@ html, body {
   }
 
   @include breakpoint(large) {
-    margin-top: 3.375rem;
+    margin-top: 5.25rem;
     order: 1;
     width: 15rem;
     box-shadow: 2px 0 0 rgba(0,0,0,0.1);
   }
 
   @include breakpoint(xlarge) {
-    width: 17.5rem;
+    width: 18rem;
   }
 }
 
@@ -108,7 +139,11 @@ html, body {
   }
 
   & > .close-button {
-    display: none;
+    position: relative;
+    top: -1rem;
+    right: -0.5rem;
+    float: right;
+    margin: 0.5rem;
 
     @include breakpoint(large) {
       display: block;

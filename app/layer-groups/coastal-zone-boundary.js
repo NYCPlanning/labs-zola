@@ -5,7 +5,7 @@ const legendColor = '#5DC6E4';
 export default {
   id: 'coastal-zone-boundary',
   title: 'Coastal Zone Boundary',
-  titleTooltip: 'Projects within the Coastal Zone Boundary are subject to additional review under the Waterfront Revitalization Program',
+  titleTooltip: 'Projects within the coastal zone boundary are subject to additional review under the Waterfront Revitalization Program',
   visible: false,
   legendIcon: 'polygon',
   legendColor,

@@ -1,0 +1,19 @@
+// --------------------------------------------------
+// Module: Features
+// --------------------------------------------------
+
+.feature-image-cell {
+
+  @include breakpoint(medium) {
+    padding-right: 1rem;
+  }
+}
+
+.feature-image {
+  max-width: 60%;
+  margin: 0 auto $global-margin;
+
+  @include breakpoint(medium) {
+    max-width: 100%;
+  }
+}

@@ -1,8 +1,11 @@
-{{site-header count=model.bookmarks.length resetAll=(action 'resetAll')}}
-
+{{site-header count=model.bookmarks.length resetAll=(action 'resetQueryParams')}}
+{{log model}}
 <div class="site-main grid-x">
   <div class="navigation-area cell large-auto">
-    {{map-search transitionTo=(action 'transitionTo') saveAddress=(action 'saveAddress')}}
+    <div class="search-container hide-for-print">
+      {{map-search transitionTo=(action 'transitionTo') saveAddress=(action 'saveAddress')}}
+      {{bbl-lookup transitionTo=(action 'transitionTo')}}
+    </div>
 
     <div class="map-grid">
       {{main-map

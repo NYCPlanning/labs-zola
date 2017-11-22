@@ -40,6 +40,7 @@ const inputValue = {
               ['R7', '#f3f63e'],
               ['R8', '#f3f62b'],
               ['R9', '#f2f618'],
+              ['R10', '#F0F614'],
             ],
           },
           'fill-opacity': 0.3,
@@ -49,7 +50,7 @@ const inputValue = {
       before: 'waterway-label',
     },
   ],
-}; 
+};
 
 moduleForComponent('extract-layer-stops-for', 'helper:extract-layer-stops-for', {
   integration: true
@@ -63,4 +64,3 @@ test('it renders', function(assert) {
 
   assert.equal((typeof this), 'object');
 });
-

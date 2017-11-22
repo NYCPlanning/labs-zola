@@ -1,7 +1,7 @@
 export default {
   id: 'building-footprints',
   title: 'Building Footprints',
-  titleTooltip: 'Building Footprints based on OpenStreetMap data',
+  titleTooltip: 'Building footprints based on OpenStreetMap data',
   visible: false,
   layers: [
     {
@@ -25,7 +25,12 @@ export default {
           ],
         ],
         paint: {
-          'fill-opacity': 0.3,
+          'fill-opacity': {
+            stops: [
+              [15, 0],
+              [16, 0.3],
+            ],
+          },
           'fill-outline-color': 'rgba(12, 12, 12, 1)',
           'fill-color': 'rgba(175, 175, 175, 1)',
         },

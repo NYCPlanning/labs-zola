@@ -14,7 +14,7 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
-  {{map.layer-group for='threed-buildings' visible=qps.threed-buildings}}
+  {{map.layer-group for='threed-buildings' visible=qps.threed-buildings didToggleVisibility=(action 'adjustBuildingsLayer')}}
 
   {{map.layer-group for='neighborhood-tabulation-areas' visible=qps.neighborhood-tabulation-areas}}
 
@@ -48,6 +48,10 @@
 
   {{map.layer-group for='sidewalkcafes' visible=qps.sidewalkcafes}}
 
+  {{map.layer-group for='effective-flood-insurance-rate-2007' visible=qps.effective-flood-insurance-rate-2007}}
+
+  {{map.layer-group for='preliminary-flood-insurance-rate' visible=qps.preliminary-flood-insurance-rate}}
+
   {{map.layer-group for='fresh' visible=qps.fresh}}
 
   {{map.layer-group for='transit-zones' visible=qps.transit-zones}}
@@ -55,6 +59,10 @@
   {{map.layer-group for='inclusionary-housing' visible=qps.inclusionary-housing}}
 
   {{map.layer-group for='mandatory-inclusionary-housing' visible=qps.mandatory-inclusionary-housing}}
+
+  {{map.layer-group for='business-improvement-districts' visible=qps.business-improvement-districts}}
+
+  {{map.layer-group for='limited-height-districts' visible=qps.limited-height-districts}}
 
   {{map.layer-group for='special-purpose-subdistricts' visible=qps.special-purpose-subdistricts}}
 
@@ -111,9 +119,8 @@
       {{source.layer layer=mainMap.pointLayer}}
     {{/map.source}}
   {{/if}}
-
   {{#if shouldFitBounds}}
-    {{map.call 'fitBounds' mainMap.bounds isSelectedBoundsOptions}}
+    {{map.call 'fitBounds' mainMap.bounds mainMap.isSelectedBoundsOptions}}
   {{/if}}
 
   {{#if currentMeasurement}}
@@ -140,9 +147,17 @@
 
 {{/mapbox-gl}}
 
+
 <div style="position: absolute;top:100px;lefT:100px;z-index:10;">
   <p onclick={{action 'startDraw' 'line'}}>Draw Line</p>
   <p onclick={{action 'startDraw' 'polygon'}}>Draw Polygon</p>
   <p onclick={{action 'clearDraw'}}>Clear</p>
 
 </div>
+
+{{#unless findMeDismissed}}
+  <div class="find-me">
+    <button {{action 'locateMe'}} class="button hide-for-medium hide-for-print no-margin">Locate&nbsp;Me</button>
+    <button {{action 'dismissFindMe'}} class="button hide-for-medium hide-for-print no-margin">&times;</button>
+  </div>
+{{/unless}}

@@ -3,7 +3,7 @@ const legendColor = '#9FC73E';
 export default {
   id: 'zoning-map-amendments',
   title: 'Zoning Map Amendments',
-  titleTooltip: 'Changes to zoning that have been adopted since 2002',
+  titleTooltip: 'Changes to the Zoning Map that have been adopted since 2002',
   visible: false,
   legendIcon: 'polygon',
   legendColor,

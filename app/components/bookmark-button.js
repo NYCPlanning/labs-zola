@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 export default Ember.Component.extend({
   bookmark: null,
@@ -10,6 +11,7 @@ export default Ember.Component.extend({
   },
 
   actions: {
+    @trackEvent('Bookmark', 'Toggle Saved', 'bookmark.id')
     toggleSaved() {
       const bookmark = this.get('bookmark');
 

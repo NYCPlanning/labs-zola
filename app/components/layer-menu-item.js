@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { ParentMixin, ChildMixin } from 'ember-composability-tools';
+import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 const { service } = Ember.inject;
 const { alias } = Ember.computed;
@@ -16,25 +17,13 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     return layers.findBy('config.id', layerId);
   },
 
-  @computed('layer.config.title')
-  title(title) {
-    return title;
-  },
+  title: alias('layer.config.title'),
 
-  @computed('layer.config.legendIcon')
-  legendIcon(legendIcon) {
-    return legendIcon;
-  },
+  legendIcon: alias('layer.config.legendIcon'),
 
-  @computed('layer.config.legendColor')
-  legendColor(legendColor) {
-    return legendColor;
-  },
+  legendColor: alias('layer.config.legendColor'),
 
-  @computed('layer.config.titleTooltip')
-  titleTooltip(titleTooltip) {
-    return titleTooltip;
-  },
+  titleTooltip: alias('layer.config.titleTooltip'),
 
   @computed('layer.minzoom', 'layer.visible', 'mainMap.currentZoom')
   warning(minzoom, visible, currentZoom) {
@@ -42,6 +31,8 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
   },
 
   actions: {
+
+    @trackEvent('Toggle Layer', 'title', 'visible')
     toggleVisibility() {
       this.toggleProperty('visible');
     },

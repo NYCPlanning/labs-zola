@@ -1,0 +1,35 @@
+<span {{action (mut closed) (not closed)}} class="bbl-lookup-toggle button tiny gray text-orange expanded no-margin">
+  {{#if closed}}
+    {{fa-icon 'chevron-down'}}
+  {{else}}
+    {{fa-icon 'chevron-up'}}
+  {{/if}}
+  BBL Lookup
+</span>
+
+{{#unless closed}}
+<div class="bbl-lookup-form">
+  <div class="bbl-power-select">
+    <label>Borough</label>
+    {{#power-select options=boroOptions searchEnabled=false selected=boro searchField='name' onchange=(action 'setBorocode') as |boro|}}
+      {{boro.name}}
+    {{/power-select}}
+  </div>
+  <div class="grid-x">
+    <div class="cell auto block-container">
+      <label>Block
+        {{input type='number' value=block}}
+      </label>
+    </div>
+    <div class="cell auto lot-container">
+      <label>Lot
+        {{input type='number' value=lot}}
+      </label>
+    </div>
+  </div>
+  {{#if errorMessage}}<p class="lu-red text-center text-small"><{{errorMessage}}</p>{{/if}}
+  <input type="submit" value="Go to BBL" class="button small expanded no-margin" onclick={{action 'checkBBL'}}>
+</div>
+{{/unless}}
+
+{{yield}}

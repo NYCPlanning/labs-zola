@@ -1,0 +1,11 @@
+{{#if hasBlock}}
+  {{#if (await resultingFeature) as |id|}} 
+    {{yield (hash resultingFeature=id)}}
+  {{/if}}
+{{else}}
+  {{#if (await resultingFeature) as |id|}} 
+    {{#if id}}    
+      {{link-to string route id classNames=classNames}}
+    {{/if}}
+  {{/if}}
+{{/if}}

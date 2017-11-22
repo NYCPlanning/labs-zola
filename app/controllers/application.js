@@ -3,6 +3,8 @@ import QueryParams from 'ember-parachute';
 import bblDemux from '../utils/bbl-demux';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
+import trackEvent from '../utils/track-event'; // eslint-disable-line
+
 import layerGroups from '../layer-groups';
 
 const { service } = Ember.inject;
@@ -48,6 +50,7 @@ export const mapQueryParams =
         R7: { defaultValue: true },
         R8: { defaultValue: true },
         R9: { defaultValue: true },
+        R10: { defaultValue: true },
         c11: { defaultValue: true },
         c12: { defaultValue: true },
         c13: { defaultValue: true },
@@ -90,8 +93,18 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
       this.transitionToRoute(...args);
     },
     saveAddress(address) {
+      const bookmarks = this.store.peekAll('bookmark');
+
+      const isUnique =
+        bookmarks.every(
+          bookmark => bookmark.get('address') !== address.address,
+        );
+
       set(address, 'type', 'address');
-      this.store.createRecord('bookmark', address).save();
+
+      if (isUnique) {
+        this.store.createRecord('bookmark', address).save();
+      }
     },
     routeToLot(e) {
       const map = e.target;
@@ -104,9 +117,10 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
       const feature = map.queryRenderedFeatures(e.point, { layers })[0];
 
       const highlightedLayer = this.get('mapMouseover.highlightedLayer');
+
       if (feature) {
         if (highlightedLayer === feature.layer.id) {
-          const { bbl, ulurpno, zonedist, sdlbl, splbl, cartodb_id } = feature.properties;
+          const { bbl, ulurpno, zonedist, sdlbl, splbl, overlay, cartodb_id } = feature.properties;
 
           if (bbl) {
             const { boro, block, lot } = bblDemux(bbl);
@@ -129,16 +143,20 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
           if (splbl) {
             this.transitionToRoute('special-purpose-subdistricts', cartodb_id);
           }
+
+          if (overlay) {
+            mainMap.set('shouldFitBounds', false);
+            this.transitionToRoute('commercial-overlay', overlay);
+          }
         }
       }
     },
     setQueryParam(property, value) {
       this.set(property, value);
     },
+
+    @trackEvent('Layer Palette', 'Reset query params', 'isDefault')
     resetQueryParams() {
-      this.resetQueryParams();
-    },
-    resetAll() {
       this.resetQueryParams();
     },
   },

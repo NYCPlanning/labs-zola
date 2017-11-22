@@ -67,6 +67,18 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
 
   .switch {
     margin: 0 $layer-palette-padding 0 0;
+
+    &.tiny .switch-paddle {
+      width: 1.25rem;
+    }
+
+    &.tiny .switch-paddle::after {
+      width: 0.5rem;
+    }
+
+    &.tiny input:checked ~ .switch-paddle::after {
+      left: 0.625rem;
+    }
   }
 }
 
@@ -129,32 +141,6 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
     }
   }
 
-}
-
-.layer-warning {
-  float: right;
-  margin: 0 0 0 $layer-palette-padding;
-  position: relative;
-
-  .fa {
-    color: $dcp-yellow;
-  }
-
-  .layer-warning--text {
-    display: none;
-  }
-
-  &:hover .layer-warning--text {
-    display: block;
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    right: 50%;
-    background-color: $white;
-    padding: $layer-palette-padding;
-    border: 1px solid $dcp-yellow;
-    font-size: $small-font-size;
-  }
 }
 
 .layer-key {

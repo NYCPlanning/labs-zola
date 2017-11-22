@@ -42,6 +42,7 @@ const draw = new MapboxDraw({
 export default Ember.Component.extend({
   mainMap: service(),
   mapMouseover: service(),
+  metrics: service(),
 
   classNames: ['map-container'],
 
@@ -55,33 +56,12 @@ export default Ember.Component.extend({
   mapConfig: Object.keys(layerGroups).map(key => layerGroups[key]),
 
   loading: true,
+  findMeDismissed: false,
   sourcesLoaded: true,
   currentMeasurement: null,
   measurementUnit: '',
 
   cartoSources: [],
-
-  @computed('mainMap.selected')
-  isSelectedBoundsOptions(selected) {
-    if (selected) {
-      const type = selected.constructor.modelName;
-      const el = this.$();
-      const height = el.height();
-      const width = el.width();
-
-      const fullWidth = window.innerWidth;
-      // width of content area on large screens is 5/12 of full
-      const contentWidth = (fullWidth / 12) * 5;
-      // on small screens, no offset
-      const offset = fullWidth < 1024 ? 0 : -((width - contentWidth) / 2);
-      const padding = Math.min(height, (width - contentWidth)) / 2.5;
-      return {
-        padding: selected && (type !== 'zoning-district') ? padding : 0,
-        offset: [offset, 0],
-      };
-    }
-    return null;
-  },
 
   drawnFeatureLayers,
 
@@ -113,6 +93,28 @@ export default Ember.Component.extend({
   selectedLineLayer,
 
   actions: {
+    adjustBuildingsLayer(visible) {
+      const map = this.get('mainMap.mapInstance');
+      if (visible) {
+        map.flyTo({ pitch: 45 });
+      } else {
+        map.flyTo({ pitch: 0 });
+      }
+    },
+
+    locateMe() {
+      const geolocateButton = document.querySelectorAll('.mapboxgl-ctrl-geolocate')[0];
+
+      if (geolocateButton) {
+        geolocateButton.click();
+        this.set('findMeDismissed', true);
+      }
+    },
+
+    dismissFindMe() {
+      this.set('findMeDismissed', true);
+    },
+
     handleMapLoad(map) {
       window.map = map;
       const mainMap = this.get('mainMap');
@@ -132,6 +134,7 @@ export default Ember.Component.extend({
         });
 
       // setup controls
+      const navigationControl = new mapboxgl.NavigationControl();
       const geoLocateControl = new mapboxgl.GeolocateControl({
         positionOptions: {
           enableHighAccuracy: true,
@@ -139,7 +142,15 @@ export default Ember.Component.extend({
         trackUserLocation: true,
       });
 
-      map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+      // GA
+      geoLocateControl.on('trackuserlocationstart', () => {
+        this.get('metrics').trackEvent(
+          'GoogleAnalytics',
+          { eventCategory: 'Map', eventAction: 'Geolocate' },
+        );
+      });
+
+      map.addControl(navigationControl, 'top-left');
       map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
       map.addControl(geoLocateControl, 'top-left');
       map.addControl(new MeasurementText(), 'top-left');
@@ -149,7 +160,7 @@ export default Ember.Component.extend({
 
       map.addSource('ee', {
         type: 'image',
-        url: 'img/ht.png',
+        url: '/img/ht.png',
         coordinates: [
           [-74.0030685, 40.7335205],
           [-74.0030515, 40.7335205],

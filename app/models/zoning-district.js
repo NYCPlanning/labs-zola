@@ -3,47 +3,84 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import bbox from 'npm:@turf/bbox';
 
 const zoningDescriptions = {
-  r1: 'R1 districts are leafy, low-density neighborhoods of large, single-family detached homes on spacious lots. Resembling many suburbs, these districts are mapped in a few areas of the city, such as Todt Hill (R1-1) in Staten Island, Jamaica Estates (R1-2) in Queens, and Fieldston (R1-2) in the Bronx. R1-2A is mapped in Forest Hills in Queens.',
+  m1: 'M1 districts are designated for areas with light industries.',
+  m2: 'M2 districts occupy the middle ground between light and heavy industrial areas.',
+  m3: 'M3 districts are designated for areas with heavy industries that generate noise, traffic or pollutants.',
+  c1: 'C1 districts are mapped along streets that serve local retail needs within residential neighborhoods.',
+  c2: 'C2 districts are mapped along streets that serve local retail needs within residential neighborhoods.',
+  c3: 'C3 districts permit waterfront recreational activities, primarily boating and fishing, in areas along the waterfront.',
+  c4: 'C4 districts are mapped in regional centers where larger stores, theaters and office uses serve a wider region and generate more traffic than neighborhood shopping areas.',
+  c5: 'C5 districts are intended for commercial areas that require central locations or serve the entire metropolitan region.',
+  c6: 'C6 districts are intended for commercial areas that require central locations or serve the entire metropolitan region.',
+  c7: 'C7 districts are specifically designated for large open amusement parks.',
+  c8: 'C8 districts, bridging commercial and manufacturing uses, provide for automotive and other heavy commercial services that often require large amounts of land.',
+  p: 'A public park is any park, playground, beach, parkway, or roadway within the jurisdiction and control of the New York City Commissioner of Parks & Recreation. Typically, public parks are not subject to zoning regulations.',
+  r1: 'R1 districts are leafy, low-density neighborhoods of large, single-family detached homes on spacious lots.',
+  r2: 'Residential development in R2 districts is limited exclusively to single-family detached houses.',
+  r2a: 'R2A is a contextual district intended to preserve low-rise neighborhoods characterized by single-family detached homes on lots with a minimum width of 40 feet',
+  r2x: 'R2X districts allow large single-family detached houses on lots with a minimum width of 30 feet.',
+  r31: 'R3-1 contextual districts are the lowest density districts that allow semi-detached one- and two-family residences, as well as detached homes',
+  r32: 'R3-2 districts are general residence districts that allow a variety of housing types, including low-rise attached houses, small multifamily apartment houses, and detached and semi-detached one- and two-family residences.',
+  r3a: 'Characteristic of many of the city’s older neighborhoods, R3A contextual districts feature modest single- and two-family detached residences on zoning lots as narrow as 25 feet in width.',
+  r3x: 'R3X contextual districts, mapped extensively in lower-density neighborhoods permit only one- and two-family detached homes on lots that must be at least 35 feet wide.',
+  r4: 'R4 districts are general residence districts that allow a variety of housing types, including low-rise attached houses, small multifamily apartment houses, and detached and semi-detached one- and two-family residences.',
+  r41: 'R4-1 contextual districts permit only one- and two-family detached and semi-detached houses.',
+  r4a: 'R4A contextual districts permit only one- and two-family detached residences characterized by houses with two stories and an attic beneath a pitched roof.',
+  r4b: 'Primarily a contextual rowhouse district limited to low-rise, one- and two-family attached residences, R4B districts also permit detached and semi-detached buildings.',
+  r5: 'R5 districts are general residence districts that allow a variety of housing types, including low-rise attached houses, small multifamily apartment houses, and detached and semi-detached one- and two-family residences.',
+  r5a: 'R5A contextual districts permit only one- and two-family detached residences characterized by houses with two stories and an attic beneath a pitched roof.',
+  r5b: 'Primarily a contextual rowhouse district limited to low-rise, one- and two-family attached residences, R4B districts also permit detached and semi-detached buildings.',
+  r5d: 'R5D contextual districts are designed to encourage residential growth along major corridors in auto-dependent areas of the city.',
+  r6: 'R6 zoning districts are widely mapped in built-up, medium-density areas of the city whose character can range from neighborhoods with a diverse mix of building types and heights to large-scale “tower in the park” developments.',
+  r6a: 'R6A contextual districts produce high lot coverage, six- to eight-story apartment buildings set at or near the street line designed to be compatible with older buildings in medium-density neighborhoods.',
+  r6b: 'R6B contextual districts are often traditional row house districts, which preserve the scale and harmonious streetscape of medium-density neighborhoods of four-story attached buildings developed during the 19th century.',
+  r7: 'R7 zoning districts are medium-density apartment house districts that encourage lower apartment buildings on smaller lots and, on larger lots, taller buildings with less lot coverage.',
+  r7a: 'R7A contextual districts produce high lot coverage, seven- to nine-story apartment buildings set at or near the street line designed to be compatible with older buildings in medium-density neighborhoods.',
+  r7b: 'R7B contextual districts generally produce six- to seven-story apartment buildings in medium-density neighborhoods.',
+  r7d: 'R7D contextual districts promote new medium-density contextual development along transit corridors that range between 10 and 11 stories.',
+  r7x: 'R7X contextual districts are flexible medium-density districts that generally produce 12- to 14-story buildings.',
+  r8: 'R8 zoning districts are high-density apartment house districts that encourage mid-rise apartment buildings on smaller lots and, on larger lots, taller buildings with less lot coverage.',
+  r8a: 'R8A contextual districts are high-density districts designed to produce apartment buildings at heights of roughly twelve to fourteen stories.',
+  r8b: 'R8B contextual districts are designed to preserve the character and scale of taller rowhouse neighborhoods.',
+  r8x: 'R8X contextual districts are flexible high-density districts that generally produce 15- to 17-story buildings.',
+  r9: 'R9 districts are high-density districts that permit a wide range of building types including towers.',
+  r9a: 'R9A contextual districts are high-density districts designed to produce new buildings between 13 and 17 stories that mimics older, high street wall buildings in high-density neighborhoods.',
+  r9d: 'R9D contextual districts are high-density districts that permit towers that sit on a contextual base.',
+  r9x: 'R9X contextual districts are high-density districts designed to produce new buildings between 16 and 20 stories that mimics older, high street wall buildings in high-density neighborhoods.',
+  r10: 'R10 districts are high-density districts that permit a wide range of building types including towers.',
+  r10a: 'R10-A contextual districts are high-density districts designed to produce new buildings between 21 and 23 stories that mimics older, high street wall buildings in high-density neighborhoods.',
+  r10x: 'R10X contextual districts are high-density districts that permit towers that sit on a contextual base.',
+  bpc: 'Battery Park City',
+};
 
-  r2: 'Residential development in R2 districts is limited exclusively to single-family detached houses. Floral Park in Queens, parts of City Island and Riverdale in the Bronx, and Westerleigh on Staten Island’s north shore are typical R2 districts.',
-
-  r3: 'Description coming soon',
-
-  r4: 'R4 districts allow all types of ­housing at a slightly higher density than permit­ted in R3-2 districts. The floor area ratio (FAR) of 0.75, plus an attic allowance of up to 20% for inclusion of space under the pitched roof common to these districts, ­usually produces buildings with three stories instead of the two-story homes characteristic of R3 districts. Much of the residential development in North Corona in Queens and Arden Heights in Staten Island is typical of R4 districts.',
-
-  r5: 'R5 districts allow a variety of housing at a higher density than permitted in R3-2 and R4 districts. The floor area ratio (FAR)of 1.25 typically produces three-and four-story attached houses and small apartment houses. With a height limit of 40 feet, R5 districts provide a transition between lower- and higher-density neighborhoodsand are widely mapped in Brooklyn, Queens and the Bronx. Portions of Windsor Terrace and Ocean Parkway in Brooklyn are R5 districts.',
-
-  r6: 'R6 zoning districts are widely mapped in built-up, medium-density areas in Brooklyn, Queens and the Bronx. The character of R6 districts can range from neighborhoods with a diverse mix of building types and heights to large-scale “tower in the park” developments such as Ravenswood in Queens and Homecrest in Brooklyn. Developers can choose between two sets of bulk regulations. Standard height factor regulations, introduced in 1961, produce small multi-family buildings on small zoning lots and, on larger lots, tall buildings that are set back from the street. Optional Quality Housing regulations produce high lot coverage buildings within height limits that often reflect the scale of older, pre-1961 apartment buildings in the neighborhood.',
-
-  r7: 'R7 districts are medium-density apartment house districts mapped in much of the Bronx as well as the Upper West Side in Manhattan and Brighton Beach in Brooklyn. The height factor regulations for R7 districts encourage lower apartment buildings on smaller zoning lots and, on larger lots, taller buildings with less lot coverage. As an alternative, developers may choose the optional Quality Housing regulations to build lower buildings with greater lot coverage.',
-
-  r8: 'Apartment buildings in R8 districts can range from mid-rise, eight- to ten-story buildings to much taller buildings set back from the street on large zoning lots. This high density residential district is mapped along the Grand Concourse in the Bronx and on the edge of Brooklyn Heights. R8 districts are also widely mapped in Manhattan neighborhoods, such as Washington Heights. New buildings in R8 districts may be developed under either height factor regulations or the optional Quality Housing regulations that often reflect the older, pre-1961 neighborhood streetscape.',
-
-  r9: 'In R9 districts, which are mapped along several major thoroughfares in Manhattan, such as West 96th Street, new buildings can be developed under height factor regulations or the optional Quality Housing regulations as in R6 through R8 districts. The optional Quality Housing regulations in R9 districts are the same as the R9A regulations. Designed in part for institutional purposes (mainly hospitals), most R9 height factor buildings are developed pursuant to the tower rules, which are applicable only in the city’s higher-density areas, and commercial districts with an R9 residential district equivalent (C1‑8, C2-7 and C6-3).',
-
-  r10: 'R10 districts are mapped along portions of Fifth and Park Avenues in Manhattan; however, most buildings that conform to the R10 building envelope are found in commercial districts with a residential district equivalent of R10, the highest residential density in the city. Much of Midtown, Lower Manhattan and major avenues in Manhattan, as well as parts of Downtown Brooklyn and Long Island City, are mapped at R10 density. The floor area ratio (FAR) is 10.0. Developers may choose between Quality Housing regulations or tower regulations; height factor regulations are not applicable.',
-
-  c1: 'C1-6 through C1-9 and C2-6 through C2-8 districts are commercial districts that are predominantly residential in character. They are mapped along major thoroughfares in medium- and higher-density areas of the city, such as Second and Lexington Avenues on the Upper East Side or Columbus and Amsterdam Avenues on the Upper West Side. As in commercial overlays districts, typical retail uses include grocery stores, dry cleaners, drug stores, restaurants and local clothing stores that cater to the daily needs of the immediate neighborhood. There are only minor differences between C1 and C2 districts, with a slightly wider range of uses permitted in C2 districts, such as funeral homes and local repair services. In mixed buildings, commercial uses are limited to one or two floors and must always be located below the residential use.',
-
-  c2: 'C1-6 through C1-9 and C2-6 through C2-8 districts are commercial districts that are predominantly residential in character. They are mapped along major thoroughfares in medium- and higher-density areas of the city, such as Second and Lexington Avenues on the Upper East Side or Columbus and Amsterdam Avenues on the Upper West Side. As in commercial overlays districts, typical retail uses include grocery stores, dry cleaners, drug stores, restaurants and local clothing stores that cater to the daily needs of the immediate neighborhood. There are only minor differences between C1 and C2 districts, with a slightly wider range of uses permitted in C2 districts, such as funeral homes and local repair services. In mixed buildings, commercial uses are limited to one or two floors and must always be located below the residential use.',
-
-  c3: 'C3 and C3A districts permit waterfront recreational activities, primarily boating and fishing, in areas along the waterfront that are usually adjacent to residential districts. In addition to facilities for docking, renting, servicing and storing fishing and pleasure boats, permitted activities include aquatic sports equipment sales and rentals, bicycle shops, ice cream stores and public and private beaches. These waterfront uses are listed in Use Group 14. C3 and C3A districts also permit residences and community facilities (Use Groups 1–4). C3A districts are mapped in Staten Island and the Throgs Neck area of the Bronx. C3 districts are found on City Island and along Mill Basin in Brooklyn.',
-
-  c4: 'C4 districts are mapped in regional commercial centers, such as Flushing in Queens and the Hub in the Bronx, that are located outside of the central business districts. In these areas, specialty and department stores, theaters and other commercial and office uses serve a larger region and generate more traffic than neighborhood shopping areas. Use Groups 5, 6, 8, 9, 10 and 12, which include most retail establishments, are permitted in C4 districts. Uses that would interrupt the desired continuous retail frontage, such as home maintenance and repair service stores listed in Use Group 7, are not allowed.',
-  c5: 'C5 is a central commercial district with continuous retail frontage intended for offices and retail establishments that serve the entire metropolitan region. Famous shopping streets, such as Fifth Avenue, Madison Avenue and East 57th Street are C5 districts. Parts of Lower Manhattan, Downtown Brooklyn and Long Island City are also within C5 districts.',
-
-  c6: 'C6 districts permit a wide range of high-bulk commercial uses requiring a central ­location. Most C6 districts are in Manhattan, Downtown Brooklyn and Downtown Jamaica; a C6-3D district is mapped in the Civic Center area of the Bronx. Corporate headquarters, large hotels, department stores and entertainment facilities in high-rise mixed buildings are permitted in C6 districts.',
-
-  c7: 'C7 districts are specifically designated for large open amusement parks. In addition to the types of activities commonly found in amusement parks, such as ferris wheel rides and games of chance (Use Group 15), C7 districts also permit boating facilities and other large open and enclosed entertainment facilities like skating rinks, sports stadiums and miniature golf courses (Use Groups 12–14). Residential and community facility uses are not permitted.',
-
-  c8: 'C8 districts, bridging commercial and manufacturing uses, provide for automotive and other heavy commercial services that often require large amounts of land. Parts of Bay Ridge in Brooklyn and Castleton Corners on Staten Island are mapped C8. Typical uses are automobile showrooms and repair shops, warehouses, gas stations and car washes—although all commercial uses (except large, open amusements) as well as certain community facilities are permitted in C8 districts. Housing is not permitted and performance standards are imposed for certain semi-industrial uses (Use Group 11A and 16).',
-
-  m1: 'M1 districts range from the Garment District in Manhattan and Port Morris in the Bronx with multistory lofts, to parts of Red Hook or College Point with one- or two-story warehouses characterized by loading bays. M1 districts are often buffers between M2 or M3 districts and adjacent residential or commercial districts. M1 districts typically include light industrial uses, such as woodworking shops, repair shops, and wholesale service and storage facilities. Nearly all industrial uses are allowed in M1 districts if they meet the stringent M1 performance standards. Offices, hotels and most retail uses are also permitted. Certain community facilities, such as hospitals, are allowed in M1 districts only by special permit, but houses of worship are allowed as-of-right.',
-
-  m2: 'M2 districts occupy the middle ground between light and heavy industrial areas. The four M2 districts, with different floor area ratios (FAR) and parking requirements, are mapped mainly in the city’s older industrial areas along the waterfront. M2-1 districts, for example, are mapped along much of Brooklyn’s Red Hook and Sunset Park waterfronts. Manhattan’s Hudson River piers, including the Passenger Ship Terminal and many municipal facilities, are within M2-3 districts.',
-
-  m3: 'M3 districts are designated for areas with heavy industries that generate noise, traffic or pollutants. Typical uses include power plants, solid waste transfer facilities and recycling plants, and fuel supply depots. Even in M3 districts, uses with potential nuisance effects are required to conform to minimum performance standards.',
-
+const zoningAbbr = {
+  R2A: 'r2a',
+  R2X: 'r2x',
+  'R3-1': 'r31',
+  'R3-2': 'r32',
+  R3A: 'r3a',
+  R3X: 'r3x',
+  'R4-1': 'r41',
+  R4A: 'r4a',
+  R4B: 'r4b',
+  R5A: 'r5a',
+  R5B: 'r5b',
+  R5D: 'r5d',
+  R6A: 'r6a',
+  R6B: 'r6b',
+  R7A: 'r7a',
+  R7B: 'r7b',
+  R7D: 'r7d',
+  R7X: 'r7x',
+  R8A: 'r8a',
+  R8B: 'r8b',
+  R8X: 'r8x',
+  R9A: 'r9a',
+  R9D: 'r9d', // R9D does not have a route
+  R9X: 'r9x',
+  R10A: 'r10a',
+  R10X: 'r10x', // R10X does not have a route
+  BPC: 'bpc',
 };
 
 export default DS.Model.extend({
@@ -51,14 +88,25 @@ export default DS.Model.extend({
 
   @computed('id')
   primaryzone(id) {
+    // convert R6A to r6
     const primary = id.match(/\w\d*/)[0].toLowerCase();
     return primary;
   },
 
-  @computed('primaryzone')
-  description(primaryzone) {
-    console.log(primaryzone);
-    return zoningDescriptions[primaryzone];
+  @computed('id')
+  zoneabbr(id) {
+    const abbr = id.match(/\w\d*/)[0].toLowerCase();
+
+    if (id in zoningAbbr) {
+      return zoningAbbr[id];
+    }
+
+    return abbr;
+  },
+
+  @computed('zoneabbr')
+  description(zoneabbr) {
+    return zoningDescriptions[zoneabbr];
   },
 
   @computed('geometry')

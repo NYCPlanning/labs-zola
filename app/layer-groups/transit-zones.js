@@ -8,7 +8,7 @@ export default {
   visible: false,
   legendIcon: 'polygon',
   legendColor,
-  titleTooltip: 'Areas where parking requirements are eliminated or reduced for affordable and senior housing units',
+  titleTooltip: 'Transit-accessible areas where parking is optional for new affordable housing units and special rules apply to existing affordable units',
   layers: [
     {
       layer: lineStyle('transit-zones-line', 'supporting-zoning', 'transit-zones', legendColor),
