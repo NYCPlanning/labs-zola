@@ -4,11 +4,11 @@ export default {
   'source-layers': [
     {
       id: 'special-purpose-districts',
-      sql: 'SELECT the_geom_webmercator, cartodb_id, sdlbl, sdname FROM support_nysp',
+      sql: 'SELECT the_geom_webmercator, cartodb_id, sdlbl, sdname FROM support_zoning_sp',
     },
     {
       id: 'special-purpose-subdistricts',
-      sql: 'SELECT the_geom_webmercator, splbl, cartodb_id, spname, subdist FROM support_nysp_sd',
+      sql: 'SELECT the_geom_webmercator, splbl, cartodb_id, spname, subdist FROM support_zoning_spsd',
     },
     {
       id: 'mandatory-inclusionary-housing',
