@@ -3,13 +3,24 @@
 
   {{log 'model' model}}
 
-
+  <ul>
   {{#each model as |layerGroup|}}
-    <h2 class="header-medium">{{layerGroup.title}}</h2>
-    <p>{{layerGroup.meta.description}}</p>
-    <p><a href="{{layerGroup.meta.url}}">{{layerGroup.meta.url}}</a></p>
-    <p>Updated {{layerGroup.meta.updated_at}}</p>
+    <li>
+      <h2 class="header-medium no-margin">{{layerGroup.title}}</h2>
+      <p>
+        {{#if layerGroup.meta.description}}
+          <span style="display:block;" class="dark-gray"><strong>{{layerGroup.meta.description}}</strong></span>
+        {{/if}}
+        {{#if layerGroup.meta.url}}
+          <span style="display:block;" class="no-margin"><a href="{{layerGroup.meta.url}}" target="_blank">{{fa-icon 'external-link'}} {{layerGroup.meta.url}}</a></span>
+        {{/if}}
+        {{#if layerGroup.meta.updated_at}}
+          <span style="display:block;" class="dark-gray text-small">Updated {{layerGroup.meta.updated_at}}</span>
+        {{/if}}
+      </p>
+    </li>
   {{/each}}
+  </ul>
 
   {{outlet}}
 
