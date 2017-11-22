@@ -197,34 +197,33 @@ export default Ember.Component.extend({
     },
 
     startDraw(type) {
-      if (this.get('mainMap').get('isDrawing') === false) {
-        this.get('mainMap').mapInstance.addControl(draw);
-        this.get('mainMap').set('isDrawing', true);
+      const mainMap = this.get('mainMap');
+      if (mainMap.get('isDrawing')) {
+        draw.deleteAll();
+      } else {
+        mainMap.mapInstance.addControl(draw);
+        mainMap.set('isDrawing', true);
         this.set('mainMap.drawnFeature', null);
         this.set('displayStandard', null);
         this.set('displayMetric', null);
-      } else {
-        draw.deleteAll()
       }
 
       draw.changeMode(type === 'line' ? 'draw_line_string' : 'draw_polygon');
     },
 
     clearDraw() {
-      if (this.get('mainMap').get('isDrawing') === true) {
-        // remove draw from the map, set isDrawing to false
-        this.get('mainMap').set('isDrawing', false);
-        this.get('mainMap').mapInstance.removeControl(draw);
+      const mainMap = this.get('mainMap');
+      if (mainMap.get('isDrawing')) {
+        mainMap.mapInstance.removeControl(draw);
       }
 
-      this.get('mainMap').set('isDrawing', false);
+      mainMap.set('isDrawing', false);
       this.set('mainMap.drawnFeature', null);
       this.set('displayStandard', null);
       this.set('displayMetric', null);
     },
 
     handleDrawCreate(e) {
-      console.log('handleDrawCreate')
       this.set('mainMap.drawnFeature', e.features[0].geometry);
       setTimeout(() => {
         this.get('mainMap').mapInstance.removeControl(draw);
@@ -235,7 +234,6 @@ export default Ember.Component.extend({
     handleMeasurement() {
       // should log both metric and standard display strings for the current drawn feature
       const features = draw.getAll().features;
-
 
       if (features.length > 0) {
         const feature = features[0];
