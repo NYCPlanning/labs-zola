@@ -195,14 +195,31 @@
   border-radius: 4px;
 }
 
-// #measurement-text {
-//   position: absolute;
-//   top: auto;
-//   bottom: 80px;
-//   left: 10px;
-//
-//   .mapboxgl-ctrl-icon {
-//     line-height: 1.3;
-//     padding: rem-calc(8) rem-calc(10);
-//   }
-// }
+.draw-measurement-menu-button {
+  @include button(false, $white, #f2f2f2, $primary-color, solid);
+  font-size: 1rem;
+  margin: 0 rem-calc(-4) 0 0;
+  padding: rem-calc(6);
+  position: relative;
+}
+
+.draw-measurement-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  white-space: nowrap;
+  transform: translate(-50%, 0);
+  font-size: 0;
+  background-color: $white;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+  margin-top: rem-calc(-4);
+  border-radius: 4px;
+
+  button {
+    margin: rem-calc(4);
+
+    &:last-child {
+      margin-left: 0;
+    }
+  }
+}

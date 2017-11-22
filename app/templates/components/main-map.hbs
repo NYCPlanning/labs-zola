@@ -146,6 +146,19 @@
 {{#if currentMeasurement}}
   <div class="draw-measurement">
     {{numeral-format currentMeasurement '0,0'}} {{measurementUnit}}
+    <span class="draw-measurement-menu-button" {{action (mut measurementMenuOpen) (not measurementMenuOpen)}}>
+      {{#if measurementMenuOpen}}
+        {{fa-icon 'caret-down'}}
+      {{else}}
+        {{fa-icon 'caret-up'}}
+      {{/if}}
+      {{#if measurementMenuOpen}}
+        <span class="draw-measurement-menu">
+          <button class="button tiny gray">{{fa-icon 'dot-circle-o'}} Standard</button>
+          <button class="button tiny gray">{{fa-icon 'circle-thin' class="medium-gray"}} Metric</button>
+        </span>
+      {{/if}}
+    </span>
   </div>
 {{/if}}
 
