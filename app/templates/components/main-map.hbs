@@ -103,6 +103,17 @@
     {{/map.source}}
   {{/if}}
 
+  {{#if mainMap.drawnFeature}}
+    {{#map.source
+      sourceId='drawn-feature'
+      options=mainMap.drawnFeatureSource as |source|}}
+      {{source.layer layer=drawnFeatureLayers.line before='waterway-label'}}
+      {{#if (eq mainMap.drawnFeature.type 'Polygon')}}
+        {{source.layer layer=drawnFeatureLayers.fill before='waterway-label'}}
+      {{/if}}
+    {{/map.source}}
+  {{/if}}
+
   {{#if mainMap.currentAddress}}
     {{#map.source sourceId='currentAddress' options=mainMap.addressSource as |source|}}
       {{source.layer layer=mainMap.pointLayer}}
@@ -112,30 +123,48 @@
     {{map.call 'fitBounds' mainMap.bounds mainMap.isSelectedBoundsOptions}}
   {{/if}}
 
-  {{#if currentMeasurement}}
-    {{#ember-wormhole to="measurement-text"}}
-      <div class="mapboxgl-ctrl mapboxgl-ctrl-group">
-        <div class="mapboxgl-ctrl-icon">
-          <strong>Measurement:</strong>
-          <div>
-            {{numeral-format currentMeasurement '0,0'}} {{measurementUnit}}
-          </div>
-        </div>
-      </div>
-    {{/ember-wormhole}}
-  {{/if}}
-
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
   {{map.on 'zoomend' (action 'handleZoomend')}}
-  {{map.on 'mousemove' (action 'handleMouseover')}}
+  {{map.on 'mousemove' (action 'handleMousemove')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
-  {{map.on 'draw.create' (action 'handleMeasurement')}}
-  {{map.on 'draw.update' (action 'handleMeasurement')}}
-  {{map.on 'draw.delete' (action 'handleMeasurement')}}
-  {{map.on 'draw.modechange' (action 'handleMeasurementModeChange')}}
+  {{map.on 'draw.create' (action 'handleDrawCreate')}}
+  {{map.on 'draw.render' (action 'handleMeasurement')}}
+
 
 {{/mapbox-gl}}
+
+
+<div class="draw-tools">
+  <label>Measure</label>
+  <button class="draw-tool draw-tool--line" onclick={{action 'startDraw' 'line'}}><span class="icon distance"></span></button>
+  <button class="draw-tool draw-tool--polygon" onclick={{action 'startDraw' 'polygon'}}><span class="icon polygon"></span></button>
+  {{#if displayStandard}}
+    <button class="draw-tool draw-tool--clear" onclick={{action 'clearDraw'}}>{{fa-icon "times"}}</button>
+  {{/if}}
+</div>
+{{#if displayStandard}}
+  <div class="draw-measurement">
+    {{if (eq measurementUnitType 'standard') displayStandard displayMetric}}
+    <span class="draw-measurement-menu-button" {{action (mut measurementMenuOpen) (not measurementMenuOpen)}}>
+      {{#if measurementMenuOpen}}
+        {{fa-icon 'caret-down'}}
+      {{else}}
+        {{fa-icon 'caret-up'}}
+      {{/if}}
+      {{#if measurementMenuOpen}}
+        <span class="draw-measurement-menu">
+          <button class="button tiny gray" onclick={{action 'handleUnitsToggle' 'standard'}}>
+            {{fa-icon (if (eq measurementUnitType 'standard') 'dot-circle-o' 'circle-thin') class=(if (eq measurementUnitType 'metric') 'medium-gray')}} Standard
+          </button>
+          <button class="button tiny gray" onclick={{action 'handleUnitsToggle' 'metric'}}>
+            {{fa-icon (if (eq measurementUnitType 'metric') 'dot-circle-o' 'circle-thin') class=(if (eq measurementUnitType 'standard') 'medium-gray')}} Metric
+          </button>
+        </span>
+      {{/if}}
+    </span>
+  </div>
+{{/if}}
 
 {{#unless findMeDismissed}}
   <div class="find-me">
