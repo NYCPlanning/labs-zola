@@ -123,19 +123,6 @@
     {{map.call 'fitBounds' mainMap.bounds mainMap.isSelectedBoundsOptions}}
   {{/if}}
 
-  {{#if currentMeasurement}}
-    {{#ember-wormhole to="measurement-text"}}
-      <div class="mapboxgl-ctrl mapboxgl-ctrl-group">
-        <div class="mapboxgl-ctrl-icon">
-          <strong>Measurement:</strong>
-          <div>
-            {{numeral-format currentMeasurement '0,0'}} {{measurementUnit}}
-          </div>
-        </div>
-      </div>
-    {{/ember-wormhole}}
-  {{/if}}
-
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
   {{map.on 'zoomend' (action 'handleZoomend')}}
@@ -148,12 +135,19 @@
 {{/mapbox-gl}}
 
 
-<div style="position: absolute;top:100px;lefT:100px;z-index:10;">
-  <p onclick={{action 'startDraw' 'line'}}>Draw Line</p>
-  <p onclick={{action 'startDraw' 'polygon'}}>Draw Polygon</p>
-  <p onclick={{action 'clearDraw'}}>Clear</p>
-
+<div class="draw-tools">
+  <label>Measure</label>
+  <button class="draw-tool draw-tool--line" onclick={{action 'startDraw' 'line'}}><span class="icon distance"></span></button>
+  <button class="draw-tool draw-tool--polygon" onclick={{action 'startDraw' 'polygon'}}><span class="icon polygon"></span></button>
+  {{#if currentMeasurement}}
+    <button class="draw-tool draw-tool--clear" onclick={{action 'clearDraw'}}>{{fa-icon "times"}}</button>
+  {{/if}}
 </div>
+{{#if currentMeasurement}}
+  <div class="draw-measurement">
+    {{numeral-format currentMeasurement '0,0'}} {{measurementUnit}}
+  </div>
+{{/if}}
 
 {{#unless findMeDismissed}}
   <div class="find-me">

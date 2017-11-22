@@ -63,6 +63,33 @@
       transform-origin: 100% 0;
     }
   }
+
+  &.distance {
+    height: 0.1em;
+    width: 0.7em;
+    background-color: $primary-color;
+    transform: rotate(-45deg);
+    bottom: 0.1em;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -0.15em;
+      border: 0.2em solid transparent;
+    }
+    &::before {
+      border-right: 0.3em solid $primary-color;
+      right: 100%;
+      margin-right: -0.1em;
+    }
+    &::after {
+      border-left: 0.3em solid $primary-color;
+      left: 100%;
+      margin-left: -0.1em;
+    }
+  }
 }
 
 .search-results .fa:not(.fa-home) {
