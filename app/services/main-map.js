@@ -29,6 +29,17 @@ export default Ember.Service.extend({
   pointLayer,
   currentAddress: null,
 
+  drawnFeature: null,
+
+  @computed('drawnFeature')
+  drawnFeatureSource(feature) {
+    return {
+      type: 'geojson',
+      data: feature,
+    };
+  },
+
+
   @computed('currentAddress')
   addressSource(currentAddress) {
     return {

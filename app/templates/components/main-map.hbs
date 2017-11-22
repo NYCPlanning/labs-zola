@@ -95,6 +95,17 @@
     {{/map.source}}
   {{/if}}
 
+  {{#if mainMap.drawnFeature}}
+    {{#map.source
+      sourceId='drawn-feature'
+      options=mainMap.drawnFeatureSource as |source|}}
+      {{source.layer layer=drawnFeatureLayers.line before='waterway-label'}}
+      {{#if (eq mainMap.drawnFeature.type 'Polygon')}}
+        {{source.layer layer=drawnFeatureLayers.fill before='waterway-label'}}
+      {{/if}}
+    {{/map.source}}
+  {{/if}}
+
   {{#if mainMap.currentAddress}}
     {{#map.source sourceId='currentAddress' options=mainMap.addressSource as |source|}}
       {{source.layer layer=mainMap.pointLayer}}
@@ -121,11 +132,17 @@
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
   {{map.on 'zoomend' (action 'handleZoomend')}}
-  {{map.on 'mousemove' (action 'handleMouseover')}}
+  {{map.on 'mousemove' (action 'handleMousemove')}}
   {{map.on 'mouseout' (action 'handleMouseleave')}}
-  {{map.on 'draw.create' (action 'handleMeasurement')}}
-  {{map.on 'draw.update' (action 'handleMeasurement')}}
-  {{map.on 'draw.delete' (action 'handleMeasurement')}}
-  {{map.on 'draw.modechange' (action 'handleMeasurementModeChange')}}
+  {{map.on 'draw.create' (action 'handleDrawCreate')}}
+  {{map.on 'draw.render' (action 'handleMeasurement')}}
+
 
 {{/mapbox-gl}}
+
+<div style="position: absolute;top:100px;lefT:100px;z-index:10;">
+  <p onclick={{action 'startDraw' 'line'}}>Draw Line</p>
+  <p onclick={{action 'startDraw' 'polygon'}}>Draw Polygon</p>
+  <p onclick={{action 'clearDraw'}}>Clear</p>
+
+</div>

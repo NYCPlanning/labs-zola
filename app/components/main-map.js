@@ -6,9 +6,10 @@ import area from 'npm:@turf/area';
 import lineDistance from 'npm:@turf/line-distance';
 
 import sources from '../sources';
-
 import layerGroups from '../layer-groups';
+import drawStyles from '../layers/draw-styles';
 
+import drawnFeatureLayers from '../layers/drawn-feature';
 import highlightedLotLayer from '../layers/highlighted-lot';
 import selectedLayers from '../layers/selected-lot';
 
@@ -24,7 +25,6 @@ const MeasurementText = function() { };
 MeasurementText.prototype.onAdd = function(map) {
   this._map = map;
   this._container = document.createElement('div');
-  // this._container.className = 'mapboxgl-ctrl mapboxgl-ctrl-group';
   this._container.id = 'measurement-text';
   return this._container;
 };
@@ -36,11 +36,7 @@ MeasurementText.prototype.onRemove = function () {
 
 const draw = new MapboxDraw({
   displayControlsDefault: false,
-  controls: {
-    polygon: true,
-    trash: true,
-    line_string: true,
-  },
+  styles: drawStyles,
 });
 
 export default Ember.Component.extend({
@@ -86,6 +82,8 @@ export default Ember.Component.extend({
     }
     return null;
   },
+
+  drawnFeatureLayers,
 
   highlightedLotFeatures: [],
 
@@ -144,7 +142,6 @@ export default Ember.Component.extend({
       map.addControl(new mapboxgl.NavigationControl(), 'top-left');
       map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
       map.addControl(geoLocateControl, 'top-left');
-      map.addControl(draw, 'top-left');
       map.addControl(new MeasurementText(), 'top-left');
 
       // get rid of default building layer
@@ -169,9 +166,9 @@ export default Ember.Component.extend({
       });
     },
 
-    handleMouseover(e) {
+    handleMousemove(e) {
       const mapMouseover = this.get('mapMouseover');
-      mapMouseover.highlighter(e);
+      if (!this.get('mainMap').isDrawing) mapMouseover.highlighter(e);
     },
 
     handleMouseleave() {
@@ -183,6 +180,28 @@ export default Ember.Component.extend({
     handleZoomend(event) {
       const mainMap = this.get('mainMap');
       mainMap.set('currentZoom', event.target.getZoom());
+    },
+
+    startDraw(type) {
+      this.get('mainMap').mapInstance.addControl(draw);
+      draw.changeMode(type === 'line' ? 'draw_line_string' : 'draw_polygon');
+      this.get('mainMap').set('isDrawing', true);
+      this.set('mainMap.drawnFeature', null);
+      this.set('currentMeasurement', null);
+    },
+
+    clearDraw() {
+      this.get('mainMap').set('isDrawing', false);
+      this.set('mainMap.drawnFeature', null);
+      this.set('currentMeasurement', null);
+    },
+
+    handleDrawCreate(e) {
+      this.set('mainMap.drawnFeature', e.features[0].geometry);
+      setTimeout(() => {
+        this.get('mainMap').mapInstance.removeControl(draw);
+        this.get('mainMap').set('isDrawing', false);
+      }, 100);
     },
 
     handleMeasurement(e) {
@@ -204,16 +223,6 @@ export default Ember.Component.extend({
         const measurement = areaCalculation || distanceCalculation;
         this.set('currentMeasurement', measurement);
         this.set('measurementUnit', areaCalculation ? 'sq ft' : 'ft');
-      }
-    },
-
-    handleMeasurementModeChange(e) {
-      const mainMap = this.get('mainMap');
-
-      if (e.mode === 'simple_select') {
-        mainMap.set('isDrawing', false);
-      } else {
-        mainMap.set('isDrawing', true);
       }
     },
 
