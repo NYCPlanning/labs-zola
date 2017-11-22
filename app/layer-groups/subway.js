@@ -2,6 +2,11 @@ export default {
   id: 'subway',
   title: 'Subways',
   visible: true,
+  meta: {
+    description: 'NYC Subway Lines and Stops - Originally Sourced from NYC DoITT GIS, Updated by NYC Planning Labs',
+    url: null,
+    updated_at: '21 November 2017',
+  },
   layers: [
     {
       layer: {

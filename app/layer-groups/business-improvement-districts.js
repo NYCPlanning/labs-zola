@@ -9,6 +9,11 @@ export default {
   visible: false,
   legendIcon: 'polygon',
   legendColor,
+  meta: {
+    description: 'Business Improvement Districts Shapefile on the NYC Open Data Portal',
+    url: 'https://data.cityofnewyork.us/Business/Business-Improvement-Districts/ejxk-d93y/data',
+    updated_at: '20 November 2017',
+  },
   layers: [
     {
       layer: lineStyle('business-improvement-districts-line', 'supporting-zoning', 'business-improvement-districts', legendColor),

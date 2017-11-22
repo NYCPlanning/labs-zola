@@ -9,6 +9,11 @@ export default {
   visible: false,
   legendIcon: 'polygon',
   legendColor,
+  meta: {
+    description: 'NYC GIS Zoning Features October 2017, Bytes of the Big Apple',
+    url: 'https://www1.nyc.gov/site/planning/data-maps/open-data.page',
+    updated_at: '21 November 2017',
+  },
   layers: [
     {
       layer: lineStyle('zoning-sp-line', 'supporting-zoning', 'special-purpose-districts', legendColor),
