@@ -16,6 +16,7 @@ Router.map(function () { // eslint-disable-line
   this.route('commercial-overlay', { path: 'commercial-overlay/:id' });
   this.route('about');
   this.route('bookmarks');
+  this.route('data');
   this.route('features');
 });
 
