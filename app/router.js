@@ -17,6 +17,7 @@ Router.map(function () { // eslint-disable-line
   this.route('about');
   this.route('bookmarks');
   this.route('data');
+  this.route('features');
 });
 
 export default Router;

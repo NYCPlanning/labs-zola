@@ -11,7 +11,7 @@ const { service } = Ember.inject;
 const DEBOUNCE_MS = 100;
 
 export default Ember.Component.extend({
-  classNames: ['search hide-for-print'],
+  classNames: ['search'],
   searchTerms: '',
   transitionTo: null,
   selected: 0,
@@ -102,7 +102,10 @@ export default Ember.Component.extend({
 
   actions: {
     clear() {
+      const mainMap = this.get('mainMap');
       this.set('searchTerms', '');
+      // clear address marker
+      mainMap.set('currentAddress', null);
     },
 
     @trackEvent('Map Search', 'Clicked result', 'searchTerms')
@@ -111,6 +114,8 @@ export default Ember.Component.extend({
       const mapInstance = mainMap.get('mapInstance');
 
       this.$('.map-search-input').blur();
+      // clear address marker
+      mainMap.set('currentAddress', null);
 
       this.setProperties({
         selected: 0,

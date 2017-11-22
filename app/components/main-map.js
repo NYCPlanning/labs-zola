@@ -94,6 +94,15 @@ export default Ember.Component.extend({
   selectedLineLayer,
 
   actions: {
+    adjustBuildingsLayer(visible) {
+      const map = this.get('mainMap.mapInstance');
+      if (visible) {
+        map.flyTo({ pitch: 45 });
+      } else {
+        map.flyTo({ pitch: 0 });
+      }
+    },
+
     locateMe() {
       const geolocateButton = document.querySelectorAll('.mapboxgl-ctrl-geolocate')[0];
 
