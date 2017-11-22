@@ -1,11 +1,11 @@
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4">
-  <h2>Data Sources</h2>
+  <h1>Data Sources</h1>
 
   {{log 'model' model}}
 
 
   {{#each model as |layerGroup|}}
-    <h4>{{layerGroup.title}}</h4>
+    <h2 class="header-medium">{{layerGroup.title}}</h2>
     <p>{{layerGroup.meta.description}}</p>
     <p><a href="{{layerGroup.meta.url}}">{{layerGroup.meta.url}}</a></p>
     <p>Updated {{layerGroup.meta.updated_at}}</p>
