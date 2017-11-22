@@ -194,17 +194,26 @@ export default Ember.Component.extend({
     },
 
     startDraw(type) {
-      this.get('mainMap').mapInstance.addControl(draw);
+      if (this.get('mainMap').get('isDrawing') === false) {
+        this.get('mainMap').mapInstance.addControl(draw);
+        this.get('mainMap').set('isDrawing', true);
+        this.set('mainMap.drawnFeature', null);
+        this.set('currentMeasurement', null);
+      }
+
       draw.changeMode(type === 'line' ? 'draw_line_string' : 'draw_polygon');
-      this.get('mainMap').set('isDrawing', true);
-      this.set('mainMap.drawnFeature', null);
-      this.set('currentMeasurement', null);
     },
 
     clearDraw() {
       this.get('mainMap').set('isDrawing', false);
       this.set('mainMap.drawnFeature', null);
       this.set('currentMeasurement', null);
+
+      if (this.get('mainMap').get('isDrawing') === true) {
+        // remove draw from the map, set iDrawing to false
+        this.get('mainMap').set('isDrawing', false);
+        this.get('mainMap').mapInstance.removeControl(draw);
+      }
     },
 
     handleDrawCreate(e) {
