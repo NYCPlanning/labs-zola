@@ -122,6 +122,15 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     return newSql;
   },
 
+  didReceiveAttrs() {
+    const didToggleVisibility = this.get('didToggleVisibility');
+    const visible = this.get('visible');
+
+    if (didToggleVisibility) {
+      didToggleVisibility(visible);
+    }
+  },
+
   actions: {
     toggleVisibility() {
       this.toggleProperty('visible');

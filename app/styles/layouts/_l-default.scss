@@ -70,6 +70,31 @@ body {
   }
 }
 
+body.index {
+  overflow: hidden;
+
+  @include breakpoint(small only) {
+    .map-grid,
+    .map-container {
+      height: calc(100vh - 14rem);
+    }
+  }
+
+  @include breakpoint(medium) {
+    .map-grid,
+    .map-container {
+      height: calc(100vh - 11.25rem);
+    }
+  }
+
+  @include breakpoint(large) {
+    .map-grid,
+    .map-container {
+      height: 100%;
+    }
+  }
+}
+
 // .search-and-layers {
 .layer-palette {
   @include xy-cell-static(full,false,0);
@@ -84,7 +109,7 @@ body {
   }
 
   @include breakpoint(large) {
-    margin-top: 3.375rem;
+    margin-top: 5.25rem;
     order: 1;
     width: 15rem;
     box-shadow: 2px 0 0 rgba(0,0,0,0.1);
@@ -114,7 +139,11 @@ body {
   }
 
   & > .close-button {
-    display: none;
+    position: relative;
+    top: -1rem;
+    right: -0.5rem;
+    float: right;
+    margin: 0.5rem;
 
     @include breakpoint(large) {
       display: block;

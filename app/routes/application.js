@@ -4,6 +4,7 @@ import sources from '../sources';
 import carto from '../utils/carto2';
 
 const { service } = Ember.inject;
+const { $ } = Ember;
 
 export default Ember.Route.extend({
   mainMap: service(),
@@ -41,5 +42,20 @@ export default Ember.Route.extend({
 
   afterModel() {
     this.get('mainMap').resetBounds();
+  },
+});
+
+Ember.Route.reopen({
+  activate() {
+    const cssClass = this.toCssClass();
+    if (cssClass !== 'application') {
+      $('body').addClass(cssClass);
+    }
+  },
+  deactivate() {
+    $('body').removeClass(this.toCssClass());
+  },
+  toCssClass() {
+    return this.routeName.replace(/\./g, '-').dasherize();
   },
 });
