@@ -13,7 +13,6 @@ export default Ember.Service.extend({
   currentMeasurement: null,
   isDrawing: false,
   shouldFitBounds: true,
-  measurementMenuOpen: false,
 
   @computed('selected')
   bounds(selected) {

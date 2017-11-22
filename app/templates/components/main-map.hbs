@@ -139,13 +139,13 @@
   <label>Measure</label>
   <button class="draw-tool draw-tool--line" onclick={{action 'startDraw' 'line'}}><span class="icon distance"></span></button>
   <button class="draw-tool draw-tool--polygon" onclick={{action 'startDraw' 'polygon'}}><span class="icon polygon"></span></button>
-  {{#if currentMeasurement}}
+  {{#if displayStandard}}
     <button class="draw-tool draw-tool--clear" onclick={{action 'clearDraw'}}>{{fa-icon "times"}}</button>
   {{/if}}
 </div>
-{{#if currentMeasurement}}
+{{#if displayStandard}}
   <div class="draw-measurement">
-    {{numeral-format currentMeasurement '0,0'}} {{measurementUnit}}
+    {{if (eq measurementUnitType 'standard') displayStandard displayMetric}}
     <span class="draw-measurement-menu-button" {{action (mut measurementMenuOpen) (not measurementMenuOpen)}}>
       {{#if measurementMenuOpen}}
         {{fa-icon 'caret-down'}}
@@ -154,8 +154,12 @@
       {{/if}}
       {{#if measurementMenuOpen}}
         <span class="draw-measurement-menu">
-          <button class="button tiny gray">{{fa-icon 'dot-circle-o'}} Standard</button>
-          <button class="button tiny gray">{{fa-icon 'circle-thin' class="medium-gray"}} Metric</button>
+          <button class="button tiny gray" onclick={{action 'handleUnitsToggle' 'standard'}}>
+            {{fa-icon (if (eq measurementUnitType 'standard') 'dot-circle-o' 'circle-thin') class=(if (eq measurementUnitType 'metric') 'medium-gray')}} Standard
+          </button>
+          <button class="button tiny gray" onclick={{action 'handleUnitsToggle' 'metric'}}>
+            {{fa-icon (if (eq measurementUnitType 'metric') 'dot-circle-o' 'circle-thin') class=(if (eq measurementUnitType 'standard') 'medium-gray')}} Metric
+          </button>
         </span>
       {{/if}}
     </span>

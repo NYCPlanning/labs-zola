@@ -4,6 +4,7 @@ import MapboxDraw from 'mapbox-gl-draw';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import area from 'npm:@turf/area';
 import lineDistance from 'npm:@turf/line-distance';
+import numeral from 'npm:numeral';
 
 import sources from '../sources';
 import layerGroups from '../layer-groups';
@@ -58,8 +59,10 @@ export default Ember.Component.extend({
   loading: true,
   findMeDismissed: false,
   sourcesLoaded: true,
-  currentMeasurement: null,
-  measurementUnit: '',
+  measurementUnitType: 'standard',
+  displayMetric: null,
+  displayStandard: null,
+  measurementMenuOpen: false,
 
   cartoSources: [],
 
@@ -198,25 +201,30 @@ export default Ember.Component.extend({
         this.get('mainMap').mapInstance.addControl(draw);
         this.get('mainMap').set('isDrawing', true);
         this.set('mainMap.drawnFeature', null);
-        this.set('currentMeasurement', null);
+        this.set('displayStandard', null);
+        this.set('displayMetric', null);
+      } else {
+        draw.deleteAll()
       }
 
       draw.changeMode(type === 'line' ? 'draw_line_string' : 'draw_polygon');
     },
 
     clearDraw() {
-      this.get('mainMap').set('isDrawing', false);
-      this.set('mainMap.drawnFeature', null);
-      this.set('currentMeasurement', null);
-
       if (this.get('mainMap').get('isDrawing') === true) {
-        // remove draw from the map, set iDrawing to false
+        // remove draw from the map, set isDrawing to false
         this.get('mainMap').set('isDrawing', false);
         this.get('mainMap').mapInstance.removeControl(draw);
       }
+
+      this.get('mainMap').set('isDrawing', false);
+      this.set('mainMap.drawnFeature', null);
+      this.set('displayStandard', null);
+      this.set('displayMetric', null);
     },
 
     handleDrawCreate(e) {
+      console.log('handleDrawCreate')
       this.set('mainMap.drawnFeature', e.features[0].geometry);
       setTimeout(() => {
         this.get('mainMap').mapInstance.removeControl(draw);
@@ -224,25 +232,30 @@ export default Ember.Component.extend({
       }, 100);
     },
 
-    handleMeasurement(e) {
-      let current = draw.getAll();
-      const { features } = current;
-      const conversion = 0.3048;
+    handleMeasurement() {
+      // should log both metric and standard display strings for the current drawn feature
+      const features = draw.getAll().features;
 
-      if (e.type === 'draw.delete') {
-        this.set('currentMeasurement', null);
-        draw.deleteAll();
-      } else {
-        if (features.length > 1) {
-          draw.delete(features[0].id);
-          current = draw.getAll();
-        }
 
-        const areaCalculation = area(current) / conversion;
-        const distanceCalculation = (lineDistance(current) * 1000) / conversion;
-        const measurement = areaCalculation || distanceCalculation;
-        this.set('currentMeasurement', measurement);
-        this.set('measurementUnit', areaCalculation ? 'sq ft' : 'ft');
+      if (features.length > 0) {
+        const feature = features[0];
+        // metric calculation
+        const metricArea = area(feature); // square meters
+        const metricDistance = (lineDistance(feature) * 1000); // meters
+        const metricMeasurement = metricArea || metricDistance;
+
+        const displayMetric = `${numeral(metricMeasurement).format('0,0')} ${metricArea ? 'sq m' : 'm'}`;
+
+        this.set('displayMetric', displayMetric);
+
+
+        const standardArea = area(feature) * 10.7639; // square feet
+        const standardDistance = (lineDistance(feature) * 1000) / 0.3048; // feet
+        const standardMeasurement = standardArea || standardDistance;
+
+        const displayStandard = `${numeral(standardMeasurement).format('0,0')} ${standardArea ? 'sq ft' : 'ft'}`;
+
+        this.set('displayStandard', displayStandard);
       }
     },
 
@@ -260,6 +273,10 @@ export default Ember.Component.extend({
           this.set('loading', true);
         }
       }
+    },
+
+    handleUnitsToggle(type) {
+      this.set('measurementUnitType', type);
     },
   },
 });
