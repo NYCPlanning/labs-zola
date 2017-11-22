@@ -10,7 +10,7 @@ export default {
   meta: {
     description: 'Individual Landmarks Shapefile, NYC Open Data Portal',
     url: 'https://data.cityofnewyork.us/Housing-Development/Individual-Landmarks/ch5p-r223/data',
-    updated_at: 'September 2017',
+    updated_at: '21 November 2017',
   },
   layers: [
     {

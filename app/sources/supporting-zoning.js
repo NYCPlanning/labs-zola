@@ -4,11 +4,11 @@ export default {
   'source-layers': [
     {
       id: 'special-purpose-districts',
-      sql: 'SELECT the_geom_webmercator, cartodb_id, sdlbl, sdname FROM support_nysp',
+      sql: 'SELECT the_geom_webmercator, cartodb_id, sdlbl, sdname FROM support_zoning_sp',
     },
     {
       id: 'special-purpose-subdistricts',
-      sql: 'SELECT the_geom_webmercator, splbl, cartodb_id, spname, subdist FROM support_nysp_sd',
+      sql: 'SELECT the_geom_webmercator, splbl, cartodb_id, spname, subdist FROM support_zoning_spsd',
     },
     {
       id: 'mandatory-inclusionary-housing',
@@ -44,7 +44,7 @@ export default {
     },
     {
       id: 'zoning-map-amendments-pending',
-      sql: 'SELECT the_geom_webmercator, ulurpno, status, project_na FROM support_nyzma WHERE status = \'Certified\'',
+      sql: 'SELECT the_geom_webmercator, ulurpno, status, project_na FROM support_zoning_zma WHERE status = \'Certified\'',
     },
     {
       id: 'limited-height-districts',
