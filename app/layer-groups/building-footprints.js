@@ -3,6 +3,11 @@ export default {
   title: 'Building Footprints',
   titleTooltip: 'Building footprints based on OpenStreetMap data',
   visible: false,
+  meta: {
+    description: 'OpenStreetMap Building Footprints via Mapbox Vector Tile Service',
+    url: 'https://www.openstreetmap.org/',
+    updated_at: null,
+  },
   layers: [
     {
       layer: {

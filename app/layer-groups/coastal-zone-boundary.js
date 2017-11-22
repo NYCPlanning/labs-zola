@@ -9,6 +9,11 @@ export default {
   visible: false,
   legendIcon: 'polygon',
   legendColor,
+  meta: {
+    description: 'WRP Coastal Zone Boundary v2016.1, Bytes of the Big Apple',
+    url: 'https://www1.nyc.gov/site/planning/data-maps/open-data.page',
+    updated_at: 'September 2017',
+  },
   layers: [
     {
       layer: lineStyle('coastal-zone-boundary-line', 'supporting-zoning', 'coastal-zone-boundary', legendColor),

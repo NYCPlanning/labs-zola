@@ -5,6 +5,11 @@ export default {
   title: 'FRESH Zones',
   titleTooltip: 'FRESH promotes the establishment and expansion of neighborhood grocery stores in underserved communities by providing zoning and financial incentives',
   visible: false,
+  meta: {
+    description: 'FRESH Food Stores Zoning Boundaries release 2016.1, Bytes of the Big Apple',
+    url: 'https://www1.nyc.gov/site/planning/data-maps/open-data.page',
+    updated_at: 'September 2017',
+  },
   layers: [
     {
       layer: lineStyle('fresh-line', 'supporting-zoning', 'fresh', '#30BF4E'),
