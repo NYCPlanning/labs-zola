@@ -33,7 +33,7 @@ export default {
             type: 'identity',
             property: 'min_height',
           },
-          'fill-extrusion-color': 'rgba(172, 172, 179, 1)',
+          'fill-extrusion-color': 'rgba(203, 203, 203, 1)',
           'fill-extrusion-opacity': 0.95,
           'fill-extrusion-translate': [
             3,
