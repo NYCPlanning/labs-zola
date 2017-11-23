@@ -2,7 +2,7 @@ import Ember from 'ember';
 import pointLayer from '../layers/point-layer';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
-const DEFAULT_BOUNDS = [-74.077644, 40.690913, -73.832692, 40.856654];
+const DEFAULT_BOUNDS = [-73.9, 40.690913, -73.832692, 40.856654];
 
 export default Ember.Service.extend({
   mapInstance: null,
@@ -12,7 +12,7 @@ export default Ember.Service.extend({
   currentZoom: null,
   currentMeasurement: null,
   isDrawing: false,
-  shouldFitBounds: true,
+  shouldFitBounds: false,
 
   @computed('selected')
   bounds(selected) {
