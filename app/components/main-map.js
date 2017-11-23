@@ -240,18 +240,52 @@ export default Ember.Component.extend({
         // metric calculation
         const metricArea = area(feature); // square meters
         const metricDistance = (lineDistance(feature) * 1000); // meters
-        const metricMeasurement = metricArea || metricDistance;
+        let metricMeasurement = Math.max(metricArea, metricDistance);
 
-        const displayMetric = `${numeral(metricMeasurement).format('0,0')} ${metricArea ? 'sq m' : 'm'}`;
+        let metricUnits = metricArea ? 'm²' : 'm';
+        let metricFormat = '0,0';
+
+        // if a line and >= 1000, use km
+        if ((metricDistance > metricArea) && (metricMeasurement >= 1000)) {
+          metricMeasurement /= 1000;
+          metricUnits = 'km';
+          metricFormat = '0.00';
+        }
+
+        // if an area and >= 1000000, use km^2
+        if ((metricArea > metricDistance) && (metricMeasurement >= 1000000)) {
+          metricMeasurement /= 1000000;
+          metricUnits = 'km²';
+          metricFormat = '0.00';
+        }
+
+        const displayMetric = `${numeral(metricMeasurement).format(metricFormat)} ${metricUnits}`;
 
         this.set('displayMetric', displayMetric);
 
 
         const standardArea = area(feature) * 10.7639; // square feet
         const standardDistance = (lineDistance(feature) * 1000) / 0.3048; // feet
-        const standardMeasurement = standardArea || standardDistance;
+        let standardMeasurement = Math.max(standardArea, standardDistance);
 
-        const displayStandard = `${numeral(standardMeasurement).format('0,0')} ${standardArea ? 'sq ft' : 'ft'}`;
+        let standardUnits = standardArea ? 'ft²' : 'ft';
+        let standardFormat = '0,0';
+
+        // if a line and >= 5280, use mi
+        if ((standardDistance > standardArea) && (standardMeasurement >= 5280)) {
+          standardMeasurement /= 5280;
+          standardUnits = 'mi';
+          standardFormat = '0.00';
+        }
+
+        // if an area and >= 27878400, use mi^2
+        if ((standardArea > standardDistance) && (standardMeasurement >= 27878400)) {
+          standardMeasurement /= 27878400;
+          standardUnits = 'mi²';
+          standardFormat = '0.00';
+        }
+
+        const displayStandard = `${numeral(standardMeasurement).format(standardFormat)} ${standardUnits}`;
 
         this.set('displayStandard', displayStandard);
       }
