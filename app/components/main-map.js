@@ -60,8 +60,7 @@ export default Ember.Component.extend({
   findMeDismissed: false,
   sourcesLoaded: true,
   measurementUnitType: 'standard',
-  displayMetric: null,
-  displayStandard: null,
+  drawnMeasurements: null,
   measurementMenuOpen: false,
 
   cartoSources: [],
@@ -204,8 +203,7 @@ export default Ember.Component.extend({
         mainMap.mapInstance.addControl(draw);
         mainMap.set('isDrawing', true);
         this.set('mainMap.drawnFeature', null);
-        this.set('displayStandard', null);
-        this.set('displayMetric', null);
+        this.set('drawnMeasurements', null);
       }
 
       draw.changeMode(type === 'line' ? 'draw_line_string' : 'draw_polygon');
@@ -219,8 +217,7 @@ export default Ember.Component.extend({
 
       mainMap.set('isDrawing', false);
       this.set('mainMap.drawnFeature', null);
-      this.set('displayStandard', null);
-      this.set('displayMetric', null);
+      this.set('drawnMeasurements', null);
     },
 
     handleDrawCreate(e) {
@@ -238,56 +235,102 @@ export default Ember.Component.extend({
       if (features.length > 0) {
         const feature = features[0];
         // metric calculation
-        const metricArea = area(feature); // square meters
-        const metricDistance = (lineDistance(feature) * 1000); // meters
-        let metricMeasurement = Math.max(metricArea, metricDistance);
+        const drawnLength = (lineDistance(feature) * 1000); // meters
+        const drawnArea = area(feature); // square meters
 
-        let metricUnits = metricArea ? 'm²' : 'm';
+        let metricUnits = 'm';
         let metricFormat = '0,0';
+        let metricMeasurement = drawnLength;
 
-        // if a line and >= 1000, use km
-        if ((metricDistance > metricArea) && (metricMeasurement >= 1000)) {
-          metricMeasurement /= 1000;
-          metricUnits = 'km';
-          metricFormat = '0.00';
-        }
-
-        // if an area and >= 1000000, use km^2
-        if ((metricArea > metricDistance) && (metricMeasurement >= 1000000)) {
-          metricMeasurement /= 1000000;
-          metricUnits = 'km²';
-          metricFormat = '0.00';
-        }
-
-        const displayMetric = `${numeral(metricMeasurement).format(metricFormat)} ${metricUnits}`;
-
-        this.set('displayMetric', displayMetric);
-
-
-        const standardArea = area(feature) * 10.7639; // square feet
-        const standardDistance = (lineDistance(feature) * 1000) / 0.3048; // feet
-        let standardMeasurement = Math.max(standardArea, standardDistance);
-
-        let standardUnits = standardArea ? 'ft²' : 'ft';
+        let standardUnits = 'feet';
         let standardFormat = '0,0';
+        let standardMeasurement = drawnLength;
 
-        // if a line and >= 5280, use mi
-        if ((standardDistance > standardArea) && (standardMeasurement >= 5280)) {
-          standardMeasurement /= 5280;
-          standardUnits = 'mi';
-          standardFormat = '0.00';
+        if (drawnLength > drawnArea) { // user is drawing a line
+          if (drawnLength >= 1000) { // if over 1000 meters, upgrade metric
+            metricMeasurement = drawnLength / 1000;
+            metricUnits = 'km';
+            metricFormat = '0.00';
+          }
+
+          const standardDrawnLength = drawnLength / 0.3048;
+          if (standardDrawnLength >= 5280) { // if over 5280 geet, upgrade standard
+            standardMeasurement = standardDrawnLength / 5280;
+            standardUnits = 'mi';
+            standardFormat = '0.00';
+          }
+        } else { // user is drawing a polygon
+          metricUnits = 'm²';
+          metricFormat = '0,0';
+          metricMeasurement = drawnArea;
+
+          standardUnits = 'ft²';
+          standardFormat = '0,0';
+          standardMeasurement = drawnArea;
+
+          if (drawnArea >= 1000000) { // if over 1000 meters, upgrade metric
+            metricMeasurement = drawnArea / 1000000;
+            metricUnits = 'km²';
+            metricFormat = '0.00';
+          }
+
+          const standardDrawnArea = drawnArea * 10.7639;
+          if (standardDrawnArea >= 27878400) { // if over 5280 geet, upgrade standard
+            standardMeasurement = standardDrawnArea / 27878400;
+            standardUnits = 'mi²';
+            standardFormat = '0.00';
+          }
         }
 
-        // if an area and >= 27878400, use mi^2
-        if ((standardArea > standardDistance) && (standardMeasurement >= 27878400)) {
-          standardMeasurement /= 27878400;
-          standardUnits = 'mi²';
-          standardFormat = '0.00';
-        }
+        const drawnMeasurements = {
+          metric: `${numeral(metricMeasurement).format(metricFormat)} ${metricUnits}`,
+          standard: `${numeral(standardMeasurement).format(standardFormat)} ${standardUnits}`,
+        };
 
-        const displayStandard = `${numeral(standardMeasurement).format(standardFormat)} ${standardUnits}`;
+        this.set('drawnMeasurements', drawnMeasurements);
 
-        this.set('displayStandard', displayStandard);
+        // if (metricArea > metricDistance) { // user is drawing a polygon
+        //   standardMeasurement = drawnArea5280;
+        //   standardUnits = 'mi';
+        //   standardFormat = '0.00';
+        // }
+        //
+        // // if an area and >= 1000000, use km^2
+        // if ((metricArea > metricDistance) && (metricMeasurement >= 1000000)) {
+        //   metricMeasurement /= 1000000;
+        //   metricUnits = 'km²';
+        //   metricFormat = '0.00';
+        // }
+
+        // const displayMetric = `${numeral(metricMeasurement).format(metricFormat)} ${metricUnits}`;
+        //
+        // this.set('displayMetric', displayMetric);
+
+        //
+        // const standardArea = area(feature) * 10.7639; // square feet
+        // const standardDistance = (lineDistance(feature) * 1000) / 0.3048; // feet
+        // let standardMeasurement = Math.max(standardArea, standardDistance);
+        //
+        // let standardUnits = standardArea ? 'ft²' : 'ft';
+        // let standardFormat = '0,0';
+        //
+        // // if a line and >= 5280, use mi
+        // if ((standardDistance > standardArea) && (standardMeasurement >= 5280)) {
+        //   standardMeasurement /= 5280;
+        //   standardUnits = 'mi';
+        //   standardFormat = '0.00';
+        // }
+        //
+        // // if an area and >= 27878400, use mi^2
+        // if ((standardArea > standardDistance) && (standardMeasurement >= 27878400)) {
+        //   standardMeasurement /= 27878400;
+        //   standardUnits = 'mi²';
+        //   standardFormat = '0.00';
+        // }
+        //
+        // const displayStandard = `${numeral(standardMeasurement).format(standardFormat)} ${standardUnits}`;
+        //
+        // this.set('displayStandard', displayStandard);
       }
     },
 
