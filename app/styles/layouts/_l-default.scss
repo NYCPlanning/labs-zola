@@ -30,6 +30,7 @@ body {
 
     .cell {
       @include xy-cell-block($vertical:true);
+      overflow-x: hidden;
     }
   }
 }
