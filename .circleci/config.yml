@@ -40,8 +40,8 @@ jobs:
 
       # deploy
       - run:
-        name: Avoid hosts unknown for github
-        command: ssh-keyscan planninglabs.nyc >> ~/.ssh/known_hosts
+          name: Avoid hosts unknown for github
+          command: ssh-keyscan planninglabs.nyc >> ~/.ssh/known_hosts
       - deploy:
           name: Deployment
           command: |
