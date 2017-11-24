@@ -110,7 +110,7 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
       const map = e.target;
       const mainMap = this.get('mainMap');
 
-      if (mainMap.get('isDrawing')) return;
+      if (mainMap.get('drawMode')) return;
 
       // only query layers that are available in the map
       const layers = this.get('registeredLayers.clickableAndVisibleLayerIds');

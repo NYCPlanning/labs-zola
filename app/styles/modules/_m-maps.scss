@@ -150,6 +150,12 @@
     height: 30px;
     padding: rem-calc(6) rem-calc(10) rem-calc(5) rem-calc(8);
     color: $dark-gray;
+
+    .fa {
+      margin-right: rem-calc(1);
+      margin-left: rem-calc(3);
+      color: $body-font-color;
+    }
   }
 }
 
@@ -164,9 +170,10 @@
   border-right-width: 0;
   font-size: rem-calc(19);
   height: 30px;
+  outline: 0;
 
   &.active {
-    @include button-style($primary-color, auto, $white);
+    background-color: $a11y-yellow;
   }
 
 }
