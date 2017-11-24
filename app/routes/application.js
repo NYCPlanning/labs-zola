@@ -10,7 +10,8 @@ export default Ember.Route.extend({
   mainMap: service(),
 
   beforeModel(transition) {
-    if (transition.intent.url === '/') {
+    // only transition to about if index is loaded and there is no hash
+    if (transition.intent.url === '/' && window.location.href.split('#').length < 2) {
       this.transitionTo('about');
     }
   },

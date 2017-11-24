@@ -47,9 +47,12 @@ export default Ember.Component.extend({
 
   classNames: ['map-container'],
 
-  lat: 40.7071266,
-  lng: -74,
-  zoom: 10.2,
+  lat: 40.7125,
+  @computed('mainMap.isSelectedBoundsOptions')
+  lng(boundsOptions) {
+    return boundsOptions.offset[0] === 0 ? -73.9022 : -73.733;
+  },
+  zoom: 9.72,
   menuTo: 'layers-menu',
 
   layerGroups,
