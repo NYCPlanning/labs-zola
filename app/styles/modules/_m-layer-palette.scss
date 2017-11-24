@@ -106,6 +106,7 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
 
   > li {
     margin-bottom: $layer-palette-padding;
+    position: relative;
   }
 
   label {

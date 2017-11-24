@@ -41,6 +41,7 @@ const draw = new MapboxDraw({
 });
 
 export default Ember.Component.extend({
+
   mainMap: service(),
   mapMouseover: service(),
   metrics: service(),
@@ -65,6 +66,7 @@ export default Ember.Component.extend({
   measurementUnitType: 'standard',
   drawnMeasurements: null,
   measurementMenuOpen: false,
+  drawToolsOpen: false,
 
   cartoSources: [],
 
@@ -98,6 +100,8 @@ export default Ember.Component.extend({
   selectedLineLayer,
 
   actions: {
+
+
     adjustBuildingsLayer(visible) {
       const map = this.get('mainMap.mapInstance');
       if (visible) {
@@ -184,7 +188,7 @@ export default Ember.Component.extend({
 
     handleMousemove(e) {
       const mapMouseover = this.get('mapMouseover');
-      if (!this.get('mainMap').isDrawing) mapMouseover.highlighter(e);
+      if (!this.get('mainMap').drawMode) mapMouseover.highlighter(e);
     },
 
     handleMouseleave() {
@@ -199,26 +203,26 @@ export default Ember.Component.extend({
     },
 
     startDraw(type) {
+      const drawMode = type === 'line' ? 'draw_line_string' : 'draw_polygon';
       const mainMap = this.get('mainMap');
-      if (mainMap.get('isDrawing')) {
+      if (mainMap.get('drawMode')) {
         draw.deleteAll();
       } else {
         mainMap.mapInstance.addControl(draw);
-        mainMap.set('isDrawing', true);
         this.set('mainMap.drawnFeature', null);
         this.set('drawnMeasurements', null);
       }
-
-      draw.changeMode(type === 'line' ? 'draw_line_string' : 'draw_polygon');
+      mainMap.set('drawMode', drawMode);
+      draw.changeMode(drawMode);
     },
 
     clearDraw() {
       const mainMap = this.get('mainMap');
-      if (mainMap.get('isDrawing')) {
+      if (mainMap.get('drawMode')) {
         mainMap.mapInstance.removeControl(draw);
       }
 
-      mainMap.set('isDrawing', false);
+      mainMap.set('drawMode', null);
       this.set('mainMap.drawnFeature', null);
       this.set('drawnMeasurements', null);
     },
@@ -227,7 +231,7 @@ export default Ember.Component.extend({
       this.set('mainMap.drawnFeature', e.features[0].geometry);
       setTimeout(() => {
         this.get('mainMap').mapInstance.removeControl(draw);
-        this.get('mainMap').set('isDrawing', false);
+        this.get('mainMap').set('drawMode', null);
       }, 100);
     },
 

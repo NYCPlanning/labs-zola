@@ -272,3 +272,33 @@ button {
 .ember-tooltip {
   font-size: rem-calc(10);
 }
+
+
+//
+// Hide Adjacent Sibling UI
+// --------------------------------------------------
+.hidable-sibling-toggle {
+  color: $primary-color;
+
+  &.top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+  }
+}
+
+.checkbox-hide-sibling {
+  display: none;
+
+  &:checked {
+
+    + .hidable-sibling-toggle {
+      transform: rotate(180deg);
+    }
+
+    & ~ .hidable-sibling {
+      display: none;
+    }
+  }
+}

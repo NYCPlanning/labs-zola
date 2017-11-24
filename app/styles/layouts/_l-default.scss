@@ -30,6 +30,7 @@ body {
 
     .cell {
       @include xy-cell-block($vertical:true);
+      overflow-x: hidden;
     }
   }
 }
@@ -76,7 +77,7 @@ body.index {
   @include breakpoint(small only) {
     .map-grid,
     .map-container {
-      height: calc(100vh - 14rem);
+      height: calc(100vh - 16rem);
     }
   }
 
