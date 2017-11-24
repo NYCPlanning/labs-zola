@@ -165,7 +165,7 @@
     </div>
   </div>
 
-  <h3 class="header-small lot-section-header">Available Lot Details</h3>
+  <hr/>
 
   {{#if model.ownertypename}}<div class="data-grid"><label class="data-label">Owner Type</label><span class="datum">{{if model.ownertypename model.ownertypename 'Unknown/Private'}}</span></div>{{/if}}
   {{#if model.ownername}}<div class="data-grid"><label class="data-label">Owner</label><span class="datum">{{model.ownername}}</span></div>{{/if}}
@@ -221,4 +221,8 @@
   {{#if model.sanitboro}}<div class="data-grid"><label class="data-label">Sanitation Borough</label><span class="datum">{{model.sanitboro}}</span></div>{{/if}}
   {{#if model.sanitdistr}}<div class="data-grid"><label class="data-label">Sanitation District</label><span class="datum">{{model.sanitdistr}}</span></div>{{/if}}
   {{#if model.sanitsub}}<div class="data-grid"><label class="data-label">Sanitation Subsection</label><span class="datum">{{model.sanitsub}}</span></div>{{/if}}
+
+  <hr/>
+
+  <iframe src="http://roadview.planninglabs.nyc/view/{{model.lon}}/{{model.lat}}" class="cyclomedia"></iframe>
 </div>

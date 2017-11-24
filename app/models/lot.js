@@ -353,6 +353,8 @@ export default Bookmarkable.extend({
   bldgclassname: Ember.computed('bldgclass', function() {
     return bldgclassLookup[this.get('bldgclass')];
   }),
+  lat: DS.attr('number'),
+  lon: DS.attr('number'),
   block: DS.attr('number'),
   borocode: Ember.computed('cd', function() {
     const borocd = this.get('cd');
