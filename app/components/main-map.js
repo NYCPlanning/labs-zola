@@ -40,8 +40,6 @@ const draw = new MapboxDraw({
   styles: drawStyles,
 });
 
-
-
 export default Ember.Component.extend({
   mainMap: service(),
   mapMouseover: service(),
@@ -52,7 +50,6 @@ export default Ember.Component.extend({
   lat: 40.7125,
   @computed('mainMap.isSelectedBoundsOptions')
   lng(boundsOptions) {
-    console.log(boundsOptions)
     return boundsOptions.offset[0] === 0 ? -73.9022 : -73.733;
   },
   zoom: 9.72,
