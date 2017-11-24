@@ -47,9 +47,12 @@ export default Ember.Component.extend({
 
   classNames: ['map-container'],
 
-  lat: 40.7071266,
-  lng: -74,
-  zoom: 10.2,
+  lat: 40.7125,
+  @computed('mainMap.isSelectedBoundsOptions')
+  lng(boundsOptions) {
+    return boundsOptions.offset[0] === 0 ? -73.9022 : -73.733;
+  },
+  zoom: 9.72,
   menuTo: 'layers-menu',
 
   layerGroups,
@@ -60,8 +63,7 @@ export default Ember.Component.extend({
   findMeDismissed: false,
   sourcesLoaded: true,
   measurementUnitType: 'standard',
-  displayMetric: null,
-  displayStandard: null,
+  drawnMeasurements: null,
   measurementMenuOpen: false,
 
   cartoSources: [],
@@ -204,8 +206,7 @@ export default Ember.Component.extend({
         mainMap.mapInstance.addControl(draw);
         mainMap.set('isDrawing', true);
         this.set('mainMap.drawnFeature', null);
-        this.set('displayStandard', null);
-        this.set('displayMetric', null);
+        this.set('drawnMeasurements', null);
       }
 
       draw.changeMode(type === 'line' ? 'draw_line_string' : 'draw_polygon');
@@ -219,8 +220,7 @@ export default Ember.Component.extend({
 
       mainMap.set('isDrawing', false);
       this.set('mainMap.drawnFeature', null);
-      this.set('displayStandard', null);
-      this.set('displayMetric', null);
+      this.set('drawnMeasurements', null);
     },
 
     handleDrawCreate(e) {
@@ -238,22 +238,59 @@ export default Ember.Component.extend({
       if (features.length > 0) {
         const feature = features[0];
         // metric calculation
-        const metricArea = area(feature); // square meters
-        const metricDistance = (lineDistance(feature) * 1000); // meters
-        const metricMeasurement = metricArea || metricDistance;
+        const drawnLength = (lineDistance(feature) * 1000); // meters
+        const drawnArea = area(feature); // square meters
 
-        const displayMetric = `${numeral(metricMeasurement).format('0,0')} ${metricArea ? 'sq m' : 'm'}`;
+        let metricUnits = 'm';
+        let metricFormat = '0,0';
+        let metricMeasurement = drawnLength;
 
-        this.set('displayMetric', displayMetric);
+        let standardUnits = 'feet';
+        let standardFormat = '0,0';
+        let standardMeasurement = drawnLength;
 
+        if (drawnLength > drawnArea) { // user is drawing a line
+          if (drawnLength >= 1000) { // if over 1000 meters, upgrade metric
+            metricMeasurement = drawnLength / 1000;
+            metricUnits = 'km';
+            metricFormat = '0.00';
+          }
 
-        const standardArea = area(feature) * 10.7639; // square feet
-        const standardDistance = (lineDistance(feature) * 1000) / 0.3048; // feet
-        const standardMeasurement = standardArea || standardDistance;
+          const standardDrawnLength = drawnLength / 0.3048;
+          if (standardDrawnLength >= 5280) { // if over 5280 geet, upgrade standard
+            standardMeasurement = standardDrawnLength / 5280;
+            standardUnits = 'mi';
+            standardFormat = '0.00';
+          }
+        } else { // user is drawing a polygon
+          metricUnits = 'm²';
+          metricFormat = '0,0';
+          metricMeasurement = drawnArea;
 
-        const displayStandard = `${numeral(standardMeasurement).format('0,0')} ${standardArea ? 'sq ft' : 'ft'}`;
+          standardUnits = 'ft²';
+          standardFormat = '0,0';
+          standardMeasurement = drawnArea;
 
-        this.set('displayStandard', displayStandard);
+          if (drawnArea >= 1000000) { // if over 1000 meters, upgrade metric
+            metricMeasurement = drawnArea / 1000000;
+            metricUnits = 'km²';
+            metricFormat = '0.00';
+          }
+
+          const standardDrawnArea = drawnArea * 10.7639;
+          if (standardDrawnArea >= 27878400) { // if over 5280 geet, upgrade standard
+            standardMeasurement = standardDrawnArea / 27878400;
+            standardUnits = 'mi²';
+            standardFormat = '0.00';
+          }
+        }
+
+        const drawnMeasurements = {
+          metric: `${numeral(metricMeasurement).format(metricFormat)} ${metricUnits}`,
+          standard: `${numeral(standardMeasurement).format(standardFormat)} ${standardUnits}`,
+        };
+
+        this.set('drawnMeasurements', drawnMeasurements);
       }
     },
 

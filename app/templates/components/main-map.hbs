@@ -14,9 +14,10 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
-  {{map.layer-group for='threed-buildings' visible=qps.threed-buildings didToggleVisibility=(action 'adjustBuildingsLayer')}}
 
   {{map.layer-group for='neighborhood-tabulation-areas' visible=qps.neighborhood-tabulation-areas}}
+
+  {{map.layer-group for='threed-buildings' visible=qps.threed-buildings didToggleVisibility=(action 'adjustBuildingsLayer')}}
 
   {{map.layer-group for='assemblydistricts' visible=qps.assemblydistricts}}
 
@@ -139,13 +140,13 @@
   <label>Measure</label>
   <button class="draw-tool draw-tool--line" onclick={{action 'startDraw' 'line'}}><span class="icon distance"></span></button>
   <button class="draw-tool draw-tool--polygon" onclick={{action 'startDraw' 'polygon'}}><span class="icon polygon"></span></button>
-  {{#if displayStandard}}
+  {{#if drawnMeasurements}}
     <button class="draw-tool draw-tool--clear" onclick={{action 'clearDraw'}}>{{fa-icon "times"}}</button>
   {{/if}}
 </div>
-{{#if displayStandard}}
+{{#if drawnMeasurements}}
   <div class="draw-measurement">
-    {{if (eq measurementUnitType 'standard') displayStandard displayMetric}}
+    {{if (eq measurementUnitType 'standard') drawnMeasurements.standard drawnMeasurements.metric}}
     <span class="draw-measurement-menu-button" {{action (mut measurementMenuOpen) (not measurementMenuOpen)}}>
       {{#if measurementMenuOpen}}
         {{fa-icon 'caret-down'}}
