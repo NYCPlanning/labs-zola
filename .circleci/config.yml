@@ -34,8 +34,18 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
-      # run tests!
+
+      # run tests
       - run: npm test
 
+      # deploy
+      - run:
+          name: Avoid hosts unknown for github
+          command: ssh-keyscan planninglabs.nyc >> ~/.ssh/known_hosts
 
+      - deploy:
+          name: Deployment
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git remote add dokku dokku@planninglabs.nyc:zola && git push dokku master
+            fi
