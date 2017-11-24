@@ -34,19 +34,16 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
+
       # run tests!
       - run: npm test
 
-
-<<<<<<< Updated upstream
-=======
+      # deploy
       - deploy:
-          name: Deployment - Master
+          name: Deployment
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               git remote add dokku dokku@planninglabs.nyc:zola && git push dokku master
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
               git remote add dokku dokku@planninglabs.nyc:zola-staging && git push dokku develop:master
-            fi 
->>>>>>> Stashed changes
+            fi
