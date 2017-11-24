@@ -16,7 +16,14 @@ export default {
         source: 'composite',
         'source-layer': 'building',
         minzoom: 0,
-        filter: ['all', ['==', 'extrude', 'true']],
+        filter: [
+          'all',
+          [
+            '==',
+            'extrude',
+            'true',
+          ],
+        ],
         paint: {
           'fill-extrusion-height': {
             type: 'identity',
@@ -26,12 +33,12 @@ export default {
             type: 'identity',
             property: 'min_height',
           },
-          'fill-extrusion-color': 'rgba(179, 179, 179, 1)',
-          'fill-extrusion-opacity': 0.6,
-          'fill-extrusion-translate': [3, 0],
-        },
-        layout: {
-          visibility: 'visible',
+          'fill-extrusion-color': 'rgba(203, 203, 203, 1)',
+          'fill-extrusion-opacity': 0.95,
+          'fill-extrusion-translate': [
+            3,
+            0,
+          ],
         },
       },
     },
