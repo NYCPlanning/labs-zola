@@ -34,8 +34,14 @@ export default {
         paint: {
           'line-width': {
             stops: [
-              [13, 1],
-              [14, 3],
+              [
+                12,
+                0.1,
+              ],
+              [
+                15,
+                2,
+              ],
             ],
           },
           'line-opacity': 0.75,
