@@ -5,7 +5,7 @@ export default {
   visible: false,
   meta: {
     description: 'Sidewalk Cafes release October 2017, Bytes of the Big Apple',
-    url: 'https://www1.nyc.gov/site/planning/data-maps/open-data.page',
+    url: ['https://www1.nyc.gov/site/planning/data-maps/open-data.page'],
     updated_at: 'September 2017',
   },
   layers: [

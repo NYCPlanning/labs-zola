@@ -12,10 +12,12 @@
           <span style="display:block;" class="dark-gray"><strong>{{layerGroup.meta.description}}</strong></span>
         {{/if}}
         {{#if layerGroup.meta.url}}
-          <span style="display:block;" class="no-margin"><a href="{{layerGroup.meta.url}}" target="_blank">{{fa-icon 'external-link'}} {{layerGroup.meta.url}}</a></span>
+          {{#each layerGroup.meta.url as |url|}}
+            <span style="display:block;" class="no-margin"><a href="{{url}}" target="_blank">{{fa-icon 'external-link'}} {{url}}</a></span>
+          {{/each}}
         {{/if}}
         {{#if layerGroup.meta.updated_at}}
-          <span style="display:block;" class="dark-gray text-small">Updated {{layerGroup.meta.updated_at}}</span>
+          <span style="display:block;" class="dark-gray text-small">Updated in ZoLa: {{layerGroup.meta.updated_at}}</span>
         {{/if}}
       </p>
     </li>

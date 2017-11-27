@@ -11,7 +11,7 @@ export default {
   legendColor,
   meta: {
     description: 'Historic Districts Shapefile, NYC Open Data Portal',
-    url: 'https://data.cityofnewyork.us/Housing-Development/Historic-Districts/xbvj-gfnw/data',
+    url: ['https://data.cityofnewyork.us/Housing-Development/Historic-Districts/xbvj-gfnw/data'],
     updated_at: '21 November 2017',
   },
   layers: [
