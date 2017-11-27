@@ -5,7 +5,7 @@ export default {
   visible: false,
   meta: {
     description: 'OpenStreetMap Building Footprints via Mapbox Vector Tile Service',
-    url: 'https://www.openstreetmap.org/',
+    url: ['https://www.openstreetmap.org/'],
     updated_at: null,
   },
   layers: [

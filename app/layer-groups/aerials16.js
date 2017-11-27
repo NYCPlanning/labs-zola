@@ -5,7 +5,7 @@ export default {
   visible: false,
   meta: {
     description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-    url: 'https://maps.nyc.gov/tiles/',
+    url: ['https://maps.nyc.gov/tiles/'],
     updated_at: 'n/a',
   },
   layers: [
