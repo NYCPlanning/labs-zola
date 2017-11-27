@@ -3,7 +3,9 @@ import { buildSqlUrl } from '../utils/carto';
 import { LotColumnsSQL } from '../models/lot';
 
 const SQL = function(id) {
-  return `SELECT ${LotColumnsSQL.join(',')}, the_geom, bbl AS id FROM support_mappluto WHERE bbl=${id}`;
+  return `SELECT ${LotColumnsSQL.join(',')}, 
+    st_x(st_centroid(the_geom)) as lon, st_y(st_centroid(the_geom)) as lat,
+    the_geom, bbl AS id FROM support_mappluto WHERE bbl=${id}`;
 };
 
 export default DS.JSONAPIAdapter.extend({
