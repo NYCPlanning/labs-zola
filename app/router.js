@@ -10,6 +10,7 @@ const Router = Ember.Router.extend(trackPage, {
 Router.map(function () { // eslint-disable-line
   this.route('lot', { path: 'lot/:boro/:block/:lot' });
   this.route('zma', { path: 'zma/:ulurpno' });
+  this.route('bbl', { path: 'bbl/:bbl' });
   this.route('zoning-district', { path: 'zoning-district/:zonedist' });
   this.route('special-purpose-district', { path: 'special-purpose-district/:id' });
   this.route('special-purpose-subdistricts', { path: 'special-purpose-subdistrict/:id' });
