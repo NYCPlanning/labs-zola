@@ -247,22 +247,23 @@ export default Ember.Component.extend({
 
         let metricUnits = 'm';
         let metricFormat = '0,0';
-        let metricMeasurement = drawnLength;
+        let metricMeasurement;
 
         let standardUnits = 'feet';
         let standardFormat = '0,0';
-        let standardMeasurement = drawnLength;
+        let standardMeasurement;
 
         if (drawnLength > drawnArea) { // user is drawing a line
+          metricMeasurement = drawnLength;
           if (drawnLength >= 1000) { // if over 1000 meters, upgrade metric
             metricMeasurement = drawnLength / 1000;
             metricUnits = 'km';
             metricFormat = '0.00';
           }
 
-          const standardDrawnLength = drawnLength / 0.3048;
-          if (standardDrawnLength >= 5280) { // if over 5280 geet, upgrade standard
-            standardMeasurement = standardDrawnLength / 5280;
+          standardMeasurement = drawnLength * 3.28084;
+          if (standardMeasurement >= 5280) { // if over 5280 feet, upgrade standard
+            standardMeasurement /= 5280;
             standardUnits = 'mi';
             standardFormat = '0.00';
           }
@@ -273,17 +274,16 @@ export default Ember.Component.extend({
 
           standardUnits = 'ft²';
           standardFormat = '0,0';
-          standardMeasurement = drawnArea;
+          standardMeasurement = drawnArea * 10.7639;
 
-          if (drawnArea >= 1000000) { // if over 1000 meters, upgrade metric
+          if (drawnArea >= 1000000) { // if over 1,000,000 meters, upgrade metric
             metricMeasurement = drawnArea / 1000000;
             metricUnits = 'km²';
             metricFormat = '0.00';
           }
 
-          const standardDrawnArea = drawnArea * 10.7639;
-          if (standardDrawnArea >= 27878400) { // if over 5280 geet, upgrade standard
-            standardMeasurement = standardDrawnArea / 27878400;
+          if (standardMeasurement >= 27878400) { // if over 27878400 sf, upgrade standard
+            standardMeasurement /= 27878400;
             standardUnits = 'mi²';
             standardFormat = '0.00';
           }
