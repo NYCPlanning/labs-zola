@@ -1,7 +1,6 @@
 import fetch from 'fetch';
 import { Promise } from 'rsvp';
 
-const cartoUser = 'planninglabs';
 const cartoDomain = 'planninglabs.carto.com';
 
 const buildTemplate = (layergroupid, type) => { // eslint-disable-line
