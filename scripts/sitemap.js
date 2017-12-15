@@ -28,7 +28,7 @@ function getData() {
   const offset = 50000 * count;
   const sql = `SELECT bbl FROM support_mappluto LIMIT 50000 OFFSET ${offset}`;
 
-  const apiCall = `https://carto.planninglabs.nyc/user/data/api/v2/sql?q=${sql}&format=json`;
+  const apiCall = `https://planninglabs.carto.com/api/v2/sql?q=${sql}&format=json`;
 
   console.log(apiCall); // eslint-disable-line
 

@@ -1,17 +1,16 @@
 import fetch from 'fetch';
 import { Promise } from 'rsvp';
 
-const cartoUser = 'data';
-const cartoDomain = 'carto.planninglabs.nyc';
+const cartoUser = 'planninglabs';
+const cartoDomain = 'planninglabs.carto.com';
 
 const buildTemplate = (layergroupid, type) => { // eslint-disable-line
-  return `https://${cartoDomain}/user/${cartoUser}/api/v1/map/${layergroupid}/{z}/{x}/{y}.${type}`;
+  return `https://${cartoDomain}/api/v1/map/${layergroupid}/{z}/{x}/{y}.${type}`;
 };
 
 const buildSqlUrl = (cleanedQuery, type = 'json') => { // eslint-disable-line
-  return `https://${cartoDomain}/user/${cartoUser}/api/v2/sql?q=${cleanedQuery}&format=${type}`;
+  return `https://${cartoDomain}/api/v2/sql?q=${cleanedQuery}&format=${type}`;
 };
-
 const carto = {
   SQL(query, type = 'json') {
     const cleanedQuery = query.replace('\n', '');
@@ -46,7 +45,7 @@ const carto = {
     };
 
     return new Promise((resolve, reject) => {
-      fetch(`https://${cartoDomain}/user/${cartoUser}/api/v1/map`, {
+      fetch(`https://${cartoDomain}/api/v1/map`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
