@@ -44,7 +44,7 @@ In the spirit of free software, everyone is encouraged to help improve this proj
 
 ## Architecture
 
-ZoLa is an ember.js single page application (SPA).  The frontend handles routing, web mapping, layout, and user interactions, and communicates with various APIs for content and data.
+ZoLa is an Ember.js single page application (SPA).  The frontend handles routing, web mapping, layout, and user interactions, and communicates with various APIs for content and data.
 
 #### Map Styling
 
