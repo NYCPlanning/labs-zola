@@ -10,7 +10,7 @@ ZoLa provides a simple way to research zoning regulations and other information 
 
 [NYC Planning Labs](https://planninglabs.nyc) takes on a single project at a time, working closely with our customers from concept to delivery in a matter of weeks.  We conduct regular maintenance between larger projects.  
 
-Take a look at our sprint planning board {link to waffle} to get an idea of our current priorities for this project.
+Take a look at our [sprint planning board](https://waffle.io/NYCPlanning/labs-zola) to get an idea of our current priorities for this project.
 
 ## How you can help
 
