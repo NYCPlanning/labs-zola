@@ -1,0 +1,52 @@
+Searching 327 files for "https://nycplanning-web.carto.com"
+
+/Users/mgardner/labs-zola/app/layer-groups/subway.js:
+    6      description: 'NYC Subway Lines and Stops - Originally Sourced from NYC DoITT GIS, combined with SI Railway data from Baruch College NYC Mass Transit Spatial Layers | Subway entrances from NYC Open Data',
+    7      url: [
+    8:       'https://nycplanning-web.carto.com/user/data/api/v2/sql?q=SELECT * FROM support_trans_mta_subway_stops',
+    9:       'https://nycplanning-web.carto.com/user/data/api/v2/sql?q=SELECT * FROM support_trans_mta_subway_routes',
+   10        'https://data.cityofnewyork.us/Transportation/Subway-Entrances/drex-xx56',
+   11        'https://www.baruch.cuny.edu/confluence/display/geoportal/NYC+Mass+Transit+Spatial+Layers',
+
+/Users/mgardner/labs-zola/scripts/sitemap.js:
+   29    const sql = `SELECT bbl FROM support_mappluto LIMIT 50000 OFFSET ${offset}`;
+   30  
+   31:   const apiCall = `https://nycplanning-web.carto.com/user/data/api/v2/sql?q=${sql}&format=json`;
+   32  
+   33    console.log(apiCall); // eslint-disable-line
+
+/Users/mgardner/labs-zola/tests/integration/helpers/carto-download-link-test.js:
+   18    this.render(hbs`{{carto-download-link table identifier ids format}}`);
+   19  
+   20:   assert.equal(this.$().text().trim(), 'https://nycplanning-web.carto.com/user/data/api/v2/sql?q=SELECT * FROM support_mappluto WHERE bbl IN (1014970028,1015280036,1015280038)&format=csv&filename=support_mappluto');
+   21  });
+   22  
+
+4 matches across 3 files
+
+
+Searching 327 files for "ttps://nycplanning-web.carto.com/user/data"
+
+/Users/mgardner/labs-zola/app/layer-groups/subway.js:
+    6      description: 'NYC Subway Lines and Stops - Originally Sourced from NYC DoITT GIS, combined with SI Railway data from Baruch College NYC Mass Transit Spatial Layers | Subway entrances from NYC Open Data',
+    7      url: [
+    8:       'https://nycplanning-web.carto.com/user/data/api/v2/sql?q=SELECT * FROM support_trans_mta_subway_stops',
+    9:       'https://nycplanning-web.carto.com/user/data/api/v2/sql?q=SELECT * FROM support_trans_mta_subway_routes',
+   10        'https://data.cityofnewyork.us/Transportation/Subway-Entrances/drex-xx56',
+   11        'https://www.baruch.cuny.edu/confluence/display/geoportal/NYC+Mass+Transit+Spatial+Layers',
+
+/Users/mgardner/labs-zola/scripts/sitemap.js:
+   29    const sql = `SELECT bbl FROM support_mappluto LIMIT 50000 OFFSET ${offset}`;
+   30  
+   31:   const apiCall = `https://nycplanning-web.carto.com/user/data/api/v2/sql?q=${sql}&format=json`;
+   32  
+   33    console.log(apiCall); // eslint-disable-line
+
+/Users/mgardner/labs-zola/tests/integration/helpers/carto-download-link-test.js:
+   18    this.render(hbs`{{carto-download-link table identifier ids format}}`);
+   19  
+   20:   assert.equal(this.$().text().trim(), 'https://nycplanning-web.carto.com/user/data/api/v2/sql?q=SELECT * FROM support_mappluto WHERE bbl IN (1014970028,1015280036,1015280038)&format=csv&filename=support_mappluto');
+   21  });
+   22  
+
+4 matches across 3 files
