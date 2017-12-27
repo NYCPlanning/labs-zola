@@ -49,7 +49,6 @@ export default {
         },
       },
       highlightable: true,
-      clickable: true,
       tooltipTemplate: 'E-designation<br/>CEQR: {{ceqr_num}}<br/>ULURP: {{ulurp_num}}',
     },
     {

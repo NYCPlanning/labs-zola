@@ -128,14 +128,7 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
             splbl,
             overlay,
             cartodb_id,
-            ceqr_num,
           } = feature.properties;
-
-          //  handle e-designation click
-          if (ceqr_num) { // eslint-disable-line
-            window !== 'undefined' && window.open(`http://a030-lucats.nyc.gov/lucats/DirectAccess.aspx?CEQRNO=${ceqr_num}`) // eslint-disable-line
-            return;
-          }
 
           if (bbl) {
             const { boro, block, lot } = bblDemux(bbl);
