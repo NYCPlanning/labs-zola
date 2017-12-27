@@ -120,14 +120,21 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
 
       if (feature) {
         if (highlightedLayer === feature.layer.id) {
-          const { bbl, ulurpno, zonedist, sdlbl, splbl, overlay, cartodb_id, ceqr_num } = feature.properties;
+          const {
+            bbl,
+            ulurpno,
+            zonedist,
+            sdlbl,
+            splbl,
+            overlay,
+            cartodb_id,
+            ceqr_num,
+          } = feature.properties;
 
           //  handle e-designation click
-          if (ceqr_num) {
-            window.open(`http://a030-lucats.nyc.gov/lucats/DirectAccess.aspx?CEQRNO=${ceqr_num}`)
+          if (ceqr_num) { // eslint-disable-line
+            window.open(`http://a030-lucats.nyc.gov/lucats/DirectAccess.aspx?CEQRNO=${ceqr_num}`) // eslint-disable-line
             return;
-            // mainMap.set('shouldFitBounds', false);
-            // this.transitionToRoute('commercial-overlay', overlay);
           }
 
           if (bbl) {
@@ -156,7 +163,6 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
             mainMap.set('shouldFitBounds', false);
             this.transitionToRoute('commercial-overlay', overlay);
           }
-
         }
       }
     },
