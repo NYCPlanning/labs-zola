@@ -6,10 +6,28 @@ import carto from '../utils/carto';
 const { get, RSVP } = Ember;
 
 const generateSQL = function(table, bbl) {
+  // special handling for tables where we don't want to SELECT *
+  let intersectionTable = table;
+  if (table === 'effective-flood-insurance-rate-2007') {
+    intersectionTable = `(
+      SELECT the_geom
+      FROM support_waterfront_effective07
+      WHERE fld_zone IN ('A', 'A0', 'AE') OR fld_zone = 'VE'
+    )`;
+  }
+
+  if (table === 'support_waterfront_pfirm15') {
+    intersectionTable = `(
+      SELECT the_geom
+      FROM support_waterfront_pfirm15
+      WHERE fld_zone IN ('A', 'A0', 'AE') OR fld_zone = 'VE'
+    )`;
+  }
+
   return `
     WITH lot AS (SELECT the_geom FROM support_mappluto WHERE bbl = '${bbl}')
 
-    SELECT true as intersects FROM ${table} a, lot b WHERE ST_Intersects(a.the_geom, b.the_geom) LIMIT 1
+    SELECT true as intersects FROM ${intersectionTable} a, lot b WHERE ST_Intersects(a.the_geom, b.the_geom) LIMIT 1
   `;
 };
 
