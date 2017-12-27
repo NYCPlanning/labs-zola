@@ -195,3 +195,19 @@ body.index {
   height:300px; 
   border: 0;
 }
+
+#browser-unsupported {
+  display: none;
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 9999;
+  background-color: white;
+  .fa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
+

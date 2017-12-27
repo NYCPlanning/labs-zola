@@ -21,10 +21,26 @@
   </head>
   <body>
     {{content-for "body"}}
-
     <script src="{{rootURL}}assets/vendor.js"></script>
     <script src="{{rootURL}}assets/labs-zola.js"></script>
-
+    <div id="browser-unsupported">
+      <i class="fa fa-frown-o fa-5x" aria-hidden="true"></i>
+    </div>
+    <script> 
+/* eslint-disable */
+      function removeNodes() {
+        var selector = document.getElementById('browser-unsupported');
+        selector.style.display='block';
+      };
+      var $buoop = {notify:{i:-5,f:-6,o:-6,s:-6,c:-6},insecure:true,api:5, onshow() {removeNodes()}}; 
+      function $buo_f(){ 
+       var e = document.createElement("script"); 
+       e.src = "//browser-update.org/update.min.js"; 
+       document.body.appendChild(e);
+      };
+      try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
+      catch(e){window.attachEvent("onload", $buo_f)}
+    </script>
     {{content-for "body-footer"}}
   </body>
 </html>
