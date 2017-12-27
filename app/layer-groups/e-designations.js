@@ -1,8 +1,13 @@
 export default {
   id: 'e-designations',
   title: 'Environmental Designations',
-  titleTooltip: 'Lorem Ipsum',
-  visible: true,
+  titleTooltip: 'An E-Designation is a NYC zoning map designation that indicates the presence of an environmental requirement pertaining to potential Hazardous Materials Contamination, Window/Wall Noise Attenuation, or Air Quality impacts on a particular tax lot.',
+  meta: {
+    description: 'NYC DCP E-Designations CSV updated 10/13/2017, geocoded on 11/9/2017',
+    url: ['https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM e_designations&format=SHP&filename=e_designations'],
+    updated_at: 'December 27, 2017',
+  },
+  visible: false,
   layers: [
     {
       layer: {
@@ -10,17 +15,29 @@ export default {
         type: 'circle',
         source: 'supporting-zoning',
         'source-layer': 'e-designations',
+        minzoom: 15,
         paint: {
-          'circle-radius': 5,
+          'circle-radius': {
+            stops: [
+              [
+                16,
+                2,
+              ],
+              [
+                17,
+                5,
+              ],
+            ],
+          },
           'circle-color': 'rgba(255, 255, 255, 0.65)',
           'circle-stroke-opacity': {
             stops: [
               [
-                6,
-                1,
+                15,
+                0,
               ],
               [
-                10,
+                16,
                 1,
               ],
             ],
@@ -31,6 +48,9 @@ export default {
           'circle-opacity': 1,
         },
       },
+      highlightable: true,
+      clickable: true,
+      tooltipTemplate: 'E-designation<br/>CEQR: {{ceqr_num}}<br/>ULURP: {{ulurp_num}}',
     },
     {
       layer: {
@@ -38,11 +58,26 @@ export default {
         type: 'symbol',
         source: 'supporting-zoning',
         'source-layer': 'e-designations',
-        minzoom: 11,
+        minzoom: 16,
         layout: {
           'text-field': 'E',
           'text-size': 8,
           'text-allow-overlap': true,
+          visibility: 'visible',
+        },
+        paint: {
+          'text-opacity': {
+            stops: [
+              [
+                16,
+                0,
+              ],
+              [
+                17,
+                1,
+              ],
+            ],
+          },
         },
       },
     },
