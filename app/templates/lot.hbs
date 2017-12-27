@@ -70,10 +70,10 @@
           <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" class="">{{fa-icon "external-link"}} Commercial Overlay{{if model.overlay2 's'}}</a> <small class="dark-gray">{{model.overlay1}}</small>{{#if model.overlay2}}, <small class="dark-gray">{{model.overlay2}}</small>{{/if}}
         {{/if}}
         {{#if model.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a> <small class="dark-gray">{{model.histdist}}</small></li>{{/if}}
-
+        {{log  'BBL' model.bbl}}
         {{#intersecting-layers
             tables=(array 'support_ih' 'support_tz' 'support_fresh' 'support_wap' 'support_czb' 'support_ldgma' 'support_waterfront_pfirm15' 'support_waterfront_effective07' 'support_mih')
-            geometry=model.geometry as |layers numberIntersecting|}}
+            bbl=model.bbl as |layers numberIntersecting|}}
 
           {{#if layers.support_ih}}
             <li>
@@ -131,7 +131,7 @@
             </li>
           {{/if}}
 
-          {{#if layers.floodplain}}
+          {{#if layers.support_waterfront_pfirm15}}
             <li>
               <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
                 {{fa-icon "external-link"}} Flood Zone

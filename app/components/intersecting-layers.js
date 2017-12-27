@@ -5,33 +5,32 @@ import carto from '../utils/carto';
 
 const { get, RSVP } = Ember;
 
-const generateSQL = function(table, geometry) {
-  return `SELECT * FROM ${table} 
-          WHERE 
-            ST_Intersects(
-              ST_SetSRID(
-                ST_GeomFromGeoJSON('${JSON.stringify(geometry)}'), 4326), 
-                ${table}.the_geom) LIMIT 1`;
+const generateSQL = function(table, bbl) {
+  return `
+    WITH lot AS (SELECT the_geom FROM support_mappluto WHERE bbl = '${bbl}')
+
+    SELECT true as intersects FROM ${table} a, lot b WHERE ST_Intersects(a.the_geom, b.the_geom) LIMIT 1
+  `;
 };
 
 export default Ember.Component.extend({
-  responseIdentifier: 'cartodb_id',
+  responseIdentifier: 'intersects',
   tagName: '',
-  geometry: null,
+  bbl: null,
   tables: [],
 
-  calculateIntersections: task(function* (tables, geometry, responseIdentifier) {
+  calculateIntersections: task(function* (tables, bbl, responseIdentifier) {
     const hash = {};
 
     tables.forEach((table) => {
-      hash[table] = carto.SQL(generateSQL(table, geometry))
+      hash[table] = carto.SQL(generateSQL(table, bbl))
         .then((response => get(response[0] || {}, responseIdentifier)));
     });
 
     return yield RSVP.hash(hash);
   }).restartable(),
 
-  @computed('tables.@each', 'geometry', 'responseIdentifier')
+  @computed('tables.@each', 'bbl', 'responseIdentifier')
   intersectingLayers(...args) {
     return this.get('calculateIntersections').perform(...args);
   },
