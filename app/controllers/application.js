@@ -133,7 +133,7 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
 
           //  handle e-designation click
           if (ceqr_num) { // eslint-disable-line
-            window.open(`http://a030-lucats.nyc.gov/lucats/DirectAccess.aspx?CEQRNO=${ceqr_num}`) // eslint-disable-line
+            window !== 'undefined' && window.open(`http://a030-lucats.nyc.gov/lucats/DirectAccess.aspx?CEQRNO=${ceqr_num}`) // eslint-disable-line
             return;
           }
 
