@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import FuzzySet from 'npm:fuzzyset.js';
 import Bookmarkable from '../mixins/bookmarkable';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
