@@ -54,5 +54,9 @@ export default {
       id: 'business-improvement-districts',
       sql: 'SELECT the_geom_webmercator, bid FROM business_improvement_districts',
     },
+    {
+      id: 'e-designations',
+      sql: 'SELECT the_geom_webmercator, bbl, ceqr_num, enumber, ulurp_num FROM e_designations',
+    },
   ],
 };

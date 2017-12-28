@@ -120,7 +120,15 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
 
       if (feature) {
         if (highlightedLayer === feature.layer.id) {
-          const { bbl, ulurpno, zonedist, sdlbl, splbl, overlay, cartodb_id } = feature.properties;
+          const {
+            bbl,
+            ulurpno,
+            zonedist,
+            sdlbl,
+            splbl,
+            overlay,
+            cartodb_id,
+          } = feature.properties;
 
           if (bbl) {
             const { boro, block, lot } = bblDemux(bbl);
