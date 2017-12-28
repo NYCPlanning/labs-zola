@@ -48,11 +48,11 @@ export default Ember.Component.extend({
     return yield RSVP.hash(hash);
   }).restartable(),
 
-  willDestroyElement(...args) {
+  willDestroyElement() {
     this.get('calculateIntersections').cancelAll();
   },
 
-  willUpdate(...args) {
+  willUpdate() {
     this.get('calculateIntersections').cancelAll();
   },
 
