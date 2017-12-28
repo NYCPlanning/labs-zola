@@ -48,6 +48,14 @@ export default Ember.Component.extend({
     return yield RSVP.hash(hash);
   }).restartable(),
 
+  willDestroyElement(...args) {
+    this.get('calculateIntersections').cancelAll();
+  },
+
+  willUpdate(...args) {
+    this.get('calculateIntersections').cancelAll();
+  },
+
   @computed('tables.@each', 'bbl', 'responseIdentifier')
   intersectingLayers(...args) {
     return this.get('calculateIntersections').perform(...args);
