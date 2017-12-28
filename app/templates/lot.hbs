@@ -67,10 +67,10 @@
       <h6 class="no-margin-">Intersecting Map Layers {{info-tooltip tip="These intersections should be independently verified and should not be relied upon to determine the zoning rules applicable to a property."}}:</h6>
       <ul class="no-bullet text-small">
         {{#if model.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a> <small class="dark-gray">{{model.histdist}}</small></li>{{/if}}
-
+        {{log  'BBL' model.bbl}}
         {{#intersecting-layers
             tables=(array 'support_ih' 'support_tz' 'support_fresh' 'support_wap' 'support_czb' 'support_ldgma' 'support_waterfront_pfirm15' 'support_waterfront_effective07' 'support_mih')
-            geometry=model.geometry as |layers numberIntersecting|}}
+            bbl=model.bbl as |layers numberIntersecting|}}
 
           {{#if layers.support_ih}}
             <li>
@@ -120,7 +120,7 @@
             </li>
           {{/if}}
 
-          {{#if layers.firms_100_year_floodplain_2007}}
+          {{#if layers.support_waterfront_effective07}}
             <li>
               <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
                 {{fa-icon "external-link"}} Flood Zone
@@ -128,7 +128,7 @@
             </li>
           {{/if}}
 
-          {{#if layers.floodplain}}
+          {{#if layers.support_waterfront_pfirm15}}
             <li>
               <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
                 {{fa-icon "external-link"}} Flood Zone
