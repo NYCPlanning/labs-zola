@@ -6,6 +6,7 @@ import businessImprovementDistricts from './business-improvement-districts';
 import commercialOverlays from './commercial-overlays';
 import communityDistricts from './communitydistricts';
 import coastalZoneBoundary from './coastal-zone-boundary';
+import eDesignations from './e-designations';
 import effectiveFloodInsuranceRate2007 from './effective-flood-insurance-rate-2007';
 import fresh from './fresh';
 import historicDistricts from './historic-districts';
@@ -39,6 +40,7 @@ export default {
   commercialOverlays,
   communityDistricts,
   coastalZoneBoundary,
+  eDesignations,
   effectiveFloodInsuranceRate2007,
   fresh,
   historicDistricts,
