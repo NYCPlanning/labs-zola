@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { task } from 'ember-concurrency';
 import bblDemux from '../utils/bbl-demux';
 
 const { service } = Ember.inject;
@@ -8,12 +9,16 @@ export default Ember.Route.extend({
 
   model(params) {
     const id = bblDemux(params);
-    return this.store.findRecord('lot', id);
+    return {
+      taskInstance: this.get('findLotTask').perform(id),
+    };
   },
 
-  afterModel(model) {
-    this.set('mainMap.selected', model);
-  },
+  findLotTask: task(function* (id) {
+    const record = yield this.store.findRecord('lot', id);
+    this.set('mainMap.selected', record);
+    return record;
+  }).restartable(),
 
   actions: {
     didTransition() {
