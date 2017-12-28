@@ -181,31 +181,14 @@
   {{#if model.condono}}<div class="data-grid"><label class="data-label">Condominium Number</label><span class="datum">{{model.condono}}</span></div>{{/if}}
   <div class="data-grid"><label class="data-label">Building Info {{info-tooltip tip="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"}}</label><span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.borocode}}&allblock={{model.block}}&alllot={{model.lot}}&go5=+GO+&requestid=0" target="_blank">{{fa-icon 'external-link'}} BISWEB </a></span></div>
   {{#if model.borocode}}
-    <form id="acris_form" class="data-grid" target="_blank" action="https://a836-acris.nyc.gov/DS/DocumentSearch/BBLResult" method="POST">
-      <input type="hidden" name="hid_SearchType" value="BBL" />
-      <input type="hidden" name="hid_borough" value="{{model.borocode}}" />
-      <input type="hidden" name="hid_block" value="{{model.block}}" />
-      <input type="hidden" name="hid_block_value" value="{{model.block}}" />
-      <input type="hidden" name="hid_lot" value="{{model.lot}}" />
-      <input type="hidden" name="hid_lot_value" value="{{model.lot}}" />
-      <input type="hidden" name="hid_unit" value="" />
-      <input type="hidden" name="hid_selectdate" value="To Current Date" />
-      <input type="hidden" name="hid_datefromm" value="" />
-      <input type="hidden" name="hid_datefromd" value="" />
-      <input type="hidden" name="hid_datefromy" value="" />
-      <input type="hidden" name="hid_datetom" value="" />
-      <input type="hidden" name="hid_datetom" value="" />
-      <input type="hidden" name="hid_datetom" value="" />
-      <input type="hidden" name="hid_doctype" value="All Document Classes" />
-      <input type="hidden" name="hid_doctype_name" value="All Document Classes" />
-      <input type="hidden" name="hid_max_rows" value="10" />
-      <input type="hidden" name="hid_page" value="1" />
-      <input type="hidden" name="hid_ReqID" value="" />
-      <input type="hidden" name="hid_ISIntranet" value="N" />
-      <input type="hidden" name="hid_sort" value="" />
+    <div class="data-grid">
       <label class="data-label">Property Records</label>
-      <span class="datum"><a href="javascript:{}" onclick="document.getElementById('acris_form').submit(); return false;">{{fa-icon "external-link"}} View ACRIS </a></span>
-    </form>
+      <span class="datum">
+        <a href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{model.borocode}}&block={{model.block}}&lot={{model.lot}}" target="_blank">
+          {{fa-icon "external-link"}} View ACRIS
+        </a>
+      </span>
+    </div>
   {{/if}}
 
   <h3 class="header-small lot-section-header">Neighborhood Information</h3>
