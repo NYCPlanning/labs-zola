@@ -160,9 +160,8 @@ export default Ember.Component.extend({
             center,
             zoom: 15,
           });
+          mapInstance.once('moveend', () => { this.transitionTo('index'); });
         }
-
-        mapInstance.once('moveend', () => { this.transitionTo('index'); });
       }
 
       if (type === 'special-purpose-district') {
