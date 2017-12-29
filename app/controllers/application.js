@@ -132,6 +132,9 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
 
           if (bbl) {
             const { boro, block, lot } = bblDemux(bbl);
+            const lotFragment = this.store.createRecord('lot', { geometry: feature.geometry });
+
+            mainMap.set('selected', lotFragment);
             this.transitionToRoute('lot', boro, block, lot);
           }
 
