@@ -3,8 +3,8 @@ import QueryParams from 'ember-parachute';
 import bblDemux from '../utils/bbl-demux';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
+import Geometric from '../mixins/geometric';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
-
 import layerGroups from '../layer-groups';
 
 const { service } = Ember.inject;
@@ -127,12 +127,15 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
             sdlbl,
             splbl,
             overlay,
-            cartodb_id,
+            cartodb_id, // eslint-disable-line
           } = feature.properties;
 
           if (bbl) {
             const { boro, block, lot } = bblDemux(bbl);
-            const lotFragment = this.store.createRecord('lot', { geometry: feature.geometry });
+            const lotFragment =
+              Ember.Object.extend(Geometric, {
+                geometry: feature.geometry,
+              }).create();
 
             mainMap.set('selected', lotFragment);
             this.transitionToRoute('lot', boro, block, lot);
