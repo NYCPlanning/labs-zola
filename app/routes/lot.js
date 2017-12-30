@@ -18,7 +18,7 @@ export default Ember.Route.extend({
     const record = yield this.store.findRecord('lot', id);
     this.set('mainMap.selected', record);
     return record;
-  }).restartable(),
+  }).restartable().cancelOn('deactivate'),
 
   actions: {
     didTransition() {
