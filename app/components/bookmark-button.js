@@ -9,8 +9,6 @@ export default Ember.Component.extend({
 
   @computed('bookmark')
   saved(bookmark) {
-    // console.log(`saved CD: `, bookmark)
-    // console.log(Ember.get(bookmark, 'id'));
     return !!get(bookmark, 'id');
   },
 
@@ -18,11 +16,10 @@ export default Ember.Component.extend({
     @trackEvent('Bookmark', 'Toggle Saved', 'bookmark.id')
     toggleSaved() {
       const bookmark = this.get('bookmark');
-      bookmark.then(bookmark => {
-        console.log(bookmark);
-        if (bookmark) {
-          bookmark.deleteRecord();
-          bookmark.save();
+      bookmark.then((resolvedBookmark) => {
+        if (resolvedBookmark) {
+          resolvedBookmark.deleteRecord();
+          resolvedBookmark.save();
         } else {
           this.createBookmark();
         }
