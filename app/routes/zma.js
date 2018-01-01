@@ -1,16 +1,26 @@
 import Ember from 'ember';
+import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import updateSelectionMixin from '../mixins/update-selection';
 
 const { service } = Ember.inject;
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(updateSelectionMixin, {
   mainMap: service(),
 
   model(params) {
-    return this.store.findRecord('zma', params.ulurpno);
+    return {
+      taskInstance: this.store.findRecord('zma', params.ulurpno),
+    };
   },
 
-  afterModel(model) {
-    this.set('mainMap.selected', model);
+  setupController(controller, { taskInstance }) {
+    this._super(controller, taskInstance);
+
+    controller
+      .setProperties({
+        model: taskInstance,
+        @computed('model.value') zma() { return taskInstance.get('value'); },
+      });
   },
 
   actions: {
