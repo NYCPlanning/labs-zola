@@ -14,6 +14,11 @@ export default Ember.Route.extend({
     };
   },
 
+  setupController(controller, { taskInstance }) {
+    this._super(controller, taskInstance);
+    controller.set('model', taskInstance);
+  },
+
   findLotTask: task(function* (id) {
     const record = yield this.store.findRecord('lot', id);
     this.set('mainMap.selected', record);

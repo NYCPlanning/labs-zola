@@ -2,7 +2,7 @@
   {{#link-to 'index' classNames='close-button'}}
     <span aria-hidden="true">&times;</span>
   {{/link-to}}
-  {{#if model.taskInstance.isRunning}}
+  {{#if model.isRunning}}
     {{#content-placeholders as |placeholder|}}
       {{placeholder.text lines=1}}
       {{placeholder.nav}}

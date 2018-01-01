@@ -6,7 +6,7 @@ import Bookmarkable from '../mixins/bookmarkable';
 const getPrimaryZone = zonedist => zonedist.match(/\w\d*/)[0].toLowerCase();
 
 export default Ember.Controller.extend(Bookmarkable, {
-  @computed('model.taskInstance.value')
+  @computed('model.value')
   lot(data) {
     return data;
   },
