@@ -2,12 +2,16 @@ import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
+const { get } = Ember;
+
 export default Ember.Component.extend({
   bookmark: null,
 
-  @computed('bookmark.value')
+  @computed('bookmark')
   saved(bookmark) {
-    return !!bookmark;
+    // console.log(`saved CD: `, bookmark)
+    // console.log(Ember.get(bookmark, 'id'));
+    return !!get(bookmark, 'id');
   },
 
   actions: {
