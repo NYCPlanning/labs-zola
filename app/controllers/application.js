@@ -130,14 +130,15 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
             cartodb_id, // eslint-disable-line
           } = feature.properties;
 
+          const featureFragment =
+            Ember.Object.extend(Geometric, {
+              geometry: feature.geometry,
+            }).create();
+
+          mainMap.set('selected', featureFragment);
+
           if (bbl) {
             const { boro, block, lot } = bblDemux(bbl);
-            const lotFragment =
-              Ember.Object.extend(Geometric, {
-                geometry: feature.geometry,
-              }).create();
-
-            mainMap.set('selected', lotFragment);
             this.transitionToRoute('lot', boro, block, lot);
           }
 
