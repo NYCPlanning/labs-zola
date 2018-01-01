@@ -2,7 +2,7 @@
   {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
 
   {{bookmark-button
-    bookmark=(await model.bookmark)
+    bookmark=model.bookmark
     createBookmark=(action 'createBookmark')}}
 
   <label class="header-label">ZONING MAP AMENDMENT</label>
