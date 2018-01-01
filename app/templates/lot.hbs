@@ -10,7 +10,7 @@
     {{/content-placeholders}}
   {{else}}
     {{bookmark-button
-      bookmark=(await lot.bookmark)
+      bookmark=lot.bookmark
       createBookmark=(action 'createBookmark')}}
 
     <label class="header-label clearfix">

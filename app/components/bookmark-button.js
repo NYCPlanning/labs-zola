@@ -5,7 +5,7 @@ import trackEvent from '../utils/track-event'; // eslint-disable-line
 export default Ember.Component.extend({
   bookmark: null,
 
-  @computed('bookmark')
+  @computed('bookmark.value')
   saved(bookmark) {
     return !!bookmark;
   },
@@ -14,13 +14,15 @@ export default Ember.Component.extend({
     @trackEvent('Bookmark', 'Toggle Saved', 'bookmark.id')
     toggleSaved() {
       const bookmark = this.get('bookmark');
-
-      if (bookmark) {
-        bookmark.deleteRecord();
-        bookmark.save();
-      } else {
-        this.createBookmark();
-      }
+      bookmark.then(bookmark => {
+        console.log(bookmark);
+        if (bookmark) {
+          bookmark.deleteRecord();
+          bookmark.save();
+        } else {
+          this.createBookmark();
+        }
+      });
     },
   },
 });
