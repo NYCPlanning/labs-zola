@@ -9,15 +9,12 @@
           {{#each values as |lot|}}
             <li class="lot-bookmark">
               <span class="icon tax-lot"></span>
-                {{log (bbl-demux lot.bookmark.id)}}
-                {{#with (bbl-demux lot.bookmark.id) as |bblObj|}}
-                  {{#link-to 'lot' bblObj.boro bblObj.block bblObj.lot}}
-                    {{lot.bookmark.address}}
-                    <span class="dark-gray">
-                      {{lot.bookmark.bbl}}
-                    </span>
-                  {{/link-to}}
-                {{/with}}
+                {{#link-to 'lot' lot.bookmark.boro lot.bookmark.block lot.bookmark.lot}}
+                  {{lot.bookmark.address}}
+                  <span class="dark-gray">
+                    {{lot.bookmark.bbl}}
+                  </span>
+                {{/link-to}}
               <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' lot}}>
                 &times;
               </button>
