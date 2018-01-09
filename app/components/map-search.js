@@ -6,7 +6,7 @@ import bblDemux from '../utils/bbl-demux';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 
-const { isEmpty, inject: service } = Ember.inject;
+const { isEmpty, inject: { service } } = Ember;
 
 const DEBOUNCE_MS = 100;
 
@@ -18,10 +18,6 @@ export default Ember.Component.extend({
   mainMap: service(),
   metrics: service(),
   focused: false,
-
-  observeSearchTerms: Ember.observer('searchTerms', function() {
-    console.log(this.get('searchTerms'));
-  }),
 
   @computed('searchTerms')
   results(searchTerms) {
