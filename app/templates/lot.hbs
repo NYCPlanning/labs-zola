@@ -2,207 +2,214 @@
   {{#link-to 'index' classNames='close-button'}}
     <span aria-hidden="true">&times;</span>
   {{/link-to}}
+  {{#if model.isRunning}}
+    {{#content-placeholders as |placeholder|}}
+      {{placeholder.text lines=1}}
+      {{placeholder.nav}}
+      {{placeholder.text lines=10}}
+    {{/content-placeholders}}
+  {{else}}
+    {{bookmark-button
+      bookmark=lot.bookmark
+      createBookmark=(action 'createBookmark')}}
 
-  {{bookmark-button
-    bookmark=(await model.bookmark)
-    createBookmark=(action 'createBookmark')}}
+    <label class="header-label clearfix">
+      TAX LOT <span class="medium-gray">|</span> BBL {{lot.bbl}}
+    </label>
+    <h1 class="content-header">
+      {{#if lot.landmark}}<span class="landmark">{{lot.landmark}}</span>{{/if}}
+      <span class="address">{{lot.address}}, {{lot.zipcode}}</span>
+    </h1>
 
-  <label class="header-label clearfix">
-    TAX LOT <span class="medium-gray">|</span> BBL {{model.bbl}}
-  </label>
-  <h1 class="content-header">
-    {{#if model.landmark}}<span class="landmark">{{model.landmark}}</span>{{/if}}
-    <span class="address">{{model.address}}, {{model.zipcode}}</span>
-  </h1>
+    <p class="text-small dark-gray">{{lot.boroname}}&nbsp;(Borough {{lot.borocode}}) <span class="pipe">|</span> Block {{lot.block}} <span class="pipe">|</span> Lot {{lot.lot}}</p>
 
-  <p class="text-small dark-gray">{{model.boroname}}&nbsp;(Borough {{model.borocode}}) <span class="pipe">|</span> Block {{model.block}} <span class="pipe">|</span> Lot {{model.lot}}</p>
+    {{#if lot.zonedist1}}
+      <ul class="lot-zoning-list">
+        <li class="menu-text">Zoning District{{if (or lot.zonedist2 lot.spdist1) 's'}}:</li>
+        {{#if lot.zonedist1}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone1}}.page" class="button">{{fa-icon 'external-link'}} {{lot.zonedist1}}</a></li>{{/if}}
+        {{#if lot.zonedist2}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone2}}.page" class="button">{{fa-icon 'external-link'}} {{lot.zonedist2}}</a></li>{{/if}}
+        {{#if lot.zonedist3}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone3}}.page" class="button">{{fa-icon 'external-link'}} {{lot.zonedist3}}</a></li>{{/if}}
+        {{#if lot.zonedist4}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone4}}.page" class="button">{{fa-icon 'external-link'}} {{lot.zonedist4}}</a></li>{{/if}}
+        {{#if lot.spdist1}}
+          <li>
+            {{link-to-intersecting (concat 'Special District: ' lot.spdist1) 'special-purpose-district' 'support_zoning_sp' lot.geometry classNames="button"}}
+          </li>
+        {{/if}}
 
-  {{#if model.zonedist1}}
-    <ul class="lot-zoning-list">
-      <li class="menu-text">Zoning District{{if (or model.zonedist2 model.spdist1) 's'}}:</li>
-      {{#if model.zonedist1}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone1}}.page" class="button">{{fa-icon 'external-link'}} {{model.zonedist1}}</a></li>{{/if}}
-      {{#if model.zonedist2}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone2}}.page" class="button">{{fa-icon 'external-link'}} {{model.zonedist2}}</a></li>{{/if}}
-      {{#if model.zonedist3}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone3}}.page" class="button">{{fa-icon 'external-link'}} {{model.zonedist3}}</a></li>{{/if}}
-      {{#if model.zonedist4}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone4}}.page" class="button">{{fa-icon 'external-link'}} {{model.zonedist4}}</a></li>{{/if}}
-      {{#if model.spdist1}}
-        <li>
-          {{link-to-intersecting (concat 'Special District: ' model.spdist1) 'special-purpose-district' 'support_zoning_sp' model.geometry classNames="button"}}
-        </li>
-      {{/if}}
+        {{#if lot.spdist2}}
+          <li>
+            {{link-to-intersecting (concat 'Special District: ' lot.spdist2) 'special-purpose-district' 'support_zoning_sp' lot.geometry classNames="button"}}
+          </li>
+        {{/if}}
 
-      {{#if model.spdist2}}
-        <li>
-          {{link-to-intersecting (concat 'Special District: ' model.spdist2) 'special-purpose-district' 'support_zoning_sp' model.geometry classNames="button"}}
-        </li>
-      {{/if}}
+        {{#if lot.spdist3}}
+          <li>
+            {{link-to-intersecting (concat 'Special District: ' lot.spdist3) 'special-purpose-district' 'support_zoning_sp' lot.geometry classNames="button"}}
+          </li>
+        {{/if}}
 
-      {{#if model.spdist3}}
-        <li>
-          {{link-to-intersecting (concat 'Special District: ' model.spdist3) 'special-purpose-district' 'support_zoning_sp' model.geometry classNames="button"}}
-        </li>
-      {{/if}}
+        {{#if lot.spdist4}}
+          <li>
+            {{link-to-intersecting (concat 'Special District: ' lot.spdist4) 'special-purpose-district' 'support_zoning_sp' lot.geometry classNames="button"}}
+          </li>
+        {{/if}}
 
-      {{#if model.spdist4}}
-        <li>
-          {{link-to-intersecting (concat 'Special District: ' model.spdist4) 'special-purpose-district' 'support_zoning_sp' model.geometry classNames="button"}}
-        </li>
-      {{/if}}
+        {{#if lot.overlay1}}
+          <li>
+            {{link-to-intersecting lot.overlay1 'commercial-overlay' 'support_zoning_co' lot.geometry responseIdentifier='overlay' classNames="button"}}
+          </li>
+        {{/if}}
 
-      {{#if model.overlay1}}
-        <li>
-          {{link-to-intersecting model.overlay1 'commercial-overlay' 'support_zoning_co' model.geometry responseIdentifier='overlay' classNames="button"}}
-        </li>
-      {{/if}}
-
-      {{#if model.overlay2}}
-        <li>
-          {{link-to-intersecting model.overlay2 'commercial-overlay' 'support_zoning_co' model.geometry responseIdentifier='overlay' classNames="button"}}
-        </li>
-      {{/if}}
-    </ul>
-  {{/if}}
-
-  <div class="grid-x grid-margin-x">
-    <div class="cell medium-shrink">
-      <h6 class="no-margin-">Intersecting Map Layers {{info-tooltip tip="These intersections should be independently verified and should not be relied upon to determine the zoning rules applicable to a property."}}:</h6>
-      <ul class="no-bullet text-small">
-        {{#if model.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a> <small class="dark-gray">{{model.histdist}}</small></li>{{/if}}
-        {{log  'BBL' model.bbl}}
-        {{#intersecting-layers
-            tables=(array 'support_ih' 'support_tz' 'support_fresh' 'support_wap' 'support_czb' 'support_ldgma' 'support_waterfront_pfirm15' 'support_waterfront_effective07' 'support_mih')
-            bbl=model.bbl as |layers numberIntersecting|}}
-
-          {{#if layers.support_ih}}
-            <li>
-              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page">
-                {{fa-icon "external-link"}} Inclusionary Housing Zone
-              </a>
-            </li>
-          {{/if}}
-
-          {{#if layers.support_tz}}
-            <li>
-              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone">
-                {{fa-icon "external-link"}} Transit Zone
-              </a>
-            </li>
-          {{/if}}
-
-          {{#if layers.support_fresh}}
-            <li>
-              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page">
-                {{fa-icon "external-link"}} Fresh Zone
-              </a>
-            </li>
-          {{/if}}
-
-          {{#if layers.support_wap}}
-            <li>
-              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan">
-                {{fa-icon "external-link"}} Waterfront Access Plan
-              </a>
-            </li>
-          {{/if}}
-
-          {{#if layers.support_czb}}
-            <li>
-              <a target="_blank" href="http://www1.nyc.gov/site/planning/applicants/wrp/wrp.page">
-                {{fa-icon "external-link"}} Coastal Zone
-              </a>
-            </li>
-          {{/if}}
-
-          {{#if layers.support_ldgma}}
-            <li>
-              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page">
-                {{fa-icon "external-link"}} Lower Density Growth Management Zone
-              </a>
-            </li>
-          {{/if}}
-
-          {{#if layers.support_waterfront_effective07}}
-            <li>
-              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
-                {{fa-icon "external-link"}} Flood Zone
-              </a> <small class="dark-gray">Effective Flood Insurance Rate Maps 2007</small>
-            </li>
-          {{/if}}
-
-          {{#if layers.support_waterfront_pfirm15}}
-            <li>
-              <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
-                {{fa-icon "external-link"}} Flood Zone
-              </a> <small class="dark-gray">Preliminary Flood Insurance Rate Maps 2015</small>
-            </li>
-          {{/if}}
-
-          {{#if layers.support_mih}}
-            <li>
-              <a target="_blank" href="https://www1.nyc.gov/site/planning/plans/mih/mandatory-inclusionary-housing.page">
-                {{fa-icon "external-link"}} Mandatory Inclusionary Housing Area
-              </a>
-            </li>
-          {{/if}}
-
-          {{#unless (or numberIntersecting model.histdist)}}
-            None found
-          {{/unless}}
-
-        {{/intersecting-layers}}
-
+        {{#if lot.overlay2}}
+          <li>
+            {{link-to-intersecting lot.overlay2 'commercial-overlay' 'support_zoning_co' lot.geometry responseIdentifier='overlay' classNames="button"}}
+          </li>
+        {{/if}}
       </ul>
-    </div>
-    <div class="cell medium-shrink">
-      <h6 class="no-margin-">Zoning Details:</h6>
-      <ul class="no-bullet text-small">
-        {{#if model.bbl}}<li><a target="_blank" href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{model.bbl}}">{{fa-icon "external-link"}} Digital Tax Map</a></li>{{/if}}
-        {{#if model.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{model.zonemap}}.pdf">{{fa-icon "external-link"}} Zoning Map <small>(PDF)</small></a></li>{{/if}}
-        {{#if model.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{model.zonemap}}.pdf">{{fa-icon "external-link"}} Historical Zoning Maps <small>(PDF)</small></a></li>{{/if}}
-      </ul>
-    </div>
-  </div>
+    {{/if}}
 
-  <hr/>
+    <div class="grid-x grid-margin-x">
+      <div class="cell medium-shrink">
+        <h6 class="no-margin-">Intersecting Map Layers {{info-tooltip tip="These intersections should be independently verified and should not be relied upon to determine the zoning rules applicable to a property."}}:</h6>
+        <ul class="no-bullet text-small">
+          {{#if lot.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a> <small class="dark-gray">{{lot.histdist}}</small></li>{{/if}}
 
-  {{#if model.ownertypename}}<div class="data-grid"><label class="data-label">Owner Type</label><span class="datum">{{if model.ownertypename model.ownertypename 'Unknown/Private'}}</span></div>{{/if}}
-  {{#if model.ownername}}<div class="data-grid"><label class="data-label">Owner</label><span class="datum">{{model.ownername}}</span></div>{{/if}}
-  {{#if model.landusename}}<div class="data-grid"><label class="data-label">Land Use</label><span class="datum">{{model.landusename}}</span></div>{{/if}}
-  {{#if model.lotarea}}<div class="data-grid"><label class="data-label">Lot Area</label><span class="datum">{{if model.lotarea (concat (numeral-format model.lotarea '0,0') ' sq ft') ''}}</span></div>{{/if}}
-  {{#if model.lotfront}}<div class="data-grid"><label class="data-label">Lot Frontage</label><span class="datum">{{if model.lotfront (concat model.lotfront ' ft') ''}}</span></div>{{/if}}
-  {{#if model.lotdepth}}<div class="data-grid"><label class="data-label">Lot Depth</label><span class="datum">{{if model.lotdepth (concat model.lotdepth ' ft') ''}}</span></div>{{/if}}
-  {{#if model.yearbuilt}}<div class="data-grid"><label class="data-label">Year Built</label><span class="datum">{{model.yearbuilt}}</span></div>{{/if}}
-  {{#if model.yearalter1}}<div class="data-grid"><label class="data-label">Year{{if model.yearalter2 's'}} Altered</label><span class="datum">{{model.yearalter1}}{{if model.yearalter2 (concat ', ' model.yearalter2) ''}}</span></div>{{/if}}
-  {{#if model.bldgclassname}}<div class="data-grid"><label class="data-label">Building Class</label><span class="datum">{{model.bldgclassname}}{{#if model.bldgclass}}&nbsp;<span class="dark-gray">({{model.bldgclass}})</span>{{/if}}</span></div>{{/if}}
-  {{#if model.numbldgs}}<div class="data-grid"><label class="data-label">Number of Buildings</label><span class="datum">{{model.numbldgs}}</span></div>{{/if}}
-  {{#if model.numfloors}}<div class="data-grid"><label class="data-label">Number of Floors</label><span class="datum">{{model.numfloors}}</span></div>{{/if}}
-  {{#if model.bldgarea}}<div class="data-grid"><label class="data-label">Gross Floor Area</label><span class="datum">{{if model.bldgarea (concat (numeral-format model.bldgarea '0,0') ' sq ft') ''}}</span></div>{{/if}}
-  {{#if model.unitstotal}}<div class="data-grid"><label class="data-label">Total # of Units</label><span class="datum">{{model.unitstotal}}</span></div>{{/if}}
-  {{#if model.unitsres}}<div class="data-grid"><label class="data-label">Residential Units</label><span class="datum">{{model.unitsres}}</span></div>{{/if}}
-  {{#if model.condono}}<div class="data-grid"><label class="data-label">Condominium Number</label><span class="datum">{{model.condono}}</span></div>{{/if}}
-  <div class="data-grid"><label class="data-label">Building Info {{info-tooltip tip="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"}}</label><span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.borocode}}&allblock={{model.block}}&alllot={{model.lot}}&go5=+GO+&requestid=0" target="_blank">{{fa-icon 'external-link'}} BISWEB </a></span></div>
-  {{#if model.borocode}}
-    <div class="data-grid">
-      <label class="data-label">Property Records</label>
-      <span class="datum">
-        <a href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{model.borocode}}&block={{model.block}}&lot={{model.lot}}" target="_blank">
-          {{fa-icon "external-link"}} View ACRIS
-        </a>
-      </span>
+          {{#intersecting-layers
+              tables=(array 'support_ih' 'support_tz' 'support_fresh' 'support_wap' 'support_czb' 'support_ldgma' 'support_waterfront_pfirm15' 'support_waterfront_effective07' 'support_mih')
+              bbl=lot.bbl as |layers numberIntersecting|}}
+
+            {{#if layers.support_ih}}
+              <li>
+                <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page">
+                  {{fa-icon "external-link"}} Inclusionary Housing Zone
+                </a>
+              </li>
+            {{/if}}
+
+            {{#if layers.support_tz}}
+              <li>
+                <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone">
+                  {{fa-icon "external-link"}} Transit Zone
+                </a>
+              </li>
+            {{/if}}
+
+            {{#if layers.support_fresh}}
+              <li>
+                <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page">
+                  {{fa-icon "external-link"}} Fresh Zone
+                </a>
+              </li>
+            {{/if}}
+
+            {{#if layers.support_wap}}
+              <li>
+                <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan">
+                  {{fa-icon "external-link"}} Waterfront Access Plan
+                </a>
+              </li>
+            {{/if}}
+
+            {{#if layers.support_czb}}
+              <li>
+                <a target="_blank" href="http://www1.nyc.gov/site/planning/applicants/wrp/wrp.page">
+                  {{fa-icon "external-link"}} Coastal Zone
+                </a>
+              </li>
+            {{/if}}
+
+            {{#if layers.support_ldgma}}
+              <li>
+                <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page">
+                  {{fa-icon "external-link"}} Lower Density Growth Management Zone
+                </a>
+              </li>
+            {{/if}}
+
+            {{#if layers.support_waterfront_effective07}}
+              <li>
+                <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
+                  {{fa-icon "external-link"}} Flood Zone
+                </a> <small class="dark-gray">Effective Flood Insurance Rate Maps 2007</small>
+              </li>
+            {{/if}}
+
+            {{#if layers.support_waterfront_pfirm15}}
+              <li>
+                <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
+                  {{fa-icon "external-link"}} Flood Zone
+                </a> <small class="dark-gray">Preliminary Flood Insurance Rate Maps 2015</small>
+              </li>
+            {{/if}}
+
+            {{#if layers.support_mih}}
+              <li>
+                <a target="_blank" href="https://www1.nyc.gov/site/planning/plans/mih/mandatory-inclusionary-housing.page">
+                  {{fa-icon "external-link"}} Mandatory Inclusionary Housing Area
+                </a>
+              </li>
+            {{/if}}
+
+            {{#unless (or numberIntersecting lot.histdist)}}
+              None found
+            {{/unless}}
+
+          {{/intersecting-layers}}
+
+        </ul>
+      </div>
+      <div class="cell medium-shrink">
+        <h6 class="no-margin-">Zoning Details:</h6>
+        <ul class="no-bullet text-small">
+          {{#if lot.bbl}}<li><a target="_blank" href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{lot.bbl}}">{{fa-icon "external-link"}} Digital Tax Map</a></li>{{/if}}
+          {{#if lot.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{lot.zonemap}}.pdf">{{fa-icon "external-link"}} Zoning Map <small>(PDF)</small></a></li>{{/if}}
+          {{#if lot.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{lot.zonemap}}.pdf">{{fa-icon "external-link"}} Historical Zoning Maps <small>(PDF)</small></a></li>{{/if}}
+        </ul>
+      </div>
     </div>
+
+    <hr/>
+
+    {{#if lot.ownertypename}}<div class="data-grid"><label class="data-label">Owner Type</label><span class="datum">{{if lot.ownertypename lot.ownertypename 'Unknown/Private'}}</span></div>{{/if}}
+    {{#if lot.ownername}}<div class="data-grid"><label class="data-label">Owner</label><span class="datum">{{lot.ownername}}</span></div>{{/if}}
+    {{#if lot.landusename}}<div class="data-grid"><label class="data-label">Land Use</label><span class="datum">{{lot.landusename}}</span></div>{{/if}}
+    {{#if lot.lotarea}}<div class="data-grid"><label class="data-label">Lot Area</label><span class="datum">{{if lot.lotarea (concat (numeral-format lot.lotarea '0,0') ' sq ft') ''}}</span></div>{{/if}}
+    {{#if lot.lotfront}}<div class="data-grid"><label class="data-label">Lot Frontage</label><span class="datum">{{if lot.lotfront (concat lot.lotfront ' ft') ''}}</span></div>{{/if}}
+    {{#if lot.lotdepth}}<div class="data-grid"><label class="data-label">Lot Depth</label><span class="datum">{{if lot.lotdepth (concat lot.lotdepth ' ft') ''}}</span></div>{{/if}}
+    {{#if lot.yearbuilt}}<div class="data-grid"><label class="data-label">Year Built</label><span class="datum">{{lot.yearbuilt}}</span></div>{{/if}}
+    {{#if lot.yearalter1}}<div class="data-grid"><label class="data-label">Year{{if lot.yearalter2 's'}} Altered</label><span class="datum">{{lot.yearalter1}}{{if lot.yearalter2 (concat ', ' lot.yearalter2) ''}}</span></div>{{/if}}
+    {{#if lot.bldgclassname}}<div class="data-grid"><label class="data-label">Building Class</label><span class="datum">{{lot.bldgclassname}}{{#if lot.bldgclass}}&nbsp;<span class="dark-gray">({{lot.bldgclass}})</span>{{/if}}</span></div>{{/if}}
+    {{#if lot.numbldgs}}<div class="data-grid"><label class="data-label">Number of Buildings</label><span class="datum">{{lot.numbldgs}}</span></div>{{/if}}
+    {{#if lot.numfloors}}<div class="data-grid"><label class="data-label">Number of Floors</label><span class="datum">{{lot.numfloors}}</span></div>{{/if}}
+    {{#if lot.bldgarea}}<div class="data-grid"><label class="data-label">Gross Floor Area</label><span class="datum">{{if lot.bldgarea (concat (numeral-format lot.bldgarea '0,0') ' sq ft') ''}}</span></div>{{/if}}
+    {{#if lot.unitstotal}}<div class="data-grid"><label class="data-label">Total # of Units</label><span class="datum">{{lot.unitstotal}}</span></div>{{/if}}
+    {{#if lot.unitsres}}<div class="data-grid"><label class="data-label">Residential Units</label><span class="datum">{{lot.unitsres}}</span></div>{{/if}}
+    {{#if lot.condono}}<div class="data-grid"><label class="data-label">Condominium Number</label><span class="datum">{{lot.condono}}</span></div>{{/if}}
+    <div class="data-grid"><label class="data-label">Building Info {{info-tooltip tip="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"}}</label><span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{lot.borocode}}&allblock={{lot.block}}&alllot={{lot.lot}}&go5=+GO+&requestid=0" target="_blank">{{fa-icon 'external-link'}} BISWEB </a></span></div>
+    {{#if lot.borocode}}
+      <div class="data-grid">
+        <label class="data-label">Property Records</label>
+        <span class="datum">
+          <a href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{lot.borocode}}&block={{lot.block}}&lot={{lot.lot}}" target="_blank">
+            {{fa-icon "external-link"}} View ACRIS
+          </a>
+        </span>
+      </div>
+    {{/if}}
+
+    <h3 class="header-small lot-section-header">Neighborhood Information</h3>
+
+    {{#if lot.cdURLSegment}}<div class="data-grid"><label class="data-label">Community District</label><span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{lot.cdURLSegment}}" target="_blank">{{fa-icon "external-link"}} {{lot.cdName}}</a></span></div>{{/if}}
+    {{#if lot.council}}<div class="data-grid"><label class="data-label">City Council District</label><span class="datum"><a href="https://council.nyc.gov/district-{{lot.council}}/" target="_blank">{{fa-icon "external-link"}} Council District {{lot.council}}</a></span></div>{{/if}}
+    {{#if lot.schooldist}}<div class="data-grid"><label class="data-label">School District</label><span class="datum">{{lot.schooldist}}</span></div>{{/if}}
+    {{#if lot.policeprct}}<div class="data-grid"><label class="data-label">Police Precinct</label><span class="datum">{{lot.policeprct}}</span></div>{{/if}}
+    {{#if lot.firecomp}}<div class="data-grid"><label class="data-label">Fire Company</label><span class="datum">{{lot.firecomp}}</span></div>{{/if}}
+    {{#if lot.sanitboro}}<div class="data-grid"><label class="data-label">Sanitation Borough</label><span class="datum">{{lot.sanitboro}}</span></div>{{/if}}
+    {{#if lot.sanitdistr}}<div class="data-grid"><label class="data-label">Sanitation District</label><span class="datum">{{lot.sanitdistr}}</span></div>{{/if}}
+    {{#if lot.sanitsub}}<div class="data-grid"><label class="data-label">Sanitation Subsection</label><span class="datum">{{lot.sanitsub}}</span></div>{{/if}}
+
+    <hr>
+
+    <iframe src="https://roadview.planninglabs.nyc/view/{{lot.lon}}/{{lot.lat}}" class="cyclomedia"></iframe>
   {{/if}}
-
-  <h3 class="header-small lot-section-header">Neighborhood Information</h3>
-
-  {{#if model.cdURLSegment}}<div class="data-grid"><label class="data-label">Community District</label><span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{model.cdURLSegment}}" target="_blank">{{fa-icon "external-link"}} {{model.cdName}}</a></span></div>{{/if}}
-  {{#if model.council}}<div class="data-grid"><label class="data-label">City Council District</label><span class="datum"><a href="https://council.nyc.gov/district-{{model.council}}/" target="_blank">{{fa-icon "external-link"}} Council District {{model.council}}</a></span></div>{{/if}}
-  {{#if model.schooldist}}<div class="data-grid"><label class="data-label">School District</label><span class="datum">{{model.schooldist}}</span></div>{{/if}}
-  {{#if model.policeprct}}<div class="data-grid"><label class="data-label">Police Precinct</label><span class="datum">{{model.policeprct}}</span></div>{{/if}}
-  {{#if model.firecomp}}<div class="data-grid"><label class="data-label">Fire Company</label><span class="datum">{{model.firecomp}}</span></div>{{/if}}
-  {{#if model.sanitboro}}<div class="data-grid"><label class="data-label">Sanitation Borough</label><span class="datum">{{model.sanitboro}}</span></div>{{/if}}
-  {{#if model.sanitdistr}}<div class="data-grid"><label class="data-label">Sanitation District</label><span class="datum">{{model.sanitdistr}}</span></div>{{/if}}
-  {{#if model.sanitsub}}<div class="data-grid"><label class="data-label">Sanitation Subsection</label><span class="datum">{{model.sanitsub}}</span></div>{{/if}}
-
-  <hr>
-
-  <iframe src="https://roadview.planninglabs.nyc/view/{{model.lon}}/{{model.lat}}" class="cyclomedia"></iframe>
 </div>

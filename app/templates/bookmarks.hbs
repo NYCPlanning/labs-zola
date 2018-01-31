@@ -9,7 +9,7 @@
           {{#each values as |lot|}}
             <li class="lot-bookmark">
               <span class="icon tax-lot"></span>
-                {{#link-to 'lot' lot.bookmark}}
+                {{#link-to 'lot' lot.bookmark.boro lot.bookmark.block lot.bookmark.lot}}
                   {{lot.bookmark.address}}
                   <span class="dark-gray">
                     {{lot.bookmark.bbl}}
