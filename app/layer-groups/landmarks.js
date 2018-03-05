@@ -15,7 +15,7 @@ export default {
   layers: [
     {
       layer: {
-        id: 'landmarkpoints-circle-outline',
+        id: 'landmarks_v0-circle-outline',
         type: 'circle',
         source: 'landmark-historic',
         'source-layer': 'landmarks',
@@ -28,7 +28,7 @@ export default {
     },
     {
       layer: {
-        id: 'landmarkpoints-circle',
+        id: 'landmarks_v0-circle',
         type: 'circle',
         source: 'landmark-historic',
         'source-layer': 'landmarks',
