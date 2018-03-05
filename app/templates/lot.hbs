@@ -32,37 +32,37 @@
         {{#if lot.zonedist4}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone4}}.page" class="button">{{fa-icon 'external-link'}} {{lot.zonedist4}}</a></li>{{/if}}
         {{#if lot.spdist1}}
           <li>
-            {{link-to-intersecting (concat 'Special District: ' lot.spdist1) 'special-purpose-district' 'support_zoning_sp' lot.geometry classNames="button"}}
+            {{link-to-intersecting (concat 'Special District: ' lot.spdist1) 'special-purpose-district' 'special_purpose_districts_v201802' lot.geometry classNames="button"}}
           </li>
         {{/if}}
 
         {{#if lot.spdist2}}
           <li>
-            {{link-to-intersecting (concat 'Special District: ' lot.spdist2) 'special-purpose-district' 'support_zoning_sp' lot.geometry classNames="button"}}
+            {{link-to-intersecting (concat 'Special District: ' lot.spdist2) 'special-purpose-district' 'special_purpose_districts_v201802' lot.geometry classNames="button"}}
           </li>
         {{/if}}
 
         {{#if lot.spdist3}}
           <li>
-            {{link-to-intersecting (concat 'Special District: ' lot.spdist3) 'special-purpose-district' 'support_zoning_sp' lot.geometry classNames="button"}}
+            {{link-to-intersecting (concat 'Special District: ' lot.spdist3) 'special-purpose-district' 'special_purpose_districts_v201802' lot.geometry classNames="button"}}
           </li>
         {{/if}}
 
         {{#if lot.spdist4}}
           <li>
-            {{link-to-intersecting (concat 'Special District: ' lot.spdist4) 'special-purpose-district' 'support_zoning_sp' lot.geometry classNames="button"}}
+            {{link-to-intersecting (concat 'Special District: ' lot.spdist4) 'special-purpose-district' 'special_purpose_districts_v201802' lot.geometry classNames="button"}}
           </li>
         {{/if}}
 
         {{#if lot.overlay1}}
           <li>
-            {{link-to-intersecting lot.overlay1 'commercial-overlay' 'support_zoning_co' lot.geometry responseIdentifier='overlay' classNames="button"}}
+            {{link-to-intersecting lot.overlay1 'commercial-overlay' 'commercial_overlays_v201802' lot.geometry responseIdentifier='overlay' classNames="button"}}
           </li>
         {{/if}}
 
         {{#if lot.overlay2}}
           <li>
-            {{link-to-intersecting lot.overlay2 'commercial-overlay' 'support_zoning_co' lot.geometry responseIdentifier='overlay' classNames="button"}}
+            {{link-to-intersecting lot.overlay2 'commercial-overlay' 'commercial_overlays_v201802' lot.geometry responseIdentifier='overlay' classNames="button"}}
           </li>
         {{/if}}
       </ul>
