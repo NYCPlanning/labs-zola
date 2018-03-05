@@ -75,7 +75,7 @@
           {{#if lot.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a> <small class="dark-gray">{{lot.histdist}}</small></li>{{/if}}
 
           {{#intersecting-layers
-              tables=(array 'support_ih' 'support_tz' 'support_fresh' 'support_wap' 'support_czb' 'support_ldgma' 'support_waterfront_pfirm15' 'support_waterfront_effective07' 'support_mih')
+              tables=(array 'support_ih' 'support_tz' 'support_fresh' 'support_wap' 'support_czb' 'support_ldgma' 'support_waterfront_pfirm15' 'support_waterfront_effective07' 'mandatory_inclusionary_housing_v20180223')
               bbl=lot.bbl as |layers numberIntersecting|}}
 
             {{#if layers.support_ih}}
@@ -142,7 +142,7 @@
               </li>
             {{/if}}
 
-            {{#if layers.support_mih}}
+            {{#if layers.mandatory_inclusionary_housing_v20180223}}
               <li>
                 <a target="_blank" href="https://www1.nyc.gov/site/planning/plans/mih/mandatory-inclusionary-housing.page">
                   {{fa-icon "external-link"}} Mandatory Inclusionary Housing Area
