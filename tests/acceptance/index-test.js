@@ -7,6 +7,7 @@ const SEARCH_RESULTS_SELECTOR = '.search-results';
 const LOT_URL_ROOT = '/lot';
 const SEARCH_TERM_LOT = '1000477501';
 const SEARCH_TERM_ADDRESS = '210 Humboldt Street, Brooklyn, New York, NY, USA';
+const SEARCH_RESULT_LABEL = '210 HUMBOLDT STREET, Brooklyn, New York, NY, USA';
 const SEARCH_RESULTS_LOADING_CLASS = '.search-results--loading';
 const FONT_AWESOME_MAP_PIN = '.fa-map-pin';
 const timeout = 15000;
@@ -43,18 +44,7 @@ test('map-search keydown, keyup, keyup -> first result highlighted', async funct
   );
 });
 
-test('map-search no lot found, return address', async function(assert) {
-  await visit('/');
-  await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_ADDRESS);
-  await waitUntil(() => find('.has-results'), { timeout });
-  await keyEvent(SEARCH_INPUT_SELECTOR, 'click');
-
-  assert.ok(
-    find(FONT_AWESOME_MAP_PIN),
-  );
-});
-
-test('Map search: hide result list on focus out, persist search terms', async function(assert) {
+test('Map search: hide result list on focus out, persist search result label', async function(assert) {
   await visit('/');
   await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_ADDRESS);
   await keyEvent(SEARCH_INPUT_SELECTOR, 'click');
@@ -72,6 +62,6 @@ test('Map search: hide result list on focus out, persist search terms', async fu
 
   assert.equal(
     find(SEARCH_INPUT_SELECTOR).value,
-    SEARCH_TERM_ADDRESS,
+    SEARCH_RESULT_LABEL,
   );
 });
