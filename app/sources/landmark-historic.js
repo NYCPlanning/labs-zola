@@ -12,7 +12,7 @@ export default {
     },
     {
       id: 'scenic-landmarks',
-      sql: 'SELECT the_geom_webmercator, scen_lm_na FROM support_sceniclandmarks',
+      sql: 'SELECT the_geom_webmercator, scen_lm_na FROM scenic_landmarks_v0',
     },
   ],
 };
