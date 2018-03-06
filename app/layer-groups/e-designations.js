@@ -49,7 +49,7 @@ export default {
         },
       },
       highlightable: true,
-      tooltipTemplate: 'E-designation<br/>CEQR: {{ceqr_num}}<br/>ULURP: {{ulurp_num}}',
+      tooltipTemplate: 'E-designation<br/>E-Number: {{enumber}}<br/>CEQR: {{ceqr_num}}<br/>ULURP: {{ulurp_num}}',
     },
     {
       layer: {
