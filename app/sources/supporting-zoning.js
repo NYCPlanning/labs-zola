@@ -4,59 +4,59 @@ export default {
   'source-layers': [
     {
       id: 'special-purpose-districts',
-      sql: 'SELECT the_geom_webmercator, cartodb_id, sdlbl, sdname FROM support_zoning_sp',
+      sql: 'SELECT the_geom_webmercator, cartodb_id, sdlbl, sdname FROM special_purpose_districts_v201802',
     },
     {
       id: 'special-purpose-subdistricts',
-      sql: 'SELECT the_geom_webmercator, splbl, cartodb_id, spname, subdist FROM support_zoning_spsd',
+      sql: 'SELECT the_geom_webmercator, splbl, cartodb_id, spname, subdist FROM special_purpose_subdistricts_v201802',
     },
     {
       id: 'mandatory-inclusionary-housing',
-      sql: 'SELECT the_geom_webmercator, projectnam, mih_option FROM support_mih',
+      sql: 'SELECT the_geom_webmercator, projectnam, mih_option FROM mandatory_inclusionary_housing_v20180223',
     },
     {
       id: 'inclusionary-housing',
-      sql: 'SELECT the_geom_webmercator, projectnam FROM support_ih',
+      sql: 'SELECT the_geom_webmercator, projectnam FROM inclusionary_housing_v201709',
     },
     {
       id: 'transit-zones',
-      sql: 'SELECT the_geom_webmercator FROM support_tz',
+      sql: 'SELECT the_geom_webmercator FROM transitzones_v201607',
     },
     {
       id: 'fresh',
-      sql: 'SELECT the_geom_webmercator, name FROM support_fresh',
+      sql: 'SELECT the_geom_webmercator, name FROM fresh_zones_v201611',
     },
     {
       id: 'sidewalk-cafes',
-      sql: 'SELECT the_geom_webmercator, cafetype FROM support_sidewalkcafes',
+      sql: 'SELECT the_geom_webmercator, cafetype FROM sidewalk_cafes_v201802',
     },
     {
       id: 'low-density-growth-mgmt-areas',
-      sql: 'SELECT the_geom_webmercator FROM support_ldgma',
+      sql: 'SELECT the_geom_webmercator FROM lower_density_growth_management_areas_v201709',
     },
     {
       id: 'coastal-zone-boundary',
-      sql: 'SELECT the_geom_webmercator FROM support_czb',
+      sql: 'SELECT the_geom_webmercator FROM coastal_zone_boundary_v201601',
     },
     {
       id: 'waterfront-access-plan',
-      sql: 'SELECT the_geom_webmercator, name FROM support_wap',
+      sql: 'SELECT the_geom_webmercator, name FROM waterfront_access_plan_v201109',
     },
     {
       id: 'zoning-map-amendments-pending',
-      sql: 'SELECT the_geom_webmercator, ulurpno, status, project_na FROM support_zoning_zma WHERE status = \'Certified\'',
+      sql: 'SELECT the_geom_webmercator, ulurpno, status, project_na FROM zoning_map_amendments_v201802 WHERE status = \'Certified\'',
     },
     {
       id: 'limited-height-districts',
-      sql: 'SELECT the_geom_webmercator, lhlbl FROM limited_height_districts',
+      sql: 'SELECT the_geom_webmercator, lhlbl FROM limited_height_districts_v201802',
     },
     {
       id: 'business-improvement-districts',
-      sql: 'SELECT the_geom_webmercator, bid FROM business_improvement_districts',
+      sql: 'SELECT the_geom_webmercator, bid FROM business_improvement_districts_v0',
     },
     {
       id: 'e-designations',
-      sql: 'SELECT the_geom_webmercator, bbl, ceqr_num, enumber, ulurp_num FROM e_designations',
+      sql: 'SELECT the_geom_webmercator, bbl, ceqr_num, enumber, ulurp_num FROM e_designations_v20180214',
     },
   ],
 };

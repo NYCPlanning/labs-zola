@@ -3,9 +3,9 @@ export default {
   title: 'Environmental Designations',
   titleTooltip: 'An E-Designation is a NYC zoning map designation that indicates the presence of an environmental requirement pertaining to potential Hazardous Materials Contamination, Window/Wall Noise Attenuation, or Air Quality impacts on a particular tax lot.',
   meta: {
-    description: '(E) Designations release December 2017, Bytes of the Big Apple',
+    description: '(E) Designations release February 2018, Bytes of the Big Apple',
     url: ['https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-edesignations.page'],
-    updated_at: 'December 27, 2017',
+    updated_at: 'March 5th, 2018',
   },
   visible: false,
   layers: [
