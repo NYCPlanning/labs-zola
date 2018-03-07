@@ -163,7 +163,7 @@
         <ul class="no-bullet text-small">
           {{#if lot.bbl}}<li><a target="_blank" href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{lot.bbl}}">{{fa-icon "external-link"}} Digital Tax Map</a></li>{{/if}}
           {{#if lot.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{lot.zonemap}}.pdf">{{fa-icon "external-link"}} Zoning Map <small>(PDF)</small></a></li>{{/if}}
-          {{#if lot.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{lot.zonemap}}.pdf">{{fa-icon "external-link"}} Historical Zoning Maps <small>(PDF)</small></a></li>{{/if}}
+          {{#if lot.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{paddedZonemap}}.pdf">{{fa-icon "external-link"}} Historical Zoning Maps <small>(PDF)</small></a></li>{{/if}}
         </ul>
       </div>
     </div>
