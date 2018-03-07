@@ -29,7 +29,7 @@ export default Ember.Component.extend({
     checkBBL() {
       const { boro: { code }, block, lot } = this.getProperties('boro', 'block', 'lot');
 
-      const uniqueSQL = `select bbl from support_mappluto where block= ${block} and lot = ${lot} and borocode = ${code}`;
+      const uniqueSQL = `select bbl from mappluto_v1711 where block= ${block} and lot = ${lot} and borocode = ${code}`;
       carto.SQL(uniqueSQL).then((response) => {
         if (response[0]) {
           this.set('errorMessage', '');
