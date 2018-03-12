@@ -100,8 +100,6 @@ export default Ember.Component.extend({
   selectedLineLayer,
 
   actions: {
-
-
     adjustBuildingsLayer(visible) {
       const map = this.get('mainMap.mapInstance');
       if (visible) {
