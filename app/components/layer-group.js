@@ -5,7 +5,7 @@ import carto from '../utils/carto2';
 import layerGroups from '../layer-groups';
 import sources from '../sources';
 
-const { copy, merge, set } = Ember;
+const { copy, merge, set, addObserver } = Ember;
 
 const { service } = Ember.inject;
 
@@ -23,6 +23,11 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
 
     if (this.get('childComponents.length') > 1) {
       warn('Only one layer-control per layer is supported.');
+    }
+
+    const didToggleVisibility = this.get('didToggleVisibility');
+    if (didToggleVisibility) {
+      addObserver(this, 'visible', this, 'fireVisibilityEvent');
     }
   },
 
@@ -62,7 +67,7 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     return type === 'carto';
   },
 
-  @computed('registeredLayers.layers')
+  @computed('registeredLayers.layers', 'visible')
   before(allLayerGroups) {
     // const allLayerGroups = this.get('registeredLayers.layers');
     const position = allLayerGroups.map(layerGroup => layerGroup.config.id).indexOf(this.get('config.id'));
@@ -100,6 +105,11 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     return config;
   },
 
+  fireVisibilityEvent() {
+    const didToggleVisibility = this.get('didToggleVisibility');
+    didToggleVisibility(this.get('visible'));
+  },
+
   buildRangeSQL(sql, column = '', range = [0, 1] || ['a', 'b']) {
     let newSql = sql;
     let cleanRange = range;
@@ -120,15 +130,6 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
       newSql += ` WHERE ${column} IN (${valuesCleaned})`;
     }
     return newSql;
-  },
-
-  didReceiveAttrs() {
-    const didToggleVisibility = this.get('didToggleVisibility');
-    const visible = this.get('visible');
-
-    if (didToggleVisibility) {
-      didToggleVisibility(visible);
-    }
   },
 
   actions: {

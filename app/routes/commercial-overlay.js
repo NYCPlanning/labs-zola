@@ -1,19 +1,29 @@
 import Ember from 'ember';
+import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import updateSelectionMixin from '../mixins/update-selection';
 
 const { service } = Ember.inject;
 const { alias } = Ember.computed;
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(updateSelectionMixin, {
   mainMap: service(),
   model(params) {
-    return this.store.findRecord('commercial-overlay', params.id);
-  },
-
-  afterModel(model) {
-    this.set('mainMap.selected', model);
+    return {
+      taskInstance: this.store.findRecord('commercial-overlay', params.id),
+    };
   },
 
   bounds: alias('mainMap.bounds'),
+
+  setupController(controller, { taskInstance }) {
+    this._super(controller, taskInstance);
+
+    controller
+      .setProperties({
+        model: taskInstance,
+        @computed('model.value') overlay() { return taskInstance.get('value'); },
+      });
+  },
 
   actions: {
     fitBounds() {

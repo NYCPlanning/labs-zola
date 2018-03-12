@@ -6,7 +6,7 @@ import bblDemux from '../utils/bbl-demux';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 
-const { service } = Ember.inject;
+const { isEmpty, inject: { service } } = Ember;
 
 const DEBOUNCE_MS = 100;
 
@@ -45,7 +45,20 @@ export default Ember.Component.extend({
           const newResult = result;
           newResult.id = index;
           return result;
-        }));
+        }))
+      .then((resultList) => {
+        if (isEmpty(resultList)) {
+          this.get('metrics').trackEvent(
+            'GoogleAnalytics',
+            {
+              eventCategory: 'Search',
+              eventAction: 'No results found for search terms',
+              eventLabel: searchTerms,
+            },
+          );
+        }
+        return resultList;
+      });
   }).keepLatest(),
 
   @computed('results.value')
@@ -112,6 +125,7 @@ export default Ember.Component.extend({
     goTo(result) {
       const mainMap = this.get('mainMap');
       const mapInstance = mainMap.get('mapInstance');
+      const { type } = result;
 
       this.$('.map-search-input').blur();
       // clear address marker
@@ -122,23 +136,23 @@ export default Ember.Component.extend({
         focused: false,
       });
 
-      if (result.type === 'lot') {
+      if (type === 'lot') {
         const { boro, block, lot } = bblDemux(result.bbl);
-        this.set('searchTerms', result.bbl);
+        this.set('searchTerms', result.label);
         this.transitionTo('lot', boro, block, lot);
       }
 
-      if (result.type === 'zma') {
+      if (type === 'zma') {
         this.set('searchTerms', result.label);
         this.transitionTo('zma', result.ulurpno);
       }
 
-      if (result.type === 'zoning-district') {
+      if (type === 'zoning-district') {
         mainMap.set('shouldFitBounds', true);
         this.transitionTo('zoning-district', result.label);
       }
 
-      if (result.type === 'neighborhood') {
+      if (type === 'neighborhood') {
         this.set('searchTerms', result.neighbourhood);
         const center = result.coordinates;
         mapInstance.flyTo({
@@ -147,28 +161,28 @@ export default Ember.Component.extend({
         });
       }
 
-      if (result.type === 'address') {
+      if (type === 'address') {
         const center = result.coordinates;
         mainMap.set('currentAddress', center);
 
         this.set('searchTerms', result.label);
         this.saveAddress({ address: result.label, coordinates: result.coordinates });
-        this.transitionTo('index');
 
         if (mapInstance) {
           mapInstance.flyTo({
             center,
             zoom: 15,
           });
+          mapInstance.once('moveend', () => { this.transitionTo('index'); });
         }
       }
 
-      if (result.type === 'special-purpose-district') {
+      if (type === 'special-purpose-district') {
         this.set('searchTerms', result.sdname);
         this.transitionTo('special-purpose-district', result.cartodb_id);
       }
 
-      if (result.type === 'commercial-overlay') {
+      if (type === 'commercial-overlay') {
         this.set('searchTerms', result.label);
         this.transitionTo('commercial-overlay', result.overlay);
       }

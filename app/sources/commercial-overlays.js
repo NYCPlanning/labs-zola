@@ -4,7 +4,7 @@ export default {
   'source-layers': [
     {
       id: 'commercial-overlays',
-      sql: 'SELECT * FROM support_zoning_co',
+      sql: 'SELECT * FROM commercial_overlays_v201802',
     },
   ],
 };

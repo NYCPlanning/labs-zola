@@ -16,7 +16,7 @@ export default Bookmarkable.extend({
   @computed('effective')
   effectiveDisplay(effective) {
     if (effective) {
-      return moment(effective).format('LL');
+      return moment(effective).utc().format('LL');
     }
     return 'To be determined';
   },
