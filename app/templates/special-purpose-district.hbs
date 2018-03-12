@@ -1,20 +1,28 @@
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4">
   {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
 
-  {{bookmark-button
-    bookmark=(await model.bookmark)
-    createBookmark=(action 'createBookmark')}}
+  {{#if model.isRunning}}
+    {{#content-placeholders as |placeholder|}}
+      {{placeholder.text lines=1}}
+      {{placeholder.nav}}
+      {{placeholder.text lines=10}}
+    {{/content-placeholders}}
+  {{else}}
+    {{bookmark-button
+      bookmark=district.bookmark
+      createBookmark=(action 'createBookmark')}}
 
-  <label class="header-label clearfix">
-    Special Purpose District <span class="medium-gray">|</span> {{model.sdlbl}}
-  </label>
+    <label class="header-label clearfix">
+      Special Purpose District <span class="medium-gray">|</span> {{district.sdlbl}}
+    </label>
 
-  <h1 class="content-header">
-    <span class="spd-header">{{model.sdname}}</span>
-  </h1>
+    <h1 class="content-header">
+      <span class="spd-header">{{district.sdname}}</span>
+    </h1>
 
-  <p>Since 1969, the City Planning Commission has designated special zoning districts in response to areas of the City with unique characteristics. Each special district stipulates zoning requirements and incentives tailored to specific conditions that may not lend themselves to generalized zoning and standard development.</p>
-  <p><a href={{readMoreLink}} target="_blank">Learn More {{fa-icon "external-link"}}</a></p>
+    <p>Since 1969, the City Planning Commission has designated special zoning districts in response to areas of the City with unique characteristics. Each special district stipulates zoning requirements and incentives tailored to specific conditions that may not lend themselves to generalized zoning and standard development.</p>
+    <p><a href={{readMoreLink}} target="_blank">Learn More {{fa-icon "external-link"}}</a></p>
+  {{/if}}
 </div>
 
 {{outlet}}

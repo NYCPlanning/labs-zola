@@ -10,9 +10,9 @@ export default {
   legendIcon: 'polygon',
   legendColor,
   meta: {
-    description: 'Mandatory Inclusionary Housing (MIH) release October 2017, Bytes of the Big Apple',
+    description: 'Mandatory Inclusionary Housing (MIH) release February 2018, Bytes of the Big Apple',
     url: ['https://www1.nyc.gov/site/planning/data-maps/open-data.page'],
-    updated_at: 'September 2017',
+    updated_at: 'March 5th, 2018',
   },
   layers: [
     {

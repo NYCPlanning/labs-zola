@@ -6,7 +6,7 @@ import bblDemux from '../utils/bbl-demux';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 
-const { service } = Ember.inject;
+const { isEmpty, inject: { service } } = Ember;
 
 const DEBOUNCE_MS = 100;
 
@@ -45,7 +45,20 @@ export default Ember.Component.extend({
           const newResult = result;
           newResult.id = index;
           return result;
-        }));
+        }))
+      .then((resultList) => {
+        if (isEmpty(resultList)) {
+          this.get('metrics').trackEvent(
+            'GoogleAnalytics',
+            {
+              eventCategory: 'Search',
+              eventAction: 'No results found for search terms',
+              eventLabel: searchTerms,
+            },
+          );
+        }
+        return resultList;
+      });
   }).keepLatest(),
 
   @computed('results.value')
@@ -125,7 +138,7 @@ export default Ember.Component.extend({
 
       if (type === 'lot') {
         const { boro, block, lot } = bblDemux(result.bbl);
-        this.set('searchTerms', result.bbl);
+        this.set('searchTerms', result.label);
         this.transitionTo('lot', boro, block, lot);
       }
 

@@ -8,7 +8,7 @@ moduleForComponent('get-unique-options-for', 'helper:get-unique-options-for', {
 
 // Replace this with your real tests.
 test('it renders', function(assert) {
-  this.set('sql', 'SELECT * FROM support_zoning_co');
+  this.set('sql', 'SELECT * FROM commercial_overlays_v201802');
 
   this.render(hbs`{{get-unique-options-for 'overlay' sql}}`);
 

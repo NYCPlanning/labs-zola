@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
-import bbox from 'npm:@turf/bbox';
 
 import Bookmarkable from './bookmark';
+import Geometric from '../mixins/geometric';
 
 const { alias } = Ember.computed;
 
@@ -344,8 +344,7 @@ const landuseLookup = {
   11: 'Vacant Land',
 };
 
-export default Bookmarkable.extend({
-  geometry: DS.attr(),
+export default Bookmarkable.extend(Geometric, {
   address: DS.attr('string'),
   bbl: DS.attr('number'),
   bldgarea: DS.attr('number'),
@@ -420,11 +419,6 @@ export default Bookmarkable.extend({
   zonedist3: DS.attr('string'),
   zonedist4: DS.attr('string'),
   zonemap: DS.attr('string'),
-
-  @computed('geometry')
-  bounds(geometry) {
-    return bbox(geometry);
-  },
 });
 
 export { LotColumnsSQL };

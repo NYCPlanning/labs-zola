@@ -50,7 +50,7 @@ const zoningDescriptions = {
   r10: 'R10 districts are high-density districts that permit a wide range of building types including towers.',
   r10a: 'R10-A contextual districts are high-density districts designed to produce new buildings between 21 and 23 stories that mimics older, high street wall buildings in high-density neighborhoods.',
   r10x: 'R10X contextual districts are high-density districts that permit towers that sit on a contextual base.',
-  bpc: 'Battery Park City',
+  bpc: 'The Special Battery Park City District (BPC) was created, in accordance with a master plan, to govern extensive residential and commercial development in an area on the Hudson River close to the business core of Lower Manhattan. The district regulates permitted uses and bulk within three specified areas and establishes special design controls with respect to front building walls, building heights, waterfront design and parking.',
 };
 
 const zoningAbbr = {

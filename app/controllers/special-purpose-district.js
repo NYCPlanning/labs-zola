@@ -122,7 +122,7 @@ const specialPurposeCrosswalk = [
 ];
 
 export default Ember.Controller.extend(Bookmarkable, {
-  @computed('model.sdname')
+  @computed('model.value.sdname')
   readMoreLink(name) {
     const [, [anchorName, boroName]] = specialPurposeCrosswalk
       .find(([dist]) => dist === name) || [[], []];

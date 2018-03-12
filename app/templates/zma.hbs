@@ -1,16 +1,23 @@
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4">
   {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
+  {{#if model.isRunning}}
+    {{#content-placeholders as |placeholder|}}
+      {{placeholder.text lines=1}}
+      {{placeholder.nav}}
+      {{placeholder.text lines=10}}
+    {{/content-placeholders}}
+  {{else}}
+    {{bookmark-button
+      bookmark=zma.bookmark
+      createBookmark=(action 'createBookmark')}}
 
-  {{bookmark-button
-    bookmark=(await model.bookmark)
-    createBookmark=(action 'createBookmark')}}
+    <label class="header-label">ZONING MAP AMENDMENT</label>
+    <h1 class="header-large">{{zma.project_na}}</h1>
 
-  <label class="header-label">ZONING MAP AMENDMENT</label>
-  <h1 class="header-large">{{model.project_na}}</h1>
-
-  <div class="data-grid"><label class="data-label">ULURP Number</label><span class="datum">{{model.id}}</span></div>
-  <div class="data-grid"><label class="data-label">Effective</label><span class="datum">{{model.effectiveDisplay}}</span></div>
-  <div class="data-grid"><label class="data-label">Status</label><span class="datum">{{model.status}}</span></div>
-  <div class="data-grid"><label class="data-label">Land Use Application / CPC&nbsp;Report</label><span class="datum"><a target="_blank" href="http://a030-lucats.nyc.gov/lucats/DirectAccess.aspx?ULURPNO={{model.lucats}}">{{fa-icon "external-link"}} {{model.lucats}} <small>(LUCATS)</small></a></span></div>
-  <div class="data-grid"><label class="data-label">Zoning Sketch Map</label><span class="datum"><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/sketchmaps/skz{{model.id}}.pdf">{{fa-icon "file-pdf-o"}} {{model.id}} <small>(PDF)</small></a></span></div>
+    <div class="data-grid"><label class="data-label">ULURP Number</label><span class="datum">{{zma.id}}</span></div>
+    <div class="data-grid"><label class="data-label">Effective</label><span class="datum">{{zma.effectiveDisplay}}</span></div>
+    <div class="data-grid"><label class="data-label">Status</label><span class="datum">{{zma.status}}</span></div>
+    <div class="data-grid"><label class="data-label">Land Use Application / CPC&nbsp;Report</label><span class="datum"><a target="_blank" href="http://a030-lucats.nyc.gov/lucats/DirectAccess.aspx?ULURPNO={{zma.lucats}}">{{fa-icon "external-link"}} {{zma.lucats}} <small>(LUCATS)</small></a></span></div>
+    <div class="data-grid"><label class="data-label">Zoning Sketch Map</label><span class="datum"><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/sketchmaps/skz{{zma.id}}.pdf">{{fa-icon "file-pdf-o"}} {{zma.id}} <small>(PDF)</small></a></span></div>
+  {{/if}}
 </div>
