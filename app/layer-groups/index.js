@@ -1,4 +1,7 @@
 import aerials16 from './aerials16';
+import aerials1924 from './aerials1924';
+import aerials1951 from './aerials1951';
+import aerials1996 from './aerials1996';
 import assemblydistricts from './assemblydistricts';
 import boroughs from './boroughs';
 import buildingFootprints from './building-footprints';
@@ -33,6 +36,9 @@ import zoningMapAmendmentsPending from './zoning-map-amendments-pending';
 
 export default {
   aerials16,
+  aerials1924,
+  aerials1951,
+  aerials1996,
   assemblydistricts,
   boroughs,
   buildingFootprints,
