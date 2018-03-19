@@ -138,7 +138,7 @@ export default Ember.Component.extend({
 
       if (type === 'lot') {
         const { boro, block, lot } = bblDemux(result.bbl);
-        this.set('searchTerms', result.bbl);
+        this.set('searchTerms', result.label);
         this.transitionTo('lot', boro, block, lot);
       }
 

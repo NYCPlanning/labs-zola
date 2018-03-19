@@ -2,12 +2,12 @@ import DS from 'ember-data';
 import { buildSqlUrl } from '../utils/carto';
 
 // const SQL = function(id) {
-//   return `SELECT *, overlay as id FROM support_zoning_co WHERE overlay='${id}'`;
+//   return `SELECT *, overlay as id FROM commercial_overlays_v201802 WHERE overlay='${id}'`;
 // };
 
 const SQL = function(id) {
   return `SELECT * FROM (
-    SELECT ST_CollectionExtract(ST_Collect(the_geom),3) as the_geom, overlay as id, overlay FROM support_zoning_co GROUP BY overlay
+    SELECT ST_CollectionExtract(ST_Collect(the_geom),3) as the_geom, overlay as id, overlay FROM commercial_overlays_v201802 GROUP BY overlay
   ) a WHERE id='${id}'`;
 };
 

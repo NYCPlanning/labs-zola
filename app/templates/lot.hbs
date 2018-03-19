@@ -32,37 +32,37 @@
         {{#if lot.zonedist4}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone4}}.page" class="button">{{fa-icon 'external-link'}} {{lot.zonedist4}}</a></li>{{/if}}
         {{#if lot.spdist1}}
           <li>
-            {{link-to-intersecting (concat 'Special District: ' lot.spdist1) 'special-purpose-district' 'support_zoning_sp' lot.geometry classNames="button"}}
+            {{link-to-intersecting (concat 'Special District: ' lot.spdist1) 'special-purpose-district' 'special_purpose_districts_v201802' lot.geometry classNames="button"}}
           </li>
         {{/if}}
 
         {{#if lot.spdist2}}
           <li>
-            {{link-to-intersecting (concat 'Special District: ' lot.spdist2) 'special-purpose-district' 'support_zoning_sp' lot.geometry classNames="button"}}
+            {{link-to-intersecting (concat 'Special District: ' lot.spdist2) 'special-purpose-district' 'special_purpose_districts_v201802' lot.geometry classNames="button"}}
           </li>
         {{/if}}
 
         {{#if lot.spdist3}}
           <li>
-            {{link-to-intersecting (concat 'Special District: ' lot.spdist3) 'special-purpose-district' 'support_zoning_sp' lot.geometry classNames="button"}}
+            {{link-to-intersecting (concat 'Special District: ' lot.spdist3) 'special-purpose-district' 'special_purpose_districts_v201802' lot.geometry classNames="button"}}
           </li>
         {{/if}}
 
         {{#if lot.spdist4}}
           <li>
-            {{link-to-intersecting (concat 'Special District: ' lot.spdist4) 'special-purpose-district' 'support_zoning_sp' lot.geometry classNames="button"}}
+            {{link-to-intersecting (concat 'Special District: ' lot.spdist4) 'special-purpose-district' 'special_purpose_districts_v201802' lot.geometry classNames="button"}}
           </li>
         {{/if}}
 
         {{#if lot.overlay1}}
           <li>
-            {{link-to-intersecting lot.overlay1 'commercial-overlay' 'support_zoning_co' lot.geometry responseIdentifier='overlay' classNames="button"}}
+            {{link-to-intersecting lot.overlay1 'commercial-overlay' 'commercial_overlays_v201802' lot.geometry responseIdentifier='overlay' classNames="button"}}
           </li>
         {{/if}}
 
         {{#if lot.overlay2}}
           <li>
-            {{link-to-intersecting lot.overlay2 'commercial-overlay' 'support_zoning_co' lot.geometry responseIdentifier='overlay' classNames="button"}}
+            {{link-to-intersecting lot.overlay2 'commercial-overlay' 'commercial_overlays_v201802' lot.geometry responseIdentifier='overlay' classNames="button"}}
           </li>
         {{/if}}
       </ul>
@@ -75,10 +75,10 @@
           {{#if lot.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a> <small class="dark-gray">{{lot.histdist}}</small></li>{{/if}}
 
           {{#intersecting-layers
-              tables=(array 'support_ih' 'support_tz' 'support_fresh' 'support_wap' 'support_czb' 'support_ldgma' 'support_waterfront_pfirm15' 'support_waterfront_effective07' 'support_mih')
+              tables=(array 'inclusionary_housing_v201709' 'transitzones_v201607' 'fresh_zones_v201611' 'waterfront_access_plan_v201109' 'coastal_zone_boundary_v201601' 'lower_density_growth_management_areas_v201709' 'floodplain_pfirm2015_v0' 'floodplain_firm2007_v0' 'mandatory_inclusionary_housing_v20180223' 'e_designations_v20180214')
               bbl=lot.bbl as |layers numberIntersecting|}}
 
-            {{#if layers.support_ih}}
+            {{#if layers.inclusionary_housing_v201709}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page">
                   {{fa-icon "external-link"}} Inclusionary Housing Zone
@@ -86,7 +86,7 @@
               </li>
             {{/if}}
 
-            {{#if layers.support_tz}}
+            {{#if layers.transitzones_v201607}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone">
                   {{fa-icon "external-link"}} Transit Zone
@@ -94,7 +94,7 @@
               </li>
             {{/if}}
 
-            {{#if layers.support_fresh}}
+            {{#if layers.fresh_zones_v201611}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page">
                   {{fa-icon "external-link"}} Fresh Zone
@@ -102,7 +102,7 @@
               </li>
             {{/if}}
 
-            {{#if layers.support_wap}}
+            {{#if layers.waterfront_access_plan_v201109}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan">
                   {{fa-icon "external-link"}} Waterfront Access Plan
@@ -110,7 +110,7 @@
               </li>
             {{/if}}
 
-            {{#if layers.support_czb}}
+            {{#if layers.coastal_zone_boundary_v201601}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/applicants/wrp/wrp.page">
                   {{fa-icon "external-link"}} Coastal Zone
@@ -118,7 +118,7 @@
               </li>
             {{/if}}
 
-            {{#if layers.support_ldgma}}
+            {{#if layers.lower_density_growth_management_areas_v201709}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page">
                   {{fa-icon "external-link"}} Lower Density Growth Management Zone
@@ -126,7 +126,7 @@
               </li>
             {{/if}}
 
-            {{#if layers.support_waterfront_effective07}}
+            {{#if layers.floodplain_firm2007_v0}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
                   {{fa-icon "external-link"}} Flood Zone
@@ -134,7 +134,7 @@
               </li>
             {{/if}}
 
-            {{#if layers.support_waterfront_pfirm15}}
+            {{#if layers.floodplain_pfirm2015_v0}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
                   {{fa-icon "external-link"}} Flood Zone
@@ -142,10 +142,18 @@
               </li>
             {{/if}}
 
-            {{#if layers.support_mih}}
+            {{#if layers.mandatory_inclusionary_housing_v20180223}}
               <li>
                 <a target="_blank" href="https://www1.nyc.gov/site/planning/plans/mih/mandatory-inclusionary-housing.page">
                   {{fa-icon "external-link"}} Mandatory Inclusionary Housing Area
+                </a>
+              </li>
+            {{/if}}
+
+            {{#if layers.e_designations_v20180214}}
+              <li>
+                <a target="_blank" href="http://www.nyc.gov/html/oer/html/e-designation/e-designation.shtml">
+                  {{fa-icon "external-link"}} Environmental Designation
                 </a>
               </li>
             {{/if}}
@@ -163,7 +171,7 @@
         <ul class="no-bullet text-small">
           {{#if lot.bbl}}<li><a target="_blank" href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{lot.bbl}}">{{fa-icon "external-link"}} Digital Tax Map</a></li>{{/if}}
           {{#if lot.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{lot.zonemap}}.pdf">{{fa-icon "external-link"}} Zoning Map <small>(PDF)</small></a></li>{{/if}}
-          {{#if lot.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{lot.zonemap}}.pdf">{{fa-icon "external-link"}} Historical Zoning Maps <small>(PDF)</small></a></li>{{/if}}
+          {{#if lot.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{paddedZonemap}}.pdf">{{fa-icon "external-link"}} Historical Zoning Maps <small>(PDF)</small></a></li>{{/if}}
         </ul>
       </div>
     </div>
