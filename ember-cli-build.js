@@ -1,9 +1,19 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const environment = process.env.EMBER_ENV;
 
 module.exports = (defaults) => {
   const app = new EmberApp(defaults, {
     'ember-cli-babel': {
       includePolyfill: true,
+    },
+    emberCliConcat: {
+      js: {
+        concat: environment === 'production',
+        useAsync: environment === 'production',
+      },
+      css: {
+        concat: false,
+      },
     },
   });
 
