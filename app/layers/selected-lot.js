@@ -4,8 +4,8 @@ const selectedLayers = {
     type: 'fill',
     source: 'selected-lot',
     paint: {
-      'fill-opacity': 0.3,
-      'fill-color': 'rgba(113, 113, 113, 1)',
+      'fill-opacity': 0.6,
+      'fill-color': 'rgba(0, 20, 130, 1)',
     },
   },
   line: {
@@ -16,8 +16,8 @@ const selectedLayers = {
       'line-cap': 'round',
     },
     paint: {
-      'line-opacity': 0.6,
-      'line-color': 'rgba(41, 34, 191, 1)',
+      'line-opacity': 0.9,
+      'line-color': 'rgba(0, 10, 90, 1)',
       'line-width': {
         stops: [
           [
