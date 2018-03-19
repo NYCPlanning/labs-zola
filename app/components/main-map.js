@@ -89,9 +89,10 @@ export default Ember.Component.extend({
 
   @computed('bookmarks.[]')
   bookmarkedLotsLayer(bookmarks) {
-    const lotBookmarks = bookmarks.getEach('bookmark.bbl');
-    const filter = ['match', ['get', 'bbl'], lotBookmarks, true, false];
+    const lotBookmarks = bookmarks.getEach('bookmark.bbl')
+      .filter(d => d); // filter out bookmarks with undefined bbl
 
+    const filter = ['match', ['get', 'bbl'], lotBookmarks, true, false];
 
     const layer = {
       id: 'bookmarked-lots',
