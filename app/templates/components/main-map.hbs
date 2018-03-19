@@ -90,11 +90,10 @@
     {{/map.source}}
   {{/if}}
 
-  {{#if (await bookmarkedLotsLayer) as |bmark|}}
-  {{log 'bmark' bmark}}
-  {{map.layer
-    layer=bmark
-    before='waterway-label'}}
+  {{#if bookmarkedLotsLayer}}
+    {{map.layer
+      layer=bookmarkedLotsLayer
+      before='waterway-label'}}
   {{/if}}
 
   {{hover-tooltip}}

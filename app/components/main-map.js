@@ -12,7 +12,6 @@ import drawStyles from '../layers/draw-styles';
 
 import drawnFeatureLayers from '../layers/drawn-feature';
 import highlightedLotLayer from '../layers/highlighted-lot';
-import bookmarkedLotsLayer from '../layers/bookmarked-lots';
 import selectedLayers from '../layers/selected-lot';
 
 const selectedFillLayer = selectedLayers.fill;
@@ -88,37 +87,25 @@ export default Ember.Component.extend({
   },
   highlightedLotLayer,
 
-  @computed('store')
-  bookmarkedLotsLayer(store) {
-    return new Promise((resolve, reject) => {
-      store.findAll('bookmark')
-        .then(d => d.getEach('bookmark.bbl'))
-        .then((bbls) => {
-          // map bbls to a filter object
+  @computed('bookmarks.[]')
+  bookmarkedLotsLayer(bookmarks) {
+    const lotBookmarks = bookmarks.getEach('bookmark.bbl');
+    const filter = ['match', ['get', 'bbl'], lotBookmarks, true, false];
 
-          const filter = ['match', ['get', 'bbl'], bbls, true, false];
 
-          console.log('FILTER', filter)
+    const layer = {
+      id: 'bookmarked-lots',
+      type: 'fill',
+      source: 'pluto',
+      'source-layer': 'pluto',
+      paint: {
+        'fill-opacity': 0.2,
+        'fill-color': '#FF0000',
+      },
+      filter,
+    };
 
-          const layer = {
-            id: 'bookmarked-lots',
-            type: 'fill',
-            source: 'pluto',
-            'source-layer': 'pluto',
-            paint: {
-              'fill-opacity': 0.2,
-              'fill-color': '#FF0000',
-            },
-            filter,
-          };
-
-          // ['match', ['get', 'bbl'], [4003200004], true, false]
-
-          console.log('LAYER', layer)
-
-          resolve(layer);
-        });
-    });
+    return lotBookmarks.length > 0 ? layer : null;
   },
 
   shouldFitBounds: alias('mainMap.shouldFitBounds'),
