@@ -85,7 +85,7 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
     }
 
     // if we can't find any before when walking the layergroups, use this 'global before'
-    return 'waterway-label';
+    return 'place_other';
   },
 
   layers: alias('config.layers'),

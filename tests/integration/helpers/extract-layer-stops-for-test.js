@@ -47,7 +47,7 @@ const inputValue = {
           'fill-antialias': true,
         },
       },
-      before: 'waterway-label',
+      before: 'place_other',
     },
   ],
 };
