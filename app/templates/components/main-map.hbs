@@ -90,6 +90,13 @@
     {{/map.source}}
   {{/if}}
 
+  {{#if (await bookmarkedLotsLayer) as |bmark|}}
+  {{log 'bmark' bmark}}
+  {{map.layer
+    layer=bmark
+    before='waterway-label'}}
+  {{/if}}
+
   {{hover-tooltip}}
 
   {{#if mainMap.selected}}
