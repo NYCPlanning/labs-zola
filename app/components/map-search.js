@@ -44,8 +44,8 @@ export default Ember.Component.extend({
         (result, index) => {
           const newResult = result;
           newResult.id = index;
-          result.demuxedBbl = bblDemux(result.bbl);
-          return result;
+          newResult.demuxedBbl = bblDemux(result.bbl);
+          return newResult;
         }))
       .then((resultList) => {
         if (isEmpty(resultList)) {
