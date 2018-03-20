@@ -74,7 +74,7 @@ export default Ember.Component.extend({
     // enter
     if (keyCode === 13) {
       const results = this.get('results.value');
-      if (results.get('length')) {
+      if (results && results.get('length')) {
         const selectedResult = results.objectAt(selected);
         this.send('goTo', selectedResult);
       }
