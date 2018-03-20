@@ -56,7 +56,6 @@
     "ember-metrics": "^0.12.1",
     "ember-native-dom-helpers": "^0.5.4",
     "ember-parachute": "^0.3.2",
-    "ember-perf-timeline": "1.3.0",
     "ember-power-select": "^1.9.6",
     "ember-promise-helpers": "^1.0.3",
     "ember-resolver": "^4.0.0",

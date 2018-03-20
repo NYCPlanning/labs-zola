@@ -3712,12 +3712,6 @@ ember-parachute@^0.3.2:
     ember-cli-babel "^6.0.0"
     ember-getowner-polyfill "^2.0.1"
 
-ember-perf-timeline@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/ember-perf-timeline/-/ember-perf-timeline-1.3.0.tgz#6f71ddc22ac6cfedd755436e3dd4744169eecd02"
-  dependencies:
-    ember-cli-babel "^6.6.0"
-
 ember-power-select@^1.9.6:
   version "1.10.4"
   resolved "https://registry.yarnpkg.com/ember-power-select/-/ember-power-select-1.10.4.tgz#7f0bb8c55279375391f2d97591ed65f727061579"
