@@ -102,3 +102,8 @@ The App is deployed to our VPS using dokku, you need only do a `git push` of the
 ## Contact us
 
 You can find us on Twitter at [@nycplanninglabs](https://twitter.com/nycplanninglabs), or comment on issues and we'll follow up as soon as we can. If you'd like to send an email, use [labs_dl@planning.nyc.gov](mailto:labs_dl@planning.nyc.gov)
+
+## Indices
+When updating MapPLUTO data, be sure to add an index to the BBL column:
+
+`CREATE INDEX idx_mappluto_{version}_bbl ON mappluto_{version} (bbl)`
