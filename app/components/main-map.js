@@ -12,7 +12,6 @@ import drawStyles from '../layers/draw-styles';
 
 import drawnFeatureLayers from '../layers/drawn-feature';
 import highlightedLotLayer from '../layers/highlighted-lot';
-import bookmarkedLotsLayerTemplate from '../layers/bookmarked-lots'
 import selectedLayers from '../layers/selected-lot';
 
 const selectedFillLayer = selectedLayers.fill;
@@ -75,7 +74,6 @@ export default Ember.Component.extend({
   drawnFeatureLayers,
 
   highlightedLotFeatures: [],
-  bookmarkedLotsLayerTemplate,
 
   @computed('highlightedLotFeatures')
   highlightedLotSource(features) {
@@ -96,8 +94,32 @@ export default Ember.Component.extend({
 
     const filter = ['match', ['get', 'bbl'], lotBookmarks, true, false];
 
-    const layer = this.get('bookmarkedLotsLayerTemplate');
-    layer.filter = filter;
+    const layer = {
+      id: 'bookmarked-lots',
+      type: 'line',
+      source: 'pluto',
+      'source-layer': 'pluto',
+      layout: {
+        'line-cap': 'round',
+      },
+      paint: {
+        'line-opacity': 0.8,
+        'line-color': 'rgba(0, 25, 160, 1)',
+        'line-width': {
+          stops: [
+            [
+              13,
+              1.5,
+            ],
+            [
+              15,
+              8,
+            ],
+          ],
+        },
+      },
+      filter,
+    };
 
     return lotBookmarks.length > 0 ? layer : null;
   },

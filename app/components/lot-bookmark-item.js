@@ -21,4 +21,10 @@ export default Ember.Component.extend({
   mouseLeave() {
     this.set('mapMouseover.highlightedLotFeatures', []);
   },
+
+  actions: {
+    deleteBookmark(e) {
+      this.attrs.deleteBookmark(e);
+    },
+  },
 });

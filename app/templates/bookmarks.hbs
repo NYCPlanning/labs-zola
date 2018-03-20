@@ -7,7 +7,7 @@
         <h3>Tax Lots</h3>
         <ul class="no-bullet">
           {{#each values as |lot|}}
-            {{lot-bookmark-item lot=lot deleteBookmark=deleteBookmark}}
+            {{lot-bookmark-item lot=lot deleteBookmark=(action 'deleteBookmark')}}
           {{/each}}
         </ul>
         <p class="text-small dark-gray" style="padding-left:1.5rem;">
