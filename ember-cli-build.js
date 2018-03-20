@@ -5,6 +5,9 @@ module.exports = (defaults) => {
     'ember-cli-babel': {
       includePolyfill: true,
     },
+    treeShaking: {
+      enabled: true,
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
