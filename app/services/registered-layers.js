@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Service from '@ember/service';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 const flattenedIds = function(layers) {
@@ -10,7 +10,7 @@ const flattenedIds = function(layers) {
     );
 };
 
-export default Ember.Service.extend({
+export default Service.extend({
   layers: [],
 
   @computed('layers.@each.visible')

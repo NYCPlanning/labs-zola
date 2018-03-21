@@ -1,11 +1,10 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import { alias } from '@ember/object/computed';
 import DS from 'ember-data';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 import Bookmarkable from './bookmark';
 import Geometric from '../mixins/geometric';
-
-const { alias } = Ember.computed;
 
 // columns requested from server
 // update to add more
@@ -349,29 +348,29 @@ export default Bookmarkable.extend(Geometric, {
   bbl: DS.attr('number'),
   bldgarea: DS.attr('number'),
   bldgclass: DS.attr('string'),
-  bldgclassname: Ember.computed('bldgclass', function() {
+  bldgclassname: computed('bldgclass', function() {
     return bldgclassLookup[this.get('bldgclass')];
   }),
   lat: DS.attr('number'),
   lon: DS.attr('number'),
   block: DS.attr('number'),
-  borocode: Ember.computed('cd', function() {
+  borocode: computed('cd', function() {
     const borocd = this.get('cd');
     return borocd.substring(0, 1);
   }),
   boro: alias('borocode'),
   borough: DS.attr('string'),
-  boroname: Ember.computed('borough', function() {
+  boroname: computed('borough', function() {
     return boroughLookup[this.get('borough')];
   }),
   cd: DS.attr('string'),
-  cdName: Ember.computed('cd', function() {
+  cdName: computed('cd', function() {
     const borocd = this.get('cd');
     const boro = borocd.substring(0, 1);
     const cd = parseInt(borocd.substring(1, 3), 10).toString();
     return `${boroLookup[boro]} Community District ${cd}`;
   }),
-  cdURLSegment: Ember.computed('cd', function() {
+  cdURLSegment: computed('cd', function() {
     const borocd = this.get('cd');
     const boro = borocd.substring(0, 1);
     const cleanBorough = boroLookup[boro].toLowerCase().replace(/\s/g, '-');
@@ -384,7 +383,7 @@ export default Bookmarkable.extend(Geometric, {
   histdist: DS.attr('string'),
   landmark: DS.attr('string'),
   landuse: DS.attr('string'),
-  landusename: Ember.computed('landuse', function() {
+  landusename: computed('landuse', function() {
     return landuseLookup[this.get('landuse')];
   }),
   lot: DS.attr('number'),
@@ -395,7 +394,7 @@ export default Bookmarkable.extend(Geometric, {
   numfloors: DS.attr('number'),
   ownername: DS.attr('string'),
   ownertype: DS.attr('string'),
-  ownertypename: Ember.computed('ownertype', function() {
+  ownertypename: computed('ownertype', function() {
     return ownertypeLookup[this.get('ownertype')];
   }),
   overlay1: DS.attr('string'),

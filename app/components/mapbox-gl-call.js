@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import { schedule } from '@ember/runloop';
+import { getProperties } from '@ember/object';
 import EmberMapboxGLCall from 'ember-mapbox-gl/components/mapbox-gl-call';
-
-const { getProperties } = Ember;
-const { schedule } = Ember.run;
 
 export default EmberMapboxGLCall.extend({
   didReceiveAttrs() {

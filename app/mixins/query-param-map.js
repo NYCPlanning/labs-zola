@@ -1,8 +1,7 @@
-import Ember from 'ember';
+import Mixin from '@ember/object/mixin';
+import { alias } from '@ember/object/computed';
 
-const { alias } = Ember.computed;
-
-export default Ember.Mixin.create({
+export default Mixin.create({
   init(...args) {
     this._super(...args);
 

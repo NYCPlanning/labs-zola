@@ -1,6 +1,14 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'labs-zola/tests/helpers/module-for-acceptance';
-import { click, fillIn, find, findAll, keyEvent, waitUntil, triggerEvent } from 'ember-native-dom-helpers';
+import {
+  click,
+  fillIn,
+  find,
+  findAll,
+  keyEvent,
+  waitUntil,
+  triggerEvent
+} from 'ember-native-dom-helpers';
 
 const SEARCH_INPUT_SELECTOR = '.search input';
 const SEARCH_RESULTS_SELECTOR = '.search-results';

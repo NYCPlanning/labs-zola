@@ -1,16 +1,17 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 import { ParentMixin } from 'ember-composability-tools';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 
-export default Ember.Component.extend(ParentMixin, {
+export default Component.extend(ParentMixin, {
   classNames: ['layer-palette-accordion'],
   closed: true,
   title: '',
 
   didInsertElement() {
-    this.set('numberVisible', Ember.computed('childComponents.@each.visible', function() {
+    this.set('numberVisible', computed('childComponents.@each.visible', function() {
       const childComponents = this.get('childComponents');
       return childComponents.filterBy('visible', true).length;
     }));

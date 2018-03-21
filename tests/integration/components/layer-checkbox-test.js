@@ -1,6 +1,14 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import { click, fillIn, find, findAll, keyEvent, waitUntil, triggerEvent } from 'ember-native-dom-helpers';
+import {
+  click,
+  fillIn,
+  find,
+  findAll,
+  keyEvent,
+  waitUntil,
+  triggerEvent
+} from 'ember-native-dom-helpers';
 const timeout = 5000;
 
 const commercialOverlays = {

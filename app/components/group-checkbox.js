@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import Checkbox from '@ember/component/checkbox';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
-
-const { Checkbox } = Ember;
 
 export default Checkbox.extend({
   @computed scope() { return this; },

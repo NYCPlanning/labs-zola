@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 import Bookmarkable from '../mixins/bookmarkable';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
@@ -121,7 +121,7 @@ const specialPurposeCrosswalk = [
   ['Special Downtown Far Rockaway District', ['far_rockaway', 'queens']],
 ];
 
-export default Ember.Controller.extend(Bookmarkable, {
+export default Controller.extend(Bookmarkable, {
   @computed('model.value.sdname')
   readMoreLink(name) {
     const [, [anchorName, boroName]] = specialPurposeCrosswalk
