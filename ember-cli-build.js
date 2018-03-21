@@ -5,6 +5,16 @@ module.exports = (defaults) => {
     'ember-cli-babel': {
       includePolyfill: true,
     },
+    treeShaking: {
+      enabled: true,
+      include: [
+        // This is where you can add additional entry points.
+
+        // This is an example of dynamic lookup. There is no import statement, so it needs a hint to prevent removal.
+        // https://github.com/poteto/ember-metrics/blob/c0fecc9e85190009d4d08d5be7db88df3e9803ea/addon/services/metrics.js#L177
+        'ember-metrics/metrics-adapters/google-analytics.js',
+      ],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
