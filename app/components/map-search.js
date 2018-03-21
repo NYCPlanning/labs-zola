@@ -44,7 +44,8 @@ export default Ember.Component.extend({
         (result, index) => {
           const newResult = result;
           newResult.id = index;
-          return result;
+          newResult.demuxedBbl = bblDemux(result.bbl);
+          return newResult;
         }))
       .then((resultList) => {
         if (isEmpty(resultList)) {
@@ -138,7 +139,7 @@ export default Ember.Component.extend({
 
       if (type === 'lot') {
         const { boro, block, lot } = bblDemux(result.bbl);
-        this.set('searchTerms', result.bbl);
+        this.set('searchTerms', result.label);
         this.transitionTo('lot', boro, block, lot);
       }
 

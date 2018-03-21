@@ -11,21 +11,21 @@ const generateSQL = function(table, bbl) {
   if (table === 'effective-flood-insurance-rate-2007') {
     intersectionTable = `(
       SELECT the_geom
-      FROM support_waterfront_effective07
+      FROM floodplain_firm2007_v0
       WHERE fld_zone IN ('A', 'A0', 'AE') OR fld_zone = 'VE'
     )`;
   }
 
-  if (table === 'support_waterfront_pfirm15') {
+  if (table === 'floodplain_pfirm2015_v0') {
     intersectionTable = `(
       SELECT the_geom
-      FROM support_waterfront_pfirm15
+      FROM floodplain_pfirm2015_v0
       WHERE fld_zone IN ('A', 'A0', 'AE') OR fld_zone = 'VE'
     )`;
   }
 
   return `
-    WITH lot AS (SELECT the_geom FROM support_mappluto WHERE bbl = '${bbl}')
+    WITH lot AS (SELECT the_geom FROM mappluto_v1711 WHERE bbl = '${bbl}')
 
     SELECT true as intersects FROM ${intersectionTable} a, lot b WHERE ST_Intersects(a.the_geom, b.the_geom) LIMIT 1
   `;

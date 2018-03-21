@@ -27,16 +27,6 @@ test('visiting /bookmarks, see empty message', async function(assert) {
   assert.ok(find('.no-bookmarks'));
 });
 
-test('search address, find result in bookmarks', async function(assert) {
-  await visit('/');
-  await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_ADDRESS);
-  await waitUntil(() => find('.has-results'));
-  await keyEvent('.fa-map-pin', 'click');
-  await visit('/bookmarks');
-
-  assert.ok(find('.map-bookmark'));
-});
-
 test('search lot, save, find result in bookmarks, delete it', async function(assert) {
   await visit('/');
   await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
