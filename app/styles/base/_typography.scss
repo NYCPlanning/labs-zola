@@ -302,3 +302,12 @@ button {
     }
   }
 }
+
+
+//
+// Inputs
+// --------------------------------------------------
+::-ms-clear {
+  // nix IE's default clear buttons
+  display: none;
+}
