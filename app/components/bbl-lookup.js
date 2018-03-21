@@ -19,34 +19,33 @@ export default Ember.Component.extend({
   boro: '',
   block: '',
   lot: '',
-  mainMap: service(),
-  metrics: service(),
-  focused: false,
+
   errorMessage: '',
   closed: true,
 
+  mainMap: service(),
+
+  // determine which type of search action
+  // it should perform based on available input
+  @computed('boro', 'block', 'lot')
+  actionForSearchType(boro, block, lot) {
+    if (boro && block && lot) {
+      return 'goToLot';
+    }
+
+    return 'goToBlock';
+  },
+
   actions: {
-    checkBBL() {
+    goToLot() {
       const { boro: { code }, block, lot } = this.getProperties('boro', 'block', 'lot');
 
-      let SQL;
-
-      // full bbl
-      if (code && block && lot) {
-        SQL = `select bbl from mappluto_v1711 where borocode = ${code} and block = ${block} and lot = ${lot}`;
-      }
-
-      // boro block but nno lot
-      if (code && block && !lot) {
-        SQL = `select st_x(the_geom) as x, st_x(the_geom) as y, block from mappluto_block_centroids where block = ${block}`;
-      }
+      const SQL = `select bbl from mappluto_v1711 where borocode = ${code} and block = ${block} and lot = ${lot}`;
 
       carto.SQL(SQL)
         .then(([response]) => {
           if (response) {
             this.setProperties({
-              selected: 0,
-              focused: false,
               closed: true,
               errorMessage: '',
             });
@@ -54,6 +53,33 @@ export default Ember.Component.extend({
             this.transitionTo('lot', code, block, lot);
           } else {
             this.set('errorMessage', 'The BBL does not exist.');
+          }
+        });
+    },
+
+    goToBlock() {
+      const { block } = this.getProperties('boro', 'block');
+      const { mapInstance } = this.get('mainMap');
+
+      const SQL = `select st_x(the_geom) as x, st_y(the_geom) as y, block from mappluto_block_centroids where block = ${block}`;
+
+      carto.SQL(SQL)
+        .then(([firstResult = {}]) => {
+          const { x, y } = firstResult;
+          if (x && y) {
+            this.setProperties({
+              closed: true,
+              errorMessage: '',
+            });
+
+            if (mapInstance) {
+              mapInstance.flyTo({
+                center: [x, y],
+                zoom: 15,
+              });
+            }
+          } else {
+            this.set('errorMessage', 'The block does not exist.');
           }
         });
     },
