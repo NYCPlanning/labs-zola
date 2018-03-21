@@ -32,15 +32,15 @@ export default Ember.Component.extend({
       const { boro: { code }, block, lot } = this.getProperties('boro', 'block', 'lot');
 
       if (code && block && lot) {
-        this.get('goToLot')();
+        this.send('goToLot');
       }
 
       if (block && !lot) {
-        this.get('goToBlock')();
+        this.send('goToBlock');
       }
 
       if (!code && !block && !lot) {
-        this.set('errorMessage', 'Please fill out all fields.');
+        this.set('errorMessage', 'Please fill out all required fields.');
       }
     },
 
