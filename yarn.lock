@@ -8621,10 +8621,6 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 
-squel@^5.11.1:
-  version "5.12.0"
-  resolved "https://registry.yarnpkg.com/squel/-/squel-5.12.0.tgz#f8d0310db8d2ca63b5c36c11defc0f7993fcf78e"
-
 sri-toolbox@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/sri-toolbox/-/sri-toolbox-0.2.0.tgz#a7fea5c3fde55e675cf1c8c06f3ebb5c2935835e"

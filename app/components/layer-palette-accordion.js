@@ -1,9 +1,7 @@
 import { computed } from '@ember/object';
 import Component from '@ember/component';
 import { ParentMixin } from 'ember-composability-tools';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import trackEvent from '../utils/track-event'; // eslint-disable-line
-
 
 export default Component.extend(ParentMixin, {
   classNames: ['layer-palette-accordion'],
