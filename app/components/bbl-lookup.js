@@ -29,21 +29,33 @@ export default Ember.Component.extend({
     checkBBL() {
       const { boro: { code }, block, lot } = this.getProperties('boro', 'block', 'lot');
 
-      const uniqueSQL = `select bbl from mappluto_v1711 where block= ${block} and lot = ${lot} and borocode = ${code}`;
-      carto.SQL(uniqueSQL).then((response) => {
-        if (response[0]) {
-          this.set('errorMessage', '');
-          this.setProperties({
-            selected: 0,
-            focused: false,
-            closed: true,
-          });
+      let SQL;
 
-          this.transitionTo('lot', code, block, lot);
-        } else {
-          this.set('errorMessage', 'The BBL does not exist.');
-        }
-      });
+      // full bbl
+      if (code && block && lot) {
+        SQL = `select bbl from mappluto_v1711 where borocode = ${code} and block = ${block} and lot = ${lot}`;
+      }
+
+      // boro block but nno lot
+      if (code && block && !lot) {
+        SQL = `select st_x(the_geom) as x, st_x(the_geom) as y, block from mappluto_block_centroids where block = ${block}`;
+      }
+
+      carto.SQL(SQL)
+        .then(([response]) => {
+          if (response) {
+            this.setProperties({
+              selected: 0,
+              focused: false,
+              closed: true,
+              errorMessage: '',
+            });
+
+            this.transitionTo('lot', code, block, lot);
+          } else {
+            this.set('errorMessage', 'The BBL does not exist.');
+          }
+        });
     },
 
     setBorocode(option) {

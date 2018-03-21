@@ -32,8 +32,16 @@
         </label>
       </div>
     </div>
-    {{#if errorMessage}}<p class="lu-red text-center text-small"><{{errorMessage}}</p>{{/if}}
-    <input type="submit" value="Go to BBL" class="button small expanded no-margin" onclick={{action 'checkBBL'}}>
+    {{#if errorMessage}}
+      <p class="lu-red text-center text-small">
+        {{errorMessage}}
+      </p>
+    {{/if}}
+    <input 
+      type="submit" 
+      value="Go to BBL" 
+      class="button small expanded no-margin" 
+      onclick={{action 'checkBBL'}}>
   </div>
 {{/unless}}
 
