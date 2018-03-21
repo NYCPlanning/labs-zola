@@ -25,18 +25,25 @@ export default Ember.Component.extend({
 
   mainMap: service(),
 
-  // determine which type of search action
-  // it should perform based on available input
-  @computed('boro', 'block', 'lot')
-  actionForSearchType(boro, block, lot) {
-    if (boro && block && lot) {
-      return 'goToLot';
-    }
-
-    return 'goToBlock';
-  },
-
   actions: {
+    // determine which type of search action
+    // it should perform based on available input
+    delegateSearchAction() {
+      const { boro: { code }, block, lot } = this.getProperties('boro', 'block', 'lot');
+
+      if (code && block && lot) {
+        this.get('goToLot')();
+      }
+
+      if (block && !lot) {
+        this.get('goToBlock')();
+      }
+
+      if (!code && !block && !lot) {
+        this.set('errorMessage', 'Please fill out all fields.');
+      }
+    },
+
     goToLot() {
       const { boro: { code }, block, lot } = this.getProperties('boro', 'block', 'lot');
 
