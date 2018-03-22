@@ -121,6 +121,12 @@ body.index {
   }
 }
 
+.navigation-area {
+  @include breakpoint(large) {
+    height: 100%;
+  }
+}
+
 .content-area {
   position: relative;
   z-index: 2;
@@ -191,8 +197,8 @@ body.index {
 }
 
 .cyclomedia {
-  width: 100%; 
-  height:300px; 
+  width: 100%;
+  height:300px;
   border: 0;
 }
 
@@ -210,4 +216,3 @@ body.index {
     left: 50%;
   }
 }
-
