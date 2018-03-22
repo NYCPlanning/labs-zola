@@ -1,4 +1,8 @@
-import Ember from 'ember';
+import ObjectProxy from '@ember/object/proxy';
+import Controller from '@ember/controller';
+import { merge } from '@ember/polyfills';
+import EmberObject, { set } from '@ember/object';
+import { inject as service } from '@ember/service';
 import QueryParams from 'ember-parachute';
 import bblDemux from '../utils/bbl-demux';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
@@ -6,9 +10,6 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import Geometric from '../mixins/geometric';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 import layerGroups from '../layer-groups';
-
-const { service } = Ember.inject;
-const { merge, set } = Ember;
 
 const queryParams = Object.keys(layerGroups)
   .reduce(
@@ -66,11 +67,11 @@ export const mapQueryParams =
     ),
   );
 
-export default Ember.Controller.extend(mapQueryParams.Mixin, {
+export default Controller.extend(mapQueryParams.Mixin, {
   init(...args) {
     this._super(...args);
 
-    const proxy = Ember.ObjectProxy.create({
+    const proxy = ObjectProxy.create({
       content: this,
     });
 
@@ -131,7 +132,7 @@ export default Ember.Controller.extend(mapQueryParams.Mixin, {
           } = feature.properties;
 
           const featureFragment =
-            Ember.Object.extend(Geometric, {
+            EmberObject.extend(Geometric, {
               geometry: feature.geometry,
             }).create();
 

@@ -1,4 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { inject as service } from '@ember/service';
+import { alias } from '@ember/object/computed';
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from 'mapbox-gl-draw';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
@@ -16,9 +18,6 @@ import selectedLayers from '../layers/selected-lot';
 
 const selectedFillLayer = selectedLayers.fill;
 const selectedLineLayer = selectedLayers.line;
-
-const { alias } = Ember.computed;
-const { service } = Ember.inject;
 
 // Custom Control
 const MeasurementText = function() { };
@@ -40,7 +39,7 @@ const draw = new MapboxDraw({
   styles: drawStyles,
 });
 
-export default Ember.Component.extend({
+export default Component.extend({
 
   mainMap: service(),
   mapMouseover: service(),

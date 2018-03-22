@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import { alias } from '@ember/object/computed';
+import Checkbox from '@ember/component/checkbox';
 import { ChildMixin } from 'ember-composability-tools';
-
-const { Checkbox } = Ember;
-const { alias } = Ember.computed;
 
 export default Checkbox.extend(ChildMixin, {
   selected: alias('checked'),

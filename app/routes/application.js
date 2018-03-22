@@ -1,12 +1,11 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import $ from 'jquery';
+import { inject as service } from '@ember/service';
 import RSVP from 'rsvp';
 import sources from '../sources';
 import carto from '../utils/carto2';
 
-const { service } = Ember.inject;
-const { $ } = Ember;
-
-export default Ember.Route.extend({
+export default Route.extend({
   mainMap: service(),
 
   beforeModel(transition) {
@@ -46,7 +45,7 @@ export default Ember.Route.extend({
   },
 });
 
-Ember.Route.reopen({
+Route.reopen({
   activate() {
     const cssClass = this.toCssClass();
     if (cssClass !== 'application') {

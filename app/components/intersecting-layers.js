@@ -1,9 +1,9 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { get } from '@ember/object';
+import RSVP from 'rsvp';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task } from 'ember-concurrency';
 import carto from '../utils/carto';
-
-const { get, RSVP } = Ember;
 
 const generateSQL = function(table, bbl) {
   // special handling for tables where we don't want to SELECT *
@@ -31,7 +31,7 @@ const generateSQL = function(table, bbl) {
   `;
 };
 
-export default Ember.Component.extend({
+export default Component.extend({
   responseIdentifier: 'intersects',
   tagName: '',
   bbl: null,

@@ -1,10 +1,9 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { get } from '@ember/object';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
-const { get } = Ember;
-
-export default Ember.Component.extend({
+export default Component.extend({
   bookmark: null,
 
   @computed('bookmark')

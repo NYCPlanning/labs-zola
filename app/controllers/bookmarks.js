@@ -1,11 +1,10 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { Promise } from 'rsvp';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
-const { service } = Ember.inject;
-
-export default Ember.Controller.extend({
+export default Controller.extend({
   mainMap: service(),
   // because we must compute the record types based on multiple
   // promises, the model uses Promise.all

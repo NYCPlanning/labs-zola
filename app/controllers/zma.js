@@ -1,5 +1,5 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 import Bookmarkable from '../mixins/bookmarkable';
 
-export default Ember.Controller.extend(Bookmarkable, {
+export default Controller.extend(Bookmarkable, {
 });

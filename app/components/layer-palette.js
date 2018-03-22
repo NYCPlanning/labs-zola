@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 
 const aerialYears = [16, 1996, 1951, 1924];
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['layer-palette hide-for-print'],
   closed: true,
   plutoFill: false,

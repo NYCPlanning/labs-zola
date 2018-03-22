@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import { ChildMixin } from 'ember-composability-tools';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
-export default Ember.Component.extend(ChildMixin, {
+export default Component.extend(ChildMixin, {
   classNames: 'flex-reverse',
 
   @computed('parentComponent.childComponents', 'group')

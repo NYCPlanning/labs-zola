@@ -1,10 +1,9 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 import updateSelectionMixin from '../mixins/update-selection';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
-const { service } = Ember.inject;
-
-export default Ember.Route.extend(updateSelectionMixin, {
+export default Route.extend(updateSelectionMixin, {
   mainMap: service(),
   model(params) {
     return {
