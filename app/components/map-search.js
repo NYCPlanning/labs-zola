@@ -18,6 +18,7 @@ export default Component.extend({
   mainMap: service(),
   metrics: service(),
   focused: false,
+  prevResults: null,
 
   @computed('searchTerms')
   results(searchTerms) {
@@ -58,6 +59,7 @@ export default Component.extend({
             },
           );
         }
+        this.set('prevResults', resultList);
         return resultList;
       });
   }).keepLatest(),
