@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 import numeral from 'npm:numeral';
 
 export function numeralFormat(params) {
@@ -6,4 +6,4 @@ export function numeralFormat(params) {
   return numeral(number).format(template);
 }
 
-export default Ember.Helper.helper(numeralFormat);
+export default helper(numeralFormat);

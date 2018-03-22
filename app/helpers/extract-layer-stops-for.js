@@ -1,6 +1,5 @@
-import Ember from 'ember';
-
-const { get } = Ember;
+import { helper } from '@ember/component/helper';
+import { get } from '@ember/object';
 
 export function extractLayerStopsFor([id, layerConfig]) {
   if (!layerConfig.layers) return layerConfig;
@@ -10,4 +9,4 @@ export function extractLayerStopsFor([id, layerConfig]) {
   );
 }
 
-export default Ember.Helper.helper(extractLayerStopsFor);
+export default helper(extractLayerStopsFor);

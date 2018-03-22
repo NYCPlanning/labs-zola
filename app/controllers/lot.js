@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import Bookmarkable from '../mixins/bookmarkable';
 import carto from '../utils/carto';
@@ -14,7 +14,7 @@ const SQL = function(table, geometry) {
                 ${table}.the_geom);`;
 };
 
-export default Ember.Controller.extend(Bookmarkable, {
+export default Controller.extend(Bookmarkable, {
 
   @computed('lot.zonemap')
   paddedZonemap(zonemap) {

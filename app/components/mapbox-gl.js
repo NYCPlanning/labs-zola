@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
 import EmberMapboxGL from 'ember-mapbox-gl/components/mapbox-gl';
 import { ParentMixin } from 'ember-composability-tools';
-
-const { service } = Ember.inject;
 
 export default EmberMapboxGL.extend(ParentMixin, {
   init(...args) {

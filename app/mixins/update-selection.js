@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Mixin from '@ember/object/mixin';
 import { task } from 'ember-concurrency';
 
-export default Ember.Mixin.create({
+export default Mixin.create({
   afterModel({ taskInstance }) {
     this.get('setSelectedTask').perform(taskInstance);
   },

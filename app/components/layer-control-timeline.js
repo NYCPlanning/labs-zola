@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { next } from '@ember/runloop';
+import Component from '@ember/component';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import moment from 'moment';
 import { ChildMixin } from 'ember-composability-tools';
@@ -12,7 +13,7 @@ const fromEpoch = function(number, format = defaultFormat) {
   return moment(number).format(format);
 };
 
-export default Ember.Component.extend(ChildMixin, QueryParamMap, {
+export default Component.extend(ChildMixin, QueryParamMap, {
   init(...args) {
     this._super(...args);
 
@@ -22,7 +23,7 @@ export default Ember.Component.extend(ChildMixin, QueryParamMap, {
     if (qps) {
       const qpValue = this.get(`parentComponent.qps.${queryParam}`);
 
-      Ember.run.next(() => {
+      next(() => {
         this.send('sliderChanged', qpValue);
       });
     }
