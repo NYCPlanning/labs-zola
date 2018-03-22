@@ -1,4 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { isEmpty } from '@ember/utils';
+import { inject as service } from '@ember/service';
 import fetch from 'fetch';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task, timeout } from 'ember-concurrency';
@@ -6,11 +8,9 @@ import bblDemux from '../utils/bbl-demux';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 
-const { isEmpty, inject: { service } } = Ember;
-
 const DEBOUNCE_MS = 100;
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['search'],
   searchTerms: '',
   transitionTo: null,
@@ -18,6 +18,7 @@ export default Ember.Component.extend({
   mainMap: service(),
   metrics: service(),
   focused: false,
+  prevResults: null,
 
   @computed('searchTerms')
   results(searchTerms) {
@@ -44,7 +45,8 @@ export default Ember.Component.extend({
         (result, index) => {
           const newResult = result;
           newResult.id = index;
-          return result;
+          newResult.demuxedBbl = bblDemux(result.bbl);
+          return newResult;
         }))
       .then((resultList) => {
         if (isEmpty(resultList)) {
@@ -57,6 +59,7 @@ export default Ember.Component.extend({
             },
           );
         }
+        this.set('prevResults', resultList);
         return resultList;
       });
   }).keepLatest(),
@@ -74,7 +77,7 @@ export default Ember.Component.extend({
     // enter
     if (keyCode === 13) {
       const results = this.get('results.value');
-      if (results.get('length')) {
+      if (results && results.get('length')) {
         const selectedResult = results.objectAt(selected);
         this.send('goTo', selectedResult);
       }

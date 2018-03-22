@@ -1,10 +1,8 @@
-import Ember from 'ember';
+import Service, { inject as service } from '@ember/service';
+import { get } from '@ember/object';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
-const { get } = Ember;
-const { service } = Ember.inject;
-
-export default Ember.Service.extend({
+export default Service.extend({
   registeredLayers: service(),
 
   currentEvent: null,

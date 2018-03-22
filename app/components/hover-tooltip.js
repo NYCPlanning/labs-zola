@@ -1,16 +1,15 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { alias } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
+import { htmlSafe } from '@ember/string';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import mustache from 'npm:mustache';
-
-const { htmlSafe } = Ember.String;
-const { service } = Ember.inject;
-const { alias } = Ember.computed;
 
 
 const offsetX = 30;
 const offsetY = 10;
 
-export default Ember.Component.extend({
+export default Component.extend({
   mapMouseover: service(),
   mousePosition: alias('mapMouseover.mousePosition'),
 

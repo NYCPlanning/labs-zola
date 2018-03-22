@@ -13,7 +13,7 @@
   <span class="search-icon">{{fa-icon "search"}}</span>
 {{/if}}
 
-<ul class="search-results no-bullet{{if resultsCount ' has-results'}}{{if focused ' focused'}}">
+<ul class="search-results no-bullet{{if (or resultsCount prevResults)' has-results'}}{{if focused ' focused'}}">
   {{#if (is-fulfilled results)}}
     {{#each-in (group-by "type" results.value) as |type rows|}}
       <li>
@@ -36,7 +36,7 @@
       {{#each rows as |result|}}
         <li class="result {{if (eq selected result.id) 'highlighted-result'}}" {{action 'goTo' result}}>
           {{#if (eq type 'lot')}}
-            <span class="icon tax-lot"></span> {{result.bbl}} <span class="subdued">{{result.label}}</span>
+            <span class="icon tax-lot"></span> <span class="subdued">{{result.label}}, Block {{result.demuxedBbl.block}}, Lot {{result.demuxedBbl.lot}}</span>
           {{else if (eq type 'zma')}}
             <span class="icon polygon"></span> {{result.ulurpno}} <span class="subdued">{{result.label}}</span>
           {{else if (eq type 'neighborhood')}}
@@ -52,11 +52,49 @@
       {{/each}}
     {{/each-in}}
   {{/if}}
+  {{#if (is-pending results)}}
+    {{# if prevResults }}
+      {{#each-in (group-by "type" prevResults) as |type rows|}}
+        <li>
+          {{#if (eq type 'lot')}}
+            <h4 class="header-small results-header">View Tax Lot Information</h4>
+          {{else if (eq type 'zma')}}
+            <h4 class="header-small results-header">View Zoning Change Information</h4>
+          {{else if (eq type 'neighborhood')}}
+            <h4 class="header-small results-header">Go to Neighborhood</h4>
+          {{else if (eq type 'zoning-district')}}
+            <h4 class="header-small results-header">View Zoning Districts</h4>
+          {{else if (eq type 'commercial-overlay')}}
+            <h4 class="header-small results-header">View Commerical Overlay</h4>
+          {{else if (eq type 'special-purpose-district')}}
+            <h4 class="header-small results-header">View Special Purpose District</h4>
+          {{else}}
+            <h4 class="header-small results-header">Add Map Pin</h4>
+          {{/if}}
+        </li>
+        {{#each rows as |result|}}
+          <li class="result {{if (eq selected result.id) 'highlighted-result'}}" {{action 'goTo' result}}>
+            {{#if (eq type 'lot')}}
+              <span class="icon tax-lot"></span> <span class="subdued">{{result.label}}, Block {{result.demuxedBbl.block}}, Lot {{result.demuxedBbl.lot}}</span>
+            {{else if (eq type 'zma')}}
+              <span class="icon polygon"></span> {{result.ulurpno}} <span class="subdued">{{result.label}}</span>
+            {{else if (eq type 'neighborhood')}}
+              {{fa-icon "home"}}{{fa-icon "building"}} {{result.label}}
+            {{else if (eq type 'zoning-district')}}
+              <span class="icon polygon"></span> {{result.label}}
+            {{else if (eq type 'special-purpose-district')}}
+              <span class="icon polygon"></span> {{result.label}}
+            {{else}}
+              {{fa-icon "map-pin"}} {{result.label}}
+            {{/if}}
+          </li>
+        {{/each}}
+      {{/each-in}}
+    {{else}}
+      <div class="search-results--loading">Loading...</div>
+    {{/if}}
+  {{/if}}
 </ul>
-
-{{#if (is-pending results)}}
-  <div class="search-results--loading">Loading...</div>
-{{/if}}
 
 {{#if (and searchTerms (not resultsCount) (is-fulfilled results))}}
   <div class="search-results--loading">No Results Found</div>

@@ -1,7 +1,7 @@
+<div class="content-close-button-container">{{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}</div>
+
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4">
-  {{#link-to 'index' classNames='close-button'}}
-    <span aria-hidden="true">&times;</span>
-  {{/link-to}}
+
   {{#if model.isRunning}}
     {{#content-placeholders as |placeholder|}}
       {{placeholder.text lines=1}}
@@ -30,29 +30,10 @@
         {{#if lot.zonedist2}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone2}}.page" class="button">{{fa-icon 'external-link'}} {{lot.zonedist2}}</a></li>{{/if}}
         {{#if lot.zonedist3}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone3}}.page" class="button">{{fa-icon 'external-link'}} {{lot.zonedist3}}</a></li>{{/if}}
         {{#if lot.zonedist4}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone4}}.page" class="button">{{fa-icon 'external-link'}} {{lot.zonedist4}}</a></li>{{/if}}
-        {{#if lot.spdist1}}
-          <li>
-            {{link-to-intersecting (concat 'Special District: ' lot.spdist1) 'special-purpose-district' 'special_purpose_districts_v201802' lot.geometry classNames="button"}}
-          </li>
-        {{/if}}
 
-        {{#if lot.spdist2}}
-          <li>
-            {{link-to-intersecting (concat 'Special District: ' lot.spdist2) 'special-purpose-district' 'special_purpose_districts_v201802' lot.geometry classNames="button"}}
-          </li>
-        {{/if}}
-
-        {{#if lot.spdist3}}
-          <li>
-            {{link-to-intersecting (concat 'Special District: ' lot.spdist3) 'special-purpose-district' 'special_purpose_districts_v201802' lot.geometry classNames="button"}}
-          </li>
-        {{/if}}
-
-        {{#if lot.spdist4}}
-          <li>
-            {{link-to-intersecting (concat 'Special District: ' lot.spdist4) 'special-purpose-district' 'special_purpose_districts_v201802' lot.geometry classNames="button"}}
-          </li>
-        {{/if}}
+        {{#each (await parentSpecialPurposeDistricts) as |specialDistrict|}}
+              <li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-{{specialDistrict.boroName}}.page#{{specialDistrict.anchorName}}" class="button">{{fa-icon 'external-link'}} {{specialDistrict.label}}</a></li>
+        {{/each}}
 
         {{#if lot.overlay1}}
           <li>
@@ -217,7 +198,6 @@
     {{#if lot.sanitsub}}<div class="data-grid"><label class="data-label">Sanitation Subsection</label><span class="datum">{{lot.sanitsub}}</span></div>{{/if}}
 
     <hr>
-
-    <iframe src="https://roadview.planninglabs.nyc/view/{{lot.lon}}/{{lot.lat}}" class="cyclomedia"></iframe>
+    <iframe src="https://roadview.planninglabs.nyc/view/{{lot.lon}}/{{lot.lat}}" class="cyclomedia" allowfullscreen></iframe>
   {{/if}}
 </div>

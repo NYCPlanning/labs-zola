@@ -1,13 +1,12 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { inject as service } from '@ember/service';
 import carto from '../utils/carto';
 
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
-const { service } = Ember.inject;
-
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['bbl-lookup hide-for-print'],
   boroOptions: [
     { name: 'Manhattan (1)', code: '1' },

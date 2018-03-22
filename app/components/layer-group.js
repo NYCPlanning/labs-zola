@@ -1,3 +1,11 @@
+import { isEmpty } from '@ember/utils';
+import Component from '@ember/component';
+import { alias } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
+import { copy } from '@ember/object/internals';
+import { merge } from '@ember/polyfills';
+import { set } from '@ember/object';
+import { addObserver } from '@ember/object/observers';
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { ParentMixin, ChildMixin } from 'ember-composability-tools';
@@ -5,14 +13,9 @@ import carto from '../utils/carto2';
 import layerGroups from '../layer-groups';
 import sources from '../sources';
 
-const { copy, merge, set, addObserver } = Ember;
-
-const { service } = Ember.inject;
-
-const { alias } = Ember.computed;
 const { warn } = Ember.Logger;
 
-export default Ember.Component.extend(ParentMixin, ChildMixin, {
+export default Component.extend(ParentMixin, ChildMixin, {
   init(...args) {
     this._super(...args);
 
@@ -126,7 +129,7 @@ export default Ember.Component.extend(ParentMixin, ChildMixin, {
   buildMultiSelectSQL(sql, column = '', values = [0, 1] || ['a', 'b']) {
     let newSql = sql;
     const valuesCleaned = values.map(value => `'${value}'`).join(',');
-    if (!Ember.isEmpty(values)) {
+    if (!isEmpty(values)) {
       newSql += ` WHERE ${column} IN (${valuesCleaned})`;
     }
     return newSql;

@@ -121,6 +121,12 @@ body.index {
   }
 }
 
+.navigation-area {
+  @include breakpoint(large) {
+    height: 100%;
+  }
+}
+
 .content-area {
   position: relative;
   z-index: 2;
@@ -138,18 +144,27 @@ body.index {
     position: absolute;
     right: 0;
   }
+}
+
+.content-close-button-container {
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 -2px 0 rgba(0,0,0,0.1);
+  background-color: $white;
+  text-align: right;
+
+  @include breakpoint(medium down) {
+    @include xy-cell-static(full,false,0);
+  }
 
   & > .close-button {
     position: relative;
-    top: -1rem;
-    right: -0.5rem;
-    float: right;
-    margin: 0.5rem;
+    margin: 0;
 
     @include breakpoint(large) {
       display: block;
       position: fixed;
-      z-index: 2;
+      z-index: 3;
       top: 6.5rem;
       right: 41.66667%;
       background-color: $white;
@@ -162,7 +177,6 @@ body.index {
     }
   }
 }
-
 
 .content-is-closed {
 
@@ -191,8 +205,8 @@ body.index {
 }
 
 .cyclomedia {
-  width: 100%; 
-  height:300px; 
+  width: 100%;
+  height:300px;
   border: 0;
 }
 
@@ -210,4 +224,3 @@ body.index {
     left: 50%;
   }
 }
-

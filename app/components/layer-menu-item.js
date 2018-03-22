@@ -1,12 +1,11 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { alias } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { ParentMixin, ChildMixin } from 'ember-composability-tools';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
-const { service } = Ember.inject;
-const { alias } = Ember.computed;
-
-export default Ember.Component.extend(ParentMixin, ChildMixin, {
+export default Component.extend(ParentMixin, ChildMixin, {
   registeredLayers: service(),
   mainMap: service(),
   visible: alias('layer.visible'),

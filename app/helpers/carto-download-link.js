@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 import { buildSqlUrl } from '../utils/carto';
 
 export function cartoDownloadLink([table, identifier, ids, format]) {
@@ -6,4 +6,4 @@ export function cartoDownloadLink([table, identifier, ids, format]) {
   return `${buildSqlUrl(query, format)}&filename=${table}`;
 }
 
-export default Ember.Helper.helper(cartoDownloadLink);
+export default helper(cartoDownloadLink);

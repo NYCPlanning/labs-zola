@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import { ParentMixin } from 'ember-composability-tools';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
-export default Ember.Component.extend(ParentMixin, {
+export default Component.extend(ParentMixin, {
   @computed('childComponents.@each.selected')
   allChecked() {
     return this.get('childComponents')
