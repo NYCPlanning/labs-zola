@@ -1,5 +1,7 @@
+<div class="content-close-button-container">{{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}</div>
+
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4">
-  {{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}
+
   <label class="header-type">ZONING DISTRICT</label>
   <h1 class="header-large">{{model.id}}</h1>
   <p>{{model.description}}</p>
@@ -9,5 +11,7 @@
   {{else}}
     <p><a href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-manhattan.page#battery_park" target="_blank">{{fa-icon "external-link"}} Learn more about the Special Battery Park City District&hellip;</a></p>
   {{/unless}}
+
 </div>
+
 {{outlet}}
