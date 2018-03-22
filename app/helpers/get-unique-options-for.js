@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 import carto from '../utils/carto';
 
 export function getUniqueOptionsFor([column, sql]) {
@@ -11,4 +11,4 @@ export function getUniqueOptionsFor([column, sql]) {
     );
 }
 
-export default Ember.Helper.helper(getUniqueOptionsFor);
+export default helper(getUniqueOptionsFor);

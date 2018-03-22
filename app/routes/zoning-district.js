@@ -1,10 +1,9 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import { alias } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
-const { service } = Ember.inject;
-const { alias } = Ember.computed;
-
-export default Ember.Route.extend({
+export default Route.extend({
   mainMap: service(),
 
   model(params) {

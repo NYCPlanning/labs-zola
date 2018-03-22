@@ -1,7 +1,5 @@
+import { merge } from '@ember/polyfills';
 import DS from 'ember-data';
-import Ember from 'ember';
-
-const { merge } = Ember;
 
 export default DS.JSONSerializer.extend({
   normalizeFindRecordResponse(store, primaryModelClass, payload, queryId, requestType) {

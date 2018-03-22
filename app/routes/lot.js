@@ -1,14 +1,13 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 import bblDemux from '../utils/bbl-demux';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import updateSelectionMixin from '../mixins/update-selection';
 
-const { service } = Ember.inject;
-
 // convert 'R6A' to 'r6'
 const getPrimaryZone = zonedist => zonedist.match(/\w\d*/)[0].toLowerCase();
 
-export default Ember.Route.extend(updateSelectionMixin, {
+export default Route.extend(updateSelectionMixin, {
   mainMap: service(),
 
   model(params) {

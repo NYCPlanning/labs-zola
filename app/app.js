@@ -1,3 +1,4 @@
+import Application from '@ember/application';
 import Ember from 'ember';
 import loadInitializers from 'ember-load-initializers';
 import DS from 'ember-data';
@@ -5,7 +6,7 @@ import TaskModelMixin from 'ember-data-tasks/mixins/task-model';
 import Resolver from './resolver';
 import config from './config/environment';
 
-const App = Ember.Application.extend({
+const App = Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
   Resolver,

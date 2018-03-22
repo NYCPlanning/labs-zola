@@ -1,4 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { isEmpty } from '@ember/utils';
+import { inject as service } from '@ember/service';
 import fetch from 'fetch';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { task, timeout } from 'ember-concurrency';
@@ -6,11 +8,9 @@ import bblDemux from '../utils/bbl-demux';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 
-const { isEmpty, inject: { service } } = Ember;
-
 const DEBOUNCE_MS = 100;
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['search'],
   searchTerms: '',
   transitionTo: null,

@@ -1,6 +1,5 @@
-import Ember from 'ember';
-
-const { isEmpty, inject: { service } } = Ember;
+import { isEmpty } from '@ember/utils';
+import { inject as service } from '@ember/service';
 
 export default function trackEvent(eventCategory, incAction, incLabel, eventValue) {
   return (target, name, desc) => {

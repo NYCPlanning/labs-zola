@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 
-export default Ember.Controller.extend({
+export default Controller.extend({
 
   @computed('model.primaryzone')
   primaryzoneURL(primaryzone) {
