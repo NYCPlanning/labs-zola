@@ -33,6 +33,7 @@ export default {
               ['10', '#BAB8B6'],
               ['11', '#555555'],
             ],
+            default: '#EEEEEE',
           },
           'fill-opacity': 0,
         },
