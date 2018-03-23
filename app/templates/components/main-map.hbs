@@ -9,8 +9,7 @@
   id='main-map'
   initOptions=(hash style='mapbox://styles/mapbox/light-v9'
                     zoom=zoom
-                    center=(array lng lat)
-                    hash=true)
+                    center=(array lng lat))
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
@@ -127,6 +126,7 @@
       {{source.layer layer=mainMap.pointLayer}}
     {{/map.source}}
   {{/if}}
+
   {{#if shouldFitBounds}}
     {{map.call 'fitBounds' mainMap.bounds mainMap.isSelectedBoundsOptions}}
   {{/if}}

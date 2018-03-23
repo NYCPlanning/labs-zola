@@ -48,10 +48,11 @@ export default Component.extend({
   classNames: ['map-container'],
 
   lat: 40.7125,
-  @computed('mainMap.isSelectedBoundsOptions')
-  lng(boundsOptions) {
-    return boundsOptions.offset[0] === 0 ? -73.9022 : -73.733;
-  },
+  // @computed('mainMap.isSelectedBoundsOptions')
+  // lng(boundsOptions) {
+  //   return boundsOptions.offset[0] === 0 ? -73.9022 : -73.733;
+  // },
+  lng: -73.9022,
   zoom: 9.72,
   menuTo: 'layers-menu',
 
