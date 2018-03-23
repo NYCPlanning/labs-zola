@@ -6,8 +6,12 @@
   focus-out=(action 'handleFocusOut')}}
 
 {{#if searchTerms}}
-  <button class="close-button" aria-label="Clear Search" type="button" {{action 'clear'}}>
-    <span aria-hidden="true">&times;</span>
+  <button class="clear-button" aria-label="Clear Search" type="button" {{action 'clear'}}>
+    {{#if (and loading (is-fulfilled loading))}}
+      {{fa-icon 'spinner' class='fa-spin dark-gray'}}
+    {{else}}
+      {{fa-icon 'times' class='dark-gray'}}
+    {{/if}}
   </button>
 {{else}}
   <span class="search-icon">{{fa-icon "search"}}</span>
