@@ -1,15 +1,24 @@
 import fetch from 'fetch';
 import { Promise } from 'rsvp';
 
-const cartoDomain = 'planninglabs.carto.com';
+const cartoUsername = 'planninglabs';
+const cartoDomain = `${cartoUsername}.carto.com`;
 
-const buildTemplate = (layergroupid, type) => { // eslint-disable-line
-  return `https://${cartoDomain}/api/v1/map/${layergroupid}/{z}/{x}/{y}.${type}`;
+
+const buildTemplate = (cartoResponse, type) => { // eslint-disable-line
+  const { layergroupid, cdn_url } = cartoResponse; // eslint-disable-line
+  const { subdomains } = cdn_url.templates.https;
+
+  // choose a subdomain at random
+  const subdomain = subdomains[Math.floor(Math.random() * subdomains.length)];
+
+  return `${cdn_url.templates.https.url.replace('{s}', subdomain)}/${cartoUsername}/api/v1/map/${layergroupid}/{z}/{x}/{y}.${type}`;
 };
 
 const buildSqlUrl = (cleanedQuery, type = 'json') => { // eslint-disable-line
   return `https://${cartoDomain}/api/v2/sql?q=${cleanedQuery}&format=${type}`;
 };
+
 const carto = {
   SQL(query, type = 'json') {
     const cleanedQuery = query.replace('\n', '');
@@ -27,16 +36,20 @@ const carto = {
       });
   },
 
-  getVectorTileTemplate(SQLArray) {
+  getVectorTileTemplate(sourceLayers) {
     const CartoCSS = '#layer { polygon-fill: #FFF; }';
-    const layers = SQLArray.map(sql => ({
-      type: 'mapnik',
-      options: {
-        cartocss_version: '2.1.1',
-        cartocss: CartoCSS,
-        sql,
-      },
-    }));
+    const layers = sourceLayers.map((sourceLayer) => {
+      const { id, sql } = sourceLayer;
+      return {
+        id,
+        type: 'mapnik',
+        options: {
+          cartocss_version: '2.3.0',
+          cartocss: CartoCSS,
+          sql,
+        },
+      };
+    });
 
     const params = {
       version: '1.3.0',
@@ -54,7 +67,7 @@ const carto = {
         .catch(err => reject(err))
         .then(response => response.json())
         .then((json) => {
-          resolve(buildTemplate(json.layergroupid, 'mvt'));
+          resolve(buildTemplate(json, 'mvt'));
         });
     });
   },
