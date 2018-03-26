@@ -267,9 +267,14 @@
       {{/if}}
     {{/layer-menu-item}}
 
-    <div
+    {{#layer-menu-item for='aerials' as |item|}}
+      {{#if item.layer.visible}}
+        {{item.radio-selector}}
+      {{/if}}
+    {{/layer-menu-item}}
+    {{!-- <div
       class="layer-menu-item"
-      {{action 'switchAerial' 16 true}}
+      {{!-- {{action 'switchAerial' 16 true}}
     >
       {{switch-toggle
         checked=(or qps.aerials-16 qps.aerials-1924 qps.aerials-1951 qps.aerials-1996)}}
@@ -298,7 +303,7 @@
           </label>
         </li>
       </ul>
-    {{/if}}
+    {{/if}} --}}
 
   {{/layer-palette-accordion}}
 

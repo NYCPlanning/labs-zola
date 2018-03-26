@@ -1,0 +1,10 @@
+<ul class="layer-menu-item--group-checkboxes">
+  {{#each layers as |layer|}}
+    <li {{action 'switchLayer'}}>
+      <label>
+        {{fa-icon (if qps.aerials-16 "circle" "circle-o")}} {{layer.layer.id}}
+      </label>
+    </li>
+  {{/each}}
+</ul>
+{{yield}}
