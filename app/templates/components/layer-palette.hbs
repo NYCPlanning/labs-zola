@@ -269,7 +269,9 @@
 
     {{#layer-menu-item for='aerials' as |item|}}
       {{#if item.layer.visible}}
-        {{item.radio-selector}}
+        {{item.radio-selector
+          qps=qps
+        }}
       {{/if}}
     {{/layer-menu-item}}
     {{!-- <div

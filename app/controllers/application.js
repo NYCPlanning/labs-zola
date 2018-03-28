@@ -63,6 +63,8 @@ export const mapQueryParams =
         c24: { defaultValue: true },
         c25: { defaultValue: true },
         allChecked: { defaultValue: [] },
+        'aerials-2016': { defaultValue: false },
+        'aerials-1924': { defaultValue: false },
       },
     ),
   );

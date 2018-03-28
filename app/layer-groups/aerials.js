@@ -2,7 +2,7 @@ export default {
   id: 'aerials',
   title: 'Aerial Imagery',
   titleTooltip: 'Aerial Photos Raster Tiles provided by DoITT GIS',
-  visible: true,
+  visible: false,
   meta: {
     description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
     url: ['https://maps.nyc.gov/tiles/'],
@@ -10,15 +10,20 @@ export default {
   },
   layers: [
     {
+      displayName: '2016',
       layer: {
-        id: 'aerials-2016-raster',
+        id: 'aerials-2016',
+        layout: {
+          visibility: 'visible',
+        },
         source: 'aerials-2016',
         type: 'raster',
       },
     },
     {
+      displayName: '1924',
       layer: {
-        id: 'aerials-1924-raster',
+        id: 'aerials-1924',
         layout: {
           visibility: 'none',
         },
