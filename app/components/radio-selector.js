@@ -2,6 +2,7 @@ import Ember from 'ember';
 import { set } from '@ember/object';
 import { copy } from '@ember/object/internals';
 import { merge } from '@ember/polyfills';
+import { next } from '@ember/runloop';
 
 const hideLayer = (layer) => {
   const layerCopy = copy(layer, true);
@@ -17,6 +18,21 @@ const showLayer = (layer) => {
 
 
 export default Ember.Component.extend({
+  init(...args) {
+    this._super(...args);
+
+    next(() => {
+      const layers = this.get('layers');
+      const qps = this.get('qps');
+
+      const matchedLayer = layers.find(layer => qps.get(layer.layer.id) === true);
+
+      if (matchedLayer) {
+        this.send('switchLayer', matchedLayer.layer.id);
+      }
+    });
+  },
+
   layers: [],
   qps: null,
   actions: {
