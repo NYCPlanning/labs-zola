@@ -10,10 +10,31 @@ import transportation from './transportation';
 import zoningDistricts from './zoning-districts';
 import zoningMapAmendments from './zoning-map-amendments';
 
-const { aerials2016, aerials1924 } = aerials;
+const {
+  aerials2016,
+  aerials2014,
+  aerials2012,
+  aerials2010,
+  aerials2008,
+  aerials2006,
+  aerials2004,
+  aerials20012,
+  aerials1996,
+  aerials1951,
+  aerials1924,
+} = aerials;
 
 export default {
   aerials2016,
+  aerials2014,
+  aerials2012,
+  aerials2010,
+  aerials2008,
+  aerials2006,
+  aerials2004,
+  aerials20012,
+  aerials1996,
+  aerials1951,
   aerials1924,
   adminBoundaries,
   commercialOverlays,
