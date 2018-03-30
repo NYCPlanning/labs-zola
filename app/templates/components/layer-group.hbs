@@ -1,5 +1,5 @@
 {{#if visible}}
-  {{#each config.layers as |layerConfig|}}
+  {{#each config.layers key='layer.id' as |layerConfig|}}
     {{map.layer
       layer=layerConfig.layer
       didUpdateLayers=didUpdateLayers
@@ -7,33 +7,4 @@
   {{/each}}
 {{/if}}
 
-{{yield
-  (hash
-    timeline-control=
-      (component 'layer-control-timeline' layer=
-        (hash
-          visible=visible
-        )
-        qps=qps
-      )
-
-    multi-select-control=
-      (component 'layer-multi-select-control' layer=
-        (hash
-          visible=visible
-        )
-        qps=qps
-      )
-    tooltip=
-      (component 'layer-tooltip' layer=
-        (hash
-          visible=visible
-        )
-      )
-    visible=visible
-    updateSql=(action 'updateSql')
-    updatePaintFor=(action 'updatePaintFor')
-    isPending=configWithTemplate.isPending
-    toggleVisibility=(action 'toggleVisibility')
-  )
-}}
+{{yield}}
