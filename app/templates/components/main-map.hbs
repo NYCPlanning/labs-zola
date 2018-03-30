@@ -78,13 +78,7 @@
 
   {{!-- BASEMAPS --}}
 
-  {{map.layer-group for='aerials-16' visible=qps.aerials-16}}
-
-  {{map.layer-group for='aerials-1924' visible=qps.aerials-1924}}
-
-  {{map.layer-group for='aerials-1951' visible=qps.aerials-1951}}
-
-  {{map.layer-group for='aerials-1996' visible=qps.aerials-1996}}
+  {{map.layer-group for='aerials' visible=qps.aerials}}
 
   {{#if mapMouseover.highlightedLotFeatures}}
     {{#map.source
@@ -127,6 +121,7 @@
       {{source.layer layer=mainMap.pointLayer}}
     {{/map.source}}
   {{/if}}
+
   {{#if shouldFitBounds}}
     {{map.call 'fitBounds' mainMap.bounds mainMap.isSelectedBoundsOptions}}
   {{/if}}
