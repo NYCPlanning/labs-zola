@@ -72,7 +72,6 @@ export default Service.extend({
     const layers = this.get('registeredLayers.highlightableAndVisibleLayerIds');
     const clickable = this.get('registeredLayers.clickableAndVisibleLayerIds');
     const features = map.queryRenderedFeatures(e.point, { layers });
-
     if (features.length > 0) {
       const thisFeature = features[0];
 

@@ -3,7 +3,7 @@ export default {
   type: 'fill',
   source: 'highlighted-lot',
   paint: {
-    'fill-opacity': 0.2,
+    'fill-opacity': 0.4,
     'fill-color': '#999999',
   },
 };

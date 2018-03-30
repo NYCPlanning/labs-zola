@@ -90,6 +90,12 @@
     {{/map.source}}
   {{/if}}
 
+  {{#if bookmarkedLotsLayer}}
+    {{map.layer
+      layer=bookmarkedLotsLayer
+      before='place_other'}}
+  {{/if}}
+
   {{hover-tooltip}}
 
   {{#if mainMap.selected}}
