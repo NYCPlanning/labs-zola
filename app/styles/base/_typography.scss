@@ -311,3 +311,17 @@ button {
   // nix IE's default clear buttons
   display: none;
 }
+
+
+
+//
+// Multi-column lists
+// --------------------------------------------------
+.list-float-3 {
+  @include clearfix;
+
+  li {
+    float: left;
+    width: 33%;
+  }
+}
