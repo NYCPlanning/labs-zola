@@ -1,7 +1,4 @@
-import aerials16 from './aerials16';
-import aerials1924 from './aerials1924';
-import aerials1951 from './aerials1951';
-import aerials1996 from './aerials1996';
+import aerials from './aerials';
 import adminBoundaries from './admin-boundaries';
 import commercialOverlays from './commercial-overlays';
 import effectiveFloodInsuranceRate2007 from './effective-flood-insurance-rate-2007';
@@ -13,11 +10,32 @@ import transportation from './transportation';
 import zoningDistricts from './zoning-districts';
 import zoningMapAmendments from './zoning-map-amendments';
 
-export default {
-  aerials16,
-  aerials1924,
-  aerials1951,
+const {
+  aerials2016,
+  aerials2014,
+  aerials2012,
+  aerials2010,
+  aerials2008,
+  aerials2006,
+  aerials2004,
+  aerials20012,
   aerials1996,
+  aerials1951,
+  aerials1924,
+} = aerials;
+
+export default {
+  aerials2016,
+  aerials2014,
+  aerials2012,
+  aerials2010,
+  aerials2008,
+  aerials2006,
+  aerials2004,
+  aerials20012,
+  aerials1996,
+  aerials1951,
+  aerials1924,
   adminBoundaries,
   commercialOverlays,
   effectiveFloodInsuranceRate2007,
