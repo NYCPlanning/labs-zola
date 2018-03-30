@@ -18,6 +18,8 @@ export default Component.extend({
   mainMap: service(),
   metrics: service(),
   focused: false,
+  prevResults: null,
+  loading: null,
 
   @computed('searchTerms')
   results(searchTerms) {
@@ -28,6 +30,10 @@ export default Component.extend({
     if (searchTerms.length < 3) this.cancel();
     yield timeout(DEBOUNCE_MS);
     const URL = `https://zola-search-api.planninglabs.nyc/search?q=${searchTerms}`;
+
+    this.set('loading', new Promise(function(resolve) {
+      setTimeout(resolve, 500);
+    }));
 
     this.get('metrics').trackEvent(
       'GoogleAnalytics',
@@ -58,6 +64,9 @@ export default Component.extend({
             },
           );
         }
+        this.set('prevResults', resultList);
+
+        this.set('loading', null);
         return resultList;
       });
   }).keepLatest(),

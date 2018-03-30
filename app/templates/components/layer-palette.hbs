@@ -35,7 +35,7 @@
             <li><span style="color:#78D271;">{{fa-icon "square"}}</span>Open Space &amp; Outdoor Recreation</li>
             <li><span style="color:#BAB8B6;">{{fa-icon "square"}}</span>Parking Facilities</li>
             <li><span style="color:#555555;">{{fa-icon "square"}}</span>Vacant Land</li>
-            <li><span style="color:#222222;">{{fa-icon "square"}}</span>Other</li>
+            <li><span style="color:#E7E7E7;">{{fa-icon "square"}}</span>Other</li>
           </ul>
         {{/if}}
       {{/if}}
@@ -267,11 +267,18 @@
       {{/if}}
     {{/layer-menu-item}}
 
-    <div 
-      class="layer-menu-item" 
-      {{action 'switchAerial' 16 true}}
+    {{#layer-menu-item for='aerials' as |item|}}
+      {{#if item.layer.visible}}
+        {{item.radio-selector
+          qps=qps
+        }}
+      {{/if}}
+    {{/layer-menu-item}}
+    {{!-- <div
+      class="layer-menu-item"
+      {{!-- {{action 'switchAerial' 16 true}}
     >
-      {{switch-toggle 
+      {{switch-toggle
         checked=(or qps.aerials-16 qps.aerials-1924 qps.aerials-1951 qps.aerials-1996)}}
       Aerials
     </div>
@@ -298,7 +305,7 @@
           </label>
         </li>
       </ul>
-    {{/if}}
+    {{/if}} --}}
 
   {{/layer-palette-accordion}}
 
