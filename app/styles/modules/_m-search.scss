@@ -30,9 +30,13 @@
     padding-right: 2rem;
   }
 
-  .close-button {
-    margin-top: rem-calc(-7);
-    margin-right: rem-calc(-6);
+  .clear-button {
+    position: absolute;
+    top: rem-calc(10);
+    right: rem-calc(10);
+    bottom: auto;
+    left: auto;
+    z-index: 2;
   }
 
   .search-icon {
