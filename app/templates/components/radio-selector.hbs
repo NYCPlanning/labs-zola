@@ -1,8 +1,11 @@
-<ul class="layer-menu-item--group-checkboxes">
+<ul class="layer-menu-item--group-checkboxes {{classNames}}">
   {{#each layers as |layer|}}
     <li {{action 'switchLayer' layer.layer.id}}>
       <label>
-        {{fa-icon (if (mut (get qps layer.layer.id)) "dot-circle-o" "circle-o")}} {{layer.displayName}}
+        <span class="{{if (mut (get qps layer.layer.id)) '' 'medium-gray'}}">
+          {{fa-icon (if (mut (get qps layer.layer.id)) "dot-circle-o" "circle-o")}}
+        </span>
+        {{layer.displayName}}
       </label>
     </li>
   {{/each}}

@@ -271,41 +271,10 @@
       {{#if item.layer.visible}}
         {{item.radio-selector
           qps=qps
+          classNames='list-float-3'
         }}
       {{/if}}
     {{/layer-menu-item}}
-    {{!-- <div
-      class="layer-menu-item"
-      {{!-- {{action 'switchAerial' 16 true}}
-    >
-      {{switch-toggle
-        checked=(or qps.aerials-16 qps.aerials-1924 qps.aerials-1951 qps.aerials-1996)}}
-      Aerials
-    </div>
-    {{#if (or qps.aerials-16 qps.aerials-1924 qps.aerials-1951 qps.aerials-1996)}}
-      <ul class="layer-menu-item--group-checkboxes">
-        <li {{action 'switchAerial' 16}}>
-          <label>
-            {{fa-icon (if qps.aerials-16 "circle" "circle-o")}} 2016
-          </label>
-        </li>
-        <li {{action 'switchAerial' 1924}}>
-          <label>
-            {{fa-icon (if qps.aerials-1924 "circle" "circle-o")}} 1924
-          </label>
-        </li>
-        <li {{action 'switchAerial' 1951}}>
-          <label>
-            {{fa-icon (if qps.aerials-1951 "circle" "circle-o")}} 1951
-          </label>
-        </li>
-        <li {{action 'switchAerial' 1996}}>
-          <label>
-            {{fa-icon (if qps.aerials-1996 "circle" "circle-o")}} 1996
-          </label>
-        </li>
-      </ul>
-    {{/if}} --}}
 
   {{/layer-palette-accordion}}
 
