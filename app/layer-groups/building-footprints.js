@@ -23,7 +23,6 @@ export default {
               [16, 0.3],
             ],
           },
-          'fill-outline-color': 'rgba(12, 12, 12, 1)',
           'fill-color': 'rgba(175, 175, 175, 1)',
         },
         layout: {},
