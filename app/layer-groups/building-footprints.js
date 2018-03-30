@@ -13,22 +13,9 @@ export default {
       layer: {
         id: 'building',
         type: 'fill',
-        source: 'composite',
+        source: 'openmaptiles',
         'source-layer': 'building',
         minzoom: 15,
-        filter: [
-          'all',
-          [
-            '!=',
-            'type',
-            'building:part',
-          ],
-          [
-            '==',
-            'underground',
-            'false',
-          ],
-        ],
         paint: {
           'fill-opacity': {
             stops: [

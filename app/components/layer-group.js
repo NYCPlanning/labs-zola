@@ -9,7 +9,7 @@ import { addObserver } from '@ember/object/observers';
 import Ember from 'ember';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { ParentMixin, ChildMixin } from 'ember-composability-tools';
-import carto from '../utils/carto2';
+import carto from '../utils/carto';
 import layerGroups from '../layer-groups';
 import sources from '../sources';
 
@@ -88,7 +88,7 @@ export default Component.extend(ParentMixin, ChildMixin, {
     }
 
     // if we can't find any before when walking the layergroups, use this 'global before'
-    return 'waterway-label';
+    return 'place_other';
   },
 
   layers: alias('config.layers'),

@@ -13,32 +13,24 @@ export default {
       layer: {
         id: 'threed-buildings',
         type: 'fill-extrusion',
-        source: 'composite',
+        source: 'openmaptiles',
         'source-layer': 'building',
         minzoom: 0,
-        filter: [
-          'all',
-          [
-            '==',
-            'extrude',
-            'true',
-          ],
-        ],
         paint: {
-          'fill-extrusion-height': {
-            type: 'identity',
-            property: 'height',
-          },
-          'fill-extrusion-base': {
-            type: 'identity',
-            property: 'min_height',
-          },
           'fill-extrusion-color': 'rgba(203, 203, 203, 1)',
           'fill-extrusion-opacity': 0.95,
           'fill-extrusion-translate': [
             3,
             0,
           ],
+          'fill-extrusion-height': {
+            property: 'render_height',
+            type: 'identity',
+          },
+          'fill-extrusion-base': {
+            property: 'render_min_height',
+            type: 'identity',
+          },
         },
       },
     },
