@@ -80,7 +80,7 @@ export default {
           },
         },
       },
-      before: 'waterway-label',
+      before: 'place_other',
     },
     {
       layer: {

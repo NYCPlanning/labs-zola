@@ -7,7 +7,7 @@
 
 {{#mapbox-gl
   id='main-map'
-  initOptions=(hash style='mapbox://styles/mapbox/light-v9'
+  initOptions=(hash style='//raw.githubusercontent.com/NYCPlanning/labs-gl-style/master/data/style.json'
                     zoom=zoom
                     center=(array lng lat)
                     hash=true)
@@ -86,7 +86,7 @@
       options=mapMouseover.highlightedLotSource as |source|}}
       {{source.layer
         layer=highlightedLotLayer
-        before='waterway-label'}}
+        before='place_other'}}
     {{/map.source}}
   {{/if}}
 
@@ -98,10 +98,10 @@
       options=selectedLotSource as |source|}}
       {{source.layer
         layer=selectedFillLayer
-        before='waterway-label'}}
+        before='place_other'}}
       {{source.layer
         layer=selectedLineLayer
-        before='waterway-label'}}
+        before='place_other'}}
     {{/map.source}}
   {{/if}}
 
@@ -109,9 +109,9 @@
     {{#map.source
       sourceId='drawn-feature'
       options=mainMap.drawnFeatureSource as |source|}}
-      {{source.layer layer=drawnFeatureLayers.line before='waterway-label'}}
+      {{source.layer layer=drawnFeatureLayers.line before='place_other'}}
       {{#if (eq mainMap.drawnFeature.type 'Polygon')}}
-        {{source.layer layer=drawnFeatureLayers.fill before='waterway-label'}}
+        {{source.layer layer=drawnFeatureLayers.fill before='place_other'}}
       {{/if}}
     {{/map.source}}
   {{/if}}
