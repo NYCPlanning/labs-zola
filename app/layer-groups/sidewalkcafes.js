@@ -4,9 +4,9 @@ export default {
   titleTooltip: 'Areas where different types of sidewalk cafes are permitted on public sidewalks',
   visible: false,
   meta: {
-    description: 'Sidewalk Cafes release February 2018, Bytes of the Big Apple',
+    description: 'Sidewalk Cafes release March 2018, Bytes of the Big Apple',
     url: ['https://www1.nyc.gov/site/planning/data-maps/open-data.page'],
-    updated_at: '5 March 2018',
+    updated_at: 'April 5th, 2018',
   },
   layers: [
     {
