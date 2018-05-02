@@ -58,5 +58,9 @@ export default {
       id: 'e-designations',
       sql: 'SELECT the_geom_webmercator, bbl, ceqr_num, enumber, ulurp_num FROM e_designations_v20180417',
     },
+    {
+      id: 'industrial-business-zones',
+      sql: 'SELECT the_geom_webmercator, name FROM industrial_business_zones_v20180501',
+    },
   ],
 };
