@@ -7,7 +7,15 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import updateSelectionMixin from '../mixins/update-selection';
 
 // convert 'R6A' to 'r6'
-const getPrimaryZone = zonedist => zonedist.match(/\w\d*/)[0].toLowerCase();
+
+const getPrimaryZone = (zonedist) => {
+  let primary = zonedist.match(/\w\d*/)[0].toLowerCase();
+
+  // special handling for c1 and c2
+  if ((primary === 'c1') || (primary === 'c2')) primary = 'c1-c2';
+
+  return primary;
+};
 
 export default Route.extend(updateSelectionMixin, {
   mainMap: service(),
