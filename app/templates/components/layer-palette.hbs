@@ -232,8 +232,6 @@
         </ul>
       {{/if}}
     {{/layer-menu-item}}
-    {{layer-menu-item for='business-improvement-districts'}}
-    {{layer-menu-item for='industrial-business-zones'}}
     {{#layer-menu-item for='e-designations' as |item|}}
       {{#if item.layer.visible}}
         <ul class="layer-key">
@@ -241,7 +239,18 @@
         </ul>
       {{/if}}
     {{/layer-menu-item}}
+    {{layer-menu-item for='appendixj-designated-mdistricts'}}
+
   {{/layer-palette-accordion}}
+
+  {{#layer-palette-accordion
+    closed=true
+    title='Other Supporting Layers'
+    as |item|}}
+    {{layer-menu-item for='business-improvement-districts'}}
+    {{layer-menu-item for='industrial-business-zones'}}
+  {{/layer-palette-accordion}}
+
 
   {{#layer-palette-accordion
     closed=true

@@ -63,8 +63,8 @@ export default {
       sql: 'SELECT the_geom_webmercator, name FROM industrial_business_zones_v20180501',
     },
     {
-      id: 'appendixj_designated_mdistricts',
-      sql: 'SELECT the_geom_webmercator, name FROM appendixj_designated_mdistricts_v20180503',
+      id: 'appendixj-designated-mdistricts',
+      sql: 'SELECT the_geom_webmercator, name, subarea FROM appendixj_designated_mdistricts_v201712',
     },
   ],
 };

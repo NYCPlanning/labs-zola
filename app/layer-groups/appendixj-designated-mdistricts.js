@@ -1,11 +1,11 @@
 import { lineStyle, fillStyle } from '../utils/polygon-layer-styles';
 
-const legendColor = '#8ff442';
+const legendColor = '#F333E1';
 
 export default {
   id: 'appendixj-designated-mdistricts',
-  title: 'Industrial Business Zones',
-  titleTooltip: 'Industrial Business Zones (IBZs) are areas where expanded business services are available for industrial and manufacturing businesses. This designation fosters high-performing business districts by creating competitive advantages over locating in areas outside of New York City.',
+  title: 'Appendix J Designated M Districts',
+  titleTooltip: 'Designated areas within Manufacturing Districts in which self service storage facilities are subject to certain as-of-right provisions (subarea 1) or are subject to special permit by the City Planning Commission (subarea 2)',
   visible: false,
   legendIcon: 'polygon',
   legendColor,
@@ -22,7 +22,7 @@ export default {
     {
       layer: fillStyle('appendixj-designated-mdistricts-fill', 'supporting-zoning', 'appendixj-designated-mdistricts', legendColor),
       highlightable: true,
-      tooltipTemplate: '{{{name}}} IBZ',
+      tooltipTemplate: '{{{name}}} - Subarea {{{subarea}}}',
     },
   ],
 };

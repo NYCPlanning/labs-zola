@@ -1,4 +1,5 @@
 import aerials from './aerials';
+import appendixjDesignatedMdistricts from './appendixj-designated-mdistricts';
 import assemblydistricts from './assemblydistricts';
 import boroughs from './boroughs';
 import buildingFootprints from './building-footprints';
@@ -34,6 +35,7 @@ import zoningMapAmendmentsPending from './zoning-map-amendments-pending';
 
 export default {
   aerials,
+  appendixjDesignatedMdistricts,
   assemblydistricts,
   boroughs,
   buildingFootprints,
