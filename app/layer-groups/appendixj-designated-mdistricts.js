@@ -11,7 +11,7 @@ export default {
   legendColor,
   meta: {
     description: 'Appendix J Designated M Districts Shapefile',
-    url: ['https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM appendixj_designated_mdistricts_v20180503&format=SHP'],
+    url: ['https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM appendixj_designated_mdistricts_v201712&format=SHP'],
     updated_at: '3 May 2018',
   },
   layers: [
