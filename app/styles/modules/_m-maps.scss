@@ -230,3 +230,11 @@
     }
   }
 }
+
+.print-controls {
+  position: absolute;
+  top: 10px;
+  left: 50px;
+  z-index: 1;
+  overflow: visible;
+}
