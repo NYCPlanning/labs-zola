@@ -62,5 +62,9 @@ export default {
       id: 'industrial-business-zones',
       sql: 'SELECT the_geom_webmercator, name FROM industrial_business_zones_v20180501',
     },
+    {
+      id: 'appendixj_designated_mdistricts',
+      sql: 'SELECT the_geom_webmercator, name FROM appendixj_designated_mdistricts_v20180503',
+    },
   ],
 };
