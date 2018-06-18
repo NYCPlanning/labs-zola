@@ -25,7 +25,7 @@ const generateSQL = function(table, bbl) {
   }
 
   return `
-    WITH lot AS (SELECT the_geom FROM mappluto_v1711 WHERE bbl = '${bbl}')
+    WITH lot AS (SELECT the_geom FROM mappluto_v18_1 WHERE bbl = '${bbl}')
 
     SELECT true as intersects FROM ${intersectionTable} a, lot b WHERE ST_Intersects(a.the_geom, b.the_geom) LIMIT 1
   `;
