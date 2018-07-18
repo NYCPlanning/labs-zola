@@ -4,6 +4,7 @@ module.exports = {
     ecmaVersion: 2017,
     sourceType: 'module'
   },
+  parser: 'babel-eslint',
   plugins: [
     'ember'
   ],
@@ -24,6 +25,7 @@ module.exports = {
     'space-before-function-paren': 0,
     'prefer-arrow-callback': 0,
     'no-underscore-dangle': 0,
+    'ember/avoid-leaking-state-in-ember-objects',
   },
   overrides: [
     // node files

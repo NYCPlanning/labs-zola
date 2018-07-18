@@ -17,7 +17,7 @@
     "test": "ember test"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "8.2.6",
     "babel-plugin-wildcard": "^2.1.2",
     "broccoli-asset-rev": "^2.4.5",
     "broccoli-clean-css": "^1.1.0",
