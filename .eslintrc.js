@@ -5,12 +5,18 @@ module.exports = {
     ecmaVersion: 2017,
     sourceType: 'module'
   },
-  extends: 'airbnb',
+  plugins: [
+    'ember'
+  ],
+  extends: [
+    'airbnb-base'
+  ],
   env: {
-    browser: true
+    browser: true,
   },
   globals:{
     '$': true,
+    d3: true,
   },
   rules: {
     'import/no-extraneous-dependencies': 0,
@@ -21,5 +27,40 @@ module.exports = {
     'space-before-function-paren': 0,
     'prefer-arrow-callback': 0,
     'no-underscore-dangle': 0,
-  }
+    'camelcase': 0,
+    'max-len': 0,
+    'no-param-reassign': 0,
+  },
+  overrides: [
+    // node files
+    {
+      files: [
+        'testem.js',
+        'ember-cli-build.js',
+        'config/**/*.js',
+        'lib/*/index.js'
+      ],
+      parserOptions: {
+        sourceType: 'script',
+        ecmaVersion: 2015
+      },
+      env: {
+        browser: false,
+        node: true
+      }
+    }
+  ]
 };
+© 2018 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+API
+Training
+Shop
+Blog
+About
+Press h to open a hovercard with more details.
