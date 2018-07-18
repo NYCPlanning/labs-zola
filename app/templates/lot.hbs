@@ -37,13 +37,13 @@
 
         {{#if lot.overlay1}}
           <li>
-            {{link-to-intersecting lot.overlay1 'commercial-overlay' 'commercial_overlays_v201804' lot.geometry responseIdentifier='overlay' classNames="button"}}
+            {{link-to-intersecting lot.overlay1 'commercial-overlay' 'commercial_overlays_v201806' lot.geometry responseIdentifier='overlay' classNames="button"}}
           </li>
         {{/if}}
 
         {{#if lot.overlay2}}
           <li>
-            {{link-to-intersecting lot.overlay2 'commercial-overlay' 'commercial_overlays_v201804' lot.geometry responseIdentifier='overlay' classNames="button"}}
+            {{link-to-intersecting lot.overlay2 'commercial-overlay' 'commercial_overlays_v201806' lot.geometry responseIdentifier='overlay' classNames="button"}}
           </li>
         {{/if}}
       </ul>
@@ -56,7 +56,7 @@
           {{#if lot.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a> <small class="dark-gray">{{lot.histdist}}</small></li>{{/if}}
 
           {{#intersecting-layers
-              tables=(array 'inclusionary_housing_v201804' 'transitzones_v201607' 'fresh_zones_v201611' 'waterfront_access_plan_v201109' 'coastal_zone_boundary_v201601' 'lower_density_growth_management_areas_v201709' 'floodplain_pfirm2015_v0' 'floodplain_firm2007_v0' 'mandatory_inclusionary_housing_v20180425' 'e_designations_v20180417' 'appendixj_designated_mdistricts_v201712')
+              tables=(array 'inclusionary_housing_v201804' 'transitzones_v201607' 'fresh_zones_v201611' 'waterfront_access_plan_v201109' 'coastal_zone_boundary_v201601' 'lower_density_growth_management_areas_v201709' 'floodplain_pfirm2015_v0' 'floodplain_firm2007_v0' 'mandatory_inclusionary_housing_v20180628' 'e_designations_v20180628' 'appendixj_designated_mdistricts_v201712')
               bbl=lot.bbl as |layers numberIntersecting|}}
 
             {{#if layers.inclusionary_housing_v201804}}
@@ -123,7 +123,7 @@
               </li>
             {{/if}}
 
-            {{#if layers.mandatory_inclusionary_housing_v20180425}}
+            {{#if layers.mandatory_inclusionary_housing_v20180628}}
               <li>
                 <a target="_blank" href="https://www1.nyc.gov/site/planning/plans/mih/mandatory-inclusionary-housing.page">
                   {{fa-icon "external-link"}} Mandatory Inclusionary Housing Area
@@ -131,7 +131,7 @@
               </li>
             {{/if}}
 
-            {{#if layers.e_designations_v20180417}}
+            {{#if layers.e_designations_v20180628}}
               <li>
                 <a target="_blank" href="http://www.nyc.gov/html/oer/html/e-designation/e-designation.shtml">
                   {{fa-icon "external-link"}} Environmental Designation
