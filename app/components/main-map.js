@@ -4,8 +4,8 @@ import { alias } from '@ember/object/computed';
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from 'mapbox-gl-draw';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
-import area from 'npm:@turf/area';
-import lineDistance from 'npm:@turf/line-distance';
+import area from '@turf/area';
+import lineDistance from '@turf/line-distance';
 import numeral from 'npm:numeral';
 
 import sources from '../sources';
