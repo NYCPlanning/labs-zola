@@ -45,9 +45,11 @@
             <span class="icon polygon"></span> {{result.ulurpno}} <span class="subdued">{{result.label}}</span>
           {{else if (eq type 'neighborhood')}}
             {{fa-icon "home"}}{{fa-icon "building"}} {{result.label}}
-          {{else if (eq type 'zoning-district')}}
-            <span class="icon polygon"></span> {{result.label}}
-          {{else if (eq type 'special-purpose-district')}}
+          {{else if (or
+            (eq type 'zoning-district')
+            (eq type 'special-purpose-district')
+            (eq type 'commercial-overlay')
+          )}}
             <span class="icon polygon"></span> {{result.label}}
           {{else}}
             {{fa-icon "map-pin"}} {{result.label}}
