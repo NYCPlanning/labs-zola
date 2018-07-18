@@ -6,7 +6,7 @@ import MapboxDraw from 'mapbox-gl-draw';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import area from '@turf/area';
 import lineDistance from '@turf/line-distance';
-import numeral from 'npm:numeral';
+import numeral from 'numeral';
 
 import sources from '../sources';
 import layerGroups from '../layer-groups';
