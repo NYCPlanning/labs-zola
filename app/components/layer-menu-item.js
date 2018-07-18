@@ -3,9 +3,14 @@ import { alias } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { ParentMixin, ChildMixin } from 'ember-composability-tools';
+import { next } from '@ember/runloop';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 export default Component.extend(ParentMixin, ChildMixin, {
+  init(...args) {
+    this._super(...args);
+  },
+
   registeredLayers: service(),
   mainMap: service(),
   visible: alias('layer.visible'),
@@ -27,6 +32,17 @@ export default Component.extend(ParentMixin, ChildMixin, {
   @computed('layer.{minzoom,visible}', 'mainMap.currentZoom')
   warning(minzoom, visible, currentZoom) {
     return (minzoom && visible && (currentZoom < minzoom));
+  },
+
+  /**
+   * @override: ember lifecycle
+   */
+  didInsertElement(...params) {
+    this._super(...params);
+    
+    next(() => {
+      this.get('menuItems').pushObject(this);
+    });
   },
 
   actions: {

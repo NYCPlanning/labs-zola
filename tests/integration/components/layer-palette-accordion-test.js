@@ -39,12 +39,12 @@ module('Integration | Component | layer palette accordion', function(hooks) {
 
     // Template block usage:
     await render(hbs`
-      {{#layer-palette-accordion}}
-        {{layer-menu-item layer=fakeLayerVisible}}
-        {{layer-menu-item layer=fakeLayerVisible}}
-        {{layer-menu-item layer=fakeLayerVisible}}
-        {{layer-menu-item layer=fakeLayerInvisible}}
-        {{layer-menu-item layer=fakeLayerInvisible}}
+      {{#layer-palette-accordion as |accordion|}}
+        {{accordion.menu-item layer=fakeLayerVisible}}
+        {{accordion.menu-item layer=fakeLayerVisible}}
+        {{accordion.menu-item layer=fakeLayerVisible}}
+        {{accordion.menu-item layer=fakeLayerInvisible}}
+        {{accordion.menu-item layer=fakeLayerInvisible}}
       {{/layer-palette-accordion}}
     `);
 
