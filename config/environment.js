@@ -1,5 +1,7 @@
-const env = function (environment) {
-  const ENV = {
+'use strict';
+
+module.exports = function(environment) {
+  let ENV = {
     modulePrefix: 'labs-zola',
     environment,
     rootURL: '/',
@@ -11,35 +13,14 @@ const env = function (environment) {
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
-        Date: false,
-      },
+        Date: false
+      }
     },
-    'mapbox-gl': {
-      accessToken: 'pk.eyJ1IjoiY3dob25nbnljIiwiYSI6ImNpczF1MXdrdjA4MXcycXA4ZGtyN2x5YXIifQ.3HGyME8tBs6BnljzUVIt4Q',
-    },
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    },
-    metricsAdapters: [
-      {
-        name: 'GoogleAnalytics',
-        environments: ['development', 'production'],
-        config: {
-          id: 'UA-84250233-8',
-          // Use `analytics_debug.js` in development
-          debug: false,
-          // Use verbose tracing of GA events
-          trace: false,
-          // Ensure development env hits aren't sent to GA
-          sendHitTask: environment !== 'development',
-        },
-      },
-    ],
-    contentSecurityPolicy: {
-      'default-src': "'none'",
-      'script-src': "'self' www.google-analytics.com",
-    },
+    }
   };
 
   if (environment === 'development') {
@@ -59,11 +40,12 @@ const env = function (environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.autoboot = false;
   }
 
-  if (environment === 'production') {}; // eslint-disable-line
+  if (environment === 'production') {
+    // here you can enable a production-specific feature
+  }
 
   return ENV;
 };
-
-module.exports = env;
