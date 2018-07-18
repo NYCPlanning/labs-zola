@@ -19,7 +19,7 @@ export default Component.extend(ParentMixin, ChildMixin, {
   init(...args) {
     this._super(...args);
 
-    const layerID = this.get('for');
+    const layerID = this['for'];
     if (layerID) {
       this.set('config', layerGroups[layerID.camelize()]);
     }
@@ -28,7 +28,7 @@ export default Component.extend(ParentMixin, ChildMixin, {
       warn('Only one layer-control per layer is supported.');
     }
 
-    const didToggleVisibility = this.get('didToggleVisibility');
+    const didToggleVisibility = this.didToggleVisibility;
     if (didToggleVisibility) {
       addObserver(this, 'visible', this, 'fireVisibilityEvent');
     }
@@ -109,8 +109,8 @@ export default Component.extend(ParentMixin, ChildMixin, {
   },
 
   fireVisibilityEvent() {
-    const didToggleVisibility = this.get('didToggleVisibility');
-    didToggleVisibility(this.get('visible'));
+    const didToggleVisibility = this.didToggleVisibility;
+    didToggleVisibility(this.visible);
   },
 
   buildRangeSQL(sql, column = '', range = [0, 1] || ['a', 'b']) {

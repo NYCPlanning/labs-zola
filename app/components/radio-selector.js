@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import { set } from '@ember/object';
 import { copy } from '@ember/object/internals';
 import { merge } from '@ember/polyfills';
@@ -17,13 +17,13 @@ const showLayer = (layer) => {
 };
 
 
-export default Ember.Component.extend({
+export default Component.extend({
   init(...args) {
     this._super(...args);
 
     next(() => {
-      const layers = this.get('layers');
-      const qps = this.get('qps');
+      const layers = this.layers;
+      const qps = this.qps;
 
       const matchedLayer = layers.find(layer => qps.get(layer.layer.id) === true);
 
@@ -37,8 +37,8 @@ export default Ember.Component.extend({
   qps: null,
   actions: {
     switchLayer(id) {
-      const layers = this.get('layers');
-      const qps = this.get('qps');
+      const layers = this.layers;
+      const qps = this.qps;
 
       // turn all layers off, reset query params
       layers.forEach((layer) => {

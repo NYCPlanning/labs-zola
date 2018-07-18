@@ -14,7 +14,7 @@ export default Component.extend({
   actions: {
     @trackEvent('Bookmark', 'Toggle Saved', 'bookmark.id')
     toggleSaved() {
-      const bookmark = this.get('bookmark');
+      const bookmark = this.bookmark;
       bookmark.then((resolvedBookmark) => {
         if (resolvedBookmark) {
           resolvedBookmark.deleteRecord();

@@ -26,7 +26,7 @@ export default Component.extend({
 
   actions: {
     checkBBL() {
-      const { boro: { code }, block, lot } = this.getProperties('boro', 'block', 'lot');
+      const { boro: { code }, block, lot } = this;
 
       const uniqueSQL = `select bbl from mappluto_v18_1 where block= ${block} and lot = ${lot} and borocode = ${code}`;
       carto.SQL(uniqueSQL).then((response) => {

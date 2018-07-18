@@ -57,7 +57,7 @@ export default Service.extend({
 
   getTooltipTemplate(id) {
     // find the layer with this id, return its tooltipTemplate
-    const layer = this.get('layers').reduce(
+    const layer = this.layers.reduce(
       (accumulator, curr) => {
         const match = curr.config.layers.filter(l => l.layer.id === id);
         return match.length > 0 ? accumulator.concat(match[0]) : accumulator;
@@ -69,6 +69,6 @@ export default Service.extend({
   },
 
   findLayer(id) {
-    return this.get('layers').findBy('config.id', id);
+    return this.layers.findBy('config.id', id);
   },
 });

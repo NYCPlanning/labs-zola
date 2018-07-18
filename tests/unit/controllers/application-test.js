@@ -1,12 +1,12 @@
-import { moduleFor, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('controller:application', 'Unit | Controller | application', {
-  // Specify the other units that are required for this test.
-  needs: ['service:mainMap', 'service:mapMouseover', 'service:registeredLayers', 'service:metrics']
-});
+module('Unit | Controller | application', function(hooks) {
+  setupTest(hooks);
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  const controller = this.subject();
-  assert.ok(controller);
+  // Replace this with your real tests.
+  test('it exists', function(assert) {
+    const controller = this.owner.lookup('controller:application');
+    assert.ok(controller);
+  });
 });

@@ -41,7 +41,7 @@ export default Route.extend({
   },
 
   afterModel() {
-    this.get('mainMap').resetBounds();
+    this.mainMap.resetBounds();
   },
 });
 

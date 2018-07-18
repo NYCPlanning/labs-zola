@@ -29,7 +29,7 @@ export default Route.extend(updateSelectionMixin, {
 
   setupController(controller, { taskInstance }) {
     this._super(controller, taskInstance);
-    this.get('waitToFitBounds').perform(taskInstance);
+    this.waitToFitBounds.perform(taskInstance);
 
     controller
       .setProperties({

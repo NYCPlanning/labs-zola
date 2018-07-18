@@ -1,4 +1,6 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 const inputValue = {
@@ -52,15 +54,15 @@ const inputValue = {
   ],
 };
 
-moduleForComponent('extract-layer-stops-for', 'helper:extract-layer-stops-for', {
-  integration: true
-});
+module('helper:extract-layer-stops-for', function(hooks) {
+  setupRenderingTest(hooks);
 
-// Replace this with your real tests.
-test('it renders', function(assert) {
-  this.set('inputValue', inputValue);
+  // Replace this with your real tests.
+  test('it renders', async function(assert) {
+    this.set('inputValue', inputValue);
 
-  this.render(hbs`{{extract-layer-stops-for 'zd' inputValue}}`);
+    await render(hbs`{{extract-layer-stops-for 'zd' inputValue}}`);
 
-  assert.equal((typeof this), 'object');
+    assert.equal((typeof this), 'object');
+  });
 });

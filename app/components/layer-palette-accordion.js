@@ -10,7 +10,7 @@ export default Component.extend(ParentMixin, {
 
   didInsertElement() {
     this.set('numberVisible', computed('childComponents.@each.visible', function() {
-      const childComponents = this.get('childComponents');
+      const childComponents = this.childComponents;
       return childComponents.filterBy('visible', true).length;
     }));
   },

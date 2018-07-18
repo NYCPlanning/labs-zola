@@ -1,43 +1,46 @@
-import { isEmpty } from '@ember/utils';
-import { inject as service } from '@ember/service';
+// import { isEmpty } from '@ember/utils';
+// import { inject as service } from '@ember/service';
 
-export default function trackEvent(eventCategory, incAction, incLabel, eventValue) {
-  return (target, name, desc) => {
-    const descriptor = desc;
-    const originalValue = descriptor.value;
+// Broken for now pending code modification:
+// https://github.com/ember-decorators/ember-decorators/issues/206
 
-    descriptor.value = function(...args) {
-      originalValue.call(this, ...args);
+export default function trackEvent(/* eventCategory, incAction, incLabel, eventValue */) {
+  return (/* target, name, desc */) => {
+    // const descriptor = desc;
+    // const originalValue = descriptor.value;
 
-      if (!this.get('metrics')) {
-        this.set('metrics', service());
-      }
+    // descriptor.value = function(...args) {
+    //   originalValue.call(this, ...args);
 
-      let eventAction = incAction;
-      let eventLabel = incLabel;
+    //   if (!this.metrics) {
+    //     this.set('metrics', service());
+    //   }
 
-      // allow getting prop names for values
-      if (eventAction) {
-        const actionIdentifier = this.get(eventAction);
+    //   let eventAction = incAction;
+    //   let eventLabel = incLabel;
 
-        if (!isEmpty(actionIdentifier)) {
-          eventAction = actionIdentifier;
-        }
-      }
+    //   // allow getting prop names for values
+    //   if (eventAction) {
+    //     const actionIdentifier = this.get(eventAction);
 
-      if (eventLabel) {
-        const labelIdentifier = this.get(eventLabel);
-        if (!isEmpty(labelIdentifier)) {
-          eventLabel = labelIdentifier;
-        }
-      }
+    //     if (!isEmpty(actionIdentifier)) {
+    //       eventAction = actionIdentifier;
+    //     }
+    //   }
 
-      this.get('metrics').trackEvent(
-        'GoogleAnalytics',
-        { eventCategory, eventAction, eventLabel, eventValue },
-      );
-    };
+    //   if (eventLabel) {
+    //     const labelIdentifier = this.get(eventLabel);
+    //     if (!isEmpty(labelIdentifier)) {
+    //       eventLabel = labelIdentifier;
+    //     }
+    //   }
 
-    return descriptor;
+    //   this.get('metrics').trackEvent(
+    //     'GoogleAnalytics',
+    //     { eventCategory, eventAction, eventLabel, eventValue },
+    //   );
+    // };
+
+    // return descriptor;
   };
 }

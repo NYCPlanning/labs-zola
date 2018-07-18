@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 import specialPurposeDistrictCrosswalk from '../utils/special-purpose-crosswalk';
 
 export function makeSpecialPurposeDistrictLink([specialPurposeDistrictName]) {
@@ -8,4 +8,4 @@ export function makeSpecialPurposeDistrictLink([specialPurposeDistrictName]) {
   return result;
 }
 
-export default Ember.Helper.helper(makeSpecialPurposeDistrictLink);
+export default helper(makeSpecialPurposeDistrictLink);

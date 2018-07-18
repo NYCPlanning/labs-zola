@@ -18,7 +18,7 @@ export default Component.extend(ChildMixin, QueryParamMap, {
     this._super(...args);
 
     const qps = this.get('parentComponent.qps');
-    const queryParam = this.get('query-param');
+    const queryParam = this['query-param'];
 
     if (qps) {
       const qpValue = this.get(`parentComponent.qps.${queryParam}`);
@@ -51,11 +51,11 @@ export default Component.extend(ChildMixin, QueryParamMap, {
           }
           return moment(date).endOf('month').format(defaultFormat);
         });
-      const column = this.get('column');
-      const source = this.get('source');
+      const column = this.column;
+      const source = this.source;
 
       this.set('start', value);
-      this.get('parentComponent').send('updateSql', 'buildRangeSQL', source, column, range);
+      this.parentComponent.send('updateSql', 'buildRangeSQL', source, column, range);
     },
   },
 });

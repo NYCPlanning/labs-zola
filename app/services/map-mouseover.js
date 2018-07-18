@@ -75,7 +75,7 @@ export default Service.extend({
     if (features.length > 0) {
       const thisFeature = features[0];
 
-      const prevFeature = this.get('highlightedLotFeatures')[0];
+      const prevFeature = this.highlightedLotFeatures[0];
       if (!prevFeature || thisFeature.id !== prevFeature.id) {
         this.set('highlightedLotFeatures', [thisFeature]);
         // move the layer
@@ -96,7 +96,7 @@ export default Service.extend({
         }
       }
 
-      this.set('tooltipTemplate', this.get('registeredLayers').getTooltipTemplate(thisFeature.layer.id));
+      this.set('tooltipTemplate', this.registeredLayers.getTooltipTemplate(thisFeature.layer.id));
     } else {
       map.getCanvas().style.cursor = '';
 

@@ -1,4 +1,6 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import {
   click,
@@ -59,43 +61,6 @@ const commercialOverlays = {
   ],
 };
 
-moduleForComponent('layer-checkbox', 'Integration | Component | layer checkbox', {
-  integration: true,
+module('Integration | Component | layer checkbox', function(hooks) {
+  setupRenderingTest(hooks);
 });
-
-// test('it renders', async function(assert) {
-
-//   // Set any properties with this.set('myProperty', 'value');
-//   // Handle any actions with this.on('myAction', function(val) { ... });
-
-//   this.setProperties({
-//     zoom: 10,
-//     lng: 42,
-//     lat: -71,
-//     commercialOverlays,
-//   });
-
-//   await this.render(hbs`
-//     {{#mapbox-gl
-//       id='main-map'
-//       initOptions=(hash style='mapbox://styles/mapbox/light-v9'
-//                         zoom=zoom
-//                         center=(array lng lat))
-//       as |map|}}
-
-//         {{#map.layer-group 
-//           config=commercialOverlays as |group|}}
-
-//             {{#group.multi-select-control 
-//               column='overlay' as |multiSelect|}}
-
-//               {{multiSelect.group-checkbox}}
-
-//             {{/group.multi-select-control}}
-//         {{/map.layer-group}}
-//     {{/mapbox-gl}}
-//   `);
-//   await waitUntil(() => find('input'), { timeout });
-//   await click('input');
-//   assert.equal(this.$().text().trim(), '');
-// });
