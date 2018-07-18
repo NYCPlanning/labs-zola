@@ -64,6 +64,10 @@
 
   {{map.layer-group for='business-improvement-districts' visible=qps.business-improvement-districts}}
 
+  {{map.layer-group for='industrial-business-zones' visible=qps.industrial-business-zones}}
+
+  {{map.layer-group for='appendixj-designated-mdistricts' visible=qps.appendixj-designated-mdistricts}}
+
   {{map.layer-group for='limited-height-districts' visible=qps.limited-height-districts}}
 
   {{map.layer-group for='special-purpose-subdistricts' visible=qps.special-purpose-subdistricts}}
@@ -141,6 +145,10 @@
   {{map.on 'draw.render' (action 'handleMeasurement')}}
 
 {{/mapbox-gl}}
+
+<div class="print-controls mapboxgl-ctrl mapboxgl-ctrl-group">
+  <button {{action 'handlePrint'}} class="mapboxgl-ctrl-icon">{{fa-icon 'print'}}</button>
+</div>
 
 <div class="draw-tools">
   <label>

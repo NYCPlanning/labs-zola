@@ -3,9 +3,9 @@ export default {
   title: 'Tax Lots',
   titleTooltip: 'A tax lot is a parcel of land identified with a unique borough, block and lot number for property tax purposes.',
   meta: {
-    description: 'MapPLUTO™ v17v1.1, Bytes of the Big Apple',
+    description: 'MapPLUTO™ v18.1, Bytes of the Big Apple',
     url: ['https://www1.nyc.gov/site/planning/data-maps/open-data.page'],
-    updated_at: '5 March 2018',
+    updated_at: '18 June 2018',
   },
   layers: [
     {
