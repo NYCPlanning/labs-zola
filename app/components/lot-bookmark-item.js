@@ -23,7 +23,7 @@ export default Component.extend({
 
   actions: {
     deleteBookmark(e) {
-      this.attrs.deleteBookmark(e);
+      this.deleteBookmark(e);
     },
   },
 });

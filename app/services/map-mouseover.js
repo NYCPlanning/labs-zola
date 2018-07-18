@@ -24,7 +24,7 @@ export default Service.extend({
     return null;
   },
 
-  @computed('mousePosition.x', 'mousePosition.y')
+  @computed('mousePosition.{x,y}')
   hasMousePosition(x, y) {
     return !!(x && y);
   },

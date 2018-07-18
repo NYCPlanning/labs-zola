@@ -1,15 +1,15 @@
-import { visit } from '@ember/test-helpers';
-import { module, test } from 'qunit';
-import { setupApplicationTest } from 'ember-qunit';
-import {
+import { visit,
   click,
   fillIn,
   find,
   findAll,
-  keyEvent,
+  triggerKeyEvent,
   waitUntil,
+  currentURL,
   triggerEvent
-} from 'ember-native-dom-helpers';
+} from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
 
 const SEARCH_INPUT_SELECTOR = '.search input';
 const SEARCH_RESULTS_SELECTOR = '.search-results';
@@ -31,7 +31,7 @@ module('Acceptance | index', function(hooks) {
     await visit('/');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
     await waitUntil(() => find('.has-results'), { timeout });
-    await keyEvent('.tax-lot', 'click');
+    await click('.tax-lot');
     // await keyEvent(SEARCH_INPUT_SELECTOR, 'keypress', 13);
 
     assert.equal(
@@ -44,9 +44,9 @@ module('Acceptance | index', function(hooks) {
     await visit('/');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
     await waitUntil(() => find('.has-results'), { timeout });
-    await keyEvent(SEARCH_INPUT_SELECTOR, 'keyup', 40);
-    await keyEvent(SEARCH_INPUT_SELECTOR, 'keyup', 38);
-    await keyEvent(SEARCH_INPUT_SELECTOR, 'keyup', 38);
+    await triggerKeyEvent(SEARCH_INPUT_SELECTOR, 'keyup', 40);
+    await triggerKeyEvent(SEARCH_INPUT_SELECTOR, 'keyup', 38);
+    await triggerKeyEvent(SEARCH_INPUT_SELECTOR, 'keyup', 38);
 
     assert.equal(
       (find(resultAt(1)).className.indexOf('highlighted-result') > -1),
@@ -57,14 +57,14 @@ module('Acceptance | index', function(hooks) {
   test('Map search: hide result list on focus out, persist search result label', async function(assert) {
     await visit('/');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_ADDRESS);
-    await keyEvent(SEARCH_INPUT_SELECTOR, 'click');
+    await click(SEARCH_INPUT_SELECTOR);
     await waitUntil(() => find('.has-results'), { timeout });
 
     assert.ok(
       find('.focused'),
     );
 
-    await keyEvent(find(resultAt(1)), 'click');
+    await click(find(resultAt(1)));
 
     assert.notOk(
       find('.focused'),

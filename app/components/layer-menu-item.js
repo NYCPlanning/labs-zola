@@ -24,7 +24,7 @@ export default Component.extend(ParentMixin, ChildMixin, {
 
   titleTooltip: alias('layer.config.titleTooltip'),
 
-  @computed('layer.minzoom', 'layer.visible', 'mainMap.currentZoom')
+  @computed('layer.{minzoom,visible}', 'mainMap.currentZoom')
   warning(minzoom, visible, currentZoom) {
     return (minzoom && visible && (currentZoom < minzoom));
   },

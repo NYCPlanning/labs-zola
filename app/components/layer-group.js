@@ -19,7 +19,7 @@ export default Component.extend(ParentMixin, ChildMixin, {
   init(...args) {
     this._super(...args);
 
-    const layerID = this['for'];
+    const { for: layerID } = this;
     if (layerID) {
       this.set('config', layerGroups[layerID.camelize()]);
     }

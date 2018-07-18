@@ -1,6 +1,5 @@
 import { inject as service } from '@ember/service';
 import Mixin from '@ember/object/mixin';
-import { get } from '@ember/object';
 import { scheduleOnce } from '@ember/runloop';
 
 export default Mixin.create({

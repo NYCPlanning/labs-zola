@@ -1,6 +1,7 @@
 import Service from '@ember/service';
-import pointLayer from '../layers/point-layer';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import $ from 'jquery';
+import pointLayer from '../layers/point-layer';
 
 const DEFAULT_BOUNDS = [-73.9, 40.690913, -73.832692, 40.856654];
 
