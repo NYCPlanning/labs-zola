@@ -52,7 +52,8 @@ export default Component.extend({
           newResult.id = index;
           newResult.demuxedBbl = bblDemux(result.bbl);
           return newResult;
-        }))
+        },
+      ))
       .then((resultList) => {
         if (isEmpty(resultList)) {
           this.get('metrics').trackEvent(

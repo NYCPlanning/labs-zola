@@ -34,7 +34,12 @@ export default function trackEvent(eventCategory, incAction, incLabel, eventValu
 
       this.get('metrics').trackEvent(
         'GoogleAnalytics',
-        { eventCategory, eventAction, eventLabel, eventValue },
+        {
+          eventCategory,
+          eventAction,
+          eventLabel,
+          eventValue,
+        },
       );
     };
 

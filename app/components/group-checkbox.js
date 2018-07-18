@@ -12,8 +12,12 @@ export default Checkbox.extend({
     return values.every(val => val);
   },
   set checked(value) {
-    const { scope, refs, values, indeterminate } =
-      this.getProperties('scope', 'refs', 'values', 'indeterminate');
+    const {
+      scope,
+      refs,
+      values,
+      indeterminate,
+    } = this.getProperties('scope', 'refs', 'values', 'indeterminate');
 
     if (indeterminate) refs.forEach(ref => scope.set(ref, true));
     if (values.every(val => val)) refs.forEach(ref => scope.set(ref, false));

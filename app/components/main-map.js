@@ -272,7 +272,7 @@ export default Component.extend({
 
     handleMeasurement() {
       // should log both metric and standard display strings for the current drawn feature
-      const features = draw.getAll().features;
+      const { features } = draw.getAll();
 
       if (features.length > 0) {
         const feature = features[0];
@@ -339,9 +339,11 @@ export default Component.extend({
       const localSource = localConfig.findBy('id', data.sourceId);
 
       if (localSource) {
-        if (data.dataType === 'source' &&
-            data.isSourceLoaded &&
-            sourceIds.includes(data.sourceId)) {
+        if (
+          data.dataType === 'source'
+          && data.isSourceLoaded
+          && sourceIds.includes(data.sourceId)
+        ) {
           this.set('loading', false);
         } else {
           this.set('loading', true);
