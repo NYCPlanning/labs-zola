@@ -38,7 +38,6 @@
     "ember-cli-sass": "^6.2.0",
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
-    "ember-cli-tree-shaker": "0.1.4",
     "ember-cli-uglify": "^2.0.0",
     "ember-cli-update": "0.14.0",
     "ember-composability-tools": "0.0.8",
