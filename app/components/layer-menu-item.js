@@ -13,6 +13,7 @@ export default Component.extend(ParentMixin, ChildMixin, {
 
   registeredLayers: service(),
   mainMap: service(),
+  metrics: service(),
   visible: alias('layer.visible'),
   tagName: 'li',
 
@@ -46,7 +47,6 @@ export default Component.extend(ParentMixin, ChildMixin, {
   },
 
   actions: {
-
     @trackEvent('Toggle Layer', 'title', 'visible')
     toggleVisibility() {
       this.toggleProperty('visible');

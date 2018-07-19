@@ -1,10 +1,7 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
-import carto from '../utils/carto';
-
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
-
-import trackEvent from '../utils/track-event'; // eslint-disable-line
+import carto from '../utils/carto';
 
 export default Component.extend({
   classNames: ['bbl-lookup hide-for-print'],

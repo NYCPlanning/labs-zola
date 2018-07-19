@@ -10,6 +10,7 @@ export default Component.extend(ParentMixin, {
 
     this.set('menuItems', []);
   },
+  metrics: service(),
   classNames: ['layer-palette-accordion'],
   closed: true,
   title: '',
