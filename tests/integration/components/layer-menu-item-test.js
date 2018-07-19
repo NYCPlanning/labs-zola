@@ -31,9 +31,9 @@ module('Integration | Component | layer menu item', function(hooks) {
     });
 
     await render(hbs`
-      {{#layer-palette-accordion}}
-        {{layer-menu-item mainMap=fakeMap layer=fakeLimitedZoomLayer}}
-        {{layer-menu-item mainMap=fakeMap layer=fakeLayer}}
+      {{#layer-palette-accordion as |accordion|}}
+        {{accordion.menu-item mainMap=fakeMap layer=fakeLimitedZoomLayer}}
+        {{accordion.menu-item mainMap=fakeMap layer=fakeLayer}}
       {{/layer-palette-accordion}}
     `);
 

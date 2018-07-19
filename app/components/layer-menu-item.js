@@ -39,7 +39,7 @@ export default Component.extend(ParentMixin, ChildMixin, {
    */
   didInsertElement(...params) {
     this._super(...params);
-    
+
     next(() => {
       this.get('menuItems').pushObject(this);
     });
