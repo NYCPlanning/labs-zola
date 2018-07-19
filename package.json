@@ -89,6 +89,7 @@
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "ember-concurrency": "^0.8.16",
     "ember-fetch": "^3.3.1",
+    "mapbox-gl": "^0.45.0",
     "mustache": "^2.3.0",
     "numeral": "^2.0.6"
   }
