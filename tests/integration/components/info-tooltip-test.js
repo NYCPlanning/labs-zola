@@ -1,25 +1,27 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('info-tooltip', 'Integration | Component | info tooltip', {
-  integration: true
-});
+module('Integration | Component | info tooltip', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
+  test('it renders', async function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{info-tooltip}}`);
+    await render(hbs`{{info-tooltip}}`);
 
-  assert.equal(this.$().text().trim(), '');
+    assert.equal(find('*').textContent.trim(), '');
 
-  // Template block usage:
-  this.render(hbs`
-    {{#info-tooltip}}
-      template block text
-    {{/info-tooltip}}
-  `);
+    // Template block usage:
+    await render(hbs`
+      {{#info-tooltip}}
+        template block text
+      {{/info-tooltip}}
+    `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+    assert.equal(find('*').textContent.trim(), 'template block text');
+  });
 });

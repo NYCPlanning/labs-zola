@@ -10,7 +10,7 @@ export default Route.extend({
 
   actions: {
     didTransition() {
-      this.get('mainMap')
+      this.mainMap
         .setProperties({
           selected: null,
           shouldFitBounds: false,

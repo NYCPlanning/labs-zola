@@ -26,10 +26,10 @@ export default Route.extend(updateSelectionMixin, {
 
   actions: {
     fitBounds() {
-      const mainMap = this.get('mainMap');
+      const mainMap = this.mainMap;
       const map = mainMap.mapInstance;
       const fitBoundsOptions = mainMap.get('isSelectedBoundsOptions');
-      map.fitBounds(this.get('bounds'), fitBoundsOptions);
+      map.fitBounds(this.bounds, fitBoundsOptions);
     },
   },
 });

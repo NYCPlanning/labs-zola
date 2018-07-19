@@ -3,7 +3,7 @@ import { task } from 'ember-concurrency';
 
 export default Mixin.create({
   afterModel({ taskInstance }) {
-    this.get('setSelectedTask').perform(taskInstance);
+    this.setSelectedTask.perform(taskInstance);
   },
 
   setSelectedTask: task(function* (taskInstance) {

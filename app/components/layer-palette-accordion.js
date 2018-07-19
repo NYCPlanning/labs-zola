@@ -1,19 +1,24 @@
 import { computed } from '@ember/object';
 import Component from '@ember/component';
 import { ParentMixin } from 'ember-composability-tools';
+import { inject as service } from '@ember/service';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 export default Component.extend(ParentMixin, {
+  init(...args) {
+    this._super(...args);
+
+    this.set('menuItems', []);
+  },
+  metrics: service(),
   classNames: ['layer-palette-accordion'],
   closed: true,
   title: '',
-
-  didInsertElement() {
-    this.set('numberVisible', computed('childComponents.@each.visible', function() {
-      const childComponents = this.get('childComponents');
-      return childComponents.filterBy('visible', true).length;
-    }));
-  },
+  registeredLayers: service(),
+  numberVisible: computed('menuItems.@each.visible', function() {
+    const { length } = this.childComponents.filterBy('visible', true);
+    return length;
+  }),
 
   actions: {
     @trackEvent('Toggle Accordion', 'title', 'closed')

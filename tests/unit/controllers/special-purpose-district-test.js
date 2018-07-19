@@ -1,12 +1,12 @@
-import { moduleFor, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('controller:special-purpose-district', 'Unit | Controller | special purpose district', {
-  // Specify the other units that are required for this test.
-  needs: ['service:metrics']
-});
+module('Unit | Controller | special purpose district', function(hooks) {
+  setupTest(hooks);
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let controller = this.subject();
-  assert.ok(controller);
+  // Replace this with your real tests.
+  test('it exists', function(assert) {
+    let controller = this.owner.lookup('controller:special-purpose-district');
+    assert.ok(controller);
+  });
 });

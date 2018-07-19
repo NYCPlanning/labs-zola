@@ -5,7 +5,7 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 export default Component.extend(ParentMixin, {
   @computed('childComponents.@each.selected')
   allChecked() {
-    return this.get('childComponents')
+    return this.childComponents
       .filterBy('selected')
       .mapBy('value');
   },
@@ -20,13 +20,13 @@ export default Component.extend(ParentMixin, {
 
   actions: {
     selectionChanged() {
-      const values = this.get('allChecked');
-      const source = this.get('source');
-      const column = this.get('column');
+      const values = this.allChecked;
+      const source = this.source;
+      const column = this.column;
 
-      const previousValues = this.get('values');
+      const previousValues = this.values;
       if (JSON.stringify(values) !== JSON.stringify(previousValues)) {
-        this.get('parentComponent')
+        this.parentComponent
           .send('updateSql', 'buildMultiSelectSQL', source, column, values);
       }
 
