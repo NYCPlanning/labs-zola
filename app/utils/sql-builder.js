@@ -35,7 +35,7 @@ class SqlBuilder {
 
   // generic chunker for Checkboxes and Multiselects
   multiSelect(dimension, filters) { // eslint-disable-line
-    const values = filters[dimension].values;
+    const { values } = filters[dimension];
 
     const checkedValues = values.filter(value => value.checked === true);
     const subChunks = checkedValues.map(value => `${dimension} = '${value.value}'`);
@@ -51,7 +51,7 @@ class SqlBuilder {
 
   // generic chunker for Checkboxes and Multiselects that does a LIKE instead of an equals
   fuzzyMultiSelect(dimension, filters) { // eslint-disable-line
-    const values = filters[dimension].values;
+    const { values } = filters[dimension];
 
     const checkedValues = values.filter(value => value.checked === true);
     const subChunks = checkedValues.map(value => `${dimension} LIKE '%${value.value}%'`);

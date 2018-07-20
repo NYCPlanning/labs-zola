@@ -23,60 +23,59 @@ const queryParams = Object.keys(layerGroups)
   );
 
 // define new query params here:
-export const mapQueryParams =
-  new QueryParams(
-    merge(
-      queryParams,
-      {
-        'comm-type': { defaultValue: '' },
-        BP: { defaultValue: true },
-        C1: { defaultValue: true },
-        C2: { defaultValue: true },
-        C3: { defaultValue: true },
-        C4: { defaultValue: true },
-        C5: { defaultValue: true },
-        C6: { defaultValue: true },
-        C7: { defaultValue: true },
-        C8: { defaultValue: true },
-        M1: { defaultValue: true },
-        M2: { defaultValue: true },
-        M3: { defaultValue: true },
-        PA: { defaultValue: true },
-        R1: { defaultValue: true },
-        R2: { defaultValue: true },
-        R3: { defaultValue: true },
-        R4: { defaultValue: true },
-        R5: { defaultValue: true },
-        R6: { defaultValue: true },
-        R7: { defaultValue: true },
-        R8: { defaultValue: true },
-        R9: { defaultValue: true },
-        R10: { defaultValue: true },
-        c11: { defaultValue: true },
-        c12: { defaultValue: true },
-        c13: { defaultValue: true },
-        c14: { defaultValue: true },
-        c15: { defaultValue: true },
-        c21: { defaultValue: true },
-        c22: { defaultValue: true },
-        c23: { defaultValue: true },
-        c24: { defaultValue: true },
-        c25: { defaultValue: true },
-        allChecked: { defaultValue: [] },
-        'aerials-2016': { defaultValue: true },
-        'aerials-1924': { defaultValue: false },
-        'aerials-2014': { defaultValue: false },
-        'aerials-2012': { defaultValue: false },
-        'aerials-2010': { defaultValue: false },
-        'aerials-2008': { defaultValue: false },
-        'aerials-2006': { defaultValue: false },
-        'aerials-2004': { defaultValue: false },
-        'aerials-20012': { defaultValue: false },
-        'aerials-1996': { defaultValue: false },
-        'aerials-1951': { defaultValue: false },
-      },
-    ),
-  );
+export const mapQueryParams = new QueryParams(
+  merge(
+    queryParams,
+    {
+      'comm-type': { defaultValue: '' },
+      BP: { defaultValue: true },
+      C1: { defaultValue: true },
+      C2: { defaultValue: true },
+      C3: { defaultValue: true },
+      C4: { defaultValue: true },
+      C5: { defaultValue: true },
+      C6: { defaultValue: true },
+      C7: { defaultValue: true },
+      C8: { defaultValue: true },
+      M1: { defaultValue: true },
+      M2: { defaultValue: true },
+      M3: { defaultValue: true },
+      PA: { defaultValue: true },
+      R1: { defaultValue: true },
+      R2: { defaultValue: true },
+      R3: { defaultValue: true },
+      R4: { defaultValue: true },
+      R5: { defaultValue: true },
+      R6: { defaultValue: true },
+      R7: { defaultValue: true },
+      R8: { defaultValue: true },
+      R9: { defaultValue: true },
+      R10: { defaultValue: true },
+      c11: { defaultValue: true },
+      c12: { defaultValue: true },
+      c13: { defaultValue: true },
+      c14: { defaultValue: true },
+      c15: { defaultValue: true },
+      c21: { defaultValue: true },
+      c22: { defaultValue: true },
+      c23: { defaultValue: true },
+      c24: { defaultValue: true },
+      c25: { defaultValue: true },
+      allChecked: { defaultValue: [] },
+      'aerials-2016': { defaultValue: true },
+      'aerials-1924': { defaultValue: false },
+      'aerials-2014': { defaultValue: false },
+      'aerials-2012': { defaultValue: false },
+      'aerials-2010': { defaultValue: false },
+      'aerials-2008': { defaultValue: false },
+      'aerials-2006': { defaultValue: false },
+      'aerials-2004': { defaultValue: false },
+      'aerials-20012': { defaultValue: false },
+      'aerials-1996': { defaultValue: false },
+      'aerials-1951': { defaultValue: false },
+    },
+  ),
+);
 
 export default Controller.extend(mapQueryParams.Mixin, {
   init(...args) {
@@ -108,10 +107,9 @@ export default Controller.extend(mapQueryParams.Mixin, {
     saveAddress(address) {
       const bookmarks = this.store.peekAll('bookmark');
 
-      const isUnique =
-        bookmarks.every(
-          bookmark => bookmark.get('address') !== address.address,
-        );
+      const isUnique = bookmarks.every(
+        bookmark => bookmark.get('address') !== address.address,
+      );
 
       set(address, 'type', 'address');
 
@@ -121,7 +119,7 @@ export default Controller.extend(mapQueryParams.Mixin, {
     },
     routeToLot(e) {
       const map = e.target;
-      const mainMap = this.mainMap;
+      const { mainMap } = this;
 
       if (mainMap.get('drawMode')) return;
 
@@ -143,10 +141,9 @@ export default Controller.extend(mapQueryParams.Mixin, {
             cartodb_id, // eslint-disable-line
           } = feature.properties;
 
-          const featureFragment =
-            EmberObject.extend(Geometric, {
-              geometry: feature.geometry,
-            }).create();
+          const featureFragment = EmberObject.extend(Geometric, {
+            geometry: feature.geometry,
+          }).create();
 
           mainMap.set('selected', featureFragment);
 

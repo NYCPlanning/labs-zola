@@ -35,7 +35,12 @@ export default function trackEvent(eventCategory, incAction, incLabel, eventValu
       try {
         this.get('metrics').trackEvent(
           'GoogleAnalytics',
-          { eventCategory, eventAction, eventLabel, eventValue },
+          {
+            eventCategory,
+            eventAction,
+            eventLabel,
+            eventValue,
+          },
         );
       } catch (e) {
         throw Error('Metrics was not found and must be injected.', e);

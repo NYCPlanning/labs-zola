@@ -52,11 +52,11 @@ export default Component.extend(ParentMixin, ChildMixin, {
       this.toggleProperty('visible');
     },
     updateSql(method, column, value) {
-      const layer = this.layer;
+      const { layer } = this;
       layer.send('updateSql', method, column, value);
     },
     updatePaintFor(id, paintObject) {
-      const layer = this.layer;
+      const { layer } = this;
       layer.send('updatePaintFor', id, paintObject);
     },
   },

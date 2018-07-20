@@ -52,7 +52,8 @@ export default Component.extend({
           newResult.id = index;
           newResult.demuxedBbl = bblDemux(result.bbl);
           return newResult;
-        }))
+        },
+      ))
       .then((resultList) => {
         if (isEmpty(resultList)) {
           this.metrics.trackEvent(
@@ -78,7 +79,7 @@ export default Component.extend({
   },
 
   keyPress(event) {
-    const selected = this.selected;
+    const { selected } = this;
     const { keyCode } = event;
 
     // enter
@@ -92,8 +93,7 @@ export default Component.extend({
   },
 
   keyUp(event) {
-    const selected = this.selected;
-    const resultsCount = this.resultsCount;
+    const { selected, resultsCount } = this;
     const { keyCode } = event;
 
     const incSelected = () => { this.set('selected', selected + 1); };
@@ -125,7 +125,7 @@ export default Component.extend({
 
   actions: {
     clear() {
-      const mainMap = this.mainMap;
+      const { mainMap } = this;
       this.set('searchTerms', '');
       // clear address marker
       mainMap.set('currentAddress', null);
@@ -133,7 +133,7 @@ export default Component.extend({
 
     @trackEvent('Map Search', 'Clicked result', 'searchTerms')
     goTo(result) {
-      const mainMap = this.mainMap;
+      const { mainMap } = this;
       const mapInstance = mainMap.get('mapInstance');
       const { type } = result;
 
