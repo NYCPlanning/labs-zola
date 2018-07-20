@@ -28,7 +28,7 @@ export default Component.extend(ParentMixin, ChildMixin, {
       warn('Only one layer-control per layer is supported.');
     }
 
-    const didToggleVisibility = this.didToggleVisibility;
+    const { didToggleVisibility } = this;
     if (didToggleVisibility) {
       addObserver(this, 'visible', this, 'fireVisibilityEvent');
     }
@@ -109,7 +109,7 @@ export default Component.extend(ParentMixin, ChildMixin, {
   },
 
   fireVisibilityEvent() {
-    const didToggleVisibility = this.didToggleVisibility;
+    const { didToggleVisibility } = this;
     didToggleVisibility(this.visible);
   },
 

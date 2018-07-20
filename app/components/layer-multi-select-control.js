@@ -21,8 +21,7 @@ export default Component.extend(ParentMixin, {
   actions: {
     selectionChanged() {
       const values = this.allChecked;
-      const source = this.source;
-      const column = this.column;
+      const { source, column } = this;
 
       const previousValues = this.values;
       if (JSON.stringify(values) !== JSON.stringify(previousValues)) {

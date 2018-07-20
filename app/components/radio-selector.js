@@ -22,8 +22,7 @@ export default Component.extend({
     this._super(...args);
 
     next(() => {
-      const layers = this.layers;
-      const qps = this.qps;
+      const { layers, qps } = this;
 
       const matchedLayer = layers.find(layer => qps.get(layer.layer.id) === true);
 
@@ -37,8 +36,7 @@ export default Component.extend({
   qps: null,
   actions: {
     switchLayer(id) {
-      const layers = this.layers;
-      const qps = this.qps;
+      const { layers, qps } = this;
 
       // turn all layers off, reset query params
       layers.forEach((layer) => {

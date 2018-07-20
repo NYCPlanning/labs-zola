@@ -119,7 +119,7 @@ export default Controller.extend(mapQueryParams.Mixin, {
     },
     routeToLot(e) {
       const map = e.target;
-      const mainMap = this.mainMap;
+      const { mainMap } = this;
 
       if (mainMap.get('drawMode')) return;
 

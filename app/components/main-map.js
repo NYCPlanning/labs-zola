@@ -161,7 +161,7 @@ export default Component.extend({
 
     handleMapLoad(map) {
       window.map = map;
-      const mainMap = this.mainMap;
+      const { mainMap } = this;
       mainMap.set('mapInstance', map);
 
       // add carto sources
@@ -222,24 +222,24 @@ export default Component.extend({
     },
 
     handleMousemove(e) {
-      const mapMouseover = this.mapMouseover;
+      const { mapMouseover } = this;
       if (!this.mainMap.drawMode) mapMouseover.highlighter(e);
     },
 
     handleMouseleave() {
-      const mapMouseover = this.mapMouseover;
+      const { mapMouseover } = this;
       mapMouseover.set('highlightedLotFeatures', []);
       mapMouseover.set('currentEvent', null);
     },
 
     handleZoomend(event) {
-      const mainMap = this.mainMap;
+      const { mainMap } = this;
       mainMap.set('currentZoom', event.target.getZoom());
     },
 
     startDraw(type) {
       const drawMode = type === 'line' ? 'draw_line_string' : 'draw_polygon';
-      const mainMap = this.mainMap;
+      const { mainMap } = this;
       if (mainMap.get('drawMode')) {
         draw.deleteAll();
       } else {
@@ -252,7 +252,7 @@ export default Component.extend({
     },
 
     clearDraw() {
-      const mainMap = this.mainMap;
+      const { mainMap } = this;
       if (mainMap.get('drawMode')) {
         mainMap.mapInstance.removeControl(draw);
       }

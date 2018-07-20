@@ -8,7 +8,7 @@ export default Checkbox.extend({
 
   @computed('values.@each')
   get checked() {
-    const values = this.values;
+    const { values } = this;
     return values.every(val => val);
   },
   set checked(value) {
@@ -17,8 +17,7 @@ export default Checkbox.extend({
       refs,
       values,
       indeterminate,
-    } =
-      this;
+    } = this;
 
     if (indeterminate) refs.forEach(ref => scope.set(ref, true));
     if (values.every(val => val)) refs.forEach(ref => scope.set(ref, false));
@@ -27,7 +26,7 @@ export default Checkbox.extend({
 
   @computed('values.@each')
   indeterminate(values) {
-    const checked = this.checked;
+    const { checked } = this;
     return values.some(val => val) && !checked;
   },
 });

@@ -6,7 +6,7 @@ export default Route.extend({
 
   actions: {
     didTransition() {
-      const mainMap = this.mainMap;
+      const { mainMap } = this;
       mainMap.setProperties({
         selected: null,
         shouldFitBounds: false,
