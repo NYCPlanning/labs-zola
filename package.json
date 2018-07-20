@@ -76,7 +76,7 @@
     "mapbox-gl": "^0.42.2"
   },
   "engines": {
-    "node": "^6.14.0 || ^8.10.0 || >=9.10.0"
+    "node": "^8.11.3"
   },
   "dependencies": {
     "@turf/area": "^6.0.1",
