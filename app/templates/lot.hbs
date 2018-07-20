@@ -32,18 +32,20 @@
         {{#if lot.zonedist4}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone4}}.page" class="button">{{fa-icon 'external-link'}} {{lot.zonedist4}}</a></li>{{/if}}
 
         {{#each (await parentSpecialPurposeDistricts) as |specialDistrict|}}
-              <li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-{{specialDistrict.boroName}}.page#{{specialDistrict.anchorName}}" class="button">{{fa-icon 'external-link'}} {{specialDistrict.label}}</a></li>
+          <li>
+            <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-{{specialDistrict.boroName}}.page#{{specialDistrict.anchorName}}" class="button">{{fa-icon 'external-link'}} {{specialDistrict.label}}</a>
+          </li>
         {{/each}}
 
         {{#if lot.overlay1}}
           <li>
-            {{link-to-intersecting lot.overlay1 'commercial-overlay' 'commercial_overlays_v201806' lot.geometry responseIdentifier='overlay' classNames="button"}}
+            <a href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" target="_blank" class="button">{{fa-icon 'external-link'}} {{lot.overlay1}}</a>
           </li>
         {{/if}}
 
         {{#if lot.overlay2}}
           <li>
-            {{link-to-intersecting lot.overlay2 'commercial-overlay' 'commercial_overlays_v201806' lot.geometry responseIdentifier='overlay' classNames="button"}}
+            <a href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" target="_blank" class="button">{{fa-icon 'external-link'}} {{lot.overlay1}}</a>
           </li>
         {{/if}}
       </ul>
