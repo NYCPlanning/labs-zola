@@ -6,11 +6,11 @@ import carto from '../utils/carto';
 import specialPurposeCrosswalk from '../utils/special-purpose-crosswalk';
 
 const SQL = function(table, geometry) {
-  return `SELECT * FROM ${table} 
-          WHERE 
+  return `SELECT * FROM ${table}
+          WHERE
             ST_Intersects(
               ST_SetSRID(
-                ST_GeomFromGeoJSON('${JSON.stringify(geometry)}'), 4326), 
+                ST_GeomFromGeoJSON('${JSON.stringify(geometry)}'), 4326),
                 ${table}.the_geom);`;
 };
 
@@ -36,8 +36,8 @@ export default Controller.extend(Bookmarkable, {
             anchorName,
             boroName,
           };
-        }),
-      );
+        },
+      ));
   },
 
 });

@@ -17,7 +17,7 @@ export default Service.extend({
 
   @computed('selected')
   bounds(selected) {
-    const mapInstance = this.mapInstance;
+    const { mapInstance } = this;
     if (mapInstance) {
       mapInstance.resize();
     }
@@ -76,7 +76,7 @@ export default Service.extend({
   },
 
   resetBounds() {
-    const mapInstance = this.mapInstance;
+    const { mapInstance } = this;
     if (mapInstance) {
       mapInstance.resize();
     }

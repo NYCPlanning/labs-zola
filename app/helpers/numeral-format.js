@@ -1,5 +1,5 @@
 import { helper } from '@ember/component/helper';
-import numeral from 'npm:numeral';
+import numeral from 'numeral';
 
 export function numeralFormat(params) {
   const [number, template] = params;

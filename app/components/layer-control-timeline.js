@@ -51,8 +51,7 @@ export default Component.extend(ChildMixin, QueryParamMap, {
           }
           return moment(date).endOf('month').format(defaultFormat);
         });
-      const column = this.column;
-      const source = this.source;
+      const { column, source } = this;
 
       this.set('start', value);
       this.parentComponent.send('updateSql', 'buildRangeSQL', source, column, range);
