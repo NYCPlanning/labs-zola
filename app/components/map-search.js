@@ -23,7 +23,7 @@ export default Component.extend({
 
   @computed('searchTerms')
   results(searchTerms) {
-    return this.get('debouncedResults').perform(searchTerms);
+    return this.debouncedResults.perform(searchTerms);
   },
 
   debouncedResults: task(function* (searchTerms) {
@@ -35,7 +35,7 @@ export default Component.extend({
       setTimeout(resolve, 500);
     }));
 
-    this.get('metrics').trackEvent(
+    this.metrics.trackEvent(
       'GoogleAnalytics',
       {
         eventCategory: 'Search',
@@ -55,7 +55,7 @@ export default Component.extend({
         }))
       .then((resultList) => {
         if (isEmpty(resultList)) {
-          this.get('metrics').trackEvent(
+          this.metrics.trackEvent(
             'GoogleAnalytics',
             {
               eventCategory: 'Search',
@@ -78,7 +78,7 @@ export default Component.extend({
   },
 
   keyPress(event) {
-    const selected = this.get('selected');
+    const selected = this.selected;
     const { keyCode } = event;
 
     // enter
@@ -92,8 +92,8 @@ export default Component.extend({
   },
 
   keyUp(event) {
-    const selected = this.get('selected');
-    const resultsCount = this.get('resultsCount');
+    const selected = this.selected;
+    const resultsCount = this.resultsCount;
     const { keyCode } = event;
 
     const incSelected = () => { this.set('selected', selected + 1); };
@@ -125,7 +125,7 @@ export default Component.extend({
 
   actions: {
     clear() {
-      const mainMap = this.get('mainMap');
+      const mainMap = this.mainMap;
       this.set('searchTerms', '');
       // clear address marker
       mainMap.set('currentAddress', null);
@@ -133,7 +133,7 @@ export default Component.extend({
 
     @trackEvent('Map Search', 'Clicked result', 'searchTerms')
     goTo(result) {
-      const mainMap = this.get('mainMap');
+      const mainMap = this.mainMap;
       const mapInstance = mainMap.get('mapInstance');
       const { type } = result;
 

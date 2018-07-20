@@ -6,7 +6,7 @@ export default EmberMapboxGL.extend(ParentMixin, {
   init(...args) {
     this._super(...args);
 
-    this.set('registeredLayers.layers', this.get('childComponents'));
+    this.set('registeredLayers.layers', this.childComponents);
   },
   registeredLayers: service(),
 });

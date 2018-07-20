@@ -1,17 +1,17 @@
 import { isEmpty } from '@ember/utils';
-import { inject as service } from '@ember/service';
 
+// Broken for now pending code modification:
+// https://github.com/ember-decorators/ember-decorators/issues/206
+
+// decorator arguments
 export default function trackEvent(eventCategory, incAction, incLabel, eventValue) {
+  // decorator-specific pattern, args
   return (target, name, desc) => {
     const descriptor = desc;
     const originalValue = descriptor.value;
 
     descriptor.value = function(...args) {
       originalValue.call(this, ...args);
-
-      if (!this.get('metrics')) {
-        this.set('metrics', service());
-      }
 
       let eventAction = incAction;
       let eventLabel = incLabel;
@@ -32,10 +32,14 @@ export default function trackEvent(eventCategory, incAction, incLabel, eventValu
         }
       }
 
-      this.get('metrics').trackEvent(
-        'GoogleAnalytics',
-        { eventCategory, eventAction, eventLabel, eventValue },
-      );
+      try {
+        this.get('metrics').trackEvent(
+          'GoogleAnalytics',
+          { eventCategory, eventAction, eventLabel, eventValue },
+        );
+      } catch (e) {
+        throw Error('Metrics was not found and must be injected.', e);
+      }
     };
 
     return descriptor;

@@ -1,6 +1,7 @@
 import Service from '@ember/service';
-import pointLayer from '../layers/point-layer';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import $ from 'jquery';
+import pointLayer from '../layers/point-layer';
 
 const DEFAULT_BOUNDS = [-73.9, 40.690913, -73.832692, 40.856654];
 
@@ -16,7 +17,7 @@ export default Service.extend({
 
   @computed('selected')
   bounds(selected) {
-    const mapInstance = this.get('mapInstance');
+    const mapInstance = this.mapInstance;
     if (mapInstance) {
       mapInstance.resize();
     }
@@ -75,7 +76,7 @@ export default Service.extend({
   },
 
   resetBounds() {
-    const mapInstance = this.get('mapInstance');
+    const mapInstance = this.mapInstance;
     if (mapInstance) {
       mapInstance.resize();
     }

@@ -1,11 +1,11 @@
-import { moduleFor, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('route:zoning-district', 'Unit | Route | zoning-district', {
-  // Specify the other units that are required for this test.
-  needs: ['service:main-map', 'service:metrics']
-});
+module('Unit | Route | zoning-district', function(hooks) {
+  setupTest(hooks);
 
-test('it exists', function(assert) {
-  let route = this.subject();
-  assert.ok(route);
+  test('it exists', function(assert) {
+    let route = this.owner.lookup('route:zoning-district');
+    assert.ok(route);
+  });
 });

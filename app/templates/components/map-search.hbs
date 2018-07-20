@@ -37,8 +37,8 @@
           <h4 class="header-small results-header">Add Map Pin</h4>
         {{/if}}
       </li>
-      {{#each rows as |result|}}
-        <li class="result {{if (eq selected result.id) 'highlighted-result'}}" {{action 'goTo' result}}>
+      {{#each rows as |result index|}}
+        <li class="result {{if (eq selected index) 'highlighted-result'}}" {{action 'goTo' result}}>
           {{#if (eq type 'lot')}}
             <span class="icon tax-lot"></span> <span class="subdued">{{result.label}}, Block {{result.demuxedBbl.block}}, Lot {{result.demuxedBbl.lot}}</span>
           {{else if (eq type 'zma')}}
@@ -57,7 +57,7 @@
     {{/each-in}}
   {{/if}}
   {{#if (is-pending results)}}
-    {{# if prevResults }}
+    {{#if prevResults }}
       {{#each-in (group-by "type" prevResults) as |type rows|}}
         <li>
           {{#if (eq type 'lot')}}

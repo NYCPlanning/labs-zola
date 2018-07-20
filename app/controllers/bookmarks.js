@@ -6,6 +6,7 @@ import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 export default Controller.extend({
   mainMap: service(),
+  metrics: service(),
   // because we must compute the record types based on multiple
   // promises, the model uses Promise.all
   // this gets us in trouble when we need to do
@@ -18,7 +19,6 @@ export default Controller.extend({
   },
 
   actions: {
-
     @trackEvent('Bookmark', 'Delete')
     deleteBookmark(record) {
       record.deleteRecord();
