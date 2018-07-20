@@ -139,6 +139,7 @@ export default Controller.extend(mapQueryParams.Mixin, {
             splbl,
             overlay,
             cartodb_id, // eslint-disable-line
+            ceqr_num, // eslint-disable-line
           } = feature.properties;
 
           const featureFragment = EmberObject.extend(Geometric, {
@@ -147,7 +148,7 @@ export default Controller.extend(mapQueryParams.Mixin, {
 
           mainMap.set('selected', featureFragment);
 
-          if (bbl) {
+          if (bbl && !ceqr_num) { // eslint-disable-line
             const { boro, block, lot } = bblDemux(bbl);
             this.transitionToRoute('lot', boro, block, lot);
           }
@@ -172,6 +173,10 @@ export default Controller.extend(mapQueryParams.Mixin, {
           if (overlay) {
             mainMap.set('shouldFitBounds', false);
             this.transitionToRoute('commercial-overlay', overlay);
+          }
+
+          if (ceqr_num) { // eslint-disable-line
+            window.open(`https://zap-api.planninglabs.nyc/ceqr/${ceqr_num}`, '_blank'); // eslint-disable-line
           }
         }
       }
