@@ -1,4 +1,4 @@
-import numeral from 'npm:numeral';
+import numeral from 'numeral';
 
 export default function bblDemux(bbl = '') {
   if (typeof bbl === 'string' || typeof bbl === 'number') {

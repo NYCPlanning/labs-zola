@@ -28,7 +28,7 @@ export default Component.extend(ParentMixin, ChildMixin, {
       warn('Only one layer-control per layer is supported.');
     }
 
-    const didToggleVisibility = this.didToggleVisibility;
+    const { didToggleVisibility } = this;
     if (didToggleVisibility) {
       addObserver(this, 'visible', this, 'fireVisibilityEvent');
     }
@@ -77,7 +77,7 @@ export default Component.extend(ParentMixin, ChildMixin, {
 
     // walk all layergroups that should be displayed above this one
     for (let i = position - 1; i > 0; i -= 1) {
-      const config = allLayerGroups[i].config;
+      const { config } = allLayerGroups[i];
       const bottomLayer = config.layers[0].layer.id;
       const map = this.get('mainMap.mapInstance');
 
@@ -109,7 +109,7 @@ export default Component.extend(ParentMixin, ChildMixin, {
   },
 
   fireVisibilityEvent() {
-    const didToggleVisibility = this.didToggleVisibility;
+    const { didToggleVisibility } = this;
     didToggleVisibility(this.visible);
   },
 

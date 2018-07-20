@@ -4,9 +4,9 @@ import { alias } from '@ember/object/computed';
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from 'mapbox-gl-draw';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
-import area from 'npm:@turf/area';
-import lineDistance from 'npm:@turf/line-distance';
-import numeral from 'npm:numeral';
+import area from '@turf/area';
+import lineDistance from '@turf/line-distance';
+import numeral from 'numeral';
 
 import sources from '../sources';
 import layerGroups from '../layer-groups';
@@ -161,7 +161,7 @@ export default Component.extend({
 
     handleMapLoad(map) {
       window.map = map;
-      const mainMap = this.mainMap;
+      const { mainMap } = this;
       mainMap.set('mapInstance', map);
 
       // add carto sources
@@ -222,24 +222,24 @@ export default Component.extend({
     },
 
     handleMousemove(e) {
-      const mapMouseover = this.mapMouseover;
+      const { mapMouseover } = this;
       if (!this.mainMap.drawMode) mapMouseover.highlighter(e);
     },
 
     handleMouseleave() {
-      const mapMouseover = this.mapMouseover;
+      const { mapMouseover } = this;
       mapMouseover.set('highlightedLotFeatures', []);
       mapMouseover.set('currentEvent', null);
     },
 
     handleZoomend(event) {
-      const mainMap = this.mainMap;
+      const { mainMap } = this;
       mainMap.set('currentZoom', event.target.getZoom());
     },
 
     startDraw(type) {
       const drawMode = type === 'line' ? 'draw_line_string' : 'draw_polygon';
-      const mainMap = this.mainMap;
+      const { mainMap } = this;
       if (mainMap.get('drawMode')) {
         draw.deleteAll();
       } else {
@@ -252,7 +252,7 @@ export default Component.extend({
     },
 
     clearDraw() {
-      const mainMap = this.mainMap;
+      const { mainMap } = this;
       if (mainMap.get('drawMode')) {
         mainMap.mapInstance.removeControl(draw);
       }
@@ -272,7 +272,7 @@ export default Component.extend({
 
     handleMeasurement() {
       // should log both metric and standard display strings for the current drawn feature
-      const features = draw.getAll().features;
+      const { features } = draw.getAll();
 
       if (features.length > 0) {
         const feature = features[0];
@@ -339,9 +339,11 @@ export default Component.extend({
       const localSource = localConfig.findBy('id', data.sourceId);
 
       if (localSource) {
-        if (data.dataType === 'source' &&
-            data.isSourceLoaded &&
-            sourceIds.includes(data.sourceId)) {
+        if (
+          data.dataType === 'source'
+          && data.isSourceLoaded
+          && sourceIds.includes(data.sourceId)
+        ) {
           this.set('loading', false);
         } else {
           this.set('loading', true);

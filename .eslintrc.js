@@ -11,10 +11,14 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:ember/recommended',
-    'airbnb'
+    'airbnb-base'
   ],
   env: {
-    browser: true
+    browser: true,
+  },
+  globals:{
+    '$': true,
+    d3: true,
   },
   rules: {
     'import/no-extraneous-dependencies': 0,
@@ -25,6 +29,9 @@ module.exports = {
     'space-before-function-paren': 0,
     'prefer-arrow-callback': 0,
     'no-underscore-dangle': 0,
+    'camelcase': 0,
+    'max-len': 0,
+    'no-param-reassign': 0,
     'ember/avoid-leaking-state-in-ember-objects': 0,
   },
   overrides: [

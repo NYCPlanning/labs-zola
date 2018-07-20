@@ -5,9 +5,8 @@ export default Mixin.create({
   init(...args) {
     this._super(...args);
 
-    const qps = this.qps;
+    const { qps, queryParamBoundKey } = this;
     const queryParam = this['query-param'];
-    const queryParamBoundKey = this.queryParamBoundKey;
 
     if (qps) {
       this.set(

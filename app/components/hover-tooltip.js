@@ -3,7 +3,7 @@ import { alias } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
 import { htmlSafe } from '@ember/string';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
-import mustache from 'npm:mustache';
+import mustache from 'mustache';
 
 
 const offsetX = 30;

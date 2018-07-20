@@ -34,7 +34,7 @@ export default Component.extend(ChildMixin, {
   actions: {
     toggleChildren() {
       const checked = this.selected;
-      const childComponents = this.childComponents;
+      const { childComponents } = this;
       if (checked) {
         childComponents.invoke('set', 'checked', false);
       } else {
