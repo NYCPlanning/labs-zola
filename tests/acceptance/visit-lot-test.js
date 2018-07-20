@@ -1,21 +1,20 @@
-import { test } from 'qunit';
-import moduleForAcceptance from 'labs-zola/tests/helpers/module-for-acceptance';
+import { currentURL, find, visit } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
 
-moduleForAcceptance('Acceptance | visit lot');
+module('Acceptance | visit lot', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('visiting a lot', function(assert) {
-  visit('/lot/1/1632/1');
+  test('visiting a lot', async function(assert) {
+    await visit('/lot/1/1632/1');
 
-  andThen(function() {
-    assert.notEqual(find('.content-area').text().length, 0);
+    assert.notEqual(find('.content-area').textContent.length, 0);
   });
-});
 
-test('visiting a bbl', function(assert) {
-  visit('/bbl/1001870021');
+  test('visiting a bbl', async function(assert) {
+    await visit('/bbl/1001870021');
 
-  andThen(function() {
     assert.equal(currentURL(), '/lot/1/187/21');
-    assert.notEqual(find('.content-area').text().length, 0);
+    assert.notEqual(find('.content-area').textContent.length, 0);
   });
 });

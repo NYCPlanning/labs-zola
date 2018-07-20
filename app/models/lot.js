@@ -107,18 +107,18 @@ const bldgclassLookup = {
   F9: 'Factory and Industrial Buildings - Miscellaneous',
 
   G: 'GARAGES AND GASOLINE STATIONS',
-  0: 'Residential Tax Class 1 Garage',
-  1: 'All Parking Garages',
-  2: 'Auto Body/Collision or Auto Repair',
-  3: 'Gas Station with Retail Store',
-  4: 'Gas Station with Service/Auto Repair',
-  5: 'Gas Station only with/without Small Kiosk',
-  6: 'Licensed Parking Lot',
-  7: 'Unlicensed Parking Lot',
-  8: 'Car Sales/Rental with Showroom',
-  9: 'Miscellaneous Garage or Gas Station',
-  U: 'Car Sales/Rental without Showroom',
-  W: 'Car Wash or Lubritorium Facility',
+  G0: 'Residential Tax Class 1 Garage',
+  G1: 'All Parking Garages',
+  G2: 'Auto Body/Collision or Auto Repair',
+  G3: 'Gas Station with Retail Store',
+  G4: 'Gas Station with Service/Auto Repair',
+  G5: 'Gas Station only with/without Small Kiosk',
+  G6: 'Licensed Parking Lot',
+  G7: 'Unlicensed Parking Lot',
+  G8: 'Car Sales/Rental with Showroom',
+  G9: 'Miscellaneous Garage or Gas Station',
+  GU: 'Car Sales/Rental without Showroom',
+  GW: 'Car Wash or Lubritorium Facility',
 
   H1: 'Hotels - Luxury Type',
   H2: 'Hotels - Full Service Hotel',
@@ -348,29 +348,29 @@ export default Bookmarkable.extend(Geometric, {
   bldgarea: DS.attr('number'),
   bldgclass: DS.attr('string'),
   bldgclassname: computed('bldgclass', function() {
-    return bldgclassLookup[this.get('bldgclass')];
+    return bldgclassLookup[this.bldgclass];
   }),
   lat: DS.attr('number'),
   lon: DS.attr('number'),
   block: DS.attr('number'),
   borocode: computed('cd', function() {
-    const borocd = this.get('cd');
+    const borocd = this.cd;
     return borocd.substring(0, 1);
   }),
   boro: alias('borocode'),
   borough: DS.attr('string'),
   boroname: computed('borough', function() {
-    return boroughLookup[this.get('borough')];
+    return boroughLookup[this.borough];
   }),
   cd: DS.attr('string'),
   cdName: computed('cd', function() {
-    const borocd = this.get('cd');
+    const borocd = this.cd;
     const boro = borocd.substring(0, 1);
     const cd = parseInt(borocd.substring(1, 3), 10).toString();
     return `${boroLookup[boro]} Community District ${cd}`;
   }),
   cdURLSegment: computed('cd', function() {
-    const borocd = this.get('cd');
+    const borocd = this.cd;
     const boro = borocd.substring(0, 1);
     const cleanBorough = boroLookup[boro].toLowerCase().replace(/\s/g, '-');
     const cd = parseInt(borocd.substring(1, 3), 10).toString();
@@ -383,7 +383,7 @@ export default Bookmarkable.extend(Geometric, {
   landmark: DS.attr('string'),
   landuse: DS.attr('string'),
   landusename: computed('landuse', function() {
-    return landuseLookup[this.get('landuse')];
+    return landuseLookup[this.landuse];
   }),
   lot: DS.attr('number'),
   lotarea: DS.attr('number'),
@@ -394,7 +394,7 @@ export default Bookmarkable.extend(Geometric, {
   ownername: DS.attr('string'),
   ownertype: DS.attr('string'),
   ownertypename: computed('ownertype', function() {
-    return ownertypeLookup[this.get('ownertype')];
+    return ownertypeLookup[this.ownertype];
   }),
   overlay1: DS.attr('string'),
   overlay2: DS.attr('string'),

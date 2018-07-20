@@ -89,6 +89,7 @@ export default Controller.extend(mapQueryParams.Mixin, {
   },
 
   mainMap: service(),
+  metrics: service(),
   registeredLayers: service(),
   mapMouseover: service(),
 
@@ -118,7 +119,7 @@ export default Controller.extend(mapQueryParams.Mixin, {
     },
     routeToLot(e) {
       const map = e.target;
-      const mainMap = this.get('mainMap');
+      const mainMap = this.mainMap;
 
       if (mainMap.get('drawMode')) return;
 

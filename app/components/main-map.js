@@ -161,11 +161,11 @@ export default Component.extend({
 
     handleMapLoad(map) {
       window.map = map;
-      const mainMap = this.get('mainMap');
+      const mainMap = this.mainMap;
       mainMap.set('mapInstance', map);
 
       // add carto sources
-      this.get('cartoSources').forEach((sourceConfig) => {
+      this.cartoSources.forEach((sourceConfig) => {
         map.addSource(sourceConfig.id, sourceConfig);
       });
 
@@ -188,7 +188,7 @@ export default Component.extend({
 
       // GA
       geoLocateControl.on('trackuserlocationstart', () => {
-        this.get('metrics').trackEvent(
+        this.metrics.trackEvent(
           'GoogleAnalytics',
           { eventCategory: 'Map', eventAction: 'Geolocate' },
         );
@@ -222,24 +222,24 @@ export default Component.extend({
     },
 
     handleMousemove(e) {
-      const mapMouseover = this.get('mapMouseover');
-      if (!this.get('mainMap').drawMode) mapMouseover.highlighter(e);
+      const mapMouseover = this.mapMouseover;
+      if (!this.mainMap.drawMode) mapMouseover.highlighter(e);
     },
 
     handleMouseleave() {
-      const mapMouseover = this.get('mapMouseover');
+      const mapMouseover = this.mapMouseover;
       mapMouseover.set('highlightedLotFeatures', []);
       mapMouseover.set('currentEvent', null);
     },
 
     handleZoomend(event) {
-      const mainMap = this.get('mainMap');
+      const mainMap = this.mainMap;
       mainMap.set('currentZoom', event.target.getZoom());
     },
 
     startDraw(type) {
       const drawMode = type === 'line' ? 'draw_line_string' : 'draw_polygon';
-      const mainMap = this.get('mainMap');
+      const mainMap = this.mainMap;
       if (mainMap.get('drawMode')) {
         draw.deleteAll();
       } else {
@@ -252,7 +252,7 @@ export default Component.extend({
     },
 
     clearDraw() {
-      const mainMap = this.get('mainMap');
+      const mainMap = this.mainMap;
       if (mainMap.get('drawMode')) {
         mainMap.mapInstance.removeControl(draw);
       }
@@ -265,8 +265,8 @@ export default Component.extend({
     handleDrawCreate(e) {
       this.set('mainMap.drawnFeature', e.features[0].geometry);
       setTimeout(() => {
-        this.get('mainMap').mapInstance.removeControl(draw);
-        this.get('mainMap').set('drawMode', null);
+        this.mainMap.mapInstance.removeControl(draw);
+        this.mainMap.set('drawMode', null);
       }, 100);
     },
 
@@ -334,7 +334,7 @@ export default Component.extend({
     },
 
     mapLoading(data) {
-      const localConfig = this.get('mapConfig');
+      const localConfig = this.mapConfig;
       const sourceIds = localConfig.mapBy('id');
       const localSource = localConfig.findBy('id', data.sourceId);
 

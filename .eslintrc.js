@@ -1,14 +1,16 @@
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2017,
     sourceType: 'module'
   },
+  parser: 'babel-eslint',
   plugins: [
     'ember'
   ],
   extends: [
+    'eslint:recommended',
+    'plugin:ember/recommended',
     'airbnb-base'
   ],
   env: {
@@ -30,13 +32,14 @@ module.exports = {
     'camelcase': 0,
     'max-len': 0,
     'no-param-reassign': 0,
+    'ember/avoid-leaking-state-in-ember-objects': 0,
   },
   overrides: [
     // node files
     {
       files: [
-        'testem.js',
         'ember-cli-build.js',
+        'testem.js',
         'config/**/*.js',
         'lib/*/index.js'
       ],

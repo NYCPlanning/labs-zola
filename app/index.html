@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>ZoLa | NYC&rsquo;s Zoning &amp; Land Use Map</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     {{content-for "head"}}
 
@@ -26,16 +26,16 @@
     <div id="browser-unsupported">
       <i class="fa fa-frown-o fa-5x" aria-hidden="true"></i>
     </div>
-    <script> 
+    <script>
 /* eslint-disable */
       function removeNodes() {
         var selector = document.getElementById('browser-unsupported');
         selector.style.display='block';
       };
-      var $buoop = {notify:{i:-5,f:-6,o:-6,s:-6,c:-6},insecure:true,api:5, onshow() {removeNodes()}}; 
-      function $buo_f(){ 
-       var e = document.createElement("script"); 
-       e.src = "//browser-update.org/update.min.js"; 
+      var $buoop = {notify:{i:-5,f:-6,o:-6,s:-6,c:-6},insecure:true,api:5, onshow() {removeNodes()}};
+      function $buo_f(){
+       var e = document.createElement("script");
+       e.src = "//browser-update.org/update.min.js";
        document.body.appendChild(e);
       };
       try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
