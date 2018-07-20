@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/NYCPlanning/labs-zola.svg?style=svg)](https://circleci.com/gh/NYCPlanning/labs-zola)
+[![CircleCI](https://circleci.com/gh/NYCPlanning/labs-zola/tree/develop.svg?style=svg)](https://circleci.com/gh/NYCPlanning/labs-zola/tree/develop)
 
 # ZoLa (New York City’s Zoning & Land Use Map)
 
