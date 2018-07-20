@@ -1,25 +1,8 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('cascading-checkbox', 'Integration | Component | cascading checkbox', {
-  integration: true
+module('Integration | Component | cascading checkbox', function(hooks) {
+  setupRenderingTest(hooks);
 });
-
-// test('it renders', function(assert) {
-
-//   // Set any properties with this.set('myProperty', 'value');
-//   // Handle any actions with this.on('myAction', function(val) { ... });
-
-//   this.render(hbs`{{cascading-checkbox}}`);
-
-//   assert.equal(this.$().text().trim(), '');
-
-//   // Template block usage:
-//   this.render(hbs`
-//     {{#cascading-checkbox}}
-//       template block text
-//     {{/cascading-checkbox}}
-//   `);
-
-//   assert.equal(this.$().text().trim(), 'template block text');
-// });

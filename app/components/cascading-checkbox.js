@@ -14,7 +14,7 @@ export default Component.extend(ChildMixin, {
 
   @computed('childComponents.@each.checked')
   get selected() {
-    return this.get('childComponents').mapBy('checked').every(el => el);
+    return this.childComponents.mapBy('checked').every(el => el);
   },
   set selected(value) {
     if (value) return this.send('toggleChildren');
@@ -33,8 +33,8 @@ export default Component.extend(ChildMixin, {
 
   actions: {
     toggleChildren() {
-      const checked = this.get('selected');
-      const childComponents = this.get('childComponents');
+      const checked = this.selected;
+      const childComponents = this.childComponents;
       if (checked) {
         childComponents.invoke('set', 'checked', false);
       } else {

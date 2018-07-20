@@ -1,25 +1,27 @@
-import { moduleForComponent, skip } from 'ember-qunit';
+import { module, skip } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('bookmark-button', 'Integration | Component | bookmark button', {
-  integration: true
-});
+module('Integration | Component | bookmark button', function(hooks) {
+  setupRenderingTest(hooks);
 
-skip('it renders', function(assert) {
+  skip('it renders', function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{bookmark-button}}`);
+    this.render(hbs`{{bookmark-button}}`);
 
-  assert.equal(this.$().text().trim(), '');
+    assert.equal(find('*').textContent.trim(), '');
 
-  // Template block usage:
-  this.render(hbs`
-    {{#bookmark-button}}
-      template block text
-    {{/bookmark-button}}
-  `);
+    // Template block usage:
+    this.render(hbs`
+      {{#bookmark-button}}
+        template block text
+      {{/bookmark-button}}
+    `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+    assert.equal(find('*').textContent.trim(), 'template block text');
+  });
 });

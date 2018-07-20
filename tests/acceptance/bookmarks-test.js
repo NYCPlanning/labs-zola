@@ -1,62 +1,64 @@
-import { test } from 'qunit';
-import moduleForAcceptance from 'labs-zola/tests/helpers/module-for-acceptance';
-import {
+import { 
+  visit, 
   click,
   fillIn,
+  currentURL,
   find,
   findAll,
-  keyEvent,
+  triggerKeyEvent,
   waitUntil,
-  triggerEvent
-} from 'ember-native-dom-helpers';
+  triggerEvent 
+} from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
 
 const SEARCH_INPUT_SELECTOR = '.search input';
 const SEARCH_TERM_ADDRESS = '210 Humboldt';
 const SEARCH_TERM_LOT = '1000477501';
 
-moduleForAcceptance('Acceptance | bookmarks', {
-  beforeEach() {
+module('Acceptance | bookmarks', function(hooks) {
+  setupApplicationTest(hooks);
+
+  hooks.beforeEach(function() {
     window.localStorage.clear();
-  },
-});
+  });
 
-test('visiting /bookmarks', function(assert) {
-  visit('/bookmarks');
+  test('visiting /bookmarks', async function(assert) {
+    await visit('/bookmarks');
 
-  andThen(function() {
     assert.equal(currentURL(), '/bookmarks');
   });
-});
 
-test('visiting /bookmarks, see empty message', async function(assert) {
-  await visit('/bookmarks');
-  await waitUntil(() => find('.content-area'));
+  test('visiting /bookmarks, see empty message', async function(assert) {
+    await visit('/bookmarks');
+    await waitUntil(() => find('.content-area'));
 
-  assert.ok(find('.no-bookmarks'));
-});
+    assert.ok(find('.no-bookmarks'));
+  });
 
-test('search lot, save, find result in bookmarks, delete it', async function(assert) {
-  await visit('/');
-  await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
-  await waitUntil(() => find('.has-results'));
-  await keyEvent('.tax-lot', 'click');
-  await waitUntil(() => (currentURL().indexOf('/lot') >= 0));
-  await keyEvent('.bookmark-save-button', 'click');
-  await visit('/bookmarks');
-  await waitUntil(() => find('.content-area'));
-  await keyEvent('.delete-bookmark-button', 'click');
-  assert.ok(find('.no-bookmarks'));
-});
+  test('search lot, save, find result in bookmarks, delete it', async function(assert) {
+    await visit('/');
+    await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
+    await waitUntil(() => find('.has-results'));
+    await click('.tax-lot');
+    await waitUntil(() => (currentURL().indexOf('/lot') >= 0));
+    await click('.bookmark-save-button');
+    await visit('/bookmarks');
+    await waitUntil(() => find('.content-area'));
+    await click('.delete-bookmark-button');
+    assert.ok(find('.no-bookmarks'));
+  });
 
-test('bookmark lot, see count increase, un-bookmark', async function(assert) {
-  await visit('/');
-  await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
-  await waitUntil(() => find('.has-results'));
-  await keyEvent('.tax-lot', 'click');
-  await waitUntil(() => (currentURL().indexOf('/lot') >= 0));
-  await keyEvent('.bookmark-save-button', 'click');
+  test('bookmark lot, see count increase, un-bookmark', async function(assert) {
+    await visit('/');
+    await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
+    await waitUntil(() => find('.has-results'));
+    await click('.tax-lot');
+    await waitUntil(() => (currentURL().indexOf('/lot') >= 0));
+    await click('.bookmark-save-button');
 
-  assert.equal(find('.saved-bookmarks-counter .badge').textContent, "1");
-  await keyEvent('.bookmark-save-button', 'click');
-  assert.equal(find('.saved-bookmarks-counter .badge'), null);
+    assert.equal(find('.saved-bookmarks-counter .badge').textContent, "1");
+    await click('.bookmark-save-button');
+    assert.equal(find('.saved-bookmarks-counter .badge'), null);
+  });
 });

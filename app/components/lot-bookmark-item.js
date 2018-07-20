@@ -1,14 +1,13 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { inject as service } from '@ember/service';
 
-const { service } = Ember.inject;
-
-export default Ember.Component.extend({
+export default Component.extend({
   mainMap: service(),
   mapMouseover: service(),
 
   mouseEnter() {
     const bbl = this.get('lot.bookmark.bbl');
-    const map = this.get('mainMap').mapInstance;
+    const map = this.mainMap.mapInstance;
 
     const feature = map.querySourceFeatures('pluto', {
       sourceLayer: 'pluto',
@@ -24,7 +23,7 @@ export default Ember.Component.extend({
 
   actions: {
     deleteBookmark(e) {
-      this.attrs.deleteBookmark(e);
+      this.deleteBookmark(e);
     },
   },
 });

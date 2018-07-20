@@ -1,6 +1,5 @@
 import { inject as service } from '@ember/service';
 import Mixin from '@ember/object/mixin';
-import { get } from '@ember/object';
 import { scheduleOnce } from '@ember/runloop';
 
 export default Mixin.create({
@@ -13,9 +12,9 @@ export default Mixin.create({
 
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
-      const page = this.get('url');
+      const page = this.url;
       const title = this.getWithDefault('currentRouteName', 'unknown');
-      get(this, 'metrics').trackPage({ page, title });
+      this.metrics.trackPage({ page, title });
     });
   },
 });

@@ -18,7 +18,7 @@ export default Component.extend({
     switchAerial(year, mainToggle = false) {
       const formattedYear = `aerials-${year}`;
       const propNames = aerialYears.map(aYear => `aerials-${aYear}`);
-      const qps = this.get('qps');
+      const qps = this.qps;
       const isAnyLayerSelected = propNames.any(prop => qps.get(prop));
 
       // turn off all aerial layers

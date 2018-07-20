@@ -1,12 +1,12 @@
-import { moduleFor, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-moduleFor('adapter:special-purpose-subdistrict', 'Unit | Adapter | special purpose subdistrict', {
-  // Specify the other units that are required for this test.
-  needs: ['service:mainMap']
-});
+module('Unit | Adapter | special purpose subdistrict', function(hooks) {
+  setupTest(hooks);
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let adapter = this.subject();
-  assert.ok(adapter);
+  // Replace this with your real tests.
+  test('it exists', function(assert) {
+    let adapter = this.owner.lookup('adapter:special-purpose-subdistrict');
+    assert.ok(adapter);
+  });
 });

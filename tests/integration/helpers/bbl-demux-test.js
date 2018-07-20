@@ -1,16 +1,18 @@
 
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('bbl-demux', 'helper:bbl-demux', {
-  integration: true
-});
+module('helper:bbl-demux', function(hooks) {
+  setupRenderingTest(hooks);
 
-// Replace this with your real tests.
-test('it renders', function(assert) {
-  this.set('inputValue', { boro: 4, block: 4381, lot: 1});
+  // Replace this with your real tests.
+  test('it renders', async function(assert) {
+    this.set('inputValue', { boro: 4, block: 4381, lot: 1});
 
-  this.render(hbs`{{bbl-demux inputValue}}`);
+    await render(hbs`{{bbl-demux inputValue}}`);
 
-  assert.equal(this.$().text().trim(), '4043810001');
+    assert.equal(find('*').textContent.trim(), '4043810001');
+  });
 });
