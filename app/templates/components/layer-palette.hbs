@@ -5,8 +5,8 @@
 <div id="layers-menu" class="{{if closed 'show-for-medium'}} hide-for-print">
   {{#layer-palette-accordion
     closed=false
-    title='Zoning and Land Use'}}
-    {{#layer-menu-item for='pluto' as |item|}}
+    title='Zoning and Land Use' as |accordion|}}
+    {{#accordion.menu-item for='pluto' as |item|}}
       {{#if (lt mainMap.currentZoom item.layer.minzoom)}}
         {{info-tooltip iconName='warning' tip='Zoom in more to see'}}
       {{/if}}
@@ -39,9 +39,9 @@
           </ul>
         {{/if}}
       {{/if}}
-    {{/layer-menu-item}}
+    {{/accordion.menu-item}}
 
-    {{#layer-menu-item
+    {{#accordion.menu-item
       for='zoning-districts' as |item|}}
       {{#if item.layer.visible}}
         {{#layer-multi-select-control
@@ -112,9 +112,9 @@
             </ul>
         {{/layer-multi-select-control}}
       {{/if}}
-    {{/layer-menu-item}}
+    {{/accordion.menu-item}}
 
-    {{#layer-menu-item
+    {{#accordion.menu-item
       for='commercial-overlays'
       as |item|}}
       {{#if item.layer.visible}}
@@ -161,31 +161,31 @@
             </ul>
         {{/layer-multi-select-control}}
       {{/if}}
-    {{/layer-menu-item}}
+    {{/accordion.menu-item}}
 
-    {{#layer-menu-item for='zoning-map-amendments' as |item|}}
+    {{#accordion.menu-item for='zoning-map-amendments' as |item|}}
       {{#if item.layer.visible}}
         {{item.range-slider
             source='zoning-map-amendments'
             column='effective'}}
       {{/if}}
-    {{/layer-menu-item}}
+    {{/accordion.menu-item}}
 
-    {{layer-menu-item for='zoning-map-amendments-pending'}}
-    {{layer-menu-item for='special-purpose-districts'}}
-    {{layer-menu-item for='special-purpose-subdistricts'}}
-    {{layer-menu-item for='limited-height-districts'}}
+    {{accordion.menu-item for='zoning-map-amendments-pending'}}
+    {{accordion.menu-item for='special-purpose-districts'}}
+    {{accordion.menu-item for='special-purpose-subdistricts'}}
+    {{accordion.menu-item for='limited-height-districts'}}
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
     closed=true
     title='Supporting Zoning Layers'
-    as |item|}}
+    as |accordion|}}
 
-    {{layer-menu-item for='mandatory-inclusionary-housing'}}
-    {{layer-menu-item for='inclusionary-housing'}}
-    {{layer-menu-item for='transit-zones'}}
-    {{#layer-menu-item for='fresh' as |item|}}
+    {{accordion.menu-item for='mandatory-inclusionary-housing'}}
+    {{accordion.menu-item for='inclusionary-housing'}}
+    {{accordion.menu-item for='transit-zones'}}
+    {{#accordion.menu-item for='fresh' as |item|}}
       {{#if item.layer.visible}}
       <ul class="layer-key">
         <li><span style="color:#0B9390;opacity:0.4;">{{fa-icon "square"}}</span>Zoning incentives</li>
@@ -193,8 +193,8 @@
         <li><span style="color:#8FE339;opacity:0.4;">{{fa-icon "square"}}</span>Discretionary tax incentives</li>
       </ul>
       {{/if}}
-    {{/layer-menu-item}}
-    {{#layer-menu-item for='sidewalkcafes' as |item|}}
+    {{/accordion.menu-item}}
+    {{#accordion.menu-item for='sidewalkcafes' as |item|}}
       {{#if item.layer.visible}}
         <ul class="layer-key">
           <li><span style="color:#28AD15;">{{fa-icon "minus"}}</span>All Cafes Permitted</li>
@@ -202,12 +202,12 @@
           <li><span style="color:#216BC6;">{{fa-icon "minus"}}</span>Unenclosed and Small Cafes Permitted</li>
         </ul>
       {{/if}}
-    {{/layer-menu-item}}
-    {{layer-menu-item for='low-density-growth-mgmt-areas'}}
-    {{layer-menu-item for='coastal-zone-boundary'}}
-    {{layer-menu-item for='waterfront-access-plan'}}
-    {{layer-menu-item for='historic-districts'}}
-    {{#layer-menu-item for='landmarks' as |item|}}
+    {{/accordion.menu-item}}
+    {{accordion.menu-item for='low-density-growth-mgmt-areas'}}
+    {{accordion.menu-item for='coastal-zone-boundary'}}
+    {{accordion.menu-item for='waterfront-access-plan'}}
+    {{accordion.menu-item for='historic-districts'}}
+    {{#accordion.menu-item for='landmarks' as |item|}}
       {{#if item.layer.visible}}
         <ul class="layer-key">
           <li><span style="color:rgba(147, 245, 201, 1);">{{fa-icon "circle"}}</span>Individual Landmarks</li>
@@ -215,76 +215,78 @@
           <li><span style="color:purple;">{{fa-icon "square"}}</span>Scenic Landmarks</li>
         </ul>
       {{/if}}
-    {{/layer-menu-item}}
-    {{#layer-menu-item for='effective-flood-insurance-rate-2007' as |item|}}
+    {{/accordion.menu-item}}
+    {{#accordion.menu-item for='effective-flood-insurance-rate-2007' as |item|}}
       {{#if item.layer.visible}}
         <ul class="layer-key">
           <li><span style="color:#0084a8;">{{fa-icon "circle"}}</span>V Zone {{info-tooltip side="right" tip="Portion of the 1% annual chance floodplain subject to high velocity wave action (a breaking wave 3 feet high or larger). V Zones are subject to more stringent building requirements than other zones because of the damaging force of waves."}}</li>
           <li><span style="color:#00a9e6;">{{fa-icon "circle"}}</span>A Zone {{info-tooltip side="right" tip="A portion of the area subject to flooding from the 1% annual chance flood. These areas are not subject to high velocity wave action but are still considered high risk flooding areas."}}</li>
         </ul>
       {{/if}}
-    {{/layer-menu-item}}
-    {{#layer-menu-item for='preliminary-flood-insurance-rate' as |item|}}
+    {{/accordion.menu-item}}
+    {{#accordion.menu-item for='preliminary-flood-insurance-rate' as |item|}}
       {{#if item.layer.visible}}
         <ul class="layer-key">
           <li><span style="color:#0084a8;">{{fa-icon "circle"}}</span>V Zone {{info-tooltip side="right" tip="Portion of the 1% annual chance floodplain subject to high velocity wave action (a breaking wave 3 feet high or larger). V Zones are subject to more stringent building requirements than other zones because of the damaging force of waves."}}</li>
           <li><span style="color:#00a9e6;">{{fa-icon "circle"}}</span>A Zone {{info-tooltip side="right" tip="A portion of the area subject to flooding from the 1% annual chance flood. These areas are not subject to high velocity wave action but are still considered high risk flooding areas."}}</li>
         </ul>
       {{/if}}
-    {{/layer-menu-item}}
-    {{#layer-menu-item for='e-designations' as |item|}}
+    {{/accordion.menu-item}}
+    {{#accordion.menu-item for='e-designations' as |item|}}
       {{#if item.layer.visible}}
         <ul class="layer-key">
           <li><span style="color:#3a28dd;">{{fa-icon "circle-o"}}</span>E-designation</li>
         </ul>
       {{/if}}
-    {{/layer-menu-item}}
-    {{layer-menu-item for='appendixj-designated-mdistricts'}}
+    {{/accordion.menu-item}}
+    {{accordion.menu-item for='appendixj-designated-mdistricts'}}
 
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
     closed=true
     title='Other Supporting Layers'
-    as |item|}}
-    {{layer-menu-item for='business-improvement-districts'}}
-    {{layer-menu-item for='industrial-business-zones'}}
+    as |accordion|}}
+    {{accordion.menu-item for='business-improvement-districts'}}
+    {{accordion.menu-item for='industrial-business-zones'}}
   {{/layer-palette-accordion}}
 
 
   {{#layer-palette-accordion
     closed=true
-    title='Administrative Boundaries'}}
-    {{layer-menu-item for='boroughs'}}
-    {{layer-menu-item for='community-districts'}}
-    {{layer-menu-item for='nyccouncildistricts'}}
-    {{layer-menu-item for='nysenatedistricts'}}
-    {{layer-menu-item for='assemblydistricts'}}
-    {{layer-menu-item for='neighborhood-tabulation-areas'}}
+    title='Administrative Boundaries'
+    as |accordion|}}
+    {{accordion.menu-item for='boroughs'}}
+    {{accordion.menu-item for='community-districts'}}
+    {{accordion.menu-item for='nyccouncildistricts'}}
+    {{accordion.menu-item for='nysenatedistricts'}}
+    {{accordion.menu-item for='assemblydistricts'}}
+    {{accordion.menu-item for='neighborhood-tabulation-areas'}}
   {{/layer-palette-accordion}}
 
   {{#layer-palette-accordion
     closed=true
-    title='Basemaps'}}
-    {{layer-menu-item for='subway'}}
-    {{layer-menu-item for='building-footprints'}}
-    {{#layer-menu-item for='threed-buildings' as |item|}}
+    title='Basemaps'
+    as |accordion|}}
+    {{accordion.menu-item for='subway'}}
+    {{accordion.menu-item for='building-footprints'}}
+    {{#accordion.menu-item for='threed-buildings' as |item|}}
       {{#if item.layer.visible}}
       <ul class="layer-key">
         <li>Drag the compass arrow (<span style="padding: 0; margin-right: -5px; margin-left: -5px;" class="mapboxgl-ctrl-icon mapboxgl-ctrl-compass"><span style="transform: rotate(0deg) scale(0.7); margin: 0; transform-origin: 50% 100%; position: relative; top: 0.25rem; margin-top: -8px;" class="mapboxgl-ctrl-compass-arrow"></span></span>) to adjust the bearing of the map. Click to reset north.</li>
         <li>CTRL + drag the map (or CTRL + arrow keys) to adjust both pitch and bearing.</li>
       </ul>
       {{/if}}
-    {{/layer-menu-item}}
+    {{/accordion.menu-item}}
 
-    {{#layer-menu-item for='aerials' as |item|}}
+    {{#accordion.menu-item for='aerials' as |item|}}
       {{#if item.layer.visible}}
         {{item.radio-selector
           qps=qps
           classNames='list-float-3'
         }}
       {{/if}}
-    {{/layer-menu-item}}
+    {{/accordion.menu-item}}
 
   {{/layer-palette-accordion}}
 

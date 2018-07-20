@@ -49,16 +49,16 @@ export default Component.extend({
   }).restartable(),
 
   willDestroyElement() {
-    this.get('calculateIntersections').cancelAll();
+    this.calculateIntersections.cancelAll();
   },
 
   willUpdate() {
-    this.get('calculateIntersections').cancelAll();
+    this.calculateIntersections.cancelAll();
   },
 
   @computed('tables.@each', 'bbl', 'responseIdentifier')
   intersectingLayers(...args) {
-    return this.get('calculateIntersections').perform(...args);
+    return this.calculateIntersections.perform(...args);
   },
 
   @computed('intersectingLayers.value')

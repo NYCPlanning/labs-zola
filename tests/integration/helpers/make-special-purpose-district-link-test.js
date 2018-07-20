@@ -1,17 +1,19 @@
 
-import { moduleForComponent, skip } from 'ember-qunit';
+import { module, skip } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('make-special-purpose-district-link', 'helper:make-special-purpose-district-link', {
-  integration: true
-});
+module('helper:make-special-purpose-district-link', function(hooks) {
+  setupRenderingTest(hooks);
 
-// Replace this with your real tests.
-skip('it renders', function(assert) {
-  this.set('inputValue', ['1234']);
+  // Replace this with your real tests.
+  skip('it renders', function(assert) {
+    this.set('inputValue', ['1234']);
 
-  this.render(hbs`{{make-special-purpose-district-link inputValue}}`);
+    this.render(hbs`{{make-special-purpose-district-link inputValue}}`);
 
-  assert.equal(this.$().text().trim(), '1234');
+    assert.equal(find('*').textContent.trim(), '1234');
+  });
 });
 

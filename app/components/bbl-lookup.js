@@ -1,10 +1,7 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
-import carto from '../utils/carto';
-
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
-
-import trackEvent from '../utils/track-event'; // eslint-disable-line
+import carto from '../utils/carto';
 
 export default Component.extend({
   classNames: ['bbl-lookup hide-for-print'],
@@ -26,7 +23,7 @@ export default Component.extend({
 
   actions: {
     checkBBL() {
-      const { boro: { code }, block, lot } = this.getProperties('boro', 'block', 'lot');
+      const { boro: { code }, block, lot } = this;
 
       const uniqueSQL = `select bbl from mappluto_v18_1 where block= ${block} and lot = ${lot} and borocode = ${code}`;
       carto.SQL(uniqueSQL).then((response) => {
