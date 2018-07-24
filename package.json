@@ -58,7 +58,7 @@
     "ember-metrics": "^0.12.1",
     "ember-native-dom-helpers": "^0.6.2",
     "ember-parachute": "^0.3.7",
-    "ember-power-select": "^1.9.6",
+    "ember-power-select": "^2.0.4",
     "ember-promise-helpers": "^1.0.6",
     "ember-radio-button": "1.2.4",
     "ember-resolver": "^4.5.6",
