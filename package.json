@@ -43,7 +43,7 @@
     "ember-composability-tools": "0.0.9",
     "ember-composable-helpers": "^2.1.0",
     "ember-concurrency-decorators": "0.0.4-beta.0",
-    "ember-content-placeholders": "^0.5.0",
+    "ember-content-placeholders": "^1.0.0",
     "ember-data": "~3.1.0",
     "ember-data-tasks": "^1.0.2",
     "ember-decorators": "^1.2.2",

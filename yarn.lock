@@ -3995,9 +3995,9 @@ ember-concurrency@^0.8.0, ember-concurrency@^0.8.19:
     ember-cli-babel "^6.8.2"
     ember-maybe-import-regenerator "^0.1.5"
 
-ember-content-placeholders@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/ember-content-placeholders/-/ember-content-placeholders-0.5.0.tgz#a315148ff1032d680fc8903f23f325298ce0e586"
+ember-content-placeholders@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ember-content-placeholders/-/ember-content-placeholders-1.0.0.tgz#21c3ce60b1d7b4c9e8d80303124d3300cca03bc7"
   dependencies:
     ember-cli-babel "^6.6.0"
     ember-cli-htmlbars "^2.0.1"
