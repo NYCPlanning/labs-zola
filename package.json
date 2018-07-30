@@ -44,7 +44,7 @@
     "ember-composable-helpers": "^2.1.0",
     "ember-concurrency-decorators": "0.0.4-beta.0",
     "ember-content-placeholders": "^1.0.0",
-    "ember-data": "~3.1.0",
+    "ember-data": "~3.3.1",
     "ember-data-tasks": "^1.0.2",
     "ember-decorators": "^1.2.2",
     "ember-element-resize-detector": "^0.1.5",
