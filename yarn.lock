@@ -4009,9 +4009,9 @@ ember-data-tasks@^1.0.2:
     ember-cli-babel "^5.1.7"
     ember-concurrency "^0.8.0"
 
-ember-data@~3.1.0:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/ember-data/-/ember-data-3.1.1.tgz#8c17c97a4932b0a0a405cc3e38c43140880366d2"
+ember-data@~3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/ember-data/-/ember-data-3.3.0.tgz#138cc248f61164404f5aa6b8207a3dfae8eaea2a"
   dependencies:
     "@ember/ordered-set" "^1.0.0"
     amd-name-resolver "0.0.7"
@@ -4024,7 +4024,7 @@ ember-data@~3.1.0:
     broccoli-babel-transpiler "^6.0.0"
     broccoli-debug "^0.6.2"
     broccoli-file-creator "^1.0.0"
-    broccoli-funnel "^1.2.0"
+    broccoli-funnel "^2.0.1"
     broccoli-merge-trees "^2.0.0"
     broccoli-rollup "^1.2.0"
     calculate-cache-key-for-tree "^1.1.0"
@@ -4036,7 +4036,6 @@ ember-data@~3.1.0:
     ember-cli-version-checker "^2.1.0"
     ember-inflector "^2.0.0"
     ember-runtime-enumerable-includes-polyfill "^2.0.0"
-    exists-sync "0.0.3"
     git-repo-info "^1.1.2"
     heimdalljs "^0.3.0"
     inflection "^1.8.0"
@@ -4837,10 +4836,6 @@ execa@^0.7.0:
 exists-stat@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/exists-stat/-/exists-stat-1.0.0.tgz#0660e3525a2e89d9e446129440c272edfa24b529"
-
-exists-sync@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/exists-sync/-/exists-sync-0.0.3.tgz#b910000bedbb113b378b82f5f5a7638107622dcf"
 
 exists-sync@0.0.4:
   version "0.0.4"
