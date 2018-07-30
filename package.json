@@ -73,7 +73,7 @@
     "eslint-plugin-import": "^2.12.0",
     "foundation-sites": "^6.4.3",
     "loader.js": "^4.7.0",
-    "mapbox-gl": "^0.42.2"
+    "mapbox-gl": "^0.47.0"
   },
   "engines": {
     "node": "^8.11.3"
