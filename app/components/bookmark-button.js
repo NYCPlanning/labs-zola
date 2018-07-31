@@ -1,5 +1,4 @@
 import Component from '@ember/component';
-import { get } from '@ember/object';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import { inject as service } from '@ember/service';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
@@ -9,9 +8,9 @@ export default Component.extend({
 
   metrics: service(),
 
-  @computed('bookmark')
+  @computed('bookmark.bookmark')
   saved(bookmark) {
-    return !!get(bookmark, 'id');
+    return !!bookmark;
   },
 
   actions: {
