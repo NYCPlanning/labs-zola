@@ -8,7 +8,7 @@ import carto from '../utils/carto';
 const generateSQL = function(table, bbl) {
   // special handling for tables where we don't want to SELECT *
   let intersectionTable = table;
-  if (table === 'effective-flood-insurance-rate-2007') {
+  if (table === 'floodplain_firm2007_v0') {
     intersectionTable = `(
       SELECT the_geom
       FROM floodplain_firm2007_v0
@@ -44,6 +44,7 @@ export default Component.extend({
       hash[table] = carto.SQL(generateSQL(table, bbl))
         .then((response => get(response[0] || {}, responseIdentifier)));
     });
+
 
     return yield RSVP.hash(hash);
   }).restartable(),

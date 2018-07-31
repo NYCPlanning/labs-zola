@@ -21,7 +21,7 @@ export default Controller.extend(Bookmarkable, {
     return (`0${zonemap}`).slice(-3);
   },
 
-  @computed('lot.geometry')
+  @computed('model.value.geometry')
   parentSpecialPurposeDistricts(geometry) {
     return carto.SQL(SQL('special_purpose_districts_v201806', geometry))
       .then(response => response.map(
