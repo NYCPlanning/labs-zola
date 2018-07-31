@@ -39,16 +39,13 @@ export default Component.extend({
     },
 
     checkBBL() {
-      const { boro: { code }, block, lot } = this;
+      const { boro: { code }, validBlock, validLot } = this;
 
-      if (code && block && lot) {
+      if (code && validBlock && validLot) {
         this.send('goToLot');
       }
-      if (block && !lot) {
+      if (code && validBlock && !validLot) {
         this.send('goToBlock');
-      }
-      if (!code && !block && !lot) {
-        this.set('errorMessage', 'Please fill out all required fields.');
       }
     },
 
@@ -86,14 +83,10 @@ export default Component.extend({
 
       carto.SQL(SQL, 'geojson').then((response) => {
         if (response.features[0]) {
-          console.log('response has features');
           this.set('errorMessage', '');
-          this.setProperties({
-            closed: true,
-          });
+          this.set('closed', true);
           mapInstance.flyTo(response.features[0].geometry.coordinates, 16);
         } else {
-          console.log('no features in response');
           this.set('errorMessage', 'The Block does not exist.');
         }
       });
