@@ -47,7 +47,7 @@
     "ember-content-placeholders": "^1.0.0",
     "ember-data": "~3.3.1",
     "ember-data-tasks": "^1.0.2",
-    "ember-decorators": "^1.2.2",
+    "ember-decorators": "^2.3.0",
     "ember-element-resize-detector": "^0.1.5",
     "ember-export-application-global": "^2.0.0",
     "ember-font-awesome": "^4.0.0-alpha.3",
