@@ -11,15 +11,15 @@
   {{else}}
 
     {{bookmark-button
-      bookmark=subdistrict.bookmark
+      bookmark=model.value.bookmark
       createBookmark=(action 'createBookmark')}}
 
     <label class="header-label clearfix">
-      Special Purpose Subdistrict <span class="medium-gray">|</span> {{subdistrict.sdlbl}}
+      Special Purpose Subdistrict <span class="medium-gray">|</span> {{model.value.sdlbl}}
     </label>
 
     <h1 class="content-header">
-      <span class="spd-header">{{subdistrict.spname}}</span>
+      <span class="spd-header">{{model.value.spname}}</span>
     </h1>
 
     <p>Since 1969, the City Planning Commission has designated special zoning districts in response to areas of the City with unique characteristics. Each special district stipulates zoning requirements and incentives tailored to specific conditions that may not lend themselves to generalized zoning and standard development.</p>

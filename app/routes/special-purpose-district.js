@@ -13,10 +13,6 @@ export default Route.extend(updateSelectionMixin, {
 
   setupController(controller, { taskInstance }) {
     this._super(controller, taskInstance);
-    controller.setProperties({
-      model: taskInstance,
-      @computed('model.value') district() { return taskInstance.get('value'); },
-    });
   },
 
   actions: {
