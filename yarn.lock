@@ -1889,7 +1889,7 @@ broccoli-caching-writer@^3.0.3:
     rsvp "^3.0.17"
     walk-sync "^0.3.0"
 
-broccoli-clean-css@^1.1.0, broccoli-clean-css@~1.1.0:
+broccoli-clean-css@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/broccoli-clean-css/-/broccoli-clean-css-1.1.0.tgz#9db143d9af7e0ae79c26e3ac5a9bb2d720ea19fa"
   dependencies:
