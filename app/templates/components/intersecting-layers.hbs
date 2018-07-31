@@ -1,5 +1,5 @@
-{{#if (await intersectingLayers) as |layers|}}
-  {{yield layers numberIntersecting}}
+{{#if (not intersectingLayers.isRunning)}}
+  {{yield intersectingLayers.value numberIntersecting}}
 {{else}}
   <div class="sk-circle">
     <div class="sk-circle1 sk-child"></div>
