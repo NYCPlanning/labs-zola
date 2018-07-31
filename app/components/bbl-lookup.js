@@ -42,8 +42,13 @@ export default Component.extend({
       });
     },
 
+    resetErrorMessage() {
+      this.set('errorMessage', '');
+    },
+
     setBorocode(option) {
       this.set('boro', option);
+      this.set('errorMessage', '');
     },
   },
 });

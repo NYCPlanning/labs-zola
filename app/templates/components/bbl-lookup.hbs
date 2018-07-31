@@ -8,7 +8,7 @@
 </span>
 
 {{#unless closed}}
-<div class="bbl-lookup-form">
+<form class="bbl-lookup-form" {{action 'checkBBL' on='submit'}}>
   <div class="bbl-power-select">
     <label>Borough</label>
     {{#power-select options=boroOptions searchEnabled=false selected=boro searchField='name' onchange=(action 'setBorocode') as |boro|}}
@@ -18,18 +18,18 @@
   <div class="grid-x">
     <div class="cell auto block-container">
       <label>Block
-        {{input type='number' value=block}}
+        {{input type='number' value=block key-press=(action 'resetErrorMessage')}}
       </label>
     </div>
     <div class="cell auto lot-container">
       <label>Lot
-        {{input type='number' value=lot}}
+        {{input type='number' value=lot key-press=(action 'resetErrorMessage')}}
       </label>
     </div>
   </div>
   {{#if errorMessage}}<p class="lu-red text-center text-small"><{{errorMessage}}</p>{{/if}}
   <input type="submit" value="Go to BBL" class="button small expanded no-margin" onclick={{action 'checkBBL'}}>
-</div>
+</form>
 {{/unless}}
 
 {{yield}}
