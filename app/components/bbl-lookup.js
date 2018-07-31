@@ -24,7 +24,7 @@ export default Component.extend({
   validLot: false,
 
   actions: {
-    validate() {
+    validate(value, { keyCode }) {
       const boro = this.get('boro');
       const block = this.get('block');
       const lot = this.get('lot');
@@ -33,7 +33,9 @@ export default Component.extend({
       const validBlock = ((block !== '') && (parseInt(block, 10) < 100000) && (parseInt(block, 10) > 0));
       const validLot = ((lot !== '') && (parseInt(lot, 10) < 10000) && (parseInt(lot, 10) > 0));
 
-      this.send('resetErrorMessage');
+      if (keyCode === 13) {
+        this.send('resetErrorMessage');
+      }
       this.set('validBlock', validBoro && validBlock);
       this.set('validLot', validBoro && validBlock && validLot);
     },
@@ -85,7 +87,10 @@ export default Component.extend({
         if (response.features[0]) {
           this.set('errorMessage', '');
           this.set('closed', true);
-          mapInstance.flyTo(response.features[0].geometry.coordinates, 16);
+          mapInstance.flyTo({
+            center: response.features[0].geometry.coordinates,
+            zoom: 16,
+          });
         } else {
           this.set('errorMessage', 'The Block does not exist.');
         }
