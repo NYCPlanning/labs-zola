@@ -24,7 +24,7 @@ export default Component.extend({
   validLot: false,
 
   actions: {
-    validate(value, { keyCode }) {
+    validate(value, { keyCode } = {}) {
       const boro = this.get('boro');
       const block = this.get('block');
       const lot = this.get('lot');
@@ -33,11 +33,11 @@ export default Component.extend({
       const validBlock = ((block !== '') && (parseInt(block, 10) < 100000) && (parseInt(block, 10) > 0));
       const validLot = ((lot !== '') && (parseInt(lot, 10) < 10000) && (parseInt(lot, 10) > 0));
 
-      if (keyCode === 13) {
+      if (keyCode && (keyCode !== 13)) {
         this.send('resetErrorMessage');
+        this.set('validBlock', validBoro && validBlock);
+        this.set('validLot', validBoro && validBlock && validLot);
       }
-      this.set('validBlock', validBoro && validBlock);
-      this.set('validLot', validBoro && validBlock && validLot);
     },
 
     checkBBL() {
