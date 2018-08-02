@@ -29,7 +29,7 @@ export default Component.extend({
   debouncedResults: task(function* (searchTerms) {
     if (searchTerms.length < 3) this.cancel();
     yield timeout(DEBOUNCE_MS);
-    const URL = `https://zola-search-api.planninglabs.nyc/search?helpers[]=geosearch&helpers[]=neighborhood&helpers[]=bbl&helpers[]=zoning-district&helpers[]=zoning-map-amendment&helpers[]=special-purpose-district&helpers[]=commercial-overlay&q=${searchTerms}`;
+    const URL = `https://search-api.planninglabs.nyc/search?helpers[]=geosearch&helpers[]=neighborhood&helpers[]=bbl&helpers[]=zoning-district&helpers[]=zoning-map-amendment&helpers[]=special-purpose-district&helpers[]=commercial-overlay&q=${searchTerms}`;
 
     this.set('loading', new Promise(function(resolve) {
       setTimeout(resolve, 500);
