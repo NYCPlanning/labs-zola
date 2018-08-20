@@ -1,0 +1,4801 @@
+{
+  "data": [
+    {
+      "type": "layer-groups",
+      "id": "aerials",
+      "attributes": {
+        "id": "aerials",
+        "title": "Aerial Imagery",
+        "visible": false,
+        "layer-visibility-type": "singleton",
+        "title-tooltip": "Aerial Photos Raster Tiles provided by DoITT GIS",
+        "meta": {
+          "description": "NYC DoITT GIS Aerial Photography Tile Layers (TMS)",
+          "url": [
+            "https:\/\/maps.nyc.gov\/tiles\/"
+          ],
+          "updated-at": "n\/a"
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "aerials-2016"
+            },
+            {
+              "type": "layers",
+              "id": "aerials-2014"
+            },
+            {
+              "type": "layers",
+              "id": "aerials-2012"
+            },
+            {
+              "type": "layers",
+              "id": "aerials-2010"
+            },
+            {
+              "type": "layers",
+              "id": "aerials-2008"
+            },
+            {
+              "type": "layers",
+              "id": "aerials-2006"
+            },
+            {
+              "type": "layers",
+              "id": "aerials-2004"
+            },
+            {
+              "type": "layers",
+              "id": "aerials-20012"
+            },
+            {
+              "type": "layers",
+              "id": "aerials-1996"
+            },
+            {
+              "type": "layers",
+              "id": "aerials-1951"
+            },
+            {
+              "type": "layers",
+              "id": "aerials-1924"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "amendments-pending",
+      "attributes": {
+        "id": "amendments-pending",
+        "title": "Pending City Map Alterations",
+        "visible": false,
+        "title-tooltip": "Proposed Alterations to the City Map that have been approved in public review but have not yet been officially enacted. These alterations have not yet taken effect and are shown for illustrative purposes.",
+        "meta": {
+          "description": "NYC Department of City Planning Technical Review Division",
+          "updated-at": "6 April 2018"
+        },
+        "legend-config": {
+          "items": [
+            {
+              "type": "area",
+              "label": "City Map Alterations",
+              "style": {
+                "stroke": "none",
+                "fill": "rgba(240, 15, 130, 0.4)"
+              }
+            }
+          ]
+        },
+        "legend-icon": "polygon-stacked",
+        "legend-color": "rgba(240, 15, 130, 0.4)"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "citymap-amendments-fill-pending"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "amendments",
+      "attributes": {
+        "id": "amendments",
+        "title": "Adopted City Map Alterations",
+        "visible": false,
+        "title-tooltip": "An index of alterations to the City Map. Alteration Maps show changes made to the City Map and, when they are the most recent in an area, serve as an official record of the City Map in the area they depict.",
+        "meta": {
+          "description": "NYC Department of City Planning Technical Review Division",
+          "updated-at": "6 April 2018"
+        },
+        "legend-config": {
+          "items": [
+            {
+              "type": "area",
+              "label": "City Map Alterations",
+              "style": {
+                "stroke": "none",
+                "fill": "rgba(174, 86, 31, 0.4)"
+              }
+            }
+          ]
+        },
+        "legend-icon": "polygon-stacked",
+        "legend-color": "rgba(174, 86, 31, 0.4)"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "citymap-amendments-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "arterials",
+      "attributes": {
+        "id": "arterials",
+        "title": "Arterial Highways & Major Streets",
+        "visible": false,
+        "title-tooltip": "Designated rights-of-way shown on the Master Plan of Arterial Highways and Major Streets (not an exact copy).",
+        "meta": {
+          "description": "NYC Department of City Planning Technical Review Division",
+          "updated-at": "6 April 2018"
+        },
+        "legend-config": {
+          "label": "Arterial & Major Streets",
+          "items": [
+            {
+              "type": "line",
+              "label": "Arterial",
+              "style": {
+                "fill": "none",
+                "stroke": "rgba(255, 210, 90, 1)"
+              }
+            },
+            {
+              "type": "line",
+              "label": "Major Street",
+              "style": {
+                "fill": "none",
+                "stroke": "rgba(250, 230, 180, 1)"
+              }
+            }
+          ]
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "citymap-arterials-line"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "citymap",
+      "attributes": {
+        "id": "citymap",
+        "title": "Street Lines",
+        "visible": false,
+        "meta": {
+          "description": "NYC Department of City Planning Technical Review Division",
+          "updated-at": "6 April 2018"
+        },
+        "legend-config": {
+          "label": "Street Lines",
+          "items": [
+            {
+              "type": "line",
+              "label": "Mapped Street",
+              "tooltip": "A street that has been established on an adopted alteration map or section map and filed with the appropriate agencies",
+              "style": {
+                "fill": "none",
+                "stroke": "rgba(50, 50, 50, 1)"
+              }
+            },
+            {
+              "type": "line",
+              "label": "Street Treatment",
+              "tooltip": "Lines on the City Map that reflect curb lines, approach ramps and other physical elements for illustrative purposes only - may be changed without public review (ULURP)",
+              "style": {
+                "fill": "none",
+                "stroke": "rgba(84, 84, 84, 1)",
+                "stroke-width": "0.5"
+              }
+            },
+            {
+              "type": "line",
+              "label": "Unmapped Street",
+              "tooltip": "A street that is not officially shown on the City Map and over which the public may or may not have a right of way. Record streets and private roads are examples of unmapped streets.",
+              "style": {
+                "fill": "none",
+                "stroke": "rgba(50, 50, 50, 0.4)",
+                "stroke-width": "0.5",
+                "stroke-dasharray": "1"
+              }
+            }
+          ]
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "citymap-mapped-streets-line"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-streets-tooltip-line"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-street-treatments-line"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-underpass-tunnel-line"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-street-not-mapped-line"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "commercial-overlays",
+      "attributes": {
+        "id": "commercial-overlays",
+        "title": "Commercial Overlays",
+        "visible": false,
+        "title-tooltip": "A commercial overlay is a C1 or C2 district mapped within residential districts to serve local retail needs.",
+        "meta": {
+          "description": "NYC GIS Zoning Features February 2018, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "5 March 2018"
+        },
+        "legend-icon": "polygon-line",
+        "legend-color": "rgba(220, 10, 10, 1)"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "co-fill"
+            },
+            {
+              "type": "layers",
+              "id": "co"
+            },
+            {
+              "type": "layers",
+              "id": "co_labels"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "floodplain-pfirm2015",
+      "attributes": {
+        "id": "floodplain-pfirm2015",
+        "title": "Preliminary Flood Insurance Rate Maps 2015",
+        "title-tooltip": "Released in 2015 as part of a citywide flood map update, the Preliminary FIRMs establish the 1% annual chance floodplain. For building code and zoning purposes, the more expansive of the either the 2015 or 2007 maps is used.",
+        "meta": {
+          "description": "Flood Insurance Rate Data provided by FEMA",
+          "url": [
+            "http:\/\/www.region2coastal.com\/view-flood-maps-data\/view-preliminary-flood-map-data\/"
+          ],
+          "updated-at": "September 2017"
+        },
+        "visible": true,
+        "legend-icon": "polygon",
+        "legend-color": "#0084a8"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "preliminary-flood-insurance-rate"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "floodplain-efirm2007",
+      "attributes": {
+        "id": "floodplain-efirm2007",
+        "title": "Effective Flood Insurance Rate Maps 2007",
+        "title-tooltip": "The Effective Flood Insurance Rate Maps (FIRMs), first adopted by New York City in 1983 and last updated in 2007, establish the floodplain currently subject to the National Flood Insurance Program purchase requirements.",
+        "meta": {
+          "description": "Effective Flood Insurance Rate Maps (FIRMs) data are available at FEMA Flood Map Service Center",
+          "url": [
+            "https:\/\/msc.fema.gov\/portal"
+          ],
+          "updated-at": "September 2017"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#0084a8",
+        "visible": false
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "effective-flood-insurance-rate-2007"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "name-changes",
+      "attributes": {
+        "id": "name-changes",
+        "title": "Local Law Names",
+        "visible": false,
+        "title-tooltip": "Local Law name changes to thoroughfares and public places from 2002 to present",
+        "meta": {
+          "description": "NYC Department of City Planning Technical Review Division",
+          "updated-at": "6 April 2018"
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "citymap-name-changes-circle"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-name-changes-line"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-name-changes-fill"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-name-changes-circle-label"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-name-changes-lines-label"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-name-changes-areas-label"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "paper-streets",
+      "attributes": {
+        "id": "paper-streets",
+        "title": "Paper Streets",
+        "visible": false,
+        "title-tooltip": "Streets that are officially mapped but are not built and only appear on paper maps",
+        "legend-icon": "polygon",
+        "legend-color": "rgba(80, 80, 210, 0.8)"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "paper-streets-line"
+            },
+            {
+              "type": "layers",
+              "id": "paper-streets-line-halo"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "pierhead-bulkhead-lines",
+      "attributes": {
+        "id": "pierhead-bulkhead-lines",
+        "title": "Pierhead & Bulkhead Lines",
+        "visible": false,
+        "title-tooltip": "The Pierhead line is the extent to which piers and platforms over water may be built as shown on the City Map.  The Bulkhead line is the extent to which the filling of land is permitted without additional permits.",
+        "meta": {
+          "description": "NYC Department of City Planning Technical Review Division",
+          "updated-at": "6 April 2018"
+        },
+        "legend-config": {
+          "label": "Water Lines",
+          "items": [
+            {
+              "type": "line",
+              "label": "Pierhead Line",
+              "style": {
+                "fill": "none",
+                "stroke": "#3278C8",
+                "stroke-linecap": "round",
+                "stroke-dasharray": "5,2.5,0,2,0,2.5"
+              }
+            },
+            {
+              "type": "line",
+              "label": "Bulkhead Line",
+              "style": {
+                "fill": "none",
+                "stroke": "#3278C8",
+                "stroke-linecap": "round",
+                "stroke-dasharray": "5,2,0,1.5,0,1.5,0,2"
+              }
+            }
+          ]
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "citymap-pierhead-line"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-bulkhead-line"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "special-purpose-districts",
+      "attributes": {
+        "id": "special-purpose-districts",
+        "title": "Special Purpose Districts",
+        "title-tooltip": "The regulations for special purpose districts are designed to supplement and modify the underlying zoning in order to respond to distinctive neighborhoods with particular issues and goals",
+        "meta": {
+          "description": "NYC GIS Zoning Features February 2018, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "5 March 2018"
+        },
+        "legend-icon": "polygon-fill-dash",
+        "legend-color": "rgba(94,102,51, 1)"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "zoning-sp-line"
+            },
+            {
+              "type": "layers",
+              "id": "zoning-sp-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "stair-streets",
+      "attributes": {
+        "id": "stair-streets",
+        "title": "Stair Streets",
+        "visible": false,
+        "title-tooltip": "Street segments with steps or stairs to accommodate foot traffic.",
+        "legend-icon": "four-vertical-lines",
+        "legend-color": "rgba(40, 110, 90, 0.8)"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "stair-streets-line"
+            },
+            {
+              "type": "layers",
+              "id": "stair-streets-line-halo"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "street-centerlines",
+      "attributes": {
+        "id": "street-centerlines",
+        "title": "Street Names",
+        "visible": false,
+        "title-tooltip": "Legal street names as shown on the City Map",
+        "meta": {
+          "description": "NYC Department of City Planning Technical Review Division",
+          "updated-at": "6 April 2018"
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "citymap-street-centerlines-symbol"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "tax-lots",
+      "attributes": {
+        "id": "tax-lots",
+        "title": "Tax Lots",
+        "title-tooltip": "A tax lot is a parcel of land identified with a unique borough, block and lot number for property tax purposes.",
+        "meta": {
+          "description": "MapPLUTO\u2122 v18.1, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "18 June 2018"
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "pluto-fill"
+            },
+            {
+              "type": "layers",
+              "id": "pluto-line"
+            },
+            {
+              "type": "layers",
+              "id": "pluto-labels"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "zoning-districts",
+      "attributes": {
+        "id": "zoning-districts",
+        "title": "Zoning Districts",
+        "visible": false,
+        "title-tooltip": "A zoning district is a residential, commercial or manufac\u00adturing area of the city within which zoning regulations govern land use and building bulk.",
+        "meta": {
+          "description": "NYC GIS Zoning Features June 2018, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "July 18th, 2018"
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "zd-fill"
+            },
+            {
+              "type": "layers",
+              "id": "zd-lines"
+            },
+            {
+              "type": "layers",
+              "id": "zd_labels"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "included": [
+    {
+      "type": "layers",
+      "id": "aerials-2016",
+      "attributes": {
+        "style": {
+          "id": "aerials-2016",
+          "layout": {
+            "visibility": "visible"
+          },
+          "source": "aerials-2016",
+          "type": "raster",
+          "metadata": {
+            "nycplanninglabs:layergroupid": "aerials"
+          }
+        },
+        "display-name": "2016",
+        "before": "boundary_state"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "aerials-2014",
+      "attributes": {
+        "style": {
+          "id": "aerials-2014",
+          "layout": {
+            "visibility": "none"
+          },
+          "source": "aerials-2014",
+          "type": "raster",
+          "metadata": {
+            "nycplanninglabs:layergroupid": "aerials"
+          }
+        },
+        "display-name": "2014",
+        "before": "boundary_state"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "aerials-2012",
+      "attributes": {
+        "style": {
+          "id": "aerials-2012",
+          "layout": {
+            "visibility": "none"
+          },
+          "source": "aerials-2012",
+          "type": "raster",
+          "metadata": {
+            "nycplanninglabs:layergroupid": "aerials"
+          }
+        },
+        "display-name": "2012",
+        "before": "boundary_state"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "aerials-2010",
+      "attributes": {
+        "style": {
+          "id": "aerials-2010",
+          "layout": {
+            "visibility": "none"
+          },
+          "source": "aerials-2010",
+          "type": "raster",
+          "metadata": {
+            "nycplanninglabs:layergroupid": "aerials"
+          }
+        },
+        "display-name": "2010",
+        "before": "boundary_state"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "aerials-2008",
+      "attributes": {
+        "style": {
+          "id": "aerials-2008",
+          "layout": {
+            "visibility": "none"
+          },
+          "source": "aerials-2008",
+          "type": "raster",
+          "metadata": {
+            "nycplanninglabs:layergroupid": "aerials"
+          }
+        },
+        "display-name": "2008",
+        "before": "boundary_state"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "aerials-2006",
+      "attributes": {
+        "style": {
+          "id": "aerials-2006",
+          "layout": {
+            "visibility": "none"
+          },
+          "source": "aerials-2006",
+          "type": "raster",
+          "metadata": {
+            "nycplanninglabs:layergroupid": "aerials"
+          }
+        },
+        "display-name": "2006",
+        "before": "boundary_state"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "aerials-2004",
+      "attributes": {
+        "style": {
+          "id": "aerials-2004",
+          "layout": {
+            "visibility": "none"
+          },
+          "source": "aerials-2004",
+          "type": "raster",
+          "metadata": {
+            "nycplanninglabs:layergroupid": "aerials"
+          }
+        },
+        "display-name": "2004",
+        "before": "boundary_state"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "aerials-20012",
+      "attributes": {
+        "style": {
+          "id": "aerials-20012",
+          "layout": {
+            "visibility": "none"
+          },
+          "source": "aerials-20012",
+          "type": "raster",
+          "metadata": {
+            "nycplanninglabs:layergroupid": "aerials"
+          }
+        },
+        "display-name": "2001-2",
+        "before": "boundary_state"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "aerials-1996",
+      "attributes": {
+        "style": {
+          "id": "aerials-1996",
+          "layout": {
+            "visibility": "none"
+          },
+          "source": "aerials-1996",
+          "type": "raster",
+          "metadata": {
+            "nycplanninglabs:layergroupid": "aerials"
+          }
+        },
+        "display-name": "1996",
+        "before": "boundary_state"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "aerials-1951",
+      "attributes": {
+        "style": {
+          "id": "aerials-1951",
+          "layout": {
+            "visibility": "none"
+          },
+          "source": "aerials-1951",
+          "type": "raster",
+          "metadata": {
+            "nycplanninglabs:layergroupid": "aerials"
+          }
+        },
+        "display-name": "1951",
+        "before": "boundary_state"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "aerials-1924",
+      "attributes": {
+        "style": {
+          "id": "aerials-1924",
+          "layout": {
+            "visibility": "none"
+          },
+          "source": "aerials-1924",
+          "type": "raster",
+          "metadata": {
+            "nycplanninglabs:layergroupid": "aerials"
+          }
+        },
+        "display-name": "1924",
+        "before": "boundary_state"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-amendments-fill-pending",
+      "attributes": {
+        "style": {
+          "id": "citymap-amendments-fill-pending",
+          "type": "fill",
+          "source": "digital-citymap",
+          "source-layer": "amendments",
+          "paint": {
+            "fill-color": "rgba(240, 15, 130, 0.4)"
+          },
+          "layout": {
+            
+          },
+          "filter": [
+            "==",
+            "status",
+            "13"
+          ],
+          "metadata": {
+            "nycplanninglabs:layergroupid": "amendments-pending"
+          }
+        },
+        "before": "place_other"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-amendments-fill",
+      "attributes": {
+        "style": {
+          "id": "citymap-amendments-fill",
+          "type": "fill",
+          "source": "digital-citymap",
+          "source-layer": "amendments",
+          "paint": {
+            "fill-color": "rgba(174, 86, 31, 0.2)"
+          },
+          "layout": {
+            
+          },
+          "filter": [
+            "==",
+            "status",
+            "14"
+          ],
+          "metadata": {
+            "nycplanninglabs:layergroupid": "amendments"
+          }
+        },
+        "tooltipable": true,
+        "before": "place_other"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-arterials-line",
+      "attributes": {
+        "style": {
+          "id": "citymap-arterials-line",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "arterials",
+          "paint": {
+            "line-color": {
+              "property": "route_type",
+              "type": "categorical",
+              "stops": [
+                [
+                  "Arterial Highway",
+                  "rgba(255, 190, 0, 1)"
+                ],
+                [
+                  "Major Streets",
+                  "rgba(250, 230, 180, 1)"
+                ]
+              ]
+            },
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1.5
+                ],
+                [
+                  14,
+                  6
+                ],
+                [
+                  16,
+                  20
+                ],
+                [
+                  18,
+                  50
+                ],
+                [
+                  19,
+                  100
+                ]
+              ]
+            }
+          },
+          "layout": {
+            "visibility": "visible"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "arterials"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-mapped-streets-line",
+      "attributes": {
+        "style": {
+          "id": "citymap-mapped-streets-line",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "citymap",
+          "paint": {
+            "line-color": {
+              "stops": [
+                [
+                  10,
+                  "rgba(50, 50, 50, 0.3)"
+                ],
+                [
+                  13,
+                  "rgba(50, 50, 50, 1)"
+                ]
+              ]
+            },
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  0.1
+                ],
+                [
+                  13,
+                  1
+                ],
+                [
+                  15,
+                  3
+                ]
+              ]
+            }
+          },
+          "filter": [
+            "all",
+            [
+              "==",
+              "type",
+              "Mapped Street"
+            ]
+          ],
+          "metadata": {
+            "nycplanninglabs:layergroupid": "citymap"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-streets-tooltip-line",
+      "attributes": {
+        "style": {
+          "id": "citymap-streets-tooltip-line",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "citymap",
+          "paint": {
+            "line-opacity": 0.001,
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  0.2
+                ],
+                [
+                  13,
+                  2
+                ],
+                [
+                  15,
+                  6
+                ]
+              ]
+            }
+          },
+          "filter": [
+            "any",
+            [
+              "==",
+              "type",
+              "Mapped Street"
+            ],
+            [
+              "==",
+              "type",
+              "Street not mapped"
+            ],
+            [
+              "==",
+              "type",
+              "Record Street"
+            ]
+          ],
+          "metadata": {
+            "nycplanninglabs:layergroupid": "citymap"
+          }
+        },
+        "tooltipable": true,
+        "tooltip-template": "{{type}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-street-treatments-line",
+      "attributes": {
+        "style": {
+          "id": "citymap-street-treatments-line",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "citymap",
+          "filter": [
+            "all",
+            [
+              "==",
+              "type",
+              "street_treatment"
+            ]
+          ],
+          "paint": {
+            "line-color": {
+              "stops": [
+                [
+                  10,
+                  "rgba(84, 84, 84, 0.3)"
+                ],
+                [
+                  13,
+                  "rgba(84, 84, 84, 1)"
+                ]
+              ]
+            },
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  0.1
+                ],
+                [
+                  13,
+                  0.25
+                ],
+                [
+                  15,
+                  1
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "citymap"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-underpass-tunnel-line",
+      "attributes": {
+        "style": {
+          "id": "citymap-underpass-tunnel-line",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "citymap",
+          "filter": [
+            "all",
+            [
+              "==",
+              "type",
+              "Underpass or Tunnel"
+            ]
+          ],
+          "paint": {
+            "line-color": {
+              "stops": [
+                [
+                  10,
+                  "rgba(150, 150, 150, 0.3)"
+                ],
+                [
+                  13,
+                  "rgba(150, 150, 150, 1)"
+                ]
+              ]
+            },
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  0.1
+                ],
+                [
+                  13,
+                  0.25
+                ],
+                [
+                  15,
+                  1
+                ]
+              ]
+            },
+            "line-dasharray": {
+              "stops": [
+                [
+                  10,
+                  [
+                    6,
+                    4
+                  ]
+                ],
+                [
+                  15,
+                  [
+                    10,
+                    6
+                  ]
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "citymap"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-street-not-mapped-line",
+      "attributes": {
+        "style": {
+          "id": "citymap-street-not-mapped-line",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "citymap",
+          "filter": [
+            "any",
+            [
+              "==",
+              "type",
+              "Street not mapped"
+            ],
+            [
+              "==",
+              "type",
+              "Record Street"
+            ]
+          ],
+          "paint": {
+            "line-color": {
+              "stops": [
+                [
+                  10,
+                  "rgba(50, 50, 50, 0.15)"
+                ],
+                [
+                  13,
+                  "rgba(50, 50, 50, 0.4)"
+                ]
+              ]
+            },
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  0.5
+                ],
+                [
+                  13,
+                  0.25
+                ],
+                [
+                  15,
+                  2
+                ]
+              ]
+            },
+            "line-dasharray": [
+              0,
+              2
+            ]
+          },
+          "layout": {
+            "line-cap": "round"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "citymap"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "co-fill",
+      "attributes": {
+        "style": {
+          "id": "co-fill",
+          "type": "fill",
+          "source": "zoning",
+          "minzoom": 12,
+          "source-layer": "commercial-overlays",
+          "paint": {
+            "fill-outline-color": "#cdcdcd",
+            "fill-opacity": 0
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "commercial-overlays"
+          }
+        },
+        "clickable": true,
+        "highlightable": true,
+        "tooltip-template": "{{overlay}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "co",
+      "attributes": {
+        "style": {
+          "id": "co",
+          "type": "line",
+          "source": "zoning",
+          "source-layer": "commercial-overlays",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  12,
+                  0.1
+                ],
+                [
+                  15,
+                  2
+                ]
+              ]
+            },
+            "line-opacity": 0.75,
+            "line-color": "rgba(220, 10, 10, 1)"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "commercial-overlays"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "co_labels",
+      "attributes": {
+        "style": {
+          "id": "co_labels",
+          "type": "symbol",
+          "source": "zoning",
+          "source-layer": "commercial-overlays",
+          "paint": {
+            "text-color": "rgba(200, 0, 0, 1)",
+            "text-halo-color": "#FFFFFF",
+            "text-halo-width": 2,
+            "text-halo-blur": 2,
+            "text-opacity": 0.9
+          },
+          "layout": {
+            "symbol-placement": "point",
+            "text-field": "{overlay}"
+          },
+          "minzoom": 14,
+          "metadata": {
+            "nycplanninglabs:layergroupid": "commercial-overlays"
+          }
+        },
+        "before": "place_country_major"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "preliminary-flood-insurance-rate",
+      "attributes": {
+        "style": {
+          "id": "preliminary-flood-insurance-rate",
+          "type": "fill",
+          "source": "floodplains",
+          "source-layer": "preliminary-flood-insurance-rate",
+          "paint": {
+            "fill-color": {
+              "property": "fld_zone",
+              "type": "categorical",
+              "stops": [
+                [
+                  "V",
+                  "#0084a8"
+                ],
+                [
+                  "A",
+                  "#00a9e6"
+                ]
+              ]
+            },
+            "fill-opacity": 0.7
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "floodplain-pfirm2015"
+          }
+        },
+        "highlightable": true,
+        "tooltipable": true,
+        "tooltip-template": "2015 {{fld_zone}} Zone"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "effective-flood-insurance-rate-2007",
+      "attributes": {
+        "style": {
+          "id": "effective-flood-insurance-rate-2007",
+          "type": "fill",
+          "source": "floodplains",
+          "source-layer": "effective-flood-insurance-rate-2007",
+          "paint": {
+            "fill-color": {
+              "property": "fld_zone",
+              "type": "categorical",
+              "stops": [
+                [
+                  "V",
+                  "#0084a8"
+                ],
+                [
+                  "A",
+                  "#00a9e6"
+                ]
+              ]
+            },
+            "fill-opacity": 0.7
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "floodplain-efirm2007"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "2007 {{fld_zone}} Zone"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-name-changes-circle",
+      "attributes": {
+        "style": {
+          "id": "citymap-name-changes-circle",
+          "type": "circle",
+          "source": "digital-citymap",
+          "source-layer": "name-changes-points",
+          "layout": {
+            "visibility": "visible"
+          },
+          "paint": {
+            "circle-stroke-color": "rgba(49, 49, 49, 1)",
+            "circle-color": "rgba(228, 72, 192, 1)",
+            "circle-stroke-width": {
+              "stops": [
+                [
+                  10,
+                  0.5
+                ],
+                [
+                  14,
+                  1.5
+                ]
+              ]
+            },
+            "circle-radius": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  14,
+                  5
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "name-changes"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-name-changes-line",
+      "attributes": {
+        "style": {
+          "id": "citymap-name-changes-line",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "name-changes-lines",
+          "paint": {
+            "line-color": "rgba(228, 72, 192, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  16,
+                  19
+                ]
+              ]
+            },
+            "line-opacity": 0.5
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "name-changes"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-name-changes-fill",
+      "attributes": {
+        "style": {
+          "id": "citymap-name-changes-fill",
+          "type": "fill",
+          "source": "digital-citymap",
+          "source-layer": "name-changes-areas",
+          "paint": {
+            "fill-color": "rgba(228, 72, 192, 1)",
+            "fill-opacity": 0.5
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "name-changes"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-name-changes-circle-label",
+      "attributes": {
+        "style": {
+          "id": "citymap-name-changes-circle-label",
+          "type": "symbol",
+          "source": "digital-citymap",
+          "source-layer": "name-changes-points",
+          "filter": [
+            "all"
+          ],
+          "layout": {
+            "text-field": "{honoraryna}",
+            "text-font": [
+              "Open Sans Regular",
+              "Arial Unicode MS Regular"
+            ],
+            "text-size": 11,
+            "text-justify": "left",
+            "text-anchor": "left",
+            "text-offset": [
+              1.5,
+              0
+            ]
+          },
+          "paint": {
+            "text-opacity": {
+              "stops": [
+                [
+                  14.5,
+                  0
+                ],
+                [
+                  15.5,
+                  1
+                ]
+              ]
+            },
+            "text-color": "rgba(0, 0, 0, 1)",
+            "text-halo-color": "rgba(152, 152, 152, 0)"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "name-changes"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-name-changes-lines-label",
+      "attributes": {
+        "style": {
+          "id": "citymap-name-changes-lines-label",
+          "type": "symbol",
+          "source": "digital-citymap",
+          "source-layer": "name-changes-lines",
+          "filter": [
+            "all"
+          ],
+          "layout": {
+            "text-field": "{honoraryna}",
+            "text-font": [
+              "Open Sans Regular",
+              "Arial Unicode MS Regular"
+            ],
+            "text-size": 11,
+            "text-justify": "left",
+            "text-anchor": "center",
+            "text-offset": [
+              0,
+              2
+            ],
+            "symbol-placement": "line",
+            "symbol-avoid-edges": false,
+            "text-keep-upright": true,
+            "text-optional": false,
+            "icon-allow-overlap": false,
+            "symbol-spacing": 250,
+            "visibility": "visible",
+            "text-transform": "none"
+          },
+          "paint": {
+            "text-opacity": {
+              "stops": [
+                [
+                  14.5,
+                  0
+                ],
+                [
+                  15.5,
+                  1
+                ]
+              ]
+            },
+            "text-color": "rgba(0, 0, 0, 1)",
+            "text-halo-color": "rgba(152, 152, 152, 0)"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "name-changes"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-name-changes-areas-label",
+      "attributes": {
+        "style": {
+          "id": "citymap-name-changes-areas-label",
+          "type": "symbol",
+          "source": "digital-citymap",
+          "source-layer": "name-changes-areas",
+          "filter": [
+            "all"
+          ],
+          "layout": {
+            "text-field": "{honoraryna}",
+            "text-font": [
+              "Open Sans Regular",
+              "Arial Unicode MS Regular"
+            ],
+            "text-size": 11,
+            "text-justify": "center",
+            "text-anchor": "center",
+            "text-offset": [
+              0,
+              0
+            ],
+            "symbol-placement": "point",
+            "symbol-avoid-edges": false,
+            "text-keep-upright": true,
+            "text-optional": false,
+            "icon-allow-overlap": false,
+            "symbol-spacing": 250,
+            "text-transform": "none",
+            "visibility": "visible"
+          },
+          "paint": {
+            "text-opacity": {
+              "stops": [
+                [
+                  14.5,
+                  0
+                ],
+                [
+                  15.5,
+                  1
+                ]
+              ]
+            },
+            "text-color": "rgba(0, 0, 0, 1)",
+            "text-halo-color": "rgba(152, 152, 152, 0)"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "name-changes"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "paper-streets-line",
+      "attributes": {
+        "style": {
+          "id": "paper-streets-line",
+          "before": "boundary_country",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "street-centerlines",
+          "filter": [
+            "all",
+            [
+              "==",
+              "feature_st",
+              "Paper_St"
+            ]
+          ],
+          "paint": {
+            "line-color": "rgba(80, 80, 210, 0.8)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1.5
+                ],
+                [
+                  14,
+                  6
+                ],
+                [
+                  16,
+                  20
+                ],
+                [
+                  18,
+                  50
+                ],
+                [
+                  19,
+                  100
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "paper-streets"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "paper-streets-line-halo",
+      "attributes": {
+        "style": {
+          "id": "paper-streets-line-halo",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "street-centerlines",
+          "filter": [
+            "all",
+            [
+              "==",
+              "feature_st",
+              "Paper_St"
+            ]
+          ],
+          "paint": {
+            "line-color": "rgba(80, 80, 210, 0.4)",
+            "line-width": {
+              "stops": [
+                [
+                  13,
+                  4
+                ],
+                [
+                  14,
+                  0
+                ]
+              ]
+            },
+            "line-translate-anchor": "map",
+            "line-gap-width": 2
+          },
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "paper-streets"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-pierhead-line",
+      "attributes": {
+        "style": {
+          "id": "citymap-pierhead-line",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "pierhead-lines",
+          "paint": {
+            "line-color": "rgba(50, 120, 200, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  0.5
+                ],
+                [
+                  14,
+                  3
+                ]
+              ]
+            },
+            "line-opacity": 1,
+            "line-dasharray": [
+              5,
+              2,
+              0,
+              1.5,
+              0,
+              1.5,
+              0,
+              2
+            ]
+          },
+          "layout": {
+            "line-cap": "round"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "pierhead-bulkhead-lines"
+          }
+        },
+        "tooltipable": true,
+        "tooltip-template": "Pierhead Line"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-bulkhead-line",
+      "attributes": {
+        "style": {
+          "id": "citymap-bulkhead-line",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "bulkhead-lines",
+          "paint": {
+            "line-color": "#3278C8",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  0.5
+                ],
+                [
+                  14,
+                  3
+                ]
+              ]
+            },
+            "line-opacity": 1,
+            "line-dasharray": [
+              5,
+              2.5,
+              0,
+              2,
+              0,
+              2.5
+            ]
+          },
+          "layout": {
+            "line-cap": "round"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "pierhead-bulkhead-lines"
+          }
+        },
+        "tooltipable": true,
+        "tooltip-template": "Bulkhead Line"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zoning-sp-line",
+      "attributes": {
+        "style": {
+          "id": "zoning-sp-line",
+          "type": "line",
+          "source": "zoning",
+          "source-layer": "special-purpose-districts",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "rgba(94,102,51, 0.6)",
+            "line-dasharray": [
+              1,
+              1
+            ]
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "special-purpose-districts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zoning-sp-fill",
+      "attributes": {
+        "style": {
+          "id": "zoning-sp-fill",
+          "type": "fill",
+          "source": "zoning",
+          "source-layer": "special-purpose-districts",
+          "paint": {
+            "fill-color": "#5E6633",
+            "fill-opacity": 0.2
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "special-purpose-districts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "stair-streets-line",
+      "attributes": {
+        "style": {
+          "id": "stair-streets-line",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "street-centerlines",
+          "filter": [
+            "all",
+            [
+              "==",
+              "roadway_ty",
+              "Step_Stair_ST"
+            ]
+          ],
+          "paint": {
+            "line-color": "rgba(40, 110, 90, 0.8)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1.5
+                ],
+                [
+                  14,
+                  6
+                ],
+                [
+                  16,
+                  20
+                ],
+                [
+                  18,
+                  50
+                ],
+                [
+                  19,
+                  100
+                ]
+              ]
+            },
+            "line-dasharray": {
+              "stops": [
+                [
+                  13,
+                  [
+                    1
+                  ]
+                ],
+                [
+                  14,
+                  [
+                    0.2,
+                    0.2
+                  ]
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "stair-streets"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "stair-streets-line-halo",
+      "attributes": {
+        "style": {
+          "id": "stair-streets-line-halo",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "street-centerlines",
+          "filter": [
+            "all",
+            [
+              "==",
+              "roadway_ty",
+              "Step_Stair_ST"
+            ]
+          ],
+          "paint": {
+            "line-color": "rgba(40, 110, 90, 0.5)",
+            "line-width": {
+              "stops": [
+                [
+                  13,
+                  4
+                ],
+                [
+                  14,
+                  0
+                ]
+              ]
+            },
+            "line-translate-anchor": "map",
+            "line-gap-width": 2
+          },
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "stair-streets"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-street-centerlines-symbol",
+      "attributes": {
+        "style": {
+          "id": "citymap-street-centerlines-symbol",
+          "type": "symbol",
+          "source": "digital-citymap",
+          "source-layer": "street-centerlines",
+          "minzoom": 13,
+          "layout": {
+            "text-field": "{streetname}{streetwidth}",
+            "text-keep-upright": true,
+            "symbol-placement": "line",
+            "text-size": 12
+          },
+          "paint": {
+            "text-color": "rgba(37, 37, 37, 1)",
+            "text-halo-color": "#fff",
+            "text-translate": [
+              0,
+              0
+            ],
+            "text-halo-width": 2,
+            "text-halo-blur": 1
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "street-centerlines"
+          }
+        },
+        "before": "place_country_major"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "pluto-fill",
+      "attributes": {
+        "style": {
+          "id": "pluto-fill",
+          "type": "fill",
+          "source": "pluto",
+          "minzoom": 15,
+          "source-layer": "pluto",
+          "paint": {
+            "fill-outline-color": "#cdcdcd",
+            "fill-color": {
+              "property": "landuse",
+              "type": "categorical",
+              "stops": [
+                [
+                  "01",
+                  "#FEFFA8"
+                ],
+                [
+                  "02",
+                  "#FCB842"
+                ],
+                [
+                  "03",
+                  "#B16E00"
+                ],
+                [
+                  "04",
+                  "#ff8341"
+                ],
+                [
+                  "05",
+                  "#fc2929"
+                ],
+                [
+                  "06",
+                  "#E362FB"
+                ],
+                [
+                  "07",
+                  "#E0BEEB"
+                ],
+                [
+                  "08",
+                  "#44A3D5"
+                ],
+                [
+                  "09",
+                  "#78D271"
+                ],
+                [
+                  "10",
+                  "#BAB8B6"
+                ],
+                [
+                  "11",
+                  "#555555"
+                ]
+              ],
+              "default": "#EEEEEE"
+            },
+            "fill-opacity": 0
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "tax-lots"
+          }
+        },
+        "clickable": true,
+        "highlightable": true,
+        "tooltip-template": "{{address}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "pluto-line",
+      "attributes": {
+        "style": {
+          "id": "pluto-line",
+          "type": "line",
+          "source": "pluto",
+          "minzoom": 15,
+          "source-layer": "pluto",
+          "paint": {
+            "line-width": 0.5,
+            "line-color": "rgba(130, 130, 130, 1)",
+            "line-opacity": {
+              "stops": [
+                [
+                  15,
+                  0
+                ],
+                [
+                  16,
+                  1
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "tax-lots"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "pluto-labels",
+      "attributes": {
+        "style": {
+          "id": "pluto-labels",
+          "type": "symbol",
+          "source": "pluto",
+          "source-layer": "pluto",
+          "minzoom": 15,
+          "layout": {
+            "text-field": "{lot}",
+            "text-font": [
+              "Open Sans Regular",
+              "Arial Unicode MS Regular"
+            ],
+            "text-size": 11
+          },
+          "paint": {
+            "text-opacity": {
+              "stops": [
+                [
+                  16.5,
+                  0
+                ],
+                [
+                  17.5,
+                  1
+                ]
+              ]
+            },
+            "icon-color": "rgba(193, 193, 193, 1)",
+            "text-color": "rgba(154, 154, 154, 1)",
+            "text-halo-color": "rgba(152, 152, 152, 0)"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "tax-lots"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zd-fill",
+      "attributes": {
+        "style": {
+          "id": "zd-fill",
+          "type": "fill",
+          "source": "zoning-districts",
+          "source-layer": "zoning-districts",
+          "paint": {
+            "fill-color": {
+              "property": "primaryzone",
+              "type": "categorical",
+              "stops": [
+                [
+                  "BP",
+                  "#808080"
+                ],
+                [
+                  "C1",
+                  "#ffa89c"
+                ],
+                [
+                  "C2",
+                  "#fd9a8f"
+                ],
+                [
+                  "C3",
+                  "#fa867c"
+                ],
+                [
+                  "C4",
+                  "#f76e67"
+                ],
+                [
+                  "C5",
+                  "#f2544e"
+                ],
+                [
+                  "C6",
+                  "#ee3a36"
+                ],
+                [
+                  "C7",
+                  "#ea2220"
+                ],
+                [
+                  "C8",
+                  "#e50000"
+                ],
+                [
+                  "M1",
+                  "#f3b3ff"
+                ],
+                [
+                  "M2",
+                  "#e187f3"
+                ],
+                [
+                  "M3",
+                  "#cf5ce6"
+                ],
+                [
+                  "PA",
+                  "#78D271"
+                ],
+                [
+                  "R1",
+                  "#fff8a6"
+                ],
+                [
+                  "R2",
+                  "#fff7a6"
+                ],
+                [
+                  "R3",
+                  "#fff797"
+                ],
+                [
+                  "R4",
+                  "#fff584"
+                ],
+                [
+                  "R5",
+                  "#fff36c"
+                ],
+                [
+                  "R6",
+                  "#fff153"
+                ],
+                [
+                  "R7",
+                  "#ffee39"
+                ],
+                [
+                  "R8",
+                  "#ffec22"
+                ],
+                [
+                  "R9",
+                  "#ffeb0e"
+                ],
+                [
+                  "R10",
+                  "#ffea00"
+                ]
+              ]
+            },
+            "fill-opacity": {
+              "stops": [
+                [
+                  15,
+                  0.3
+                ],
+                [
+                  16,
+                  0
+                ]
+              ]
+            },
+            "fill-antialias": true
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "zoning-districts"
+          }
+        },
+        "clickable": true,
+        "highlightable": true,
+        "tooltip-template": "Zoning District {{zonedist}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zd-lines",
+      "attributes": {
+        "style": {
+          "id": "zd-lines",
+          "type": "line",
+          "source": "zoning-districts",
+          "source-layer": "zoning-districts",
+          "paint": {
+            "line-opacity": {
+              "stops": [
+                [
+                  12,
+                  0
+                ],
+                [
+                  13,
+                  0.2
+                ],
+                [
+                  16,
+                  0.5
+                ]
+              ]
+            },
+            "line-width": {
+              "stops": [
+                [
+                  13,
+                  1
+                ],
+                [
+                  14,
+                  3
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "zoning-districts"
+          }
+        },
+        "before": "place_other"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zd_labels",
+      "attributes": {
+        "style": {
+          "id": "zd_labels",
+          "source": "zoning-districts",
+          "type": "symbol",
+          "source-layer": "zoning-districts",
+          "paint": {
+            "text-color": {
+              "stops": [
+                [
+                  15,
+                  "#626262"
+                ],
+                [
+                  16,
+                  "#444"
+                ]
+              ]
+            },
+            "text-halo-color": "#FFFFFF",
+            "text-halo-width": 2,
+            "text-halo-blur": 2,
+            "text-opacity": {
+              "stops": [
+                [
+                  12,
+                  0
+                ],
+                [
+                  13,
+                  1
+                ]
+              ]
+            }
+          },
+          "layout": {
+            "symbol-placement": "point",
+            "text-field": "{zonedist}",
+            "text-size": {
+              "stops": [
+                [
+                  10,
+                  8
+                ],
+                [
+                  14,
+                  16
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "zoning-districts"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "mapboxStyle": {
+      "version": 8,
+      "name": "Positron",
+      "metadata": {
+        "mapbox:autocomposite": false,
+        "mapbox:type": "template",
+        "mapbox:groups": {
+          "b6371a3f2f5a9932464fa3867530a2e5": {
+            "name": "Transportation",
+            "collapsed": false
+          },
+          "a14c9607bc7954ba1df7205bf660433f": {
+            "name": "Boundaries"
+          },
+          "101da9f13b64a08fa4b6ac1168e89e5f": {
+            "name": "Places",
+            "collapsed": false
+          }
+        },
+        "openmaptiles:version": "3.x",
+        "openmaptiles:mapbox:owner": "openmaptiles",
+        "openmaptiles:mapbox:source:url": "mapbox:\/\/openmaptiles.4qljc88t"
+      },
+      "center": [
+        10.184401828277,
+        -1.1368683772162e-13
+      ],
+      "zoom": 0.89026416365392,
+      "bearing": 0,
+      "pitch": 0,
+      "sources": {
+        "openmaptiles": {
+          "type": "vector",
+          "url": "\/\/raw.githubusercontent.com\/NYCPlanning\/labs-gl-style\/master\/data\/v3.json"
+        },
+        "aerials-2016": {
+          "id": "aerials-2016",
+          "type": "raster",
+          "tiles": [
+            "https:\/\/maps.nyc.gov\/xyz\/1.0.0\/photo\/2016\/{z}\/{x}\/{y}.png8"
+          ],
+          "tileSize": 256
+        },
+        "aerials-2014": {
+          "id": "aerials-2014",
+          "type": "raster",
+          "tiles": [
+            "https:\/\/maps.nyc.gov\/xyz\/1.0.0\/photo\/2014\/{z}\/{x}\/{y}.png8"
+          ],
+          "tileSize": 256
+        },
+        "aerials-2012": {
+          "id": "aerials-2012",
+          "type": "raster",
+          "tiles": [
+            "https:\/\/maps.nyc.gov\/xyz\/1.0.0\/photo\/2012\/{z}\/{x}\/{y}.png8"
+          ],
+          "tileSize": 256
+        },
+        "aerials-2010": {
+          "id": "aerials-2010",
+          "type": "raster",
+          "tiles": [
+            "https:\/\/maps.nyc.gov\/xyz\/1.0.0\/photo\/2010\/{z}\/{x}\/{y}.png8"
+          ],
+          "tileSize": 256
+        },
+        "aerials-2008": {
+          "id": "aerials-2008",
+          "type": "raster",
+          "tiles": [
+            "https:\/\/maps.nyc.gov\/xyz\/1.0.0\/photo\/2008\/{z}\/{x}\/{y}.png8"
+          ],
+          "tileSize": 256
+        },
+        "aerials-2006": {
+          "id": "aerials-2006",
+          "type": "raster",
+          "tiles": [
+            "https:\/\/maps.nyc.gov\/xyz\/1.0.0\/photo\/2006\/{z}\/{x}\/{y}.png8"
+          ],
+          "tileSize": 256
+        },
+        "aerials-2004": {
+          "id": "aerials-2004",
+          "type": "raster",
+          "tiles": [
+            "https:\/\/maps.nyc.gov\/xyz\/1.0.0\/photo\/2004\/{z}\/{x}\/{y}.png8"
+          ],
+          "tileSize": 256
+        },
+        "aerials-20012": {
+          "id": "aerials-20012",
+          "type": "raster",
+          "tiles": [
+            "https:\/\/maps.nyc.gov\/xyz\/1.0.0\/photo\/2001-2\/{z}\/{x}\/{y}.png8"
+          ],
+          "tileSize": 256
+        },
+        "aerials-1996": {
+          "id": "aerials-1996",
+          "type": "raster",
+          "tiles": [
+            "https:\/\/maps.nyc.gov\/xyz\/1.0.0\/photo\/1996\/{z}\/{x}\/{y}.png8"
+          ],
+          "tileSize": 256
+        },
+        "aerials-1951": {
+          "id": "aerials-1951",
+          "type": "raster",
+          "tiles": [
+            "https:\/\/maps.nyc.gov\/xyz\/1.0.0\/photo\/1951\/{z}\/{x}\/{y}.png8"
+          ],
+          "tileSize": 256
+        },
+        "aerials-1924": {
+          "id": "aerials-1924",
+          "type": "raster",
+          "tiles": [
+            "https:\/\/maps.nyc.gov\/xyz\/1.0.0\/photo\/1924\/{z}\/{x}\/{y}.png8"
+          ],
+          "tileSize": 256
+        },
+        "digital-citymap": {
+          "type": "vector",
+          "tiles": [
+            "https:\/\/cartocdn-gusc-b.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/969f3b7c0bb17d1cd263f71bff10790f:1526928541691\/{z}\/{x}\/{y}.mvt"
+          ]
+        },
+        "zoning": {
+          "type": "vector",
+          "tiles": [
+            "https:\/\/cartocdn-gusc-b.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/4f406a89cdc00a788ac6461e308b4be2:1525336746959\/{z}\/{x}\/{y}.mvt"
+          ]
+        },
+        "floodplains": {
+          "type": "vector",
+          "tiles": [
+            "https:\/\/cartocdn-gusc-b.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/0f2bf7ae0bc4dddcae9cc0fe0105b879:1525336736357\/{z}\/{x}\/{y}.mvt"
+          ]
+        },
+        "pluto": {
+          "type": "vector",
+          "tiles": [
+            "https:\/\/cartocdn-gusc-a.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/ee9765feaa5383f4dd600773d48df4d9:1526920479852\/{z}\/{x}\/{y}.mvt"
+          ]
+        },
+        "zoning-districts": {
+          "type": "vector",
+          "tiles": [
+            "https:\/\/cartocdn-gusc-a.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/ebc5bb9ee6e423eea48b205e4cec420c:1531773210424\/{z}\/{x}\/{y}.mvt"
+          ]
+        }
+      },
+      "sprite": "https:\/\/tiles.planninglabs.nyc\/styles\/positron\/sprite",
+      "glyphs": "https:\/\/tiles.planninglabs.nyc\/fonts\/{fontstack}\/{range}.pbf",
+      "layers": [
+        {
+          "id": "background",
+          "type": "background",
+          "paint": {
+            "background-color": "rgb(242,243,240)"
+          }
+        },
+        {
+          "id": "park",
+          "type": "fill",
+          "source": "openmaptiles",
+          "source-layer": "park",
+          "filter": [
+            "==",
+            "$type",
+            "Polygon"
+          ],
+          "layout": {
+            "visibility": "visible"
+          },
+          "paint": {
+            "fill-color": "rgb(230, 233, 229)"
+          }
+        },
+        {
+          "id": "water",
+          "type": "fill",
+          "source": "openmaptiles",
+          "source-layer": "water",
+          "filter": [
+            "==",
+            "$type",
+            "Polygon"
+          ],
+          "layout": {
+            "visibility": "visible"
+          },
+          "paint": {
+            "fill-color": "rgb(194, 200, 202)",
+            "fill-antialias": true
+          }
+        },
+        {
+          "id": "landcover_ice_shelf",
+          "type": "fill",
+          "source": "openmaptiles",
+          "source-layer": "landcover",
+          "maxzoom": 8,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Polygon"
+            ],
+            [
+              "==",
+              "subclass",
+              "ice_shelf"
+            ]
+          ],
+          "layout": {
+            "visibility": "visible"
+          },
+          "paint": {
+            "fill-color": "hsl(0, 0%, 98%)",
+            "fill-opacity": 0.7
+          }
+        },
+        {
+          "id": "landcover_glacier",
+          "type": "fill",
+          "source": "openmaptiles",
+          "source-layer": "landcover",
+          "maxzoom": 8,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Polygon"
+            ],
+            [
+              "==",
+              "subclass",
+              "glacier"
+            ]
+          ],
+          "layout": {
+            "visibility": "visible"
+          },
+          "paint": {
+            "fill-color": "hsl(0, 0%, 98%)",
+            "fill-opacity": {
+              "base": 1,
+              "stops": [
+                [
+                  0,
+                  1
+                ],
+                [
+                  8,
+                  0.5
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "id": "landuse_residential",
+          "type": "fill",
+          "source": "openmaptiles",
+          "source-layer": "landuse",
+          "maxzoom": 16,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Polygon"
+            ],
+            [
+              "==",
+              "class",
+              "residential"
+            ]
+          ],
+          "layout": {
+            "visibility": "visible"
+          },
+          "paint": {
+            "fill-color": "rgb(234, 234, 230)",
+            "fill-opacity": {
+              "base": 0.6,
+              "stops": [
+                [
+                  8,
+                  0.8
+                ],
+                [
+                  9,
+                  0.6
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "id": "landcover_wood",
+          "type": "fill",
+          "source": "openmaptiles",
+          "source-layer": "landcover",
+          "minzoom": 10,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Polygon"
+            ],
+            [
+              "==",
+              "class",
+              "wood"
+            ]
+          ],
+          "layout": {
+            "visibility": "visible"
+          },
+          "paint": {
+            "fill-color": "rgb(220,224,220)",
+            "fill-opacity": {
+              "base": 1,
+              "stops": [
+                [
+                  8,
+                  0
+                ],
+                [
+                  12,
+                  1
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "id": "waterway",
+          "type": "line",
+          "source": "openmaptiles",
+          "source-layer": "waterway",
+          "filter": [
+            "==",
+            "$type",
+            "LineString"
+          ],
+          "layout": {
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "hsl(195, 17%, 78%)"
+          }
+        },
+        {
+          "id": "water_name",
+          "type": "symbol",
+          "source": "openmaptiles",
+          "source-layer": "water_name",
+          "filter": [
+            "==",
+            "$type",
+            "LineString"
+          ],
+          "layout": {
+            "text-field": "{name:latin}\n{name:nonlatin}",
+            "symbol-placement": "line",
+            "text-rotation-alignment": "map",
+            "symbol-spacing": 500,
+            "text-font": [
+              "Metropolis Medium Italic",
+              "Noto Sans Italic"
+            ],
+            "text-size": 12
+          },
+          "paint": {
+            "text-color": "rgb(157,169,177)",
+            "text-halo-color": "rgb(242,243,240)",
+            "text-halo-width": 1,
+            "text-halo-blur": 1
+          }
+        },
+        {
+          "id": "building",
+          "type": "fill",
+          "source": "openmaptiles",
+          "source-layer": "building",
+          "minzoom": 12,
+          "paint": {
+            "fill-color": "rgb(234, 234, 229)",
+            "fill-outline-color": "rgb(219, 219, 218)",
+            "fill-antialias": true
+          }
+        },
+        {
+          "id": "tunnel_motorway_casing",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 6,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "all",
+              [
+                "==",
+                "brunnel",
+                "tunnel"
+              ],
+              [
+                "==",
+                "class",
+                "motorway"
+              ]
+            ]
+          ],
+          "layout": {
+            "line-cap": "butt",
+            "line-join": "miter",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "rgb(213, 213, 213)",
+            "line-width": {
+              "base": 1.4,
+              "stops": [
+                [
+                  5.8,
+                  0
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  20,
+                  40
+                ]
+              ]
+            },
+            "line-opacity": 1
+          }
+        },
+        {
+          "id": "tunnel_motorway_inner",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 6,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "all",
+              [
+                "==",
+                "brunnel",
+                "tunnel"
+              ],
+              [
+                "==",
+                "class",
+                "motorway"
+              ]
+            ]
+          ],
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "rgb(234,234,234)",
+            "line-width": {
+              "base": 1.4,
+              "stops": [
+                [
+                  4,
+                  2
+                ],
+                [
+                  6,
+                  1.3
+                ],
+                [
+                  20,
+                  30
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "id": "aeroway-taxiway",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "1444849345966.4436"
+          },
+          "source": "openmaptiles",
+          "source-layer": "aeroway",
+          "minzoom": 12,
+          "filter": [
+            "all",
+            [
+              "in",
+              "class",
+              "taxiway"
+            ]
+          ],
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "hsl(0, 0%, 88%)",
+            "line-width": {
+              "base": 1.55,
+              "stops": [
+                [
+                  13,
+                  1.8
+                ],
+                [
+                  20,
+                  20
+                ]
+              ]
+            },
+            "line-opacity": 1
+          }
+        },
+        {
+          "id": "aeroway-runway-casing",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "1444849345966.4436"
+          },
+          "source": "openmaptiles",
+          "source-layer": "aeroway",
+          "minzoom": 11,
+          "filter": [
+            "all",
+            [
+              "in",
+              "class",
+              "runway"
+            ]
+          ],
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "hsl(0, 0%, 88%)",
+            "line-width": {
+              "base": 1.5,
+              "stops": [
+                [
+                  11,
+                  6
+                ],
+                [
+                  17,
+                  55
+                ]
+              ]
+            },
+            "line-opacity": 1
+          }
+        },
+        {
+          "id": "aeroway-area",
+          "type": "fill",
+          "metadata": {
+            "mapbox:group": "1444849345966.4436"
+          },
+          "source": "openmaptiles",
+          "source-layer": "aeroway",
+          "minzoom": 4,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Polygon"
+            ],
+            [
+              "in",
+              "class",
+              "runway",
+              "taxiway"
+            ]
+          ],
+          "layout": {
+            "visibility": "visible"
+          },
+          "paint": {
+            "fill-opacity": {
+              "base": 1,
+              "stops": [
+                [
+                  13,
+                  0
+                ],
+                [
+                  14,
+                  1
+                ]
+              ]
+            },
+            "fill-color": "rgba(255, 255, 255, 1)"
+          }
+        },
+        {
+          "id": "aeroway-runway",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "1444849345966.4436"
+          },
+          "source": "openmaptiles",
+          "source-layer": "aeroway",
+          "minzoom": 11,
+          "maxzoom": 24,
+          "filter": [
+            "all",
+            [
+              "in",
+              "class",
+              "runway"
+            ],
+            [
+              "==",
+              "$type",
+              "LineString"
+            ]
+          ],
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "rgba(255, 255, 255, 1)",
+            "line-width": {
+              "base": 1.5,
+              "stops": [
+                [
+                  11,
+                  4
+                ],
+                [
+                  17,
+                  50
+                ]
+              ]
+            },
+            "line-opacity": 1
+          }
+        },
+        {
+          "id": "highway_path",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "==",
+              "class",
+              "path"
+            ]
+          ],
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "rgb(234, 234, 234)",
+            "line-width": {
+              "base": 1.2,
+              "stops": [
+                [
+                  13,
+                  1
+                ],
+                [
+                  20,
+                  10
+                ]
+              ]
+            },
+            "line-opacity": 0.9
+          }
+        },
+        {
+          "id": "highway_minor",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 8,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "in",
+              "class",
+              "minor",
+              "service",
+              "track"
+            ]
+          ],
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "hsl(0, 0%, 88%)",
+            "line-width": {
+              "base": 1.55,
+              "stops": [
+                [
+                  13,
+                  1.8
+                ],
+                [
+                  20,
+                  20
+                ]
+              ]
+            },
+            "line-opacity": 0.9
+          }
+        },
+        {
+          "id": "highway_major_casing",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 11,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "in",
+              "class",
+              "primary",
+              "secondary",
+              "tertiary",
+              "trunk"
+            ]
+          ],
+          "layout": {
+            "line-cap": "butt",
+            "line-join": "miter",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "rgb(213, 213, 213)",
+            "line-dasharray": [
+              12,
+              0
+            ],
+            "line-width": {
+              "base": 1.3,
+              "stops": [
+                [
+                  10,
+                  3
+                ],
+                [
+                  20,
+                  23
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "id": "highway_major_inner",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 11,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "in",
+              "class",
+              "primary",
+              "secondary",
+              "tertiary",
+              "trunk"
+            ]
+          ],
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "#fff",
+            "line-width": {
+              "base": 1.3,
+              "stops": [
+                [
+                  10,
+                  2
+                ],
+                [
+                  20,
+                  20
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "id": "highway_major_subtle",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "maxzoom": 11,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "in",
+              "class",
+              "primary",
+              "secondary",
+              "tertiary",
+              "trunk"
+            ]
+          ],
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "hsla(0, 0%, 85%, 0.69)",
+            "line-width": 2
+          }
+        },
+        {
+          "id": "highway_motorway_casing",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 6,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "all",
+              [
+                "!in",
+                "brunnel",
+                "bridge",
+                "tunnel"
+              ],
+              [
+                "==",
+                "class",
+                "motorway"
+              ]
+            ]
+          ],
+          "layout": {
+            "line-cap": "butt",
+            "line-join": "miter",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "rgb(213, 213, 213)",
+            "line-width": {
+              "base": 1.4,
+              "stops": [
+                [
+                  5.8,
+                  0
+                ],
+                [
+                  6,
+                  3
+                ],
+                [
+                  20,
+                  40
+                ]
+              ]
+            },
+            "line-dasharray": [
+              2,
+              0
+            ],
+            "line-opacity": 1
+          }
+        },
+        {
+          "id": "highway_motorway_inner",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 6,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "all",
+              [
+                "!in",
+                "brunnel",
+                "bridge",
+                "tunnel"
+              ],
+              [
+                "==",
+                "class",
+                "motorway"
+              ]
+            ]
+          ],
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": {
+              "base": 1,
+              "stops": [
+                [
+                  5.8,
+                  "hsla(0, 0%, 85%, 0.53)"
+                ],
+                [
+                  6,
+                  "#fff"
+                ]
+              ]
+            },
+            "line-width": {
+              "base": 1.4,
+              "stops": [
+                [
+                  4,
+                  2
+                ],
+                [
+                  6,
+                  1.3
+                ],
+                [
+                  20,
+                  30
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "id": "highway_motorway_subtle",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "maxzoom": 6,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "==",
+              "class",
+              "motorway"
+            ]
+          ],
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "hsla(0, 0%, 85%, 0.53)",
+            "line-width": {
+              "base": 1.4,
+              "stops": [
+                [
+                  4,
+                  2
+                ],
+                [
+                  6,
+                  1.3
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "id": "railway_transit",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 16,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "all",
+              [
+                "==",
+                "class",
+                "transit"
+              ],
+              [
+                "!in",
+                "brunnel",
+                "tunnel"
+              ]
+            ]
+          ],
+          "layout": {
+            "visibility": "visible",
+            "line-join": "round"
+          },
+          "paint": {
+            "line-color": "#dddddd",
+            "line-width": 3
+          }
+        },
+        {
+          "id": "railway_transit_dashline",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 16,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "all",
+              [
+                "==",
+                "class",
+                "transit"
+              ],
+              [
+                "!in",
+                "brunnel",
+                "tunnel"
+              ]
+            ]
+          ],
+          "layout": {
+            "visibility": "visible",
+            "line-join": "round"
+          },
+          "paint": {
+            "line-color": "#fafafa",
+            "line-width": 2,
+            "line-dasharray": [
+              3,
+              3
+            ]
+          }
+        },
+        {
+          "id": "railway_service",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 16,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "all",
+              [
+                "==",
+                "class",
+                "rail"
+              ],
+              [
+                "has",
+                "service"
+              ]
+            ]
+          ],
+          "layout": {
+            "visibility": "visible",
+            "line-join": "round"
+          },
+          "paint": {
+            "line-color": "#dddddd",
+            "line-width": 3
+          }
+        },
+        {
+          "id": "railway_service_dashline",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 16,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "==",
+              "class",
+              "rail"
+            ],
+            [
+              "has",
+              "service"
+            ]
+          ],
+          "layout": {
+            "visibility": "visible",
+            "line-join": "round"
+          },
+          "paint": {
+            "line-color": "#fafafa",
+            "line-width": 2,
+            "line-dasharray": [
+              3,
+              3
+            ]
+          }
+        },
+        {
+          "id": "railway",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 13,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "all",
+              [
+                "!has",
+                "service"
+              ],
+              [
+                "==",
+                "class",
+                "rail"
+              ]
+            ]
+          ],
+          "layout": {
+            "visibility": "visible",
+            "line-join": "round"
+          },
+          "paint": {
+            "line-color": "#dddddd",
+            "line-width": {
+              "base": 1.3,
+              "stops": [
+                [
+                  16,
+                  3
+                ],
+                [
+                  20,
+                  7
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "id": "railway_dashline",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 13,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "all",
+              [
+                "!has",
+                "service"
+              ],
+              [
+                "==",
+                "class",
+                "rail"
+              ]
+            ]
+          ],
+          "layout": {
+            "visibility": "visible",
+            "line-join": "round"
+          },
+          "paint": {
+            "line-color": "#fafafa",
+            "line-width": {
+              "base": 1.3,
+              "stops": [
+                [
+                  16,
+                  2
+                ],
+                [
+                  20,
+                  6
+                ]
+              ]
+            },
+            "line-dasharray": [
+              3,
+              3
+            ]
+          }
+        },
+        {
+          "id": "highway_motorway_bridge_casing",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 6,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "all",
+              [
+                "==",
+                "brunnel",
+                "bridge"
+              ],
+              [
+                "==",
+                "class",
+                "motorway"
+              ]
+            ]
+          ],
+          "layout": {
+            "line-cap": "butt",
+            "line-join": "miter",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "rgb(213, 213, 213)",
+            "line-width": {
+              "base": 1.4,
+              "stops": [
+                [
+                  5.8,
+                  0
+                ],
+                [
+                  6,
+                  5
+                ],
+                [
+                  20,
+                  45
+                ]
+              ]
+            },
+            "line-dasharray": [
+              2,
+              0
+            ],
+            "line-opacity": 1
+          }
+        },
+        {
+          "id": "highway_motorway_bridge_inner",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation",
+          "minzoom": 6,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "all",
+              [
+                "==",
+                "brunnel",
+                "bridge"
+              ],
+              [
+                "==",
+                "class",
+                "motorway"
+              ]
+            ]
+          ],
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": {
+              "base": 1,
+              "stops": [
+                [
+                  5.8,
+                  "hsla(0, 0%, 85%, 0.53)"
+                ],
+                [
+                  6,
+                  "#fff"
+                ]
+              ]
+            },
+            "line-width": {
+              "base": 1.4,
+              "stops": [
+                [
+                  4,
+                  2
+                ],
+                [
+                  6,
+                  1.3
+                ],
+                [
+                  20,
+                  30
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "id": "highway_name_other",
+          "type": "symbol",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation_name",
+          "filter": [
+            "all",
+            [
+              "!=",
+              "class",
+              "motorway"
+            ],
+            [
+              "==",
+              "$type",
+              "LineString"
+            ]
+          ],
+          "layout": {
+            "text-size": 10,
+            "text-max-angle": 30,
+            "text-transform": "uppercase",
+            "symbol-spacing": 350,
+            "text-font": [
+              "Metropolis Regular",
+              "Noto Sans Regular"
+            ],
+            "symbol-placement": "line",
+            "visibility": "visible",
+            "text-rotation-alignment": "map",
+            "text-pitch-alignment": "viewport",
+            "text-field": "{name:latin} {name:nonlatin}"
+          },
+          "paint": {
+            "text-color": "rgb(117, 129, 145)",
+            "text-halo-color": "#fff",
+            "text-translate": [
+              0,
+              0
+            ],
+            "text-halo-width": 2,
+            "text-halo-blur": 1
+          }
+        },
+        {
+          "id": "highway_name_motorway",
+          "type": "symbol",
+          "metadata": {
+            "mapbox:group": "b6371a3f2f5a9932464fa3867530a2e5"
+          },
+          "source": "openmaptiles",
+          "source-layer": "transportation_name",
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "LineString"
+            ],
+            [
+              "==",
+              "class",
+              "motorway"
+            ]
+          ],
+          "layout": {
+            "text-size": 10,
+            "symbol-spacing": 350,
+            "text-font": [
+              "Metropolis Light",
+              "Noto Sans Regular"
+            ],
+            "symbol-placement": "line",
+            "visibility": "visible",
+            "text-rotation-alignment": "viewport",
+            "text-pitch-alignment": "viewport",
+            "text-field": "{ref}"
+          },
+          "paint": {
+            "text-color": "rgb(117, 129, 145)",
+            "text-halo-color": "hsl(0, 0%, 100%)",
+            "text-translate": [
+              0,
+              2
+            ],
+            "text-halo-width": 1,
+            "text-halo-blur": 1
+          }
+        },
+        {
+          "id": "boundary_state",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "a14c9607bc7954ba1df7205bf660433f"
+          },
+          "source": "openmaptiles",
+          "source-layer": "boundary",
+          "filter": [
+            "==",
+            "admin_level",
+            4
+          ],
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round",
+            "visibility": "visible"
+          },
+          "paint": {
+            "line-color": "rgb(230, 204, 207)",
+            "line-width": {
+              "base": 1.3,
+              "stops": [
+                [
+                  3,
+                  1
+                ],
+                [
+                  22,
+                  15
+                ]
+              ]
+            },
+            "line-blur": 0.4,
+            "line-dasharray": [
+              2,
+              2
+            ],
+            "line-opacity": 1
+          }
+        },
+        {
+          "id": "boundary_country",
+          "type": "line",
+          "metadata": {
+            "mapbox:group": "a14c9607bc7954ba1df7205bf660433f"
+          },
+          "source": "openmaptiles",
+          "source-layer": "boundary",
+          "filter": [
+            "==",
+            "admin_level",
+            2
+          ],
+          "layout": {
+            "line-cap": "round",
+            "line-join": "round"
+          },
+          "paint": {
+            "line-color": "rgb(230, 204, 207)",
+            "line-width": {
+              "base": 1.1,
+              "stops": [
+                [
+                  3,
+                  1
+                ],
+                [
+                  22,
+                  20
+                ]
+              ]
+            },
+            "line-blur": {
+              "base": 1,
+              "stops": [
+                [
+                  0,
+                  0.4
+                ],
+                [
+                  22,
+                  4
+                ]
+              ]
+            },
+            "line-opacity": 1
+          }
+        },
+        {
+          "id": "place_other",
+          "type": "symbol",
+          "metadata": {
+            "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
+          },
+          "source": "openmaptiles",
+          "source-layer": "place",
+          "maxzoom": 14,
+          "filter": [
+            "all",
+            [
+              "in",
+              "class",
+              "continent",
+              "hamlet",
+              "neighbourhood",
+              "isolated_dwelling"
+            ],
+            [
+              "==",
+              "$type",
+              "Point"
+            ]
+          ],
+          "layout": {
+            "text-size": 10,
+            "text-transform": "uppercase",
+            "text-font": [
+              "Metropolis Regular",
+              "Noto Sans Regular"
+            ],
+            "text-justify": "center",
+            "visibility": "visible",
+            "text-offset": [
+              0.5,
+              0
+            ],
+            "text-anchor": "center",
+            "text-field": "{name:latin}\n{name:nonlatin}"
+          },
+          "paint": {
+            "text-color": "rgb(117, 129, 145)",
+            "text-halo-color": "rgb(242,243,240)",
+            "text-halo-width": 1,
+            "text-halo-blur": 1
+          }
+        },
+        {
+          "id": "place_suburb",
+          "type": "symbol",
+          "metadata": {
+            "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
+          },
+          "source": "openmaptiles",
+          "source-layer": "place",
+          "maxzoom": 15,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Point"
+            ],
+            [
+              "==",
+              "class",
+              "suburb"
+            ]
+          ],
+          "layout": {
+            "text-size": 10,
+            "text-transform": "uppercase",
+            "text-font": [
+              "Metropolis Regular",
+              "Noto Sans Regular"
+            ],
+            "text-justify": "center",
+            "visibility": "visible",
+            "text-offset": [
+              0.5,
+              0
+            ],
+            "text-anchor": "center",
+            "text-field": "{name:latin}\n{name:nonlatin}"
+          },
+          "paint": {
+            "text-color": "rgb(117, 129, 145)",
+            "text-halo-color": "rgb(242,243,240)",
+            "text-halo-width": 1,
+            "text-halo-blur": 1
+          }
+        },
+        {
+          "id": "place_village",
+          "type": "symbol",
+          "metadata": {
+            "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
+          },
+          "source": "openmaptiles",
+          "source-layer": "place",
+          "maxzoom": 14,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Point"
+            ],
+            [
+              "==",
+              "class",
+              "village"
+            ]
+          ],
+          "layout": {
+            "text-size": 10,
+            "text-transform": "uppercase",
+            "text-font": [
+              "Metropolis Regular",
+              "Noto Sans Regular"
+            ],
+            "text-justify": "left",
+            "visibility": "visible",
+            "text-offset": [
+              0.5,
+              0.2
+            ],
+            "icon-size": 0.4,
+            "text-anchor": "left",
+            "text-field": "{name:latin}\n{name:nonlatin}"
+          },
+          "paint": {
+            "text-color": "rgb(117, 129, 145)",
+            "text-halo-color": "rgb(242,243,240)",
+            "text-halo-width": 1,
+            "text-halo-blur": 1,
+            "icon-opacity": 0.7
+          }
+        },
+        {
+          "id": "place_town",
+          "type": "symbol",
+          "metadata": {
+            "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
+          },
+          "source": "openmaptiles",
+          "source-layer": "place",
+          "maxzoom": 15,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Point"
+            ],
+            [
+              "==",
+              "class",
+              "town"
+            ]
+          ],
+          "layout": {
+            "text-size": 10,
+            "icon-image": {
+              "base": 1,
+              "stops": [
+                [
+                  0,
+                  "circle-11"
+                ],
+                [
+                  8,
+                  ""
+                ]
+              ]
+            },
+            "text-transform": "uppercase",
+            "text-font": [
+              "Metropolis Regular",
+              "Noto Sans Regular"
+            ],
+            "text-justify": "left",
+            "visibility": "visible",
+            "text-offset": [
+              0.5,
+              0.2
+            ],
+            "icon-size": 0.4,
+            "text-anchor": {
+              "base": 1,
+              "stops": [
+                [
+                  0,
+                  "left"
+                ],
+                [
+                  8,
+                  "center"
+                ]
+              ]
+            },
+            "text-field": "{name:latin}\n{name:nonlatin}"
+          },
+          "paint": {
+            "text-color": "rgb(117, 129, 145)",
+            "text-halo-color": "rgb(242,243,240)",
+            "text-halo-width": 1,
+            "text-halo-blur": 1,
+            "icon-opacity": 0.7
+          }
+        },
+        {
+          "id": "place_city",
+          "type": "symbol",
+          "metadata": {
+            "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
+          },
+          "source": "openmaptiles",
+          "source-layer": "place",
+          "maxzoom": 14,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Point"
+            ],
+            [
+              "all",
+              [
+                "!=",
+                "capital",
+                2
+              ],
+              [
+                "==",
+                "class",
+                "city"
+              ],
+              [
+                ">",
+                "rank",
+                3
+              ]
+            ]
+          ],
+          "layout": {
+            "text-size": 10,
+            "icon-image": {
+              "base": 1,
+              "stops": [
+                [
+                  0,
+                  "circle-11"
+                ],
+                [
+                  8,
+                  ""
+                ]
+              ]
+            },
+            "text-transform": "uppercase",
+            "text-font": [
+              "Metropolis Regular",
+              "Noto Sans Regular"
+            ],
+            "text-justify": "left",
+            "visibility": "visible",
+            "text-offset": [
+              0.5,
+              0.2
+            ],
+            "icon-size": 0.4,
+            "text-anchor": {
+              "base": 1,
+              "stops": [
+                [
+                  0,
+                  "left"
+                ],
+                [
+                  8,
+                  "center"
+                ]
+              ]
+            },
+            "text-field": "{name:latin}\n{name:nonlatin}"
+          },
+          "paint": {
+            "text-color": "rgb(117, 129, 145)",
+            "text-halo-color": "rgb(242,243,240)",
+            "text-halo-width": 1,
+            "text-halo-blur": 1,
+            "icon-opacity": 0.7
+          }
+        },
+        {
+          "id": "place_capital",
+          "type": "symbol",
+          "metadata": {
+            "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
+          },
+          "source": "openmaptiles",
+          "source-layer": "place",
+          "maxzoom": 12,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Point"
+            ],
+            [
+              "all",
+              [
+                "==",
+                "capital",
+                2
+              ],
+              [
+                "==",
+                "class",
+                "city"
+              ]
+            ]
+          ],
+          "layout": {
+            "text-size": 14,
+            "icon-image": {
+              "base": 1,
+              "stops": [
+                [
+                  0,
+                  "star-11"
+                ],
+                [
+                  8,
+                  ""
+                ]
+              ]
+            },
+            "text-transform": "uppercase",
+            "text-font": [
+              "Metropolis Regular",
+              "Noto Sans Regular"
+            ],
+            "text-justify": "left",
+            "visibility": "visible",
+            "text-offset": [
+              0.5,
+              0.2
+            ],
+            "icon-size": 1,
+            "text-anchor": {
+              "base": 1,
+              "stops": [
+                [
+                  0,
+                  "left"
+                ],
+                [
+                  8,
+                  "center"
+                ]
+              ]
+            },
+            "text-field": "{name:latin}\n{name:nonlatin}"
+          },
+          "paint": {
+            "text-color": "rgb(117, 129, 145)",
+            "text-halo-color": "rgb(242,243,240)",
+            "text-halo-width": 1,
+            "text-halo-blur": 1,
+            "icon-opacity": 0.7
+          }
+        },
+        {
+          "id": "place_city_large",
+          "type": "symbol",
+          "metadata": {
+            "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
+          },
+          "source": "openmaptiles",
+          "source-layer": "place",
+          "maxzoom": 12,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Point"
+            ],
+            [
+              "all",
+              [
+                "!=",
+                "capital",
+                2
+              ],
+              [
+                "<=",
+                "rank",
+                3
+              ],
+              [
+                "==",
+                "class",
+                "city"
+              ]
+            ]
+          ],
+          "layout": {
+            "text-size": 14,
+            "icon-image": {
+              "base": 1,
+              "stops": [
+                [
+                  0,
+                  "circle-11"
+                ],
+                [
+                  8,
+                  ""
+                ]
+              ]
+            },
+            "text-transform": "uppercase",
+            "text-font": [
+              "Metropolis Regular",
+              "Noto Sans Regular"
+            ],
+            "text-justify": "left",
+            "visibility": "visible",
+            "text-offset": [
+              0.5,
+              0.2
+            ],
+            "icon-size": 0.4,
+            "text-anchor": {
+              "base": 1,
+              "stops": [
+                [
+                  0,
+                  "left"
+                ],
+                [
+                  8,
+                  "center"
+                ]
+              ]
+            },
+            "text-field": "{name:latin}\n{name:nonlatin}"
+          },
+          "paint": {
+            "text-color": "rgb(117, 129, 145)",
+            "text-halo-color": "rgb(242,243,240)",
+            "text-halo-width": 1,
+            "text-halo-blur": 1,
+            "icon-opacity": 0.7
+          }
+        },
+        {
+          "id": "place_state",
+          "type": "symbol",
+          "metadata": {
+            "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
+          },
+          "source": "openmaptiles",
+          "source-layer": "place",
+          "maxzoom": 12,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Point"
+            ],
+            [
+              "==",
+              "class",
+              "state"
+            ]
+          ],
+          "layout": {
+            "visibility": "visible",
+            "text-field": "{name:latin}\n{name:nonlatin}",
+            "text-font": [
+              "Metropolis Regular",
+              "Noto Sans Regular"
+            ],
+            "text-transform": "uppercase",
+            "text-size": 10
+          },
+          "paint": {
+            "text-color": "rgb(113, 129, 144)",
+            "text-halo-color": "rgb(242,243,240)",
+            "text-halo-width": 1,
+            "text-halo-blur": 1
+          }
+        },
+        {
+          "id": "place_country_other",
+          "type": "symbol",
+          "metadata": {
+            "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
+          },
+          "source": "openmaptiles",
+          "source-layer": "place",
+          "maxzoom": 8,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Point"
+            ],
+            [
+              "==",
+              "class",
+              "country"
+            ],
+            [
+              "!has",
+              "iso_a2"
+            ]
+          ],
+          "layout": {
+            "visibility": "visible",
+            "text-field": "{name:latin}",
+            "text-font": [
+              "Metropolis Light Italic",
+              "Noto Sans Italic"
+            ],
+            "text-transform": "uppercase",
+            "text-size": {
+              "base": 1,
+              "stops": [
+                [
+                  0,
+                  9
+                ],
+                [
+                  6,
+                  11
+                ]
+              ]
+            }
+          },
+          "paint": {
+            "text-halo-width": 1.4,
+            "text-halo-color": "rgba(236,236,234,0.7)",
+            "text-color": {
+              "base": 1,
+              "stops": [
+                [
+                  3,
+                  "rgb(157,169,177)"
+                ],
+                [
+                  4,
+                  "rgb(153, 153, 153)"
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "id": "place_country_minor",
+          "type": "symbol",
+          "metadata": {
+            "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
+          },
+          "source": "openmaptiles",
+          "source-layer": "place",
+          "maxzoom": 8,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Point"
+            ],
+            [
+              "==",
+              "class",
+              "country"
+            ],
+            [
+              ">=",
+              "rank",
+              2
+            ],
+            [
+              "has",
+              "iso_a2"
+            ]
+          ],
+          "layout": {
+            "visibility": "visible",
+            "text-field": "{name:latin}",
+            "text-font": [
+              "Metropolis Regular",
+              "Noto Sans Regular"
+            ],
+            "text-transform": "uppercase",
+            "text-size": {
+              "base": 1,
+              "stops": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  6,
+                  12
+                ]
+              ]
+            }
+          },
+          "paint": {
+            "text-halo-width": 1.4,
+            "text-halo-color": "rgba(236,236,234,0.7)",
+            "text-color": {
+              "base": 1,
+              "stops": [
+                [
+                  3,
+                  "rgb(157,169,177)"
+                ],
+                [
+                  4,
+                  "rgb(153, 153, 153)"
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "id": "place_country_major",
+          "type": "symbol",
+          "metadata": {
+            "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
+          },
+          "source": "openmaptiles",
+          "source-layer": "place",
+          "maxzoom": 6,
+          "filter": [
+            "all",
+            [
+              "==",
+              "$type",
+              "Point"
+            ],
+            [
+              "<=",
+              "rank",
+              1
+            ],
+            [
+              "==",
+              "class",
+              "country"
+            ],
+            [
+              "has",
+              "iso_a2"
+            ]
+          ],
+          "layout": {
+            "visibility": "visible",
+            "text-field": "{name:latin}",
+            "text-font": [
+              "Metropolis Regular",
+              "Noto Sans Regular"
+            ],
+            "text-transform": "uppercase",
+            "text-size": {
+              "base": 1.4,
+              "stops": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  3,
+                  12
+                ],
+                [
+                  4,
+                  14
+                ]
+              ]
+            },
+            "text-anchor": "center"
+          },
+          "paint": {
+            "text-halo-width": 1.4,
+            "text-halo-color": "rgba(236,236,234,0.7)",
+            "text-color": {
+              "base": 1,
+              "stops": [
+                [
+                  3,
+                  "rgb(157,169,177)"
+                ],
+                [
+                  4,
+                  "rgb(153, 153, 153)"
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

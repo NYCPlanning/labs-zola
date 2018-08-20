@@ -33,6 +33,7 @@ export default Route.extend({
 
     return RSVP.hash({
       cartoSources: Promise.all(cartoSourcePromises),
+      layerGroups: this.store.findAll('layer-group'),
       bookmarks: this.store.findAll('bookmark').then((bookmarks) => {
         bookmarks.invoke('get', 'bookmark');
         return bookmarks;
