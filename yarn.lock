@@ -5365,6 +5365,10 @@ forwarded@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
 
+foundation-sites@6.5.0-rc.2:
+  version "6.5.0-rc.2"
+  resolved "https://registry.yarnpkg.com/foundation-sites/-/foundation-sites-6.5.0-rc.2.tgz#0890f52e9dffed93ea394402b5ac9c1837618c08"
+
 foundation-sites@^6.3.1:
   version "6.4.3"
   resolved "https://registry.yarnpkg.com/foundation-sites/-/foundation-sites-6.4.3.tgz#ea89eb599badf6f03dd526c51f00bdb942a844f6"
@@ -6800,17 +6804,20 @@ klaw@^1.0.0:
   optionalDependencies:
     graceful-fs "^4.1.9"
 
-labs-ui@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/labs-ui/-/labs-ui-0.0.1.tgz#fb302cfaf370c9d036e0626a58d52618182405c3"
+labs-ui@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/labs-ui/-/labs-ui-0.0.2.tgz#c74b228b7be8fc852612415900f2bef1c9b97d45"
   dependencies:
     "@ember-decorators/argument" "0.8.15"
     "@ember-decorators/babel-transforms" "^2.0.0"
     ember-cli-babel "^6.6.0"
+    ember-cli-foundation-6-sass "0.0.25"
     ember-cli-htmlbars "^2.0.1"
     ember-cli-htmlbars-inline-precompile "^1.0.0"
+    ember-cli-sass "^6.0.0"
     ember-decorators "2.3.1"
     ember-font-awesome "^4.0.0-rc.2"
+    foundation-sites "6.5.0-rc.2"
 
 latest-version@^3.0.0:
   version "3.1.0"
