@@ -14,14 +14,42 @@ const SQL = function(table, geometry) {
                 ${table}.the_geom);`;
 };
 
+const getPrimaryZone = (zonedist) => {
+  let primary = zonedist.match(/\w\d*/)[0].toLowerCase();
+  // special handling for c1 and c2
+  if ((primary === 'c1') || (primary === 'c2')) primary = 'c1-c2';
+  return primary;
+};
+
 export default Controller.extend(Bookmarkable, {
 
-  @computed('lot.zonemap')
+  @computed('model.value.zonemap')
   paddedZonemap(zonemap) {
     return (`0${zonemap}`).slice(-3);
   },
 
-  @computed('lot.geometry')
+  @computed('model.value.zonedist1')
+  primaryzone1(zonedist) {
+    return getPrimaryZone(zonedist);
+  },
+
+  @computed('model.value.zonedist2')
+  primaryzone2(zonedist) {
+    return getPrimaryZone(zonedist);
+  },
+
+  @computed('model.value.zonedist3')
+  primaryzone3(zonedist) {
+    return getPrimaryZone(zonedist);
+  },
+
+  @computed('model.value.zonedist4')
+  primaryzone4(zonedist) {
+    return getPrimaryZone(zonedist);
+  },
+
+
+  @computed('model.value.geometry')
   parentSpecialPurposeDistricts(geometry) {
     return carto.SQL(SQL('special_purpose_districts_v201806', geometry))
       .then(response => response.map(
