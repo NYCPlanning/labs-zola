@@ -8,7 +8,6 @@ import area from '@turf/area';
 import lineDistance from '@turf/line-distance';
 import numeral from 'numeral';
 
-import sources from '../sources';
 import layerGroups from '../layer-groups';
 import drawStyles from '../layers/draw-styles';
 
