@@ -13,11 +13,14 @@
         routeToLot=(action 'routeToLot')
         transitionTo=(action 'transitionTo')
         bookmarks=model.bookmarks
+        layerGroups=model.layerGroups
+        layerGroupsMeta=model.meta
         qps=qps
       }}
 
       {{layer-palette
         qps=qps
+        layerGroups=model.layerGroupsObject
         isDefault=isDefault
         resetQueryParams=(action 'resetQueryParams')}}
     </div>

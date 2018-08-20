@@ -15,30 +15,29 @@ export default Route.extend({
     }
   },
 
-  model() {
-    const cartoSourcePromises = Object.keys(sources)
-      .filter(key => sources[key].type === 'cartovector')
-      .map((key) => {
-        const source = sources[key];
-        const { minzoom = 0 } = source;
+  async model() {
+    const layerGroups = await this.store.query('layer-group', {});
+    const layerGroupsObject = layerGroups.reduce(
+      (accumulator, current) => {
+        accumulator[current.get('id')] = current;
+        return accumulator;
+      },
+      {},
+    );
 
-        return carto.getVectorTileTemplate(source['source-layers'])
-          .then(template => ({
-            id: source.id,
-            type: 'vector',
-            tiles: [template],
-            minzoom,
-          }));
-      });
+    const { meta } = layerGroups;
 
-    return RSVP.hash({
-      cartoSources: Promise.all(cartoSourcePromises),
-      layerGroups: this.store.findAll('layer-group'),
-      bookmarks: this.store.findAll('bookmark').then((bookmarks) => {
-        bookmarks.invoke('get', 'bookmark');
-        return bookmarks;
-      }),
+    const bookmarks = await this.store.findAll('bookmark').then((models) => {
+      models.invoke('get', 'bookmark');
+      return models;
     });
+
+    return {
+      layerGroups,
+      layerGroupsObject,
+      meta,
+      bookmarks,
+    };
   },
 
   afterModel() {

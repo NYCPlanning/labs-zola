@@ -164,19 +164,6 @@ export default Component.extend({
       const { mainMap } = this;
       mainMap.set('mapInstance', map);
 
-      // add carto sources
-      this.cartoSources.forEach((sourceConfig) => {
-        map.addSource(sourceConfig.id, sourceConfig);
-      });
-
-      // add raster sources
-      Object.keys(sources)
-        .filter(key => sources[key].type === 'raster')
-        .forEach((key) => {
-          const source = sources[key];
-          map.addSource(source.id, source);
-        });
-
       // setup controls
       const navigationControl = new mapboxgl.NavigationControl();
       const geoLocateControl = new mapboxgl.GeolocateControl({

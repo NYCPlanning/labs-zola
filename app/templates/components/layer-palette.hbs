@@ -3,7 +3,15 @@
 </button>
 
 <div id="layers-menu" class="{{if closed 'show-for-medium'}} hide-for-print">
-  {{#layer-palette-accordion
+  {{#labs-ui/accordion-menu
+    title='Zoning and Land Use' as |menu|}}
+
+    {{#menu.menu-item
+        title=layerGroups.tax-lots.title
+        active=layerGroups.tax-lots.visible}}
+    {{/menu.menu-item}}
+  {{/labs-ui/accordion-menu}}
+{{!--   {{#layer-palette-accordion
     closed=false
     title='Zoning and Land Use' as |accordion|}}
     {{#accordion.menu-item for='pluto' as |item|}}
@@ -288,7 +296,7 @@
       {{/if}}
     {{/accordion.menu-item}}
 
-  {{/layer-palette-accordion}}
+  {{/layer-palette-accordion}} --}}
 
   <a {{action resetQueryParams}} class="button gray small reset-map-button" disabled={{isDefault}}>
     {{fa-icon "undo"}} Reset Map Layers

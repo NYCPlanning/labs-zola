@@ -4,16 +4,18 @@
     <div class="double-bounce2"></div>
   </div>
 {{/if}}
-
-{{#mapbox-gl
+{{{log layerGroupsMeta}}}
+{{#labs-map
   id='main-map'
-  initOptions=(hash style='//raw.githubusercontent.com/NYCPlanning/labs-gl-style/master/data/style.json'
+  initOptions=(hash style=layerGroupsMeta.mapboxStyle
                     zoom=zoom
                     center=(array lng lat)
                     hash=true)
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
+  {{map.labs-layers layerGroups=layerGroups}}
+{{!-- 
   {{map.layer-group for='neighborhood-tabulation-areas' visible=qps.neighborhood-tabulation-areas}}
 
   {{map.layer-group for='threed-buildings' visible=qps.threed-buildings didToggleVisibility=(action 'adjustBuildingsLayer')}}
@@ -82,7 +84,7 @@
 
   {{!-- BASEMAPS --}}
 
-  {{map.layer-group for='aerials' visible=qps.aerials}}
+  {{map.layer-group for='aerials' visible=qps.aerials}} --}}
 
   {{#if mapMouseover.highlightedLotFeatures}}
     {{#map.source
@@ -144,7 +146,7 @@
   {{map.on 'draw.create' (action 'handleDrawCreate')}}
   {{map.on 'draw.render' (action 'handleMeasurement')}}
 
-{{/mapbox-gl}}
+{{/labs-map}}
 
 <div class="print-controls mapboxgl-ctrl mapboxgl-ctrl-group">
   <button {{action 'handlePrint'}} class="mapboxgl-ctrl-icon">{{fa-icon 'print'}}</button>
