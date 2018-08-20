@@ -17,6 +17,7 @@
     "test": "ember test"
   },
   "devDependencies": {
+    "@ember-decorators/babel-transforms": "2.0.2",
     "babel-eslint": "8",
     "babel-plugin-wildcard": "^2.1.2",
     "broccoli-asset-rev": "^2.7.0",
@@ -65,7 +66,7 @@
     "ember-radio-button": "1.2.4",
     "ember-resolver": "^5.0.1",
     "ember-source": "~3.1.0",
-    "ember-tether": "^1.0.0-beta.0",
+    "ember-tether": "v1.0.0-beta.3",
     "ember-tooltips": "^2.9.0-beta.0",
     "ember-truth-helpers": "^2.0.0",
     "ember-wormhole": "^0.5.2",
