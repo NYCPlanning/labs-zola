@@ -6,6 +6,8 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
+    host: 'https://layers-api-staging.planninglabs.nyc',
+    namespace: 'v1',
     'mapbox-gl': {
       accessToken: 'pk.eyJ1IjoiY3dob25nbnljIiwiYSI6ImNpczF1MXdrdjA4MXcycXA4ZGtyN2x5YXIifQ.3HGyME8tBs6BnljzUVIt4Q',
     },

@@ -40,6 +40,67 @@
     {{#menu.menu-item
         title=layerGroups.zoning-districts.title
         active=layerGroups.zoning-districts.visible}}
+      <ul class="layer-menu-item--group-checkboxes">
+        <li>
+          <label>{{group-checkbox
+            refs=(array 'qps.C1' 'qps.C2' 'qps.C3' 'qps.C4' 'qps.C5' 'qps.C6' 'qps.C7' 'qps.C8')
+            values=(array qps.C1 qps.C2 qps.C3 qps.C4 qps.C5 qps.C6 qps.C7 qps.C8)
+            scope=qps}}Commercial Districts <span style="background-color:#ff0000;" class="icon polygon legend-icon"></span></label>
+
+          <input id="nested-commercial" class="checkbox-hide-sibling" type="checkbox" checked>
+          <label for="nested-commercial" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
+
+          <ul class="nested columns-3 hidable-sibling">
+            <li><label>{{multiSelect.checkbox value='C1' checked=qps.C1}}C1</label></li>
+            <li><label>{{multiSelect.checkbox value='C2' checked=qps.C2}}C2</label></li>
+            <li><label>{{multiSelect.checkbox value='C3' checked=qps.C3}}C3</label></li>
+            <li><label>{{multiSelect.checkbox value='C4' checked=qps.C4}}C4</label></li>
+            <li><label>{{multiSelect.checkbox value='C5' checked=qps.C5}}C5</label></li>
+            <li><label>{{multiSelect.checkbox value='C6' checked=qps.C6}}C6</label></li>
+            <li><label>{{multiSelect.checkbox value='C7' checked=qps.C7}}C7</label></li>
+            <li><label>{{multiSelect.checkbox value='C8' checked=qps.C8}}C8</label></li>
+          </ul>
+        </li>
+        <li>
+          <label>{{group-checkbox
+            refs=(array 'qps.M1' 'qps.M2' 'qps.M3')
+            values=(array qps.M1 qps.M2 qps.M3)
+            scope=qps}}Manufacturing Districts <span style="background-color:#e362fb;" class="icon polygon legend-icon"></span></label>
+
+          <input id="nested-manufacturing" class="checkbox-hide-sibling" type="checkbox" checked>
+          <label for="nested-manufacturing" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
+
+          <ul class="nested columns-3 hidable-sibling">
+            <li><label>{{multiSelect.checkbox value='M1' checked=qps.M1}}M1</label></li>
+            <li><label>{{multiSelect.checkbox value='M2' checked=qps.M2}}M2</label></li>
+            <li><label>{{multiSelect.checkbox value='M3' checked=qps.M3}}M3</label></li>
+          </ul>
+        </li>
+        <li>
+          <label>{{group-checkbox
+            refs=(array 'qps.R1' 'qps.R2' 'qps.R3' 'qps.R4' 'qps.R5' 'qps.R6' 'qps.R7' 'qps.R8' 'qps.R9' 'qps.R10')
+            values=(array qps.R1 qps.R2 qps.R3 qps.R4 qps.R5 qps.R6 qps.R7 qps.R8 qps.R9 qps.R10)
+            scope=qps}}Residential Districts  <span style="background-color:#f2f618;" class="icon polygon legend-icon"></span></label>
+
+          <input id="nested-residential" class="checkbox-hide-sibling" type="checkbox" checked>
+          <label for="nested-residential" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
+
+          <ul class="nested columns-3 hidable-sibling">
+            <li><label>{{multiSelect.checkbox value='R1' checked=qps.R1}}R1</label></li>
+            <li><label>{{multiSelect.checkbox value='R2' checked=qps.R2}}R2</label></li>
+            <li><label>{{multiSelect.checkbox value='R3' checked=qps.R3}}R3</label></li>
+            <li><label>{{multiSelect.checkbox value='R4' checked=qps.R4}}R4</label></li>
+            <li><label>{{multiSelect.checkbox value='R5' checked=qps.R5}}R5</label></li>
+            <li><label>{{multiSelect.checkbox value='R6' checked=qps.R6}}R6</label></li>
+            <li><label>{{multiSelect.checkbox value='R7' checked=qps.R7}}R7</label></li>
+            <li><label>{{multiSelect.checkbox value='R8' checked=qps.R8}}R8</label></li>
+            <li><label>{{multiSelect.checkbox value='R9' checked=qps.R9}}R9</label></li>
+            <li><label>{{multiSelect.checkbox value='R10' checked=qps.R10}}R10</label></li>
+          </ul>
+        </li>
+        <li><label>{{multiSelect.checkbox value='PA' checked=qps.PA}}Parks <span style="background-color:#78D271;" class="icon polygon legend-icon"></span></label></li>
+        <li><label>{{multiSelect.checkbox value='BP' checked=qps.BP}}Battery Park City <span style="background-color:#666666;" class="icon polygon legend-icon"></span></label></li>
+      </ul>
     {{/menu.menu-item}}
 
     {{#menu.menu-item
@@ -48,13 +109,18 @@
     {{/menu.menu-item}}
 
     {{#menu.menu-item
-        title=layerGroups.amendments.title
-        active=layerGroups.amendments.visible}}
+        title=layerGroups.zoning-map-amendments.title
+        active=layerGroups.zoning-map-amendments.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
-        title=layerGroups.amendments-pending.title
-        active=layerGroups.amendments-pending.visible}}
+        title=layerGroups.zoning-map-amendments-pending.title
+        active=layerGroups.zoning-map-amendments-pending.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.special-purpose-districts.title
+        active=layerGroups.special-purpose-districts.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
@@ -91,9 +157,10 @@
     {{/menu.menu-item}}
 
     {{#menu.menu-item
-        title=layerGroups.sidewalkcafes.title
-        active=layerGroups.sidewalkcafes.visible}}
+        title=layerGroups.sidewalk-cafes.title
+        active=layerGroups.sidewalk-cafes.visible}}
     {{/menu.menu-item}}
+
 
     {{#menu.menu-item
         title=layerGroups.low-density-growth-mgmt-areas.title
@@ -121,8 +188,8 @@
     {{/menu.menu-item}}
 
     {{#menu.menu-item
-        title=layerGroups.effective-flood-insurance-rate-2007.title
-        active=layerGroups.effective-flood-insurance-rate-2007.visible}}
+        title=layerGroups.floodplain-efirm2007.title
+        active=layerGroups.floodplain-efirm2007.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
@@ -141,6 +208,7 @@
     {{/menu.menu-item}}
   {{/labs-ui/accordion-menu}}
 
+
   {{#labs-ui/accordion-menu
     title='Other Supporting Layers' as |menu|}}
     {{#menu.menu-item
@@ -153,6 +221,7 @@
         active=layerGroups.industrial-business-zones.visible}}
     {{/menu.menu-item}}
   {{/labs-ui/accordion-menu}}
+
 
   {{#labs-ui/accordion-menu
     title='Administrative Boundaries' as |menu|}}
@@ -167,18 +236,18 @@
     {{/menu.menu-item}}
 
     {{#menu.menu-item
-        title=layerGroups.nyccouncildistricts.title
-        active=layerGroups.nyccouncildistricts.visible}}
+        title=layerGroups.nyc-council-districts.title
+        active=layerGroups.nyc-council-districts.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
-        title=layerGroups.nysenatedistricts.title
-        active=layerGroups.nysenatedistricts.visible}}
+        title=layerGroups.ny-senate-districts.title
+        active=layerGroups.ny-senate-districts.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
-        title=layerGroups.assemblydistricts.title
-        active=layerGroups.assemblydistricts.visible}}
+        title=layerGroups.assembly-districts.title
+        active=layerGroups.assembly-districts.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
@@ -186,6 +255,7 @@
         active=layerGroups.neighborhood-tabulation-areas.visible}}
     {{/menu.menu-item}}
   {{/labs-ui/accordion-menu}}
+
 
   {{#labs-ui/accordion-menu
     title='Basemaps' as |menu|}}
