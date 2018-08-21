@@ -5,12 +5,184 @@
 <div id="layers-menu" class="{{if closed 'show-for-medium'}} hide-for-print">
   {{#labs-ui/accordion-menu
     title='Zoning and Land Use' as |menu|}}
-
     {{#menu.menu-item
         title=layerGroups.tax-lots.title
         active=layerGroups.tax-lots.visible}}
     {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.zoning-districts.title
+        active=layerGroups.zoning-districts.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.commercial-overlays.title
+        active=layerGroups.commercial-overlays.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.amendments.title
+        active=layerGroups.amendments.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.amendments-pending.title
+        active=layerGroups.amendments-pending.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.special-purpose-districts.title
+        active=layerGroups.special-purpose-districts.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.limited-height-districts.title
+        active=layerGroups.limited-height-districts.visible}}
+    {{/menu.menu-item}}
   {{/labs-ui/accordion-menu}}
+
+  {{#labs-ui/accordion-menu
+    title='Supporting Zoning Layers' as |menu|}}
+    {{#menu.menu-item
+        title=layerGroups.mandatory-inclusionary-housing.title
+        active=layerGroups.mandatory-inclusionary-housing.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.inclusionary-housing.title
+        active=layerGroups.inclusionary-housing.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.transit-zones.title
+        active=layerGroups.transit-zones.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.fresh.title
+        active=layerGroups.fresh.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.sidewalkcafes.title
+        active=layerGroups.sidewalkcafes.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.low-density-growth-mgmt-areas.title
+        active=layerGroups.low-density-growth-mgmt-areas.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.coastal-zone-boundary.title
+        active=layerGroups.coastal-zone-boundary.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.waterfront-access-plan.title
+        active=layerGroups.waterfront-access-plan.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.historic-districts.title
+        active=layerGroups.historic-districts.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.landmarks.title
+        active=layerGroups.landmarks.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.effective-flood-insurance-rate-2007.title
+        active=layerGroups.effective-flood-insurance-rate-2007.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.floodplain-pfirm2015.title
+        active=layerGroups.floodplain-pfirm2015.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.e-designations.title
+        active=layerGroups.e-designations.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.appendixj-designated-mdistricts.title
+        active=layerGroups.appendixj-designated-mdistricts.visible}}
+    {{/menu.menu-item}}
+  {{/labs-ui/accordion-menu}}
+
+  {{#labs-ui/accordion-menu
+    title='Other Supporting Layers' as |menu|}}
+    {{#menu.menu-item
+        title=layerGroups.business-improvement-districts.title
+        active=layerGroups.business-improvement-districts.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.industrial-business-zones.title
+        active=layerGroups.industrial-business-zones.visible}}
+    {{/menu.menu-item}}
+  {{/labs-ui/accordion-menu}}
+
+  {{#labs-ui/accordion-menu
+    title='Administrative Boundaries' as |menu|}}
+    {{#menu.menu-item
+        title=layerGroups.boroughs.title
+        active=layerGroups.boroughs.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.community-districts.title
+        active=layerGroups.community-districts.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.nyccouncildistricts.title
+        active=layerGroups.nyccouncildistricts.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.nysenatedistricts.title
+        active=layerGroups.nysenatedistricts.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.assemblydistricts.title
+        active=layerGroups.assemblydistricts.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+        title=layerGroups.neighborhood-tabulation-areas.title
+        active=layerGroups.neighborhood-tabulation-areas.visible}}
+    {{/menu.menu-item}}
+  {{/labs-ui/accordion-menu}}
+
+  {{#labs-ui/accordion-menu
+    title='Basemaps' as |menu|}}
+    {{#menu.menu-item
+      title=layerGroups.subway.title
+      active=layerGroups.subway.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+      title=layerGroups.building-footprints.title
+      active=layerGroups.building-footprints.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+      title=layerGroups.three-d-buildings.title
+      active=layerGroups.three-d-buildings.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
+      title=layerGroups.aerials.title
+      active=layerGroups.aerials.visible}}
+    {{/menu.menu-item}}
+  {{/labs-ui/accordion-menu}}
+
 {{!--   {{#layer-palette-accordion
     closed=false
     title='Zoning and Land Use' as |accordion|}}

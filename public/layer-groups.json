@@ -6,7 +6,6 @@
       "attributes": {
         "id": "aerials",
         "title": "Aerial Imagery",
-        "visible": false,
         "layer-visibility-type": "singleton",
         "title-tooltip": "Aerial Photos Raster Tiles provided by DoITT GIS",
         "meta": {
@@ -112,7 +111,7 @@
       "attributes": {
         "id": "amendments",
         "title": "Adopted City Map Alterations",
-        "visible": false,
+        "visible": true,
         "title-tooltip": "An index of alterations to the City Map. Alteration Maps show changes made to the City Map and, when they are the most recent in an area, serve as an official record of the City Map in the area they depict.",
         "meta": {
           "description": "NYC Department of City Planning Technical Review Division",
@@ -139,6 +138,39 @@
             {
               "type": "layers",
               "id": "citymap-amendments-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "appendixj-designated-mdistricts",
+      "attributes": {
+        "id": "appendixj-designated-mdistricts",
+        "title": "Appendix J Designated M Districts",
+        "visible": false,
+        "title-tooltip": "Designated areas within Manufacturing Districts in which self service storage facilities are subject to certain as-of-right provisions (subarea 1) or are subject to special permit by the City Planning Commission (subarea 2)",
+        "meta": {
+          "description": "Appendix J Designated M Districts Shapefile",
+          "url": [
+            "https:\/\/planninglabs.carto.com\/api\/v2\/sql?q=SELECT * FROM appendixj_designated_mdistricts_v201712&format=SHP"
+          ],
+          "updated-at": "3 May 2018"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#F333E1"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "appendixj-designated-mdistricts-line"
+            },
+            {
+              "type": "layers",
+              "id": "appendixj-designated-mdistricts-fill"
             }
           ]
         }
@@ -191,11 +223,139 @@
     },
     {
       "type": "layer-groups",
+      "id": "assemblydistricts",
+      "attributes": {
+        "id": "assemblydistricts",
+        "title": "NY State Assembly Districts",
+        "visible": false,
+        "meta": {
+          "description": "Administrative and Political Districts v17D, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "21 November 2017"
+        },
+        "legend-icon": "admin-line",
+        "legend-color": "#8A76F5"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "assemblydistricts-line-glow"
+            },
+            {
+              "type": "layers",
+              "id": "assemblydistricts-line"
+            },
+            {
+              "type": "layers",
+              "id": "assemblydistricts-label"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "boroughs",
+      "attributes": {
+        "id": "boroughs",
+        "title": "Boroughs",
+        "visible": false,
+        "meta": {
+          "description": "Administrative and Political Districts v17D, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "21 November 2017"
+        },
+        "legend-icon": "admin-line",
+        "legend-color": "#F5B176"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "boroughs-line-glow"
+            },
+            {
+              "type": "layers",
+              "id": "boroughs-line"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "building-footprints",
+      "attributes": {
+        "id": "building-footprints",
+        "title": "Building Footprints",
+        "visible": true,
+        "title-tooltip": "Building footprints based on OpenStreetMap data",
+        "meta": {
+          "description": "OpenStreetMap Building Footprints via Mapbox Vector Tile Service",
+          "url": [
+            "https:\/\/www.openstreetmap.org\/"
+          ],
+          "updated-at": null
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "building"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "business-improvement-districts",
+      "attributes": {
+        "id": "business-improvement-districts",
+        "title": "Business Improvement Districts",
+        "visible": false,
+        "title-tooltip": "A Business Improvement District (BID) is a geographical area where local stakeholders oversee and fund the maintenance, improvement, and promotion of their commercial district.",
+        "meta": {
+          "description": "Business Improvement Districts Shapefile on the NYC Open Data Portal",
+          "url": [
+            "https:\/\/data.cityofnewyork.us\/Business\/Business-Improvement-Districts\/ejxk-d93y\/data"
+          ],
+          "updated-at": "20 November 2017"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#76420a"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "business-improvement-districts-line"
+            },
+            {
+              "type": "layers",
+              "id": "business-improvement-districts-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
       "id": "citymap",
       "attributes": {
         "id": "citymap",
-        "title": "Street Lines",
-        "visible": false,
+        "title": "Street Map Features",
+        "visible": true,
         "meta": {
           "description": "NYC Department of City Planning Technical Review Division",
           "updated-at": "6 April 2018"
@@ -232,6 +392,27 @@
                 "stroke-width": "0.5",
                 "stroke-dasharray": "1"
               }
+            },
+            {
+              "type": "railroad",
+              "label": "Rail",
+              "tooltip": "Railroad right-of-way",
+              "style": {
+                "fill": "none",
+                "stroke": "#9ca0a1",
+                "stroke-width": "2",
+                "stroke-dasharray": "0.6, 2"
+              }
+            },
+            {
+              "type": "line",
+              "label": "Borough Boundaries",
+              "tooltip": "",
+              "style": {
+                "fill": "none",
+                "stroke-width": "3",
+                "stroke": "rgba(50,100,100,0.4)"
+              }
             }
           ]
         }
@@ -258,6 +439,55 @@
             {
               "type": "layers",
               "id": "citymap-street-not-mapped-line"
+            },
+            {
+              "type": "layers",
+              "id": "borough-boundaries"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-underpass-tunnel-line"
+            },
+            {
+              "type": "layers",
+              "id": "railway-lines"
+            },
+            {
+              "type": "layers",
+              "id": "railway-cross-lines"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "coastal-zone-boundary",
+      "attributes": {
+        "id": "coastal-zone-boundary",
+        "title": "Coastal Zone Boundary",
+        "visible": false,
+        "title-tooltip": "Projects within the coastal zone boundary are subject to additional review under the Waterfront Revitalization Program",
+        "meta": {
+          "description": "WRP Coastal Zone Boundary v2016.1, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "September 2017"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#5DC6E4"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "coastal-zone-boundary-line"
+            },
+            {
+              "type": "layers",
+              "id": "coastal-zone-boundary-fill"
             }
           ]
         }
@@ -302,6 +532,100 @@
     },
     {
       "type": "layer-groups",
+      "id": "community-districts",
+      "attributes": {
+        "id": "community-districts",
+        "title": "Community Districts",
+        "visible": false,
+        "meta": {
+          "description": "Administrative and Political Districts v17D, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "21 November 2017"
+        },
+        "legend-icon": "admin-line",
+        "legend-color": "#76F578"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "community-districts-line-glow"
+            },
+            {
+              "type": "layers",
+              "id": "community-districts-line"
+            },
+            {
+              "type": "layers",
+              "id": "community-districts-label"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "e-designations",
+      "attributes": {
+        "id": "e-designations",
+        "title": "Environmental Designations",
+        "visible": false,
+        "title-tooltip": "An E-Designation is a NYC zoning map designation that indicates the presence of an environmental requirement pertaining to potential Hazardous Materials Contamination, Window\/Wall Noise Attenuation, or Air Quality impacts on a particular tax lot.",
+        "meta": {
+          "description": "(E) Designations release June 2018, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data\/dwn-edesignations.page"
+          ],
+          "updated-at": "July 18th, 2018"
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "e-designations-circle"
+            },
+            {
+              "type": "layers",
+              "id": "e-designations-label"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "effective-flood-insurance-rate-2007",
+      "attributes": {
+        "id": "effective-flood-insurance-rate-2007",
+        "title": "Effective Flood Insurance Rate Maps 2007",
+        "visible": false,
+        "title-tooltip": "The Effective Flood Insurance Rate Maps (FIRMs), first adopted by New York City in 1983 and last updated in 2007, establish the floodplain currently subject to the National Flood Insurance Program purchase requirements.",
+        "meta": {
+          "description": "Effective Flood Insurance Rate Maps (FIRMs) data are available at FEMA Flood Map Service Center",
+          "url": [
+            "https:\/\/msc.fema.gov\/portal"
+          ],
+          "updated-at": "September 2017"
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "effective-flood-insurance-rate-2007"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
       "id": "floodplain-pfirm2015",
       "attributes": {
         "id": "floodplain-pfirm2015",
@@ -314,7 +638,6 @@
           ],
           "updated-at": "September 2017"
         },
-        "visible": true,
         "legend-icon": "polygon",
         "legend-color": "#0084a8"
       },
@@ -344,8 +667,7 @@
           "updated-at": "September 2017"
         },
         "legend-icon": "polygon",
-        "legend-color": "#0084a8",
-        "visible": false
+        "legend-color": "#0084a8"
       },
       "relationships": {
         "layers": {
@@ -353,6 +675,282 @@
             {
               "type": "layers",
               "id": "effective-flood-insurance-rate-2007"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "fresh",
+      "attributes": {
+        "id": "fresh",
+        "title": "FRESH Zones",
+        "visible": false,
+        "title-tooltip": "FRESH promotes the establishment and expansion of neighborhood grocery stores in underserved communities by providing zoning and financial incentives",
+        "meta": {
+          "description": "FRESH Food Stores Zoning Boundaries release 2016.1, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "September 2017"
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "fresh-line"
+            },
+            {
+              "type": "layers",
+              "id": "fresh-fill-zoning-and-tax"
+            },
+            {
+              "type": "layers",
+              "id": "fresh-fill-zoning"
+            },
+            {
+              "type": "layers",
+              "id": "fresh-fill-tax"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "historic-districts",
+      "attributes": {
+        "id": "historic-districts",
+        "title": "Historic Districts",
+        "visible": false,
+        "title-tooltip": "Areas designated by the NYC Landmarks Preservation Commission that possess historical significance and to which special zoning regulations apply",
+        "meta": {
+          "description": "Historic Districts Shapefile, NYC Open Data Portal",
+          "url": [
+            "https:\/\/data.cityofnewyork.us\/Housing-Development\/Historic-Districts\/xbvj-gfnw\/data"
+          ],
+          "updated-at": "17 May 2018"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "steelblue"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "historic-districts-line"
+            },
+            {
+              "type": "layers",
+              "id": "historic-districts-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "inclusionary-housing",
+      "attributes": {
+        "id": "inclusionary-housing",
+        "title": "Inclusionary Housing Designated Areas",
+        "visible": false,
+        "title-tooltip": "Areas where zoning incentives are offered to encourage the creation of permanently affordable housing",
+        "meta": {
+          "description": "Inclusionary Housing Designated Areas release 2017.7, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "September 2017"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#E57300"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "inclusionary-housing-line"
+            },
+            {
+              "type": "layers",
+              "id": "inclusionary-housing-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "industrial-business-zones",
+      "attributes": {
+        "id": "industrial-business-zones",
+        "title": "Industrial Business Zones",
+        "visible": false,
+        "title-tooltip": "Industrial Business Zones (IBZs) are areas where expanded business services are available for industrial and manufacturing businesses. This designation fosters high-performing business districts by creating competitive advantages over locating in areas outside of New York City.",
+        "meta": {
+          "description": "Business Improvement Districts Shapefile on nycedc.com",
+          "url": [
+            "https:\/\/www.nycedc.com\/industry\/industrial\/nyc-industrial-business-zones"
+          ],
+          "updated-at": "2 May 2018"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#2B0A76"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "industrial-business-zones-line"
+            },
+            {
+              "type": "layers",
+              "id": "industrial-business-zones-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "landmarks",
+      "attributes": {
+        "id": "landmarks",
+        "title": "Landmarks",
+        "visible": false,
+        "title-tooltip": "Sites designated by the NYC Landmarks Preservation Commission that possess historical significance and to which special zoning regulations apply",
+        "meta": {
+          "description": "Individual Landmarks Shapefile, NYC Open Data Portal",
+          "url": [
+            "https:\/\/data.cityofnewyork.us\/Housing-Development\/Individual-Landmarks\/ch5p-r223\/data"
+          ],
+          "updated-at": "17 May 2018"
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "landmarks_v0-circle-outline"
+            },
+            {
+              "type": "layers",
+              "id": "landmarks_v0-circle"
+            },
+            {
+              "type": "layers",
+              "id": "scenic-landmarks-line"
+            },
+            {
+              "type": "layers",
+              "id": "scenic-landmarks-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "limited-height-districts",
+      "attributes": {
+        "id": "limited-height-districts",
+        "title": "Limited Height Districts",
+        "visible": false,
+        "title-tooltip": "A limited height district may be superimposed on an area designated as an historic district by the Landmarks Preservation Commission. It is mapped in areas of the Upper East Side, Gramercy Park, Brooklyn Heights and Cobble Hill. The maximum building height is 50 feet in a LH-1 district, 60 feet in a LH-1A district, 70 feet in a LH-2 district and 100 feet in a LH-3 district.",
+        "meta": {
+          "description": "NYC GIS Zoning Features June 2018, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "July 18th, 2018"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#76420a"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "limited-height-districts-line"
+            },
+            {
+              "type": "layers",
+              "id": "limited-height-districts-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "low-density-growth-mgmt-areas",
+      "attributes": {
+        "id": "low-density-growth-mgmt-areas",
+        "title": "Lower Density Growth Management Areas",
+        "visible": false,
+        "title-tooltip": "Areas where special zoning controls intend to limit growth and better match available infrastructure and services in lower-density areas experiencing rapid development",
+        "meta": {
+          "description": "Lower Density Growth Management Area release 2011.1, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "September 2017"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#9D47B2"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "low-density-growth-mgmt-areas-line"
+            },
+            {
+              "type": "layers",
+              "id": "low-density-growth-mgmt-areas-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "mandatory-inclusionary-housing",
+      "attributes": {
+        "id": "mandatory-inclusionary-housing",
+        "title": "Mandatory Inclusionary Housing Areas",
+        "visible": false,
+        "title-tooltip": "Areas where developments, enlargements and conversions over a certain size are required to set aside a percentage of floor area for permanently affordable housing",
+        "meta": {
+          "description": "Mandatory Inclusionary Housing (MIH) release June 2018, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "July 18th, 2018"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#CC3D5D"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "mandatory-inclusionary-housing-line"
+            },
+            {
+              "type": "layers",
+              "id": "mandatory-inclusionary-housing-fill"
             }
           ]
         }
@@ -404,6 +1002,114 @@
     },
     {
       "type": "layer-groups",
+      "id": "neighborhood-tabulation-areas",
+      "attributes": {
+        "id": "neighborhood-tabulation-areas",
+        "title": "Neighborhood Tabulation Areas",
+        "visible": false,
+        "meta": {
+          "description": "Neighborhood Tabulation Areas v17D, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "21 November 2017"
+        },
+        "legend-icon": "admin-line",
+        "legend-color": "#F576CC"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "nta-line-glow"
+            },
+            {
+              "type": "layers",
+              "id": "nta-line"
+            },
+            {
+              "type": "layers",
+              "id": "nta-label"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "nysenatedistricts",
+      "attributes": {
+        "id": "nysenatedistricts",
+        "title": "NY State Senate Districts",
+        "visible": false,
+        "meta": {
+          "description": "Administrative and Political Districts v17D, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "21 November 2017"
+        },
+        "legend-icon": "admin-line",
+        "legend-color": "#E4F576"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "nysenatedistricts-line-glow"
+            },
+            {
+              "type": "layers",
+              "id": "nysenatedistricts-line"
+            },
+            {
+              "type": "layers",
+              "id": "nysenatedistricts-label"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "nyccouncildistricts",
+      "attributes": {
+        "id": "nyccouncildistricts",
+        "title": "NYC Council Districts",
+        "visible": false,
+        "meta": {
+          "description": "Administrative and Political Districts v17D, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "21 November 2017"
+        },
+        "legend-icon": "admin-line",
+        "legend-color": "#76CAF5"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "nyccouncildistricts-line-glow"
+            },
+            {
+              "type": "layers",
+              "id": "nyccouncildistricts-line"
+            },
+            {
+              "type": "layers",
+              "id": "nyccouncildistricts-label"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
       "id": "paper-streets",
       "attributes": {
         "id": "paper-streets",
@@ -434,7 +1140,7 @@
       "attributes": {
         "id": "pierhead-bulkhead-lines",
         "title": "Pierhead & Bulkhead Lines",
-        "visible": false,
+        "visible": true,
         "title-tooltip": "The Pierhead line is the extent to which piers and platforms over water may be built as shown on the City Map.  The Bulkhead line is the extent to which the filling of land is permitted without additional permits.",
         "meta": {
           "description": "NYC Department of City Planning Technical Review Division",
@@ -445,22 +1151,51 @@
           "items": [
             {
               "type": "line",
-              "label": "Pierhead Line",
+              "label": "US Pierhead Line",
               "style": {
                 "fill": "none",
-                "stroke": "#3278C8",
+                "stroke": "#fc9272",
                 "stroke-linecap": "round",
                 "stroke-dasharray": "5,2.5,0,2,0,2.5"
               }
             },
             {
               "type": "line",
-              "label": "Bulkhead Line",
+              "label": "NYC Pierhead Line",
               "style": {
                 "fill": "none",
-                "stroke": "#3278C8",
+                "stroke": "#de2d26",
+                "stroke-linecap": "round",
+                "stroke-dasharray": "5,2.5,0,2,0,2.5"
+              }
+            },
+            {
+              "type": "line",
+              "label": "US Bulkhead Line",
+              "style": {
+                "fill": "none",
+                "stroke": "#2ca2b8",
                 "stroke-linecap": "round",
                 "stroke-dasharray": "5,2,0,1.5,0,1.5,0,2"
+              }
+            },
+            {
+              "type": "line",
+              "label": "NYC Bulkhead Line",
+              "style": {
+                "fill": "none",
+                "stroke": "#1d547a",
+                "stroke-linecap": "round",
+                "stroke-dasharray": "5,2,0,1.5,0,1.5,0,2"
+              }
+            },
+            {
+              "type": "line",
+              "label": "Water Edge",
+              "tooltip": "When there are no pierhead or bulkhead lines, boundaries are marked by the water's edge",
+              "style": {
+                "fill": "none",
+                "stroke": "#757879"
               }
             }
           ]
@@ -471,11 +1206,85 @@
           "data": [
             {
               "type": "layers",
-              "id": "citymap-pierhead-line"
+              "id": "water-edge"
             },
             {
               "type": "layers",
-              "id": "citymap-bulkhead-line"
+              "id": "citymap-pierhead-line-US"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-pierhead-line-NYC"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-bulkhead-line-US"
+            },
+            {
+              "type": "layers",
+              "id": "citymap-bulkhead-line-NYC"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "preliminary-flood-insurance-rate",
+      "attributes": {
+        "id": "preliminary-flood-insurance-rate",
+        "title": "Preliminary Flood Insurance Rate Maps 2015",
+        "visible": false,
+        "title-tooltip": "Released in 2015 as part of a citywide flood map update, the Preliminary FIRMs establish the 1% annual chance floodplain. For building code and zoning purposes, the more expansive of the either the 2015 or 2007 maps is used.",
+        "meta": {
+          "description": "Flood Insurance Rate Data provided by FEMA",
+          "url": [
+            "http:\/\/www.region2coastal.com\/view-flood-maps-data\/view-preliminary-flood-map-data\/"
+          ],
+          "updated-at": "September 2017"
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "preliminary-flood-insurance-rate"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "sidewalkcafes",
+      "attributes": {
+        "id": "sidewalkcafes",
+        "title": "Sidewalk Cafes",
+        "visible": false,
+        "title-tooltip": "Areas where different types of sidewalk cafes are permitted on public sidewalks",
+        "meta": {
+          "description": "Sidewalk Cafes release June 2018, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "July 18th, 2018"
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "sidewalkcafes-line-all"
+            },
+            {
+              "type": "layers",
+              "id": "sidewalkcafes-line-small"
+            },
+            {
+              "type": "layers",
+              "id": "sidewalkcafes-line-unenclosed"
             }
           ]
         }
@@ -515,6 +1324,39 @@
     },
     {
       "type": "layer-groups",
+      "id": "special-purpose-subdistricts",
+      "attributes": {
+        "id": "special-purpose-subdistricts",
+        "title": "Special Purpose Subdistricts",
+        "visible": false,
+        "title-tooltip": "Areas within Special Purpose Districts where unique rules apply",
+        "meta": {
+          "description": "NYC GIS Zoning Features June 2018, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "July 18th, 2018"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#8DA610"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "zoning-sp-sd-line"
+            },
+            {
+              "type": "layers",
+              "id": "zoning-sp-sd-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
       "id": "stair-streets",
       "attributes": {
         "id": "stair-streets",
@@ -545,7 +1387,7 @@
       "attributes": {
         "id": "street-centerlines",
         "title": "Street Names",
-        "visible": false,
+        "visible": true,
         "title-tooltip": "Legal street names as shown on the City Map",
         "meta": {
           "description": "NYC Department of City Planning Technical Review Division",
@@ -558,6 +1400,83 @@
             {
               "type": "layers",
               "id": "citymap-street-centerlines-symbol"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "subway",
+      "attributes": {
+        "id": "subway",
+        "title": "Subways",
+        "visible": true,
+        "meta": {
+          "description": "NYC Subway Lines and Stops - Originally Sourced from NYC DoITT GIS, combined with SI Railway data from Baruch College NYC Mass Transit Spatial Layers | Subway entrances from NYC Open Data",
+          "url": [
+            "https:\/\/planninglabs.carto.com\/api\/v2\/sql?q=SELECT * FROM mta_subway_stops_v0&format=SHP",
+            "https:\/\/planninglabs.carto.com\/api\/v2\/sql?q=SELECT * FROM mta_subway_routes_v0&format=SHP",
+            "https:\/\/data.cityofnewyork.us\/Transportation\/Subway-Entrances\/drex-xx56",
+            "https:\/\/www.baruch.cuny.edu\/confluence\/display\/geoportal\/NYC+Mass+Transit+Spatial+Layers"
+          ],
+          "updated-at": "21 November 2017"
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "subway_green"
+            },
+            {
+              "type": "layers",
+              "id": "subway_yellow"
+            },
+            {
+              "type": "layers",
+              "id": "subway_gray"
+            },
+            {
+              "type": "layers",
+              "id": "subway_brown"
+            },
+            {
+              "type": "layers",
+              "id": "subway_light_green"
+            },
+            {
+              "type": "layers",
+              "id": "subway_orange"
+            },
+            {
+              "type": "layers",
+              "id": "subway_blue"
+            },
+            {
+              "type": "layers",
+              "id": "subway_purple"
+            },
+            {
+              "type": "layers",
+              "id": "subway_red"
+            },
+            {
+              "type": "layers",
+              "id": "subway_stations"
+            },
+            {
+              "type": "layers",
+              "id": "subway_stations_labels"
+            },
+            {
+              "type": "layers",
+              "id": "subway_entrances"
+            },
+            {
+              "type": "layers",
+              "id": "subway_entrances_labels"
             }
           ]
         }
@@ -599,11 +1518,104 @@
     },
     {
       "type": "layer-groups",
+      "id": "three-d-buildings",
+      "attributes": {
+        "id": "three-d-buildings",
+        "title": "3D Buildings",
+        "visible": false,
+        "title-tooltip": "Extruded building height from OpenStreetMap data",
+        "meta": {
+          "description": "OpenStreetMap Building Footprints via Mapbox Vector Tile Service",
+          "url": [
+            "https:\/\/www.openstreetmap.org\/"
+          ],
+          "updated-at": null
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "three-d-buildings"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "transit-zones",
+      "attributes": {
+        "id": "transit-zones",
+        "title": "Transit Zones",
+        "visible": false,
+        "title-tooltip": "Transit-accessible areas where parking is optional for new affordable housing units and special rules apply to existing affordable units",
+        "meta": {
+          "description": "Transit Zones release July 2016, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "September 2017"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#E6D62E"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "transit-zones-line"
+            },
+            {
+              "type": "layers",
+              "id": "transit-zones-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "waterfront-access-plan",
+      "attributes": {
+        "id": "waterfront-access-plan",
+        "title": "Waterfront Access Plan",
+        "visible": false,
+        "title-tooltip": "These areas reflect site specific modification of waterfront public access requirements for waterfront parcels with unique conditions and opportunities",
+        "meta": {
+          "description": "Waterfront Access Plan release 2011.1, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "September 2017"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#00A4D2"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "waterfront-access-plan-line"
+            },
+            {
+              "type": "layers",
+              "id": "waterfront-access-plan-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
       "id": "zoning-districts",
       "attributes": {
         "id": "zoning-districts",
         "title": "Zoning Districts",
-        "visible": false,
+        "visible": true,
         "title-tooltip": "A zoning district is a residential, commercial or manufac\u00adturing area of the city within which zoning regulations govern land use and building bulk.",
         "meta": {
           "description": "NYC GIS Zoning Features June 2018, Bytes of the Big Apple",
@@ -627,6 +1639,72 @@
             {
               "type": "layers",
               "id": "zd_labels"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "zoning-map-amendments-pending",
+      "attributes": {
+        "id": "zoning-map-amendments-pending",
+        "title": "Pending Zoning Map Amendments",
+        "visible": false,
+        "title-tooltip": "Changes to the Zoning Map that are currently undergoing public review",
+        "meta": {
+          "description": "NYC GIS Zoning Features March 2018, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "April 5th, 2018"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#B01F1F"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "zmacert-line"
+            },
+            {
+              "type": "layers",
+              "id": "zmacert-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "zoning-map-amendments",
+      "attributes": {
+        "id": "zoning-map-amendments",
+        "title": "Zoning Map Amendments",
+        "visible": false,
+        "title-tooltip": "Changes to the Zoning Map that have been adopted since 2002",
+        "meta": {
+          "description": "NYC GIS Zoning Features June 2018, Bytes of the Big Apple",
+          "url": [
+            "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
+          ],
+          "updated-at": "July 18th, 2018"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#9FC73E"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "zma-line"
+            },
+            {
+              "type": "layers",
+              "id": "zma-fill"
             }
           ]
         }
@@ -894,8 +1972,66 @@
             "nycplanninglabs:layergroupid": "amendments"
           }
         },
-        "tooltipable": true,
         "before": "place_other"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "appendixj-designated-mdistricts-line",
+      "attributes": {
+        "style": {
+          "id": "appendixj-designated-mdistricts-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "appendixj-designated-mdistricts",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#F333E1",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "appendixj-designated-mdistricts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "appendixj-designated-mdistricts-fill",
+      "attributes": {
+        "style": {
+          "id": "appendixj-designated-mdistricts-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "appendixj-designated-mdistricts",
+          "paint": {
+            "fill-color": "#F333E1",
+            "fill-opacity": 0.2
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "appendixj-designated-mdistricts"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "{{{name}}} - Subarea {{{subarea}}}"
       }
     },
     {
@@ -954,6 +2090,272 @@
             "nycplanninglabs:layergroupid": "arterials"
           }
         }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "assemblydistricts-line-glow",
+      "attributes": {
+        "style": {
+          "id": "assemblydistricts-line-glow",
+          "type": "line",
+          "source": "admin-boundaries",
+          "source-layer": "ny-assembly-districts",
+          "paint": {
+            "line-color": "#8A76F5",
+            "line-opacity": 0.2,
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  3
+                ],
+                [
+                  16,
+                  6
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "assemblydistricts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "assemblydistricts-line",
+      "attributes": {
+        "style": {
+          "id": "assemblydistricts-line",
+          "type": "line",
+          "source": "admin-boundaries",
+          "source-layer": "ny-assembly-districts",
+          "paint": {
+            "line-color": "#444",
+            "line-opacity": 0.3,
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  16,
+                  3
+                ]
+              ]
+            }
+          },
+          "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "assemblydistricts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "assemblydistricts-label",
+      "attributes": {
+        "style": {
+          "id": "assemblydistricts-label",
+          "type": "symbol",
+          "source": "admin-boundaries",
+          "source-layer": "ny-assembly-districts",
+          "minzoom": 10,
+          "paint": {
+            "text-color": "#626262",
+            "text-halo-color": "#FFFFFF",
+            "text-halo-width": 2,
+            "text-halo-blur": 2
+          },
+          "layout": {
+            "text-field": "{assemdist}",
+            "text-font": [
+              "Open Sans Semibold",
+              "Arial Unicode MS Bold"
+            ],
+            "text-size": {
+              "stops": [
+                [
+                  11,
+                  12
+                ],
+                [
+                  14,
+                  16
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "assemblydistricts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "boroughs-line-glow",
+      "attributes": {
+        "style": {
+          "id": "boroughs-line-glow",
+          "type": "line",
+          "source": "admin-boundaries",
+          "source-layer": "boroughs",
+          "paint": {
+            "line-color": "#F5B176",
+            "line-opacity": 0.2,
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  3
+                ],
+                [
+                  16,
+                  6
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "boroughs"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "boroughs-line",
+      "attributes": {
+        "style": {
+          "id": "boroughs-line",
+          "type": "line",
+          "source": "admin-boundaries",
+          "source-layer": "boroughs",
+          "paint": {
+            "line-color": "#444",
+            "line-opacity": 0.3,
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  16,
+                  3
+                ]
+              ]
+            }
+          },
+          "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "boroughs"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "building",
+      "attributes": {
+        "style": {
+          "id": "building",
+          "type": "fill",
+          "source": "openmaptiles",
+          "source-layer": "building",
+          "minzoom": 15,
+          "paint": {
+            "fill-opacity": {
+              "stops": [
+                [
+                  15,
+                  0
+                ],
+                [
+                  16,
+                  0.3
+                ]
+              ]
+            },
+            "fill-color": "rgba(175, 175, 175, 1)"
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "building-footprints"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "business-improvement-districts-line",
+      "attributes": {
+        "style": {
+          "id": "business-improvement-districts-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "business-improvement-districts",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#76420a",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "business-improvement-districts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "business-improvement-districts-fill",
+      "attributes": {
+        "style": {
+          "id": "business-improvement-districts-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "business-improvement-districts",
+          "paint": {
+            "fill-color": "#76420a",
+            "fill-opacity": 0.2
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "business-improvement-districts"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "{{{bid}}}"
       }
     },
     {
@@ -1185,6 +2587,9 @@
             "nycplanninglabs:layergroupid": "citymap"
           }
         }
+      },
+      "relationships": {
+        
       }
     },
     {
@@ -1250,6 +2655,221 @@
             "nycplanninglabs:layergroupid": "citymap"
           }
         }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "borough-boundaries",
+      "attributes": {
+        "style": {
+          "id": "borough-boundaries",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "citymap",
+          "paint": {
+            "line-color": "rgba(50,100,100,0.4)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  3
+                ],
+                [
+                  13,
+                  4
+                ],
+                [
+                  15,
+                  5
+                ]
+              ]
+            }
+          },
+          "filter": [
+            "all",
+            [
+              "==",
+              "type",
+              "City_boundary"
+            ]
+          ],
+          "metadata": {
+            "nycplanninglabs:layergroupid": "citymap"
+          }
+        },
+        "tooltipable": true,
+        "tooltip-template": "{{boro_nm}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "railway-lines",
+      "attributes": {
+        "style": {
+          "id": "railway-lines",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "rail-lines",
+          "paint": {
+            "line-color": {
+              "stops": [
+                [
+                  10,
+                  "#9ca0a1"
+                ],
+                [
+                  13,
+                  "#9ca0a1"
+                ]
+              ]
+            },
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  0.5
+                ],
+                [
+                  13,
+                  1
+                ],
+                [
+                  15,
+                  2
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "citymap"
+          }
+        },
+        "tooltipable": true,
+        "tooltip-template": "{{street}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "railway-cross-lines",
+      "attributes": {
+        "style": {
+          "id": "railway-cross-lines",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "rail-lines",
+          "paint": {
+            "line-color": {
+              "stops": [
+                [
+                  10,
+                  "#9ca0a1"
+                ],
+                [
+                  13,
+                  "#9ca0a1"
+                ]
+              ]
+            },
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  2
+                ],
+                [
+                  13,
+                  4
+                ],
+                [
+                  15,
+                  6
+                ]
+              ]
+            },
+            "line-dasharray": {
+              "stops": [
+                [
+                  10,
+                  [
+                    0.2,
+                    4
+                  ]
+                ],
+                [
+                  15,
+                  [
+                    0.2,
+                    4
+                  ]
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "citymap"
+          }
+        },
+        "tooltipable": true,
+        "tooltip-template": "{{street}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "coastal-zone-boundary-line",
+      "attributes": {
+        "style": {
+          "id": "coastal-zone-boundary-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "coastal-zone-boundary",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#5DC6E4",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "coastal-zone-boundary"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "coastal-zone-boundary-fill",
+      "attributes": {
+        "style": {
+          "id": "coastal-zone-boundary-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "coastal-zone-boundary",
+          "paint": {
+            "fill-color": "#5DC6E4",
+            "fill-opacity": 0.2
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "coastal-zone-boundary"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "Coastal Zone Boundary"
       }
     },
     {
@@ -1336,37 +2956,195 @@
     },
     {
       "type": "layers",
-      "id": "preliminary-flood-insurance-rate",
+      "id": "community-districts-line-glow",
       "attributes": {
         "style": {
-          "id": "preliminary-flood-insurance-rate",
-          "type": "fill",
-          "source": "floodplains",
-          "source-layer": "preliminary-flood-insurance-rate",
+          "id": "community-districts-line-glow",
+          "type": "line",
+          "source": "admin-boundaries",
+          "source-layer": "community-districts",
           "paint": {
-            "fill-color": {
-              "property": "fld_zone",
-              "type": "categorical",
+            "line-color": "#76F578",
+            "line-opacity": 0.2,
+            "line-width": {
               "stops": [
                 [
-                  "V",
-                  "#0084a8"
+                  11,
+                  3
                 ],
                 [
-                  "A",
-                  "#00a9e6"
+                  16,
+                  6
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "community-districts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "community-districts-line",
+      "attributes": {
+        "style": {
+          "id": "community-districts-line",
+          "type": "line",
+          "source": "admin-boundaries",
+          "source-layer": "community-districts",
+          "paint": {
+            "line-color": "#444",
+            "line-opacity": 0.3,
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  16,
+                  3
+                ]
+              ]
+            }
+          },
+          "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "community-districts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "community-districts-label",
+      "attributes": {
+        "style": {
+          "id": "community-districts-label",
+          "type": "symbol",
+          "source": "admin-boundaries",
+          "source-layer": "community-districts",
+          "minzoom": 11,
+          "paint": {
+            "text-color": "#626262",
+            "text-halo-color": "#FFFFFF",
+            "text-halo-width": 2,
+            "text-halo-blur": 2
+          },
+          "layout": {
+            "text-field": "{boro_district}",
+            "text-font": [
+              "Open Sans Semibold",
+              "Arial Unicode MS Bold"
+            ],
+            "text-size": {
+              "stops": [
+                [
+                  11,
+                  12
+                ],
+                [
+                  14,
+                  16
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "community-districts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "e-designations-circle",
+      "attributes": {
+        "style": {
+          "id": "e-designations-circle",
+          "type": "circle",
+          "source": "supporting-zoning",
+          "source-layer": "e-designations",
+          "minzoom": 15,
+          "paint": {
+            "circle-radius": {
+              "stops": [
+                [
+                  16,
+                  2
+                ],
+                [
+                  17,
+                  5
                 ]
               ]
             },
-            "fill-opacity": 0.7
+            "circle-color": "rgba(255, 255, 255, 0.65)",
+            "circle-stroke-opacity": {
+              "stops": [
+                [
+                  15,
+                  0
+                ],
+                [
+                  16,
+                  1
+                ]
+              ]
+            },
+            "circle-stroke-color": "rgba(52, 33, 220, 1)",
+            "circle-pitch-scale": "map",
+            "circle-stroke-width": 1.5,
+            "circle-opacity": 1
           },
           "metadata": {
-            "nycplanninglabs:layergroupid": "floodplain-pfirm2015"
+            "nycplanninglabs:layergroupid": "e-designations"
           }
         },
+        "clickable": true,
         "highlightable": true,
-        "tooltipable": true,
-        "tooltip-template": "2015 {{fld_zone}} Zone"
+        "tooltip-template": "E-designation<br\/>E-Number: {{enumber}}<br\/>CEQR: {{ceqr_num}}<br\/>ULURP: {{ulurp_num}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "e-designations-label",
+      "attributes": {
+        "style": {
+          "id": "e-designations-label",
+          "type": "symbol",
+          "source": "supporting-zoning",
+          "source-layer": "e-designations",
+          "minzoom": 16,
+          "layout": {
+            "text-field": "E",
+            "text-size": 8,
+            "text-allow-overlap": true,
+            "visibility": "visible"
+          },
+          "paint": {
+            "text-opacity": {
+              "stops": [
+                [
+                  16,
+                  0
+                ],
+                [
+                  17,
+                  1
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "e-designations"
+          }
+        }
       }
     },
     {
@@ -1396,11 +3174,672 @@
             "fill-opacity": 0.7
           },
           "metadata": {
-            "nycplanninglabs:layergroupid": "floodplain-efirm2007"
+            "nycplanninglabs:layergroupid": "effective-flood-insurance-rate-2007"
           }
         },
         "highlightable": true,
         "tooltip-template": "2007 {{fld_zone}} Zone"
+      },
+      "relationships": {
+        
+      }
+    },
+    {
+      "type": "layers",
+      "id": "preliminary-flood-insurance-rate",
+      "attributes": {
+        "style": {
+          "id": "preliminary-flood-insurance-rate",
+          "type": "fill",
+          "source": "preliminary-flood-insurance-rate",
+          "source-layer": "preliminary-flood-insurance-rate",
+          "paint": {
+            "fill-color": {
+              "property": "fld_zone",
+              "type": "categorical",
+              "stops": [
+                [
+                  "V",
+                  "#0084a8"
+                ],
+                [
+                  "A",
+                  "#00a9e6"
+                ]
+              ]
+            },
+            "fill-opacity": 0.7
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "floodplain-pfirm2015"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "2015 {{fld_zone}} Zone"
+      },
+      "relationships": {
+        
+      }
+    },
+    {
+      "type": "layers",
+      "id": "fresh-line",
+      "attributes": {
+        "style": {
+          "id": "fresh-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "fresh",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#30BF4E",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "fresh"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "fresh-fill-zoning-and-tax",
+      "attributes": {
+        "style": {
+          "id": "fresh-fill-zoning-and-tax",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "fresh",
+          "paint": {
+            "fill-color": "#30BF4E",
+            "fill-opacity": 0.2
+          },
+          "filter": [
+            "all",
+            [
+              "==",
+              "name",
+              "Zoning and discretionary tax incentives"
+            ]
+          ],
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "fresh"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "FRESH - {{{name}}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "fresh-fill-zoning",
+      "attributes": {
+        "style": {
+          "id": "fresh-fill-zoning",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "fresh",
+          "paint": {
+            "fill-color": "#0B9390",
+            "fill-opacity": 0.2
+          },
+          "filter": [
+            "all",
+            [
+              "==",
+              "name",
+              "Zoning incentives"
+            ]
+          ],
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "fresh"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "FRESH - {{{name}}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "fresh-fill-tax",
+      "attributes": {
+        "style": {
+          "id": "fresh-fill-tax",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "fresh",
+          "paint": {
+            "fill-color": "#8FE339",
+            "fill-opacity": 0.2
+          },
+          "filter": [
+            "all",
+            [
+              "==",
+              "name",
+              "Discretionary tax incentives"
+            ]
+          ],
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "fresh"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "FRESH - {{{name}}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "historic-districts-line",
+      "attributes": {
+        "style": {
+          "id": "historic-districts-line",
+          "type": "line",
+          "source": "landmark-historic",
+          "source-layer": "historic-districts",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "steelblue",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "historic-districts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "historic-districts-fill",
+      "attributes": {
+        "style": {
+          "id": "historic-districts-fill",
+          "type": "fill",
+          "source": "landmark-historic",
+          "source-layer": "historic-districts",
+          "paint": {
+            "fill-color": "steelblue",
+            "fill-opacity": 0.2
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "historic-districts"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "{{{area_name}}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "inclusionary-housing-line",
+      "attributes": {
+        "style": {
+          "id": "inclusionary-housing-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "inclusionary-housing",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#E57300",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "inclusionary-housing"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "inclusionary-housing-fill",
+      "attributes": {
+        "style": {
+          "id": "inclusionary-housing-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "inclusionary-housing",
+          "paint": {
+            "fill-color": "#E57300",
+            "fill-opacity": 0.2
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "inclusionary-housing"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "{{{projectnam}}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "industrial-business-zones-line",
+      "attributes": {
+        "style": {
+          "id": "industrial-business-zones-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "industrial-business-zones",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#2B0A76",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "industrial-business-zones"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "industrial-business-zones-fill",
+      "attributes": {
+        "style": {
+          "id": "industrial-business-zones-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "industrial-business-zones",
+          "paint": {
+            "fill-color": "#2B0A76",
+            "fill-opacity": 0.2
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "industrial-business-zones"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "{{{name}}} IBZ"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "landmarks_v0-circle-outline",
+      "attributes": {
+        "style": {
+          "id": "landmarks_v0-circle-outline",
+          "type": "circle",
+          "source": "landmark-historic",
+          "source-layer": "landmarks",
+          "paint": {
+            "circle-radius": {
+              "stops": [
+                [
+                  10,
+                  3
+                ],
+                [
+                  15,
+                  7
+                ]
+              ]
+            },
+            "circle-color": "#012700",
+            "circle-opacity": 0.7
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "landmarks"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "landmarks_v0-circle",
+      "attributes": {
+        "style": {
+          "id": "landmarks_v0-circle",
+          "type": "circle",
+          "source": "landmark-historic",
+          "source-layer": "landmarks",
+          "paint": {
+            "circle-radius": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  15,
+                  5
+                ]
+              ]
+            },
+            "circle-color": {
+              "property": "lm_type",
+              "type": "categorical",
+              "stops": [
+                [
+                  "Individual Landmark",
+                  "rgba(147, 245, 201, 1)"
+                ],
+                [
+                  "Interior Landmark",
+                  "rgba(152, 152, 247, 1)"
+                ]
+              ]
+            },
+            "circle-opacity": 0.7
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "landmarks"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "{{{lm_name}}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "scenic-landmarks-line",
+      "attributes": {
+        "style": {
+          "id": "scenic-landmarks-line",
+          "type": "line",
+          "source": "landmark-historic",
+          "source-layer": "scenic-landmarks",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "purple",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "landmarks"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "scenic-landmarks-fill",
+      "attributes": {
+        "style": {
+          "id": "scenic-landmarks-fill",
+          "type": "fill",
+          "source": "landmark-historic",
+          "source-layer": "scenic-landmarks",
+          "paint": {
+            "fill-color": "purple",
+            "fill-opacity": 0.2
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "landmarks"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "{{{scen_lm_na}}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "limited-height-districts-line",
+      "attributes": {
+        "style": {
+          "id": "limited-height-districts-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "limited-height-districts",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#76420a",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "limited-height-districts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "limited-height-districts-fill",
+      "attributes": {
+        "style": {
+          "id": "limited-height-districts-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "limited-height-districts",
+          "paint": {
+            "fill-color": "#76420a",
+            "fill-opacity": 0.2
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "limited-height-districts"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "Limited height district - {{lhlbl}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "low-density-growth-mgmt-areas-line",
+      "attributes": {
+        "style": {
+          "id": "low-density-growth-mgmt-areas-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "low-density-growth-mgmt-areas",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#9D47B2",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "low-density-growth-mgmt-areas"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "low-density-growth-mgmt-areas-fill",
+      "attributes": {
+        "style": {
+          "id": "low-density-growth-mgmt-areas-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "low-density-growth-mgmt-areas",
+          "paint": {
+            "fill-color": "#9D47B2",
+            "fill-opacity": 0.2
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "low-density-growth-mgmt-areas"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "Lower Density Growth Management Area"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "mandatory-inclusionary-housing-line",
+      "attributes": {
+        "style": {
+          "id": "mandatory-inclusionary-housing-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "mandatory-inclusionary-housing",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#CC3D5D",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "mandatory-inclusionary-housing"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "mandatory-inclusionary-housing-fill",
+      "attributes": {
+        "style": {
+          "id": "mandatory-inclusionary-housing-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "mandatory-inclusionary-housing",
+          "paint": {
+            "fill-color": "#CC3D5D",
+            "fill-opacity": 0.2
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "mandatory-inclusionary-housing"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "{{projectnam}} - {{mih_option}}"
       }
     },
     {
@@ -1661,6 +4100,326 @@
     },
     {
       "type": "layers",
+      "id": "nta-line-glow",
+      "attributes": {
+        "style": {
+          "id": "nta-line-glow",
+          "type": "line",
+          "source": "admin-boundaries",
+          "source-layer": "neighborhood-tabulation-areas",
+          "paint": {
+            "line-color": "#F576CC",
+            "line-opacity": 0.2,
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  3
+                ],
+                [
+                  16,
+                  6
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "neighborhood-tabulation-areas"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "nta-line",
+      "attributes": {
+        "style": {
+          "id": "nta-line",
+          "type": "line",
+          "source": "admin-boundaries",
+          "source-layer": "neighborhood-tabulation-areas",
+          "paint": {
+            "line-color": "#444",
+            "line-opacity": 0.3,
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  16,
+                  3
+                ]
+              ]
+            }
+          },
+          "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "neighborhood-tabulation-areas"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "nta-label",
+      "attributes": {
+        "style": {
+          "id": "nta-label",
+          "type": "symbol",
+          "source": "admin-boundaries",
+          "source-layer": "neighborhood-tabulation-areas-centroids",
+          "minzoom": 12,
+          "paint": {
+            "text-color": "#626262",
+            "text-halo-color": "#FFFFFF",
+            "text-halo-width": 2,
+            "text-halo-blur": 2
+          },
+          "layout": {
+            "text-field": "{ntaname}",
+            "text-font": [
+              "Open Sans Semibold",
+              "Arial Unicode MS Bold"
+            ],
+            "text-size": {
+              "stops": [
+                [
+                  11,
+                  12
+                ],
+                [
+                  14,
+                  16
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "neighborhood-tabulation-areas"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "nysenatedistricts-line-glow",
+      "attributes": {
+        "style": {
+          "id": "nysenatedistricts-line-glow",
+          "type": "line",
+          "source": "admin-boundaries",
+          "source-layer": "ny-senate-districts",
+          "paint": {
+            "line-color": "#E4F576",
+            "line-opacity": 1,
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  3
+                ],
+                [
+                  16,
+                  6
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "nysenatedistricts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "nysenatedistricts-line",
+      "attributes": {
+        "style": {
+          "id": "nysenatedistricts-line",
+          "type": "line",
+          "source": "admin-boundaries",
+          "source-layer": "ny-senate-districts",
+          "paint": {
+            "line-color": "#444",
+            "line-opacity": 0.3,
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  16,
+                  3
+                ]
+              ]
+            }
+          },
+          "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "nysenatedistricts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "nysenatedistricts-label",
+      "attributes": {
+        "style": {
+          "id": "nysenatedistricts-label",
+          "type": "symbol",
+          "source": "admin-boundaries",
+          "source-layer": "ny-senate-districts",
+          "minzoom": 10,
+          "paint": {
+            "text-color": "#626262",
+            "text-halo-color": "#FFFFFF",
+            "text-halo-width": 2,
+            "text-halo-blur": 2
+          },
+          "layout": {
+            "text-field": "{stsendist}",
+            "text-font": [
+              "Open Sans Semibold",
+              "Arial Unicode MS Bold"
+            ],
+            "text-size": {
+              "stops": [
+                [
+                  11,
+                  12
+                ],
+                [
+                  14,
+                  16
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "nysenatedistricts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "nyccouncildistricts-line-glow",
+      "attributes": {
+        "style": {
+          "id": "nyccouncildistricts-line-glow",
+          "type": "line",
+          "source": "admin-boundaries",
+          "source-layer": "nyc-council-districts",
+          "paint": {
+            "line-color": "#76CAF5",
+            "line-opacity": 1,
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  3
+                ],
+                [
+                  16,
+                  6
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "nyccouncildistricts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "nyccouncildistricts-line",
+      "attributes": {
+        "style": {
+          "id": "nyccouncildistricts-line",
+          "type": "line",
+          "source": "admin-boundaries",
+          "source-layer": "nyc-council-districts",
+          "paint": {
+            "line-color": "#444",
+            "line-opacity": 0.3,
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  16,
+                  3
+                ]
+              ]
+            }
+          },
+          "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "nyccouncildistricts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "nyccouncildistricts-label",
+      "attributes": {
+        "style": {
+          "id": "nyccouncildistricts-label",
+          "type": "symbol",
+          "source": "admin-boundaries",
+          "source-layer": "nyc-council-districts",
+          "paint": {
+            "text-color": "#626262",
+            "text-halo-color": "#FFFFFF",
+            "text-halo-width": 2,
+            "text-halo-blur": 2
+          },
+          "layout": {
+            "text-field": "{coundist}",
+            "text-font": [
+              "Open Sans Semibold",
+              "Arial Unicode MS Bold"
+            ],
+            "text-size": {
+              "stops": [
+                [
+                  11,
+                  12
+                ],
+                [
+                  14,
+                  16
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "nyccouncildistricts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
       "id": "paper-streets-line",
       "attributes": {
         "style": {
@@ -1756,15 +4515,55 @@
     },
     {
       "type": "layers",
-      "id": "citymap-pierhead-line",
+      "id": "water-edge",
       "attributes": {
         "style": {
-          "id": "citymap-pierhead-line",
+          "id": "water-edge",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "citymap",
+          "paint": {
+            "line-color": "#b0b5b5",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  0.5
+                ],
+                [
+                  14,
+                  2
+                ]
+              ]
+            }
+          },
+          "filter": [
+            "all",
+            [
+              "==",
+              "type",
+              "Water line"
+            ]
+          ],
+          "metadata": {
+            "nycplanninglabs:layergroupid": "pierhead-bulkhead-lines"
+          }
+        },
+        "tooltipable": true,
+        "tooltip-template": "Water Edge"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-pierhead-line-US",
+      "attributes": {
+        "style": {
+          "id": "citymap-pierhead-line-US",
           "type": "line",
           "source": "digital-citymap",
           "source-layer": "pierhead-lines",
           "paint": {
-            "line-color": "rgba(50, 120, 200, 1)",
+            "line-color": "#fc9272",
             "line-width": {
               "stops": [
                 [
@@ -1792,25 +4591,97 @@
           "layout": {
             "line-cap": "round"
           },
+          "filter": [
+            "any",
+            [
+              "==",
+              "jurisdicti",
+              "U.S."
+            ],
+            [
+              "==",
+              "jurisdicti",
+              "US"
+            ],
+            [
+              "==",
+              "jurisdicti",
+              "unknown"
+            ]
+          ],
           "metadata": {
             "nycplanninglabs:layergroupid": "pierhead-bulkhead-lines"
           }
         },
         "tooltipable": true,
-        "tooltip-template": "Pierhead Line"
+        "tooltip-template": "US Pierhead Line"
       }
     },
     {
       "type": "layers",
-      "id": "citymap-bulkhead-line",
+      "id": "citymap-pierhead-line-NYC",
       "attributes": {
         "style": {
-          "id": "citymap-bulkhead-line",
+          "id": "citymap-pierhead-line-NYC",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "pierhead-lines",
+          "paint": {
+            "line-color": "#de2d26",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  0.5
+                ],
+                [
+                  14,
+                  3
+                ]
+              ]
+            },
+            "line-opacity": 1,
+            "line-dasharray": [
+              5,
+              2,
+              0,
+              1.5,
+              0,
+              1.5,
+              0,
+              2
+            ]
+          },
+          "layout": {
+            "line-cap": "round"
+          },
+          "filter": [
+            "any",
+            [
+              "==",
+              "jurisdicti",
+              "City of New York"
+            ]
+          ],
+          "metadata": {
+            "nycplanninglabs:layergroupid": "pierhead-bulkhead-lines"
+          }
+        },
+        "tooltipable": true,
+        "tooltip-template": "NYC Pierhead Line"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-bulkhead-line-US",
+      "attributes": {
+        "style": {
+          "id": "citymap-bulkhead-line-US",
           "type": "line",
           "source": "digital-citymap",
           "source-layer": "bulkhead-lines",
           "paint": {
-            "line-color": "#3278C8",
+            "line-color": "#2ca2b8",
             "line-width": {
               "stops": [
                 [
@@ -1836,12 +4707,209 @@
           "layout": {
             "line-cap": "round"
           },
+          "filter": [
+            "any",
+            [
+              "==",
+              "jurisdicti",
+              "U.S."
+            ],
+            [
+              "==",
+              "jurisdicti",
+              "unknown"
+            ]
+          ],
           "metadata": {
             "nycplanninglabs:layergroupid": "pierhead-bulkhead-lines"
           }
         },
         "tooltipable": true,
-        "tooltip-template": "Bulkhead Line"
+        "tooltip-template": "US Bulkhead Line"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "citymap-bulkhead-line-NYC",
+      "attributes": {
+        "style": {
+          "id": "citymap-bulkhead-line-NYC",
+          "type": "line",
+          "source": "digital-citymap",
+          "source-layer": "bulkhead-lines",
+          "paint": {
+            "line-color": "#1d547a",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  0.5
+                ],
+                [
+                  14,
+                  3
+                ]
+              ]
+            },
+            "line-opacity": 1,
+            "line-dasharray": [
+              5,
+              2.5,
+              0,
+              2,
+              0,
+              2.5
+            ]
+          },
+          "layout": {
+            "line-cap": "round"
+          },
+          "filter": [
+            "all",
+            [
+              "==",
+              "jurisdicti",
+              "City of New York"
+            ]
+          ],
+          "metadata": {
+            "nycplanninglabs:layergroupid": "pierhead-bulkhead-lines"
+          }
+        },
+        "tooltipable": true,
+        "tooltip-template": "NYC Bulkhead Line"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "sidewalkcafes-line-all",
+      "attributes": {
+        "style": {
+          "id": "sidewalkcafes-line-all",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "sidewalk-cafes",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  0.5
+                ],
+                [
+                  13,
+                  1
+                ],
+                [
+                  15,
+                  5
+                ]
+              ]
+            },
+            "line-color": "#28AD15"
+          },
+          "filter": [
+            "all",
+            [
+              "==",
+              "cafetype",
+              "All Cafes"
+            ]
+          ],
+          "metadata": {
+            "nycplanninglabs:layergroupid": "sidewalkcafes"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "sidewalkcafes-line-small",
+      "attributes": {
+        "style": {
+          "id": "sidewalkcafes-line-small",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "sidewalk-cafes",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  0.5
+                ],
+                [
+                  13,
+                  1
+                ],
+                [
+                  15,
+                  5
+                ]
+              ]
+            },
+            "line-color": "#CC3DCA"
+          },
+          "filter": [
+            "all",
+            [
+              "==",
+              "cafetype",
+              "Small Only"
+            ]
+          ],
+          "layout": {
+            "visibility": "visible"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "sidewalkcafes"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "sidewalkcafes-line-unenclosed",
+      "attributes": {
+        "style": {
+          "id": "sidewalkcafes-line-unenclosed",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "sidewalk-cafes",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  0.5
+                ],
+                [
+                  13,
+                  1
+                ],
+                [
+                  15,
+                  5
+                ]
+              ]
+            },
+            "line-color": "#216BC6"
+          },
+          "filter": [
+            "all",
+            [
+              "==",
+              "cafetype",
+              "Unenclosed Only"
+            ]
+          ],
+          "layout": {
+            "visibility": "visible"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "sidewalkcafes"
+          }
+        }
       }
     },
     {
@@ -1895,6 +4963,66 @@
             "nycplanninglabs:layergroupid": "special-purpose-districts"
           }
         }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zoning-sp-sd-line",
+      "attributes": {
+        "style": {
+          "id": "zoning-sp-sd-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "special-purpose-subdistricts",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#8DA610",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "special-purpose-subdistricts"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zoning-sp-sd-fill",
+      "attributes": {
+        "style": {
+          "id": "zoning-sp-sd-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "special-purpose-subdistricts",
+          "paint": {
+            "fill-color": "#8DA610",
+            "fill-opacity": 0.2
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "special-purpose-subdistricts"
+          }
+        },
+        "clickable": true,
+        "highlightable": true,
+        "tooltip-template": "{{spname}} - {{subdist}}"
       }
     },
     {
@@ -2043,6 +5171,536 @@
     },
     {
       "type": "layers",
+      "id": "subway_green",
+      "attributes": {
+        "style": {
+          "id": "subway_green",
+          "source": "transportation",
+          "source-layer": "subway-routes",
+          "type": "line",
+          "filter": [
+            "all",
+            [
+              "==",
+              "rt_symbol",
+              "4"
+            ]
+          ],
+          "paint": {
+            "line-color": "rgba(0, 147, 60, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  15,
+                  4
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "subway"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "subway_yellow",
+      "attributes": {
+        "style": {
+          "id": "subway_yellow",
+          "source": "transportation",
+          "source-layer": "subway-routes",
+          "type": "line",
+          "filter": [
+            "all",
+            [
+              "==",
+              "rt_symbol",
+              "N"
+            ]
+          ],
+          "paint": {
+            "line-color": "rgba(252, 204, 10, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  15,
+                  4
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "subway"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "subway_gray",
+      "attributes": {
+        "style": {
+          "id": "subway_gray",
+          "source": "transportation",
+          "source-layer": "subway-routes",
+          "filter": [
+            "all",
+            [
+              "==",
+              "rt_symbol",
+              "L"
+            ]
+          ],
+          "paint": {
+            "line-color": "rgba(167, 169, 172, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  15,
+                  4
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "subway"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "subway_brown",
+      "attributes": {
+        "style": {
+          "id": "subway_brown",
+          "source": "transportation",
+          "source-layer": "subway-routes",
+          "type": "line",
+          "filter": [
+            "all",
+            [
+              "==",
+              "rt_symbol",
+              "J"
+            ]
+          ],
+          "paint": {
+            "line-color": "rgba(153, 102, 51, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  15,
+                  4
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "subway"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "subway_light_green",
+      "attributes": {
+        "style": {
+          "id": "subway_light_green",
+          "source": "transportation",
+          "source-layer": "subway-routes",
+          "type": "line",
+          "filter": [
+            "all",
+            [
+              "==",
+              "rt_symbol",
+              "G"
+            ]
+          ],
+          "paint": {
+            "line-color": "rgba(108, 190, 69, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  15,
+                  4
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "subway"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "subway_orange",
+      "attributes": {
+        "style": {
+          "id": "subway_orange",
+          "source": "transportation",
+          "source-layer": "subway-routes",
+          "type": "line",
+          "filter": [
+            "all",
+            [
+              "==",
+              "rt_symbol",
+              "B"
+            ]
+          ],
+          "paint": {
+            "line-color": "rgba(255, 99, 25, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  15,
+                  4
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "subway"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "subway_blue",
+      "attributes": {
+        "style": {
+          "id": "subway_blue",
+          "source": "transportation",
+          "source-layer": "subway-routes",
+          "type": "line",
+          "filter": [
+            "any",
+            [
+              "==",
+              "rt_symbol",
+              "A"
+            ],
+            [
+              "==",
+              "rt_symbol",
+              "SI"
+            ]
+          ],
+          "paint": {
+            "line-color": "rgba(0, 57, 166, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  15,
+                  4
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "subway"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "subway_purple",
+      "attributes": {
+        "style": {
+          "id": "subway_purple",
+          "source": "transportation",
+          "source-layer": "subway-routes",
+          "type": "line",
+          "filter": [
+            "all",
+            [
+              "==",
+              "rt_symbol",
+              "7"
+            ]
+          ],
+          "paint": {
+            "line-color": "rgba(185, 51, 173, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  15,
+                  4
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "subway"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "subway_red",
+      "attributes": {
+        "style": {
+          "id": "subway_red",
+          "source": "transportation",
+          "source-layer": "subway-routes",
+          "type": "line",
+          "filter": [
+            "all",
+            [
+              "==",
+              "rt_symbol",
+              "1"
+            ]
+          ],
+          "paint": {
+            "line-color": "rgba(238, 53, 46, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  15,
+                  4
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "subway"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "subway_stations",
+      "attributes": {
+        "style": {
+          "id": "subway_stations",
+          "minzoom": 11,
+          "source": "transportation",
+          "source-layer": "subway-stops",
+          "type": "circle",
+          "paint": {
+            "circle-color": "rgba(255, 255, 255, 1)",
+            "circle-opacity": {
+              "stops": [
+                [
+                  11,
+                  0
+                ],
+                [
+                  12,
+                  1
+                ]
+              ]
+            },
+            "circle-stroke-opacity": {
+              "stops": [
+                [
+                  11,
+                  0
+                ],
+                [
+                  12,
+                  1
+                ]
+              ]
+            },
+            "circle-radius": {
+              "stops": [
+                [
+                  10,
+                  2
+                ],
+                [
+                  14,
+                  5
+                ]
+              ]
+            },
+            "circle-stroke-width": 1,
+            "circle-pitch-scale": "map"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "subway"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "subway_stations_labels",
+      "attributes": {
+        "style": {
+          "id": "subway_stations_labels",
+          "minzoom": 13,
+          "source": "transportation",
+          "source-layer": "subway-stops",
+          "type": "symbol",
+          "layout": {
+            "text-field": "{name}",
+            "symbol-placement": "point",
+            "symbol-spacing": 250,
+            "symbol-avoid-edges": false,
+            "text-size": 14,
+            "text-anchor": "center"
+          },
+          "paint": {
+            "text-halo-color": "rgba(255, 255, 255, 1)",
+            "text-halo-width": 1,
+            "text-translate": [
+              1,
+              20
+            ],
+            "text-opacity": {
+              "stops": [
+                [
+                  13,
+                  0
+                ],
+                [
+                  14,
+                  1
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "subway"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "subway_entrances",
+      "attributes": {
+        "style": {
+          "id": "subway_entrances",
+          "minzoom": 15,
+          "source": "transportation",
+          "source-layer": "subway-entrances",
+          "type": "symbol",
+          "layout": {
+            "icon-image": "rail-15",
+            "icon-allow-overlap": true,
+            "text-font": [
+              "Open Sans Semibold",
+              "Arial Unicode MS Bold"
+            ],
+            "text-anchor": "top"
+          },
+          "paint": {
+            "icon-opacity": {
+              "stops": [
+                [
+                  15.5,
+                  0
+                ],
+                [
+                  16.5,
+                  1
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "subway"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "subway_entrances_labels",
+      "attributes": {
+        "style": {
+          "id": "subway_entrances_labels",
+          "minzoom": 15,
+          "source": "transportation",
+          "source-layer": "subway-entrances",
+          "type": "symbol",
+          "layout": {
+            "text-field": "Entrance",
+            "symbol-placement": "point",
+            "symbol-spacing": 250,
+            "symbol-avoid-edges": false,
+            "text-size": 8,
+            "text-offset": [
+              0,
+              2
+            ],
+            "text-anchor": "center"
+          },
+          "paint": {
+            "text-halo-color": "rgba(255, 255, 255, 1)",
+            "text-halo-width": 1,
+            "text-opacity": {
+              "stops": [
+                [
+                  15.5,
+                  0
+                ],
+                [
+                  16.5,
+                  1
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "subway"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
       "id": "pluto-fill",
       "attributes": {
         "style": {
@@ -2186,6 +5844,156 @@
             "nycplanninglabs:layergroupid": "tax-lots"
           }
         }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "three-d-buildings",
+      "attributes": {
+        "style": {
+          "id": "three-d-buildings",
+          "type": "fill-extrusion",
+          "source": "openmaptiles",
+          "source-layer": "building",
+          "minzoom": 0,
+          "paint": {
+            "fill-extrusion-color": "rgba(203, 203, 203, 1)",
+            "fill-extrusion-opacity": 0.95,
+            "fill-extrusion-translate": [
+              3,
+              0
+            ],
+            "fill-extrusion-height": {
+              "property": "render_height",
+              "type": "identity"
+            },
+            "fill-extrusion-base": {
+              "property": "render_min_height",
+              "type": "identity"
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "three-d-buildings"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "transit-zones-line",
+      "attributes": {
+        "style": {
+          "id": "transit-zones-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "transit-zones",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#E6D62E",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "transit-zones"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "transit-zones-fill",
+      "attributes": {
+        "style": {
+          "id": "transit-zones-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "transit-zones",
+          "paint": {
+            "fill-color": "#E6D62E",
+            "fill-opacity": 0.2
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "transit-zones"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "Transit Zone"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "waterfront-access-plan-line",
+      "attributes": {
+        "style": {
+          "id": "waterfront-access-plan-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "waterfront-access-plan",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#00A4D2",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "waterfront-access-plan"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "waterfront-access-plan-fill",
+      "attributes": {
+        "style": {
+          "id": "waterfront-access-plan-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "waterfront-access-plan",
+          "paint": {
+            "fill-color": "#00A4D2",
+            "fill-opacity": 0.2
+          },
+          "layout": {
+            
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "waterfront-access-plan"
+          }
+        },
+        "highlightable": true,
+        "tooltip-template": "Waterfront Access Plan - {{{name}}}"
       }
     },
     {
@@ -2424,43 +6232,140 @@
           }
         }
       }
+    },
+    {
+      "type": "layers",
+      "id": "zmacert-line",
+      "attributes": {
+        "style": {
+          "id": "zmacert-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "zoning-map-amendments-pending",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#B01F1F",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "zoning-map-amendments-pending"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zmacert-fill",
+      "attributes": {
+        "style": {
+          "id": "zmacert-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "zoning-map-amendments-pending",
+          "paint": {
+            "fill-color": "#B01F1F",
+            "fill-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "zoning-map-amendments-pending"
+          }
+        },
+        "clickable": true,
+        "highlightable": true,
+        "tooltip-template": "{{{project_na}}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zma-line",
+      "attributes": {
+        "style": {
+          "id": "zma-line",
+          "type": "line",
+          "source": "zoning-map-amendments",
+          "source-layer": "zoning-map-amendments",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#9FC73E",
+            "line-dasharray": [
+              1,
+              1
+            ],
+            "line-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "zoning-map-amendments"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zma-fill",
+      "attributes": {
+        "style": {
+          "id": "zma-fill",
+          "type": "fill",
+          "source": "zoning-map-amendments",
+          "source-layer": "zoning-map-amendments",
+          "paint": {
+            "fill-color": "#9FC73E",
+            "fill-opacity": 0.6
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "zoning-map-amendments"
+          }
+        },
+        "clickable": true,
+        "highlightable": true,
+        "tooltip-template": "{{{project_na}}} - Effective {{{effectiveformatted}}}"
+      }
     }
   ],
   "meta": {
     "mapboxStyle": {
       "version": 8,
-      "name": "Positron",
+      "name": "NYCPlanning Positron",
       "metadata": {
-        "mapbox:autocomposite": false,
-        "mapbox:type": "template",
-        "mapbox:groups": {
-          "b6371a3f2f5a9932464fa3867530a2e5": {
-            "name": "Transportation",
-            "collapsed": false
-          },
-          "a14c9607bc7954ba1df7205bf660433f": {
-            "name": "Boundaries"
-          },
-          "101da9f13b64a08fa4b6ac1168e89e5f": {
-            "name": "Places",
-            "collapsed": false
-          }
-        },
-        "openmaptiles:version": "3.x",
-        "openmaptiles:mapbox:owner": "openmaptiles",
-        "openmaptiles:mapbox:source:url": "mapbox:\/\/openmaptiles.4qljc88t"
+        "attribution": "Based on OpenMapTiles Positron style: https:\/\/github.com\/openmaptiles\/positron-gl-style"
       },
       "center": [
-        10.184401828277,
-        -1.1368683772162e-13
+        -73.869324,
+        40.815888
       ],
-      "zoom": 0.89026416365392,
+      "zoom": 9.72,
       "bearing": 0,
       "pitch": 0,
       "sources": {
         "openmaptiles": {
           "type": "vector",
-          "url": "\/\/raw.githubusercontent.com\/NYCPlanning\/labs-gl-style\/master\/data\/v3.json"
+          "url": "https:\/\/layers-api.planninglabs.nyc\/static\/v3.json"
         },
         "aerials-2016": {
           "id": "aerials-2016",
@@ -2553,8 +6458,24 @@
         "digital-citymap": {
           "type": "vector",
           "tiles": [
-            "https:\/\/cartocdn-gusc-b.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/969f3b7c0bb17d1cd263f71bff10790f:1526928541691\/{z}\/{x}\/{y}.mvt"
+            "https:\/\/cartocdn-gusc-a.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/cfd733118e756c12ca12b2e036e785ba:1533314325007\/{z}\/{x}\/{y}.mvt"
           ]
+        },
+        "supporting-zoning": {
+          "type": "vector",
+          "id": "supporting-zoning",
+          "tiles": [
+            "https:\/\/cartocdn-gusc-d.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/166f4d41feddd399bdacaa46f9dc66e1:1531772777417\/{z}\/{x}\/{y}.mvt"
+          ],
+          "minzoom": 0
+        },
+        "admin-boundaries": {
+          "type": "vector",
+          "id": "admin-boundaries",
+          "tiles": [
+            "https:\/\/cartocdn-gusc-b.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/ae461026356d0521fe5a4f60185cba3f:1525336751194\/{z}\/{x}\/{y}.mvt"
+          ],
+          "minzoom": 0
         },
         "zoning": {
           "type": "vector",
@@ -2565,23 +6486,55 @@
         "floodplains": {
           "type": "vector",
           "tiles": [
-            "https:\/\/cartocdn-gusc-b.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/0f2bf7ae0bc4dddcae9cc0fe0105b879:1525336736357\/{z}\/{x}\/{y}.mvt"
+            "https:\/\/cartocdn-gusc-c.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/0f2bf7ae0bc4dddcae9cc0fe0105b879:1525336736357\/{z}\/{x}\/{y}.mvt"
           ]
+        },
+        "preliminary-flood-insurance-rate": {
+          "type": "vector",
+          "id": "preliminary-flood-insurance-rate",
+          "tiles": [
+            "https:\/\/cartocdn-gusc-d.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/5d72f18dd7cff53aa4bfd1289ef12603:1525336736357\/{z}\/{x}\/{y}.mvt"
+          ],
+          "minzoom": 0
+        },
+        "landmark-historic": {
+          "type": "vector",
+          "id": "landmark-historic",
+          "tiles": [
+            "https:\/\/cartocdn-gusc-c.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/f75279b7a688a93f1d6dd2b88f2589d5:1526570453789\/{z}\/{x}\/{y}.mvt"
+          ],
+          "minzoom": 0
+        },
+        "transportation": {
+          "type": "vector",
+          "id": "transportation",
+          "tiles": [
+            "https:\/\/cartocdn-gusc-d.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/997ee4141d0c594ea9483c3d5e5da6ac:1525336734600\/{z}\/{x}\/{y}.mvt"
+          ],
+          "minzoom": 0
         },
         "pluto": {
           "type": "vector",
           "tiles": [
-            "https:\/\/cartocdn-gusc-a.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/ee9765feaa5383f4dd600773d48df4d9:1526920479852\/{z}\/{x}\/{y}.mvt"
+            "https:\/\/cartocdn-gusc-c.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/ee9765feaa5383f4dd600773d48df4d9:1526920479852\/{z}\/{x}\/{y}.mvt"
           ]
         },
         "zoning-districts": {
           "type": "vector",
           "tiles": [
-            "https:\/\/cartocdn-gusc-a.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/ebc5bb9ee6e423eea48b205e4cec420c:1531773210424\/{z}\/{x}\/{y}.mvt"
+            "https:\/\/cartocdn-gusc-d.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/ebc5bb9ee6e423eea48b205e4cec420c:1531773210424\/{z}\/{x}\/{y}.mvt"
           ]
+        },
+        "zoning-map-amendments": {
+          "type": "vector",
+          "id": "zoning-map-amendments",
+          "tiles": [
+            "https:\/\/cartocdn-gusc-c.global.ssl.fastly.net\/planninglabs\/api\/v1\/map\/d2a210c24197461ae9a74d4a0e3076b7:1531772739795\/{z}\/{x}\/{y}.mvt"
+          ],
+          "minzoom": 0
         }
       },
-      "sprite": "https:\/\/tiles.planninglabs.nyc\/styles\/positron\/sprite",
+      "sprite": "https:\/\/layers-api.planninglabs.nyc\/static\/sprite",
       "glyphs": "https:\/\/tiles.planninglabs.nyc\/fonts\/{fontstack}\/{range}.pbf",
       "layers": [
         {
@@ -4115,10 +8068,6 @@
             ],
             "text-justify": "center",
             "visibility": "visible",
-            "text-offset": [
-              0.5,
-              0
-            ],
             "text-anchor": "center",
             "text-field": "{name:latin}\n{name:nonlatin}"
           },
@@ -4160,10 +8109,6 @@
             ],
             "text-justify": "center",
             "visibility": "visible",
-            "text-offset": [
-              0.5,
-              0
-            ],
             "text-anchor": "center",
             "text-field": "{name:latin}\n{name:nonlatin}"
           },
@@ -4203,22 +8148,16 @@
               "Metropolis Regular",
               "Noto Sans Regular"
             ],
-            "text-justify": "left",
+            "text-justify": "center",
             "visibility": "visible",
-            "text-offset": [
-              0.5,
-              0.2
-            ],
-            "icon-size": 0.4,
-            "text-anchor": "left",
+            "text-anchor": "center",
             "text-field": "{name:latin}\n{name:nonlatin}"
           },
           "paint": {
             "text-color": "rgb(117, 129, 145)",
             "text-halo-color": "rgb(242,243,240)",
             "text-halo-width": 1,
-            "text-halo-blur": 1,
-            "icon-opacity": 0.7
+            "text-halo-blur": 1
           }
         },
         {
@@ -4245,52 +8184,21 @@
           ],
           "layout": {
             "text-size": 10,
-            "icon-image": {
-              "base": 1,
-              "stops": [
-                [
-                  0,
-                  "circle-11"
-                ],
-                [
-                  8,
-                  ""
-                ]
-              ]
-            },
             "text-transform": "uppercase",
             "text-font": [
               "Metropolis Regular",
               "Noto Sans Regular"
             ],
-            "text-justify": "left",
+            "text-justify": "center",
             "visibility": "visible",
-            "text-offset": [
-              0.5,
-              0.2
-            ],
-            "icon-size": 0.4,
-            "text-anchor": {
-              "base": 1,
-              "stops": [
-                [
-                  0,
-                  "left"
-                ],
-                [
-                  8,
-                  "center"
-                ]
-              ]
-            },
+            "text-anchor": "center",
             "text-field": "{name:latin}\n{name:nonlatin}"
           },
           "paint": {
             "text-color": "rgb(117, 129, 145)",
             "text-halo-color": "rgb(242,243,240)",
             "text-halo-width": 1,
-            "text-halo-blur": 1,
-            "icon-opacity": 0.7
+            "text-halo-blur": 1
           }
         },
         {
@@ -4330,52 +8238,21 @@
           ],
           "layout": {
             "text-size": 10,
-            "icon-image": {
-              "base": 1,
-              "stops": [
-                [
-                  0,
-                  "circle-11"
-                ],
-                [
-                  8,
-                  ""
-                ]
-              ]
-            },
             "text-transform": "uppercase",
             "text-font": [
               "Metropolis Regular",
               "Noto Sans Regular"
             ],
-            "text-justify": "left",
+            "text-justify": "center",
             "visibility": "visible",
-            "text-offset": [
-              0.5,
-              0.2
-            ],
-            "icon-size": 0.4,
-            "text-anchor": {
-              "base": 1,
-              "stops": [
-                [
-                  0,
-                  "left"
-                ],
-                [
-                  8,
-                  "center"
-                ]
-              ]
-            },
+            "text-anchor": "center",
             "text-field": "{name:latin}\n{name:nonlatin}"
           },
           "paint": {
             "text-color": "rgb(117, 129, 145)",
             "text-halo-color": "rgb(242,243,240)",
             "text-halo-width": 1,
-            "text-halo-blur": 1,
-            "icon-opacity": 0.7
+            "text-halo-blur": 1
           }
         },
         {
@@ -4410,52 +8287,21 @@
           ],
           "layout": {
             "text-size": 14,
-            "icon-image": {
-              "base": 1,
-              "stops": [
-                [
-                  0,
-                  "star-11"
-                ],
-                [
-                  8,
-                  ""
-                ]
-              ]
-            },
             "text-transform": "uppercase",
             "text-font": [
               "Metropolis Regular",
               "Noto Sans Regular"
             ],
-            "text-justify": "left",
+            "text-justify": "center",
             "visibility": "visible",
-            "text-offset": [
-              0.5,
-              0.2
-            ],
-            "icon-size": 1,
-            "text-anchor": {
-              "base": 1,
-              "stops": [
-                [
-                  0,
-                  "left"
-                ],
-                [
-                  8,
-                  "center"
-                ]
-              ]
-            },
+            "text-anchor": "center",
             "text-field": "{name:latin}\n{name:nonlatin}"
           },
           "paint": {
             "text-color": "rgb(117, 129, 145)",
             "text-halo-color": "rgb(242,243,240)",
             "text-halo-width": 1,
-            "text-halo-blur": 1,
-            "icon-opacity": 0.7
+            "text-halo-blur": 1
           }
         },
         {
@@ -4495,52 +8341,20 @@
           ],
           "layout": {
             "text-size": 14,
-            "icon-image": {
-              "base": 1,
-              "stops": [
-                [
-                  0,
-                  "circle-11"
-                ],
-                [
-                  8,
-                  ""
-                ]
-              ]
-            },
             "text-transform": "uppercase",
             "text-font": [
               "Metropolis Regular",
               "Noto Sans Regular"
             ],
-            "text-justify": "left",
+            "text-justify": "center",
             "visibility": "visible",
-            "text-offset": [
-              0.5,
-              0.2
-            ],
-            "icon-size": 0.4,
-            "text-anchor": {
-              "base": 1,
-              "stops": [
-                [
-                  0,
-                  "left"
-                ],
-                [
-                  8,
-                  "center"
-                ]
-              ]
-            },
             "text-field": "{name:latin}\n{name:nonlatin}"
           },
           "paint": {
             "text-color": "rgb(117, 129, 145)",
             "text-halo-color": "rgb(242,243,240)",
             "text-halo-width": 1,
-            "text-halo-blur": 1,
-            "icon-opacity": 0.7
+            "text-halo-blur": 1
           }
         },
         {
