@@ -14,21 +14,12 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
-  {{#map.labs-layers layerGroups=layerGroups as |layers|}}
-    {{#layers.tooltip as |tooltip|}}
-      {{log 'tooltip!!'}}
-    {{/layers.tooltip}}
+  {{#map.labs-layers 
+    layerGroups=layerGroups
+    highlightedFeatureLayer=highlightedLotLayer
+     as |layers|}}
+    {{layers.tooltip}}
   {{/map.labs-layers}}
-
-  {{#if mapMouseover.highlightedLotFeatures}}
-    {{#map.source
-      sourceId='highlighted-lot'
-      options=mapMouseover.highlightedLotSource as |source|}}
-      {{source.layer
-        layer=highlightedLotLayer
-        before='place_other'}}
-    {{/map.source}}
-  {{/if}}
 
   {{#if bookmarkedLotsLayer}}
     {{map.layer
