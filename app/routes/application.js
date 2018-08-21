@@ -1,9 +1,6 @@
 import Route from '@ember/routing/route';
 import $ from 'jquery';
 import { inject as service } from '@ember/service';
-import RSVP from 'rsvp';
-import sources from '../sources';
-import carto from '../utils/carto';
 
 export default Route.extend({
   mainMap: service(),
