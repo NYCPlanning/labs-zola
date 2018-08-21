@@ -16,7 +16,6 @@ export default Component.extend({
       this.toggleProperty('plutoFill');
     },
     setPaintForLayerGroup(layerGroup, ...args) {
-      console.log('updating paint');
       layerGroup.setPaintForLayer(...args);
     },
     switchAerial(year, mainToggle = false) {

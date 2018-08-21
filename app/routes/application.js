@@ -13,7 +13,43 @@ export default Route.extend({
   },
 
   async model() {
-    const layerGroups = await this.store.query('layer-group', {});
+    const layerGroups = await this.store.query('layer-group', {
+      'layer-groups': [
+        'tax-lots',
+        'zoning-districts',
+        'commercial-overlays',
+        'amendments',
+        'amendments-pending',
+        'special-purpose-districts',
+        'limited-height-districts',
+        'mandatory-inclusionary-housing',
+        'inclusionary-housing',
+        'transit-zones',
+        'fresh',
+        'sidewalk-cafes',
+        'low-density-growth-mgmt-areas',
+        'coastal-zone-boundary',
+        'waterfront-access-plan',
+        'historic-districts',
+        'landmarks',
+        'floodplain-efirm2007',
+        'floodplain-pfirm2015',
+        'e-designations',
+        'appendixj-designated-mdistricts',
+        'business-improvement-districts',
+        'industrial-business-zones',
+        'boroughs',
+        'community-districts',
+        'nyc-council-districts',
+        'ny-senate-districts',
+        'assembly-districts',
+        'neighborhood-tabulation-areas',
+        'subway',
+        'building-footprints',
+        'three-d-buildings',
+        'aerials',
+      ],
+    });
     const layerGroupsObject = layerGroups.reduce(
       (accumulator, current) => {
         accumulator[current.get('id')] = current;
