@@ -10,6 +10,7 @@ import numeral from 'numeral';
 
 import layerGroups from '../layer-groups';
 import drawStyles from '../layers/draw-styles';
+import bblDemux from '../utils/bbl-demux';
 
 import drawnFeatureLayers from '../layers/drawn-feature';
 import highlightedLotLayer from '../layers/highlighted-lot';
@@ -373,5 +374,16 @@ export default Component.extend({
           }
         });
     },
+
+    handleLayerClick(feature) {
+      const { layer, properties } = feature;
+
+      if (layer.id === 'pluto-fill') {
+        const { bbl } = properties;
+        const { boro, block, lot } = bblDemux(bbl);
+        this.transitionTo('lot', boro, block, lot);
+      }
+    },
+
   },
 });

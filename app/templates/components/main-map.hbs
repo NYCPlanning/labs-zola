@@ -14,9 +14,10 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
-  {{#map.labs-layers 
+  {{#map.labs-layers
     layerGroups=layerGroups
     highlightedFeatureLayer=highlightedLotLayer
+    onLayerClick=(action 'handleLayerClick')
      as |layers|}}
     {{layers.tooltip}}
   {{/map.labs-layers}}
