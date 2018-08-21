@@ -4282,9 +4282,9 @@ ember-macro-helpers@^0.17.0:
     ember-cli-test-info "^1.0.0"
     ember-weakmap "^3.0.0"
 
-ember-mapbox-composer@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/ember-mapbox-composer/-/ember-mapbox-composer-0.0.1.tgz#0ec20e44486a6a9729fa3ccecc21976a1599dcdf"
+ember-mapbox-composer@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/ember-mapbox-composer/-/ember-mapbox-composer-0.0.3.tgz#f13859ce69c813415cac53773ae9155ad020ecf0"
   dependencies:
     "@ember-decorators/argument" "0.8.15"
     "@ember-decorators/babel-transforms" "^2.0.0"
