@@ -61,25 +61,6 @@
   }
 }
 
-.map-popup {
-  pointer-events: none;
-  position: absolute;
-  z-index: 9999;
-
-  .map-popup--box {
-    padding: rem-calc(5) rem-calc(8);
-    width: auto;
-    box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
-    background-color: rgba($white,0.94);
-    color: $body-font-color;
-    font-size: rem-calc(10);
-    font-weight: $global-weight-bold;
-    line-height: $global-lineheight;
-  }
-}
-
-
-
 .find-me {
   position: absolute;
   top: 108px;
@@ -237,4 +218,16 @@
   left: 50px;
   z-index: 1;
   overflow: visible;
+}
+
+// Map Tooltip
+.map-tooltip {
+  position: absolute;
+  background-color: $white;
+  z-index: 1000;
+  padding: rem-calc(2) rem-calc(6);
+  color: $dark-gray;
+  font-size: rem-calc(11);
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+  border-radius: 2px;
 }
