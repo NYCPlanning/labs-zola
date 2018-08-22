@@ -15,8 +15,8 @@ export default Route.extend({
   async model() {
     const layerGroups = await this.store.query('layer-group', {
       'layer-groups': [
-        { id: 'tax-lots', visible: true },
         { id: 'zoning-districts', visible: true },
+        { id: 'tax-lots', visible: true },
         { id: 'commercial-overlays', visible: true },
         { id: 'zoning-map-amendments', visible: false },
         { id: 'zoning-map-amendments-pending', visible: false },
@@ -51,6 +51,7 @@ export default Route.extend({
         { id: 'aerials', visible: false },
       ],
     });
+
     const layerGroupsObject = layerGroups.reduce(
       (accumulator, current) => {
         accumulator[current.get('id')] = current;
