@@ -20,7 +20,9 @@
     onLayerClick=(action 'handleLayerClick')
     onLayerHighlight=(action 'handleLayerHighlight')
      as |layers|}}
-    {{layers.tooltip}}
+    {{#layers.tooltip as |tooltip|}}
+      {{map-tooltip feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
+    {{/layers.tooltip}}
   {{/map.labs-layers}}
 
   {{#if bookmarkedLotsLayer}}
@@ -28,8 +30,6 @@
       layer=bookmarkedLotsLayer
       before='place_other'}}
   {{/if}}
-
-  {{hover-tooltip}}
 
   {{#if mainMap.selected}}
     {{#map.source
