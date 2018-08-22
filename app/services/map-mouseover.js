@@ -62,45 +62,45 @@ export default Service.extend({
     };
   },
 
-  highlighter(e) {
-    const map = e.target;
-    this.set('currentEvent', e);
+  highlighter() {
+    // const map = e.target;
+    // this.set('currentEvent', e);
 
-    // of all registered layers, we only want to query the ones
-    // that exist on the map AND are highlightable
+    // // of all registered layers, we only want to query the ones
+    // // that exist on the map AND are highlightable
 
-    const layers = this.get('registeredLayers.highlightableAndVisibleLayerIds');
-    const clickable = this.get('registeredLayers.clickableAndVisibleLayerIds');
-    const features = map.queryRenderedFeatures(e.point, { layers });
-    if (features.length > 0) {
-      const thisFeature = features[0];
+    // const layers = this.get('registeredLayers.highlightableAndVisibleLayerIds');
+    // const clickable = this.get('registeredLayers.clickableAndVisibleLayerIds');
+    // const features = map.queryRenderedFeatures(e.point, { layers });
+    // if (features.length > 0) {
+    //   const thisFeature = features[0];
 
-      const prevFeature = this.highlightedLotFeatures[0];
-      if (!prevFeature || thisFeature.id !== prevFeature.id) {
-        this.set('highlightedLotFeatures', [thisFeature]);
-        // move the layer
-        const layerId = thisFeature.layer.id;
-        this.set('highlightedLayer', layerId);
+    //   const prevFeature = this.highlightedLotFeatures[0];
+    //   if (!prevFeature || thisFeature.id !== prevFeature.id) {
+    //     this.set('highlightedLotFeatures', [thisFeature]);
+    //     // move the layer
+    //     const layerId = thisFeature.layer.id;
+    //     this.set('highlightedLayer', layerId);
 
-        // set to pointer if the layer-group is also clickable
-        map.getCanvas().style.cursor = (clickable.indexOf(layerId) > -1) ? 'pointer' : '';
+    //     // set to pointer if the layer-group is also clickable
+    //     map.getCanvas().style.cursor = (clickable.indexOf(layerId) > -1) ? 'pointer' : '';
 
-        const beforeLayerId = map.getStyle().layers.reduce((acc, curr) => {
-          if (curr.id === layerId) return 'hit';
-          if (acc === 'hit') return curr;
-          return acc;
-        }).id;
+    //     const beforeLayerId = map.getStyle().layers.reduce((acc, curr) => {
+    //       if (curr.id === layerId) return 'hit';
+    //       if (acc === 'hit') return curr;
+    //       return acc;
+    //     }).id;
 
-        if (map.getLayer('highlighted-lot')) {
-          map.moveLayer('highlighted-lot', beforeLayerId);
-        }
-      }
+    //     if (map.getLayer('highlighted-lot')) {
+    //       map.moveLayer('highlighted-lot', beforeLayerId);
+    //     }
+    //   }
 
-      this.set('tooltipTemplate', this.registeredLayers.getTooltipTemplate(thisFeature.layer.id));
-    } else {
-      map.getCanvas().style.cursor = '';
+    //   this.set('tooltipTemplate', this.registeredLayers.getTooltipTemplate(thisFeature.layer.id));
+    // } else {
+    //   map.getCanvas().style.cursor = '';
 
-      this.set('highlightedLotFeatures', []);
-    }
+    //   this.set('highlightedLotFeatures', []);
+    // }
   },
 });
