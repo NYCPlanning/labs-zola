@@ -21,12 +21,14 @@ export default Component.extend(ParentMixin, {
   actions: {
     selectionChanged() {
       const values = this.allChecked;
-      const { source, column } = this;
+      const { layerGroup, layerID, column } = this;
 
       const previousValues = this.values;
+
       if (JSON.stringify(values) !== JSON.stringify(previousValues)) {
-        this.parentComponent
-          .send('updateSql', 'buildMultiSelectSQL', source, column, values);
+        // should have access to the model and call the filter method
+        const expression = ['any', ...values.map(value => ['==', column, value])];
+        layerGroup.setFilterForLayer(layerID, expression);
       }
 
       this.set('values', values);
