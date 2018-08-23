@@ -3817,7 +3817,7 @@ ember-cli-sass@^6.0.0:
     ember-cli-version-checker "^1.0.2"
     merge "^1.2.0"
 
-ember-cli-sass@^7.0.0, ember-cli-sass@^7.1.7:
+ember-cli-sass@^7.1.7:
   version "7.1.7"
   resolved "https://registry.yarnpkg.com/ember-cli-sass/-/ember-cli-sass-7.1.7.tgz#66899134788ec8d2406a45f5346d4db47a2aa012"
   dependencies:
@@ -4254,9 +4254,9 @@ ember-macro-helpers@^0.17.0:
     ember-cli-test-info "^1.0.0"
     ember-weakmap "^3.0.0"
 
-ember-mapbox-composer@0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/ember-mapbox-composer/-/ember-mapbox-composer-0.0.4.tgz#615f734dba2b20978f758874bd515f24676517aa"
+ember-mapbox-composer@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/ember-mapbox-composer/-/ember-mapbox-composer-0.0.5.tgz#e144a70e33e2c3be6cda1067eaf97db3fc71ebf1"
   dependencies:
     "@ember-decorators/argument" "0.8.15"
     "@ember-decorators/babel-transforms" "^2.0.0"
@@ -4435,19 +4435,6 @@ ember-text-measurer@^0.4.0:
   resolved "https://registry.yarnpkg.com/ember-text-measurer/-/ember-text-measurer-0.4.1.tgz#30ababa7100b2ffb86f8c37fe2b4b56d2592c626"
   dependencies:
     ember-cli-babel "^6.8.2"
-
-ember-tooltips@^3.0.0-beta.2:
-  version "3.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/ember-tooltips/-/ember-tooltips-3.0.0-beta.2.tgz#dbe48554e2ce9f04c27c415da5d0132b6fb06f86"
-  dependencies:
-    broccoli-funnel "^2.0.1"
-    broccoli-merge-trees "^2.0.0"
-    ember-cli-babel "^6.3.0"
-    ember-cli-htmlbars "^1.1.1"
-    ember-cli-node-assets "^0.2.2"
-    ember-cli-sass "^7.0.0"
-    popper.js "^1.12.5"
-    tooltip.js "^1.1.5"
 
 ember-truth-helpers@2.0.0, ember-truth-helpers@^2.0.0:
   version "2.0.0"
@@ -8706,10 +8693,6 @@ pluralize@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
 
-popper.js@^1.0.2, popper.js@^1.12.5:
-  version "1.14.4"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.4.tgz#8eec1d8ff02a5a3a152dd43414a15c7b79fd69b6"
-
 portfinder@^1.0.7:
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.13.tgz#bb32ecd87c27104ae6ee44b5a3ccbf0ebb1aede9"
@@ -10529,12 +10512,6 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     extend-shallow "^3.0.2"
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
-
-tooltip.js@^1.1.5:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/tooltip.js/-/tooltip.js-1.2.0.tgz#8b16482f04397f4f9d7387843dccf186890c8860"
-  dependencies:
-    popper.js "^1.0.2"
 
 tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   version "2.3.4"
