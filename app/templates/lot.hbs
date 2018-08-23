@@ -53,7 +53,7 @@
 
     <div class="grid-x grid-margin-x">
       <div class="cell medium-shrink">
-        <h6 class="no-margin-">Intersecting Map Layers {{info-tooltip tip="These intersections should be independently verified and should not be relied upon to determine the zoning rules applicable to a property."}}:</h6>
+        <h6 class="no-margin-">Intersecting Map Layers {{labs-ui/icon-tooltip tip="These intersections should be independently verified and should not be relied upon to determine the zoning rules applicable to a property."}}:</h6>
         <ul class="no-bullet text-small">
           {{#if model.value.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a> <small class="dark-gray">{{model.value.histdist}}</small></li>{{/if}}
 
@@ -195,7 +195,7 @@
     {{#if model.value.unitstotal}}<div class="data-grid"><label class="data-label">Total # of Units</label><span class="datum">{{model.value.unitstotal}}</span></div>{{/if}}
     {{#if model.value.unitsres}}<div class="data-grid"><label class="data-label">Residential Units</label><span class="datum">{{model.value.unitsres}}</span></div>{{/if}}
     {{#if model.value.condono}}<div class="data-grid"><label class="data-label">Condominium Number</label><span class="datum">{{model.value.condono}}</span></div>{{/if}}
-    <div class="data-grid"><label class="data-label">Building Info {{info-tooltip tip="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"}}</label><span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.value.borocode}}&allblock={{model.value.block}}&alllot={{model.value.lot}}&go5=+GO+&requestid=0" target="_blank">{{fa-icon 'external-link'}} BISWEB </a></span></div>
+    <div class="data-grid"><label class="data-label">Building Info {{labs-ui/icon-tooltip tip="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"}}</label><span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.value.borocode}}&allblock={{model.value.block}}&alllot={{model.value.lot}}&go5=+GO+&requestid=0" target="_blank">{{fa-icon 'external-link'}} BISWEB </a></span></div>
     {{#if model.value.borocode}}
       <div class="data-grid">
         <label class="data-label">Property Records</label>
