@@ -7,9 +7,10 @@
     title='Zoning and Land Use' as |menu|}}
     {{#menu.menu-item
       title=layerGroups.tax-lots.title
+      tooltip=layerGroups.tax-lots.titleTooltip
       active=layerGroups.tax-lots.visible}}
       <div class="checkbox-wrapper"
-        onclick={{action 'setPaintForLayerGroup' 
+        onclick={{action 'setPaintForLayerGroup'
           layerGroups.tax-lots
           'pluto-fill'
           (hash fill-opacity=(if plutoFill 0 0.5))
@@ -39,6 +40,7 @@
 
     {{#menu.menu-item
         title=layerGroups.zoning-districts.title
+        tooltip=layerGroups.zoning-districts.titleTooltip
         active=layerGroups.zoning-districts.visible}}
       {{#layer-multi-select-control
         column='primaryzone'
@@ -111,6 +113,7 @@
 
     {{#menu.menu-item
         title=layerGroups.commercial-overlays.title
+        tooltip=layerGroups.commercial-overlays.titleTooltip
         active=layerGroups.commercial-overlays.visible}}
       {{#layer-multi-select-control
         layerGroup=layerGroups.commercial-overlays
@@ -159,6 +162,7 @@
 
     {{#menu.menu-item
         title=layerGroups.zoning-map-amendments.title
+        tooltip=layerGroups.zoning-map-amendments.titleTooltip
         active=layerGroups.zoning-map-amendments.visible}}
       {{layer-control-timeline
           qps=qps
@@ -169,16 +173,25 @@
 
     {{#menu.menu-item
         title=layerGroups.zoning-map-amendments-pending.title
+        tooltip=layerGroups.zoning-map-amendments-pending.titleTooltip
         active=layerGroups.zoning-map-amendments-pending.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.special-purpose-districts.title
+        tooltip=layerGroups.special-purpose-districts.titleTooltip
         active=layerGroups.special-purpose-districts.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
+        title=layerGroups.special-purpose-subdistricts.title
+        tooltip=layerGroups.special-purpose-subdistricts.titleTooltip
+        active=layerGroups.special-purpose-subdistricts.visible}}
+    {{/menu.menu-item}}
+
+    {{#menu.menu-item
         title=layerGroups.limited-height-districts.title
+        tooltip=layerGroups.limited-height-districts.titleTooltip
         active=layerGroups.limited-height-districts.visible}}
     {{/menu.menu-item}}
   {{/labs-ui/accordion-menu}}
@@ -187,72 +200,86 @@
     title='Supporting Zoning Layers' as |menu|}}
     {{#menu.menu-item
         title=layerGroups.mandatory-inclusionary-housing.title
+        tooltip=layerGroups.mandatory-inclusionary-housing.titleTooltip
         active=layerGroups.mandatory-inclusionary-housing.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.inclusionary-housing.title
+        tooltip=layerGroups.inclusionary-housing.titleTooltip
         active=layerGroups.inclusionary-housing.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.transit-zones.title
+        tooltip=layerGroups.transit-zones.titleTooltip
         active=layerGroups.transit-zones.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.fresh.title
+        tooltip=layerGroups.fresh.titleTooltip
         active=layerGroups.fresh.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.sidewalk-cafes.title
+        tooltip=layerGroups.fresh.titleTooltip
         active=layerGroups.sidewalk-cafes.visible}}
     {{/menu.menu-item}}
 
 
     {{#menu.menu-item
         title=layerGroups.low-density-growth-mgmt-areas.title
+        tooltip=layerGroups.low-density-growth-mgmt-areas.titleTooltip
         active=layerGroups.low-density-growth-mgmt-areas.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.coastal-zone-boundary.title
+        tooltip=layerGroups.coastal-zone-boundary.titleTooltip
         active=layerGroups.coastal-zone-boundary.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.waterfront-access-plan.title
+        tooltip=layerGroups.waterfront-access-plan.titleTooltip
         active=layerGroups.waterfront-access-plan.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.historic-districts.title
+        tooltip=layerGroups.historic-districts.titleTooltip
         active=layerGroups.historic-districts.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.landmarks.title
+        tooltip=layerGroups.landmarks.titleTooltip
         active=layerGroups.landmarks.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.floodplain-efirm2007.title
+        tooltip=layerGroups.floodplain-efirm2007.titleTooltip
         active=layerGroups.floodplain-efirm2007.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.floodplain-pfirm2015.title
+        tooltip=layerGroups.floodplain-pfirm2015.titleTooltip
         active=layerGroups.floodplain-pfirm2015.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.e-designations.title
+        tooltip=layerGroups.e-designations.titleTooltip
         active=layerGroups.e-designations.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.appendixj-designated-mdistricts.title
+        tooltip=layerGroups.appendixj-designated-mdistricts.titleTooltip
         active=layerGroups.appendixj-designated-mdistricts.visible}}
     {{/menu.menu-item}}
   {{/labs-ui/accordion-menu}}
@@ -262,11 +289,13 @@
     title='Other Supporting Layers' as |menu|}}
     {{#menu.menu-item
         title=layerGroups.business-improvement-districts.title
+        tooltip=layerGroups.business-improvement-districts.titleTooltip
         active=layerGroups.business-improvement-districts.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.industrial-business-zones.title
+        tooltip=layerGroups.industrial-business-zones.titleTooltip
         active=layerGroups.industrial-business-zones.visible}}
     {{/menu.menu-item}}
   {{/labs-ui/accordion-menu}}
@@ -315,16 +344,19 @@
 
     {{#menu.menu-item
       title=layerGroups.building-footprints.title
+      tooltip=layerGroups.building-footprints.titleTooltip
       active=layerGroups.building-footprints.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
       title=layerGroups.three-d-buildings.title
+      tooltip=layerGroups.three-d-buildings.titleTooltip
       active=layerGroups.three-d-buildings.visible}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
       title=layerGroups.aerials.title
+      tooltip=layerGroups.aerials.titleTooltip
       active=layerGroups.aerials.visible}}
     {{/menu.menu-item}}
   {{/labs-ui/accordion-menu}}

@@ -1,24 +1,5 @@
 @charset 'UTF-8';
-
-//
-// Custom Variables
-// --------------------------------------------------
-$dcp-orange: #d96b27;
-$a11y-orange: #ae561f;
-$dcp-yellow: #ffc861;
-$a11y-yellow: #ffeec1;
-
-$lu-peach: #FDD48D;
-$lu-yellow: #F2F618;
-$lu-magenta: #E362FB;
-$lu-red: #FC5B5B;
-$lu-orange: #FF9400;
-$lu-pink: #FFC8BD;
-$lu-green: #78D271;
-$lu-blue: #44A3D5;
-$lu-lavendar: #E0BEEB;
-$lu-silver: #BAB8B6;
-$lu-gray: #5F5F60;
+@import 'labs-ui/variables'; // import labs-ui first, as it includes our global custom variables
 
 //
 // Foundation
@@ -69,6 +50,11 @@ $lu-gray: #5F5F60;
 @include foundation-float-classes;
 
 //
+// Labs-UI Modules
+// --------------------------------------------------
+@import "labs-ui/modules";
+
+//
 // Base
 // --------------------------------------------------
 @import 'base/_typography';
@@ -87,7 +73,6 @@ $lu-gray: #5F5F60;
 @import 'modules/_m-features';
 @import 'modules/_m-icons';
 @import 'modules/_m-labs-beta-notice';
-@import 'modules/_m-layer-palette';
 @import 'modules/_m-maps';
 @import 'modules/_m-noui';
 @import 'modules/_m-search';
@@ -95,7 +80,6 @@ $lu-gray: #5F5F60;
 @import 'modules/_m-tooltips';
 @import 'modules/_m-spinner';
 
-@import "ember-power-select";
+@import 'ember-power-select';
 
-@import "ember-content-placeholders";
-@import 'labs-ui';
+@import 'ember-content-placeholders';
