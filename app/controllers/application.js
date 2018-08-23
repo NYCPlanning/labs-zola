@@ -84,6 +84,7 @@ export default Controller.extend(mapQueryParams.Mixin, {
   'layer-groups': computedProp('model.layerGroups.@each.visible', {
     get() {
       const { model } = this;
+      console.log('recomputing');
 
       if (model) {
         return model.layerGroups.filterBy('visible').mapBy('id').sort();
