@@ -79,6 +79,7 @@ export default Route.extend({
     this.mainMap.resetBounds();
     const params = JSON.parse(layerGroupParams);
 
+    // set initial state from query params
     layerGroups.forEach((layerGroup) => {
       if (params.includes(layerGroup.id)) {
         layerGroup.set('visible', true);
