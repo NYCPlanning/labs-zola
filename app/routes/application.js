@@ -78,6 +78,17 @@ export default Route.extend({
   afterModel() {
     this.mainMap.resetBounds();
   },
+
+  /**
+   * @override: ember lifecycle
+   */
+  setupController(controller, model) {
+    this._super(controller, model);
+
+    model.layerGroups
+      .findBy('id', 'zoning-map-amendments')
+      .set('qps', controller);
+  },
 });
 
 Route.reopen({
