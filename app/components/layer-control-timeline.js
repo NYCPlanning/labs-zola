@@ -24,20 +24,12 @@ export default Component.extend(ChildMixin, {
 
   actions: {
     sliderChanged(value) {
-      const [min, max] = value
-        // .map(epoch => fromEpoch(epoch))
-        // .map((date, i) => { // eslint-disable-line
-        //   if (i === 0) {
-        //     return moment(date).startOf('month');
-        //   }
-        //   return moment(date).endOf('month');
-        // });
+      const [min, max] = value;
       const { layerGroup, layerID, column } = this;
 
       this.set('start', value);
 
       const expression = ['all', ['>=', column, min], ['<=', column, max]];
-      console.log(expression);
       layerGroup.setFilterForLayer(layerID, expression);
     },
   },
