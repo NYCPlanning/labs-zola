@@ -112,11 +112,59 @@
     {{#menu.menu-item
         title=layerGroups.commercial-overlays.title
         active=layerGroups.commercial-overlays.visible}}
+      {{#layer-multi-select-control
+        layerGroup=layerGroups.commercial-overlays
+        layerID='co'
+        column='overlay'
+        parentComponent=item.layer
+        as |multiSelect|}}
+          <ul class="layer-menu-item--group-checkboxes">
+            <li>
+              <label>{{group-checkbox
+                refs=(array 'qps.c11' 'qps.c12' 'qps.c13' 'qps.c14' 'qps.c15')
+                values=(array qps.c11 qps.c12 qps.c13 qps.c14 qps.c15)
+                scope=qps}}C1-1 through C1-5</label>
+
+              <input id="nested-c1" class="checkbox-hide-sibling" type="checkbox" checked>
+              <label for="nested-c1" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
+
+              <ul class="nested columns-2 hidable-sibling">
+                <li><label>{{multiSelect.checkbox value='C1-1' checked=qps.c11}}C1-1</label></li>
+                <li><label>{{multiSelect.checkbox value='C1-2' checked=qps.c12}}C1-2</label></li>
+                <li><label>{{multiSelect.checkbox value='C1-3' checked=qps.c13}}C1-3</label></li>
+                <li><label>{{multiSelect.checkbox value='C1-4' checked=qps.c14}}C1-4</label></li>
+                <li><label>{{multiSelect.checkbox value='C1-5' checked=qps.c15}}C1-5</label></li>
+              </ul>
+            </li>
+            <li>
+              <label>{{group-checkbox
+                refs=(array 'qps.c21' 'qps.c22' 'qps.c23' 'qps.c24' 'qps.c25')
+                values=(array qps.c21 qps.c22 qps.c23 qps.c24 qps.c25)
+                scope=qps}}C2-1 through C2-5</label>
+
+              <input id="nested-c2" class="checkbox-hide-sibling" type="checkbox" checked>
+              <label for="nested-c2" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
+
+              <ul class="nested columns-2 hidable-sibling">
+                <li><label>{{multiSelect.checkbox value='C2-1' checked=qps.c21}}C2-1</label></li>
+                <li><label>{{multiSelect.checkbox value='C2-2' checked=qps.c22}}C2-2</label></li>
+                <li><label>{{multiSelect.checkbox value='C2-3' checked=qps.c23}}C2-3</label></li>
+                <li><label>{{multiSelect.checkbox value='C2-4' checked=qps.c24}}C2-4</label></li>
+                <li><label>{{multiSelect.checkbox value='C2-5' checked=qps.c25}}C2-5</label></li>
+              </ul>
+            </li>
+          </ul>
+      {{/layer-multi-select-control}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
         title=layerGroups.zoning-map-amendments.title
         active=layerGroups.zoning-map-amendments.visible}}
+      {{layer-control-timeline
+          qps=qps
+          layerGroup=layerGroups.zoning-map-amendments
+          layerID='zma-fill'
+          column='effective_epoch'}}
     {{/menu.menu-item}}
 
     {{#menu.menu-item
