@@ -75,19 +75,17 @@ export default Route.extend({
     };
   },
 
-  afterModel() {
+  afterModel({ layerGroups }, { queryParams: { 'layer-groups': layerGroupParams = '[]' } }) {
     this.mainMap.resetBounds();
-  },
+    const params = JSON.parse(layerGroupParams);
 
-  /**
-   * @override: ember lifecycle
-   */
-  setupController(controller, model) {
-    this._super(controller, model);
-
-    model.layerGroups
-      .findBy('id', 'zoning-map-amendments')
-      .set('qps', controller);
+    layerGroups.forEach((layerGroup) => {
+      if (params.includes(layerGroup.id)) {
+        layerGroup.set('visible', true);
+      } else {
+        layerGroup.set('visible', false);
+      }
+    });
   },
 });
 
