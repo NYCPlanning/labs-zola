@@ -52,6 +52,8 @@ export default Route.extend({
       ],
     });
 
+    const defaultVisibleLayerGroups = layerGroups.filterBy('visible').mapBy('id').sort();
+
     const layerGroupsObject = layerGroups.reduce(
       (accumulator, current) => {
         accumulator[current.get('id')] = current;
@@ -70,23 +72,34 @@ export default Route.extend({
     return {
       layerGroups,
       layerGroupsObject,
+      defaultVisibleLayerGroups,
       meta,
       bookmarks,
     };
   },
 
-  afterModel({ layerGroups }, { queryParams: { 'layer-groups': layerGroupParams = '[]' } }) {
+  afterModel({ layerGroups, defaultVisibleLayerGroups }, { queryParams: { 'layer-groups': layerGroupParams = '[]' } }) {
     this.mainMap.resetBounds();
-    const params = JSON.parse(layerGroupParams);
+    const params = JSON.parse(layerGroupParams).sort();
 
-    // set initial state from query params
-    layerGroups.forEach((layerGroup) => {
-      if (params.includes(layerGroup.id)) {
-        layerGroup.set('visible', true);
-      } else {
-        layerGroup.set('visible', false);
-      }
-    });
+    if (!defaultVisibleLayerGroups.every(layerGroup => params.includes(layerGroup))
+      && params.length) {
+      // set initial state from query params when not default
+      layerGroups.forEach((layerGroup) => {
+        if (params.includes(layerGroup.id)) {
+          layerGroup.set('visible', true);
+        } else {
+          layerGroup.set('visible', false);
+        }
+      });
+    }
+  },
+
+  setupController(controller, model) {
+    const { defaultVisibleLayerGroups } = model;
+    controller.setDefaultQueryParamValue('layer-groups', defaultVisibleLayerGroups);
+
+    this._super(controller, model);
   },
 });
 

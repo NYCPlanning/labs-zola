@@ -95,9 +95,9 @@ export default Controller.extend(mapQueryParams.Mixin, {
       if (Array.isArray(value) && this.model && value.length) {
         this.model.layerGroups.forEach((layerGroup) => {
           if (value.includes(layerGroup.id)) {
-            next(() => layerGroup.set('visible', true));
+            layerGroup.set('visible', true);
           } else {
-            next(() => layerGroup.set('visible', false));
+            layerGroup.set('visible', false);
           }
         });
       }
