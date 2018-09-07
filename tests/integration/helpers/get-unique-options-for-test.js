@@ -9,7 +9,7 @@ module('helper:get-unique-options-for', function(hooks) {
 
   // Replace this with your real tests.
   test('it renders', async function(assert) {
-    this.set('sql', 'SELECT * FROM commercial_overlays_v201804');
+    this.set('sql', 'SELECT * FROM commercial_overlays_v201808');
 
     await render(hbs`{{get-unique-options-for 'overlay' sql}}`);
 
