@@ -12,7 +12,7 @@ export default {
     },
     {
       id: 'mandatory-inclusionary-housing',
-      sql: 'SELECT the_geom_webmercator, projectnam, mih_option FROM mandatory_inclusionary_housing_v20180628',
+      sql: 'SELECT the_geom_webmercator, projectnam, mih_option FROM mandatory_inclusionary_housing_v20180823',
     },
     {
       id: 'inclusionary-housing',
