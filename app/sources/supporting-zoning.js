@@ -48,7 +48,7 @@ export default {
     },
     {
       id: 'limited-height-districts',
-      sql: 'SELECT the_geom_webmercator, lhlbl FROM limited_height_districts_v201806',
+      sql: 'SELECT the_geom_webmercator, lhlbl FROM limited_height_districts_v201808',
     },
     {
       id: 'business-improvement-districts',
