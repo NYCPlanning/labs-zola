@@ -8,7 +8,7 @@ export default {
     },
     {
       id: 'special-purpose-subdistricts',
-      sql: 'SELECT the_geom_webmercator, splbl, cartodb_id, spname, subdist FROM special_purpose_subdistricts_v201806',
+      sql: 'SELECT the_geom_webmercator, splbl, cartodb_id, spname, subdist FROM special_purpose_subdistricts_v201808',
     },
     {
       id: 'mandatory-inclusionary-housing',
