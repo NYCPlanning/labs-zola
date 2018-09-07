@@ -44,7 +44,7 @@ export default {
     },
     {
       id: 'zoning-map-amendments-pending',
-      sql: 'SELECT the_geom_webmercator, ulurpno, status, project_na FROM zoning_map_amendments_v201806 WHERE status = \'Certified\'',
+      sql: 'SELECT the_geom_webmercator, ulurpno, status, project_na FROM zoning_map_amendments_v201808 WHERE status = \'Certified\'',
     },
     {
       id: 'limited-height-districts',
