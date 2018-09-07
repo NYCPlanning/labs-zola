@@ -4,7 +4,7 @@ export default {
   'source-layers': [
     {
       id: 'special-purpose-districts',
-      sql: 'SELECT the_geom_webmercator, cartodb_id, sdlbl, sdname FROM special_purpose_districts_v201806',
+      sql: 'SELECT the_geom_webmercator, cartodb_id, sdlbl, sdname FROM special_purpose_districts_v201808',
     },
     {
       id: 'special-purpose-subdistricts',
