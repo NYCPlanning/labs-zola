@@ -78,7 +78,10 @@ export default Route.extend({
     };
   },
 
-  afterModel({ layerGroups, defaultVisibleLayerGroups }, { queryParams: { 'layer-groups': layerGroupParams = '[]' } }) {
+  afterModel(
+    { layerGroups, defaultVisibleLayerGroups },
+    { queryParams: { 'layer-groups': layerGroupParams = '[]' } },
+  ) {
     this.mainMap.resetBounds();
     const params = JSON.parse(layerGroupParams).sort();
 
