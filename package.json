@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@ember-decorators/babel-transforms": "2.0.2",
-    "babel-eslint": "8",
+    "babel-eslint": "9.0.0",
     "babel-plugin-wildcard": "^2.1.2",
     "broccoli-asset-rev": "^2.7.0",
     "broccoli-clean-css": "^2.0.1",
@@ -75,7 +75,7 @@
     "eslint-plugin-ember": "^5.2.0",
     "eslint-plugin-import": "^2.12.0",
     "foundation-sites": "^6.3.1",
-    "labs-ui": "https://github.com/NYCPlanning/labs-ui#57d59eb",
+    "labs-ui": "^0.0.6",
     "loader.js": "^4.7.0",
     "mapbox-gl": "^0.47.0"
   },
