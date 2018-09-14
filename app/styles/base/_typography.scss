@@ -2,23 +2,6 @@
 // Base: Typography
 // --------------------------------------------------
 
-//
-// Headings
-// --------------------------------------------------
-.header-xxlarge { @extend h1; }
-.header-xlarge {  @extend h2; }
-.header-large {   @extend h3; }
-.header-medium {  @extend h4; }
-.header-small {   @extend h5; }
-.header-tiny {    @extend h6; }
-
-h6,
-.header-tiny {
-  text-transform: uppercase;
-  font-weight: $global-weight-normal;
-  margin-bottom: 0.5em;
-}
-
 .content-header {
   @extend h3;
   margin-bottom: rem-calc(10);
@@ -44,60 +27,52 @@ h6,
 //
 // Buttons
 // --------------------------------------------------
-button {
-  cursor: pointer;
+button.save-button {
+  float: right;
+  font-size: rem-calc(12);
+  padding: 0.25rem 0.5rem;
+  outline: 0;
+  position: relative;
+  transition: padding 0.5s;
 
-  &.save-button {
-    float: right;
-    font-size: rem-calc(12);
-    padding: 0.25rem 0.5rem;
-    outline: 0;
-    position: relative;
-    transition: padding 0.5s;
+  &.saved {
+    padding-right: 2.5rem;
+  }
 
-    &.saved {
-      padding-right: 2.5rem;
-    }
+  .state {
+    color: darken($success-color, 30%);
+    font-size: rem-calc(10);
+    line-height: rem-calc(12);
+    font-weight: $global-weight-bold;
+    position: absolute;
+    top: 50%;
+    left: 1.5rem;
+    margin-top: rem-calc(-6);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  &.saved .state {
+    opacity: 1;
+  }
 
-    .state {
-      color: darken($success-color, 30%);
-      font-size: rem-calc(10);
-      line-height: rem-calc(12);
-      font-weight: $global-weight-bold;
-      position: absolute;
-      top: 50%;
-      left: 1.5rem;
-      margin-top: rem-calc(-6);
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-    &.saved .state {
-      opacity: 1;
-    }
+  .fa {
+    color: darken($medium-gray, 20%);
+    font-size: rem-calc(16);
+    vertical-align: middle;
+    transition: color 0.5s;
 
-    .fa {
-      color: darken($medium-gray, 20%);
-      font-size: rem-calc(16);
-      vertical-align: middle;
-      transition: color 0.5s;
-
-      &:hover {
-        color: darken($medium-gray, 30%);
-      }
-    }
-
-    &.saved .fa {
-      color: $success-color;
-
-      // &:hover {
-      //   color: darken($success-color, 10%);
-      // }
+    &:hover {
+      color: darken($medium-gray, 30%);
     }
   }
-}
 
-.button.text-orange {
-  color: $primary-color;
+  &.saved .fa {
+    color: $success-color;
+
+    // &:hover {
+    //   color: darken($success-color, 10%);
+    // }
+  }
 }
 
 
@@ -119,25 +94,6 @@ button {
 //
 // Typography helper classes
 // --------------------------------------------------
-.nowrap {
-  white-space: nowrap;
-}
-.no-margin {
-  margin: 0 !important;
-}
-.small-margin-bottom {
-  margin-bottom: rem-calc(5);
-}
-
-.text-small {
-  font-size: rem-calc(13);
-  line-height: 1.7;
-}
-
-.text-tiny {
-  font-size: rem-calc(10);
-  line-height: 1.5;
-}
 
 .pipe {
   opacity: 0.25;
@@ -153,24 +109,6 @@ button {
     color:$anchor-color-hover;
   }
 }
-
-.light-gray { color: $light-gray; }
-.medium-gray { color: $medium-gray; }
-.dark-gray { color: $dark-gray; }
-.dcp-orange { color: $dcp-orange; }
-
-// Land Use colors
-.lu-peach { color: $lu-peach; }
-.lu-yellow { color: $lu-yellow; }
-.lu-magenta { color: $lu-magenta; }
-.lu-red { color: $lu-red; }
-.lu-orange { color: $lu-orange; }
-.lu-pink { color: $lu-pink; }
-.lu-green { color: $lu-green; }
-.lu-blue { color: $lu-blue; }
-.lu-lavendar { color: $lu-lavendar; }
-.lu-silver { color: $lu-silver; }
-.lu-gray { color: $lu-gray; }
 
 
 //
@@ -269,49 +207,9 @@ button {
 //
 // Ember Tooltip
 // --------------------------------------------------
-.ember-tooltip {
-  font-size: rem-calc(10);
-}
-
-
-//
-// Hide Adjacent Sibling UI
-// --------------------------------------------------
-.hidable-sibling-toggle {
-  color: $primary-color;
-
-  &.top-right {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-  }
-}
-
-.checkbox-hide-sibling {
-  display: none;
-
-  &:checked {
-
-    + .hidable-sibling-toggle {
-      transform: rotate(180deg);
-    }
-
-    & ~ .hidable-sibling {
-      display: none;
-    }
-  }
-}
-
-
-//
-// Inputs
-// --------------------------------------------------
-::-ms-clear {
-  // nix IE's default clear buttons
-  display: none;
-}
-
+// .ember-tooltip {
+//   font-size: rem-calc(10);
+// }
 
 
 //
