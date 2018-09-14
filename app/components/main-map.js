@@ -138,6 +138,11 @@ export default Component.extend({
     };
   },
 
+  @computed('mainMap.drawMode')
+  interactivity(drawMode) {
+    return !drawMode;
+  },
+
   selectedFillLayer,
   selectedLineLayer,
 
