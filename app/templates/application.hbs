@@ -7,11 +7,11 @@
   {{/banner.title}}
   {{#banner.nav}}
     <ul class="menu vertical large-horizontal">
-      <li>{{link-to 'About' 'about' click=(action (mut closed))}}</li>
-      <li>{{link-to 'Features' 'features' click=(action (mut closed))}}</li>
-      <li>{{link-to 'Data' 'data' click=(action (mut closed))}}</li>
+      <li>{{link-to 'About' 'about'}}</li>
+      <li>{{link-to 'Features' 'features'}}</li>
+      <li>{{link-to 'Data' 'data'}}</li>
       <li class="saved-bookmarks-counter">
-        {{#link-to 'bookmarks' click=(action (mut closed))}}{{fa-icon "bookmark"}}
+        {{#link-to 'bookmarks'}}{{fa-icon "bookmark"}}
           Saved
           {{#if model.bookmarks.length}}
             <span class="badge sup">{{model.bookmarks.length}}</span>
@@ -36,6 +36,7 @@
         transitionTo=(action 'transitionTo')
         bookmarks=model.bookmarks
         layerGroups=model.layerGroups
+        layerGroupsObject=model.layerGroupsObject
         layerGroupsMeta=model.meta
         qps=qps
       }}

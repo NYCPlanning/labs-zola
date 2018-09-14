@@ -9,7 +9,7 @@
       label=layerGroups.tax-lots.legend.label
       tooltip=layerGroups.tax-lots.legend.tooltip
       active=layerGroups.tax-lots.visible}}
-      <div class="checkbox-wrapper"
+      <label class="checkbox-wrapper"
         onclick={{action 'setPaintForLayerGroup'
           layerGroups.tax-lots
           'pluto-fill'
@@ -18,22 +18,22 @@
         {{input type='checkbox'
           checked=plutoFill}}
         Show Land Use Colors
-      </div>
+      </label>
 
       {{#if plutoFill}}
         <ul class="layer-key">
-          <li><span style="color:#FEFFA8;">{{fa-icon "square"}}</span>One &amp; Two Family Buildings</li>
-          <li><span style="color:#FCB842;">{{fa-icon "square"}}</span>Multi-Family Walk-Up Buildings</li>
-          <li><span style="color:#B16E00;">{{fa-icon "square"}}</span>Multi-Family Elevator Buildings</li>
-          <li><span style="color:#ff8341;">{{fa-icon "square"}}</span>Mixed Residential &amp; Commercial Buildings</li>
-          <li><span style="color:#fc2929;">{{fa-icon "square"}}</span>Commercial &amp; Office Buildings</li>
-          <li><span style="color:#E362FB;">{{fa-icon "square"}}</span>Industrial &amp; Manufacturing</li>
-          <li><span style="color:#E0BEEB;">{{fa-icon "square"}}</span>Transportation &amp; Utility</li>
-          <li><span style="color:#44A3D5;">{{fa-icon "square"}}</span>Public Facilities &amp; Institutions</li>
-          <li><span style="color:#78D271;">{{fa-icon "square"}}</span>Open Space &amp; Outdoor Recreation</li>
-          <li><span style="color:#BAB8B6;">{{fa-icon "square"}}</span>Parking Facilities</li>
-          <li><span style="color:#555555;">{{fa-icon "square"}}</span>Vacant Land</li>
-          <li><span style="color:#E7E7E7;">{{fa-icon "square"}}</span>Other</li>
+          <li><span style="color:#FEFFA8;">{{fa-icon 'square'}} </span>One &amp; Two Family Buildings</li>
+          <li><span style="color:#FCB842;">{{fa-icon 'square'}} </span>Multi-Family Walk-Up Buildings</li>
+          <li><span style="color:#B16E00;">{{fa-icon 'square'}} </span>Multi-Family Elevator Buildings</li>
+          <li><span style="color:#ff8341;">{{fa-icon 'square'}} </span>Mixed Residential &amp; Commercial Buildings</li>
+          <li><span style="color:#fc2929;">{{fa-icon 'square'}} </span>Commercial &amp; Office Buildings</li>
+          <li><span style="color:#E362FB;">{{fa-icon 'square'}} </span>Industrial &amp; Manufacturing</li>
+          <li><span style="color:#E0BEEB;">{{fa-icon 'square'}} </span>Transportation &amp; Utility</li>
+          <li><span style="color:#44A3D5;">{{fa-icon 'square'}} </span>Public Facilities &amp; Institutions</li>
+          <li><span style="color:#78D271;">{{fa-icon 'square'}} </span>Open Space &amp; Outdoor Recreation</li>
+          <li><span style="color:#BAB8B6;">{{fa-icon 'square'}} </span>Parking Facilities</li>
+          <li><span style="color:#555555;">{{fa-icon 'square'}} </span>Vacant Land</li>
+          <li><span style="color:#E7E7E7;">{{fa-icon 'square'}} </span>Other</li>
         </ul>
       {{/if}}
     {{/labs-ui/layer-group-toggle}}
@@ -52,7 +52,7 @@
             <label>{{group-checkbox
               refs=(array 'qps.C1' 'qps.C2' 'qps.C3' 'qps.C4' 'qps.C5' 'qps.C6' 'qps.C7' 'qps.C8')
               values=(array qps.C1 qps.C2 qps.C3 qps.C4 qps.C5 qps.C6 qps.C7 qps.C8)
-              scope=qps}}Commercial Districts <span style="background-color:#ff0000;" class="icon polygon legend-icon"></span></label>
+              scope=qps}}Commercial Districts <span style="color:rgbA(229,0,0,0.6);" class="indeterminate-hider">{{fa-icon 'square'}}</span></label>
 
             <input id="nested-commercial" class="checkbox-hide-sibling" type="checkbox" checked>
             <label for="nested-commercial" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
@@ -72,7 +72,7 @@
             <label>{{group-checkbox
               refs=(array 'qps.M1' 'qps.M2' 'qps.M3')
               values=(array qps.M1 qps.M2 qps.M3)
-              scope=qps}}Manufacturing Districts <span style="background-color:#e362fb;" class="icon polygon legend-icon"></span></label>
+              scope=qps}}Manufacturing Districts <span style="color:rgba(207,92,230,0.6);" class="indeterminate-hider">{{fa-icon 'square'}}</span></label>
 
             <input id="nested-manufacturing" class="checkbox-hide-sibling" type="checkbox" checked>
             <label for="nested-manufacturing" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
@@ -87,7 +87,7 @@
             <label>{{group-checkbox
               refs=(array 'qps.R1' 'qps.R2' 'qps.R3' 'qps.R4' 'qps.R5' 'qps.R6' 'qps.R7' 'qps.R8' 'qps.R9' 'qps.R10')
               values=(array qps.R1 qps.R2 qps.R3 qps.R4 qps.R5 qps.R6 qps.R7 qps.R8 qps.R9 qps.R10)
-              scope=qps}}Residential Districts  <span style="background-color:#f2f618;" class="icon polygon legend-icon"></span></label>
+              scope=qps}}Residential Districts  <span style="color:rgba(255,234,0,0.6);" class="indeterminate-hider">{{fa-icon 'square'}}</span></label>
 
             <input id="nested-residential" class="checkbox-hide-sibling" type="checkbox" checked>
             <label for="nested-residential" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
@@ -105,8 +105,8 @@
               <li><label>{{multiSelect.checkbox value='R10' checked=qps.R10}}R10</label></li>
             </ul>
           </li>
-          <li><label>{{multiSelect.checkbox value='PA' checked=qps.PA}}Parks <span style="background-color:#78D271;" class="icon polygon legend-icon"></span></label></li>
-          <li><label>{{multiSelect.checkbox value='BP' checked=qps.BP}}Battery Park City <span style="background-color:#666666;" class="icon polygon legend-icon"></span></label></li>
+          <li><label>{{multiSelect.checkbox value='PA' checked=qps.PA}}Parks <span style="color:rgba(120,210,113,0.6);" class="indeterminate-hider">{{fa-icon 'square'}}</span></label></li>
+          <li><label>{{multiSelect.checkbox value='BP' checked=qps.BP}}Battery Park City <span style="color:rgba(128,128,128,0.6);" class="indeterminate-hider">{{fa-icon 'square'}}</span></label></li>
         </ul>
       {{/layer-multi-select-control}}
     {{/labs-ui/layer-group-toggle}}
@@ -386,15 +386,26 @@
         <li>CTRL + drag the map (or CTRL + arrow keys) to adjust both pitch and bearing.</li>
       </ul>
     {{/labs-ui/layer-group-toggle}}
-
+    {{log layerGroups.aerials}}
     {{#labs-ui/layer-group-toggle
       label=layerGroups.aerials.legend.label
       tooltip=layerGroups.aerials.legend.tooltip
       active=layerGroups.aerials.visible}}
-      {{item.radio-selector
-        qps=qps
-        classNames='list-float-3'
-      }}
+      <ul class="layer-menu-item--group-checkboxes no-bullet list-float-3">
+        {{#each layerGroups.aerials.layers as |layer|}}
+          <li onclick={{action (mut layerGroups.aerials.selected) layer.id}} role='button'>
+            <label {{!template-lint-disable "nested-interactive"}}>
+              <span class="layer-group-radio-{{layer.id}} silver">
+                <span class="fa-layers">
+                  {{#if layer.visibility}}{{fa-icon 'circle' class="a11y-orange" transform='shrink-5'}}{{/if}}
+                  {{fa-icon 'circle' prefix='far' class=(if layer.visibility '')}}
+                </span>
+              </span>
+              {{layer.displayName}}
+            </label>
+          </li>
+        {{/each}}
+      </ul>
     {{/labs-ui/layer-group-toggle}}
   {{/labs-ui/layer-groups-container}}
 

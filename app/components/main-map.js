@@ -9,8 +9,6 @@ import lineDistance from '@turf/line-distance';
 import numeral from 'numeral';
 import EmberObject from '@ember/object';
 
-
-import layerGroups from '../layer-groups';
 import drawStyles from '../layers/draw-styles';
 import bblDemux from '../utils/bbl-demux';
 import Geometric from '../mixins/geometric';
@@ -58,9 +56,13 @@ export default Component.extend({
   zoom: 9.72,
   menuTo: 'layers-menu',
 
-  layerGroups,
+  layerGroups: [],
 
-  mapConfig: Object.keys(layerGroups).map(key => layerGroups[key]),
+  // mapConfig: alias('layerGroupsObject')
+  @computed('layerGroupsObject')
+  mapConfig(layerGroupsObject) {
+    return Object.keys(layerGroupsObject).map(key => layerGroupsObject[key]);
+  },
 
   loading: true,
   findMeDismissed: false,
@@ -134,6 +136,11 @@ export default Component.extend({
       type: 'geojson',
       data: selected.get('geometry'),
     };
+  },
+
+  @computed('mainMap.drawMode')
+  interactivity(drawMode) {
+    return !drawMode;
   },
 
   selectedFillLayer,

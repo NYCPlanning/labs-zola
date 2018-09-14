@@ -26,26 +26,26 @@
     {{#if model.value.zonedist1}}
       <ul class="lot-zoning-list">
         <li class="menu-text">Zoning District{{if (or model.value.zonedist2 model.value.spdist1) 's'}}:</li>
-        {{#if model.value.zonedist1}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone1}}.page" class="button">{{fa-icon 'external-link'}} {{model.value.zonedist1}}</a></li>{{/if}}
-        {{#if model.value.zonedist2}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone2}}.page" class="button">{{fa-icon 'external-link'}} {{model.value.zonedist2}}</a></li>{{/if}}
-        {{#if model.value.zonedist3}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone3}}.page" class="button">{{fa-icon 'external-link'}} {{model.value.zonedist3}}</a></li>{{/if}}
-        {{#if model.value.zonedist4}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone4}}.page" class="button">{{fa-icon 'external-link'}} {{model.value.zonedist4}}</a></li>{{/if}}
+        {{#if model.value.zonedist1}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone1}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist1}}</a></li>{{/if}}
+        {{#if model.value.zonedist2}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone2}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist2}}</a></li>{{/if}}
+        {{#if model.value.zonedist3}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone3}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist3}}</a></li>{{/if}}
+        {{#if model.value.zonedist4}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone4}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist4}}</a></li>{{/if}}
 
         {{#each (await parentSpecialPurposeDistricts) as |specialDistrict|}}
           <li>
-            <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-{{specialDistrict.boroName}}.page#{{specialDistrict.anchorName}}" class="button">{{fa-icon 'external-link'}} {{specialDistrict.label}}</a>
+            <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-{{specialDistrict.boroName}}.page#{{specialDistrict.anchorName}}" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{specialDistrict.label}}</a>
           </li>
         {{/each}}
 
         {{#if model.value.overlay1}}
           <li>
-            <a href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" target="_blank" class="button">{{fa-icon 'external-link'}} {{model.value.overlay1}}</a>
+            <a href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" target="_blank" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.overlay1}}</a>
           </li>
         {{/if}}
 
         {{#if model.value.overlay2}}
           <li>
-            <a href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" target="_blank" class="button">{{fa-icon 'external-link'}} {{model.value.overlay1}}</a>
+            <a href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" target="_blank" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.overlay1}}</a>
           </li>
         {{/if}}
       </ul>
@@ -55,7 +55,7 @@
       <div class="cell medium-shrink">
         <h6 class="no-margin-">Intersecting Map Layers {{labs-ui/icon-tooltip tip="These intersections should be independently verified and should not be relied upon to determine the zoning rules applicable to a property."}}:</h6>
         <ul class="no-bullet text-small">
-          {{#if model.value.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon "external-link"}} Historic District</a> <small class="dark-gray">{{model.value.histdist}}</small></li>{{/if}}
+          {{#if model.value.histdist}}<li><a target="_blank" href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Historic District</a> <small class="dark-gray">{{model.value.histdist}}</small></li>{{/if}}
 
           {{#intersecting-layers
               tables=(array
@@ -75,7 +75,7 @@
             {{#if layers.inclusionary_housing_v201804}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page">
-                  {{fa-icon "external-link"}} Inclusionary Housing Zone
+                  {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Inclusionary Housing Zone
                 </a>
               </li>
             {{/if}}
@@ -83,7 +83,7 @@
             {{#if layers.transitzones_v201607}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone">
-                  {{fa-icon "external-link"}} Transit Zone
+                  {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Transit Zone
                 </a>
               </li>
             {{/if}}
@@ -91,7 +91,7 @@
             {{#if layers.fresh_zones_v201611}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page">
-                  {{fa-icon "external-link"}} Fresh Zone
+                  {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Fresh Zone
                 </a>
               </li>
             {{/if}}
@@ -99,7 +99,7 @@
             {{#if layers.waterfront_access_plan_v201109}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan">
-                  {{fa-icon "external-link"}} Waterfront Access Plan
+                  {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Waterfront Access Plan
                 </a>
               </li>
             {{/if}}
@@ -107,7 +107,7 @@
             {{#if layers.coastal_zone_boundary_v201601}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/applicants/wrp/wrp.page">
-                  {{fa-icon "external-link"}} Coastal Zone
+                  {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Coastal Zone
                 </a>
               </li>
             {{/if}}
@@ -115,7 +115,7 @@
             {{#if layers.lower_density_growth_management_areas_v201709}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page">
-                  {{fa-icon "external-link"}} Lower Density Growth Management Zone
+                  {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Lower Density Growth Management Zone
                 </a>
               </li>
             {{/if}}
@@ -123,7 +123,7 @@
             {{#if layers.floodplain_firm2007_v0}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
-                  {{fa-icon "external-link"}} Flood Zone
+                  {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Flood Zone
                 </a> <small class="dark-gray">Effective Flood Insurance Rate Maps 2007</small>
               </li>
             {{/if}}
@@ -131,7 +131,7 @@
             {{#if layers.floodplain_pfirm2015_v0}}
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
-                  {{fa-icon "external-link"}} Flood Zone
+                  {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Flood Zone
                 </a> <small class="dark-gray">Preliminary Flood Insurance Rate Maps 2015</small>
               </li>
             {{/if}}
@@ -139,7 +139,7 @@
             {{#if layers.mandatory_inclusionary_housing_v20180823}}
               <li>
                 <a target="_blank" href="https://www1.nyc.gov/site/planning/plans/mih/mandatory-inclusionary-housing.page">
-                  {{fa-icon "external-link"}} Mandatory Inclusionary Housing Area
+                  {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Mandatory Inclusionary Housing Area
                 </a>
               </li>
             {{/if}}
@@ -147,7 +147,7 @@
             {{#if layers.e_designations_v20180823}}
               <li>
                 <a target="_blank" href="http://www.nyc.gov/html/oer/html/e-designation/e-designation.shtml">
-                  {{fa-icon "external-link"}} Environmental Designation
+                  {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Environmental Designation
                 </a>
               </li>
             {{/if}}
@@ -155,7 +155,7 @@
             {{#if layers.appendixj_designated_mdistricts_v201712}}
               <li>
                 <a target="_blank" href="https://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-text/appendixj.pdf">
-                  {{fa-icon "external-link"}} Appendix J Designated M District
+                  {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Appendix J Designated M District
                 </a>
               </li>
             {{/if}}
@@ -171,9 +171,9 @@
       <div class="cell medium-shrink">
         <h6 class="no-margin-">Zoning Details:</h6>
         <ul class="no-bullet text-small">
-          {{#if model.value.bbl}}<li><a target="_blank" href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{model.value.bbl}}">{{fa-icon "external-link"}} Digital Tax Map</a></li>{{/if}}
-          {{#if model.value.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{model.value.zonemap}}.pdf">{{fa-icon "external-link"}} Zoning Map <small>(PDF)</small></a></li>{{/if}}
-          {{#if model.value.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{paddedZonemap}}.pdf">{{fa-icon "external-link"}} Historical Zoning Maps <small>(PDF)</small></a></li>{{/if}}
+          {{#if model.value.bbl}}<li><a target="_blank" href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{model.value.bbl}}">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Digital Tax Map</a></li>{{/if}}
+          {{#if model.value.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{model.value.zonemap}}.pdf">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Zoning Map <small>(PDF)</small></a></li>{{/if}}
+          {{#if model.value.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{paddedZonemap}}.pdf">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Historical Zoning Maps <small>(PDF)</small></a></li>{{/if}}
         </ul>
       </div>
     </div>
@@ -195,13 +195,13 @@
     {{#if model.value.unitstotal}}<div class="data-grid"><label class="data-label">Total # of Units</label><span class="datum">{{model.value.unitstotal}}</span></div>{{/if}}
     {{#if model.value.unitsres}}<div class="data-grid"><label class="data-label">Residential Units</label><span class="datum">{{model.value.unitsres}}</span></div>{{/if}}
     {{#if model.value.condono}}<div class="data-grid"><label class="data-label">Condominium Number</label><span class="datum">{{model.value.condono}}</span></div>{{/if}}
-    <div class="data-grid"><label class="data-label">Building Info {{labs-ui/icon-tooltip tip="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"}}</label><span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.value.borocode}}&allblock={{model.value.block}}&alllot={{model.value.lot}}&go5=+GO+&requestid=0" target="_blank">{{fa-icon 'external-link'}} BISWEB </a></span></div>
+    <div class="data-grid"><label class="data-label">Building Info {{labs-ui/icon-tooltip tip="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"}}</label><span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.value.borocode}}&allblock={{model.value.block}}&alllot={{model.value.lot}}&go5=+GO+&requestid=0" target="_blank">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} BISWEB </a></span></div>
     {{#if model.value.borocode}}
       <div class="data-grid">
         <label class="data-label">Property Records</label>
         <span class="datum">
           <a href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{model.value.borocode}}&block={{model.value.block}}&lot={{model.value.lot}}" target="_blank">
-            {{fa-icon "external-link"}} View ACRIS
+            {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} View ACRIS
           </a>
         </span>
       </div>
@@ -209,8 +209,8 @@
 
     <h3 class="header-small lot-section-header">Neighborhood Information</h3>
 
-    {{#if model.value.cdURLSegment}}<div class="data-grid"><label class="data-label">Community District</label><span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{model.value.cdURLSegment}}" target="_blank">{{fa-icon "external-link"}} {{model.value.cdName}}</a></span></div>{{/if}}
-    {{#if model.value.council}}<div class="data-grid"><label class="data-label">City Council District</label><span class="datum"><a href="https://council.nyc.gov/district-{{model.value.council}}/" target="_blank">{{fa-icon "external-link"}} Council District {{model.value.council}}</a></span></div>{{/if}}
+    {{#if model.value.cdURLSegment}}<div class="data-grid"><label class="data-label">Community District</label><span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{model.value.cdURLSegment}}" target="_blank">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.cdName}}</a></span></div>{{/if}}
+    {{#if model.value.council}}<div class="data-grid"><label class="data-label">City Council District</label><span class="datum"><a href="https://council.nyc.gov/district-{{model.value.council}}/" target="_blank">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Council District {{model.value.council}}</a></span></div>{{/if}}
     {{#if model.value.schooldist}}<div class="data-grid"><label class="data-label">School District</label><span class="datum">{{model.value.schooldist}}</span></div>{{/if}}
     {{#if model.value.policeprct}}<div class="data-grid"><label class="data-label">Police Precinct</label><span class="datum">{{model.value.policeprct}}</span></div>{{/if}}
     {{#if model.value.firecomp}}<div class="data-grid"><label class="data-label">Fire Company</label><span class="datum">{{model.value.firecomp}}</span></div>{{/if}}

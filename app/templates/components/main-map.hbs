@@ -1,7 +1,6 @@
 {{#if loading}}
-  <div class="spinner">
-    <div class="double-bounce1"></div>
-    <div class="double-bounce2"></div>
+  <div class="loading-spinner">
+    {{fa-icon 'spinner' spin=true pulse=true size='3x'}}
   </div>
 {{/if}}
 
@@ -15,6 +14,7 @@
 
   {{#map.labs-layers
     layerGroups=layerGroups
+    interactivity=interactivity
     highlightedFeatureLayer=highlightedLotLayer
     onLayerClick=(action 'handleLayerClick')
     onLayerHighlight=(action 'handleLayerHighlight')

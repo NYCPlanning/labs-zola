@@ -15,7 +15,7 @@
     <label class="header-label">ZONING MAP AMENDMENT</label>
     <h1 class="header-large">{{model.value.project_na}}</h1>
 
-    <div class="data-grid"><label class="data-label">ULURP Number</label><span class="datum"><a target="_blank" href="https://zap-api.planninglabs.nyc/projects/ulurp/{{model.value.lucats}}">{{fa-icon "external-link"}} {{model.value.id}}</a></span></div>
+    <div class="data-grid"><label class="data-label">ULURP Number</label><span class="datum"><a target="_blank" href="https://zap-api.planninglabs.nyc/projects/ulurp/{{model.value.lucats}}">{{fa-icon 'external-link-alt'}} {{model.value.id}}</a></span></div>
     <div class="data-grid"><label class="data-label">Effective</label><span class="datum">{{model.value.effectiveDisplay}}</span></div>
     <div class="data-grid"><label class="data-label">Status</label><span class="datum">{{model.value.status}}</span></div>
     <div class="data-grid"><label class="data-label">Zoning Sketch Map</label><span class="datum"><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/sketchmaps/skz{{model.value.id}}.pdf">{{fa-icon "file-pdf-o"}} {{model.value.id}} <small>(PDF)</small></a></span></div>
