@@ -2,7 +2,10 @@ module.exports = {
   root: true,
   parserOptions: {
     ecmaVersion: 2017,
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      legacyDecorators: true,
+    }
   },
   parser: 'babel-eslint',
   plugins: [
@@ -10,8 +13,8 @@ module.exports = {
   ],
   extends: [
     'eslint:recommended',
-    'plugin:ember/recommended',
-    'airbnb-base'
+    'airbnb-base',
+    'plugin:ember-best-practices/recommended',
   ],
   env: {
     browser: true,
@@ -33,6 +36,7 @@ module.exports = {
     'max-len': 0,
     'no-param-reassign': 0,
     'ember/avoid-leaking-state-in-ember-objects': 0,
+    'ember-best-practices/require-dependent-keys': 0,
   },
   overrides: [
     // node files
