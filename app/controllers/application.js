@@ -2,7 +2,6 @@ import ObjectProxy from '@ember/object/proxy';
 import Controller from '@ember/controller';
 import { merge } from '@ember/polyfills';
 import EmberObject, { set, computed as computedProp } from '@ember/object';
-import { next } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import QueryParams from 'ember-parachute';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line

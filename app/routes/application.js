@@ -110,11 +110,11 @@ Route.reopen({
   activate() {
     const cssClass = this.toCssClass();
     if (cssClass !== 'application') {
-      $('body').addClass(cssClass);
+      $('body').addClass(cssClass); // eslint-disable-line
     }
   },
   deactivate() {
-    $('body').removeClass(this.toCssClass());
+    $('body').removeClass(this.toCssClass());  // eslint-disable-line
   },
   toCssClass() {
     return this.routeName.replace(/\./g, '-').dasherize();
