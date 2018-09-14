@@ -1,4 +1,26 @@
-{{site-header count=model.bookmarks.length resetAll=(action 'resetQueryParams')}}
+{{#labs-ui/site-header
+  responsiveNav=true
+  as |banner|
+}}
+  {{#banner.title}}
+    {{#link-to 'index' classNames='site-title' click=(action resetQueryParams)}}ZoLa <small class="site-subtitle show-for-medium">N<span class="show-for-large">ew </span>Y<span class="show-for-large">ork </span>C<span class="show-for-large">ity</span>&rsquo;s Zoning &amp; Land Use Map</small>{{/link-to}}
+  {{/banner.title}}
+  {{#banner.nav}}
+    <ul class="menu vertical large-horizontal">
+      <li>{{link-to 'About' 'about' click=(action (mut closed))}}</li>
+      <li>{{link-to 'Features' 'features' click=(action (mut closed))}}</li>
+      <li>{{link-to 'Data' 'data' click=(action (mut closed))}}</li>
+      <li class="saved-bookmarks-counter">
+        {{#link-to 'bookmarks' click=(action (mut closed))}}{{fa-icon "bookmark"}}
+          Saved
+          {{#if model.bookmarks.length}}
+            <span class="badge sup">{{model.bookmarks.length}}</span>
+          {{/if}}
+        {{/link-to}}
+      </li>
+    </ul>
+  {{/banner.nav}}
+{{/labs-ui/site-header}}
 
 <div class="site-main grid-x">
   <div class="navigation-area cell large-auto">

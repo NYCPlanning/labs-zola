@@ -101,7 +101,7 @@ body.index {
   @include xy-cell-static(full,false,0);
   position: relative;
   z-index: 2;
-  background-color: $light-gray;
+  background-color: $off-white;
 
   @include breakpoint(medium) {
     @include xy-cell-block($vertical:true);
