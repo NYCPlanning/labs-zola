@@ -15,6 +15,9 @@ export default Component.extend({
     toggleFill() {
       this.toggleProperty('plutoFill');
     },
+    setPaintForLayerGroup(layerGroup, ...args) {
+      layerGroup.setPaintForLayer(...args);
+    },
     switchAerial(year, mainToggle = false) {
       const formattedYear = `aerials-${year}`;
       const propNames = aerialYears.map(aYear => `aerials-${aYear}`);

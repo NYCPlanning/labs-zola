@@ -7,11 +7,13 @@ import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import area from '@turf/area';
 import lineDistance from '@turf/line-distance';
 import numeral from 'numeral';
+import EmberObject from '@ember/object';
 
-import sources from '../sources';
+
 import layerGroups from '../layer-groups';
 import drawStyles from '../layers/draw-styles';
-
+import bblDemux from '../utils/bbl-demux';
+import Geometric from '../mixins/geometric';
 import drawnFeatureLayers from '../layers/drawn-feature';
 import highlightedLotLayer from '../layers/highlighted-lot';
 import selectedLayers from '../layers/selected-lot';
@@ -73,6 +75,7 @@ export default Component.extend({
   drawnFeatureLayers,
 
   highlightedLotFeatures: [],
+  highlightedLayerId: null,
 
   @computed('highlightedLotFeatures')
   highlightedLotSource(features) {
@@ -163,19 +166,6 @@ export default Component.extend({
       window.map = map;
       const { mainMap } = this;
       mainMap.set('mapInstance', map);
-
-      // add carto sources
-      this.cartoSources.forEach((sourceConfig) => {
-        map.addSource(sourceConfig.id, sourceConfig);
-      });
-
-      // add raster sources
-      Object.keys(sources)
-        .filter(key => sources[key].type === 'raster')
-        .forEach((key) => {
-          const source = sources[key];
-          map.addSource(source.id, source);
-        });
 
       // setup controls
       const navigationControl = new mapboxgl.NavigationControl();
@@ -387,5 +377,69 @@ export default Component.extend({
           }
         });
     },
+
+    handleLayerClick(feature) {
+      const { mainMap } = this;
+      const highlightedLayerId = this.get('highlightedLayerId');
+
+      if (feature) {
+        const { properties } = feature;
+
+        if (highlightedLayerId === feature.layer.id) {
+          const {
+            bbl,
+            ulurpno,
+            zonedist,
+            sdlbl,
+            splbl,
+            overlay,
+            cartodb_id, // eslint-disable-line
+            ceqr_num, // eslint-disable-line
+          } = properties;
+
+          const featureFragment = EmberObject.extend(Geometric, {
+            geometry: feature.geometry,
+          }).create();
+
+          mainMap.set('selected', featureFragment);
+
+          if (bbl && !ceqr_num) { // eslint-disable-line
+            const { boro, block, lot } = bblDemux(bbl);
+            this.transitionTo('lot', boro, block, lot);
+          }
+
+          if (ulurpno) {
+            this.transitionTo('zma', ulurpno);
+          }
+
+          if (zonedist) {
+            mainMap.set('shouldFitBounds', false);
+            this.transitionTo('zoning-district', zonedist);
+          }
+
+          if (sdlbl) {
+            this.transitionTo('special-purpose-district', cartodb_id);
+          }
+
+          if (splbl) {
+            this.transitionTo('special-purpose-subdistricts', cartodb_id);
+          }
+
+          if (overlay) {
+            mainMap.set('shouldFitBounds', false);
+            this.transitionTo('commercial-overlay', overlay);
+          }
+
+          if (ceqr_num) { // eslint-disable-line
+            window.open(`https://zap-api.planninglabs.nyc/ceqr/${ceqr_num}`, '_blank'); // eslint-disable-line
+          }
+        }
+      }
+    },
+
+    handleLayerHighlight(e, Layer) {
+      this.set('highlightedLayerId', Layer.get('id'));
+    },
+
   },
 });

@@ -1,9 +1,0 @@
-<h5 {{action 'toggleClosed'}} class="layer-palette-accordion-title {{if closed 'closed'}}">
-  {{title}}
-  {{#if numberVisible}}
-    <span class="badge">{{numberVisible}}</span>
-  {{/if}}
-</h5>
-<ul class="layers-collection {{if closed 'hide'}}">
-  {{yield (hash menu-item=(component 'layer-menu-item' menuItems=menuItems))}}
-</ul>

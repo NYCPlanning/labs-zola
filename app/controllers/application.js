@@ -1,31 +1,19 @@
 import ObjectProxy from '@ember/object/proxy';
 import Controller from '@ember/controller';
 import { merge } from '@ember/polyfills';
-import EmberObject, { set } from '@ember/object';
+import EmberObject, { set, computed as computedProp } from '@ember/object';
+import { next } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import QueryParams from 'ember-parachute';
-import bblDemux from '../utils/bbl-demux';
 import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import bblDemux from '../utils/bbl-demux';
 
 import Geometric from '../mixins/geometric';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
-import layerGroups from '../layer-groups';
-
-const queryParams = Object.keys(layerGroups)
-  .reduce(
-    (acc, cur) => {
-      acc[layerGroups[cur].id] = {
-        defaultValue: (layerGroups[cur].visible === undefined) ? true : !!layerGroups[cur].visible,
-      };
-      return acc;
-    },
-    {},
-  );
 
 // define new query params here:
 export const mapQueryParams = new QueryParams(
   merge(
-    queryParams,
     {
       'comm-type': { defaultValue: '' },
       BP: { defaultValue: true },
@@ -73,6 +61,11 @@ export const mapQueryParams = new QueryParams(
       'aerials-20012': { defaultValue: false },
       'aerials-1996': { defaultValue: false },
       'aerials-1951': { defaultValue: false },
+
+      'layer-groups': {
+        defaultValue: [],
+        refresh: true,
+      },
     },
   ),
 );
@@ -87,6 +80,29 @@ export default Controller.extend(mapQueryParams.Mixin, {
 
     this.set('qps', proxy);
   },
+
+  'layer-groups': computedProp('model.layerGroups.@each.visible', {
+    get() {
+      const { model } = this;
+
+      if (model) {
+        return model.layerGroups.filterBy('visible').mapBy('id').sort();
+      }
+
+      return [];
+    },
+    set(key, value) {
+      if (Array.isArray(value) && this.model && value.length) {
+        this.model.layerGroups.forEach((layerGroup) => {
+          if (value.includes(layerGroup.id)) {
+            layerGroup.set('visible', true);
+          } else {
+            layerGroup.set('visible', false);
+          }
+        });
+      }
+    },
+  }),
 
   mainMap: service(),
   metrics: service(),
