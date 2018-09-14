@@ -386,15 +386,26 @@
         <li>CTRL + drag the map (or CTRL + arrow keys) to adjust both pitch and bearing.</li>
       </ul>
     {{/labs-ui/layer-group-toggle}}
-
+    {{log layerGroups.aerials}}
     {{#labs-ui/layer-group-toggle
       label=layerGroups.aerials.legend.label
       tooltip=layerGroups.aerials.legend.tooltip
       active=layerGroups.aerials.visible}}
-      {{item.radio-selector
-        qps=qps
-        classNames='list-float-3'
-      }}
+      <ul class="layer-menu-item--group-checkboxes no-bullet list-float-3">
+        {{#each layerGroups.aerials.layers as |layer|}}
+          <li onclick={{action (mut layerGroups.aerials.selected) layer.id}} role='button'>
+            <label {{!template-lint-disable "nested-interactive"}}>
+              <span class="layer-group-radio-{{layer.id}} silver">
+                <span class="fa-layers">
+                  {{#if layer.visibility}}{{fa-icon 'circle' class="a11y-orange" transform='shrink-5'}}{{/if}}
+                  {{fa-icon 'circle' prefix='far' class=(if layer.visibility '')}}
+                </span>
+              </span>
+              {{layer.displayName}}
+            </label>
+          </li>
+        {{/each}}
+      </ul>
     {{/labs-ui/layer-group-toggle}}
   {{/labs-ui/layer-groups-container}}
 
