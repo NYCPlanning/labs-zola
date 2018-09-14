@@ -1,11 +1,16 @@
 @charset 'UTF-8';
-@import 'labs-ui/variables'; // import labs-ui first, as it includes our global custom variables
+
+//
+// Labs UI variables
+// --------------------------------------------------
+@import 'labs-ui/variables';
+
 
 //
 // Foundation
 // --------------------------------------------------
-@import "settings";
 @import 'foundation-sites/foundation';
+
 // @include foundation-everything;
 
 @include foundation-global-styles;
@@ -49,25 +54,20 @@
 @include foundation-visibility-classes;
 @include foundation-float-classes;
 
+
 //
 // Labs-UI Modules
 // --------------------------------------------------
 @import 'labs-ui/all-modules';
 
-//
-// Base
-// --------------------------------------------------
-@import 'base/_typography';
 
 //
-// Layouts
+// Custom app modules and styles
 // --------------------------------------------------
+// @import 'base/_typography';
 @import 'layouts/_l-default';
 @import 'layouts/_l-print';
 
-//
-// Modules
-// --------------------------------------------------
 @import 'modules/_m-bbl-lookup';
 @import 'modules/_m-ember-tooltip';
 @import 'modules/_m-features';
@@ -81,5 +81,4 @@
 @import 'modules/_m-spinner';
 
 @import 'ember-power-select';
-
 @import 'ember-content-placeholders';
