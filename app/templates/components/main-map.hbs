@@ -20,7 +20,7 @@
     onLayerHighlight=(action 'handleLayerHighlight')
      as |layers|}}
     {{#layers.tooltip as |tooltip|}}
-      {{map-tooltip feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
+      {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
     {{/layers.tooltip}}
   {{/map.labs-layers}}
 
