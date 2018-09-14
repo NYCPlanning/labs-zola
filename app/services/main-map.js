@@ -55,7 +55,7 @@ export default Service.extend({
 
   @computed('selected')
   isSelectedBoundsOptions(selected) {
-    const el = $('.map-container');
+    const el = $('.map-container');  // eslint-disable-line
     const height = el.height();
     const width = el.width();
 
