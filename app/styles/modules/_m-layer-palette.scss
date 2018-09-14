@@ -15,83 +15,78 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
   // the element that shows/hides on mobile
   margin: $layer-palette-padding*-1 $layer-palette-padding*-1 0;
 
-  ul {
-    margin-left: 0;
-    list-style: none;
-  }
+  ul { @extend .no-bullet; }
 
-  input {
-    margin-bottom: 0;
-  }
+  input { margin-bottom: 0; }
 
-  .ember-power-select-trigger {
-    margin: 0 $layer-palette-padding $layer-palette-padding;
-  }
+  // .ember-power-select-trigger {
+  //   margin: 0 $layer-palette-padding $layer-palette-padding;
+  // }
 }
 
-.layer-palette-accordion {
-  border-bottom: 1px solid $medium-gray;
+// .layer-palette-accordion {
+//   border-bottom: 1px solid $medium-gray;
+//
+//   &:hover {
+//     background-color: $layer-palette-hover-color;
+//   }
+// }
 
-  &:hover {
-    background-color: $layer-palette-hover-color;
-  }
-}
+// .layer-palette-accordion-title {
+//   position: relative;
+//   margin: 0;
+//   padding: $layer-palette-padding;
+//   padding-right: calc(#{$accordionmenu-arrow-size*2} + #{$layer-palette-padding*2});
+//   cursor: pointer;
+//
+//   &:hover {
+//     background-color: $layer-palette-hover-color;
+//     cursor: pointer;
+//     user-select: none;
+//   }
+//
+//   &::after {
+//     @include css-triangle($accordionmenu-arrow-size, $accordionmenu-arrow-color, up);
+//     position: absolute;
+//     top: 50%;
+//     margin-top: -1 * ($accordionmenu-arrow-size / 2);
+//     #{$global-right}: $layer-palette-padding;
+//   }
+//   &.closed::after {
+//     @include css-triangle($accordionmenu-arrow-size, $accordionmenu-arrow-color, down);
+//   }
+// }
 
-.layer-palette-accordion-title {
-  position: relative;
-  margin: 0;
-  padding: $layer-palette-padding;
-  padding-right: calc(#{$accordionmenu-arrow-size*2} + #{$layer-palette-padding*2});
-  cursor: pointer;
+// .layers-collection {
+//   margin: 0;
+//
+//   .switch {
+//     margin: 0 $layer-palette-padding 0 0;
+//
+//     &.tiny .switch-paddle {
+//       width: 1.25rem;
+//     }
+//
+//     &.tiny .switch-paddle::after {
+//       width: 0.5rem;
+//     }
+//
+//     &.tiny input:checked ~ .switch-paddle::after {
+//       left: 0.625rem;
+//     }
+//   }
+// }
 
-  &:hover {
-    background-color: $layer-palette-hover-color;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  &::after {
-    @include css-triangle($accordionmenu-arrow-size, $accordionmenu-arrow-color, up);
-    position: absolute;
-    top: 50%;
-    margin-top: -1 * ($accordionmenu-arrow-size / 2);
-    #{$global-right}: $layer-palette-padding;
-  }
-  &.closed::after {
-    @include css-triangle($accordionmenu-arrow-size, $accordionmenu-arrow-color, down);
-  }
-}
-
-.layers-collection {
-  margin: 0;
-
-  .switch {
-    margin: 0 $layer-palette-padding 0 0;
-
-    &.tiny .switch-paddle {
-      width: 1.25rem;
-    }
-
-    &.tiny .switch-paddle::after {
-      width: 0.5rem;
-    }
-
-    &.tiny input:checked ~ .switch-paddle::after {
-      left: 0.625rem;
-    }
-  }
-}
-
-.layer-menu-item {
-  padding: $layer-palette-padding;
-  border-top: 1px solid $white;
-
-  &:hover {
-    cursor: pointer;
-    background-color: $layer-palette-hover-color;
-  }
-
-}
+// .layer-menu-item {
+//   padding: $layer-palette-padding;
+//   border-top: 1px solid $white;
+//
+//   &:hover {
+//     cursor: pointer;
+//     background-color: $layer-palette-hover-color;
+//   }
+//
+// }
 
 .checkbox-wrapper {
   padding: $layer-palette-padding/2 $layer-palette-padding;
@@ -144,53 +139,53 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
 
 }
 
-.layer-key {
-  padding: 0 $layer-palette-padding $layer-palette-padding;
-  font-size: rem-calc(10);
-  line-height: 1.2;
+// .layer-key {
+//   padding: 0 $layer-palette-padding $layer-palette-padding;
+//   font-size: rem-calc(10);
+//   line-height: 1.2;
 
-  li {
-    padding: 0 0 $layer-palette-padding/2;
-  }
+//   li {
+//     padding: 0 0 $layer-palette-padding/2;
+//   }
 
-  .fa {
-    margin-right: $layer-palette-padding;
-  }
-}
+//   .fa {
+//     margin-right: $layer-palette-padding;
+//   }
+// }
 
-.reset-map-button {
-  margin: $layer-palette-padding*3 $layer-palette-padding*2;
-  width: calc(100% - #{$layer-palette-padding*4});
-}
+// .reset-map-button {
+//   margin: $layer-palette-padding*3 $layer-palette-padding*2;
+//   width: calc(100% - #{$layer-palette-padding*4});
+// }
 
-// TODO: There are flex clases built into Foundation for this purpose.
-.flex-reverse {
-  display: flex;
-  flex-direction: column-reverse;
-}
+// // TODO: There are flex clases built into Foundation for this purpose.
+// .flex-reverse {
+//   display: flex;
+//   flex-direction: column-reverse;
+// }
 
-.layer-group-legend {
-  display: inline-block;
-  width: 1rem;
-  height: rem-calc(6);
-  vertical-align: middle;
-  position: relative;
-  top: -0.1em;
-  background-color: #444;
-  border: rem-calc(2) solid #fff;
-  border-right-width: 0;
-  border-left-width: 0;
-  opacity: 0.75;
-}
+// .layer-group-legend {
+//   display: inline-block;
+//   width: 1rem;
+//   height: rem-calc(6);
+//   vertical-align: middle;
+//   position: relative;
+//   top: -0.1em;
+//   background-color: #444;
+//   border: rem-calc(2) solid #fff;
+//   border-right-width: 0;
+//   border-left-width: 0;
+//   opacity: 0.75;
+// }
 
-.legend-icon {
+// .legend-icon {
 
-  &.polygon {
-    opacity: 0.6;
-    margin: 0 0.75em;
+//   &.polygon {
+//     opacity: 0.6;
+//     margin: 0 0.75em;
 
-    input:not(:checked):not(:indeterminate) ~ & {
-      display: none;
-    }
-  }
-}
+//     input:not(:checked):not(:indeterminate) ~ & {
+//       display: none;
+//     }
+//   }
+// }

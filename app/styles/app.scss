@@ -1,30 +1,16 @@
 @charset 'UTF-8';
 
 //
-// Custom Variables
+// Labs UI variables
 // --------------------------------------------------
-$dcp-orange: #d96b27;
-$a11y-orange: #ae561f;
-$dcp-yellow: #ffc861;
-$a11y-yellow: #ffeec1;
+@import 'labs-ui/variables';
 
-$lu-peach: #FDD48D;
-$lu-yellow: #F2F618;
-$lu-magenta: #E362FB;
-$lu-red: #FC5B5B;
-$lu-orange: #FF9400;
-$lu-pink: #FFC8BD;
-$lu-green: #78D271;
-$lu-blue: #44A3D5;
-$lu-lavendar: #E0BEEB;
-$lu-silver: #BAB8B6;
-$lu-gray: #5F5F60;
 
 //
 // Foundation
 // --------------------------------------------------
-@import "settings";
 @import 'foundation-sites/foundation';
+
 // @include foundation-everything;
 
 @include foundation-global-styles;
@@ -68,33 +54,31 @@ $lu-gray: #5F5F60;
 @include foundation-visibility-classes;
 @include foundation-float-classes;
 
-//
-// Base
-// --------------------------------------------------
-@import 'base/_typography';
 
 //
-// Layouts
+// Labs-UI Modules
 // --------------------------------------------------
+@import 'labs-ui/all-modules';
+
+
+//
+// Custom app modules and styles
+// --------------------------------------------------
+// @import 'base/_typography';
 @import 'layouts/_l-default';
 @import 'layouts/_l-print';
 
-//
-// Modules
-// --------------------------------------------------
 @import 'modules/_m-bbl-lookup';
-@import 'modules/_m-ember-tooltip';
-@import 'modules/_m-features';
-@import 'modules/_m-icons';
-@import 'modules/_m-labs-beta-notice';
+// @import 'modules/_m-ember-tooltip';
+// @import 'modules/_m-features';
+// @import 'modules/_m-icons';
 @import 'modules/_m-layer-palette';
 @import 'modules/_m-maps';
-@import 'modules/_m-noui';
+// @import 'modules/_m-noui';
 @import 'modules/_m-search';
-@import 'modules/_m-site-header';
-@import 'modules/_m-tooltips';
-@import 'modules/_m-spinner';
+// @import 'modules/_m-site-header';
+// @import 'modules/_m-tooltips';
+// @import 'modules/_m-spinner';
 
-@import "ember-power-select";
-
-@import "ember-content-placeholders";
+@import 'ember-power-select';
+@import 'ember-content-placeholders';

@@ -5,102 +5,30 @@
   </div>
 {{/if}}
 
-{{#mapbox-gl
+{{#labs-map
   id='main-map'
-  initOptions=(hash style='//raw.githubusercontent.com/NYCPlanning/labs-gl-style/master/data/style.json'
+  initOptions=(hash style=layerGroupsMeta.mapboxStyle
                     zoom=zoom
-                    center=(array lng lat)
-                    hash=true)
+                    center=(array lng lat))
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
 
-  {{map.layer-group for='neighborhood-tabulation-areas' visible=qps.neighborhood-tabulation-areas}}
-
-  {{map.layer-group for='threed-buildings' visible=qps.threed-buildings didToggleVisibility=(action 'adjustBuildingsLayer')}}
-
-  {{map.layer-group for='assemblydistricts' visible=qps.assemblydistricts}}
-
-  {{map.layer-group for='nysenatedistricts' visible=qps.nysenatedistricts}}
-
-  {{map.layer-group for='nyccouncildistricts' visible=qps.nyccouncildistricts}}
-
-  {{map.layer-group for='community-districts' visible=qps.community-districts}}
-
-  {{map.layer-group for='boroughs' visible=qps.boroughs}}
-
-  {{map.layer-group for='subway' visible=qps.subway}}
-
-  {{map.layer-group for='building-footprints' visible=qps.building-footprints}}
-
-  {{map.layer-group for='landmarks' visible=qps.landmarks}}
-
-  {{map.layer-group for='e-designations' visible=qps.e-designations}}
-
-  {{map.layer-group for='pluto' visible=qps.pluto}}
-
-  {{map.layer-group for='commercial-overlays' visible=qps.commercial-overlays}}
-
-  {{map.layer-group for='historic-districts' visible=qps.historic-districts}}
-
-  {{map.layer-group for='waterfront-access-plan' visible=qps.waterfront-access-plan}}
-
-  {{map.layer-group for='coastal-zone-boundary' visible=qps.coastal-zone-boundary}}
-
-  {{map.layer-group for='low-density-growth-mgmt-areas' visible=qps.low-density-growth-mgmt-areas}}
-
-  {{map.layer-group for='sidewalkcafes' visible=qps.sidewalkcafes}}
-
-  {{map.layer-group for='effective-flood-insurance-rate-2007' visible=qps.effective-flood-insurance-rate-2007}}
-
-  {{map.layer-group for='preliminary-flood-insurance-rate' visible=qps.preliminary-flood-insurance-rate}}
-
-  {{map.layer-group for='fresh' visible=qps.fresh}}
-
-  {{map.layer-group for='transit-zones' visible=qps.transit-zones}}
-
-  {{map.layer-group for='inclusionary-housing' visible=qps.inclusionary-housing}}
-
-  {{map.layer-group for='mandatory-inclusionary-housing' visible=qps.mandatory-inclusionary-housing}}
-
-  {{map.layer-group for='business-improvement-districts' visible=qps.business-improvement-districts}}
-
-  {{map.layer-group for='industrial-business-zones' visible=qps.industrial-business-zones}}
-
-  {{map.layer-group for='appendixj-designated-mdistricts' visible=qps.appendixj-designated-mdistricts}}
-
-  {{map.layer-group for='limited-height-districts' visible=qps.limited-height-districts}}
-
-  {{map.layer-group for='special-purpose-subdistricts' visible=qps.special-purpose-subdistricts}}
-
-  {{map.layer-group for='special-purpose-districts' visible=qps.special-purpose-districts}}
-
-  {{map.layer-group for='zoning-map-amendments-pending' visible=qps.zoning-map-amendments-pending}}
-
-  {{map.layer-group for='zoning-map-amendments' visible=qps.zoning-map-amendments}}
-
-  {{map.layer-group for='zoning-districts' visible=qps.zoning-districts}}
-
-  {{!-- BASEMAPS --}}
-
-  {{map.layer-group for='aerials' visible=qps.aerials}}
-
-  {{#if mapMouseover.highlightedLotFeatures}}
-    {{#map.source
-      sourceId='highlighted-lot'
-      options=mapMouseover.highlightedLotSource as |source|}}
-      {{source.layer
-        layer=highlightedLotLayer
-        before='place_other'}}
-    {{/map.source}}
-  {{/if}}
+  {{#map.labs-layers
+    layerGroups=layerGroups
+    highlightedFeatureLayer=highlightedLotLayer
+    onLayerClick=(action 'handleLayerClick')
+    onLayerHighlight=(action 'handleLayerHighlight')
+     as |layers|}}
+    {{#layers.tooltip as |tooltip|}}
+      {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
+    {{/layers.tooltip}}
+  {{/map.labs-layers}}
 
   {{#if bookmarkedLotsLayer}}
     {{map.layer
       layer=bookmarkedLotsLayer
       before='place_other'}}
   {{/if}}
-
-  {{hover-tooltip}}
 
   {{#if mainMap.selected}}
     {{#map.source
@@ -143,8 +71,7 @@
   {{map.on 'mouseout' (action 'handleMouseleave')}}
   {{map.on 'draw.create' (action 'handleDrawCreate')}}
   {{map.on 'draw.render' (action 'handleMeasurement')}}
-
-{{/mapbox-gl}}
+{{/labs-map}}
 
 <div class="print-controls mapboxgl-ctrl mapboxgl-ctrl-group">
   <button {{action 'handlePrint'}} class="mapboxgl-ctrl-icon">{{fa-icon 'print'}}</button>
