@@ -40,7 +40,7 @@ button.save-button {
   }
 
   .state {
-    color: darken($success-color, 30%);
+    color: $green-dark;
     font-size: rem-calc(10);
     line-height: rem-calc(12);
     font-weight: $global-weight-bold;
@@ -55,23 +55,19 @@ button.save-button {
     opacity: 1;
   }
 
-  .fa {
-    color: darken($medium-gray, 20%);
+  .fa-bookmark {
+    color: $light-gray;
     font-size: rem-calc(16);
     vertical-align: middle;
     transition: color 0.5s;
 
     &:hover {
-      color: darken($medium-gray, 30%);
+      color: $green-muted;
     }
   }
 
-  &.saved .fa {
-    color: $success-color;
-
-    // &:hover {
-    //   color: darken($success-color, 10%);
-    // }
+  &.saved .fa-bookmark {
+    color: $green-muted;
   }
 }
 
