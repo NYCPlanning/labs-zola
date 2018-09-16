@@ -8,4 +8,5 @@ export default LayerGroupModel.extend(QueryParamMap, {
   title: alias('legend.label'),
   meta: DS.attr(),
   legend: DS.attr(),
+  sources: DS.hasMany('source', { async: false }),
 });

@@ -219,6 +219,9 @@
     {{#if model.value.sanitsub}}<div class="data-grid"><label class="data-label">Sanitation Subsection</label><span class="datum">{{model.value.sanitsub}}</span></div>{{/if}}
 
     <hr>
-    <iframe src="https://roadview.planninglabs.nyc/view/{{model.value.lon}}/{{model.value.lat}}" class="cyclomedia" allowfullscreen></iframe>
+    {{road-view 
+      lon=model.value.lon
+      lat=model.value.lat
+    }}
   {{/if}}
 </div>
