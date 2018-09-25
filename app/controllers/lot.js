@@ -51,7 +51,7 @@ export default Controller.extend(Bookmarkable, {
 
   @computed('model.value.geometry')
   parentSpecialPurposeDistricts(geometry) {
-    return carto.SQL(SQL('special_purpose_districts_v201808', geometry))
+    return carto.SQL(SQL('special_purpose_districts_v201809', geometry))
       .then(response => response.map(
         (item) => {
           const [, [anchorName, boroName]] = specialPurposeCrosswalk
