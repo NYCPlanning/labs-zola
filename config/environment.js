@@ -57,6 +57,11 @@ module.exports = function(environment) {
     ENV.APP.autoboot = false;
   }
 
+  if (environment === 'staging') {
+    // here you can enable a staging-specific feature
+    ENV.host = 'https://layers-api-staging.planninglabs.nyc';
+  }
+
   if (environment === 'production') {
     // here you can enable a production-specific feature
     ENV.host = 'https://layers-api.planninglabs.nyc';
