@@ -12,7 +12,7 @@ import {
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 
-const SEARCH_INPUT_SELECTOR = '.search input';
+const SEARCH_INPUT_SELECTOR = '.map-search-input';
 const SEARCH_TERM_ADDRESS = '210 Humboldt';
 const SEARCH_TERM_LOT = '1000477501';
 
@@ -40,7 +40,7 @@ module('Acceptance | bookmarks', function(hooks) {
     await visit('/');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
     await waitUntil(() => find('.has-results'));
-    await click('.tax-lot');
+    await click('.result');
     await waitUntil(() => (currentURL().indexOf('/lot') >= 0));
     await click('.bookmark-save-button');
     await visit('/bookmarks');
@@ -53,7 +53,7 @@ module('Acceptance | bookmarks', function(hooks) {
     await visit('/');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
     await waitUntil(() => find('.has-results'));
-    await click('.tax-lot');
+    await click('.result');
     await waitUntil(() => (currentURL().indexOf('/lot') >= 0));
     await click('.bookmark-save-button');
 
