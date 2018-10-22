@@ -2889,12 +2889,12 @@ cardinal@~0.4.2:
     ansicolors "~0.2.1"
     redeyed "~0.4.0"
 
-"cartobox-promises-utility@github:nycplanning/cartobox-promises-utility#v1.0.2", cartobox-promises-utility@nycplanning/cartobox-promises-utility#v1.0.2:
+cartobox-promises-utility@nycplanning/cartobox-promises-utility#v1.0.2:
   version "0.0.0"
   resolved "https://codeload.github.com/nycplanning/cartobox-promises-utility/tar.gz/57f1c96a0bf03c47e048c30d202643cc49db3c69"
   dependencies:
     ember-cli-babel "^6.6.0"
-    ember-fetch "5.0.0"
+    ember-fetch "4.0.1"
 
 caseless@~0.12.0:
   version "0.12.0"
