@@ -67,7 +67,7 @@
     "ember-promise-helpers": "^1.0.6",
     "ember-radio-button": "1.2.4",
     "ember-resolver": "^5.0.1",
-    "ember-source": "~3.1.0",
+    "ember-source": "~3.3.0",
     "ember-tether": "v1.0.0-beta.3",
     "ember-truth-helpers": "^2.0.0",
     "ember-wormhole": "^0.5.2",
@@ -79,10 +79,11 @@
     "labs-ember-search": "2.4.9",
     "labs-ui": "^0.0.7",
     "loader.js": "^4.7.0",
-    "mapbox-gl": "^0.47.0"
+    "mapbox-gl": "^0.47.0",
+    "qunit-dom": "^0.6.2"
   },
   "engines": {
-    "node": "^8.11.3"
+    "node": "6.* || 8.* || >= 10.*"
   },
   "dependencies": {
     "@turf/area": "^6.0.1",
