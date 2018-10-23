@@ -107,6 +107,9 @@ export default Controller.extend(mapQueryParams.Mixin, {
   metrics: service(),
   registeredLayers: service(),
   mapMouseover: service(),
+  boro: 0,
+  block: 0,
+  lot: 0,
 
   @computed('queryParamsState')
   isDefault(state) {
@@ -196,6 +199,72 @@ export default Controller.extend(mapQueryParams.Mixin, {
         }
       }
     },
+
+    @trackEvent('Map Search', 'Clicked result', 'searchTerms')
+    handleSearchSelect(result) {
+      const { mainMap } = this;
+      const mapInstance = mainMap.get('mapInstance');
+      const { type } = result;
+
+      mainMap.set('currentAddress', null);
+
+      this.setProperties({
+        selected: 0,
+        focused: false,
+      });
+
+      if (type === 'lot') {
+        const { boro, block, lot } = bblDemux(result.bbl);
+        this.set('searchTerms', result.label);
+        this.transitionToRoute('lot', boro, block, lot);
+      }
+
+      if (type === 'zma') {
+        this.set('searchTerms', result.label);
+        this.transitionToRoute('zma', result.ulurpno);
+      }
+
+      if (type === 'zoning-district') {
+        mainMap.set('shouldFitBounds', true);
+        this.transitionToRoute('zoning-district', result.label);
+      }
+
+      if (type === 'neighborhood') {
+        this.set('searchTerms', result.neighbourhood);
+        const center = result.coordinates;
+        mapInstance.flyTo({
+          center,
+          zoom: 13,
+        });
+      }
+
+      if (type === 'address') {
+        const center = result.coordinates;
+        mainMap.set('currentAddress', center);
+
+        this.set('searchTerms', result.label);
+        this.saveAddress({ address: result.label, coordinates: result.coordinates });
+
+        if (mapInstance) {
+          mapInstance.flyTo({
+            center,
+            zoom: 15,
+          });
+          mapInstance.once('moveend', () => { this.transitionToRoute('index'); });
+        }
+      }
+
+      if (type === 'special-purpose-district') {
+        this.set('searchTerms', result.sdname);
+        this.transitionToRoute('special-purpose-district', result.cartodb_id);
+      }
+
+      if (type === 'commercial-overlay') {
+        this.set('searchTerms', result.label);
+        this.transitionToRoute('commercial-overlay', result.label);
+      }
+    },
+
     setQueryParam(property, value) {
       this.set(property, value);
     },
@@ -203,6 +272,12 @@ export default Controller.extend(mapQueryParams.Mixin, {
     @trackEvent('Layer Palette', 'Reset query params', 'isDefault')
     resetQueryParams() {
       this.resetQueryParams();
+    },
+
+    flyTo() {
+      const { boro: { code: boro }, block, lot } = this;
+      console.log(boro, block, lot);
+      this.transitionToRoute('lot', boro, block, lot);
     },
   },
 });

@@ -11,7 +11,7 @@ import { visit,
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 
-const SEARCH_INPUT_SELECTOR = '.search input';
+const SEARCH_INPUT_SELECTOR = '.map-search-input';
 const SEARCH_RESULTS_SELECTOR = '.search-results';
 const LOT_URL_ROOT = '/lot';
 const SEARCH_TERM_LOT = '1000477501';
@@ -31,7 +31,7 @@ module('Acceptance | index', function(hooks) {
     await visit('/');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
     await waitUntil(() => find('.has-results'), { timeout });
-    await click('.tax-lot');
+    await click('.result');
     // await keyEvent(SEARCH_INPUT_SELECTOR, 'keypress', 13);
 
     assert.equal(

@@ -13,6 +13,19 @@ module.exports = function(environment) {
       accessToken: 'pk.eyJ1IjoiY3dob25nbnljIiwiYSI6ImNpczF1MXdrdjA4MXcycXA4ZGtyN2x5YXIifQ.3HGyME8tBs6BnljzUVIt4Q',
     },
 
+    'labs-search': {
+      host: 'https://search-api.planninglabs.nyc',
+      helpers: [
+        'geosearch',
+        'neighborhood',
+        'bbl',
+        'zoning-district',
+        'zoning-map-amendment',
+        'special-purpose-district',
+        'commercial-overlay',
+      ],
+    },
+
     fontawesome: {
       icons: {
         'free-regular-svg-icons': 'all',
