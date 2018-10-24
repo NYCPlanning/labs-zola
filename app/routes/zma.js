@@ -1,6 +1,5 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import updateSelectionMixin from '../mixins/update-selection';
 
 export default Route.extend(updateSelectionMixin, {
