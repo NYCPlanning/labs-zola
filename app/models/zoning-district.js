@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import { computed } from 'ember-decorators/object';
+import { computed } from '@ember-decorators/object';
 import { attr } from '@ember-decorators/data';
 import bbox from '@turf/bbox';
 
@@ -89,7 +89,7 @@ export default class ZoningDistrict extends DS.Model {
   geometry;
 
   @computed('id')
-  primaryzone() {
+  get primaryzone() {
     const id = this.get('id');
     // convert R6A to r6
     const primary = id.match(/\w\d*/)[0].toLowerCase();
@@ -97,8 +97,8 @@ export default class ZoningDistrict extends DS.Model {
   }
 
   @computed('id')
-  zoneabbr() {
-    const id = this.get('id)');
+  get zoneabbr() {
+    const id = this.get('id');
     const abbr = id.match(/\w\d*/)[0].toLowerCase();
 
     if (id in zoningAbbr) {
@@ -109,13 +109,13 @@ export default class ZoningDistrict extends DS.Model {
   }
 
   @computed('zoneabbr')
-  description() {
+  get description() {
     const zoneabbr = this.get('zoneabbr');
     return zoningDescriptions[zoneabbr];
   }
 
   @computed('geometry')
-  bounds() {
+  get bounds() {
     const geometry = this.get('geometry)');
     return bbox(geometry);
   }

@@ -18,7 +18,7 @@ const showLayer = (layer) => {
 };
 
 
-export default class MyComponent extends Component {
+export default class RadioSelectorComponent extends Component {
   constructor(...args) {
     super(...args);
 

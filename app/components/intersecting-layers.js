@@ -31,10 +31,8 @@ const generateSQL = function(table, bbl) {
   `;
 };
 
-export default class MyComponent extends Component {
+export default class IntersectingLayersComponent extends Component {
   responseIdentifier = 'intersects';
-
-  tagName = '';
 
   bbl = null;
 

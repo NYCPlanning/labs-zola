@@ -6,7 +6,7 @@ const Parentable = Component.extend(ParentMixin);
 
 export default class LayerMultiSelectControl extends Parentable {
   @computed('childComponents.@each.selected')
-  allChecked() {
+  get allChecked() {
     return this.childComponents
       .filterBy('selected')
       .mapBy('value');

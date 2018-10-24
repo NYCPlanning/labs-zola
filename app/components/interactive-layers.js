@@ -1,5 +1,5 @@
 import Component from '@ember/component';
 
-export default class MyComponent extends Component {
+export default class InteractiveLayersComponent extends Component {
   classNames = 'layers-menu';
 }

@@ -4,16 +4,17 @@
   </div>
 {{/if}} --}}
 
+{{log layerGroups}}
+
 {{#labs-map
   id='main-map'
-  initOptions=(hash style=layerGroupsMeta.mapboxStyle
-                    zoom=zoom
+  layerGroups=layerGroups
+  initOptions=(hash zoom=zoom
                     center=(array lng lat))
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
   <div class="labs-map-loaded" style="display:none"></div>
   {{#map.labs-layers
-    layerGroups=layerGroups
     interactivity=interactivity
     highlightedFeatureLayer=highlightedLotLayer
     onLayerClick=(action 'handleLayerClick')

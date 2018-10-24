@@ -60,7 +60,7 @@ export default class MainMapService extends Service {
   }
 
   @computed('selected')
-  isSelectedBoundsOptions() {
+  get isSelectedBoundsOptions() {
     const selected = this.get('selected');
     const el = $('.map-container');  // eslint-disable-line
     const height = el.height();

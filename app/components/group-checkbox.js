@@ -2,9 +2,6 @@ import Checkbox from '@ember/component/checkbox';
 import { computed } from '@ember-decorators/object'; // eslint-disable-line
 
 export default class MyCheckbox extends Checkbox {
-  @computed
-  get scope() { return this; }
-
   refs = [];
 
   values = [];
@@ -29,7 +26,8 @@ export default class MyCheckbox extends Checkbox {
   }
 
   @computed('values.@each')
-  indeterminate(values) {
+  get indeterminate() {
+    const values = this.get('values');
     const { checked } = this;
     return values.some(val => val) && !checked;
   }

@@ -3,7 +3,7 @@ import { action } from '@ember-decorators/object';
 
 const aerialYears = [16, 1996, 1951, 1924];
 
-export default class MyComponent extends Component {
+export default class LayerPaletteComponent extends Component {
   classNames = ['layer-palette hide-for-print'];
 
   closed = true;

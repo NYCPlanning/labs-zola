@@ -69,8 +69,6 @@ class MainMap extends Component {
 
   menuTo = 'layers-menu';
 
-  layerGroups = [];
-
   loading = true;
 
   findMeDismissed = false;
