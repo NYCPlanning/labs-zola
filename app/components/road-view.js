@@ -10,8 +10,4 @@ export default class RoadView extends Component.extend(InViewportMixin) {
   lon
 
   inView = false
-
-  didEnterViewport() {
-    this.set('inView', true);
-  }
 }
