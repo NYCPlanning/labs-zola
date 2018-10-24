@@ -1,5 +1,6 @@
 import DS from 'ember-data';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { computed } from 'ember-decorators/object';
+import { attr } from '@ember-decorators/data';
 import bbox from '@turf/bbox';
 
 const zoningDescriptions = {
@@ -83,18 +84,21 @@ const zoningAbbr = {
   BPC: 'bpc',
 };
 
-export default DS.Model.extend({
-  geometry: DS.attr(),
+export default class ZoningDistrict extends DS.Model {
+  @attr()
+  geometry;
 
   @computed('id')
-  primaryzone(id) {
+  primaryzone() {
+    const id = this.get('id');
     // convert R6A to r6
     const primary = id.match(/\w\d*/)[0].toLowerCase();
     return primary;
-  },
+  }
 
   @computed('id')
-  zoneabbr(id) {
+  zoneabbr() {
+    const id = this.get('id)');
     const abbr = id.match(/\w\d*/)[0].toLowerCase();
 
     if (id in zoningAbbr) {
@@ -102,15 +106,17 @@ export default DS.Model.extend({
     }
 
     return abbr;
-  },
+  }
 
   @computed('zoneabbr')
-  description(zoneabbr) {
+  description() {
+    const zoneabbr = this.get('zoneabbr');
     return zoningDescriptions[zoneabbr];
-  },
+  }
 
   @computed('geometry')
-  bounds(geometry) {
+  bounds() {
+    const geometry = this.get('geometry)');
     return bbox(geometry);
-  },
-});
+  }
+}
