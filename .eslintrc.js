@@ -33,6 +33,7 @@ module.exports = {
     'prefer-arrow-callback': 0,
     'no-underscore-dangle': 0,
     'camelcase': 0,
+    'class-methods-use-this': 0,
     'max-len': 0,
     'no-param-reassign': 0,
     'ember/avoid-leaking-state-in-ember-objects': 0,
