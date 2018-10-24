@@ -7,7 +7,6 @@ export default class IsInViewportComponent extends Component.extend(InViewportMi
   inView
 
   didEnterViewport() {
-    console.log('is in view');
     this.set('inView', true);
   }
 }
