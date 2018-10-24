@@ -4,7 +4,7 @@ import { merge } from '@ember/polyfills';
 import EmberObject, { set, computed as computedProp } from '@ember/object';
 import { inject as service } from '@ember/service';
 import QueryParams from 'ember-parachute';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { computed } from '@ember-decorators/object'; // eslint-disable-line
 import bblDemux from '../utils/bbl-demux';
 
 import Geometric from '../mixins/geometric';
@@ -111,12 +111,12 @@ export default Controller.extend(mapQueryParams.Mixin, {
   block: 0,
   lot: 0,
 
-  @computed('queryParamsState')
-  isDefault(state) {
+  isDefault: computedProp('queryParamsState', function() {
+    const state = this.get('queryParamsState');
     const values = Object.values(state);
 
     return values.isEvery('changed', false);
-  },
+  }),
 
   actions: {
     transitionTo(...args) {
@@ -276,7 +276,7 @@ export default Controller.extend(mapQueryParams.Mixin, {
 
     flyTo() {
       const { boro: { code: boro }, block, lot } = this;
-      console.log(boro, block, lot);
+
       this.transitionToRoute('lot', boro, block, lot);
     },
   },
