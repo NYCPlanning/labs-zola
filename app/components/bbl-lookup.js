@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
-import { computed, action } from '@ember-decorators/object';
+import { action } from '@ember-decorators/object';
 import carto from '../utils/carto';
 
 export default class BblLookup extends Component {
