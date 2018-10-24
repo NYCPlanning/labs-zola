@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { argument } from '@ember-decorators/argument';
+import { argument } from '@@ember-decorators/argument';
 import InViewportMixin from 'ember-in-viewport';
 
 

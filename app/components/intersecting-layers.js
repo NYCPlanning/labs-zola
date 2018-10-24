@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { get } from '@ember/object';
 import RSVP from 'rsvp';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { computed } from '@ember-decorators/object'; // eslint-disable-line
 import { task } from 'ember-concurrency';
 import carto from '../utils/carto';
 
@@ -31,13 +31,16 @@ const generateSQL = function(table, bbl) {
   `;
 };
 
-export default Component.extend({
-  responseIdentifier: 'intersects',
-  tagName: '',
-  bbl: null,
-  tables: [],
+export default class MyComponent extends Component {
+  responseIdentifier = 'intersects';
 
-  calculateIntersections: task(function* (tables, bbl, responseIdentifier) {
+  tagName = '';
+
+  bbl = null;
+
+  tables = [];
+
+  calculateIntersections = task(function* (tables, bbl, responseIdentifier) {
     const hash = {};
 
     tables.forEach((table) => {
@@ -47,22 +50,20 @@ export default Component.extend({
 
 
     return yield RSVP.hash(hash);
-  }).restartable(),
+  }).restartable();
 
   willDestroyElement() {
     this.calculateIntersections.cancelAll();
-  },
+  }
 
   willUpdate() {
     this.calculateIntersections.cancelAll();
-  },
+  }
 
-  @computed('tables.@each', 'bbl', 'responseIdentifier')
   intersectingLayers(...args) {
     return this.calculateIntersections.perform(...args);
-  },
+  }
 
-  @computed('intersectingLayers.value')
   numberIntersecting(intersectingLayers) {
     if (intersectingLayers) {
       const truthyValues = Object
@@ -73,5 +74,5 @@ export default Component.extend({
     }
 
     return 0;
-  },
-});
+  }
+}

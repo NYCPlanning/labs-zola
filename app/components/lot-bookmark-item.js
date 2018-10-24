@@ -1,9 +1,13 @@
 import Component from '@ember/component';
-import { inject as service } from '@ember/service';
+import { service } from '@ember-decorators/service';
+import { action } from '@ember-decorators/object';
 
-export default Component.extend({
-  mainMap: service(),
-  mapMouseover: service(),
+export default class MyComponent extends Component {
+  @service
+  mainMap
+
+  @service
+  mapMouseover
 
   mouseEnter() {
     const bbl = this.get('lot.bookmark.bbl');
@@ -15,15 +19,14 @@ export default Component.extend({
     })[0];
 
     this.set('mapMouseover.highlightedLotFeatures', [feature]);
-  },
+  }
 
   mouseLeave() {
     this.set('mapMouseover.highlightedLotFeatures', []);
-  },
+  }
 
-  actions: {
-    deleteBookmark(e) {
-      this.deleteBookmark(e);
-    },
-  },
-});
+  @action
+  deleteBookmark(e) {
+    this.deleteBookmark(e);
+  }
+}

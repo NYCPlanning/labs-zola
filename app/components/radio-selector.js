@@ -3,6 +3,7 @@ import { set } from '@ember/object';
 import { copy } from '@ember/object/internals';
 import { merge } from '@ember/polyfills';
 import { next } from '@ember/runloop';
+import { action } from '@ember-decorators/object';
 
 const hideLayer = (layer) => {
   const layerCopy = copy(layer, true);
@@ -17,9 +18,9 @@ const showLayer = (layer) => {
 };
 
 
-export default Component.extend({
-  init(...args) {
-    this._super(...args);
+export default class MyComponent extends Component {
+  constructor(...args) {
+    super(...args);
 
     next(() => {
       const { layers, qps } = this;
@@ -30,27 +31,28 @@ export default Component.extend({
         this.send('switchLayer', matchedLayer.layer.id);
       }
     });
-  },
+  }
 
-  layers: [],
-  qps: null,
-  actions: {
-    switchLayer(id) {
-      const { layers, qps } = this;
+  layers = [];
 
-      // turn all layers off, reset query params
-      layers.forEach((layer) => {
-        // show the selected layer
-        if (layer.layer.id === id) {
-          showLayer(layer);
+  qps = null;
 
-          qps.set(layer.layer.id, true);
-        } else { // hide all other layers
-          hideLayer(layer);
+  @action
+  switchLayer(id) {
+    const { layers, qps } = this;
 
-          qps.set(layer.layer.id, false);
-        }
-      });
-    },
-  },
-});
+    // turn all layers off, reset query params
+    layers.forEach((layer) => {
+      // show the selected layer
+      if (layer.layer.id === id) {
+        showLayer(layer);
+
+        qps.set(layer.layer.id, true);
+      } else { // hide all other layers
+        hideLayer(layer);
+
+        qps.set(layer.layer.id, false);
+      }
+    });
+  }
+}

@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { computed } from '@ember-decorators/object'; // eslint-disable-line
 import moment from 'moment';
 import { ChildMixin } from 'ember-composability-tools';
 
