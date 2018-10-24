@@ -1,8 +1,9 @@
 import Component from '@ember/component';
 import { get } from '@ember/object';
 import RSVP from 'rsvp';
-import { computed } from '@ember-decorators/object'; // eslint-disable-line
-import { task } from 'ember-concurrency';
+import { computed } from '@ember-decorators/object';
+import { argument } from '@ember-decorators/argument';
+import { restartableTask } from 'ember-concurrency-decorators';
 import carto from '../utils/carto';
 
 const generateSQL = function(table, bbl) {
@@ -34,11 +35,11 @@ const generateSQL = function(table, bbl) {
 export default class IntersectingLayersComponent extends Component {
   responseIdentifier = 'intersects';
 
+  @argument
   bbl = null;
 
-  tables = [];
-
-  calculateIntersections = task(function* (tables, bbl, responseIdentifier) {
+  @restartableTask
+  calculateIntersections = function* (tables, bbl, responseIdentifier) {
     const hash = {};
 
     tables.forEach((table) => {
@@ -46,23 +47,27 @@ export default class IntersectingLayersComponent extends Component {
         .then((response => get(response[0] || {}, responseIdentifier)));
     });
 
-
     return yield RSVP.hash(hash);
-  }).restartable();
+  }
 
   willDestroyElement() {
-    this.calculateIntersections.cancelAll();
+    this.get('calculateIntersections').cancelAll();
   }
 
   willUpdate() {
-    this.calculateIntersections.cancelAll();
+    this.get('calculateIntersections').cancelAll();
   }
 
-  intersectingLayers(...args) {
-    return this.calculateIntersections.perform(...args);
+  @computed('tables.@each', 'bbl', 'responseIdentifier')
+  get intersectingLayers() {
+    const { tables, bbl, responseIdentifier } = this.getProperties('tables', 'bbl', 'responseIdentifier');
+    return this.get('calculateIntersections').perform(tables, bbl, responseIdentifier);
   }
 
-  numberIntersecting(intersectingLayers) {
+  @computed('intersectingLayers.value')
+  get numberIntersecting() {
+    const intersectingLayers = this.get('intersectingLayers.value');
+
     if (intersectingLayers) {
       const truthyValues = Object
         .values(intersectingLayers)

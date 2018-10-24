@@ -46,7 +46,7 @@
     "ember-cli-update": "0.22.0",
     "ember-composability-tools": "0.0.9",
     "ember-composable-helpers": "^2.1.0",
-    "ember-concurrency-decorators": "0.0.4-beta.0",
+    "ember-concurrency-decorators": "0.2.0",
     "ember-content-placeholders": "^1.0.0",
     "ember-copy": "1.0.0",
     "ember-data": "~3.3.1",
