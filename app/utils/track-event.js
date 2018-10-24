@@ -1,7 +1,7 @@
 import { isEmpty } from '@ember/utils';
 
 // Broken for now pending code modification:
-// https://github.com/ember-decorators/ember-decorators/issues/206
+// https://github.com/@ember-decorators/@ember-decorators/issues/206
 
 // decorator arguments
 export default function trackEvent(eventCategory, incAction, incLabel, eventValue) {
