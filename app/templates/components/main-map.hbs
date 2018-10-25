@@ -73,12 +73,29 @@
 <div class="draw-tools">
   <label>
     <span class="hide-for-large" {{action (mut drawToolsOpen) (not drawToolsOpen)}}>
-      {{#if drawToolsOpen}}{{fa-icon 'chevron-left'}}{{else}}{{fa-icon 'pencil'}}{{/if}}
+      {{#if drawToolsOpen}}
+        {{fa-icon 'chevron-left'}}
+      {{else}}
+        {{fa-icon 'pencil'}}
+      {{/if}}
     </span>
     <span class="show-for-large">Measure</span>
   </label>
-  <button class="draw-tool draw-tool--line {{unless drawToolsOpen 'show-for-large'}} {{if (eq mainMap.drawMode 'draw_line_string') 'active'}}" onclick={{action 'startDraw' 'line'}}><span class="icon distance"></span></button>
-  <button class="draw-tool draw-tool--polygon {{unless drawToolsOpen 'show-for-large'}} {{if (eq mainMap.drawMode 'draw_polygon') 'active'}}" onclick={{action 'startDraw' 'polygon'}}><span class="icon polygon"></span></button>
+  <button class="draw-tool draw-tool--line {{unless drawToolsOpen 'show-for-large'}} {{if (eq mainMap.drawMode 'draw_line_string') 'active'}}" onclick={{action 'startDraw' 'line'}}>
+    {{#if (and didStartDraw (not drawDidRender) (not draw))}}
+      {{fa-icon 'spinner'}}
+    {{else}} 
+      <span class="icon distance"></span>
+    {{/if}}
+  </button>
+  
+  <button class="draw-tool draw-tool--polygon {{unless drawToolsOpen 'show-for-large'}} {{if (eq mainMap.drawMode 'draw_polygon') 'active'}}" onclick={{action 'startDraw' 'polygon'}}>
+    {{#if (and didStartDraw (not drawDidRender) (not draw))}}
+      {{fa-icon 'spinner'}}
+    {{else}} 
+      <span class="icon polygon"></span>
+    {{/if}}
+  </button>
   {{#if drawnMeasurements}}
     <button class="draw-tool draw-tool--clear" onclick={{action 'clearDraw'}}>{{fa-icon "times"}}</button>
   {{/if}}

@@ -62,7 +62,7 @@
     "ember-local-storage": "^1.4.0",
     "ember-mapbox-composer": "0.0.18",
     "ember-mapbox-gl": "0.12.0",
-    "ember-mapbox-gl-draw": "^1.0.1",
+    "ember-mapbox-gl-draw": "2.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-metrics": "0.12.1",
     "ember-native-dom-helpers": "^0.6.2",
@@ -88,6 +88,7 @@
     "labs-ui": "^0.0.9",
     "loader.js": "^4.7.0",
     "mapbox-gl": "^0.44.0",
+    "mapbox-gl-draw": "0.16.0",
     "moment": "2.22.2",
     "qunit-dom": "^0.8.0"
   },

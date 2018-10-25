@@ -18,6 +18,13 @@ module.exports = (defaults) => {
     babel: {
       plugins: [babelPlugin],
     },
+    autoImport: {
+      webpack: {
+        node: {
+          fs: 'empty',
+        },
+      },
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated

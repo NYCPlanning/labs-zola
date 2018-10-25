@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import mapboxgl from 'mapbox-gl';
-import MapboxDraw from 'mapbox-gl-draw';
 import area from '@turf/area';
 import lineDistance from '@turf/line-distance';
 import numeral from 'numeral';
@@ -35,12 +34,6 @@ MeasurementText.prototype.onRemove = function () {
   this._container.parentNode.removeChild(this._container);
   this._map = undefined;
 };
-
-const draw = new MapboxDraw({
-  displayControlsDefault: false,
-  styles: drawStyles,
-});
-
 
 export default
 @classNames('map-container')
@@ -92,6 +85,12 @@ class MainMap extends Component {
   highlightedLayerId = null;
 
   highlightedLotLayer = highlightedLotLayer;
+
+  draw = null;
+
+  didStartDraw = false;
+
+  drawDidRender = false;
 
   @computed('layerGroupsObject')
   get mapConfig() {
@@ -267,7 +266,14 @@ class MainMap extends Component {
   }
 
   @action
-  startDraw(type) {
+  async startDraw(type) {
+    this.set('didStartDraw', true);
+    const draw = this.get('draw') || await import('mapbox-gl-draw')
+      .then(({ default: MapboxDraw }) => new MapboxDraw({
+        displayControlsDefault: false,
+        styles: drawStyles,
+      }));
+    this.set('draw', draw);
     const drawMode = type === 'line' ? 'draw_line_string' : 'draw_polygon';
     const { mainMap } = this;
     if (mainMap.get('drawMode')) {
@@ -283,6 +289,7 @@ class MainMap extends Component {
 
   @action
   clearDraw() {
+    const draw = this.get('draw');
     const { mainMap } = this;
     if (mainMap.get('drawMode')) {
       mainMap.mapInstance.removeControl(draw);
@@ -295,6 +302,7 @@ class MainMap extends Component {
 
   @action
   handleDrawCreate(e) {
+    const draw = this.get('draw');
     this.set('mainMap.drawnFeature', e.features[0].geometry);
     setTimeout(() => {
       this.mainMap.mapInstance.removeControl(draw);
@@ -304,6 +312,8 @@ class MainMap extends Component {
 
   @action
   handleMeasurement() {
+    this.set('drawDidRender', true);
+    const draw = this.get('draw');
     // should log both metric and standard display strings for the current drawn feature
     const { features } = draw.getAll();
 
