@@ -3,11 +3,14 @@ import { inject as service } from '@ember/service';
 
 export default Route.extend({
   mainMap: service(),
+  fastboot: service(),
 
   beforeModel(transition) {
-    // only transition to about if index is loaded and there is no hash
-    if (transition.intent.url === '/' && window.location.href.split('#').length < 2) {
-      this.transitionTo('about');
+    if (!this.get('fastboot.isFastBoot')) {
+      // only transition to about if index is loaded and there is no hash
+      if (transition.intent.url === '/' && window.location.href.split('#').length < 2) {
+        this.transitionTo('about');
+      }
     }
   },
 

@@ -5085,6 +5085,10 @@ ember-source@~3.5.0:
     jquery "^3.3.1"
     resolve "^1.6.0"
 
+ember-template-compiler@1.9.0-alpha:
+  version "1.9.0-alpha"
+  resolved "https://registry.yarnpkg.com/ember-template-compiler/-/ember-template-compiler-1.9.0-alpha.tgz#193dfcfcf0d8c1b3595a9609eb46d90d05d34f2f"
+
 ember-tether@v1.0.0-beta.3:
   version "1.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/ember-tether/-/ember-tether-1.0.0-beta.3.tgz#444d846b62cba642e20b09ebb55305325a1d50c3"

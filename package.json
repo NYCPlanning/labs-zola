@@ -74,6 +74,7 @@
     "ember-radio-button": "1.2.4",
     "ember-resolver": "^5.0.1",
     "ember-source": "~3.5.0",
+    "ember-template-compiler": "1.9.0-alpha",
     "ember-tether": "v1.0.0-beta.3",
     "ember-tooltips": "3.0.0",
     "ember-truth-helpers": "^2.0.0",

@@ -42,6 +42,9 @@ class MainMap extends Component {
   mainMap;
 
   @service
+  fastboot;
+
+  @service
   mapMouseover;
 
   @service
