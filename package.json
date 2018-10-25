@@ -24,8 +24,6 @@
     "babel-eslint": "^8.0.0",
     "broccoli-asset-rev": "^2.7.0",
     "broccoli-clean-css": "^2.0.1",
-    "broccoli-concat": "3.7.3",
-    "broccoli-concat-analyser": "4.3.1",
     "ember-auto-import": "1.2.13",
     "ember-clean-project": "1.0.1",
     "ember-cli": "~3.5.0",
