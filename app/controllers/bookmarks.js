@@ -12,7 +12,7 @@ export default Controller.extend({
   // aggregate operations (like filtering)
 
   bookmarksSettled: computedProp('model.[]', function() {
-    const bookmarks = this.get('bookmarks');
+    const bookmarks = this.get('model');
     const promises = bookmarks.mapBy('recordType');
 
     return Promise.all(promises);

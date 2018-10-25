@@ -12,10 +12,11 @@ module.exports = {
   ],
   browser_args: {
     Chrome: [
-      '--headless',
-      // '--disable-gpu',
-      '--remote-debugging-port=9222',
+      '--disable-dev-shm-usage',
+      '--disable-software-rasterizer',
+      '--mute-audio',
+      '--remote-debugging-port=0',
       '--window-size=1440,900',
-    ],
+    ].filter(Boolean),
   },
 };

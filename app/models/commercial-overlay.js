@@ -9,7 +9,7 @@ export default class MyComponent extends Bookmarkable {
   overlay = DS.attr('string');
 
   @computed('geometry')
-  bounds() {
+  get bounds() {
     const geometry = this.get('geometry');
 
     return bbox(geometry);

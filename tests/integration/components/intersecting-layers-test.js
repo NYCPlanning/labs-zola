@@ -8,16 +8,17 @@ module('Integration | Component | intersecting layers', function(hooks) {
 
   test('it renders', async function(assert) {
 
-    // Set any properties with this.set('myProperty', 'value');
+    // Set any properties with 
     // Handle any actions with this.on('myAction', function(val) { ... });
+    this.set('myProperty', []);
 
-    await render(hbs`{{intersecting-layers}}`);
+    await render(hbs`{{intersecting-layers tables=myProperty}}`);
 
     assert.equal(find('*').textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#intersecting-layers}}
+      {{#intersecting-layers tables=myProperty}}
         template block text
       {{/intersecting-layers}}
     `);
