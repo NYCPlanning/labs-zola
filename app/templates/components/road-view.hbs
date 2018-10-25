@@ -1,3 +1,7 @@
-{{#if inView}}
-  <iframe src="https://roadview.planninglabs.nyc/view/{{lon}}/{{lat}}" class="cyclomedia" allowfullscreen></iframe>
-{{/if}}
+<div class="cyclomedia">
+  {{#if inView}}
+    <iframe src="https://roadview.planninglabs.nyc/view/{{lon}}/{{lat}}" class="cyclomedia" allowfullscreen></iframe>
+  {{/if}}
+</div>
+
+{{is-in-viewport inView=inView}}

@@ -1,16 +1,19 @@
 import DS from 'ember-data';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { computed } from '@ember-decorators/object';
+import { attr, belongsTo } from '@ember-decorators/data';
 
-const { PromiseObject } = DS;
+const { PromiseObject, Model } = DS;
 
-export default DS.Model.extend({
-  bookmark: DS.belongsTo('bookmark', { inverse: 'bookmark' }),
+export default class BookmarkModel extends Model {
+  @belongsTo('bookmark', { inverse: 'bookmark' }) bookmark;
 
-  address: DS.attr('string'),
-  coordinates: DS.attr(),
+  @attr('string') address;
+
+  @attr() coordinates;
 
   @computed('bookmark')
-  recordType(bookmark) {
+  get recordType() {
+    const bookmark = this.get('bookmark');
     return PromiseObject.create({
       promise: bookmark.then((bmark) => {
         if (bmark) {
@@ -20,5 +23,5 @@ export default DS.Model.extend({
         return 'address';
       }),
     });
-  },
-});
+  }
+}

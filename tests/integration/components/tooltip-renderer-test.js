@@ -1,4 +1,4 @@
-import { module, test } from 'qunit';
+import { module, skip } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
@@ -16,7 +16,7 @@ const template = 'The value of foo is {{foo}}';
 module('Integration | Component | tooltip-renderer', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders a tooltipTemplate', async function(assert) {
+  skip('it renders a tooltipTemplate', async function(assert) {
     this.set('feature', feature)
     this.set('template', template)
 

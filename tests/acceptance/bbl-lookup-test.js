@@ -1,4 +1,4 @@
-import { module, test } from 'qunit';
+import { module, skip } from 'qunit';
 import { visit, click, fillIn, currentURL, pauseTest, triggerEvent } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import mapboxGlLoaded from '../helpers/mapbox-gl-loaded';
@@ -6,7 +6,7 @@ import mapboxGlLoaded from '../helpers/mapbox-gl-loaded';
 module('Acceptance | bbl lookup', function(hooks) {
   setupApplicationTest(hooks);
 
-  test('BBL lookup works', async function(assert) {
+  skip('BBL lookup works', async function(assert) {
     await visit('/');
     await mapboxGlLoaded();
     await click('.bbl-lookup-toggle');

@@ -1,11 +1,12 @@
 import Controller from '@ember/controller';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { computed as computedProp } from '@ember/object';
+import { computed } from '@ember-decorators/object'; // eslint-disable-line
 
 export default Controller.extend({
-
-  @computed('model.primaryzone')
-  primaryzoneURL(primaryzone) {
+  primaryzoneURL: computedProp('model.primaryzone', function() {
+    const primaryzone = this.get('model.primaryzone');
     let url = '';
+
     if ((primaryzone === 'c1') || (primaryzone === 'c2')) {
       url = 'c1-c2';
     } else if (primaryzone === 'c3') {
@@ -14,6 +15,5 @@ export default Controller.extend({
       url = primaryzone;
     }
     return url;
-  },
-
+  }),
 });

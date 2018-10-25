@@ -1,9 +1,9 @@
-import { computed } from '@ember/object';
-import { alias } from '@ember/object/computed';
-import DS from 'ember-data';
+import { computed } from '@ember-decorators/object';
+import { alias } from '@ember-decorators/object/computed';
+import { attr } from '@ember-decorators/data';
+import bbox from '@turf/bbox';
 
 import Bookmarkable from './bookmark';
-import Geometric from '../mixins/geometric';
 
 // columns requested from server
 // update to add more
@@ -342,81 +342,148 @@ const landuseLookup = {
   11: 'Vacant Land',
 };
 
-export default Bookmarkable.extend(Geometric, {
-  address: DS.attr('string'),
-  bbl: DS.attr('number'),
-  bldgarea: DS.attr('number'),
-  bldgclass: DS.attr('string'),
-  bldgclassname: computed('bldgclass', function() {
+export default class LotModel extends Bookmarkable {
+  @alias('borocode') boro;
+
+  @attr('string') address;
+
+  @attr('number') bbl;
+
+  @attr('number') bldgarea;
+
+  @attr('string') bldgclass;
+
+  @attr('number') lat;
+
+  @attr('number') lon;
+
+  @attr('number') block;
+
+  @attr('string') borough;
+
+  @attr('string') cd;
+
+  @attr('number') condono;
+
+  @attr('string') council;
+
+  @attr('string') firecomp;
+
+  @attr('string') histdist;
+
+  @attr('string') landmark;
+
+  @attr('string') landuse;
+
+  @attr('number') lot;
+
+  @attr('number') lotarea;
+
+  @attr('number') lotdepth;
+
+  @attr('number') lotfront;
+
+  @attr('number') numbldgs;
+
+  @attr('number') numfloors;
+
+  @attr('string') ownername;
+
+  @attr('string') ownertype;
+
+  @attr('string') overlay1;
+
+  @attr('string') overlay2;
+
+  @attr('string') policeprct;
+
+  @attr('string') sanitboro;
+
+  @attr('string') sanitdistr;
+
+  @attr('string') sanitsub;
+
+  @attr('string') schooldist;
+
+  @attr('string') spdist1;
+
+  @attr('string') spdist2;
+
+  @attr('string') spdist3;
+
+  @attr('number') unitsres;
+
+  @attr('number') unitstotal;
+
+  @attr('string') yearbuilt;
+
+  @attr('number') yearalter1;
+
+  @attr('number') yearalter2;
+
+  @attr('number') zipcode;
+
+  @attr('string') zonedist1;
+
+  @attr('string') zonedist2;
+
+  @attr('string') zonedist3;
+
+  @attr('string') zonedist4;
+
+  @attr('string') zonemap;
+
+  @attr() geometry;
+
+  @computed('geometry')
+  get bounds() {
+    const geometry = this.get('geometry');
+
+    return bbox(geometry);
+  }
+
+  @computed('bldgclass')
+  get bldgclassname() {
     return bldgclassLookup[this.bldgclass];
-  }),
-  lat: DS.attr('number'),
-  lon: DS.attr('number'),
-  block: DS.attr('number'),
-  borocode: computed('cd', function() {
+  }
+
+  @computed('cd')
+  get borocode() {
     const borocd = this.cd;
     return borocd.substring(0, 1);
-  }),
-  boro: alias('borocode'),
-  borough: DS.attr('string'),
-  boroname: computed('borough', function() {
+  }
+
+  @computed('borough')
+  get boroname() {
     return boroughLookup[this.borough];
-  }),
-  cd: DS.attr('string'),
-  cdName: computed('cd', function() {
+  }
+
+  @computed('cd')
+  get cdName() {
     const borocd = this.cd;
     const boro = borocd.substring(0, 1);
     const cd = parseInt(borocd.substring(1, 3), 10).toString();
     return `${boroLookup[boro]} Community District ${cd}`;
-  }),
-  cdURLSegment: computed('cd', function() {
+  }
+
+  @computed('cd')
+  get cdURLSegment() {
     const borocd = this.cd;
     const boro = borocd.substring(0, 1);
     const cleanBorough = boroLookup[boro].toLowerCase().replace(/\s/g, '-');
     const cd = parseInt(borocd.substring(1, 3), 10).toString();
     return `${cleanBorough}/${cd}`;
-  }),
-  condono: DS.attr('number'),
-  council: DS.attr('string'),
-  firecomp: DS.attr('string'),
-  histdist: DS.attr('string'),
-  landmark: DS.attr('string'),
-  landuse: DS.attr('string'),
-  landusename: computed('landuse', function() {
+  }
+
+  @computed('landuse')
+  get landusename() {
     return landuseLookup[this.landuse];
-  }),
-  lot: DS.attr('number'),
-  lotarea: DS.attr('number'),
-  lotdepth: DS.attr('number'),
-  lotfront: DS.attr('number'),
-  numbldgs: DS.attr('number'),
-  numfloors: DS.attr('number'),
-  ownername: DS.attr('string'),
-  ownertype: DS.attr('string'),
-  ownertypename: computed('ownertype', function() {
+  }
+
+  @computed('ownertype')
+  get ownertypename() {
     return ownertypeLookup[this.ownertype];
-  }),
-  overlay1: DS.attr('string'),
-  overlay2: DS.attr('string'),
-  policeprct: DS.attr('string'),
-  sanitboro: DS.attr('string'),
-  sanitdistr: DS.attr('string'),
-  sanitsub: DS.attr('string'),
-  schooldist: DS.attr('string'),
-  spdist1: DS.attr('string'),
-  spdist2: DS.attr('string'),
-  spdist3: DS.attr('string'),
-  unitsres: DS.attr('number'),
-  unitstotal: DS.attr('number'),
-  yearbuilt: DS.attr('string'),
-  yearalter1: DS.attr('number'),
-  yearalter2: DS.attr('number'),
-  zipcode: DS.attr('number'),
-  zonedist1: DS.attr('string'),
-  zonedist2: DS.attr('string'),
-  zonedist3: DS.attr('string'),
-  zonedist4: DS.attr('string'),
-  zonemap: DS.attr('string'),
-});
+  }
+}
 
 export { LotColumnsSQL };

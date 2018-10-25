@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { computed } from '@ember-decorators/object';
 
 const flattenedIds = function(layers) {
   return layers
@@ -10,31 +10,36 @@ const flattenedIds = function(layers) {
     );
 };
 
-export default Service.extend({
-  layers: [],
+export default class RegisteredLayersService extends Service {
+  layers = [];
 
   @computed('layers.@each.visible')
-  currentlyVisible(layers) {
+  get currentlyVisible() {
+    const layers = this.get('layers');
     return layers.filterBy('visible', true);
-  },
+  }
 
   @computed('layers.@each')
-  layerGroupIds(layers) {
+  get layerGroupIds() {
+    const layers = this.get('layers');
     return layers.mapBy('config.id');
-  },
+  }
 
   @computed('layers.@each')
-  layerIds(layers) {
+  get layerIds() {
+    const layers = this.get('layers');
     return flattenedIds(layers);
-  },
+  }
 
   @computed('currentlyVisible')
-  visibleLayerIds(layers) {
+  get visibleLayerIds() {
+    const layers = this.get('currentlyVisible');
     return flattenedIds(layers);
-  },
+  }
 
   @computed('currentlyVisible')
-  highlightableAndVisibleLayerIds(layers) {
+  get highlightableAndVisibleLayerIds() {
+    const layers = this.get('currentlyVisible');
     // return an array of layerids that are both visible and highlightable
     return layers
       .map(layer => layer.config.layers.filter(l => l.highlightable).map(l => l.layer.id))
@@ -42,10 +47,11 @@ export default Service.extend({
         (accumulator, curr) => (accumulator.concat(curr)),
         [],
       );
-  },
+  }
 
   @computed('currentlyVisible')
-  clickableAndVisibleLayerIds(layers) {
+  get clickableAndVisibleLayerIds() {
+    const layers = this.get('currentlyVisible');
     // return an array of layerids that are both visible and clickable
     return layers
       .map(layer => layer.config.layers.filter(l => l.clickable).map(l => l.layer.id))
@@ -53,7 +59,7 @@ export default Service.extend({
         (accumulator, curr) => (accumulator.concat(curr)),
         [],
       );
-  },
+  }
 
   getTooltipTemplate(id) {
     // find the layer with this id, return its tooltipTemplate
@@ -66,9 +72,9 @@ export default Service.extend({
     )[0];
 
     return layer.tooltipTemplate;
-  },
+  }
 
   findLayer(id) {
     return this.layers.findBy('config.id', id);
-  },
-});
+  }
+}

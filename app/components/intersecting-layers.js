@@ -1,8 +1,9 @@
 import Component from '@ember/component';
 import { get } from '@ember/object';
 import RSVP from 'rsvp';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
-import { task } from 'ember-concurrency';
+import { computed } from '@ember-decorators/object';
+import { argument } from '@ember-decorators/argument';
+import { restartableTask } from 'ember-concurrency-decorators';
 import carto from '../utils/carto';
 
 const generateSQL = function(table, bbl) {
@@ -31,13 +32,14 @@ const generateSQL = function(table, bbl) {
   `;
 };
 
-export default Component.extend({
-  responseIdentifier: 'intersects',
-  tagName: '',
-  bbl: null,
-  tables: [],
+export default class IntersectingLayersComponent extends Component {
+  responseIdentifier = 'intersects';
 
-  calculateIntersections: task(function* (tables, bbl, responseIdentifier) {
+  @argument
+  bbl = null;
+
+  @restartableTask
+  calculateIntersections = function* (tables, bbl, responseIdentifier) {
     const hash = {};
 
     tables.forEach((table) => {
@@ -45,25 +47,27 @@ export default Component.extend({
         .then((response => get(response[0] || {}, responseIdentifier)));
     });
 
-
     return yield RSVP.hash(hash);
-  }).restartable(),
+  }
 
   willDestroyElement() {
-    this.calculateIntersections.cancelAll();
-  },
+    this.get('calculateIntersections').cancelAll();
+  }
 
   willUpdate() {
-    this.calculateIntersections.cancelAll();
-  },
+    this.get('calculateIntersections').cancelAll();
+  }
 
   @computed('tables.@each', 'bbl', 'responseIdentifier')
-  intersectingLayers(...args) {
-    return this.calculateIntersections.perform(...args);
-  },
+  get intersectingLayers() {
+    const { tables, bbl, responseIdentifier } = this.getProperties('tables', 'bbl', 'responseIdentifier');
+    return this.get('calculateIntersections').perform(tables, bbl, responseIdentifier);
+  }
 
   @computed('intersectingLayers.value')
-  numberIntersecting(intersectingLayers) {
+  get numberIntersecting() {
+    const intersectingLayers = this.get('intersectingLayers.value');
+
     if (intersectingLayers) {
       const truthyValues = Object
         .values(intersectingLayers)
@@ -73,5 +77,5 @@ export default Component.extend({
     }
 
     return 0;
-  },
-});
+  }
+}

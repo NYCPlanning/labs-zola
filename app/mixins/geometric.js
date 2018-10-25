@@ -1,13 +1,13 @@
 import Mixin from '@ember/object/mixin';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { computed as computedProp } from '@ember/object';
 import bbox from '@turf/bbox';
 import DS from 'ember-data';
 
 export default Mixin.create({
   geometry: DS.attr(),
+  bounds: computedProp('geometry', function() {
+    const geometry = this.get('geometry');
 
-  @computed('geometry')
-  bounds(geometry) {
     return bbox(geometry);
-  },
+  }),
 });

@@ -28,8 +28,30 @@ module.exports = function(environment) {
 
     fontawesome: {
       icons: {
-        'free-regular-svg-icons': 'all',
-        'free-solid-svg-icons': 'all',
+        'free-regular-svg-icons': [
+          'circle',
+        ],
+        'free-solid-svg-icons': [
+          'angle-up',
+          'bookmark',
+          'caret-down',
+          'caret-up',
+          'chevron-down',
+          'chevron-left',
+          'chevron-up',
+          'external-link-alt',
+          'home',
+          'info-circle',
+          'map-pin',
+          'print',
+          'search',
+          'spinner',
+          'square',
+          'times',
+          'tree',
+          'undo',
+          'window-minimize',
+        ],
       },
     },
 
