@@ -25,6 +25,15 @@ module.exports = (defaults) => {
         },
       },
     },
+    emberCliConcat: {
+      js: {
+        concat: process.env.EMBER_ENV === 'production',
+        useAsync: process.env.EMBER_ENV === 'production',
+      },
+      css: {
+        concat: false,
+      },
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
