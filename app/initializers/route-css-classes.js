@@ -1,9 +1,7 @@
 import Ember from 'ember';
-import { inject as service } from '@ember/service';
 
 export function initialize() {
   Ember.Route.reopen({
-    fastboot: service(),
     activate(...args) {
       this._super(...args);
 
@@ -35,16 +33,6 @@ export function initialize() {
     },
 
     getBodyElement() {
-      if (this.get('fastboot.isFastBoot')) {
-        return {
-          classList: {
-            remove() {},
-            add() {},
-          },
-          className: '',
-        };
-      }
-
       return document.querySelector('body');
     },
   });

@@ -1,72 +1,70 @@
-{{#unless fastboot.isFastBoot}}
-  {{#labs-map
-    id='main-map'
-    layerGroups=layerGroups
-    initOptions=(hash zoom=zoom
-                      center=(array lng lat))
-    mapLoaded=(action 'handleMapLoad')
-    as |map|}}
-    <div class="labs-map-loaded" style="display:none"></div>
-    {{#map.labs-layers
-      interactivity=interactivity
-      highlightedFeatureLayer=highlightedLotLayer
-      onLayerClick=(action 'handleLayerClick')
-      onLayerHighlight=(action 'handleLayerHighlight')
-       as |layers|}}
-      {{#layers.tooltip as |tooltip|}}
-        {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
-      {{/layers.tooltip}}
-    {{/map.labs-layers}}
+{{#labs-map
+  id='main-map'
+  layerGroups=layerGroups
+  initOptions=(hash zoom=zoom
+                    center=(array lng lat))
+  mapLoaded=(action 'handleMapLoad')
+  as |map|}}
+  <div class="labs-map-loaded" style="display:none"></div>
+  {{#map.labs-layers
+    interactivity=interactivity
+    highlightedFeatureLayer=highlightedLotLayer
+    onLayerClick=(action 'handleLayerClick')
+    onLayerHighlight=(action 'handleLayerHighlight')
+     as |layers|}}
+    {{#layers.tooltip as |tooltip|}}
+      {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
+    {{/layers.tooltip}}
+  {{/map.labs-layers}}
 
-    {{#if bookmarkedLotsLayer}}
-      {{map.layer
-        layer=bookmarkedLotsLayer
+  {{#if bookmarkedLotsLayer}}
+    {{map.layer
+      layer=bookmarkedLotsLayer
+      before='place_other'}}
+  {{/if}}
+
+  {{#if mainMap.selected}}
+    {{#map.source
+      sourceId='selected-lot'
+      options=selectedLotSource as |source|}}
+      {{source.layer
+        layer=selectedFillLayer
         before='place_other'}}
-    {{/if}}
+      {{source.layer
+        layer=selectedLineLayer
+        before='place_other'}}
+    {{/map.source}}
+  {{/if}}
 
-    {{#if mainMap.selected}}
-      {{#map.source
-        sourceId='selected-lot'
-        options=selectedLotSource as |source|}}
-        {{source.layer
-          layer=selectedFillLayer
-          before='place_other'}}
-        {{source.layer
-          layer=selectedLineLayer
-          before='place_other'}}
-      {{/map.source}}
-    {{/if}}
+  {{#if mainMap.drawnFeature}}
+    {{#map.source
+      sourceId='drawn-feature'
+      options=mainMap.drawnFeatureSource as |source|}}
+      {{source.layer layer=drawnFeatureLayers.line before='place_other'}}
+      {{#if (eq mainMap.drawnFeature.type 'Polygon')}}
+        {{source.layer layer=drawnFeatureLayers.fill before='place_other'}}
+      {{/if}}
+    {{/map.source}}
+  {{/if}}
 
-    {{#if mainMap.drawnFeature}}
-      {{#map.source
-        sourceId='drawn-feature'
-        options=mainMap.drawnFeatureSource as |source|}}
-        {{source.layer layer=drawnFeatureLayers.line before='place_other'}}
-        {{#if (eq mainMap.drawnFeature.type 'Polygon')}}
-          {{source.layer layer=drawnFeatureLayers.fill before='place_other'}}
-        {{/if}}
-      {{/map.source}}
-    {{/if}}
+  {{#if mainMap.currentAddress}}
+    {{#map.source sourceId='currentAddress' options=mainMap.addressSource as |source|}}
+      {{source.layer layer=mainMap.pointLayer}}
+    {{/map.source}}
+  {{/if}}
 
-    {{#if mainMap.currentAddress}}
-      {{#map.source sourceId='currentAddress' options=mainMap.addressSource as |source|}}
-        {{source.layer layer=mainMap.pointLayer}}
-      {{/map.source}}
-    {{/if}}
+  {{#if shouldFitBounds}}
+    {{map.call 'fitBounds' mainMap.bounds mainMap.isSelectedBoundsOptions}}
+  {{/if}}
 
-    {{#if shouldFitBounds}}
-      {{map.call 'fitBounds' mainMap.bounds mainMap.isSelectedBoundsOptions}}
-    {{/if}}
-
-    {{map.on 'click' (action routeToLot)}}
-    {{map.on 'data' (action 'mapLoading')}}
-    {{map.on 'zoomend' (action 'handleZoomend')}}
-    {{map.on 'mousemove' (action 'handleMousemove')}}
-    {{map.on 'mouseout' (action 'handleMouseleave')}}
-    {{map.on 'draw.create' (action 'handleDrawCreate')}}
-    {{map.on 'draw.render' (action 'handleMeasurement')}}
-  {{/labs-map}}
-{{/unless}}
+  {{map.on 'click' (action routeToLot)}}
+  {{map.on 'data' (action 'mapLoading')}}
+  {{map.on 'zoomend' (action 'handleZoomend')}}
+  {{map.on 'mousemove' (action 'handleMousemove')}}
+  {{map.on 'mouseout' (action 'handleMouseleave')}}
+  {{map.on 'draw.create' (action 'handleDrawCreate')}}
+  {{map.on 'draw.render' (action 'handleMeasurement')}}
+{{/labs-map}}
 
 <div class="print-controls mapboxgl-ctrl mapboxgl-ctrl-group">
   <button {{action 'handlePrint'}} class="mapboxgl-ctrl-icon">{{fa-icon 'print'}}</button>

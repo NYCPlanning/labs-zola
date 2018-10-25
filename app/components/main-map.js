@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-// import mapboxgl from 'mapbox-gl';
+import mapboxgl from 'mapbox-gl';
 import area from '@turf/area';
 import lineDistance from '@turf/line-distance';
 import numeral from 'numeral';
@@ -40,9 +40,6 @@ export default
 class MainMap extends Component {
   @service
   mainMap;
-
-  @service
-  fastboot;
 
   @service
   mapMouseover;
@@ -206,8 +203,8 @@ class MainMap extends Component {
     mainMap.set('mapInstance', map);
 
     // setup controls
-    const navigationControl = new mapboxgl.NavigationControl(); // eslint-disable-line
-    const geoLocateControl = new mapboxgl.GeolocateControl({ // eslint-disable-line
+    const navigationControl = new mapboxgl.NavigationControl();
+    const geoLocateControl = new mapboxgl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true,
       },
@@ -223,7 +220,7 @@ class MainMap extends Component {
     });
 
     map.addControl(navigationControl, 'top-left');
-    map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left'); // eslint-disable-line
+    map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
     map.addControl(geoLocateControl, 'top-left');
     map.addControl(new MeasurementText(), 'top-left');
 
