@@ -1,20 +1,24 @@
 import Component from '@ember/component';
 import { computed } from '@ember-decorators/object'; // eslint-disable-line
-import moment from 'moment';
 import { ChildMixin } from 'ember-composability-tools';
 
-const defaultFormat = 'YYYY-MM-DD';
 const defaultMax = new Date();
 const defaultStart = [1032370151000, defaultMax.getTime()];
 
-const fromEpoch = function(number, format = defaultFormat) {
-  return moment(number).format(format);
-};
+function formatDate(date) {
+  const d = new Date(date);
+  let month = `${(d.getMonth() + 1)}`;
+  const year = d.getFullYear();
+
+  if (month.length < 2) month = `0${month}`;
+
+  return [year, month].join('-');
+}
 
 export default Component.extend(ChildMixin, {
   format: {
-    to: number => fromEpoch(number, 'YYYY-MM'),
-    from: number => fromEpoch(number, 'YYYY-MM'),
+    to: number => formatDate(number),
+    from: number => formatDate(number),
   },
 
   column: '',

@@ -1,6 +1,7 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const babelPlugin = require('ember-auto-import/babel-plugin');
 
 module.exports = (defaults) => {
   const app = new EmberApp(defaults, {
@@ -10,10 +11,13 @@ module.exports = (defaults) => {
     'ember-cli-uglify': {
       uglify: {
         compress: {
-          collapse_vars: false
-        }
-      }
-    }
+          collapse_vars: false,
+        },
+      },
+    },
+    babel: {
+      plugins: [babelPlugin],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated

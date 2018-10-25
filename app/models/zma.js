@@ -1,29 +1,31 @@
-import DS from 'ember-data';
 import { computed } from '@ember-decorators/object'; // eslint-disable-line
+import { attr } from '@ember-decorators/data';
 import bbox from '@turf/bbox';
-import moment from 'moment';
 import Bookmarkable from './bookmark';
 
-export default class MyComponent extends Bookmarkable {
-  geometry = DS.attr();
+export default class ZoningMapAmendmentModel extends Bookmarkable {
+  @attr() geometry;
 
-  ulurpno = DS.attr('string');
+  @attr('string') ulurpno;
 
-  project_na = DS.attr('string');
+  @attr('string') project_na;
 
-  effective = DS.attr('string');
+  @attr('string') effective;
 
-  status = DS.attr('string');
+  @attr('string') status;
 
-  lucats = DS.attr('string');
+  @attr('string') lucats;
 
   @computed('effective')
   get effectiveDisplay() {
-    const effective = this.get('effective');
-    if (effective) {
-      return moment(effective).utc().format('LL');
-    }
-    return 'To be determined';
+    return import('moment').then(({ default: moment }) => {
+      const effective = this.get('effective');
+
+      if (effective) {
+        return moment(effective).utc().format('LL');
+      }
+      return 'To be determined';
+    });
   }
 
   @computed('geometry')
