@@ -1,6 +1,5 @@
 import Service from '@ember/service';
 import { computed } from '@ember-decorators/object';
-import $ from 'jquery';
 import pointLayer from '../layers/point-layer';
 
 const DEFAULT_BOUNDS = [-73.9, 40.690913, -73.832692, 40.856654];
@@ -62,9 +61,9 @@ export default class MainMapService extends Service {
   @computed('selected')
   get isSelectedBoundsOptions() {
     const selected = this.get('selected');
-    const el = $('.map-container');  // eslint-disable-line
-    const height = el.height();
-    const width = el.width();
+    const el = document.querySelector('.map-container');
+    const height = el.offsetHeight;
+    const width = el.offsetWidth;
 
     const fullWidth = window.innerWidth;
     // width of content area on large screens is 5/12 of full

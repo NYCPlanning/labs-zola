@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-import $ from 'jquery';
 import { inject as service } from '@ember/service';
 
 export default Route.extend({
@@ -103,20 +102,5 @@ export default Route.extend({
     controller.setDefaultQueryParamValue('layer-groups', defaultVisibleLayerGroups);
 
     this._super(controller, model);
-  },
-});
-
-Route.reopen({
-  activate() {
-    const cssClass = this.toCssClass();
-    if (cssClass !== 'application') {
-      $('body').addClass(cssClass); // eslint-disable-line
-    }
-  },
-  deactivate() {
-    $('body').removeClass(this.toCssClass());  // eslint-disable-line
-  },
-  toCssClass() {
-    return this.routeName.replace(/\./g, '-').dasherize();
   },
 });
