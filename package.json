@@ -63,7 +63,7 @@
     "ember-load-initializers": "^1.1.0",
     "ember-local-storage": "^1.4.0",
     "ember-mapbox-composer": "0.0.18",
-    "ember-mapbox-gl": "0.12.0",
+    "ember-mapbox-gl": "NYCPlanning/ember-mapbox-gl#d47c7b0a8d6e77cfefea96a7c98d7dcaad0ba963",
     "ember-mapbox-gl-draw": "2.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-metrics": "0.12.1",
