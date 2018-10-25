@@ -90,7 +90,6 @@
     "labs-ember-search": "2.4.10",
     "labs-ui": "^0.0.9",
     "loader.js": "^4.7.0",
-    "mapbox-gl": "^0.44.0",
     "mapbox-gl-draw": "0.16.0",
     "moment": "2.22.2",
     "qunit-dom": "^0.8.0"

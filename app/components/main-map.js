@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import mapboxgl from 'mapbox-gl';
+// import mapboxgl from 'mapbox-gl';
 import area from '@turf/area';
 import lineDistance from '@turf/line-distance';
 import numeral from 'numeral';
