@@ -7,6 +7,13 @@ module.exports = (defaults) => {
     'ember-cli-babel': {
       includePolyfill: true,
     },
+    'ember-cli-uglify': {
+      uglify: {
+        compress: {
+          collapse_vars: false
+        }
+      }
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated

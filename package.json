@@ -29,6 +29,7 @@
     "ember-cli": "~3.5.0",
     "ember-cli-app-version": "^3.2.0",
     "ember-cli-babel": "^6.16.0",
+    "ember-cli-bundle-analyzer": "0.0.3",
     "ember-cli-dependency-checker": "^3.0.0",
     "ember-cli-eslint": "^4.2.3",
     "ember-cli-foundation-6-sass": "0.0.25",
@@ -83,7 +84,11 @@
     "labs-ui": "^0.0.9",
     "loader.js": "^4.7.0",
     "mapbox-gl": "^0.44.0",
-    "qunit-dom": "^0.8.0"
+    "qunit-dom": "^0.8.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "ember-concurrency": "^0.8.19",
+    "ember-fetch": "^5.1.1",
+    "eslint-plugin-ember-best-practices": "^1.1.1"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
@@ -91,12 +96,7 @@
   "dependencies": {
     "@turf/area": "^6.0.1",
     "@turf/bbox": "^6.0.1",
-    "@turf/centroid": "^6.0.2",
     "@turf/line-distance": "^4.7.3",
-    "babel-plugin-transform-decorators-legacy": "^1.3.5",
-    "ember-concurrency": "^0.8.19",
-    "ember-fetch": "^5.1.1",
-    "eslint-plugin-ember-best-practices": "^1.1.1",
     "mustache": "^2.3.2",
     "numeral": "^2.0.6"
   }
