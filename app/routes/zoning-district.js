@@ -1,17 +1,15 @@
 import Route from '@ember/routing/route';
 import { alias } from '@ember/object/computed';
-import { inject as service } from '@ember/service';
 import { computed, action } from '@ember-decorators/object'; // eslint-disable-line
+import updateSelectionMixin from '../mixins/update-selection';
 
-export default class ZoningDistrictRoute extends Route {
-  mainMap = service();
+const mappableRoute = Route.extend(updateSelectionMixin, {});
 
+export default class ZoningDistrictRoute extends mappableRoute {
   model(params) {
-    return this.store.findRecord('zoning-district', params.zonedist);
-  }
-
-  afterModel(model) {
-    this.set('mainMap.selected', model);
+    return {
+      taskInstance: this.store.findRecord('zoning-district', params.zonedist),
+    };
   }
 
   bounds = alias('mainMap.bounds');

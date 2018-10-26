@@ -13,10 +13,4 @@ export default Route.extend(updateSelectionMixin, {
   setupController(controller, { taskInstance }) {
     this._super(controller, taskInstance);
   },
-
-  actions: {
-    didTransition() {
-      this.set('mainMap.shouldFitBounds', true);
-    },
-  },
 });

@@ -7,14 +7,4 @@ export default Route.extend({
   model() {
     return this.store.findAll('bookmark');
   },
-
-  actions: {
-    didTransition() {
-      this.mainMap
-        .setProperties({
-          selected: null,
-          shouldFitBounds: false,
-        });
-    },
-  },
 });

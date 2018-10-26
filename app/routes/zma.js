@@ -10,14 +10,4 @@ export default Route.extend(updateSelectionMixin, {
       taskInstance: this.store.findRecord('zma', params.ulurpno),
     };
   },
-
-  setupController(controller, { taskInstance }) {
-    this._super(controller, taskInstance);
-  },
-
-  actions: {
-    didTransition() {
-      this.set('mainMap.shouldFitBounds', true);
-    },
-  },
 });

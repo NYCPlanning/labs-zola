@@ -1,5 +1,7 @@
 import Service from '@ember/service';
 import { computed } from '@ember-decorators/object';
+import { restartableTask } from 'ember-concurrency-decorators';
+import { timeout } from 'ember-concurrency';
 import pointLayer from '../layers/point-layer';
 
 const DEFAULT_BOUNDS = [-73.9, 40.690913, -73.832692, 40.856654];
@@ -60,7 +62,7 @@ export default class MainMapService extends Service {
     };
   }
 
-  @computed('selected')
+  @computed('selected', 'routeIntentIsNested')
   get isSelectedBoundsOptions() {
     const selected = this.get('selected');
     const el = document.querySelector('.map-container');
@@ -93,5 +95,17 @@ export default class MainMapService extends Service {
       mapInstance.resize();
     }
     this.set('selected', null);
+  }
+
+  @restartableTask()
+  setBounds = function* () {
+    while (!this.get('mapInstance')) {
+      yield timeout(100);
+    }
+
+    const mapInstance = this.get('mapInstance');
+
+    mapInstance.fitBounds(this.get('bounds'), this.get('isSelectedBoundsOptions'));
+    this.set('routeIntentIsNested', false);
   }
 }
