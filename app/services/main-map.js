@@ -37,6 +37,8 @@ export default class MainMapService extends Service {
 
   drawnFeature = null;
 
+  routeIntentIsNested = false;
+
   @computed('drawnFeature')
   get drawnFeatureSource() {
     const feature = this.get('drawnFeature');
@@ -64,6 +66,7 @@ export default class MainMapService extends Service {
     const el = document.querySelector('.map-container');
     const height = el.offsetHeight;
     const width = el.offsetWidth;
+    const routeIntentIsNested = this.get('routeIntentIsNested');
 
     const fullWidth = window.innerWidth;
     // width of content area on large screens is 5/12 of full
@@ -75,10 +78,13 @@ export default class MainMapService extends Service {
     // get type of selected feature so we can do dynamic padding
     const type = selected ? selected.constructor.modelName : null;
 
-    return {
+    const options = {
+      ...(routeIntentIsNested ? { duration: 0 } : {}),
       padding: selected && (type !== 'zoning-district') && (type !== 'commercial-overlay') ? padding : 0,
       offset: [offset, 0],
     };
+
+    return options;
   }
 
   resetBounds() {
