@@ -1,7 +1,8 @@
 import ObjectProxy from '@ember/object/proxy';
 import Controller from '@ember/controller';
 import { merge } from '@ember/polyfills';
-import EmberObject, { set, computed as computedProp } from '@ember/object';
+import EmberObject, { set } from '@ember/object';
+import { alias } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
 import QueryParams from 'ember-parachute';
 import { computed } from '@ember-decorators/object'; // eslint-disable-line
@@ -60,10 +61,10 @@ export const mapQueryParams = new QueryParams(
       'aerials-20012': { defaultValue: false },
       'aerials-1996': { defaultValue: false },
       'aerials-1951': { defaultValue: false },
-
-      'layer-groups': {
+      layerGroups: {
         defaultValue: [],
         refresh: true,
+        as: 'layer-groups',
       },
     },
   ),
@@ -80,29 +81,8 @@ export default Controller.extend(mapQueryParams.Mixin, {
     this.set('qps', proxy);
   },
 
-  'layer-groups': computedProp('model.layerGroups.@each.visible', {
-    get() {
-      const { model } = this;
-
-      if (model) {
-        return model.layerGroups.filterBy('visible').mapBy('id').sort();
-      }
-
-      return [];
-    },
-    set(key, value) {
-      if (Array.isArray(value) && this.model && value.length) {
-        this.model.layerGroups.forEach((layerGroup) => {
-          if (value.includes(layerGroup.id)) {
-            layerGroup.set('visible', true);
-          } else {
-            layerGroup.set('visible', false);
-          }
-        });
-      }
-    },
-  }),
-
+  layerGroupService: service('layerGroups'),
+  layerGroups: alias('layerGroupService.visibleLayerGroups'),
   mainMap: service(),
   metrics: service(),
   registeredLayers: service(),
@@ -110,14 +90,6 @@ export default Controller.extend(mapQueryParams.Mixin, {
   boro: 0,
   block: 0,
   lot: 0,
-
-  isDefault: computedProp('queryParamsState', function() {
-    const state = this.get('queryParamsState');
-    const values = Object.values(state);
-
-    return values.isEvery('changed', false);
-  }),
-
   actions: {
     transitionTo(...args) {
       this.transitionToRoute(...args);
@@ -264,11 +236,6 @@ export default Controller.extend(mapQueryParams.Mixin, {
 
     setQueryParam(property, value) {
       this.set(property, value);
-    },
-
-    @trackEvent('Layer Palette', 'Reset query params', 'isDefault')
-    resetQueryParams() {
-      this.resetQueryParams();
     },
 
     flyTo() {
