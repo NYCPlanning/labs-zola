@@ -23,7 +23,7 @@ export default Route.extend({
         { id: 'commercial-overlays', visible: true },
         { id: 'zoning-map-amendments', visible: false },
         { id: 'zoning-map-amendments-pending', visible: false },
-        { id: 'special-purpose-districts', visible: false },
+        { id: 'special-purpose-districts', visible: false, layers: [{}, { clickable: true, highlightable: true }] },
         { id: 'special-purpose-subdistricts', visible: false },
         { id: 'limited-height-districts', visible: false },
         { id: 'mandatory-inclusionary-housing', visible: false },
