@@ -91,16 +91,15 @@
     "mapbox-gl": "^0.44.0",
     "mapbox-gl-draw": "0.16.0",
     "moment": "2.22.2",
-    "qunit-dom": "^0.8.0"
+    "qunit-dom": "^0.8.0",
+    "@turf/area": "^6.0.1",
+    "@turf/line-distance": "^4.7.3"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
   },
   "dependencies": {
-    "@turf/area": "^6.0.1",
     "@turf/bbox": "^6.0.1",
-    "@turf/line-distance": "^4.7.3",
-    "mustache": "^2.3.2",
     "numeral": "^2.0.6"
   }
 }

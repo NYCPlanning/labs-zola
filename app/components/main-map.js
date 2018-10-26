@@ -1,7 +1,5 @@
 import Component from '@ember/component';
 import mapboxgl from 'mapbox-gl';
-import area from '@turf/area';
-import lineDistance from '@turf/line-distance';
 import numeral from 'numeral';
 import EmberObject from '@ember/object';
 
@@ -311,7 +309,7 @@ class MainMap extends Component {
   }
 
   @action
-  handleMeasurement() {
+  async handleMeasurement() {
     this.set('drawDidRender', true);
     const draw = this.get('draw');
     // should log both metric and standard display strings for the current drawn feature
@@ -320,6 +318,11 @@ class MainMap extends Component {
     if (features.length > 0) {
       const feature = features[0];
       // metric calculation
+
+      // lazy load these deps
+      const { default: area } = await import('@turf/area');
+      const { default: lineDistance } = await import('@turf/line-distance');
+
       const drawnLength = (lineDistance(feature) * 1000); // meters
       const drawnArea = area(feature); // square meters
 

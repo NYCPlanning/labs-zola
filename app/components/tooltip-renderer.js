@@ -1,17 +1,25 @@
 import Component from '@ember/component';
-import { computed } from '@ember-decorators/object';
-import mustache from 'mustache';
+import { argument } from '@ember-decorators/argument';
+import { defineProperty, computed as computedProperty } from '@ember/object';
+import Ember from 'ember';
 
 export default class TooltipRenderer extends Component {
-  @computed('feature', 'template')
-  get renderedText() {
-    const properties = this.get('feature.properties');
-    const template = this.get('template');
+  init(...args) {
+    super.init(...args);
 
-    return mustache.render(template, properties);
+    this.setProperties(this.get('feature.properties'));
+
+    defineProperty(this, 'layout', computedProperty(() => {
+      const template = this.get('template');
+      const { properties } = this.get('feature');
+
+      return Ember.HTMLBars.compile(template, properties);
+    }));
   }
 
-  feature;
+  @argument
+  feature = {}
 
+  @argument
   template = ''
 }
