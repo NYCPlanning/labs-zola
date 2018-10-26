@@ -36,6 +36,8 @@ module.exports = (defaults) => {
     },
   });
 
+  app.import('vendor/ember/ember-template-compiler.js');
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //
