@@ -116,7 +116,7 @@ export default class ZoningDistrict extends DS.Model {
 
   @computed('geometry')
   get bounds() {
-    const geometry = this.get('geometry)');
+    const geometry = this.get('geometry');
     return bbox(geometry);
   }
 }

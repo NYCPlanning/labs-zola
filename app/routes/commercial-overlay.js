@@ -13,10 +13,6 @@ export default Route.extend(updateSelectionMixin, {
 
   bounds: alias('mainMap.bounds'),
 
-  setupController(controller, { taskInstance }) {
-    this._super(controller, taskInstance);
-  },
-
   actions: {
     fitBounds() {
       const { mainMap } = this;

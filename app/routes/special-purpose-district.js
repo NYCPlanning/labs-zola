@@ -9,14 +9,4 @@ export default Route.extend(updateSelectionMixin, {
       taskInstance: this.store.findRecord('special-purpose-district', params.id),
     };
   },
-
-  setupController(controller, { taskInstance }) {
-    this._super(controller, taskInstance);
-  },
-
-  actions: {
-    didTransition() {
-      this.set('mainMap.shouldFitBounds', true);
-    },
-  },
 });

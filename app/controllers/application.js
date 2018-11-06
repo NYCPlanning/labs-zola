@@ -176,7 +176,6 @@ export default Controller.extend(mapQueryParams.Mixin, {
           }
 
           if (zonedist) {
-            mainMap.set('shouldFitBounds', false);
             this.transitionToRoute('zoning-district', zonedist);
           }
 
@@ -189,7 +188,6 @@ export default Controller.extend(mapQueryParams.Mixin, {
           }
 
           if (overlay) {
-            mainMap.set('shouldFitBounds', false);
             this.transitionToRoute('commercial-overlay', overlay);
           }
 
@@ -225,7 +223,6 @@ export default Controller.extend(mapQueryParams.Mixin, {
       }
 
       if (type === 'zoning-district') {
-        mainMap.set('shouldFitBounds', true);
         this.transitionToRoute('zoning-district', result.label);
       }
 

@@ -53,10 +53,6 @@
     {{/map.source}}
   {{/if}}
 
-  {{#if shouldFitBounds}}
-    {{map.call 'fitBounds' mainMap.bounds mainMap.isSelectedBoundsOptions}}
-  {{/if}}
-
   {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
   {{map.on 'zoomend' (action 'handleZoomend')}}

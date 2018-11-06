@@ -1,12 +1,14 @@
-import DS from 'ember-data';
 import { computed } from '@ember-decorators/object';
+import { attr } from '@ember-decorators/data';
 import bbox from '@turf/bbox';
 import Bookmarkable from './bookmark';
 
 export default class MyComponent extends Bookmarkable {
-  geometry = DS.attr();
+  @attr()
+  geometry;
 
-  overlay = DS.attr('string');
+  @attr('string')
+  overlay;
 
   @computed('geometry')
   get bounds() {

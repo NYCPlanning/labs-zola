@@ -16,7 +16,7 @@ module.exports = (defaults) => {
       },
     },
     babel: {
-      plugins: [babelPlugin],
+      plugins: [babelPlugin, 'transform-object-rest-spread'],
     },
     autoImport: {
       webpack: {

@@ -50,7 +50,7 @@ class MainMap extends Component {
 
   lat = 40.7125;
 
-  @computed('mainMap.isSelectedBoundsOptions')
+  @computed()
   get lng() {
     const boundsOptions = this.get('mainMap.isSelectedBoundsOptions');
     return boundsOptions.offset[0] === 0 ? -73.9022 : -73.733;
