@@ -4,7 +4,7 @@ import { merge } from '@ember/polyfills';
 import EmberObject, { set, computed as computedProp } from '@ember/object';
 import { inject as service } from '@ember/service';
 import QueryParams from 'ember-parachute';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { computed } from '@ember-decorators/object'; // eslint-disable-line
 import bblDemux from '../utils/bbl-demux';
 
 import Geometric from '../mixins/geometric';
@@ -107,13 +107,16 @@ export default Controller.extend(mapQueryParams.Mixin, {
   metrics: service(),
   registeredLayers: service(),
   mapMouseover: service(),
+  boro: 0,
+  block: 0,
+  lot: 0,
 
-  @computed('queryParamsState')
-  isDefault(state) {
+  isDefault: computedProp('queryParamsState', function() {
+    const state = this.get('queryParamsState');
     const values = Object.values(state);
 
     return values.isEvery('changed', false);
-  },
+  }),
 
   actions: {
     transitionTo(...args) {
@@ -173,7 +176,6 @@ export default Controller.extend(mapQueryParams.Mixin, {
           }
 
           if (zonedist) {
-            mainMap.set('shouldFitBounds', false);
             this.transitionToRoute('zoning-district', zonedist);
           }
 
@@ -186,7 +188,6 @@ export default Controller.extend(mapQueryParams.Mixin, {
           }
 
           if (overlay) {
-            mainMap.set('shouldFitBounds', false);
             this.transitionToRoute('commercial-overlay', overlay);
           }
 
@@ -196,6 +197,71 @@ export default Controller.extend(mapQueryParams.Mixin, {
         }
       }
     },
+
+    @trackEvent('Map Search', 'Clicked result', 'searchTerms')
+    handleSearchSelect(result) {
+      const { mainMap } = this;
+      const mapInstance = mainMap.get('mapInstance');
+      const { type } = result;
+
+      mainMap.set('currentAddress', null);
+
+      this.setProperties({
+        selected: 0,
+        focused: false,
+      });
+
+      if (type === 'lot') {
+        const { boro, block, lot } = bblDemux(result.bbl);
+        this.set('searchTerms', result.label);
+        this.transitionToRoute('lot', boro, block, lot);
+      }
+
+      if (type === 'zma') {
+        this.set('searchTerms', result.label);
+        this.transitionToRoute('zma', result.ulurpno);
+      }
+
+      if (type === 'zoning-district') {
+        this.transitionToRoute('zoning-district', result.label);
+      }
+
+      if (type === 'neighborhood') {
+        this.set('searchTerms', result.neighbourhood);
+        const center = result.coordinates;
+        mapInstance.flyTo({
+          center,
+          zoom: 13,
+        });
+      }
+
+      if (type === 'address') {
+        const center = result.coordinates;
+        mainMap.set('currentAddress', center);
+
+        this.set('searchTerms', result.label);
+        this.saveAddress({ address: result.label, coordinates: result.coordinates });
+
+        if (mapInstance) {
+          mapInstance.flyTo({
+            center,
+            zoom: 15,
+          });
+          mapInstance.once('moveend', () => { this.transitionToRoute('index'); });
+        }
+      }
+
+      if (type === 'special-purpose-district') {
+        this.set('searchTerms', result.sdname);
+        this.transitionToRoute('special-purpose-district', result.cartodb_id);
+      }
+
+      if (type === 'commercial-overlay') {
+        this.set('searchTerms', result.label);
+        this.transitionToRoute('commercial-overlay', result.label);
+      }
+    },
+
     setQueryParam(property, value) {
       this.set(property, value);
     },
@@ -203,6 +269,12 @@ export default Controller.extend(mapQueryParams.Mixin, {
     @trackEvent('Layer Palette', 'Reset query params', 'isDefault')
     resetQueryParams() {
       this.resetQueryParams();
+    },
+
+    flyTo() {
+      const { boro: { code: boro }, block, lot } = this;
+
+      this.transitionToRoute('lot', boro, block, lot);
     },
   },
 });

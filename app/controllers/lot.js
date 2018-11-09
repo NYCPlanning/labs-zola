@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { computed as computedProp } from '@ember/object';
 import Bookmarkable from '../mixins/bookmarkable';
 import carto from '../utils/carto';
 
@@ -22,36 +22,35 @@ const getPrimaryZone = (zonedist) => {
 };
 
 export default Controller.extend(Bookmarkable, {
-
-  @computed('model.value.zonemap')
-  paddedZonemap(zonemap) {
+  paddedZonemap: computedProp('model.value.zonemap', function () {
+    const zonemap = this.get('model.value.zonemap');
     return (`0${zonemap}`).slice(-3);
-  },
+  }),
 
-  @computed('model.value.zonedist1')
-  primaryzone1(zonedist) {
+  primaryzone1: computedProp('model.value.zonedist1', function () {
+    const zonedist = this.get('model.value.zonedist1');
     return getPrimaryZone(zonedist);
-  },
+  }),
 
-  @computed('model.value.zonedist2')
-  primaryzone2(zonedist) {
+  primaryzone2: computedProp('model.value.zonedist2', function () {
+    const zonedist = this.get('model.value.zonedist2');
     return getPrimaryZone(zonedist);
-  },
+  }),
 
-  @computed('model.value.zonedist3')
-  primaryzone3(zonedist) {
+  primaryzone3: computedProp('model.value.zonedist3', function () {
+    const zonedist = this.get('model.value.zonedist3');
     return getPrimaryZone(zonedist);
-  },
+  }),
 
-  @computed('model.value.zonedist4')
-  primaryzone4(zonedist) {
+  primaryzone4: computedProp('model.value.zonedist4', function () {
+    const zonedist = this.get('model.value.zonedist4');
     return getPrimaryZone(zonedist);
-  },
+  }),
 
+  parentSpecialPurposeDistricts: computedProp('model.value.geometry', function() {
+    const geometry = this.get('model.value.geometry');
 
-  @computed('model.value.geometry')
-  parentSpecialPurposeDistricts(geometry) {
-    return carto.SQL(SQL('special_purpose_districts_v201808', geometry))
+    return carto.SQL(SQL('special_purpose_districts_v201809', geometry))
       .then(response => response.map(
         (item) => {
           const [, [anchorName, boroName]] = specialPurposeCrosswalk
@@ -66,6 +65,5 @@ export default Controller.extend(Bookmarkable, {
           };
         },
       ));
-  },
-
+  }),
 });

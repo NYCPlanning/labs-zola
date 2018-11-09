@@ -52,7 +52,7 @@ To style the map in development, we use [Maputnik Dev Server](https://github.com
 
 #### Layer-Groups
 
-ZoLa introduces a meta definition of the [MapboxGL API](mapbox.com/mapbox-gl-js/api/) which allows you to define groups of mapboxGL layers. This means that sources may have many layers, hence a "layer group". For example, the "subways" layer group includes the subway lines, subway routes, and subway station entrances layers. Layer group configs are located in `app/layer-groups`.
+ZoLa introduces a meta definition of the [MapboxGL API](https://mapbox.com/mapbox-gl-js/api/) which allows you to define groups of mapboxGL layers. This means that sources may have many layers, hence a "layer group". For example, the "subways" layer group includes the subway lines, subway routes, and subway station entrances layers. Layer group configs are located in `app/layer-groups`.
 
 - To create a layer-group: `ember g layer-group <layer-group-name>` - This will create a layer group definition file inside the `layer-groups` folder. Edit layer configuration there. To add it to the map, it must be explicitly imported and added as a layer.
 

@@ -25,8 +25,21 @@
 <div class="site-main grid-x">
   <div class="navigation-area cell large-auto">
     <div class="search-container hide-for-print">
-      {{map-search transitionTo=(action 'transitionTo') saveAddress=(action 'saveAddress')}}
-      {{bbl-lookup transitionTo=(action 'transitionTo')}}
+      {{labs-search
+        onSelect=(action 'handleSearchSelect')
+        typeTitleLookup = (hash
+          lot='View Tax Lot Information'
+          zma='View Zoning Change Information'
+          neighborhood='Go to Neighborhood'
+          zoning-district='View Zoning Districts'
+          commercial-overlay='View Commerical Overlay'
+          special-purpose-district='View Special Purpose District'
+        )}}
+      {{labs-bbl-lookup 
+        boro=boro
+        block=block
+        lot=lot 
+        flyTo=(action 'flyTo')}}
     </div>
 
     <div class="map-grid">

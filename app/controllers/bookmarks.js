@@ -1,8 +1,7 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { computed as computedProp } from '@ember/object';
 import { Promise } from 'rsvp';
-import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 export default Controller.extend({
   mainMap: service(),
@@ -11,15 +10,15 @@ export default Controller.extend({
   // promises, the model uses Promise.all
   // this gets us in trouble when we need to do
   // aggregate operations (like filtering)
-  @computed('model.[]')
-  bookmarksSettled(bookmarks) {
+
+  bookmarksSettled: computedProp('model.[]', function() {
+    const bookmarks = this.get('model');
     const promises = bookmarks.mapBy('recordType');
 
     return Promise.all(promises);
-  },
+  }),
 
   actions: {
-    @trackEvent('Bookmark', 'Delete')
     deleteBookmark(record) {
       record.deleteRecord();
       record.save();

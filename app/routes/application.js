@@ -1,14 +1,17 @@
 import Route from '@ember/routing/route';
-import $ from 'jquery';
 import { inject as service } from '@ember/service';
 
 export default Route.extend({
   mainMap: service(),
 
-  beforeModel(transition) {
+  beforeModel({ targetName }) {
     // only transition to about if index is loaded and there is no hash
-    if (transition.intent.url === '/' && window.location.href.split('#').length < 2) {
+    if (targetName === 'index') {
       this.transitionTo('about');
+    }
+
+    if (targetName === 'lot') {
+      this.set('mainMap.routeIntentIsNested', true);
     }
   },
 
@@ -20,7 +23,7 @@ export default Route.extend({
         { id: 'commercial-overlays', visible: true },
         { id: 'zoning-map-amendments', visible: false },
         { id: 'zoning-map-amendments-pending', visible: false },
-        { id: 'special-purpose-districts', visible: false },
+        { id: 'special-purpose-districts', visible: false, layers: [{}, { clickable: true, highlightable: true }] },
         { id: 'special-purpose-subdistricts', visible: false },
         { id: 'limited-height-districts', visible: false },
         { id: 'mandatory-inclusionary-housing', visible: false },
@@ -103,20 +106,5 @@ export default Route.extend({
     controller.setDefaultQueryParamValue('layer-groups', defaultVisibleLayerGroups);
 
     this._super(controller, model);
-  },
-});
-
-Route.reopen({
-  activate() {
-    const cssClass = this.toCssClass();
-    if (cssClass !== 'application') {
-      $('body').addClass(cssClass); // eslint-disable-line
-    }
-  },
-  deactivate() {
-    $('body').removeClass(this.toCssClass());  // eslint-disable-line
-  },
-  toCssClass() {
-    return this.routeName.replace(/\./g, '-').dasherize();
   },
 });

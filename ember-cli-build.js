@@ -1,16 +1,42 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const babelPlugin = require('ember-auto-import/babel-plugin');
 
 module.exports = (defaults) => {
   const app = new EmberApp(defaults, {
     'ember-cli-babel': {
       includePolyfill: true,
     },
-    'ember-cli-foundation-6-sass': {
-      foundationJs: 'all',
+    'ember-cli-uglify': {
+      uglify: {
+        compress: {
+          collapse_vars: false,
+        },
+      },
+    },
+    babel: {
+      plugins: [babelPlugin, 'transform-object-rest-spread'],
+    },
+    autoImport: {
+      webpack: {
+        node: {
+          fs: 'empty',
+        },
+      },
+    },
+    emberCliConcat: {
+      js: {
+        concat: process.env.EMBER_ENV === 'production',
+        useAsync: process.env.EMBER_ENV === 'production',
+      },
+      css: {
+        concat: false,
+      },
     },
   });
+
+  app.import('vendor/ember/ember-template-compiler.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

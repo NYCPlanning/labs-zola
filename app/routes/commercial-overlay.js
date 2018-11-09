@@ -1,7 +1,6 @@
 import Route from '@ember/routing/route';
 import { alias } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
 import updateSelectionMixin from '../mixins/update-selection';
 
 export default Route.extend(updateSelectionMixin, {
@@ -13,10 +12,6 @@ export default Route.extend(updateSelectionMixin, {
   },
 
   bounds: alias('mainMap.bounds'),
-
-  setupController(controller, { taskInstance }) {
-    this._super(controller, taskInstance);
-  },
 
   actions: {
     fitBounds() {

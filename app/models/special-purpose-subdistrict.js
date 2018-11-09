@@ -1,15 +1,21 @@
-import DS from 'ember-data';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { attr } from '@ember-decorators/data';
+import { computed } from '@ember-decorators/object'; // eslint-disable-line
 import bbox from '@turf/bbox';
 import Bookmarkable from './bookmark';
 
-export default Bookmarkable.extend({
-  geometry: DS.attr(),
-  splbl: DS.attr('string'),
-  spname: DS.attr('string'),
+export default class MyComponent extends Bookmarkable {
+  @attr()
+  geometry;
+
+  @attr('string')
+  splbl;
+
+  @attr('string')
+  spname;
 
   @computed('geometry')
-  bounds(geometry) {
+  get bounds() {
+    const geometry = this.get('geometry');
     return bbox(geometry);
-  },
-});
+  }
+}

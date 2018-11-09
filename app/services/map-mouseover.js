@@ -1,17 +1,22 @@
-import Service, { inject as service } from '@ember/service';
+import Service from '@ember/service';
 import { get } from '@ember/object';
-import { computed } from 'ember-decorators/object'; // eslint-disable-line
+import { computed } from '@ember-decorators/object';
+import { service } from '@ember-decorators/service';
 
-export default Service.extend({
-  registeredLayers: service(),
+export default class MapMouseoverService extends Service {
+  @service
+  registeredLayers;
 
-  currentEvent: null,
+  currentEvent = null;
 
-  tooltipTemplate: '',
-  highlightedLayer: null,
+  tooltipTemplate = '';
+
+  highlightedLayer = null;
 
   @computed('currentEvent')
-  mousePosition(event) {
+  get mousePosition() {
+    const { event } = this.getProperties('currentEvent');
+
     if (event) {
       const { point: { x, y } } = event;
 
@@ -22,15 +27,19 @@ export default Service.extend({
     }
 
     return null;
-  },
+  }
 
   @computed('mousePosition.{x,y}')
-  hasMousePosition(x, y) {
+  get hasMousePosition() {
+    const { x, y } = this.getProperties('mousePosition.{x,y}');
+
     return !!(x && y);
-  },
+  }
 
   @computed('registeredLayers.visibleLayerIds.@each', 'currentEvent', 'mousePosition')
-  hoveredFeature(layers, currentEvent) {
+  get hoveredFeature() {
+    const { layers, currentEvent } = this.getProperties('registeredLayers.visibleLayerIds.@each', 'currentEvent', 'mousePosition');
+
     if (currentEvent) {
       const map = currentEvent.target;
 
@@ -42,17 +51,21 @@ export default Service.extend({
         .objectAt(0) || {};
     }
     return {};
-  },
+  }
 
   @computed('hoveredFeature')
-  tooltipText(feature) {
-    return get(feature, 'properties.bbl');
-  },
+  get tooltipText() {
+    const { feature } = this.getProperties('hoveredFeature');
 
-  highlightedLotFeatures: [],
+    return get(feature, 'properties.bbl');
+  }
+
+  highlightedLotFeatures = [];
 
   @computed('highlightedLotFeatures')
-  highlightedLotSource(features) {
+  get highlightedLotSource() {
+    const { features } = this.getProperties('highlightedLotFeatures');
+
     return {
       type: 'geojson',
       data: {
@@ -60,7 +73,7 @@ export default Service.extend({
         features,
       },
     };
-  },
+  }
 
   highlighter() {
     // const map = e.target;
@@ -102,5 +115,5 @@ export default Service.extend({
 
     //   this.set('highlightedLotFeatures', []);
     // }
-  },
-});
+  }
+}
