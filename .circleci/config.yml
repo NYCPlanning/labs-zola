@@ -46,7 +46,7 @@ jobs:
           name: Deployment
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ember build -e production
+              yarn build -e production
               cd dist
               touch .static
               git init
@@ -54,7 +54,7 @@ jobs:
               git commit -m "deploy"
               git remote add dokku dokku@planninglabs.nyc:zola && git push dokku master
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              ember build -e staging
+              yarn build -e staging
               cd dist
               touch .static
               git init
