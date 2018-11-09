@@ -46,7 +46,17 @@ jobs:
           name: Deployment
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              cd dist
+              touch .static
+              git init
+              git add .
+              git commit -m "deploy"
               git remote add dokku dokku@planninglabs.nyc:zola && git push dokku master
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              git remote add dokku dokku@planninglabs.nyc:zola-staging && git push dokku develop:master
+              cd dist
+              touch .static
+              git init
+              git add .
+              git commit -m "deploy"
+              git remote add dokku dokku@planninglabs.nyc:zola-staging && git push dokku master
             fi
