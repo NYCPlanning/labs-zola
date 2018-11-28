@@ -2,6 +2,7 @@
   id='main-map'
   layerGroups=layerGroups
   initOptions=(hash zoom=zoom
+                    hash=true
                     center=(array lng lat))
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
@@ -80,15 +81,15 @@
   <button class="draw-tool draw-tool--line {{unless drawToolsOpen 'show-for-large'}} {{if (eq mainMap.drawMode 'draw_line_string') 'active'}}" onclick={{action 'startDraw' 'line'}}>
     {{#if (and didStartDraw (not drawDidRender) (not draw))}}
       {{fa-icon 'spinner'}}
-    {{else}} 
+    {{else}}
       <span class="icon distance"></span>
     {{/if}}
   </button>
-  
+
   <button class="draw-tool draw-tool--polygon {{unless drawToolsOpen 'show-for-large'}} {{if (eq mainMap.drawMode 'draw_polygon') 'active'}}" onclick={{action 'startDraw' 'polygon'}}>
     {{#if (and didStartDraw (not drawDidRender) (not draw))}}
       {{fa-icon 'spinner'}}
-    {{else}} 
+    {{else}}
       <span class="icon polygon"></span>
     {{/if}}
   </button>
