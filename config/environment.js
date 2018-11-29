@@ -13,12 +13,61 @@ module.exports = function(environment) {
       accessToken: 'pk.eyJ1IjoiY3dob25nbnljIiwiYSI6ImNpczF1MXdrdjA4MXcycXA4ZGtyN2x5YXIifQ.3HGyME8tBs6BnljzUVIt4Q',
     },
 
+    'labs-search': {
+      host: 'https://search-api.planninglabs.nyc',
+      helpers: [
+        'geosearch',
+        'neighborhood',
+        'bbl',
+        'zoning-district',
+        'zoning-map-amendment',
+        'special-purpose-district',
+        'commercial-overlay',
+      ],
+    },
+
     fontawesome: {
       icons: {
-        'free-regular-svg-icons': 'all',
-        'free-solid-svg-icons': 'all',
+        'free-regular-svg-icons': [
+          'circle',
+        ],
+        'free-solid-svg-icons': [
+          'angle-up',
+          'bookmark',
+          'caret-down',
+          'caret-up',
+          'chevron-down',
+          'chevron-left',
+          'chevron-up',
+          'external-link-alt',
+          'home',
+          'info-circle',
+          'map-pin',
+          'print',
+          'search',
+          'spinner',
+          'square',
+          'times',
+          'tree',
+          'undo',
+          'window-minimize',
+        ],
       },
     },
+    
+    metricsAdapters: [
+      {
+        name: 'GoogleAnalytics',
+        environments: ['development', 'production'],
+        config: {
+          id: 'UA-84250233-8',
+          debug: environment === 'development',
+          trace: environment === 'development',
+          // Ensure development env hits aren't sent to GA
+          sendHitTask: (environment !== 'development' && environment !== 'devlocal'),
+        },
+      },
+    ],
 
     EmberENV: {
       FEATURES: {
