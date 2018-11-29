@@ -10,7 +10,7 @@ export default {
                 WHEN SUBSTRING(zonedist, 3, 1) ~ E'[A-Z]' THEN LEFT(zonedist, 2)
                 WHEN SUBSTRING(zonedist, 3, 1) ~ E'[0-9]' THEN LEFT(zonedist, 3)
                 ELSE zonedist
-              END as primaryzone FROM zoning_districts_v201810
+              END as primaryzone FROM zoning_districts_v201811
             ) a`,
     },
   ],
