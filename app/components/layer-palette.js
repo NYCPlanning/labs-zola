@@ -1,16 +1,25 @@
 import Component from '@ember/component';
 import { action } from '@ember-decorators/object';
+import { argument } from '@ember-decorators/argument';
 
 const aerialYears = [16, 1996, 1951, 1924];
 
 export default class LayerPaletteComponent extends Component {
+  @argument
+  qps = null;
+
+  @argument
+  layerGroups;
+
+  @argument
+  resetQueryParmas;
+
   classNames = ['layer-palette hide-for-print'];
 
   closed = true;
 
   plutoFill = false;
 
-  qps = null;
 
   aerialYears = aerialYears;
 
