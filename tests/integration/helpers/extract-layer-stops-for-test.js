@@ -6,7 +6,7 @@ import hbs from 'htmlbars-inline-precompile';
 const inputValue = {
   id: 'zoning',
   title: 'Zoning Districts',
-  sql: 'SELECT * FROM (SELECT *, LEFT(zonedist, 2) as primaryzone FROM zoning_districts_v201810) a',
+  sql: 'SELECT * FROM (SELECT *, LEFT(zonedist, 2) as primaryzone FROM zoning_districts_v201811) a',
   type: 'carto',
   layers: [
     {

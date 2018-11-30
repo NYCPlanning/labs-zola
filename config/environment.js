@@ -54,7 +54,7 @@ module.exports = function(environment) {
         ],
       },
     },
-    
+
     metricsAdapters: [
       {
         name: 'GoogleAnalytics',
