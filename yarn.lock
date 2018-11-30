@@ -4889,9 +4889,9 @@ ember-local-storage@^1.4.0:
     ember-cli-version-checker "^2.1.0"
     ember-copy "^1.0.0"
 
-ember-mapbox-composer@NYCPlanning/ember-mapbox-composer#refactor-highlighted-source:
-  version "0.0.19"
-  resolved "https://codeload.github.com/NYCPlanning/ember-mapbox-composer/tar.gz/72a7d2cef521c673dec7ecdc5182f22d00be1895"
+ember-mapbox-composer@0.0.22:
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/ember-mapbox-composer/-/ember-mapbox-composer-0.0.21.tgz#11aa43fdf1b43aed64118c4c63ae60d2ec3e0bb3"
   dependencies:
     "@ember-decorators/babel-transforms" "^2.0.0"
     "@turf/union" "^6.0.0"
@@ -4905,6 +4905,7 @@ ember-mapbox-composer@NYCPlanning/ember-mapbox-composer#refactor-highlighted-sou
     ember-fetch "5.1.3"
     ember-font-awesome "^4.0.0-rc.2"
     ember-truth-helpers "2.0.0"
+    mapbox-gl ">=0.47.0"
     pretender "2.0.0"
 
 ember-mapbox-gl-draw@2.0.0:
@@ -5474,6 +5475,10 @@ eslint@^4.0.0, eslint@^4.19.1:
     strip-json-comments "~2.0.1"
     table "4.0.2"
     text-table "~0.2.0"
+
+esm@^3.0.84:
+  version "3.0.84"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.84.tgz#bb108989f4673b32d4f62406869c28eed3815a63"
 
 espree@^3.5.4:
   version "3.5.4"
@@ -6302,7 +6307,7 @@ geojson-rewind@^0.3.0:
     minimist "1.2.0"
     sharkdown "^0.1.0"
 
-geojson-vt@^3.2.0:
+geojson-vt@^3.2.0, geojson-vt@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/geojson-vt/-/geojson-vt-3.2.1.tgz#f8adb614d2c1d3f6ee7c4265cad4bbf3ad60c8b7"
 
@@ -8177,6 +8182,35 @@ mapbox-gl@0.50.0:
     earcut "^2.1.3"
     geojson-rewind "^0.3.0"
     geojson-vt "^3.2.0"
+    gl-matrix "^2.6.1"
+    grid-index "^1.0.0"
+    minimist "0.0.8"
+    murmurhash-js "^1.0.0"
+    pbf "^3.0.5"
+    potpack "^1.0.1"
+    quickselect "^1.0.0"
+    rw "^1.3.3"
+    supercluster "^4.1.1"
+    tinyqueue "^1.1.0"
+    vt-pbf "^3.0.1"
+
+mapbox-gl@>=0.47.0:
+  version "0.51.0"
+  resolved "https://registry.yarnpkg.com/mapbox-gl/-/mapbox-gl-0.51.0.tgz#2d521574408951ac848a436ceabca69a795a4897"
+  dependencies:
+    "@mapbox/geojson-types" "^1.0.2"
+    "@mapbox/jsonlint-lines-primitives" "^2.0.2"
+    "@mapbox/mapbox-gl-supported" "^1.4.0"
+    "@mapbox/point-geometry" "^0.1.0"
+    "@mapbox/tiny-sdf" "^1.1.0"
+    "@mapbox/unitbezier" "^0.0.0"
+    "@mapbox/vector-tile" "^1.3.1"
+    "@mapbox/whoots-js" "^3.1.0"
+    csscolorparser "~1.0.2"
+    earcut "^2.1.3"
+    esm "^3.0.84"
+    geojson-rewind "^0.3.0"
+    geojson-vt "^3.2.1"
     gl-matrix "^2.6.1"
     grid-index "^1.0.0"
     minimist "0.0.8"

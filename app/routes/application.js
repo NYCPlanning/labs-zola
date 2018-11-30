@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default Route.extend({
   mainMap: service(),
+  layerGroupService: service('layerGroups'),
 
   beforeModel({ targetName }) {
     // only transition to about if index is loaded and there is no hash
@@ -102,8 +103,8 @@ export default Route.extend({
   },
 
   setupController(controller, model) {
-    const { defaultVisibleLayerGroups } = model;
-    controller.setDefaultQueryParamValue('layer-groups', defaultVisibleLayerGroups);
+    const { layerGroups } = model;
+    this.get('layerGroupService').initializeObservers(layerGroups, controller);
 
     this._super(controller, model);
   },
