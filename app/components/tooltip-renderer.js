@@ -11,9 +11,8 @@ export default class TooltipRenderer extends Component {
 
     defineProperty(this, 'layout', computedProperty(() => {
       const template = this.get('template');
-      const { properties } = this.get('feature');
 
-      return Ember.HTMLBars.compile(template, properties);
+      return Ember.HTMLBars.compile(template);
     }));
   }
 

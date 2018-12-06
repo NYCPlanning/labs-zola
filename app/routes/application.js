@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default Route.extend({
   mainMap: service(),
+  layerGroupService: service('layerGroups'),
 
   beforeModel({ targetName }) {
     // only transition to about if index is loaded and there is no hash
@@ -81,29 +82,9 @@ export default Route.extend({
     };
   },
 
-  afterModel(
-    { layerGroups, defaultVisibleLayerGroups },
-    { queryParams: { 'layer-groups': layerGroupParams = '[]' } },
-  ) {
-    this.mainMap.resetBounds();
-    const params = JSON.parse(layerGroupParams).sort();
-
-    if (!defaultVisibleLayerGroups.every(layerGroup => params.includes(layerGroup))
-      && params.length) {
-      // set initial state from query params when not default
-      layerGroups.forEach((layerGroup) => {
-        if (params.includes(layerGroup.id)) {
-          layerGroup.set('visible', true);
-        } else {
-          layerGroup.set('visible', false);
-        }
-      });
-    }
-  },
-
   setupController(controller, model) {
-    const { defaultVisibleLayerGroups } = model;
-    controller.setDefaultQueryParamValue('layer-groups', defaultVisibleLayerGroups);
+    const { layerGroups } = model;
+    this.get('layerGroupService').initializeObservers(layerGroups, controller);
 
     this._super(controller, model);
   },

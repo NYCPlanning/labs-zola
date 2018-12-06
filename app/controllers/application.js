@@ -5,6 +5,7 @@ import EmberObject, { set, computed as computedProp } from '@ember/object';
 import { inject as service } from '@ember/service';
 import QueryParams from 'ember-parachute';
 import { computed } from '@ember-decorators/object'; // eslint-disable-line
+import { alias } from '@ember/object/computed';
 import bblDemux from '../utils/bbl-demux';
 
 import Geometric from '../mixins/geometric';
@@ -61,9 +62,10 @@ export const mapQueryParams = new QueryParams(
       'aerials-1996': { defaultValue: false },
       'aerials-1951': { defaultValue: false },
 
-      'layer-groups': {
+      layerGroups: {
         defaultValue: [],
         refresh: true,
+        as: 'layer-groups',
       },
     },
   ),
@@ -80,28 +82,8 @@ export default Controller.extend(mapQueryParams.Mixin, {
     this.set('qps', proxy);
   },
 
-  'layer-groups': computedProp('model.layerGroups.@each.visible', {
-    get() {
-      const { model } = this;
-
-      if (model) {
-        return model.layerGroups.filterBy('visible').mapBy('id').sort();
-      }
-
-      return [];
-    },
-    set(key, value) {
-      if (Array.isArray(value) && this.model && value.length) {
-        this.model.layerGroups.forEach((layerGroup) => {
-          if (value.includes(layerGroup.id)) {
-            layerGroup.set('visible', true);
-          } else {
-            layerGroup.set('visible', false);
-          }
-        });
-      }
-    },
-  }),
+  layerGroupService: service('layerGroups'),
+  layerGroups: alias('layerGroupService.visibleLayerGroups'),
 
   mainMap: service(),
   metrics: service(),
