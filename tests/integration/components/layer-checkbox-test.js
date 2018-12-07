@@ -17,7 +17,7 @@ const commercialOverlays = {
   id: 'commercial-overlays',
   title: 'Commercial Overlays',
   type: 'carto',
-  sql: 'SELECT * FROM commercial_overlays_v201810',
+  sql: 'SELECT * FROM commercial_overlays_v20181206',
   visible: true,
   layers: [
     {

@@ -4,11 +4,11 @@ export default {
   'source-layers': [
     {
       id: 'special-purpose-districts',
-      sql: 'SELECT the_geom_webmercator, cartodb_id, sdlbl, sdname FROM special_purpose_districts_v201810',
+      sql: 'SELECT the_geom_webmercator, cartodb_id, sdlbl, sdname FROM special_purpose_districts_v20181206',
     },
     {
       id: 'special-purpose-subdistricts',
-      sql: 'SELECT the_geom_webmercator, splbl, cartodb_id, spname, subdist FROM special_purpose_subdistricts_v201810',
+      sql: 'SELECT the_geom_webmercator, splbl, cartodb_id, spname, subdist FROM special_purpose_subdistricts_v20181206',
     },
     {
       id: 'mandatory-inclusionary-housing',
@@ -28,7 +28,7 @@ export default {
     },
     {
       id: 'sidewalk-cafes',
-      sql: 'SELECT the_geom_webmercator, cafetype FROM sidewalk_cafes_v201810',
+      sql: 'SELECT the_geom_webmercator, cafetype FROM sidewalk_cafes_v20181206',
     },
     {
       id: 'low-density-growth-mgmt-areas',
@@ -44,11 +44,11 @@ export default {
     },
     {
       id: 'zoning-map-amendments-pending',
-      sql: 'SELECT the_geom_webmercator, ulurpno, status, project_na FROM zoning_map_amendments_v201810 WHERE status = \'Certified\'',
+      sql: 'SELECT the_geom_webmercator, ulurpno, status, project_na FROM zoning_map_amendments_v20181206 WHERE status = \'Certified\'',
     },
     {
       id: 'limited-height-districts',
-      sql: 'SELECT the_geom_webmercator, lhlbl FROM limited_height_districts_v201810',
+      sql: 'SELECT the_geom_webmercator, lhlbl FROM limited_height_districts_v20181206',
     },
     {
       id: 'business-improvement-districts',
