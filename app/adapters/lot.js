@@ -5,7 +5,7 @@ import { LotColumnsSQL } from '../models/lot';
 const SQL = function(id) {
   return `SELECT ${LotColumnsSQL.join(',')}, 
     st_x(st_centroid(the_geom)) as lon, st_y(st_centroid(the_geom)) as lat,
-    the_geom, bbl AS id FROM mappluto_v18_1 WHERE bbl=${id}`;
+    the_geom, bbl AS id FROM mappluto_18v_1_1 WHERE bbl=${id}`;
 };
 
 export default DS.JSONAPIAdapter.extend({

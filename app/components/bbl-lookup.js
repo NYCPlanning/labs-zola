@@ -62,7 +62,7 @@ export default Component.extend({
 
     goToLot() {
       const { boro: { code }, block, lot } = this;
-      const SQL = `select bbl from mappluto_v18_1 where borocode = ${code} and block = ${block} and lot = ${lot}`;
+      const SQL = `select bbl from mappluto_18v_1_1 where borocode = ${code} and block = ${block} and lot = ${lot}`;
 
       carto.SQL(SQL)
         .then(([response]) => {
