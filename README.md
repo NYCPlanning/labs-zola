@@ -103,7 +103,33 @@ The App is deployed to our VPS using dokku, you need only do a `git push` of the
 
 You can find us on Twitter at [@nycplanninglabs](https://twitter.com/nycplanninglabs), or comment on issues and we'll follow up as soon as we can. If you'd like to send an email, use [labs_dl@planning.nyc.gov](mailto:labs_dl@planning.nyc.gov)
 
-## Indices
-When updating MapPLUTO data, be sure to add an index to the BBL column:
+## Updating MapPLUTO Data
 
-`CREATE INDEX idx_mappluto_{version}_bbl ON mappluto_{version} (bbl)`
+- **Indices** - When updating MapPLUTO data, be sure to add an index to the BBL column: `CREATE INDEX idx_mappluto_{version}_bbl ON mappluto_{version} (bbl)`
+
+- **Block Centroids** - You also need to regenerate the `mappluto_block_centroids` data table that provides the centroid of each block. This is used to add block labels to the map. You can run the SQL below on the Carto Batch UI: https://cartodb.github.io/carto-batch-ui/. Once the query runs successfully, you need to query for the table via the regular Carto UI and save it as a dataset. Then you can run `DROP TABLE mappluto_block_centroids_new` to delete the invisible one saved on Carto's backend.
+
+`
+CREATE TABLE mappluto_block_centroids_new AS (
+SELECT
+  ST_Centroid(
+    ST_Union(
+      ST_makevalid(
+        the_geom
+      )
+    )
+  ) as the_geom,
+  ST_transform(
+    ST_centroid(
+      ST_Union(
+        ST_makevalid(
+          the_geom
+        )
+      )
+    ), 3857
+  ) as the_geom_webmercator,
+  block,
+  borocode
+FROM planninglabs.mappluto_VERSION
+GROUP BY block, borocode)
+`
