@@ -12,7 +12,7 @@ export default {
     },
     {
       id: 'mandatory-inclusionary-housing',
-      sql: 'SELECT the_geom_webmercator, projectnam, mih_option FROM mandatory_inclusionary_housing_v20181030',
+      sql: 'SELECT the_geom_webmercator, projectnam, mih_option FROM mandatory_inclusionary_housing_v20181130',
     },
     {
       id: 'inclusionary-housing',
@@ -56,7 +56,7 @@ export default {
     },
     {
       id: 'e-designations',
-      sql: 'SELECT the_geom_webmercator, bbl, ceqr_num, enumber, ulurp_num FROM e_designations_v20181030',
+      sql: 'SELECT the_geom_webmercator, bbl, ceqr_num, enumber, ulurp_num FROM e_designations_v20181130',
     },
     {
       id: 'industrial-business-zones',
