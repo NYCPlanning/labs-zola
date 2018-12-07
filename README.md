@@ -107,9 +107,12 @@ You can find us on Twitter at [@nycplanninglabs](https://twitter.com/nycplanning
 
 - **Indices** - When updating MapPLUTO data, be sure to add an index to the BBL column: `CREATE INDEX idx_mappluto_{version}_bbl ON mappluto_{version} (bbl)`
 
-- **Block Centroids** - You also need to regenerate the `mappluto_block_centroids` data table that provides the centroid of each block. This is used to add block labels to the map. You can run the SQL below on the Carto Batch UI: https://cartodb.github.io/carto-batch-ui/. Once the query runs successfully, you need to query for the table via the regular Carto UI and save it as a dataset. Then you can run `DROP TABLE mappluto_block_centroids_new` to delete the invisible one saved on Carto's backend.
+- **Block Centroids** - You also need to regenerate the `mappluto_block_centroids` data table that provides the centroid of each block. This is used to add block labels to the map. 
+  - Run the `CREATE TABLE` SQL below on the Carto Batch UI: https://cartodb.github.io/carto-batch-ui/. 
+  - Once the batch query runs successfully, you need to query for the table via the regular Carto UI and save it as a dataset.
+  - Then you can run `DROP TABLE mappluto_block_centroids_new` to delete the invisible table saved on Carto's backend.
 
-`
+```
 CREATE TABLE mappluto_block_centroids_new AS (
 SELECT
   ST_Centroid(
@@ -132,4 +135,4 @@ SELECT
   borocode
 FROM planninglabs.mappluto_VERSION
 GROUP BY block, borocode)
-`
+```
