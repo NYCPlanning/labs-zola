@@ -43,6 +43,7 @@ module.exports = function(environment) {
           'home',
           'info-circle',
           'map-pin',
+          'pen',
           'print',
           'search',
           'spinner',
@@ -75,8 +76,8 @@ module.exports = function(environment) {
         environments: ['development', 'production'],
         config: {
           id: 'UA-84250233-8',
-          debug: environment === 'development',
-          trace: environment === 'development',
+          debug: environment === 'development-ga',
+          trace: environment === 'development-ga',
           // Ensure development env hits aren't sent to GA
           sendHitTask: (environment !== 'development' && environment !== 'devlocal'),
         },

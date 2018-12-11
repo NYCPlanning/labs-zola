@@ -8,6 +8,9 @@ module.exports = (defaults) => {
     'ember-cli-babel': {
       includePolyfill: true,
     },
+    '@ember-decorators/babel-transforms': {
+      decoratorsBeforeExport: true,
+    },
     'ember-cli-uglify': {
       uglify: {
         compress: {

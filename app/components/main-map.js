@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import numeral from 'numeral';
 import EmberObject from '@ember/object';
 
-import { service } from '@ember-decorators/service';
+import { inject as service } from '@ember-decorators/service';
 import { computed, action } from '@ember-decorators/object';
 import { classNames } from '@ember-decorators/component';
 import { alias } from '@ember-decorators/object/computed';
@@ -33,9 +33,8 @@ MeasurementText.prototype.onRemove = function () {
   this._map = undefined;
 };
 
-export default
 @classNames('map-container')
-class MainMap extends Component {
+export default class MainMap extends Component {
   @service
   mainMap;
 
