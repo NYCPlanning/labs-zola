@@ -29,7 +29,7 @@
     "broccoli-asset-rev": "^2.7.0",
     "broccoli-clean-css": "^2.0.1",
     "ember-async-await-helper": "0.1.0",
-    "ember-auto-import": "1.2.13",
+    "ember-auto-import": "^1.2.19",
     "ember-clean-project": "1.0.1",
     "ember-cli": "~3.5.0",
     "ember-cli-app-version": "^3.2.0",
