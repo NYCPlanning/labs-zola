@@ -32,8 +32,8 @@
 
   .clear-button {
     position: absolute;
-    top: rem-calc(10);
-    right: rem-calc(10);
+    top: rem-calc(19);
+    right: rem-calc(15);
     bottom: auto;
     left: auto;
     z-index: 2;
@@ -41,8 +41,8 @@
 
   .search-icon {
     position: absolute;
-    top: rem-calc(7);
-    right: rem-calc(10);
+    top: rem-calc(18);
+    right: rem-calc(15);
     color: $medium-gray;
     pointer-events: none;
   }
