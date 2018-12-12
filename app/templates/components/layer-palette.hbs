@@ -234,7 +234,7 @@
 
     {{#labs-ui/layer-group-toggle
         label=layerGroups.sidewalk-cafes.legend.label
-        tooltip=layerGroups.fresh.legend.tooltip
+        tooltip=layerGroups.sidewalk-cafes.legend.tooltip
         active=layerGroups.sidewalk-cafes.visible}}
       {{labs-ui/legend-items items=layerGroups.sidewalk-cafes.legend.items}}
     {{/labs-ui/layer-group-toggle}}
@@ -292,9 +292,7 @@
         label=layerGroups.e-designations.legend.label
         tooltip=layerGroups.e-designations.legend.tooltip
         active=layerGroups.e-designations.visible}}
-      <ul class="layer-key">
-        <li><span style="color:#3a28dd;">{{fa-icon "circle-o"}}</span>E-designation</li>
-      </ul>
+      {{labs-ui/legend-item item=layerGroups.e-designations.legend}}
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle

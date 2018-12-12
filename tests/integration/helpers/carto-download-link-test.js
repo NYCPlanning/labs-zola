@@ -10,7 +10,7 @@ module('helper:carto-download-link', function(hooks) {
   // Replace this with your real tests.
   test('it renders', async function(assert) {
     this.setProperties({
-      table: 'mappluto_v18_1',
+      table: 'mappluto_18v_1_1',
       identifier: 'bbl',
       ids: [1014970028, 1015280036, 1015280038],
       format: 'csv',
@@ -18,7 +18,7 @@ module('helper:carto-download-link', function(hooks) {
 
     await render(hbs`{{carto-download-link table identifier ids format}}`);
 
-    assert.equal(find('*').textContent.trim(), 'https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM mappluto_v18_1 WHERE bbl IN (1014970028,1015280036,1015280038)&format=csv&filename=mappluto_v18_1');
+    assert.equal(find('*').textContent.trim(), 'https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM mappluto_18v_1_1 WHERE bbl IN (1014970028,1015280036,1015280038)&format=csv&filename=mappluto_18v_1_1');
   });
 });
 

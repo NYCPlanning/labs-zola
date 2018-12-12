@@ -1,7 +1,8 @@
 {{#labs-map
   id='main-map'
   layerGroups=layerGroups
-  initOptions=(hash zoom=zoom
+  initOptions=(hash style=layerGroupsMeta.mapboxStyle
+                    zoom=zoom
                     hash=true
                     center=(array lng lat))
   mapLoaded=(action 'handleMapLoad')

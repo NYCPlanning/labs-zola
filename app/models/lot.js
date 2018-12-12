@@ -49,7 +49,7 @@ const LotColumnsSQL = [
   'zonedist2',
   'zonedist3',
   'zonedist4',
-  'zonemap',
+  'LOWER(zonemap) AS zonemap',
 ];
 
 const bldgclassLookup = {
