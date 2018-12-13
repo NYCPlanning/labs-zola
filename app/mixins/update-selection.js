@@ -1,5 +1,5 @@
 import Mixin from '@ember/object/mixin';
-import { task, waitForProperty } from 'ember-concurrency';
+import { task } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
 
 export default Mixin.create({
@@ -9,7 +9,6 @@ export default Mixin.create({
   },
 
   setupController(controller, { taskInstance }) {
-    this.waitToFitBounds.perform(taskInstance);
     this._super(controller, taskInstance);
   },
 
@@ -17,16 +16,4 @@ export default Mixin.create({
     const model = yield taskInstance;
     this.set('mainMap.selected', model);
   }).restartable().cancelOn('deactivate'),
-
-  waitToFitBounds: task(function* (taskInstance) {
-    yield waitForProperty(taskInstance, 'state', 'finished');
-
-    this.get('mainMap.setBounds').perform();
-  }).restartable(),
-
-  actions: {
-    didTransition() {
-      this.get('mainMap.setBounds').perform();
-    },
-  },
 });
