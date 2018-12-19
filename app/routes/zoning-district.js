@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { computed, action } from '@ember-decorators/object'; // eslint-disable-line
-import updateSelectionMixin from '../mixins/update-selection';
+import updateSelectionMixin from '../mixins/update-selection-zoning';
 
 const mappableRoute = Route.extend(updateSelectionMixin, {});
 
