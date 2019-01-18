@@ -37,13 +37,3 @@ jobs:
 
       # run tests!
       - run: yarn test
-
-      # deploy
-      - deploy:
-          name: Deployment
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              curl -X POST -d {} https://api.netlify.com/build_hooks/5c366687816a1e4fbb2704e0
-            elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              curl -X POST -d {} https://api.netlify.com/build_hooks/5c366694ad2e125a43204024
-            fi
