@@ -39,14 +39,11 @@ jobs:
       - run: yarn test
 
       # deploy
-      - run:
-          name: Avoid hosts unknown for github
-          command: ssh-keyscan planninglabs.nyc >> ~/.ssh/known_hosts
       - deploy:
           name: Deployment
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              git remote add dokku dokku@planninglabs.nyc:zola && git push dokku master
+              curl -X POST -d {} https://api.netlify.com/build_hooks/5c366687816a1e4fbb2704e0
             elif [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              git remote add dokku dokku@planninglabs.nyc:zola-staging && git push dokku develop:master
+              curl -X POST -d {} https://api.netlify.com/build_hooks/5c366694ad2e125a43204024
             fi
