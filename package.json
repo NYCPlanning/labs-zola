@@ -95,6 +95,7 @@
     "mapbox-gl": "0.50.0",
     "mapbox-gl-draw": "0.16.0",
     "moment": "2.22.2",
+    "puppeteer": "^1.11.0",
     "qunit-dom": "^0.8.0"
   },
   "engines": {
