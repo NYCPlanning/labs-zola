@@ -26,7 +26,7 @@ function createSitemap(rows) {
 
 function getData() {
   const offset = 50000 * count;
-  const sql = `SELECT bbl FROM mappluto_18v_1_1 LIMIT 50000 OFFSET ${offset}`;
+  const sql = `SELECT bbl FROM mappluto_18v2 LIMIT 50000 OFFSET ${offset}`;
 
   const apiCall = `https://planninglabs.carto.com/api/v2/sql?q=${sql}&format=json`;
 
