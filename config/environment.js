@@ -107,7 +107,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'devlocal') {
-    // here you can enable a staging-specific feature
+    // here you can enable a devlocal-specific feature
     ENV.host = 'http://localhost:3000';
   }
 
