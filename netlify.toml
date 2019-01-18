@@ -1,5 +1,5 @@
 [build]
-command = "yarn deploy --environment = staging"
+command = "yarn deploy --environment=staging"
 
 [context.master]
-command = "yarn deploy --environment = production"
+command = "yarn deploy --environment=production"
