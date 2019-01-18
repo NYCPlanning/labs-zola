@@ -16,7 +16,7 @@
     "lint:hbs": "ember-template-lint .",
     "start": "ember serve",
     "test": "ember test",
-    "deploy": "yarn build",
+    "deploy": "ember build",
     "predeploy": "yarn test"
   },
   "devDependencies": {
