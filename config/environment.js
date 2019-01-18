@@ -106,6 +106,11 @@ module.exports = function(environment) {
     ENV.APP.autoboot = false;
   }
 
+  if (environment === 'devlocal') {
+    // here you can enable a staging-specific feature
+    ENV.host = 'http://localhost:3000';
+  }
+
   if (environment === 'staging') {
     // here you can enable a staging-specific feature
     ENV.host = 'https://layers-api-staging.planninglabs.nyc';
