@@ -67,6 +67,8 @@ export const mapQueryParams = new QueryParams(
         refresh: true,
         as: 'layer-groups',
       },
+
+      print: { defaultValue: false },
     },
   ),
 );

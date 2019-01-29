@@ -22,7 +22,7 @@
   {{/banner.nav}}
 {{/labs-ui/site-header}}
 
-<div class="site-main grid-x">
+<div class="site-main grid-x {{if qps.print "print-view" ""}}">
   <div class="navigation-area cell large-auto">
     <div class="search-container hide-for-print">
       {{labs-search
