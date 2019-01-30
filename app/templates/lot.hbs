@@ -178,7 +178,7 @@
       </div>
     </div>
 
-    <hr/>
+    <hr class="hide-for-print" />
 
     {{#if model.value.ownertypename}}<div class="data-grid"><label class="data-label">Owner Type</label><span class="datum">{{if model.value.ownertypename model.value.ownertypename 'Unknown/Private'}}</span></div>{{/if}}
     {{#if model.value.ownername}}<div class="data-grid"><label class="data-label">Owner</label><span class="datum">{{model.value.ownername}}</span></div>{{/if}}
@@ -207,7 +207,7 @@
       </div>
     {{/if}}
 
-    <h3 class="header-small lot-section-header">Neighborhood Information</h3>
+    <h3 class="header-small lot-section-header hide-for-print">Neighborhood Information</h3>
 
     {{#if model.value.cdURLSegment}}<div class="data-grid"><label class="data-label">Community District</label><span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{model.value.cdURLSegment}}" target="_blank">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.cdName}}</a></span></div>{{/if}}
     {{#if model.value.council}}<div class="data-grid"><label class="data-label">City Council District</label><span class="datum"><a href="https://council.nyc.gov/district-{{model.value.council}}/" target="_blank">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Council District {{model.value.council}}</a></span></div>{{/if}}
@@ -218,8 +218,9 @@
     {{#if model.value.sanitdistr}}<div class="data-grid"><label class="data-label">Sanitation District</label><span class="datum">{{model.value.sanitdistr}}</span></div>{{/if}}
     {{#if model.value.sanitsub}}<div class="data-grid"><label class="data-label">Sanitation Subsection</label><span class="datum">{{model.value.sanitsub}}</span></div>{{/if}}
 
-    <hr>
-    {{road-view 
+    <hr class="hide-for-print" />
+
+    {{road-view
       lon=model.value.lon
       lat=model.value.lat
     }}

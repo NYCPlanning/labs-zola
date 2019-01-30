@@ -14,7 +14,7 @@ export default class LayerPaletteComponent extends Component {
   @argument
   resetQueryParmas;
 
-  classNames = ['layer-palette hide-for-print'];
+  classNames = ['layer-palette'];
 
   closed = true;
 

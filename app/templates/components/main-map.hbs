@@ -68,7 +68,7 @@
   <button {{action 'handlePrint'}} class="mapboxgl-ctrl-icon">{{fa-icon 'print'}}</button>
 </div>
 
-<div class="draw-tools">
+<div class="draw-tools hide-for-print">
   <label>
     <span class="hide-for-large" {{action (mut drawToolsOpen) (not drawToolsOpen)}}>
       {{#if drawToolsOpen}}

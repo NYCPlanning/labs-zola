@@ -67,7 +67,6 @@
 @import 'base/_typography';
 
 @import 'layouts/_l-default';
-@import 'layouts/_l-print';
 
 @import 'modules/_m-bbl-lookup';
 // @import 'modules/_m-ember-tooltip';
@@ -81,3 +80,5 @@
 
 @import 'ember-power-select';
 @import 'ember-content-placeholders';
+
+@import 'layouts/_l-print';

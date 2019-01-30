@@ -1,5 +1,6 @@
 {{#labs-ui/site-header
   responsiveNav=true
+  class=(if qps.print 'hide-for-print')
   as |banner|
 }}
   {{#banner.title}}
@@ -22,44 +23,46 @@
   {{/banner.nav}}
 {{/labs-ui/site-header}}
 
-<div class="site-main grid-x {{if qps.print "print-view" ""}}">
-  <div class="navigation-area cell large-auto">
-    <div class="search-container hide-for-print">
-      {{labs-search
-        onSelect=(action 'handleSearchSelect')
-        typeTitleLookup = (hash
-          lot='View Tax Lot Information'
-          zma='View Zoning Change Information'
-          neighborhood='Go to Neighborhood'
-          zoning-district='View Zoning Districts'
-          commercial-overlay='View Commerical Overlay'
-          special-purpose-district='View Special Purpose District'
-        )}}
-      {{labs-bbl-lookup 
-        boro=boro
-        block=block
-        lot=lot 
-        flyTo=(action 'flyTo')}}
-    </div>
+<div class="{{if qps.print 'print-view'}}">
+  <div class="site-main grid-x {{if qps.print 'paper letter -landscape'}}">
+    <div class="navigation-area cell large-auto">
+      <div class="search-container hide-for-print">
+        {{labs-search
+          onSelect=(action 'handleSearchSelect')
+          typeTitleLookup = (hash
+            lot='View Tax Lot Information'
+            zma='View Zoning Change Information'
+            neighborhood='Go to Neighborhood'
+            zoning-district='View Zoning Districts'
+            commercial-overlay='View Commerical Overlay'
+            special-purpose-district='View Special Purpose District'
+          )}}
+        {{labs-bbl-lookup
+          boro=boro
+          block=block
+          lot=lot
+          flyTo=(action 'flyTo')}}
+      </div>
 
-    <div class="map-grid">
-      {{main-map
-        cartoSources=model.cartoSources
-        routeToLot=(action 'routeToLot')
-        transitionTo=(action 'transitionTo')
-        bookmarks=model.bookmarks
-        layerGroups=model.layerGroups
-        layerGroupsObject=model.layerGroupsObject
-        layerGroupsMeta=model.meta
-        qps=qps
-      }}
+      <div class="map-grid">
+        {{main-map
+          cartoSources=model.cartoSources
+          routeToLot=(action 'routeToLot')
+          transitionTo=(action 'transitionTo')
+          bookmarks=model.bookmarks
+          layerGroups=model.layerGroups
+          layerGroupsObject=model.layerGroupsObject
+          layerGroupsMeta=model.meta
+          qps=qps
+        }}
 
-      {{layer-palette
-        qps=qps
-        layerGroups=model.layerGroupsObject
-        isDefault=isDefault
-        resetQueryParams=(action 'resetQueryParams')}}
+        {{layer-palette
+          qps=qps
+          layerGroups=model.layerGroupsObject
+          isDefault=isDefault
+          resetQueryParams=(action 'resetQueryParams')}}
+      </div>
     </div>
+    {{outlet}}
   </div>
-  {{outlet}}
 </div>
