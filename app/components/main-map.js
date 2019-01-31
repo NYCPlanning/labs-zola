@@ -473,8 +473,8 @@ class MainMap extends Component {
         }
 
         if (zonedist) {
-          mainMap.set('shouldFitBounds', false);
-          this.transitionTo('zoning-district', zonedist);
+          // mainMap.set('shouldFitBounds', false); // what is this doing? why is it here?
+          this.transitionTo('zoning-district', zonedist, { queryParams: { search: false } });
         }
 
         if (sdlbl) {
