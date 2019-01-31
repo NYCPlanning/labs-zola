@@ -7,6 +7,7 @@ import { visit,
   waitUntil,
   currentURL,
   triggerEvent,
+  pauseTest,
 } from '@ember/test-helpers';
 import { module, skip, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';

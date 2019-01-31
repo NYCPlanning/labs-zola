@@ -2,6 +2,7 @@ import { registerWaiter, unregisterWaiter } from '@ember/test';
 import LabsMap from 'ember-mapbox-composer/components/labs-map';
 import MapboxGL from 'ember-mapbox-gl/components/mapbox-gl';
 import Service, { inject as service } from '@ember/service';
+import { service as serviceDec } from '@ember-decorators/service';
 
 export default function(hooks) {
   hooks.beforeEach(async function() {
@@ -26,41 +27,55 @@ export default function(hooks) {
       },
     }));
 
-    this.owner.register('component:labs-map', LabsMap.extend({
-      didIdle: false,
-      mockMapService: service(),
+    class TesterMap extends LabsMap {
+      didIdle = false;
+
+      @serviceDec
+      mockMapService;
+
       init(...args) {
-        this._super(...args);
+        super.init(...args);
 
         // register map reference
         this.get('mockMapService.maps').set(this.elementId, this);
 
         // test waiter
-        registerWaiter(() => this.didIdle);
+        registerWaiter(this.testWaiter.bind(this));
+      }
 
-        // intercept the mapLoaded closure
-        const mapLoadedClosure = this.mapLoaded;
-
-        // override maploaded with an event listener that replaces
-        // the canvas with an image for testing purposes
-        this.mapLoaded = (map) => {
-          map.once('idle', () => {
-            this.element.outerHTML = `
-              <div>
-                <img src="${map.getCanvas().toDataURL()}"/>
-              </div>
-            `;
-            this.didIdle = true;
-          });
-
-          return mapLoadedClosure(map);
-        }
-      },
       willDestroyElement(...params) {
-        unregisterWaiter(() => this.map);
+        unregisterWaiter(this.testWaiter.bind(this));
 
         this._super(...params);
-      },
-    }));
+      }
+
+      testWaiter() {
+        if (this.map) {
+          return this.didIdle;
+        }
+
+        return false;
+      }
+
+      swapInImage(map) {
+        const target = this.element.querySelector('canvas') || this.element.querySelector('img');
+        target.outerHTML = `
+          <img src="${map.getCanvas().toDataURL()}"/>
+        `;
+      }
+
+      _onLoad(map) {
+        // override maploaded with an event listener that replaces
+        // the canvas with an image for testing purposes
+        map.on('idle', () => {
+          this.swapInImage(map);
+          this.didIdle = true;
+        });
+
+        super._onLoad(map);
+      }
+    }
+
+    this.owner.register('component:labs-map', TesterMap);
   });
 }
