@@ -30,6 +30,7 @@ module.exports = function(environment) {
       icons: {
         'free-regular-svg-icons': [
           'circle',
+          'dot-circle',
         ],
         'free-solid-svg-icons': [
           'angle-up',
@@ -54,7 +55,7 @@ module.exports = function(environment) {
         ],
       },
     },
-    
+
     metricsAdapters: [
       {
         name: 'GoogleAnalytics',
