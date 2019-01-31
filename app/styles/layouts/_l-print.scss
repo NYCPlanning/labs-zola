@@ -111,7 +111,7 @@
   }
 
   #layers-menu {
-    pointer-events: none; // Prevent interaction with layer group toggles
+    // pointer-events: none; // Prevent interaction with layer group toggles
 
     .layer-groups-container {
       // border-bottom: 0;
@@ -164,21 +164,28 @@
     background-color: White;
     font-size: 10pt;
 
+    // Prevent click changing route
+    a, button { pointer-events: none; }
+
     h1 { font-size: 17pt; }
     h2 { font-size: 15pt; }
     h3 { font-size: 13pt; }
     h4 { font-size: 11pt; }
     h5 { font-size: 9pt; }
     h6 { font-size: 7pt; }
+
     .content-header {
       font-size: 13pt;
       margin-bottom: 2pt;
     }
+
     .header-label { font-size: 7pt; }
+
     p, ul {
       font-size: 9pt;
       margin-bottom: 2pt;
     }
+
     .text-small { font-size: 7pt; }
 
     .lot-zoning-list {
@@ -210,6 +217,17 @@
 
 
   //
+  // Map Controls
+  // --------------------------------------------------
+  .mapboxgl-ctrl-scale {
+    // Make the scale a bit smaller
+    font-size: 6pt;
+    line-height: 1.5;
+    padding: 0 1pt;
+  }
+
+
+  //
   // Don't print this stuff!!!
   // --------------------------------------------------
   .hide-for-print, // Hide everything that doesn't print
@@ -217,7 +235,10 @@
   .layer-group-toggle > :first-child:last-child, // Only print layer groups if they're on
   .layer-group-toggle-header .switch,
   .fa-external-link-alt,
-  .fa-info-circle {
+  .fa-info-circle,
+  .mapboxgl-ctrl-top-left,
+  .mapboxgl-ctrl-bottom-right,
+  .mapboxgl-ctrl.print-controls {
     display: none !important;
   }
 

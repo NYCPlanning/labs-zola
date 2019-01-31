@@ -1,0 +1,28 @@
+<div class="print-view--controls">
+  <p>Paper orientation:
+    <button onclick={{action (mut printViewOrientation) 'landscape'}}>
+      <span class="fa-layers">
+        {{#if (eq printViewOrientation 'landscape')}}
+          {{fa-icon 'square' class='white'}}
+          {{fa-icon 'check-square' class='a11y-orange'}}
+        {{else}}
+          {{fa-icon 'square' class='silver'}}
+          {{fa-icon 'square' class='light-gray' prefix='far'}}
+        {{/if}}
+      </span> Landscape
+    </button>
+    <button onclick={{action (mut printViewOrientation) 'portrait'}}>
+      <span class="fa-layers">
+        {{#if (eq printViewOrientation 'portrait')}}
+          {{fa-icon 'square' class='white'}}
+          {{fa-icon 'check-square' class='a11y-orange'}}
+        {{else}}
+          {{fa-icon 'square' class='silver'}}
+          {{fa-icon 'square' class='light-gray' prefix='far'}}
+        {{/if}}
+      </span> Portrait
+    </button>
+  </p>
+
+  {{yield}}
+</div>

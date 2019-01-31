@@ -95,6 +95,10 @@ export default Controller.extend(mapQueryParams.Mixin, {
   block: 0,
   lot: 0,
 
+  // Print View Settings
+  printViewOrientation: 'landscape',
+  printViewPaperSize: 'letter',
+
   isDefault: computedProp('queryParamsState', function() {
     const state = this.get('queryParamsState');
     const values = Object.values(state);

@@ -24,7 +24,11 @@
 {{/labs-ui/site-header}}
 
 <div class="{{if qps.print 'print-view'}}">
-  <div class="site-main grid-x {{if qps.print 'paper letter -landscape'}}">
+  {{#if qps.print}}
+    {{print-view-controls}}
+  {{/if}}
+
+  <div class="site-main grid-x {{if qps.print (concat 'paper ' printViewPaperSize ' ' printViewOrientation)}}">
     <div class="navigation-area cell large-auto">
       <div class="search-container hide-for-print">
         {{labs-search
