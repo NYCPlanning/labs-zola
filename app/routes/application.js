@@ -20,6 +20,7 @@ export default Route.extend({
     const layerGroups = await this.store.query('layer-group', {
       'layer-groups': [
         { id: 'zoning-districts', visible: true },
+        { id: 'street-centerlines', visible: true },
         { id: 'tax-lots', visible: true, layers: [{ tooltipable: true }] },
         { id: 'commercial-overlays', visible: true },
         { id: 'zoning-map-amendments', visible: false },
