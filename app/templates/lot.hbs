@@ -26,7 +26,7 @@
     {{#if model.value.zonedist1}}
       <ul class="lot-zoning-list">
         <li class="menu-text">Zoning District{{if (or model.value.zonedist2 model.value.spdist1) 's'}}:</li>
-        {{#if model.value.zonedist1}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone1}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist1}}</a></li>{{/if}}
+        {{#unless (eq model.value.zonedist1 "BPC")}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone1}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist1}}</a></li>{{/unless}}
         {{#if model.value.zonedist2}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone2}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist2}}</a></li>{{/if}}
         {{#if model.value.zonedist3}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone3}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist3}}</a></li>{{/if}}
         {{#if model.value.zonedist4}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone4}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist4}}</a></li>{{/if}}
