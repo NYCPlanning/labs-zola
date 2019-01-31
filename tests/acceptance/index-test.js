@@ -10,6 +10,7 @@ import { visit,
 } from '@ember/test-helpers';
 import { module, skip, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
+import setupMapMocks from '../helpers/setup-map-mocks';
 import { percySnapshot } from 'ember-percy';
 
 const SEARCH_INPUT_SELECTOR = '.map-search-input';
@@ -27,6 +28,7 @@ const resultAt = function(x) {
 
 module('Acceptance | index', function(hooks) {
   setupApplicationTest(hooks);
+  setupMapMocks(hooks);
 
   test('map-search enter on first search result', async function(assert) {
     await visit('/');
