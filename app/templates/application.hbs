@@ -25,7 +25,10 @@
 
 <div class="{{if qps.print 'print-view'}}">
   {{#if qps.print}}
-    {{print-view-controls}}
+    {{print-view-controls
+      printViewOrientation=printViewOrientation
+      printViewPaperSize=printViewPaperSize
+    }}
   {{/if}}
 
   <div class="site-main grid-x {{if qps.print (concat 'paper ' printViewPaperSize ' ' printViewOrientation)}}">

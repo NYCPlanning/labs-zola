@@ -1,28 +1,64 @@
-<div class="print-view--controls">
-  <p>Paper orientation:
-    <button onclick={{action (mut printViewOrientation) 'landscape'}}>
-      <span class="fa-layers">
-        {{#if (eq printViewOrientation 'landscape')}}
-          {{fa-icon 'square' class='white'}}
-          {{fa-icon 'check-square' class='a11y-orange'}}
-        {{else}}
-          {{fa-icon 'square' class='silver'}}
-          {{fa-icon 'square' class='light-gray' prefix='far'}}
-        {{/if}}
-      </span> Landscape
-    </button>
-    <button onclick={{action (mut printViewOrientation) 'portrait'}}>
-      <span class="fa-layers">
-        {{#if (eq printViewOrientation 'portrait')}}
-          {{fa-icon 'square' class='white'}}
-          {{fa-icon 'check-square' class='a11y-orange'}}
-        {{else}}
-          {{fa-icon 'square' class='silver'}}
-          {{fa-icon 'square' class='light-gray' prefix='far'}}
-        {{/if}}
-      </span> Portrait
-    </button>
-  </p>
-
-  {{yield}}
+<div class="print-view-controls--item">
+  <h6 class="print-view-controls--header">Orientation:</h6>
+  <button onclick={{action (mut printViewOrientation) 'landscape'}}>
+    <span class="fa-layers">
+      {{#if (eq printViewOrientation 'landscape')}}
+        {{fa-icon 'square' class='white'}}
+        {{fa-icon 'check-square' class='a11y-orange'}}
+      {{else}}
+        {{fa-icon 'square' class='silver'}}
+        {{fa-icon 'square' class='light-gray' prefix='far'}}
+      {{/if}}
+    </span> Landscape
+  </button>
+  <button onclick={{action (mut printViewOrientation) 'portrait'}}>
+    <span class="fa-layers">
+      {{#if (eq printViewOrientation 'portrait')}}
+        {{fa-icon 'square' class='white'}}
+        {{fa-icon 'check-square' class='a11y-orange'}}
+      {{else}}
+        {{fa-icon 'square' class='silver'}}
+        {{fa-icon 'square' class='light-gray' prefix='far'}}
+      {{/if}}
+    </span> Portrait
+  </button>
 </div>
+
+<div class="print-view-controls--item">
+  <h6 class="print-view-controls--header">Size:</h6>
+  <button onclick={{action (mut printViewPaperSize) 'letter'}}>
+    <span class="fa-layers">
+      {{#if (eq printViewPaperSize 'letter')}}
+        {{fa-icon 'square' class='white'}}
+        {{fa-icon 'check-square' class='a11y-orange'}}
+      {{else}}
+        {{fa-icon 'square' class='silver'}}
+        {{fa-icon 'square' class='light-gray' prefix='far'}}
+      {{/if}}
+    </span> Letter
+  </button>
+  <button onclick={{action (mut printViewPaperSize) 'legal'}}>
+    <span class="fa-layers">
+      {{#if (eq printViewPaperSize 'legal')}}
+        {{fa-icon 'square' class='white'}}
+        {{fa-icon 'check-square' class='a11y-orange'}}
+      {{else}}
+        {{fa-icon 'square' class='silver'}}
+        {{fa-icon 'square' class='light-gray' prefix='far'}}
+      {{/if}}
+    </span> Legal
+  </button>
+  <button onclick={{action (mut printViewPaperSize) 'tabloid'}}>
+    <span class="fa-layers">
+      {{#if (eq printViewPaperSize 'tabloid')}}
+        {{fa-icon 'square' class='white'}}
+        {{fa-icon 'check-square' class='a11y-orange'}}
+      {{else}}
+        {{fa-icon 'square' class='silver'}}
+        {{fa-icon 'square' class='light-gray' prefix='far'}}
+      {{/if}}
+    </span> Tabloid
+  </button>
+</div>
+
+{{yield}}
