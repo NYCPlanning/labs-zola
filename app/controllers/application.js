@@ -144,7 +144,6 @@ export default Controller.extend(mapQueryParams.Mixin, {
       }
 
       if (type === 'zoning-district') {
-        // mainMap.set('shouldFitBounds', true);
         this.set('searchTerms', result.label);
         this.transitionToRoute('zoning-district', result.label, { queryParams: { search: true } });
       }

@@ -1,11 +1,10 @@
 import EmberObject from '@ember/object';
-import UpdateSelectionAllFeaturesMixin from 'labs-zola/mixins/update-selection-all-features';
+import UpdateSelectionSingleFeaturesMixin from 'labs-zola/mixins/update-selection-single-features';
 import { module, test } from 'qunit';
 
-module('Unit | Mixin | update selection', function() {
-  // Replace this with your real tests.
+module('Unit | Mixin | update selection single features', function() {
   test('it works', function(assert) {
-    let UpdateSelectionObject = EmberObject.extend(UpdateSelectionMixin);
+    let UpdateSelectionObject = EmberObject.extend(UpdateSelectionSingleFeaturesMixin);
     let subject = UpdateSelectionObject.create();
     assert.ok(subject);
   });

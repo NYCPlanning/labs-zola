@@ -1,6 +1,4 @@
 import Route from '@ember/routing/route';
-// import { alias } from '@ember/object/computed';
-// import { inject as service } from '@ember/service';
 import updateSelectionAllFeaturesMixin from '../mixins/update-selection-all-features';
 
 const mappableRoute = Route.extend(updateSelectionAllFeaturesMixin, {});
