@@ -1,24 +1,14 @@
 import Route from '@ember/routing/route';
-import { alias } from '@ember/object/computed';
-import { inject as service } from '@ember/service';
-import updateSelectionZoningMixin from '../mixins/update-selection-zoning';
+// import { alias } from '@ember/object/computed';
+// import { inject as service } from '@ember/service';
+import updateSelectionAllFeaturesMixin from '../mixins/update-selection-all-features';
 
-export default Route.extend(updateSelectionZoningMixin, {
-  mainMap: service(),
+const mappableRoute = Route.extend(updateSelectionAllFeaturesMixin, {});
+
+export default class CommercialOverlayRoute extends mappableRoute {
   model(params) {
     return {
       taskInstance: this.store.findRecord('commercial-overlay', params.id),
     };
-  },
-
-  bounds: alias('mainMap.bounds'),
-
-  actions: {
-    fitBounds() {
-      const { mainMap } = this;
-      const map = mainMap.mapInstance;
-      const fitBoundsOptions = mainMap.get('isSelectedBoundsOptions');
-      map.fitBounds(this.bounds, fitBoundsOptions);
-    },
-  },
-});
+  }
+}

@@ -1,5 +1,5 @@
 import EmberObject from '@ember/object';
-import UpdateSelectionZoningMixin from 'labs-zola/mixins/update-selection-zoning';
+import UpdateSelectionAllFeaturesMixin from 'labs-zola/mixins/update-selection-all-features';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | update selection', function() {

@@ -140,7 +140,7 @@ export default Controller.extend(mapQueryParams.Mixin, {
 
       if (type === 'zma') {
         this.set('searchTerms', result.label);
-        this.transitionToRoute('zma', result.ulurpno);
+        this.transitionToRoute('zma', result.ulurpno, { queryParams: { search: true } });
       }
 
       if (type === 'zoning-district') {
@@ -176,12 +176,12 @@ export default Controller.extend(mapQueryParams.Mixin, {
 
       if (type === 'special-purpose-district') {
         this.set('searchTerms', result.sdname);
-        this.transitionToRoute('special-purpose-district', result.cartodb_id);
+        this.transitionToRoute('special-purpose-district', result.cartodb_id, { queryParams: { search: true } });
       }
 
       if (type === 'commercial-overlay') {
         this.set('searchTerms', result.label);
-        this.transitionToRoute('commercial-overlay', result.label);
+        this.transitionToRoute('commercial-overlay', result.label, { queryParams: { search: true } });
       }
     },
 

@@ -1,8 +1,8 @@
 import Route from '@ember/routing/route';
 import { computed, action } from '@ember-decorators/object'; // eslint-disable-line
-import updateSelectionZoningMixin from '../mixins/update-selection-zoning';
+import updateSelectionAllFeaturesMixin from '../mixins/update-selection-all-features';
 
-const mappableRoute = Route.extend(updateSelectionZoningMixin, {});
+const mappableRoute = Route.extend(updateSelectionAllFeaturesMixin, {});
 
 export default class ZoningDistrictRoute extends mappableRoute {
   model(params) {

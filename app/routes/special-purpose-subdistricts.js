@@ -1,8 +1,8 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import updateSelectionZoningMixin from '../mixins/update-selection-zoning';
+import updateSelectionAllFeaturesMixin from '../mixins/update-selection-all-features';
 
-export default Route.extend(updateSelectionZoningMixin, {
+export default Route.extend(updateSelectionAllFeaturesMixin, {
   mainMap: service(),
   model(params) {
     return {
