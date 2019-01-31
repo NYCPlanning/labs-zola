@@ -27,12 +27,27 @@ export default function(hooks) {
     }));
 
     this.owner.register('component:labs-map', LabsMap.extend({
+      didIdle: false,
       mockMapService: service(),
       init(...args) {
         this._super(...args);
 
         this.get('mockMapService.maps').set(this.elementId, this);
-        registerWaiter(() => this.map);
+        registerWaiter(() => this.didIdle);
+        const mapLoadedClosure = this.mapLoaded;
+
+        this.mapLoaded = (map) => {
+          map.once('idle', () => {
+            this.element.outerHTML = `
+              <div>
+                <img src="${map.getCanvas().toDataURL()}"/>
+              </div>
+            `;
+            this.didIdle = true;
+          });
+
+          return mapLoadedClosure(map);
+        }
       },
       willDestroyElement(...params) {
         unregisterWaiter(() => this.map);
