@@ -31,6 +31,7 @@ module.exports = function(environment) {
         'free-regular-svg-icons': [
           'check-square',
           'circle',
+          'dot-circle',
           'square',
         ],
         'free-solid-svg-icons': [
