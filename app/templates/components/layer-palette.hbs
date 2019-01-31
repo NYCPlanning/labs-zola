@@ -110,13 +110,6 @@
         icon=layerGroups.special-purpose-subdistricts.legend.icon
         active=layerGroups.special-purpose-subdistricts.visible}}
     {{/labs-ui/layer-group-toggle}}
-
-    {{#labs-ui/layer-group-toggle
-        label=layerGroups.limited-height-districts.legend.label
-        tooltip=layerGroups.limited-height-districts.legend.tooltip
-        icon=layerGroups.limited-height-districts.legend.icon
-        active=layerGroups.limited-height-districts.visible}}
-    {{/labs-ui/layer-group-toggle}}
   {{/labs-ui/layer-groups-container}}
 
   {{#labs-ui/layer-groups-container
@@ -155,6 +148,13 @@
         tooltip=layerGroups.sidewalk-cafes.legend.tooltip
         active=layerGroups.sidewalk-cafes.visible}}
       {{labs-ui/legend-items items=layerGroups.sidewalk-cafes.legend.items}}
+    {{/labs-ui/layer-group-toggle}}
+
+    {{#labs-ui/layer-group-toggle
+        label=layerGroups.limited-height-districts.legend.label
+        tooltip=layerGroups.limited-height-districts.legend.tooltip
+        icon=layerGroups.limited-height-districts.legend.icon
+        active=layerGroups.limited-height-districts.visible}}
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
@@ -310,14 +310,10 @@
         {{#each layerGroups.aerials.layers as |layer|}}
           <li onclick={{action (mut layerGroups.aerials.selected) layer.id}} role='button'>
             <label {{!template-lint-disable "nested-interactive"}}>
-              <span class="layer-group-radio-{{layer.id}}">
+              <span class="layer-group-radio-{{layer.id}} silver">
                 <span class="fa-layers">
-                  {{#if layer.visibility}}
-                    {{fa-icon 'dot-circle' prefix='far' class=(if layer.visibility '' 'silver')}}
-                  {{else}}
-                    {{fa-icon 'circle' prefix='far' class=(if layer.visibility '' 'silver')}}
-                  {{/if}}
-
+                  {{#if layer.visibility}}{{fa-icon 'circle' class="a11y-orange" transform='shrink-5'}}{{/if}}
+                  {{fa-icon 'circle' prefix='far' class=(if layer.visibility '')}}
                 </span>
               </span>
               {{layer.displayName}}
