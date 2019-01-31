@@ -222,8 +222,14 @@ class MainMap extends Component {
     map.addControl(geoLocateControl, 'top-left');
     map.addControl(new MeasurementText(), 'top-left');
 
-    // get rid of default building layer
-    map.removeLayer('building');
+    // hide default base style layers
+    const basemapLayersToHide = [
+      'building',
+      'highway_name_other',
+      'highway_name_motorway',
+    ];
+
+    basemapLayersToHide.forEach(layer => map.removeLayer(layer));
 
     map.addSource('ee', {
       type: 'image',
