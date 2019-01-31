@@ -32,11 +32,11 @@ module('Acceptance | index', function(hooks) {
 
   test('map-search enter on first search result', async function(assert) {
     await visit('/');
-    await percySnapshot(assert);
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
+    await percySnapshot('searches');
     await waitUntil(() => find('.has-results'), { timeout });
     await click('.result');
-    await percySnapshot(assert);
+    await percySnapshot('clicks result');
 
     assert.equal(
       (currentURL().indexOf('/') > -1),

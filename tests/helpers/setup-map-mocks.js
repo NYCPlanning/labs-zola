@@ -32,10 +32,17 @@ export default function(hooks) {
       init(...args) {
         this._super(...args);
 
+        // register map reference
         this.get('mockMapService.maps').set(this.elementId, this);
+
+        // test waiter
         registerWaiter(() => this.didIdle);
+
+        // intercept the mapLoaded closure
         const mapLoadedClosure = this.mapLoaded;
 
+        // override maploaded with an event listener that replaces
+        // the canvas with an image for testing purposes
         this.mapLoaded = (map) => {
           map.once('idle', () => {
             this.element.outerHTML = `
