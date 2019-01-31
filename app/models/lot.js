@@ -29,8 +29,7 @@ const LotColumnsSQL = [
   'numfloors',
   'ownername',
   'ownertype',
-  'overlay1',
-  'overlay2',
+  'overlay1', 'overlay2',
   'policeprct',
   'sanitboro',
   'sanitdistr',
@@ -483,6 +482,18 @@ export default class LotModel extends Bookmarkable {
   @computed('ownertype')
   get ownertypename() {
     return ownertypeLookup[this.ownertype];
+  }
+
+  @computed('address')
+  get housenum() {
+    const match = this.address.match(/([0-9-]*)\s[0-9A-Za-z\s]*/);
+    return match ? match[1] : '';
+  }
+
+  @computed('address')
+  get street() {
+    const match = this.address.match(/[0-9-]*\s([0-9A-Za-z\s]*)/);
+    return match ? match[1] : '';
   }
 }
 
