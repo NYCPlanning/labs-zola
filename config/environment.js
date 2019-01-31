@@ -70,20 +70,6 @@ module.exports = function(environment) {
       },
     ],
 
-    metricsAdapters: [
-      {
-        name: 'GoogleAnalytics',
-        environments: ['development', 'production'],
-        config: {
-          id: 'UA-84250233-8',
-          debug: environment === 'development',
-          trace: environment === 'development',
-          // Ensure development env hits aren't sent to GA
-          sendHitTask: (environment !== 'development' && environment !== 'devlocal'),
-        },
-      },
-    ],
-
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
