@@ -206,6 +206,16 @@
         </span>
       </div>
     {{/if}}
+    {{#if (and model.value.borocode model.value.address)}}
+      <div class="data-grid">
+        <label class="data-label">Housing Info</label>
+        <span class="datum">
+          <a href="https://hpdonline.hpdnyc.org/Hpdonline/Provide_address.aspx?p1={{model.value.boro}}&p2={{model.value.housenum}}&p3={{model.value.street}}&SearchButton=Search" target="_blank">
+            {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} View HPD's Building, Registration & Violation Records
+          </a>
+        </span>
+      </div>
+    {{/if}}
 
     <h3 class="header-small lot-section-header">Neighborhood Information</h3>
 
