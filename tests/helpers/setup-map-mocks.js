@@ -2,7 +2,7 @@ import { registerWaiter, unregisterWaiter } from '@ember/test';
 import LabsMap from 'ember-mapbox-composer/components/labs-map';
 import MapboxGL from 'ember-mapbox-gl/components/mapbox-gl';
 import Service, { inject as service } from '@ember/service';
-import { service as serviceDec } from '@ember-decorators/service';
+import { inject as serviceDec } from '@ember-decorators/service';
 
 export default function(hooks) {
   hooks.beforeEach(async function() {
@@ -46,6 +46,9 @@ export default function(hooks) {
       willDestroyElement(...params) {
         unregisterWaiter(this.testWaiter.bind(this));
 
+        this.map.off('idle', this.callbacks.willIdle);
+        this.map.off('render', this.callbacks.willRender);
+
         this._super(...params);
       }
 
@@ -65,12 +68,21 @@ export default function(hooks) {
       }
 
       _onLoad(map) {
+        // callbacks
+        this.callbacks = {
+          willIdle: () => {
+            this.swapInImage(map);
+            this.didIdle = true;
+          },
+          willRender: () => {
+            this.swapInImage(map);
+          },
+        };
+
         // override maploaded with an event listener that replaces
         // the canvas with an image for testing purposes
-        map.on('idle', () => {
-          this.swapInImage(map);
-          this.didIdle = true;
-        });
+        map.on('idle', this.callbacks.willIdle);
+        map.on('render', this.callbacks.willRender);
 
         super._onLoad(map);
       }
