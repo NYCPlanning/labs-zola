@@ -84,9 +84,15 @@ export default Route.extend({
   },
 
   setupController(controller, model) {
-    const { layerGroups } = model;
-    this.get('layerGroupService').initializeObservers(layerGroups, controller);
-
     this._super(controller, model);
+
+    const { layerGroups } = model;
+    const layerGroupParams = controller.get('layerGroups');
+
+    if (typeof layerGroupParams === 'string') {
+      controller.set('layerGroups', JSON.parse(layerGroupParams));
+    }
+
+    this.get('layerGroupService').initializeObservers(layerGroups, controller);
   },
 });

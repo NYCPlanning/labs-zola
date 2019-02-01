@@ -1,4 +1,3 @@
-import ObjectProxy from '@ember/object/proxy';
 import Controller from '@ember/controller';
 import { merge } from '@ember/polyfills';
 import EmberObject, { set, computed as computedProp } from '@ember/object';
@@ -16,40 +15,21 @@ export const mapQueryParams = new QueryParams(
   merge(
     {
       'comm-type': { defaultValue: '' },
-      BP: { defaultValue: true },
-      C1: { defaultValue: true },
-      C2: { defaultValue: true },
-      C3: { defaultValue: true },
-      C4: { defaultValue: true },
-      C5: { defaultValue: true },
-      C6: { defaultValue: true },
-      C7: { defaultValue: true },
-      C8: { defaultValue: true },
-      M1: { defaultValue: true },
-      M2: { defaultValue: true },
-      M3: { defaultValue: true },
-      PA: { defaultValue: true },
-      R1: { defaultValue: true },
-      R2: { defaultValue: true },
-      R3: { defaultValue: true },
-      R4: { defaultValue: true },
-      R5: { defaultValue: true },
-      R6: { defaultValue: true },
-      R7: { defaultValue: true },
-      R8: { defaultValue: true },
-      R9: { defaultValue: true },
-      R10: { defaultValue: true },
-      c11: { defaultValue: true },
-      c12: { defaultValue: true },
-      c13: { defaultValue: true },
-      c14: { defaultValue: true },
-      c15: { defaultValue: true },
-      c21: { defaultValue: true },
-      c22: { defaultValue: true },
-      c23: { defaultValue: true },
-      c24: { defaultValue: true },
-      c25: { defaultValue: true },
-      allChecked: { defaultValue: [] },
+      selectedZoning: {
+        defaultValue: [
+          'BP', 'C1', 'C2',
+          'C3', 'C4', 'C5',
+          'C6', 'C7', 'C8',
+          'M1', 'M2', 'M3',
+          'PA', 'R1', 'R2',
+          'R3', 'R4', 'R5',
+          'R6', 'R7', 'R8',
+          'R9', 'R10',
+        ].sort(),
+      },
+      selectedOverlays: {
+        defaultValue: [],
+      },
       'aerials-2016': { defaultValue: true },
       'aerials-1924': { defaultValue: false },
       'aerials-2014': { defaultValue: false },
@@ -72,16 +52,6 @@ export const mapQueryParams = new QueryParams(
 );
 
 export default Controller.extend(mapQueryParams.Mixin, {
-  init(...args) {
-    this._super(...args);
-
-    const proxy = ObjectProxy.create({
-      content: this,
-    });
-
-    this.set('qps', proxy);
-  },
-
   layerGroupService: service('layerGroups'),
   layerGroups: alias('layerGroupService.visibleLayerGroups'),
 
@@ -180,7 +150,7 @@ export default Controller.extend(mapQueryParams.Mixin, {
       }
     },
 
-    @trackEvent('Map Search', 'Clicked result', 'searchTerms')
+    // @trackEvent('Map Search', 'Clicked result', 'searchTerms')
     handleSearchSelect(result) {
       const { mainMap } = this;
       const mapInstance = mainMap.get('mapInstance');
@@ -248,7 +218,7 @@ export default Controller.extend(mapQueryParams.Mixin, {
       this.set(property, value);
     },
 
-    @trackEvent('Layer Palette', 'Reset query params', 'isDefault')
+    // @trackEvent('Layer Palette', 'Reset query params', 'isDefault')
     resetQueryParams() {
       this.resetQueryParams();
     },

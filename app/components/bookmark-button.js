@@ -1,11 +1,9 @@
 import Component from '@ember/component';
 import { action, computed } from '@ember-decorators/object';
-import { service } from '@ember-decorators/service';
-import { argument } from '@ember-decorators/argument';
-import trackEvent from '../utils/track-event';
+import { inject as service } from '@ember-decorators/service';
+// import trackEvent from '../utils/track-event';
 
 export default class BookmarkButton extends Component {
-  @argument
   bookmark = null;
 
   @service
@@ -17,7 +15,7 @@ export default class BookmarkButton extends Component {
     return !!bookmark;
   }
 
-  @trackEvent
+  // @trackEvent
   @action
   async toggleSaved() {
     const { bookmark } = this;

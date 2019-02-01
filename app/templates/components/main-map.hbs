@@ -2,6 +2,7 @@
   id='main-map'
   layerGroups=layerGroups
   initOptions=(hash style=layerGroupsMeta.mapboxStyle
+                    preserveDrawingBuffer=true
                     zoom=zoom
                     hash=true
                     center=(array lng lat))
@@ -74,7 +75,7 @@
       {{#if drawToolsOpen}}
         {{fa-icon 'chevron-left'}}
       {{else}}
-        {{fa-icon 'pencil'}}
+        {{fa-icon 'pen'}}
       {{/if}}
     </span>
     <span class="show-for-large">Measure</span>

@@ -1,7 +1,7 @@
 import Service from '@ember/service';
 import { get } from '@ember/object';
 import { computed } from '@ember-decorators/object';
-import { service } from '@ember-decorators/service';
+import { inject as service } from '@ember-decorators/service';
 
 export default class MapMouseoverService extends Service {
   @service
