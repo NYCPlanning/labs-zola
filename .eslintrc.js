@@ -22,7 +22,6 @@ module.exports = {
   globals:{
     '$': true,
     d3: true,
-    percySnapshot: true,
   },
   rules: {
     'import/no-extraneous-dependencies': 0,
@@ -44,6 +43,7 @@ module.exports = {
     // node files
     {
       files: [
+        '.eslintrc.js',
         '.template-lintrc.js',
         'ember-cli-build.js',
         'testem.js',

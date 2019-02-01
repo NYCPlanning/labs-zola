@@ -3,8 +3,7 @@ import { action, observes } from '@ember-decorators/object';
 import { classNames } from '@ember-decorators/component';
 import { next } from '@ember/runloop';
 
-const aerialYears = [16, 1996, 1951, 1924];
-const zoningDistrictGroups = [
+export const zoningDistrictGroups = [
   {
     name: 'Commercial Districts',
     checked: true,
@@ -47,7 +46,7 @@ const zoningDistrictGroups = [
   },
 ];
 
-const commercialOverlays = [
+export const commercialOverlays = [
   {
     name: 'C1-1 through C1-5',
     checked: true,
@@ -62,16 +61,26 @@ const commercialOverlays = [
 
 @classNames('layer-palette', 'hide-for-print')
 export default class LayerPaletteComponent extends Component {
-  constructor(...args) {
-    super(...args);
+  init(...args) {
+    super.init(...args);
 
     this.setFilterForZoning();
     this.setFilterForOverlays();
   }
 
+  selectedZoning = [];
+
+  selectedOverlays = [];
+
   zoningDistrictGroups = zoningDistrictGroups;
 
   commercialOverlays = commercialOverlays;
+
+  layerGroups;
+
+  closed = true;
+
+  plutoFill = false;
 
   @observes('selectedZoning')
   setFilterForZoning() {
@@ -92,30 +101,8 @@ export default class LayerPaletteComponent extends Component {
     });
   }
 
-  selectedZoning = ['C1', 'C2'];
-
-  selectedOverlays = [];
-
-  layerGroups;
-
-  closed = true;
-
-  plutoFill = false;
-
-  aerialYears = aerialYears;
-
-  @action
-  toggleFill() {
-    this.toggleProperty('plutoFill');
-  }
-
   @action
   setPaintForLayerGroup(layerGroup, ...args) {
     layerGroup.setPaintForLayer(...args);
-  }
-
-  // TODO:
-  @action
-  switchAerial() {
   }
 }

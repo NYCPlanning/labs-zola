@@ -6,6 +6,7 @@ import QueryParams from 'ember-parachute';
 import { computed } from '@ember-decorators/object'; // eslint-disable-line
 import { alias } from '@ember/object/computed';
 import bblDemux from '../utils/bbl-demux';
+import { zoningDistrictGroups, commercialOverlays } from '../components/layer-palette';
 
 // import Geometric from '../mixins/geometric';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
@@ -18,19 +19,16 @@ export const mapQueryParams = new QueryParams(
       search: { defaultValue: false },
       allChecked: { defaultValue: [] },
       selectedZoning: {
-        defaultValue: [
-          'BP', 'C1', 'C2',
-          'C3', 'C4', 'C5',
-          'C6', 'C7', 'C8',
-          'M1', 'M2', 'M3',
-          'PA', 'R1', 'R2',
-          'R3', 'R4', 'R5',
-          'R6', 'R7', 'R8',
-          'R9', 'R10',
-        ].sort(),
+        defaultValue: zoningDistrictGroups
+          .map(({ codes }) => codes)
+          .reduce((acc, curr) => acc.concat(curr))
+          .sort(),
       },
       selectedOverlays: {
-        defaultValue: [],
+        defaultValue: commercialOverlays
+          .map(({ codes }) => codes)
+          .reduce((acc, curr) => acc.concat(curr))
+          .sort(),
       },
       'aerials-2016': { defaultValue: true },
       'aerials-1924': { defaultValue: false },
@@ -59,7 +57,6 @@ export default Controller.extend(mapQueryParams.Mixin, {
 
   mainMap: service(),
   metrics: service(),
-  registeredLayers: service(),
   boro: 0,
   block: 0,
   lot: 0,
