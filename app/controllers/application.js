@@ -1,13 +1,13 @@
 import Controller from '@ember/controller';
 import { merge } from '@ember/polyfills';
-import EmberObject, { set, computed as computedProp } from '@ember/object';
+import { set, computed as computedProp } from '@ember/object';
 import { inject as service } from '@ember/service';
 import QueryParams from 'ember-parachute';
 import { computed } from '@ember-decorators/object'; // eslint-disable-line
 import { alias } from '@ember/object/computed';
 import bblDemux from '../utils/bbl-demux';
 
-import Geometric from '../mixins/geometric';
+// import Geometric from '../mixins/geometric';
 import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 // define new query params here:
@@ -15,6 +15,8 @@ export const mapQueryParams = new QueryParams(
   merge(
     {
       'comm-type': { defaultValue: '' },
+      search: { defaultValue: false },
+      allChecked: { defaultValue: [] },
       selectedZoning: {
         defaultValue: [
           'BP', 'C1', 'C2',
@@ -87,68 +89,6 @@ export default Controller.extend(mapQueryParams.Mixin, {
         this.store.createRecord('bookmark', address).save();
       }
     },
-    routeToLot(e) {
-      const map = e.target;
-      const { mainMap } = this;
-
-      if (mainMap.get('drawMode')) return;
-
-      // only query layers that are available in the map
-      const layers = this.get('registeredLayers.clickableAndVisibleLayerIds');
-      const feature = map.queryRenderedFeatures(e.point, { layers })[0];
-
-      const highlightedLayer = this.get('mapMouseover.highlightedLayer');
-
-      if (feature) {
-        if (highlightedLayer === feature.layer.id) {
-          const {
-            bbl,
-            ulurpno,
-            zonedist,
-            sdlbl,
-            splbl,
-            overlay,
-            cartodb_id, // eslint-disable-line
-            ceqr_num, // eslint-disable-line
-          } = feature.properties;
-
-          const featureFragment = EmberObject.extend(Geometric, {
-            geometry: feature.geometry,
-          }).create();
-
-          mainMap.set('selected', featureFragment);
-
-          if (bbl && !ceqr_num) { // eslint-disable-line
-            const { boro, block, lot } = bblDemux(bbl);
-            this.transitionToRoute('lot', boro, block, lot);
-          }
-
-          if (ulurpno) {
-            this.transitionToRoute('zma', ulurpno);
-          }
-
-          if (zonedist) {
-            this.transitionToRoute('zoning-district', zonedist);
-          }
-
-          if (sdlbl) {
-            this.transitionToRoute('special-purpose-district', cartodb_id);
-          }
-
-          if (splbl) {
-            this.transitionToRoute('special-purpose-subdistricts', cartodb_id);
-          }
-
-          if (overlay) {
-            this.transitionToRoute('commercial-overlay', overlay);
-          }
-
-          if (ceqr_num) { // eslint-disable-line
-            window.open(`https://zap-api.planninglabs.nyc/ceqr/${ceqr_num}`, '_blank'); // eslint-disable-line
-          }
-        }
-      }
-    },
 
     // @trackEvent('Map Search', 'Clicked result', 'searchTerms')
     handleSearchSelect(result) {
@@ -171,11 +111,12 @@ export default Controller.extend(mapQueryParams.Mixin, {
 
       if (type === 'zma') {
         this.set('searchTerms', result.label);
-        this.transitionToRoute('zma', result.ulurpno);
+        this.transitionToRoute('zma', result.ulurpno, { queryParams: { search: true } });
       }
 
       if (type === 'zoning-district') {
-        this.transitionToRoute('zoning-district', result.label);
+        this.set('searchTerms', result.label);
+        this.transitionToRoute('zoning-district', result.label, { queryParams: { search: true } });
       }
 
       if (type === 'neighborhood') {
@@ -205,12 +146,12 @@ export default Controller.extend(mapQueryParams.Mixin, {
 
       if (type === 'special-purpose-district') {
         this.set('searchTerms', result.sdname);
-        this.transitionToRoute('special-purpose-district', result.cartodb_id);
+        this.transitionToRoute('special-purpose-district', result.cartodb_id, { queryParams: { search: true } });
       }
 
       if (type === 'commercial-overlay') {
         this.set('searchTerms', result.label);
-        this.transitionToRoute('commercial-overlay', result.label);
+        this.transitionToRoute('commercial-overlay', result.label, { queryParams: { search: true } });
       }
     },
 

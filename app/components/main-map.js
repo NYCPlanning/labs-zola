@@ -474,25 +474,23 @@ export default class MainMap extends Component {
         }
 
         if (ulurpno) {
-          this.transitionTo('zma', ulurpno);
+          this.transitionTo('zma', ulurpno, { queryParams: { search: false } });
         }
 
         if (zonedist) {
-          mainMap.set('shouldFitBounds', false);
-          this.transitionTo('zoning-district', zonedist);
+          this.transitionTo('zoning-district', zonedist, { queryParams: { search: false } });
         }
 
         if (sdlbl) {
-          this.transitionTo('special-purpose-district', cartodb_id);
+          this.transitionTo('special-purpose-district', cartodb_id, { queryParams: { search: false } });
         }
 
         if (splbl) {
-          this.transitionTo('special-purpose-subdistricts', cartodb_id);
+          this.transitionTo('special-purpose-subdistricts', cartodb_id, { queryParams: { search: false } });
         }
 
         if (overlay) {
-          mainMap.set('shouldFitBounds', false);
-          this.transitionTo('commercial-overlay', overlay);
+          this.transitionTo('commercial-overlay', overlay, { queryParams: { search: false } });
         }
 
         if (ceqr_num) { // eslint-disable-line

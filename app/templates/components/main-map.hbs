@@ -56,7 +56,6 @@
     {{/map.source}}
   {{/if}}
 
-  {{map.on 'click' (action routeToLot)}}
   {{map.on 'data' (action 'mapLoading')}}
   {{map.on 'zoomend' (action 'handleZoomend')}}
   {{map.on 'mousemove' (action 'handleMousemove')}}

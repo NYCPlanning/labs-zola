@@ -35,17 +35,16 @@
           commercial-overlay='View Commerical Overlay'
           special-purpose-district='View Special Purpose District'
         )}}
-      {{labs-bbl-lookup 
+      {{labs-bbl-lookup
         boro=boro
         block=block
-        lot=lot 
+        lot=lot
         flyTo=(action 'flyTo')}}
     </div>
 
     <div class="map-grid">
       {{main-map
         cartoSources=model.cartoSources
-        routeToLot=(action 'routeToLot')
         transitionTo=(action 'transitionTo')
         bookmarks=model.bookmarks
         layerGroups=model.layerGroups
