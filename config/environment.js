@@ -30,7 +30,6 @@ module.exports = function(environment) {
       icons: {
         'free-regular-svg-icons': [
           'circle',
-          'dot-circle',
         ],
         'free-solid-svg-icons': [
           'angle-up',
@@ -44,6 +43,7 @@ module.exports = function(environment) {
           'home',
           'info-circle',
           'map-pin',
+          'pen',
           'print',
           'search',
           'spinner',
@@ -55,7 +55,7 @@ module.exports = function(environment) {
         ],
       },
     },
-
+    
     metricsAdapters: [
       {
         name: 'GoogleAnalytics',
@@ -64,6 +64,20 @@ module.exports = function(environment) {
           id: 'UA-84250233-8',
           debug: environment === 'development',
           trace: environment === 'development',
+          // Ensure development env hits aren't sent to GA
+          sendHitTask: (environment !== 'development' && environment !== 'devlocal'),
+        },
+      },
+    ],
+
+    metricsAdapters: [
+      {
+        name: 'GoogleAnalytics',
+        environments: ['development', 'production'],
+        config: {
+          id: 'UA-84250233-8',
+          debug: environment === 'development-ga',
+          trace: environment === 'development-ga',
           // Ensure development env hits aren't sent to GA
           sendHitTask: (environment !== 'development' && environment !== 'devlocal'),
         },

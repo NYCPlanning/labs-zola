@@ -2,7 +2,6 @@ import Component from '@ember/component';
 import { get } from '@ember/object';
 import RSVP from 'rsvp';
 import { computed } from '@ember-decorators/object';
-import { argument } from '@ember-decorators/argument';
 import { restartableTask } from 'ember-concurrency-decorators';
 import carto from '../utils/carto';
 
@@ -35,7 +34,6 @@ const generateSQL = function(table, bbl) {
 export default class IntersectingLayersComponent extends Component {
   responseIdentifier = 'intersects';
 
-  @argument
   bbl = null;
 
   @restartableTask

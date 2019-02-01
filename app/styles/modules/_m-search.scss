@@ -2,24 +2,11 @@
 // Module: Search
 // --------------------------------------------------
 
-.search-container {
+.labs-geosearch {
   background-color: $off-white;
   padding: rem-calc(9) rem-calc(6) rem-calc(6);
-  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
   position: relative;
   z-index: 2;
-
-  @include breakpoint(large) {
-    position: fixed;
-    top: 6rem;
-    left: 0;
-    width: 15rem;
-    box-shadow: 0 2px 0 rgba(0,0,0,0.1), 2px 0 0 rgba(0,0,0,0.1);
-  }
-
-  @include breakpoint(xlarge) {
-    width: 18rem;
-  }
 
   .search {
     position: relative;
@@ -32,17 +19,17 @@
 
   .clear-button {
     position: absolute;
-    top: rem-calc(19);
-    right: rem-calc(15);
-    bottom: auto;
-    left: auto;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 2;
   }
 
   .search-icon {
     position: absolute;
-    top: rem-calc(18);
-    right: rem-calc(15);
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
     color: $medium-gray;
     pointer-events: none;
   }
@@ -56,7 +43,7 @@
   top: 100%;
   right: auto;
   bottom: auto;
-  left: -200%; // hide by default, show with .focused
+  left: -200vw; // hide by default
   box-shadow: 0 2px 0 rgba(0,0,0,0.1);
   opacity: 0;
   transition: opacity 0.5s, left 0;

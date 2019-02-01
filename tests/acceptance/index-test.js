@@ -6,10 +6,12 @@ import { visit,
   triggerKeyEvent,
   waitUntil,
   currentURL,
-  triggerEvent
+  triggerEvent,
+  pauseTest,
 } from '@ember/test-helpers';
 import { module, skip, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
+import setupMapMocks from '../helpers/setup-map-mocks';
 import { percySnapshot } from 'ember-percy';
 
 const SEARCH_INPUT_SELECTOR = '.map-search-input';
@@ -27,14 +29,15 @@ const resultAt = function(x) {
 
 module('Acceptance | index', function(hooks) {
   setupApplicationTest(hooks);
+  setupMapMocks(hooks);
 
   test('map-search enter on first search result', async function(assert) {
     await visit('/');
-    await percySnapshot(assert);
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
+    await percySnapshot('searches');
     await waitUntil(() => find('.has-results'), { timeout });
     await click('.result');
-    await percySnapshot(assert);
+    await percySnapshot('clicks result');
 
     assert.equal(
       (currentURL().indexOf('/') > -1),
