@@ -7,7 +7,7 @@ module('Unit | Model | zma', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function(assert) {
-    let model = run(() => this.owner.lookup('service:store').createRecord('zma'));
+    const model = run(() => this.owner.lookup('service:store').createRecord('zma'));
     // let store = this.store();
     assert.ok(!!model);
   });

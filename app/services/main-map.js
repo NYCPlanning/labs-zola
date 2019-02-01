@@ -9,6 +9,9 @@ const DEFAULT_BOUNDS = [-73.9, 40.690913, -73.832692, 40.856654];
 export default class MainMapService extends Service {
   mapInstance = null;
 
+  // selected feature; always a geometric type model
+  // includes bounds
+  // used to determine how to zoom
   selected = null;
 
   currentZoom = null;
@@ -19,7 +22,8 @@ export default class MainMapService extends Service {
 
   shouldFitBounds = false;
 
-  @computed('selected')
+  // computed from the selected
+  @computed('selected', 'selected.bounds')
   get bounds() {
     const selected = this.get('selected');
     const { mapInstance } = this;

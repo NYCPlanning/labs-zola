@@ -7,7 +7,7 @@ module('Unit | Model | lot', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function(assert) {
-    let model = run(() => this.owner.lookup('service:store').createRecord('lot'));
+    const model = run(() => this.owner.lookup('service:store').createRecord('lot'));
     // let store = this.store();
     assert.ok(!!model);
   });

@@ -1,19 +1,15 @@
-import { 
-  visit, 
+import {
+  visit,
   click,
   fillIn,
   currentURL,
   find,
-  findAll,
-  triggerKeyEvent,
   waitUntil,
-  triggerEvent 
 } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 
 const SEARCH_INPUT_SELECTOR = '.map-search-input';
-const SEARCH_TERM_ADDRESS = '210 Humboldt';
 const SEARCH_TERM_LOT = '1000477501';
 
 module('Acceptance | bookmarks', function(hooks) {
@@ -57,7 +53,7 @@ module('Acceptance | bookmarks', function(hooks) {
     await waitUntil(() => (currentURL().indexOf('/lot') >= 0));
     await click('.bookmark-save-button');
 
-    assert.equal(find('.saved-bookmarks-counter .badge').textContent, "1");
+    assert.equal(find('.saved-bookmarks-counter .badge').textContent, '1');
     await click('.bookmark-save-button');
     assert.equal(find('.saved-bookmarks-counter .badge'), null);
   });

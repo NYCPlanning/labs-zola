@@ -16,4 +16,3 @@ module('helper:get-unique-options-for', function(hooks) {
     assert.equal(typeof this, 'object');
   });
 });
-

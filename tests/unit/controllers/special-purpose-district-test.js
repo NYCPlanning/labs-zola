@@ -6,7 +6,7 @@ module('Unit | Controller | special purpose district', function(hooks) {
 
   // Replace this with your real tests.
   test('it exists', function(assert) {
-    let controller = this.owner.lookup('controller:special-purpose-district');
+    const controller = this.owner.lookup('controller:special-purpose-district');
     assert.ok(controller);
   });
 });

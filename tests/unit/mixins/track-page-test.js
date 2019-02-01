@@ -5,8 +5,8 @@ import { module, test } from 'qunit';
 module('Unit | Mixin | track page', function() {
   // Replace this with your real tests.
   test('it works', function(assert) {
-    let TrackPageObject = EmberObject.extend(TrackPageMixin);
-    let subject = TrackPageObject.create();
+    const TrackPageObject = EmberObject.extend(TrackPageMixin);
+    const subject = TrackPageObject.create();
     assert.ok(subject);
   });
 });

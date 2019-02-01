@@ -5,8 +5,8 @@ import { module, test } from 'qunit';
 module('Unit | Mixin | update selection all features', function() {
   // Replace this with your real tests.
   test('it works', function(assert) {
-    let UpdateSelectionObject = EmberObject.extend(UpdateSelectionAllFeaturesMixin);
-    let subject = UpdateSelectionObject.create();
+    const UpdateSelectionObject = EmberObject.extend(UpdateSelectionAllFeaturesMixin);
+    const subject = UpdateSelectionObject.create();
     assert.ok(subject);
   });
 });

@@ -6,7 +6,7 @@ module('Unit | Controller | commercial overlay', function(hooks) {
 
   // Replace this with your real tests.
   test('it exists', function(assert) {
-    let controller = this.owner.lookup('controller:commercial-overlay');
+    const controller = this.owner.lookup('controller:commercial-overlay');
     assert.ok(controller);
   });
 });

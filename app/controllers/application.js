@@ -106,6 +106,7 @@ export default Controller.extend(mapQueryParams.Mixin, {
       if (type === 'lot') {
         const { boro, block, lot } = bblDemux(result.bbl);
         this.set('searchTerms', result.label);
+
         this.transitionToRoute('lot', boro, block, lot);
       }
 
@@ -126,22 +127,6 @@ export default Controller.extend(mapQueryParams.Mixin, {
           center,
           zoom: 13,
         });
-      }
-
-      if (type === 'address') {
-        const center = result.coordinates;
-        mainMap.set('currentAddress', center);
-
-        this.set('searchTerms', result.label);
-        this.saveAddress({ address: result.label, coordinates: result.coordinates });
-
-        if (mapInstance) {
-          mapInstance.flyTo({
-            center,
-            zoom: 15,
-          });
-          mapInstance.once('moveend', () => { this.transitionToRoute('index'); });
-        }
       }
 
       if (type === 'special-purpose-district') {

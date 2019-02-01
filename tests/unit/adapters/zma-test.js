@@ -6,7 +6,7 @@ module('Unit | Adapter | zma', function(hooks) {
 
   // Replace this with your real tests.
   test('it exists', function(assert) {
-    let adapter = this.owner.lookup('adapter:zma');
+    const adapter = this.owner.lookup('adapter:zma');
     assert.ok(adapter);
   });
 });

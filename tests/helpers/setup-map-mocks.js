@@ -1,8 +1,7 @@
 import { registerWaiter, unregisterWaiter } from '@ember/test';
-import LabsMap from 'ember-mapbox-composer/components/labs-map';
 import MapboxGL from 'ember-mapbox-gl/components/mapbox-gl';
-import TesterMap from './tester-map';
 import Service, { inject as service } from '@ember/service';
+import TesterMap from './tester-map';
 
 export default function(hooks) {
   hooks.beforeEach(async function() {
