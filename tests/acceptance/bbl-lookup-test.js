@@ -4,9 +4,11 @@ import {
 } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import mapboxGlLoaded from '../helpers/mapbox-gl-loaded';
+import setupMapMocks from '../helpers/setup-map-mocks';
 
 module('Acceptance | bbl lookup', function(hooks) {
   setupApplicationTest(hooks);
+  setupMapMocks(hooks);
 
   skip('BBL lookup works', async function(assert) {
     await visit('/');
