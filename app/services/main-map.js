@@ -74,7 +74,7 @@ export default class MainMapService extends Service {
     // width of content area on large screens is 5/12 of full
     const contentWidth = (fullWidth / 12) * 5;
     // on small screens, no offset
-    const offset = fullWidth < 1024 ? 0 : -((width - contentWidth) / 2);
+    const offset = fullWidth < 1024 ? 0 : -((width - contentWidth) / 2) / 2;
     const padding = Math.min(height, (width - contentWidth)) / 2.5;
 
     // get type of selected feature so we can do dynamic padding
