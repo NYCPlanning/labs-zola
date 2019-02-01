@@ -60,7 +60,6 @@ export default Controller.extend(mapQueryParams.Mixin, {
   mainMap: service(),
   metrics: service(),
   registeredLayers: service(),
-  mapMouseover: service(),
   boro: 0,
   block: 0,
   lot: 0,
