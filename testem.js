@@ -8,10 +8,10 @@ module.exports = {
     'Chrome',
   ],
   launch_in_dev: [
-    'Chrome',
+    'Firefox',
   ],
   browser_args: {
-    Chrome: [
+    Firefox: [
       '--disable-dev-shm-usage',
       '--disable-software-rasterizer',
       '--mute-audio',

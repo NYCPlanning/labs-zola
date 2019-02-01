@@ -6,10 +6,13 @@ import { visit,
   triggerKeyEvent,
   waitUntil,
   currentURL,
-  triggerEvent
+  triggerEvent,
+  pauseTest,
 } from '@ember/test-helpers';
-import { module, test } from 'qunit';
+import { module, skip, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
+import setupMapMocks from '../helpers/setup-map-mocks';
+import { percySnapshot } from 'ember-percy';
 
 const SEARCH_INPUT_SELECTOR = '.map-search-input';
 const SEARCH_RESULTS_SELECTOR = '.search-results';
@@ -26,13 +29,15 @@ const resultAt = function(x) {
 
 module('Acceptance | index', function(hooks) {
   setupApplicationTest(hooks);
+  setupMapMocks(hooks);
 
   test('map-search enter on first search result', async function(assert) {
     await visit('/');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
+    await percySnapshot('searches');
     await waitUntil(() => find('.has-results'), { timeout });
     await click('.result');
-    // await keyEvent(SEARCH_INPUT_SELECTOR, 'keypress', 13);
+    await percySnapshot('clicks result');
 
     assert.equal(
       (currentURL().indexOf('/') > -1),
@@ -54,7 +59,8 @@ module('Acceptance | index', function(hooks) {
     );
   });
 
-  test('Map search: hide result list on focus out, persist search result label', async function(assert) {
+  // this is a flakey test - it's also testing addon behavior. We should keep addon tests separate. 
+  skip('Map search: hide result list on focus out, persist search result label', async function(assert) {
     await visit('/');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_ADDRESS);
     await click(SEARCH_INPUT_SELECTOR);

@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { service } from '@ember-decorators/service';
+import { inject as service } from '@ember-decorators/service';
 import { action } from '@ember-decorators/object';
 
 export default class LotBookmarkItemComponent extends Component {
@@ -25,8 +25,10 @@ export default class LotBookmarkItemComponent extends Component {
     this.set('mapMouseover.highlightedLotFeatures', []);
   }
 
+  deleteBookmark() {}
+
   @action
-  deleteBookmark(e) {
+  _deleteBookmark(e) {
     this.deleteBookmark(e);
   }
 }

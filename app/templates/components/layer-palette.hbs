@@ -15,149 +15,67 @@
           'pluto-fill'
           (hash fill-opacity=(if plutoFill 0 0.5))
         }}>
-        {{input type='checkbox'
-          checked=plutoFill}}
+        {{input type='checkbox' checked=plutoFill}}
         Show Land Use Colors
       </label>
 
       {{#if plutoFill}}
         <ul class="layer-key">
-          <li><span style="color:#FEFFA8;">{{fa-icon 'square'}} </span>One &amp; Two Family Buildings</li>
-          <li><span style="color:#FCB842;">{{fa-icon 'square'}} </span>Multi-Family Walk-Up Buildings</li>
-          <li><span style="color:#B16E00;">{{fa-icon 'square'}} </span>Multi-Family Elevator Buildings</li>
-          <li><span style="color:#ff8341;">{{fa-icon 'square'}} </span>Mixed Residential &amp; Commercial Buildings</li>
-          <li><span style="color:#fc2929;">{{fa-icon 'square'}} </span>Commercial &amp; Office Buildings</li>
-          <li><span style="color:#E362FB;">{{fa-icon 'square'}} </span>Industrial &amp; Manufacturing</li>
-          <li><span style="color:#E0BEEB;">{{fa-icon 'square'}} </span>Transportation &amp; Utility</li>
-          <li><span style="color:#44A3D5;">{{fa-icon 'square'}} </span>Public Facilities &amp; Institutions</li>
-          <li><span style="color:#78D271;">{{fa-icon 'square'}} </span>Open Space &amp; Outdoor Recreation</li>
-          <li><span style="color:#BAB8B6;">{{fa-icon 'square'}} </span>Parking Facilities</li>
-          <li><span style="color:#555555;">{{fa-icon 'square'}} </span>Vacant Land</li>
-          <li><span style="color:#E7E7E7;">{{fa-icon 'square'}} </span>Other</li>
+          {{#each (array 
+              (hash color='#FEFFA8' title='One &amp; Two Family Buildings')
+              (hash color='#FCB842' title='Multi-Family Walk-Up Buildings')
+              (hash color='#B16E00' title='Multi-Family Elevator Buildings')
+              (hash color='#ff8341' title='Mixed Residential &amp; Commercial Buildings')
+              (hash color='#fc2929' title='Commercial &amp; Office Buildings')
+              (hash color='#E362FB' title='Industrial &amp; Manufacturing')
+              (hash color='#E0BEEB' title='Transportation &amp; Utility')
+              (hash color='#44A3D5' title='Public Facilities &amp; Institutions')
+              (hash color='#78D271' title='Open Space &amp; Outdoor Recreation')
+              (hash color='#BAB8B6' title='Parking Facilities')
+              (hash color='#555555' title='Vacant Land')
+              (hash color='#E7E7E7' title='Other')
+            ) as |landuse|
+          }}
+            <li>
+              <span style={{sanitize (hash color=landuse.color)}}>
+                {{fa-icon 'square'}}
+              </span>
+              {{landuse.title}}
+            </li>
+          {{/each}}
         </ul>
       {{/if}}
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
-        label=layerGroups.zoning-districts.legend.label
-        tooltip=layerGroups.zoning-districts.legend.tooltip
-        active=layerGroups.zoning-districts.visible}}
-      {{#layer-multi-select-control
-        column='primaryzone'
-        layerID='zd-fill'
-        layerGroup=layerGroups.zoning-districts
-        as |multiSelect|}}
-        <ul class="layer-menu-item--group-checkboxes">
+      label=layerGroups.zoning-districts.legend.label
+      tooltip=layerGroups.zoning-districts.legend.tooltip
+      active=layerGroups.zoning-districts.visible
+    }}
+      <ul class='layer-menu-item--group-checkboxes'>
+        {{#each zoningDistrictGroups as |zoningDistrict|}}
           <li>
-            <label>{{group-checkbox
-              refs=(array 'qps.C1' 'qps.C2' 'qps.C3' 'qps.C4' 'qps.C5' 'qps.C6' 'qps.C7' 'qps.C8')
-              values=(array qps.C1 qps.C2 qps.C3 qps.C4 qps.C5 qps.C6 qps.C7 qps.C8)
-              scope=qps}}Commercial Districts <span style="color:rgbA(229,0,0,0.6);" class="indeterminate-hider">{{fa-icon 'square'}}</span></label>
-
-            <input id="nested-commercial" class="checkbox-hide-sibling" type="checkbox" checked>
-            <label for="nested-commercial" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
-
-            <ul class="nested columns-3 hidable-sibling">
-              <li><label>{{multiSelect.checkbox value='C1' checked=qps.C1}}C1</label></li>
-              <li><label>{{multiSelect.checkbox value='C2' checked=qps.C2}}C2</label></li>
-              <li><label>{{multiSelect.checkbox value='C3' checked=qps.C3}}C3</label></li>
-              <li><label>{{multiSelect.checkbox value='C4' checked=qps.C4}}C4</label></li>
-              <li><label>{{multiSelect.checkbox value='C5' checked=qps.C5}}C5</label></li>
-              <li><label>{{multiSelect.checkbox value='C6' checked=qps.C6}}C6</label></li>
-              <li><label>{{multiSelect.checkbox value='C7' checked=qps.C7}}C7</label></li>
-              <li><label>{{multiSelect.checkbox value='C8' checked=qps.C8}}C8</label></li>
-            </ul>
+            {{grouped-checkboxes
+              group=zoningDistrict
+              selected=selectedZoning}}
           </li>
-          <li>
-            <label>{{group-checkbox
-              refs=(array 'qps.M1' 'qps.M2' 'qps.M3')
-              values=(array qps.M1 qps.M2 qps.M3)
-              scope=qps}}Manufacturing Districts <span style="color:rgba(207,92,230,0.6);" class="indeterminate-hider">{{fa-icon 'square'}}</span></label>
-
-            <input id="nested-manufacturing" class="checkbox-hide-sibling" type="checkbox" checked>
-            <label for="nested-manufacturing" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
-
-            <ul class="nested columns-3 hidable-sibling">
-              <li><label>{{multiSelect.checkbox value='M1' checked=qps.M1}}M1</label></li>
-              <li><label>{{multiSelect.checkbox value='M2' checked=qps.M2}}M2</label></li>
-              <li><label>{{multiSelect.checkbox value='M3' checked=qps.M3}}M3</label></li>
-            </ul>
-          </li>
-          <li>
-            <label>{{group-checkbox
-              refs=(array 'qps.R1' 'qps.R2' 'qps.R3' 'qps.R4' 'qps.R5' 'qps.R6' 'qps.R7' 'qps.R8' 'qps.R9' 'qps.R10')
-              values=(array qps.R1 qps.R2 qps.R3 qps.R4 qps.R5 qps.R6 qps.R7 qps.R8 qps.R9 qps.R10)
-              scope=qps}}Residential Districts  <span style="color:rgba(255,234,0,0.6);" class="indeterminate-hider">{{fa-icon 'square'}}</span></label>
-
-            <input id="nested-residential" class="checkbox-hide-sibling" type="checkbox" checked>
-            <label for="nested-residential" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
-
-            <ul class="nested columns-3 hidable-sibling">
-              <li><label>{{multiSelect.checkbox value='R1' checked=qps.R1}}R1</label></li>
-              <li><label>{{multiSelect.checkbox value='R2' checked=qps.R2}}R2</label></li>
-              <li><label>{{multiSelect.checkbox value='R3' checked=qps.R3}}R3</label></li>
-              <li><label>{{multiSelect.checkbox value='R4' checked=qps.R4}}R4</label></li>
-              <li><label>{{multiSelect.checkbox value='R5' checked=qps.R5}}R5</label></li>
-              <li><label>{{multiSelect.checkbox value='R6' checked=qps.R6}}R6</label></li>
-              <li><label>{{multiSelect.checkbox value='R7' checked=qps.R7}}R7</label></li>
-              <li><label>{{multiSelect.checkbox value='R8' checked=qps.R8}}R8</label></li>
-              <li><label>{{multiSelect.checkbox value='R9' checked=qps.R9}}R9</label></li>
-              <li><label>{{multiSelect.checkbox value='R10' checked=qps.R10}}R10</label></li>
-            </ul>
-          </li>
-          <li><label>{{multiSelect.checkbox value='PA' checked=qps.PA}}Parks <span style="color:rgba(120,210,113,0.6);" class="indeterminate-hider">{{fa-icon 'square'}}</span></label></li>
-          <li><label>{{multiSelect.checkbox value='BP' checked=qps.BP}}Battery Park City <span style="color:rgba(128,128,128,0.6);" class="indeterminate-hider">{{fa-icon 'square'}}</span></label></li>
-        </ul>
-      {{/layer-multi-select-control}}
+        {{/each}}
+      </ul>
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
         label=layerGroups.commercial-overlays.legend.label
         tooltip=layerGroups.commercial-overlays.legend.tooltip
         active=layerGroups.commercial-overlays.visible}}
-      {{#layer-multi-select-control
-        layerGroup=layerGroups.commercial-overlays
-        layerID='co'
-        column='overlay'
-        parentComponent=item.layer
-        as |multiSelect|}}
-          <ul class="layer-menu-item--group-checkboxes">
-            <li>
-              <label>{{group-checkbox
-                refs=(array 'qps.c11' 'qps.c12' 'qps.c13' 'qps.c14' 'qps.c15')
-                values=(array qps.c11 qps.c12 qps.c13 qps.c14 qps.c15)
-                scope=qps}}C1-1 through C1-5</label>
-
-              <input id="nested-c1" class="checkbox-hide-sibling" type="checkbox" checked>
-              <label for="nested-c1" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
-
-              <ul class="nested columns-2 hidable-sibling">
-                <li><label>{{multiSelect.checkbox value='C1-1' checked=qps.c11}}C1-1</label></li>
-                <li><label>{{multiSelect.checkbox value='C1-2' checked=qps.c12}}C1-2</label></li>
-                <li><label>{{multiSelect.checkbox value='C1-3' checked=qps.c13}}C1-3</label></li>
-                <li><label>{{multiSelect.checkbox value='C1-4' checked=qps.c14}}C1-4</label></li>
-                <li><label>{{multiSelect.checkbox value='C1-5' checked=qps.c15}}C1-5</label></li>
-              </ul>
-            </li>
-            <li>
-              <label>{{group-checkbox
-                refs=(array 'qps.c21' 'qps.c22' 'qps.c23' 'qps.c24' 'qps.c25')
-                values=(array qps.c21 qps.c22 qps.c23 qps.c24 qps.c25)
-                scope=qps}}C2-1 through C2-5</label>
-
-              <input id="nested-c2" class="checkbox-hide-sibling" type="checkbox" checked>
-              <label for="nested-c2" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
-
-              <ul class="nested columns-2 hidable-sibling">
-                <li><label>{{multiSelect.checkbox value='C2-1' checked=qps.c21}}C2-1</label></li>
-                <li><label>{{multiSelect.checkbox value='C2-2' checked=qps.c22}}C2-2</label></li>
-                <li><label>{{multiSelect.checkbox value='C2-3' checked=qps.c23}}C2-3</label></li>
-                <li><label>{{multiSelect.checkbox value='C2-4' checked=qps.c24}}C2-4</label></li>
-                <li><label>{{multiSelect.checkbox value='C2-5' checked=qps.c25}}C2-5</label></li>
-              </ul>
-            </li>
-          </ul>
-      {{/layer-multi-select-control}}
+      <ul class='layer-menu-item--group-checkboxes'>
+        {{#each commercialOverlays as |commercialOverlay|}}
+          <li>
+            {{grouped-checkboxes
+              group=commercialOverlay
+              selected=selectedOverlays}}
+          </li>
+        {{/each}}
+      </ul>
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
@@ -191,13 +109,6 @@
         tooltip=layerGroups.special-purpose-subdistricts.legend.tooltip
         icon=layerGroups.special-purpose-subdistricts.legend.icon
         active=layerGroups.special-purpose-subdistricts.visible}}
-    {{/labs-ui/layer-group-toggle}}
-
-    {{#labs-ui/layer-group-toggle
-        label=layerGroups.limited-height-districts.legend.label
-        tooltip=layerGroups.limited-height-districts.legend.tooltip
-        icon=layerGroups.limited-height-districts.legend.icon
-        active=layerGroups.limited-height-districts.visible}}
     {{/labs-ui/layer-group-toggle}}
   {{/labs-ui/layer-groups-container}}
 
@@ -237,6 +148,13 @@
         tooltip=layerGroups.sidewalk-cafes.legend.tooltip
         active=layerGroups.sidewalk-cafes.visible}}
       {{labs-ui/legend-items items=layerGroups.sidewalk-cafes.legend.items}}
+    {{/labs-ui/layer-group-toggle}}
+
+    {{#labs-ui/layer-group-toggle
+        label=layerGroups.limited-height-districts.legend.label
+        tooltip=layerGroups.limited-height-districts.legend.tooltip
+        icon=layerGroups.limited-height-districts.legend.icon
+        active=layerGroups.limited-height-districts.visible}}
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
@@ -407,7 +325,7 @@
   {{/labs-ui/layer-groups-container}}
 
 
-  <a {{action resetQueryParams}} class="button gray small reset-map-button" disabled={{isDefault}}>
+  <a {{action 'resetQueryParams'}} class="button gray small reset-map-button" disabled={{isDefault}}>
     {{fa-icon "undo"}} Reset Map Layers
   </a>
 

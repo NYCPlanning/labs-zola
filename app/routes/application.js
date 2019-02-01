@@ -20,6 +20,7 @@ export default Route.extend({
     const layerGroups = await this.store.query('layer-group', {
       'layer-groups': [
         { id: 'zoning-districts', visible: true },
+        { id: 'street-centerlines', visible: true },
         { id: 'tax-lots', visible: true, layers: [{ tooltipable: true }] },
         { id: 'commercial-overlays', visible: true },
         { id: 'zoning-map-amendments', visible: false },
@@ -83,9 +84,15 @@ export default Route.extend({
   },
 
   setupController(controller, model) {
-    const { layerGroups } = model;
-    this.get('layerGroupService').initializeObservers(layerGroups, controller);
-
     this._super(controller, model);
+
+    const { layerGroups } = model;
+    const layerGroupParams = controller.get('layerGroups');
+
+    if (typeof layerGroupParams === 'string') {
+      controller.set('layerGroups', JSON.parse(layerGroupParams));
+    }
+
+    this.get('layerGroupService').initializeObservers(layerGroups, controller);
   },
 });

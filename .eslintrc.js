@@ -22,6 +22,7 @@ module.exports = {
   globals:{
     '$': true,
     d3: true,
+    percySnapshot: true,
   },
   rules: {
     'import/no-extraneous-dependencies': 0,

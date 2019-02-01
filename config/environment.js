@@ -43,6 +43,7 @@ module.exports = function(environment) {
           'home',
           'info-circle',
           'map-pin',
+          'pen',
           'print',
           'search',
           'spinner',
