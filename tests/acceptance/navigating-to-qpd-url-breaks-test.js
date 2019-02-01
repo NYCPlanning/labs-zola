@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { visit, currentURL, find } from '@ember/test-helpers';
+import { visit } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 
 module('Acceptance | navigating to qpd url breaks', function(hooks) {

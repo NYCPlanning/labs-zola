@@ -9,7 +9,7 @@ module('helper:bbl-demux', function(hooks) {
 
   // Replace this with your real tests.
   test('it renders', async function(assert) {
-    this.set('inputValue', { boro: 4, block: 4381, lot: 1});
+    this.set('inputValue', { boro: 4, block: 4381, lot: 1 });
 
     await render(hbs`{{bbl-demux inputValue}}`);
 

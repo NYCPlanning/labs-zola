@@ -8,7 +8,7 @@ const feature = {
   geometry: {},
   properties: {
     foo: 'bar',
-  }
+  },
 };
 
 const template = 'The value of foo is {{foo}}';
@@ -17,8 +17,8 @@ module('Integration | Component | tooltip-renderer', function(hooks) {
   setupRenderingTest(hooks);
 
   skip('it renders a tooltipTemplate', async function(assert) {
-    this.set('feature', feature)
-    this.set('template', template)
+    this.set('feature', feature);
+    this.set('template', template);
 
     await render(hbs`{{tooltip-renderer feature=feature template=template}}`);
 

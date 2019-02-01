@@ -1,27 +1,22 @@
-import { visit,
+import {
+  visit,
   click,
   fillIn,
   find,
-  findAll,
   triggerKeyEvent,
   waitUntil,
   currentURL,
-  triggerEvent,
-  pauseTest,
 } from '@ember/test-helpers';
 import { module, skip, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
-import setupMapMocks from '../helpers/setup-map-mocks';
 import { percySnapshot } from 'ember-percy';
+import setupMapMocks from '../helpers/setup-map-mocks';
 
 const SEARCH_INPUT_SELECTOR = '.map-search-input';
 const SEARCH_RESULTS_SELECTOR = '.search-results';
-const LOT_URL_ROOT = '/lot';
 const SEARCH_TERM_LOT = '1000477501';
 const SEARCH_TERM_ADDRESS = '210 Humboldt Street, Brooklyn, New York, NY, USA';
 const SEARCH_RESULT_LABEL = '210 HUMBOLDT STREET, Brooklyn, New York, NY, USA';
-const SEARCH_RESULTS_LOADING_CLASS = '.search-results--loading';
-const FONT_AWESOME_MAP_PIN = '.fa-map-pin';
 const timeout = 15000;
 const resultAt = function(x) {
   return `${SEARCH_RESULTS_SELECTOR} li:nth-child(${x + 1})`;
@@ -59,7 +54,7 @@ module('Acceptance | index', function(hooks) {
     );
   });
 
-  // this is a flakey test - it's also testing addon behavior. We should keep addon tests separate. 
+  // this is a flakey test - it's also testing addon behavior. We should keep addon tests separate.
   skip('Map search: hide result list on focus out, persist search result label', async function(assert) {
     await visit('/');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_ADDRESS);

@@ -16,4 +16,3 @@ module('helper:make-special-purpose-district-link', function(hooks) {
     assert.equal(find('*').textContent.trim(), '1234');
   });
 });
-

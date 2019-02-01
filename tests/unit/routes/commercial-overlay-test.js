@@ -5,7 +5,7 @@ module('Unit | Route | commercial overlay', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function(assert) {
-    let route = this.owner.lookup('route:commercial-overlay');
+    const route = this.owner.lookup('route:commercial-overlay');
     assert.ok(route);
   });
 });

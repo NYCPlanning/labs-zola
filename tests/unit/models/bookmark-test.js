@@ -7,7 +7,7 @@ module('Unit | Model | bookmark', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function(assert) {
-    let model = run(() => this.owner.lookup('service:store').createRecord('bookmark'));
+    const model = run(() => this.owner.lookup('service:store').createRecord('bookmark'));
     // let store = this.store();
     assert.ok(!!model);
   });

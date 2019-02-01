@@ -7,7 +7,7 @@ module('Unit | Model | special purpose district', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function(assert) {
-    let model = run(() => this.owner.lookup('service:store').createRecord('special-purpose-district'));
+    const model = run(() => this.owner.lookup('service:store').createRecord('special-purpose-district'));
     // let store = this.store();
     assert.ok(!!model);
   });

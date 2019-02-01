@@ -8,6 +8,7 @@ export default Route.extend(updateSelectionSingleFeatureMixin, {
 
   model(params) {
     const id = bblDemux(params);
+
     return {
       taskInstance: this.store.findRecord('lot', id),
     };

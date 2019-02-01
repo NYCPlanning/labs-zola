@@ -6,7 +6,7 @@ module('Unit | Adapter | bookmark', function(hooks) {
 
   // Replace this with your real tests.
   test('it exists', function(assert) {
-    let adapter = this.owner.lookup('adapter:bookmark');
+    const adapter = this.owner.lookup('adapter:bookmark');
     assert.ok(adapter);
   });
 });

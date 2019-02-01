@@ -6,7 +6,7 @@ module('Unit | Service | registered layers', function(hooks) {
 
   // Replace this with your real tests.
   test('it exists', function(assert) {
-    let service = this.owner.lookup('service:registered-layers');
+    const service = this.owner.lookup('service:registered-layers');
     assert.ok(service);
   });
 });

@@ -1,5 +1,5 @@
 import Mixin from '@ember/object/mixin';
-import { task, waitForProperty } from 'ember-concurrency';
+import { task } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
 
 // this mixin accounts for ONE functionality that occurs when a user either searches a tax lot or clicks on the map layer
@@ -22,7 +22,8 @@ export default Mixin.create({
   }).restartable().cancelOn('deactivate'),
 
   waitToFitBounds: task(function* (taskInstance) {
-    yield waitForProperty(taskInstance, 'state', 'finished');
+    yield taskInstance;
+    yield this.setSelectedTask;
 
     this.get('mainMap.setBounds').perform();
   }).restartable(),
