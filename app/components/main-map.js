@@ -39,9 +39,6 @@ export default class MainMap extends Component {
   mainMap;
 
   @service
-  mapMouseover;
-
-  @service
   metrics;
 
   @service
@@ -247,19 +244,6 @@ export default class MainMap extends Component {
       type: 'raster',
       minzoom: 17,
     });
-  }
-
-  @action
-  handleMousemove(e) {
-    const { mapMouseover } = this;
-    if (!this.mainMap.drawMode) mapMouseover.highlighter(e);
-  }
-
-  @action
-  handleMouseleave() {
-    const { mapMouseover } = this;
-    mapMouseover.set('highlightedLotFeatures', []);
-    mapMouseover.set('currentEvent', null);
   }
 
   @action

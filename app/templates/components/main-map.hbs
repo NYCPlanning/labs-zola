@@ -58,8 +58,6 @@
 
   {{map.on 'data' (action 'mapLoading')}}
   {{map.on 'zoomend' (action 'handleZoomend')}}
-  {{map.on 'mousemove' (action 'handleMousemove')}}
-  {{map.on 'mouseout' (action 'handleMouseleave')}}
   {{map.on 'draw.create' (action 'handleDrawCreate')}}
   {{map.on 'draw.render' (action 'handleMeasurement')}}
 {{/labs-map}}
