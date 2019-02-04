@@ -18,7 +18,6 @@
 }
 
 .print-view {
-
   @media screen {
     & {
       overflow: scroll;
@@ -27,10 +26,11 @@
   }
 
   //
-  // Map
+  // Print controls
   // --------------------------------------------------
   .print-view--controls {
-    // padding: 1rem;
+    text-align: center;
+    padding-bottom: 0.5rem;
 
     @media print {
       display: none;
@@ -39,7 +39,7 @@
 
   .print-view-controls--item {
     display: inline-block;
-    margin: 1rem;
+    margin: 1rem 1rem 0;
 
     button {
       margin-left: 0.5rem;
@@ -48,6 +48,7 @@
 
   .print-view-controls--header {
     display: inline;
+    color: $charcoal;
   }
 
   //
@@ -101,41 +102,10 @@
       }
     }
 
-    //
-    // Map
-    // --------------------------------------------------
-    .map-grid {
-      height: 100%;
-    }
-    .map-container {
-      position: absolute;
-      top: 7mm;
-      right: calc(27% + 3.5mm);
-      left: 7mm;
-      width: auto;
-      height: calc(45% - 10.5mm);
-      padding: 0;
-      box-shadow: none;
-    }
-
 
     //
     // Layer menu
     // --------------------------------------------------
-    .layer-palette {
-      position: absolute;
-      top: 7mm;
-      right: 7mm;
-      bottom: 7mm;
-      left: 73%;
-      width: auto;
-      height: auto;
-      padding: 0;
-      margin-top: 0;
-      box-shadow: none;
-      background-color: White;
-    }
-
     #layers-menu {
       // pointer-events: none; // Prevent interaction with layer group toggles
 
@@ -177,17 +147,6 @@
     // Content area
     // --------------------------------------------------
     .content-area {
-      position: absolute;
-      top: 45%;
-      right: calc(27% + 3.5mm);
-      bottom: 7mm;
-      left: 7mm;
-      width: auto;
-      height: auto;
-      overflow: visible;
-      padding: 0;
-      box-shadow: none;
-      background-color: White;
       font-size: 10pt;
 
       // Prevent click changing route
@@ -237,6 +196,7 @@
         .datum {
           font-size: 7pt;
           width: auto;
+          max-width: 25em;
         }
       }
     }
@@ -267,5 +227,155 @@
     .mapboxgl-ctrl.print-controls {
       display: none !important;
     }
-  }
-}
+
+
+    //
+    // Print layouts
+    // --------------------------------------------------
+    &.no-map .map-container,
+    &.no-map .layer-palette,
+    &.no-legend .layer-palette,
+    &.no-content .content-area {
+      display: none;
+    }
+
+    .map-grid { height: 100%; }
+
+    .map-container,
+    .layer-palette,
+    .content-area {
+      position: absolute;
+      box-shadow: none;
+      background-color: White;
+      margin: 0;
+      padding: 0;
+      width: auto;
+      height: auto;
+    }
+
+    .map-container {
+      top: 7mm;
+      right: calc(27% + 3.5mm);
+      left: 7mm;
+      height: calc(45% - 10.5mm);
+    }
+
+    .layer-palette {
+      top: 7mm;
+      right: 7mm;
+      bottom: 7mm;
+      left: 73%;
+    }
+
+    .content-area {
+      top: 45%;
+      right: calc(27% + 3.5mm);
+      bottom: 7mm;
+      left: 7mm;
+      overflow: visible;
+    }
+
+    &.no-map .content-area {
+      top: 7mm;
+      right: 7mm;
+    }
+
+    &.portrait {
+      // Portrait + letter
+      &.no-content .map-container {
+        height: calc(100% - 14mm);
+      }
+      &.no-legend .map-container {
+        right: 7mm;
+      }
+
+      // Portrait + legal
+      &.legal .content-area {
+        top: 57%;
+      }
+      &.legal:not(.no-content) .map-container {
+        height: calc(57% - 10.5mm);
+      }
+
+      // Portrait + tabloid
+      &.tabloid .content-area {
+        top: 64%;
+      }
+      &.tabloid:not(.no-content) .map-container {
+        height: calc(64% - 10.5mm);
+      }
+    } // end .portrait
+
+
+    &.landscape {
+      // Landscape + letter
+      &.no-content .map-container {
+        height: calc(100% - 14mm);
+      }
+      &.no-legend {
+        .map-container {
+          right: 7mm;
+          left: calc(40%);
+          height: calc(100% - 14mm);
+        }
+        .content-area {
+          top: 7mm;
+          right: calc(60% + 3.5mm);
+          left: 7mm;
+        }
+      }
+      &.no-legend.no-content .map-container {
+        left: 7mm;
+      }
+
+      // Landscape + legal
+      &.legal .content-area {
+        top: 7mm;
+        right: calc(70% + 3.5mm);
+        left: 7mm;
+      }
+      &.legal .map-container {
+        right: calc(20% + 3.5mm);
+        left: 30%;
+        height: calc(100% - 14mm);
+      }
+      &.legal .layer-palette {
+        left: 80%;
+      }
+      &.legal.no-legend .map-container {
+        right: 7mm;
+      }
+      &.legal.no-content .map-container {
+        left: 0;
+      }
+      &.legal.no-legend.no-content .map-container {
+        left: 7mm;
+      }
+
+      // Landscape + tabloid
+      &.tabloid .content-area {
+        top: 7mm;
+        right: calc(80% + 3.5mm);
+        left: 7mm;
+      }
+      &.tabloid .map-container {
+        right: calc(17% + 3.5mm);
+        left: 20%;
+        height: calc(100% - 14mm);
+      }
+      &.tabloid .layer-palette {
+        left: 83%;
+      }
+      &.tabloid.no-legend .map-container {
+        right: 7mm;
+      }
+      &.tabloid.no-content .map-container {
+        left: 0;
+      }
+      &.tabloid.no-legend.no-content .map-container {
+        left: 7mm;
+      }
+    } // end .landscape
+
+  } // end .paper
+} // end .print-view

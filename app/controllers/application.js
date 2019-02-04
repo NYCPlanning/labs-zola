@@ -96,8 +96,21 @@ export default Controller.extend(mapQueryParams.Mixin, {
   lot: 0,
 
   // Print View Settings
-  printViewOrientation: 'landscape',
+  printViewOrientation: 'portrait',
   printViewPaperSize: 'letter',
+  printViewShowMap: true,
+  printViewShowLegend: true,
+  printViewShowContent: true,
+
+  printViewHiddenAreas: computedProp('printViewShowMap', 'printViewShowLegend', 'printViewShowContent', function() {
+    const hiddenAreasClasses = [];
+
+    if (!this.get('printViewShowMap')) hiddenAreasClasses.push('no-map');
+    if (!this.get('printViewShowLegend')) hiddenAreasClasses.push('no-legend');
+    if (!this.get('printViewShowContent')) hiddenAreasClasses.push('no-content');
+
+    return hiddenAreasClasses.join(' ');
+  }),
 
   isDefault: computedProp('queryParamsState', function() {
     const state = this.get('queryParamsState');

@@ -3,22 +3,24 @@
   <button onclick={{action (mut printViewOrientation) 'landscape'}}>
     <span class="fa-layers">
       {{#if (eq printViewOrientation 'landscape')}}
-        {{fa-icon 'square' class='white'}}
-        {{fa-icon 'check-square' class='a11y-orange'}}
+        {{fa-icon 'circle' class='white'}}
+        {{fa-icon 'circle' prefix='far' class='light-gray'}}
+        {{fa-icon 'circle' transform='shrink-6' class='a11y-orange'}}
       {{else}}
-        {{fa-icon 'square' class='silver'}}
-        {{fa-icon 'square' class='light-gray' prefix='far'}}
+        {{fa-icon 'circle' class='silver'}}
+        {{fa-icon 'circle' prefix='far' class='light-gray'}}
       {{/if}}
     </span> Landscape
   </button>
   <button onclick={{action (mut printViewOrientation) 'portrait'}}>
     <span class="fa-layers">
       {{#if (eq printViewOrientation 'portrait')}}
-        {{fa-icon 'square' class='white'}}
-        {{fa-icon 'check-square' class='a11y-orange'}}
+        {{fa-icon 'circle' class='white'}}
+        {{fa-icon 'circle' prefix='far' class='light-gray'}}
+        {{fa-icon 'circle' transform='shrink-6' class='a11y-orange'}}
       {{else}}
-        {{fa-icon 'square' class='silver'}}
-        {{fa-icon 'square' class='light-gray' prefix='far'}}
+        {{fa-icon 'circle' class='silver'}}
+        {{fa-icon 'circle' prefix='far' class='light-gray'}}
       {{/if}}
     </span> Portrait
   </button>
@@ -29,36 +31,85 @@
   <button onclick={{action (mut printViewPaperSize) 'letter'}}>
     <span class="fa-layers">
       {{#if (eq printViewPaperSize 'letter')}}
-        {{fa-icon 'square' class='white'}}
-        {{fa-icon 'check-square' class='a11y-orange'}}
+        {{fa-icon 'circle' class='white'}}
+        {{fa-icon 'circle' prefix='far' class='light-gray'}}
+        {{fa-icon 'circle' transform='shrink-6' class='a11y-orange'}}
       {{else}}
-        {{fa-icon 'square' class='silver'}}
-        {{fa-icon 'square' class='light-gray' prefix='far'}}
+        {{fa-icon 'circle' class='silver'}}
+        {{fa-icon 'circle' prefix='far' class='light-gray'}}
       {{/if}}
     </span> Letter
   </button>
   <button onclick={{action (mut printViewPaperSize) 'legal'}}>
     <span class="fa-layers">
       {{#if (eq printViewPaperSize 'legal')}}
-        {{fa-icon 'square' class='white'}}
-        {{fa-icon 'check-square' class='a11y-orange'}}
+        {{fa-icon 'circle' class='white'}}
+        {{fa-icon 'circle' prefix='far' class='light-gray'}}
+        {{fa-icon 'circle' transform='shrink-6' class='a11y-orange'}}
       {{else}}
-        {{fa-icon 'square' class='silver'}}
-        {{fa-icon 'square' class='light-gray' prefix='far'}}
+        {{fa-icon 'circle' class='silver'}}
+        {{fa-icon 'circle' prefix='far' class='light-gray'}}
       {{/if}}
     </span> Legal
   </button>
   <button onclick={{action (mut printViewPaperSize) 'tabloid'}}>
     <span class="fa-layers">
       {{#if (eq printViewPaperSize 'tabloid')}}
+        {{fa-icon 'circle' class='white'}}
+        {{fa-icon 'circle' prefix='far' class='light-gray'}}
+        {{fa-icon 'circle' transform='shrink-6' class='a11y-orange'}}
+      {{else}}
+        {{fa-icon 'circle' class='silver'}}
+        {{fa-icon 'circle' prefix='far' class='light-gray'}}
+      {{/if}}
+    </span> Tabloid
+  </button>
+</div>
+
+<div class="print-view-controls--item">
+  <h6 class="print-view-controls--header">Show:</h6>
+  <button onclick={{action (mut printViewShowMap) (not printViewShowMap)}}>
+    <span class="fa-layers">
+      {{#if (eq printViewShowMap true)}}
         {{fa-icon 'square' class='white'}}
         {{fa-icon 'check-square' class='a11y-orange'}}
       {{else}}
         {{fa-icon 'square' class='silver'}}
         {{fa-icon 'square' class='light-gray' prefix='far'}}
       {{/if}}
-    </span> Tabloid
+    </span> Map
+  </button>
+  {{#if (eq printViewShowMap true)}}
+    <button onclick={{action (mut printViewShowLegend) (not printViewShowLegend)}}>
+      <span class="fa-layers">
+        {{#if (eq printViewShowLegend true)}}
+          {{fa-icon 'square' class='white'}}
+          {{fa-icon 'check-square' class='a11y-orange'}}
+        {{else}}
+          {{fa-icon 'square' class='silver'}}
+          {{fa-icon 'square' class='light-gray' prefix='far'}}
+        {{/if}}
+      </span> Legend
+    </button>
+  {{else}}
+    <button disabled>
+      <span class="fa-layers">
+        {{fa-icon 'square' class='silver' prefix='far'}}
+      </span> Legend
+    </button>
+  {{/if}}
+  <button onclick={{action (mut printViewShowContent) (not printViewShowContent)}}>
+    <span class="fa-layers">
+      {{#if (eq printViewShowContent true)}}
+        {{fa-icon 'square' class='white'}}
+        {{fa-icon 'check-square' class='a11y-orange'}}
+      {{else}}
+        {{fa-icon 'square' class='silver'}}
+        {{fa-icon 'square' class='light-gray' prefix='far'}}
+      {{/if}}
+    </span> Content
   </button>
 </div>
+
 
 {{yield}}
