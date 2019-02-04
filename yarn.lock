@@ -4928,16 +4928,6 @@ ember-metrics@0.12.1:
     ember-getowner-polyfill "^2.0.0"
     ember-runtime-enumerable-includes-polyfill "^2.0.0"
 
-ember-native-class-polyfill@1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/ember-native-class-polyfill/-/ember-native-class-polyfill-1.0.6.tgz#cc7a3407d461acb797bd3253e433936a3261e8bc"
-  dependencies:
-    broccoli-debug "^0.6.5"
-    broccoli-funnel "^2.0.1"
-    ember-cli-babel "^7.1.3"
-    ember-cli-version-checker "^2.1.2"
-    semver "^5.6.0"
-
 ember-native-dom-helpers@^0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/ember-native-dom-helpers/-/ember-native-dom-helpers-0.6.2.tgz#ad1f82d64ac9abdd612022f4f390bdb6653b3d39"
