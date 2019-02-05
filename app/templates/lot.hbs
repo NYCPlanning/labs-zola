@@ -69,6 +69,7 @@
                 'floodplain_pfirm2015_v0'
                 'mandatory_inclusionary_housing'
                 'e_designations'
+                'upland_waterfront_areas_v200912'
                 'appendixj_designated_mdistricts_v201712'
               )
               bbl=model.value.bbl as |layers numberIntersecting|}}
@@ -100,6 +101,14 @@
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan">
                   {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Waterfront Access Plan
+                </a>
+              </li>
+            {{/if}}
+
+            {{#if layers.upland_waterfront_areas_v200912}}
+              <li>
+                <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page">
+                  {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Waterfront Block
                 </a>
               </li>
             {{/if}}
@@ -195,10 +204,28 @@
     {{#if model.value.unitstotal}}<div class="data-grid"><label class="data-label">Total # of Units</label><span class="datum">{{model.value.unitstotal}}</span></div>{{/if}}
     {{#if model.value.unitsres}}<div class="data-grid"><label class="data-label">Residential Units</label><span class="datum">{{model.value.unitsres}}</span></div>{{/if}}
     {{#if model.value.condono}}<div class="data-grid"><label class="data-label">Condominium Number</label><span class="datum">{{model.value.condono}}</span></div>{{/if}}
-    <div class="data-grid"><label class="data-label">Building Info {{labs-ui/icon-tooltip tip="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"}}</label><span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.value.borocode}}&allblock={{model.value.block}}&alllot={{model.value.lot}}&go5=+GO+&requestid=0" target="_blank">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} BISWEB </a></span></div>
+    <div class="data-grid">
+      <label class="data-label">Building Info
+        <span>
+          {{fa-icon "info-circle"}}
+          {{ember-tooltip
+            text="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"
+            side='right'
+          }}
+        </span>
+    </label>
+    <span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.value.borocode}}&allblock={{model.value.block}}&alllot={{model.value.lot}}&go5=+GO+&requestid=0" target="_blank">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} BISWEB </a></span></div>
     {{#if model.value.borocode}}
-      <div class="data-grid">
-        <label class="data-label">Property Records</label>
+    <div class="data-grid">
+      <label class="data-label">Property Records
+        <span>
+          {{fa-icon "info-circle"}}
+          {{ember-tooltip
+          text="View this lot's property records from 1966 to the present on the NYC Department of Finance's Automated City Register Information System (ACRIS)."
+          side='right'
+        }}
+      </span>
+    </label>
         <span class="datum">
           <a href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{model.value.borocode}}&block={{model.value.block}}&lot={{model.value.lot}}" target="_blank">
             {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} View ACRIS
@@ -229,7 +256,7 @@
     {{#if model.value.sanitsub}}<div class="data-grid"><label class="data-label">Sanitation Subsection</label><span class="datum">{{model.value.sanitsub}}</span></div>{{/if}}
 
     <hr>
-    {{road-view 
+    {{road-view
       lon=model.value.lon
       lat=model.value.lat
     }}
