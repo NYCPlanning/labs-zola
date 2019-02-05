@@ -69,6 +69,7 @@
                 'floodplain_pfirm2015_v0'
                 'mandatory_inclusionary_housing_v20181130'
                 'e_designations_v20181130'
+                'upland_waterfront_areas_v200912'
                 'appendixj_designated_mdistricts_v201712'
               )
               bbl=model.value.bbl as |layers numberIntersecting|}}
@@ -100,6 +101,14 @@
               <li>
                 <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan">
                   {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Waterfront Access Plan
+                </a>
+              </li>
+            {{/if}}
+
+            {{#if layers.upland_waterfront_areas_v200912}}
+              <li>
+                <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page">
+                  {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Waterfront Block
                 </a>
               </li>
             {{/if}}
@@ -229,7 +238,7 @@
     {{#if model.value.sanitsub}}<div class="data-grid"><label class="data-label">Sanitation Subsection</label><span class="datum">{{model.value.sanitsub}}</span></div>{{/if}}
 
     <hr>
-    {{road-view 
+    {{road-view
       lon=model.value.lon
       lat=model.value.lat
     }}
