@@ -1,9 +1,8 @@
 import Component from '@ember/component';
 import { argument } from '@ember-decorators/argument';
-import { next } from '@ember/runloop';
 
 export default class PrintViewControlsComponent extends Component {
-  classNames = ['print-view--controls'];
+  classNames = ['print-view--controls', 'align-middle'];
 
   @argument
   printViewOrientation;
