@@ -7508,7 +7508,7 @@ klaw@^1.0.0:
   optionalDependencies:
     graceful-fs "^4.1.9"
 
-labs-ember-search@2.4.13:
+labs-ember-search@^2.4.13:
   version "2.4.13"
   resolved "https://registry.yarnpkg.com/labs-ember-search/-/labs-ember-search-2.4.13.tgz#38649a3b0c087c4987a78bb6de43752b420c5283"
   dependencies:
