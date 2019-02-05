@@ -12,7 +12,7 @@ module('Unit | Initializer | use-fetch-ember-data', function(hooks) {
     this.TestApplication = Application.extend();
     this.TestApplication.initializer({
       name: 'initializer under test',
-      initialize
+      initialize,
     });
 
     this.application = this.TestApplication.create({ autoboot: false });

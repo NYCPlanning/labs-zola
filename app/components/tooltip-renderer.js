@@ -1,5 +1,4 @@
 import Component from '@ember/component';
-import { argument } from '@ember-decorators/argument';
 import { defineProperty, computed as computedProperty } from '@ember/object';
 import Ember from 'ember';
 
@@ -16,9 +15,7 @@ export default class TooltipRenderer extends Component {
     }));
   }
 
-  @argument
-  feature = {}
+  feature = {};
 
-  @argument
-  template = ''
+  template = '';
 }

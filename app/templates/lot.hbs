@@ -26,7 +26,7 @@
     {{#if model.value.zonedist1}}
       <ul class="lot-zoning-list">
         <li class="menu-text">Zoning District{{if (or model.value.zonedist2 model.value.spdist1) 's'}}:</li>
-        {{#if model.value.zonedist1}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone1}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist1}}</a></li>{{/if}}
+        {{#unless (eq model.value.zonedist1 "BPC")}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone1}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist1}}</a></li>{{/unless}}
         {{#if model.value.zonedist2}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone2}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist2}}</a></li>{{/if}}
         {{#if model.value.zonedist3}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone3}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist3}}</a></li>{{/if}}
         {{#if model.value.zonedist4}}<li><a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzone4}}.page" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.zonedist4}}</a></li>{{/if}}
@@ -68,8 +68,9 @@
                   'lower_density_growth_management_areas_v201709'
                   'floodplain_firm2007_v0'
                   'floodplain_pfirm2015_v0'
-                  'mandatory_inclusionary_housing_v20181130'
-                  'e_designations_v20181130'
+                  'mandatory_inclusionary_housing'
+                  'e_designations'
+                  'upland_waterfront_areas_v200912'
                   'appendixj_designated_mdistricts_v201712'
                 )
                 bbl=model.value.bbl as |layers numberIntersecting|}}
@@ -101,6 +102,14 @@
                 <li>
                   <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan">
                     {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Waterfront Access Plan
+                  </a>
+                </li>
+              {{/if}}
+
+              {{#if layers.upland_waterfront_areas_v200912}}
+                <li>
+                  <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page">
+                    {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Waterfront Block
                   </a>
                 </li>
               {{/if}}
@@ -137,7 +146,7 @@
                 </li>
               {{/if}}
 
-              {{#if layers.mandatory_inclusionary_housing_v20181130}}
+              {{#if layers.mandatory_inclusionary_housing}}
                 <li>
                   <a target="_blank" href="https://www1.nyc.gov/site/planning/plans/mih/mandatory-inclusionary-housing.page">
                     {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Mandatory Inclusionary Housing Area
@@ -145,7 +154,7 @@
                 </li>
               {{/if}}
 
-              {{#if layers.e_designations_v20181130}}
+              {{#if layers.e_designations}}
                 <li>
                   <a target="_blank" href="http://www.nyc.gov/html/oer/html/e-designation/e-designation.shtml">
                     {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Environmental Designation
@@ -170,7 +179,7 @@
           </ul>
         </div>
         <div class="cell medium-shrink">
-          <h6 class="">Zoning Details:</h6>
+          <h6 class="no-margin-">Zoning Details:</h6>
           <ul class="no-bullet text-small">
             {{#if model.value.bbl}}<li><a target="_blank" href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{model.value.bbl}}">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Digital Tax Map</a></li>{{/if}}
             {{#if model.value.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{model.value.zonemap}}.pdf">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Zoning Map <small>(PDF)</small></a></li>{{/if}}
@@ -178,111 +187,63 @@
           </ul>
         </div>
       </div>
+
     </section>
 
     <hr class="hide-for-print" />
 
     <section class="lot-details">
-      {{#if model.value.ownertypename}}
-        <div class="data-grid">
-          <label class="data-label">Owner Type</label>
-          <span class="datum">{{if model.value.ownertypename model.value.ownertypename 'Unknown/Private'}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.ownername}}
-        <div class="data-grid">
-          <label class="data-label">Owner</label>
-          <span class="datum">{{model.value.ownername}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.landusename}}
-        <div class="data-grid">
-          <label class="data-label">Land Use</label>
-          <span class="datum">{{model.value.landusename}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.lotarea}}
-        <div class="data-grid">
-          <label class="data-label">Lot Area</label>
-          <span class="datum">{{if model.value.lotarea (concat (numeral-format model.value.lotarea '0,0') ' sq ft') ''}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.lotfront}}
-        <div class="data-grid">
-          <label class="data-label">Lot Frontage</label>
-          <span class="datum">{{if model.value.lotfront (concat model.value.lotfront ' ft') ''}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.lotdepth}}
-        <div class="data-grid">
-          <label class="data-label">Lot Depth</label>
-          <span class="datum">{{if model.value.lotdepth (concat model.value.lotdepth ' ft') ''}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.yearbuilt}}
-        <div class="data-grid">
-          <label class="data-label">Year Built</label>
-          <span class="datum">{{model.value.yearbuilt}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.yearalter1}}
-        <div class="data-grid">
-          <label class="data-label">Year{{if model.value.yearalter2 's'}} Altered</label>
-          <span class="datum">{{model.value.yearalter1}}{{if model.value.yearalter2 (concat ', ' model.value.yearalter2) ''}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.bldgclassname}}
-        <div class="data-grid">
-          <label class="data-label">Building Class</label>
-          <span class="datum">{{model.value.bldgclassname}}{{#if model.value.bldgclass}}&nbsp;<span class="dark-gray">({{model.value.bldgclass}})</span>{{/if}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.numbldgs}}
-        <div class="data-grid">
-          <label class="data-label">Number of Buildings</label>
-          <span class="datum">{{model.value.numbldgs}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.numfloors}}
-        <div class="data-grid">
-          <label class="data-label">Number of Floors</label>
-          <span class="datum">{{model.value.numfloors}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.bldgarea}}
-        <div class="data-grid">
-          <label class="data-label">Gross Floor Area</label>
-          <span class="datum">{{if model.value.bldgarea (concat (numeral-format model.value.bldgarea '0,0') ' sq ft') ''}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.unitstotal}}
-        <div class="data-grid">
-          <label class="data-label">Total # of Units</label>
-          <span class="datum">{{model.value.unitstotal}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.unitsres}}
-        <div class="data-grid">
-          <label class="data-label">Residential Units</label>
-          <span class="datum">{{model.value.unitsres}}</span>
-        </div>
-      {{/if}}
-      {{#if model.value.condono}}
-        <div class="data-grid">
-          <label class="data-label">Condominium Number</label>
-          <span class="datum">{{model.value.condono}}</span>
-        </div>
-      {{/if}}
+
+      {{#if model.value.ownertypename}}<div class="data-grid"><label class="data-label">Owner Type</label><span class="datum">{{if model.value.ownertypename model.value.ownertypename 'Unknown/Private'}}</span></div>{{/if}}
+      {{#if model.value.ownername}}<div class="data-grid"><label class="data-label">Owner</label><span class="datum">{{model.value.ownername}}</span></div>{{/if}}
+      {{#if model.value.landusename}}<div class="data-grid"><label class="data-label">Land Use</label><span class="datum">{{model.value.landusename}}</span></div>{{/if}}
+      {{#if model.value.lotarea}}<div class="data-grid"><label class="data-label">Lot Area</label><span class="datum">{{if model.value.lotarea (concat (numeral-format model.value.lotarea '0,0') ' sq ft') ''}}</span></div>{{/if}}
+      {{#if model.value.lotfront}}<div class="data-grid"><label class="data-label">Lot Frontage</label><span class="datum">{{if model.value.lotfront (concat model.value.lotfront ' ft') ''}}</span></div>{{/if}}
+      {{#if model.value.lotdepth}}<div class="data-grid"><label class="data-label">Lot Depth</label><span class="datum">{{if model.value.lotdepth (concat model.value.lotdepth ' ft') ''}}</span></div>{{/if}}
+      {{#if model.value.yearbuilt}}<div class="data-grid"><label class="data-label">Year Built</label><span class="datum">{{model.value.yearbuilt}}</span></div>{{/if}}
+      {{#if model.value.yearalter1}}<div class="data-grid"><label class="data-label">Year{{if model.value.yearalter2 's'}} Altered</label><span class="datum">{{model.value.yearalter1}}{{if model.value.yearalter2 (concat ', ' model.value.yearalter2) ''}}</span></div>{{/if}}
+      {{#if model.value.bldgclassname}}<div class="data-grid"><label class="data-label">Building Class</label><span class="datum">{{model.value.bldgclassname}}{{#if model.value.bldgclass}}&nbsp;<span class="dark-gray">({{model.value.bldgclass}})</span>{{/if}}</span></div>{{/if}}
+      {{#if model.value.numbldgs}}<div class="data-grid"><label class="data-label">Number of Buildings</label><span class="datum">{{model.value.numbldgs}}</span></div>{{/if}}
+      {{#if model.value.numfloors}}<div class="data-grid"><label class="data-label">Number of Floors</label><span class="datum">{{model.value.numfloors}}</span></div>{{/if}}
+      {{#if model.value.bldgarea}}<div class="data-grid"><label class="data-label">Gross Floor Area</label><span class="datum">{{if model.value.bldgarea (concat (numeral-format model.value.bldgarea '0,0') ' sq ft') ''}}</span></div>{{/if}}
+      {{#if model.value.unitstotal}}<div class="data-grid"><label class="data-label">Total # of Units</label><span class="datum">{{model.value.unitstotal}}</span></div>{{/if}}
+      {{#if model.value.unitsres}}<div class="data-grid"><label class="data-label">Residential Units</label><span class="datum">{{model.value.unitsres}}</span></div>{{/if}}
+      {{#if model.value.condono}}<div class="data-grid"><label class="data-label">Condominium Number</label><span class="datum">{{model.value.condono}}</span></div>{{/if}}
       <div class="data-grid">
-        <label class="data-label">Building Info {{labs-ui/icon-tooltip tip="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"}}</label>
-        <span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.value.borocode}}&allblock={{model.value.block}}&alllot={{model.value.lot}}&go5=+GO+&requestid=0" target="_blank">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} BISWEB </a></span>
-      </div>
+        <label class="data-label">Building Info
+          <span>
+            {{fa-icon "info-circle"}}
+            {{ember-tooltip
+              text="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"
+              side='right'
+            }}
+          </span>
+      </label>
+      <span class="datum"><a href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough={{model.value.borocode}}&allblock={{model.value.block}}&alllot={{model.value.lot}}&go5=+GO+&requestid=0" target="_blank">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} BISWEB </a></span></div>
       {{#if model.value.borocode}}
-        <div class="data-grid">
-          <label class="data-label">Property Records</label>
+      <div class="data-grid">
+        <label class="data-label">Property Records
+          <span>
+            {{fa-icon "info-circle"}}
+            {{ember-tooltip
+            text="View this lot's property records from 1966 to the present on the NYC Department of Finance's Automated City Register Information System (ACRIS)."
+            side='right'
+          }}
+        </span>
+      </label>
           <span class="datum">
             <a href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough={{model.value.borocode}}&block={{model.value.block}}&lot={{model.value.lot}}" target="_blank">
               {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} View ACRIS
+            </a>
+          </span>
+        </div>
+      {{/if}}
+      {{#if (and model.value.borocode model.value.address)}}
+        <div class="data-grid">
+          <label class="data-label">Housing Info</label>
+          <span class="datum">
+            <a href="https://hpdonline.hpdnyc.org/Hpdonline/Provide_address.aspx?p1={{model.value.boro}}&p2={{model.value.housenum}}&p3={{model.value.street}}&SearchButton=Search" target="_blank">
+              {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} View HPD's Building, Registration & Violation Records
             </a>
           </span>
         </div>

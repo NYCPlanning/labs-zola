@@ -5,7 +5,7 @@ module('Unit | Route | zoning-district', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function(assert) {
-    let route = this.owner.lookup('route:zoning-district');
+    const route = this.owner.lookup('route:zoning-district');
     assert.ok(route);
   });
 });

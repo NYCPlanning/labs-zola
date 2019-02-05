@@ -6,7 +6,7 @@ module('Unit | Adapter | special purpose district', function(hooks) {
 
   // Replace this with your real tests.
   test('it exists', function(assert) {
-    let adapter = this.owner.lookup('adapter:special-purpose-district');
+    const adapter = this.owner.lookup('adapter:special-purpose-district');
     assert.ok(adapter);
   });
 });

@@ -5,7 +5,7 @@ export default {
   'source-layers': [
     {
       id: 'pluto',
-      sql: 'SELECT the_geom_webmercator, bbl, lot, landuse, address FROM mappluto_18v_1_1',
+      sql: 'SELECT the_geom_webmercator, bbl, lot, landuse, address FROM mappluto_18v2',
     },
   ],
 };

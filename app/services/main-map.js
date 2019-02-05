@@ -9,6 +9,9 @@ const DEFAULT_BOUNDS = [-73.9, 40.690913, -73.832692, 40.856654];
 export default class MainMapService extends Service {
   mapInstance = null;
 
+  // selected feature; always a geometric type model
+  // includes bounds
+  // used to determine how to zoom
   selected = null;
 
   currentZoom = null;
@@ -19,7 +22,8 @@ export default class MainMapService extends Service {
 
   shouldFitBounds = false;
 
-  @computed('selected')
+  // computed from the selected
+  @computed('selected', 'selected.bounds')
   get bounds() {
     const selected = this.get('selected');
     const { mapInstance } = this;
@@ -74,7 +78,7 @@ export default class MainMapService extends Service {
     // width of content area on large screens is 5/12 of full
     const contentWidth = (fullWidth / 12) * 5;
     // on small screens, no offset
-    const offset = fullWidth < 1024 ? 0 : -((width - contentWidth) / 2);
+    const offset = fullWidth < 1024 ? 0 : -((width - contentWidth) / 2) / 2;
     const padding = Math.min(height, (width - contentWidth)) / 2.5;
 
     // get type of selected feature so we can do dynamic padding

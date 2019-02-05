@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import numeral from 'numeral';
 import EmberObject from '@ember/object';
 
-import { service } from '@ember-decorators/service';
+import { inject as service } from '@ember-decorators/service';
 import { computed, action } from '@ember-decorators/object';
 import { classNames } from '@ember-decorators/component';
 import { alias } from '@ember-decorators/object/computed';
@@ -33,14 +33,10 @@ MeasurementText.prototype.onRemove = function () {
   this._map = undefined;
 };
 
-export default
 @classNames('map-container')
-class MainMap extends Component {
+export default class MainMap extends Component {
   @service
   mainMap;
-
-  @service
-  mapMouseover;
 
   @service
   metrics;
@@ -222,8 +218,14 @@ class MainMap extends Component {
     map.addControl(geoLocateControl, 'top-left');
     map.addControl(new MeasurementText(), 'top-left');
 
-    // get rid of default building layer
-    map.removeLayer('building');
+    // hide default base style layers
+    const basemapLayersToHide = [
+      'building',
+      'highway_name_other',
+      'highway_name_motorway',
+    ];
+
+    basemapLayersToHide.forEach(layer => map.removeLayer(layer));
 
     map.addSource('ee', {
       type: 'image',
@@ -242,19 +244,6 @@ class MainMap extends Component {
       type: 'raster',
       minzoom: 17,
     });
-  }
-
-  @action
-  handleMousemove(e) {
-    const { mapMouseover } = this;
-    if (!this.mainMap.drawMode) mapMouseover.highlighter(e);
-  }
-
-  @action
-  handleMouseleave() {
-    const { mapMouseover } = this;
-    mapMouseover.set('highlightedLotFeatures', []);
-    mapMouseover.set('currentEvent', null);
   }
 
   @action
@@ -469,25 +458,23 @@ class MainMap extends Component {
         }
 
         if (ulurpno) {
-          this.transitionTo('zma', ulurpno);
+          this.transitionTo('zma', ulurpno, { queryParams: { search: false } });
         }
 
         if (zonedist) {
-          mainMap.set('shouldFitBounds', false);
-          this.transitionTo('zoning-district', zonedist);
+          this.transitionTo('zoning-district', zonedist, { queryParams: { search: false } });
         }
 
         if (sdlbl) {
-          this.transitionTo('special-purpose-district', cartodb_id);
+          this.transitionTo('special-purpose-district', cartodb_id, { queryParams: { search: false } });
         }
 
         if (splbl) {
-          this.transitionTo('special-purpose-subdistricts', cartodb_id);
+          this.transitionTo('special-purpose-subdistricts', cartodb_id, { queryParams: { search: false } });
         }
 
         if (overlay) {
-          mainMap.set('shouldFitBounds', false);
-          this.transitionTo('commercial-overlay', overlay);
+          this.transitionTo('commercial-overlay', overlay, { queryParams: { search: false } });
         }
 
         if (ceqr_num) { // eslint-disable-line

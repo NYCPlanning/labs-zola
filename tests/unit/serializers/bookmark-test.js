@@ -8,9 +8,9 @@ module('Unit | Serializer | bookmark', function(hooks) {
 
   // Replace this with your real tests.
   test('it serializes records', function(assert) {
-    let record = run(() => this.owner.lookup('service:store').createRecord('bookmark'));
+    const record = run(() => this.owner.lookup('service:store').createRecord('bookmark'));
 
-    let serializedRecord = record.serialize();
+    const serializedRecord = record.serialize();
 
     assert.ok(serializedRecord);
   });

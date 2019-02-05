@@ -6,17 +6,17 @@ module('Unit | Serializer | source', function(hooks) {
 
   // Replace this with your real tests.
   test('it exists', function(assert) {
-    let store = this.owner.lookup('service:store');
-    let serializer = store.serializerFor('source');
+    const store = this.owner.lookup('service:store');
+    const serializer = store.serializerFor('source');
 
     assert.ok(serializer);
   });
 
   test('it serializes records', function(assert) {
-    let store = this.owner.lookup('service:store');
-    let record = store.createRecord('source', {});
+    const store = this.owner.lookup('service:store');
+    const record = store.createRecord('source', {});
 
-    let serializedRecord = record.serialize();
+    const serializedRecord = record.serialize();
 
     assert.ok(serializedRecord);
   });

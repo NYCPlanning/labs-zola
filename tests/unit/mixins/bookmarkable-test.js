@@ -5,8 +5,8 @@ import { module, test } from 'qunit';
 module('Unit | Mixin | bookmarkable', function() {
   // Replace this with your real tests.
   test('it works', function(assert) {
-    let BookmarkableObject = EmberObject.extend(BookmarkableMixin);
-    let subject = BookmarkableObject.create();
+    const BookmarkableObject = EmberObject.extend(BookmarkableMixin);
+    const subject = BookmarkableObject.create();
     assert.ok(subject);
   });
 });

@@ -57,7 +57,6 @@
       <div class="map-grid">
         {{main-map
           cartoSources=model.cartoSources
-          routeToLot=(action 'routeToLot')
           transitionTo=(action 'transitionTo')
           bookmarks=model.bookmarks
           layerGroups=model.layerGroups
@@ -67,7 +66,8 @@
         }}
 
         {{layer-palette
-          qps=qps
+          selectedZoning=selectedZoning
+          selectedOverlays=selectedOverlays
           layerGroups=model.layerGroupsObject
           isDefault=isDefault
           resetQueryParams=(action 'resetQueryParams')}}

@@ -2,7 +2,6 @@ import Component from '@ember/component';
 import { get } from '@ember/object';
 import RSVP from 'rsvp';
 import { computed } from '@ember-decorators/object';
-import { argument } from '@ember-decorators/argument';
 import { restartableTask } from 'ember-concurrency-decorators';
 import carto from '../utils/carto';
 
@@ -26,7 +25,7 @@ const generateSQL = function(table, bbl) {
   }
 
   return `
-    WITH lot AS (SELECT the_geom FROM mappluto_18v_1_1 WHERE bbl = '${bbl}')
+    WITH lot AS (SELECT the_geom FROM mappluto_18v2 WHERE bbl = '${bbl}')
 
     SELECT true as intersects FROM ${intersectionTable} a, lot b WHERE ST_Intersects(a.the_geom, b.the_geom) LIMIT 1
   `;
@@ -35,7 +34,6 @@ const generateSQL = function(table, bbl) {
 export default class IntersectingLayersComponent extends Component {
   responseIdentifier = 'intersects';
 
-  @argument
   bbl = null;
 
   @restartableTask

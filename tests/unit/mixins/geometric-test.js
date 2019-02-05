@@ -5,8 +5,8 @@ import { module, test } from 'qunit';
 module('Unit | Mixin | geometric', function() {
   // Replace this with your real tests.
   test('it works', function(assert) {
-    let GeometricObject = EmberObject.extend(GeometricMixin);
-    let subject = GeometricObject.create();
+    const GeometricObject = EmberObject.extend(GeometricMixin);
+    const subject = GeometricObject.create();
     assert.ok(subject);
   });
 });

@@ -16,4 +16,3 @@ module('helper:to-title-case', function(hooks) {
     assert.equal(find('*').textContent.trim(), '1234');
   });
 });
-
