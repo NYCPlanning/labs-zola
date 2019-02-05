@@ -291,7 +291,7 @@
     // Content
     // --------------------------------------------------
     #layers-menu {
-      // pointer-events: none; // HACK: Prevent interaction with layer group toggles
+      pointer-events: none; // HACK: Prevent interaction with layer group toggles
 
       .layer-groups-container {
         // border-bottom: 0;
