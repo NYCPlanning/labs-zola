@@ -11,6 +11,7 @@ export default Route.extend({
         selected: null,
         shouldFitBounds: false,
       });
+
       if (mainMap.mapInstance) mainMap.mapInstance.resize();
     },
   },
