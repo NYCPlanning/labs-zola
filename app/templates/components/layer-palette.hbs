@@ -26,7 +26,7 @@
 
       {{#if plutoFill}}
         <ul class="layer-key">
-          {{#each (array 
+          {{#each (array
               (hash color='#FEFFA8' title='One &amp; Two Family Buildings')
               (hash color='#FCB842' title='Multi-Family Walk-Up Buildings')
               (hash color='#B16E00' title='Multi-Family Elevator Buildings')
@@ -393,10 +393,14 @@
         {{#each layerGroups.aerials.layers as |layer|}}
           <li onclick={{action (mut layerGroups.aerials.selected) layer.id}} role='button'>
             <label {{!template-lint-disable "nested-interactive"}}>
-              <span class="layer-group-radio-{{layer.id}} silver">
+              <span class="layer-group-radio-{{layer.id}}">
                 <span class="fa-layers">
-                  {{#if layer.visibility}}{{fa-icon 'circle' class="a11y-orange" transform='shrink-5'}}{{/if}}
-                  {{fa-icon 'circle' prefix='far' class=(if layer.visibility '')}}
+                  {{log layer.id layer.visibility}}
+                  {{#if layer.visibility}}
+                    {{fa-icon 'dot-circle' prefix='far' class=(if layer.visibility '' 'silver')}}
+                  {{else}}
+                    {{fa-icon 'circle' prefix='far' class=(if layer.visibility '' 'silver')}}
+                  {{/if}}
                 </span>
               </span>
               {{layer.displayName}}
