@@ -5046,6 +5046,13 @@ ember-source@~3.6.0:
     jquery "^3.3.1"
     resolve "^1.6.0"
 
+ember-test-selectors@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ember-test-selectors/-/ember-test-selectors-2.0.0.tgz#c95079b2c562c9a8328832b655ba8818d9076dd7"
+  dependencies:
+    ember-cli-babel "^6.8.2"
+    ember-cli-version-checker "^2.0.0"
+
 ember-tether@v1.0.0-beta.3:
   version "1.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/ember-tether/-/ember-tether-1.0.0-beta.3.tgz#444d846b62cba642e20b09ebb55305325a1d50c3"

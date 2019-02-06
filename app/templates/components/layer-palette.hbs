@@ -6,6 +6,7 @@
   {{#labs-ui/layer-groups-container
     title='Zoning and Land Use'}}
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-tax-lots
       label=layerGroups.tax-lots.legend.label
       tooltip=layerGroups.tax-lots.legend.tooltip
       active=layerGroups.tax-lots.visible}}
@@ -48,6 +49,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-zoning-districts
       label=layerGroups.zoning-districts.legend.label
       tooltip=layerGroups.zoning-districts.legend.tooltip
       active=layerGroups.zoning-districts.visible
@@ -64,6 +66,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-commercial-overlays
         label=layerGroups.commercial-overlays.legend.label
         tooltip=layerGroups.commercial-overlays.legend.tooltip
         active=layerGroups.commercial-overlays.visible}}
@@ -79,6 +82,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-zoning-map-amendments
         label=layerGroups.zoning-map-amendments.legend.label
         tooltip=layerGroups.zoning-map-amendments.legend.tooltip
         icon=layerGroups.zoning-map-amendments.legend.icon
@@ -91,6 +95,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-zoning-map-amendments-pending
         label=layerGroups.zoning-map-amendments-pending.legend.label
         tooltip=layerGroups.zoning-map-amendments-pending.legend.tooltip
         icon=layerGroups.zoning-map-amendments-pending.legend.icon
@@ -98,6 +103,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-special-purpose-districts
         label=layerGroups.special-purpose-districts.legend.label
         tooltip=layerGroups.special-purpose-districts.legend.tooltip
         icon=layerGroups.special-purpose-districts.legend.icon
@@ -105,6 +111,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-special-purpose-subdistricts
         label=layerGroups.special-purpose-subdistricts.legend.label
         tooltip=layerGroups.special-purpose-subdistricts.legend.tooltip
         icon=layerGroups.special-purpose-subdistricts.legend.icon
@@ -115,6 +122,7 @@
   {{#labs-ui/layer-groups-container
     title='Supporting Zoning Layers'}}
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-mandatory-inclusionary-housing
         label=layerGroups.mandatory-inclusionary-housing.legend.label
         tooltip=layerGroups.mandatory-inclusionary-housing.legend.tooltip
         icon=layerGroups.mandatory-inclusionary-housing.legend.icon
@@ -122,6 +130,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-inclusionary-housing
         label=layerGroups.inclusionary-housing.legend.label
         tooltip=layerGroups.inclusionary-housing.legend.tooltip
         icon=layerGroups.inclusionary-housing.legend.icon
@@ -129,6 +138,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-transit-zones
         label=layerGroups.transit-zones.legend.label
         tooltip=layerGroups.transit-zones.legend.tooltip
         icon=layerGroups.transit-zones.legend.icon
@@ -136,6 +146,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-fresh
         label=layerGroups.fresh.legend.label
         tooltip=layerGroups.fresh.legend.tooltip
         icon=layerGroups.fresh.legend.icon
@@ -144,6 +155,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-sidewalk-cafes
         label=layerGroups.sidewalk-cafes.legend.label
         tooltip=layerGroups.sidewalk-cafes.legend.tooltip
         active=layerGroups.sidewalk-cafes.visible}}
@@ -151,6 +163,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-limited-height-districts
         label=layerGroups.limited-height-districts.legend.label
         tooltip=layerGroups.limited-height-districts.legend.tooltip
         icon=layerGroups.limited-height-districts.legend.icon
@@ -158,6 +171,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-low-density-growth-mgmt-areas
         label=layerGroups.low-density-growth-mgmt-areas.legend.label
         tooltip=layerGroups.low-density-growth-mgmt-areas.legend.tooltip
         icon=layerGroups.low-density-growth-mgmt-areas.legend.icon
@@ -165,6 +179,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-coastal-zone-boundary
         label=layerGroups.coastal-zone-boundary.legend.label
         tooltip=layerGroups.coastal-zone-boundary.legend.tooltip
         icon=layerGroups.coastal-zone-boundary.legend.icon
@@ -172,6 +187,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-waterfront-access-plan
         label=layerGroups.waterfront-access-plan.legend.label
         tooltip=layerGroups.waterfront-access-plan.legend.tooltip
         icon=layerGroups.waterfront-access-plan.legend.icon
@@ -179,6 +195,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-historic-districts
         label=layerGroups.historic-districts.legend.label
         tooltip=layerGroups.historic-districts.legend.tooltip
         icon=layerGroups.historic-districts.legend.icon
@@ -186,6 +203,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-landmarks
         label=layerGroups.landmarks.legend.label
         tooltip=layerGroups.landmarks.legend.tooltip
         active=layerGroups.landmarks.visible}}
@@ -193,6 +211,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-floodplain-efirm2007
         label=layerGroups.floodplain-efirm2007.legend.label
         tooltip=layerGroups.floodplain-efirm2007.legend.tooltip
         active=layerGroups.floodplain-efirm2007.visible}}
@@ -200,6 +219,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-floodplain-pfirm2015
         label=layerGroups.floodplain-pfirm2015.legend.label
         tooltip=layerGroups.floodplain-pfirm2015.legend.tooltip
         active=layerGroups.floodplain-pfirm2015.visible}}
@@ -207,6 +227,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-e-designations
         label=layerGroups.e-designations.legend.label
         tooltip=layerGroups.e-designations.legend.tooltip
         active=layerGroups.e-designations.visible}}
@@ -214,6 +235,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-appendixj-designated-mdistricts
         label=layerGroups.appendixj-designated-mdistricts.legend.label
         tooltip=layerGroups.appendixj-designated-mdistricts.legend.tooltip
         icon=layerGroups.appendixj-designated-mdistricts.legend.icon
@@ -225,6 +247,7 @@
   {{#labs-ui/layer-groups-container
     title='Other Supporting Layers'}}
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-business-improvement-districts
         label=layerGroups.business-improvement-districts.legend.label
         tooltip=layerGroups.business-improvement-districts.legend.tooltip
         icon=layerGroups.business-improvement-districts.legend.icon
@@ -232,6 +255,7 @@
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-industrial-business-zones
         label=layerGroups.industrial-business-zones.legend.label
         tooltip=layerGroups.industrial-business-zones.legend.tooltip
         icon=layerGroups.industrial-business-zones.legend.icon
@@ -243,36 +267,42 @@
   {{#labs-ui/layer-groups-container
     title='Administrative Boundaries'}}
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-boroughs
         label=layerGroups.boroughs.legend.label
         icon=layerGroups.boroughs.legend.icon
         active=layerGroups.boroughs.visible}}
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-community-districts
         label=layerGroups.community-districts.legend.label
         icon=layerGroups.community-districts.legend.icon
         active=layerGroups.community-districts.visible}}
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-nyc-council-districts
         label=layerGroups.nyc-council-districts.legend.label
         icon=layerGroups.nyc-council-districts.legend.icon
         active=layerGroups.nyc-council-districts.visible}}
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-ny-senate-districts
         label=layerGroups.ny-senate-districts.legend.label
         icon=layerGroups.ny-senate-districts.legend.icon
         active=layerGroups.ny-senate-districts.visible}}
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-assembly-districts
         label=layerGroups.assembly-districts.legend.label
         icon=layerGroups.assembly-districts.legend.icon
         active=layerGroups.assembly-districts.visible}}
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-neighborhood-tabulation-areas
         label=layerGroups.neighborhood-tabulation-areas.legend.label
         icon=layerGroups.neighborhood-tabulation-areas.legend.icon
         active=layerGroups.neighborhood-tabulation-areas.visible}}
@@ -283,17 +313,20 @@
   {{#labs-ui/layer-groups-container
     title='Basemaps'}}
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-subway
       label=layerGroups.subway.legend.label
       active=layerGroups.subway.visible}}
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-building-footprints
       label=layerGroups.building-footprints.legend.label
       tooltip=layerGroups.building-footprints.legend.tooltip
       active=layerGroups.building-footprints.visible}}
     {{/labs-ui/layer-group-toggle}}
 
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-three-d-buildings
       label=layerGroups.three-d-buildings.legend.label
       tooltip=layerGroups.three-d-buildings.legend.tooltip
       active=layerGroups.three-d-buildings.visible}}
@@ -303,6 +336,7 @@
       </ul>
     {{/labs-ui/layer-group-toggle}}
     {{#labs-ui/layer-group-toggle
+      data-test-toggle-aerials
       label=layerGroups.aerials.legend.label
       tooltip=layerGroups.aerials.legend.tooltip
       active=layerGroups.aerials.visible}}
