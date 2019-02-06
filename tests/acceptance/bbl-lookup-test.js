@@ -1,4 +1,4 @@
-import { module, skip } from 'qunit';
+import { module, test } from 'qunit';
 import {
   visit, click, fillIn, currentURL,
 } from '@ember/test-helpers';
@@ -10,7 +10,7 @@ module('Acceptance | bbl lookup', function(hooks) {
   setupApplicationTest(hooks);
   setupMapMocks(hooks);
 
-  skip('BBL lookup works', async function(assert) {
+  test('BBL lookup works', async function(assert) {
     await visit('/');
     await mapboxGlLoaded();
     await click('.bbl-lookup-toggle');
@@ -23,6 +23,6 @@ module('Acceptance | bbl lookup', function(hooks) {
 
     await click('.bbl-lookup-form .button');
 
-    assert.equal(currentURL(), '/lot/3/1/1');
+    assert.equal(currentURL().split('?')[0], '/lot/3/1/1');
   });
 });
