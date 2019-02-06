@@ -1,6 +1,6 @@
-import { module, skip } from 'qunit';
+import { module, test } from 'qunit';
 import {
-  visit, click, fillIn, currentURL,
+  visit, click, typeIn, currentURL,
 } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import mapboxGlLoaded from '../helpers/mapbox-gl-loaded';
@@ -10,7 +10,7 @@ module('Acceptance | bbl lookup', function(hooks) {
   setupApplicationTest(hooks);
   setupMapMocks(hooks);
 
-  skip('BBL lookup works', async function(assert) {
+  test('BBL lookup works', async function(assert) {
     await visit('/');
     await mapboxGlLoaded();
     await click('.bbl-lookup-toggle');
@@ -18,11 +18,11 @@ module('Acceptance | bbl lookup', function(hooks) {
 
     await click('.ember-power-select-options li:nth-child(3)');
 
-    await fillIn('.bbl-lookup--block-input', 1);
-    await fillIn('.bbl-lookup--lot-input', 1);
+    await typeIn('.bbl-lookup--block-input', '1');
+    await typeIn('.bbl-lookup--lot-input', '1');
 
     await click('.bbl-lookup-form .button');
 
-    assert.equal(currentURL(), '/lot/3/1/1');
+    assert.equal(currentURL().split('?')[0], '/lot/3/1/1');
   });
 });

@@ -125,8 +125,8 @@
     // --------------------------------------------------
     .hide-for-print, // Hide everything that doesn't print
     .content-close-button-container,
-    .layer-group-container:not(.has-active-layer-groups),
-    .layer-group-container:not(.open),
+    // .layer-group-container:not(.has-active-layer-groups),
+    // .layer-group-container:not(.open),
     // .layer-group-toggle:not(.active),
     .layer-group-toggle-header .switch,
     .fa-external-link-alt,

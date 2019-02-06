@@ -9,7 +9,7 @@
   {{#banner.nav}}
     <ul class="menu vertical large-horizontal">
       <li>{{link-to 'About' 'about'}}</li>
-      <li>{{link-to 'Features' 'features'}}</li>
+      <li>{{link-to 'Features' 'features' classNames='features-header-link'}}</li>
       <li>{{link-to 'Data' 'data'}}</li>
       <li class="saved-bookmarks-counter">
         {{#link-to 'bookmarks'}}{{fa-icon "bookmark"}}
@@ -47,11 +47,7 @@
             commercial-overlay='View Commerical Overlay'
             special-purpose-district='View Special Purpose District'
           )}}
-        {{labs-bbl-lookup
-          boro=boro
-          block=block
-          lot=lot
-          flyTo=(action 'flyTo')}}
+        {{labs-bbl-lookup onSuccess=(action 'handleLookupSuccess')}}
       </div>
 
       <div class="map-grid">

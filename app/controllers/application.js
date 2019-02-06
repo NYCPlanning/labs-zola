@@ -59,9 +59,9 @@ export default Controller.extend(mapQueryParams.Mixin, {
 
   mainMap: service(),
   metrics: service(),
-  boro: 0,
-  block: 0,
-  lot: 0,
+  boro: '',
+  block: '',
+  lot: '',
 
   // Print View Settings
   printViewOrientation: 'portrait',
@@ -164,10 +164,15 @@ export default Controller.extend(mapQueryParams.Mixin, {
       this.resetQueryParams();
     },
 
-    flyTo() {
-      const { boro: { code: boro }, block, lot } = this;
-
-      this.transitionToRoute('lot', boro, block, lot);
+    handleLookupSuccess(center, zoom, bbl) {
+      // if onSuccess from labs-bbl-lookup includes bbl, transition to lot route for that bbl
+      // otherwise flyTo the block
+      if (bbl) {
+        const { boro, block, lot } = bblDemux(bbl);
+        this.transitionToRoute('lot', boro, block, lot);
+      } else {
+        this.get('mainMap.mapInstance').flyTo({ center, zoom });
+      }
     },
   },
 });
