@@ -1,6 +1,6 @@
 {{#labs-ui/site-header
   responsiveNav=true
-  class=(if qps.print 'hide-for-print')
+  class=(if print 'hide-for-print')
   as |banner|
 }}
   {{#banner.title}}
@@ -23,8 +23,8 @@
   {{/banner.nav}}
 {{/labs-ui/site-header}}
 
-<div class="{{if qps.print 'print-view'}}">
-  {{#if qps.print}}
+<div class="{{if print 'print-view'}}">
+  {{#if print}}
     {{print-view-controls
       printViewOrientation=printViewOrientation
       printViewPaperSize=printViewPaperSize
@@ -34,7 +34,7 @@
     }}
   {{/if}}
 
-  <div class="site-main grid-x {{if qps.print (concat 'paper ' printViewPaperSize ' ' printViewOrientation ' ' printViewHiddenAreas)}}">
+  <div class="site-main grid-x {{if print (concat 'paper ' printViewPaperSize ' ' printViewOrientation ' ' printViewHiddenAreas)}}">
     <div class="navigation-area cell large-auto">
       <div class="search-container hide-for-print">
         {{labs-search
@@ -62,7 +62,6 @@
           layerGroups=model.layerGroups
           layerGroupsObject=model.layerGroupsObject
           layerGroupsMeta=model.meta
-          qps=qps
         }}
 
         {{layer-palette

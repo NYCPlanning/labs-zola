@@ -253,14 +253,54 @@
     <section class="neighborhood-info">
       <h3 class="header-small lot-section-header hide-for-print">Neighborhood Information</h3>
 
-      {{#if model.value.cdURLSegment}}<div class="data-grid"><label class="data-label">Community District</label><span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{model.value.cdURLSegment}}" target="_blank">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.cdName}}</a></span></div>{{/if}}
-      {{#if model.value.council}}<div class="data-grid"><label class="data-label">City Council District</label><span class="datum"><a href="https://council.nyc.gov/district-{{model.value.council}}/" target="_blank">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Council District {{model.value.council}}</a></span></div>{{/if}}
-      {{#if model.value.schooldist}}<div class="data-grid"><label class="data-label">School District</label><span class="datum">{{model.value.schooldist}}</span></div>{{/if}}
-      {{#if model.value.policeprct}}<div class="data-grid"><label class="data-label">Police Precinct</label><span class="datum">{{model.value.policeprct}}</span></div>{{/if}}
-      {{#if model.value.firecomp}}<div class="data-grid"><label class="data-label">Fire Company</label><span class="datum">{{model.value.firecomp}}</span></div>{{/if}}
-      {{#if model.value.sanitboro}}<div class="data-grid"><label class="data-label">Sanitation Borough</label><span class="datum">{{model.value.sanitboro}}</span></div>{{/if}}
-      {{#if model.value.sanitdistr}}<div class="data-grid"><label class="data-label">Sanitation District</label><span class="datum">{{model.value.sanitdistr}}</span></div>{{/if}}
-      {{#if model.value.sanitsub}}<div class="data-grid"><label class="data-label">Sanitation Subsection</label><span class="datum">{{model.value.sanitsub}}</span></div>{{/if}}
+      {{#if model.value.cdURLSegment}}
+        <div class="data-grid">
+          <label class="data-label">Community District</label>
+          <span class="datum"><a href="https://communityprofiles.planning.nyc.gov/{{model.value.cdURLSegment}}" target="_blank">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{model.value.cdName}}</a></span>
+        </div>
+        {{/if}}
+      {{#if model.value.council}}
+        <div class="data-grid">
+          <label class="data-label">City Council District</label>
+          <span class="datum"><a href="https://council.nyc.gov/district-{{model.value.council}}/" target="_blank">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Council District {{model.value.council}}</a></span>
+        </div>
+        {{/if}}
+      {{#if model.value.schooldist}}
+        <div class="data-grid">
+          <label class="data-label">School District</label>
+          <span class="datum">{{model.value.schooldist}}</span>
+        </div>
+        {{/if}}
+      {{#if model.value.policeprct}}
+        <div class="data-grid">
+          <label class="data-label">Police Precinct</label>
+          <span class="datum">{{model.value.policeprct}}</span>
+        </div>
+        {{/if}}
+      {{#if model.value.firecomp}}
+        <div class="data-grid">
+          <label class="data-label">Fire Company</label>
+          <span class="datum">{{model.value.firecomp}}</span>
+        </div>
+        {{/if}}
+      {{#if model.value.sanitboro}}
+        <div class="data-grid">
+          <label class="data-label">Sanitation Borough</label>
+          <span class="datum">{{model.value.sanitboro}}</span>
+        </div>
+        {{/if}}
+      {{#if model.value.sanitdistr}}
+        <div class="data-grid">
+          <label class="data-label">Sanitation District</label>
+          <span class="datum">{{model.value.sanitdistr}}</span>
+        </div>
+        {{/if}}
+      {{#if model.value.sanitsub}}
+        <div class="data-grid">
+          <label class="data-label">Sanitation Subsection</label>
+          <span class="datum">{{model.value.sanitsub}}</span>
+        </div>
+        {{/if}}
     </section>
 
     <hr class="hide-for-print" />
