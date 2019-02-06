@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import {
-  visit, click, fillIn, currentURL,
+  visit, click, typeIn, currentURL,
 } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import mapboxGlLoaded from '../helpers/mapbox-gl-loaded';
@@ -18,8 +18,8 @@ module('Acceptance | bbl lookup', function(hooks) {
 
     await click('.ember-power-select-options li:nth-child(3)');
 
-    await fillIn('.bbl-lookup--block-input', 1);
-    await fillIn('.bbl-lookup--lot-input', 1);
+    await typeIn('.bbl-lookup--block-input', '1');
+    await typeIn('.bbl-lookup--lot-input', '1');
 
     await click('.bbl-lookup-form .button');
 
