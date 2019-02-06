@@ -4873,9 +4873,10 @@ ember-local-storage@^1.4.0:
     ember-cli-version-checker "^2.1.0"
     ember-copy "^1.0.0"
 
-ember-mapbox-composer@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/ember-mapbox-composer/-/ember-mapbox-composer-0.1.2.tgz#88d647c969e7cb8c1dd090435cd5a79e83f63280"
+ember-mapbox-composer@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/ember-mapbox-composer/-/ember-mapbox-composer-0.2.0.tgz#97cf28edf7776f9e6cd01d0be32898d135ef3ddb"
+  integrity sha512-4mz6/aSDrxmcoOEiaxWpumG42A3+J6CZZoyn4KsWjd3NL0ZM/D1pq+2TnWpmktxS6BFcWPRE0BQqE6nXdnjbbA==
   dependencies:
     "@turf/union" "^6.0.0"
     cartobox-promises-utility "1.0.2"
