@@ -13,6 +13,8 @@
 
 // @include foundation-everything;
 
+@import 'foundation-print'; // Override Foundation's foundation-print-styles mixin
+
 @include foundation-global-styles;
 @include foundation-xy-grid-classes;
 //@include foundation-grid;
