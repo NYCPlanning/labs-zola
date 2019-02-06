@@ -4,12 +4,16 @@
 
 <div id="layers-menu" class="{{if closed 'show-for-medium'}} hide-for-print">
   {{#labs-ui/layer-groups-container
-    title='Zoning and Land Use'}}
-    {{#labs-ui/layer-group-toggle
+    title='Zoning and Land Use'
+    as |container|
+  }}
+
+    {{#container.layer-group-toggle
       data-test-toggle-tax-lots
       label=layerGroups.tax-lots.legend.label
       tooltip=layerGroups.tax-lots.legend.tooltip
-      active=layerGroups.tax-lots.visible}}
+      active=layerGroups.tax-lots.visible
+    }}
       <label class="checkbox-wrapper"
         onclick={{action 'setPaintForLayerGroup'
           layerGroups.tax-lots
@@ -46,9 +50,9 @@
           {{/each}}
         </ul>
       {{/if}}
-    {{/labs-ui/layer-group-toggle}}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-zoning-districts
       label=layerGroups.zoning-districts.legend.label
       tooltip=layerGroups.zoning-districts.legend.tooltip
@@ -63,13 +67,14 @@
           </li>
         {{/each}}
       </ul>
-    {{/labs-ui/layer-group-toggle}}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-commercial-overlays
-        label=layerGroups.commercial-overlays.legend.label
-        tooltip=layerGroups.commercial-overlays.legend.tooltip
-        active=layerGroups.commercial-overlays.visible}}
+      label=layerGroups.commercial-overlays.legend.label
+      tooltip=layerGroups.commercial-overlays.legend.tooltip
+      active=layerGroups.commercial-overlays.visible
+    }}
       <ul class='layer-menu-item--group-checkboxes'>
         {{#each commercialOverlays as |commercialOverlay|}}
           <li>
@@ -79,267 +84,311 @@
           </li>
         {{/each}}
       </ul>
-    {{/labs-ui/layer-group-toggle}}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-zoning-map-amendments
-        label=layerGroups.zoning-map-amendments.legend.label
-        tooltip=layerGroups.zoning-map-amendments.legend.tooltip
-        icon=layerGroups.zoning-map-amendments.legend.icon
-        active=layerGroups.zoning-map-amendments.visible}}
+      label=layerGroups.zoning-map-amendments.legend.label
+      tooltip=layerGroups.zoning-map-amendments.legend.tooltip
+      icon=layerGroups.zoning-map-amendments.legend.icon
+      active=layerGroups.zoning-map-amendments.visible
+    }}
       {{layer-control-timeline
           qps=qps
           layerGroup=layerGroups.zoning-map-amendments
           layerID='zma-fill'
           column='effective_epoch'}}
-    {{/labs-ui/layer-group-toggle}}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-zoning-map-amendments-pending
-        label=layerGroups.zoning-map-amendments-pending.legend.label
-        tooltip=layerGroups.zoning-map-amendments-pending.legend.tooltip
-        icon=layerGroups.zoning-map-amendments-pending.legend.icon
-        active=layerGroups.zoning-map-amendments-pending.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.zoning-map-amendments-pending.legend.label
+      tooltip=layerGroups.zoning-map-amendments-pending.legend.tooltip
+      icon=layerGroups.zoning-map-amendments-pending.legend.icon
+      active=layerGroups.zoning-map-amendments-pending.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-special-purpose-districts
-        label=layerGroups.special-purpose-districts.legend.label
-        tooltip=layerGroups.special-purpose-districts.legend.tooltip
-        icon=layerGroups.special-purpose-districts.legend.icon
-        active=layerGroups.special-purpose-districts.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.special-purpose-districts.legend.label
+      tooltip=layerGroups.special-purpose-districts.legend.tooltip
+      icon=layerGroups.special-purpose-districts.legend.icon
+      active=layerGroups.special-purpose-districts.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-special-purpose-subdistricts
-        label=layerGroups.special-purpose-subdistricts.legend.label
-        tooltip=layerGroups.special-purpose-subdistricts.legend.tooltip
-        icon=layerGroups.special-purpose-subdistricts.legend.icon
-        active=layerGroups.special-purpose-subdistricts.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.special-purpose-subdistricts.legend.label
+      tooltip=layerGroups.special-purpose-subdistricts.legend.tooltip
+      icon=layerGroups.special-purpose-subdistricts.legend.icon
+      active=layerGroups.special-purpose-subdistricts.visible
+    }}
+    {{/container.layer-group-toggle}}
+
   {{/labs-ui/layer-groups-container}}
 
   {{#labs-ui/layer-groups-container
-    title='Supporting Zoning Layers'}}
-    {{#labs-ui/layer-group-toggle
+    title='Supporting Zoning Layers'
+    as |container|
+  }}
+
+    {{#container.layer-group-toggle
       data-test-toggle-mandatory-inclusionary-housing
-        label=layerGroups.mandatory-inclusionary-housing.legend.label
-        tooltip=layerGroups.mandatory-inclusionary-housing.legend.tooltip
-        icon=layerGroups.mandatory-inclusionary-housing.legend.icon
-        active=layerGroups.mandatory-inclusionary-housing.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.mandatory-inclusionary-housing.legend.label
+      tooltip=layerGroups.mandatory-inclusionary-housing.legend.tooltip
+      icon=layerGroups.mandatory-inclusionary-housing.legend.icon
+      active=layerGroups.mandatory-inclusionary-housing.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-inclusionary-housing
-        label=layerGroups.inclusionary-housing.legend.label
-        tooltip=layerGroups.inclusionary-housing.legend.tooltip
-        icon=layerGroups.inclusionary-housing.legend.icon
-        active=layerGroups.inclusionary-housing.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.inclusionary-housing.legend.label
+      tooltip=layerGroups.inclusionary-housing.legend.tooltip
+      icon=layerGroups.inclusionary-housing.legend.icon
+      active=layerGroups.inclusionary-housing.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-transit-zones
-        label=layerGroups.transit-zones.legend.label
-        tooltip=layerGroups.transit-zones.legend.tooltip
-        icon=layerGroups.transit-zones.legend.icon
-        active=layerGroups.transit-zones.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.transit-zones.legend.label
+      tooltip=layerGroups.transit-zones.legend.tooltip
+      icon=layerGroups.transit-zones.legend.icon
+      active=layerGroups.transit-zones.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-fresh
-        label=layerGroups.fresh.legend.label
-        tooltip=layerGroups.fresh.legend.tooltip
-        icon=layerGroups.fresh.legend.icon
-        active=layerGroups.fresh.visible}}
+      label=layerGroups.fresh.legend.label
+      tooltip=layerGroups.fresh.legend.tooltip
+      icon=layerGroups.fresh.legend.icon
+      active=layerGroups.fresh.visible
+    }}
       {{labs-ui/legend-items items=layerGroups.fresh.legend.items}}
-    {{/labs-ui/layer-group-toggle}}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-sidewalk-cafes
-        label=layerGroups.sidewalk-cafes.legend.label
-        tooltip=layerGroups.sidewalk-cafes.legend.tooltip
-        active=layerGroups.sidewalk-cafes.visible}}
+      label=layerGroups.sidewalk-cafes.legend.label
+      tooltip=layerGroups.sidewalk-cafes.legend.tooltip
+      active=layerGroups.sidewalk-cafes.visible
+    }}
       {{labs-ui/legend-items items=layerGroups.sidewalk-cafes.legend.items}}
-    {{/labs-ui/layer-group-toggle}}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-limited-height-districts
-        label=layerGroups.limited-height-districts.legend.label
-        tooltip=layerGroups.limited-height-districts.legend.tooltip
-        icon=layerGroups.limited-height-districts.legend.icon
-        active=layerGroups.limited-height-districts.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.limited-height-districts.legend.label
+      tooltip=layerGroups.limited-height-districts.legend.tooltip
+      icon=layerGroups.limited-height-districts.legend.icon
+      active=layerGroups.limited-height-districts.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-low-density-growth-mgmt-areas
-        label=layerGroups.low-density-growth-mgmt-areas.legend.label
-        tooltip=layerGroups.low-density-growth-mgmt-areas.legend.tooltip
-        icon=layerGroups.low-density-growth-mgmt-areas.legend.icon
-        active=layerGroups.low-density-growth-mgmt-areas.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.low-density-growth-mgmt-areas.legend.label
+      tooltip=layerGroups.low-density-growth-mgmt-areas.legend.tooltip
+      icon=layerGroups.low-density-growth-mgmt-areas.legend.icon
+      active=layerGroups.low-density-growth-mgmt-areas.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-coastal-zone-boundary
-        label=layerGroups.coastal-zone-boundary.legend.label
-        tooltip=layerGroups.coastal-zone-boundary.legend.tooltip
-        icon=layerGroups.coastal-zone-boundary.legend.icon
-        active=layerGroups.coastal-zone-boundary.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.coastal-zone-boundary.legend.label
+      tooltip=layerGroups.coastal-zone-boundary.legend.tooltip
+      icon=layerGroups.coastal-zone-boundary.legend.icon
+      active=layerGroups.coastal-zone-boundary.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-waterfront-access-plan
-        label=layerGroups.waterfront-access-plan.legend.label
-        tooltip=layerGroups.waterfront-access-plan.legend.tooltip
-        icon=layerGroups.waterfront-access-plan.legend.icon
-        active=layerGroups.waterfront-access-plan.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.waterfront-access-plan.legend.label
+      tooltip=layerGroups.waterfront-access-plan.legend.tooltip
+      icon=layerGroups.waterfront-access-plan.legend.icon
+      active=layerGroups.waterfront-access-plan.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-historic-districts
-        label=layerGroups.historic-districts.legend.label
-        tooltip=layerGroups.historic-districts.legend.tooltip
-        icon=layerGroups.historic-districts.legend.icon
-        active=layerGroups.historic-districts.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.historic-districts.legend.label
+      tooltip=layerGroups.historic-districts.legend.tooltip
+      icon=layerGroups.historic-districts.legend.icon
+      active=layerGroups.historic-districts.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-landmarks
-        label=layerGroups.landmarks.legend.label
-        tooltip=layerGroups.landmarks.legend.tooltip
-        active=layerGroups.landmarks.visible}}
+      label=layerGroups.landmarks.legend.label
+      tooltip=layerGroups.landmarks.legend.tooltip
+      active=layerGroups.landmarks.visible
+    }}
       {{labs-ui/legend-items items=layerGroups.landmarks.legend.items}}
-    {{/labs-ui/layer-group-toggle}}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-floodplain-efirm2007
-        label=layerGroups.floodplain-efirm2007.legend.label
-        tooltip=layerGroups.floodplain-efirm2007.legend.tooltip
-        active=layerGroups.floodplain-efirm2007.visible}}
+      label=layerGroups.floodplain-efirm2007.legend.label
+      tooltip=layerGroups.floodplain-efirm2007.legend.tooltip
+      active=layerGroups.floodplain-efirm2007.visible
+    }}
       {{labs-ui/legend-items items=layerGroups.floodplain-efirm2007.legend.items}}
-    {{/labs-ui/layer-group-toggle}}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-floodplain-pfirm2015
-        label=layerGroups.floodplain-pfirm2015.legend.label
-        tooltip=layerGroups.floodplain-pfirm2015.legend.tooltip
-        active=layerGroups.floodplain-pfirm2015.visible}}
+      label=layerGroups.floodplain-pfirm2015.legend.label
+      tooltip=layerGroups.floodplain-pfirm2015.legend.tooltip
+      active=layerGroups.floodplain-pfirm2015.visible
+    }}
       {{labs-ui/legend-items items=layerGroups.floodplain-pfirm2015.legend.items}}
-    {{/labs-ui/layer-group-toggle}}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-e-designations
-        label=layerGroups.e-designations.legend.label
-        tooltip=layerGroups.e-designations.legend.tooltip
-        active=layerGroups.e-designations.visible}}
+      label=layerGroups.e-designations.legend.label
+      tooltip=layerGroups.e-designations.legend.tooltip
+      active=layerGroups.e-designations.visible
+    }}
       {{labs-ui/legend-item item=layerGroups.e-designations.legend}}
-    {{/labs-ui/layer-group-toggle}}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-appendixj-designated-mdistricts
-        label=layerGroups.appendixj-designated-mdistricts.legend.label
-        tooltip=layerGroups.appendixj-designated-mdistricts.legend.tooltip
-        icon=layerGroups.appendixj-designated-mdistricts.legend.icon
-        active=layerGroups.appendixj-designated-mdistricts.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.appendixj-designated-mdistricts.legend.label
+      tooltip=layerGroups.appendixj-designated-mdistricts.legend.tooltip
+      icon=layerGroups.appendixj-designated-mdistricts.legend.icon
+      active=layerGroups.appendixj-designated-mdistricts.visible
+    }}
+    {{/container.layer-group-toggle}}
+
   {{/labs-ui/layer-groups-container}}
 
 
   {{#labs-ui/layer-groups-container
-    title='Other Supporting Layers'}}
-    {{#labs-ui/layer-group-toggle
+    title='Other Supporting Layers'
+    as |container|
+  }}
+
+    {{#container.layer-group-toggle
       data-test-toggle-business-improvement-districts
-        label=layerGroups.business-improvement-districts.legend.label
-        tooltip=layerGroups.business-improvement-districts.legend.tooltip
-        icon=layerGroups.business-improvement-districts.legend.icon
-        active=layerGroups.business-improvement-districts.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.business-improvement-districts.legend.label
+      tooltip=layerGroups.business-improvement-districts.legend.tooltip
+      icon=layerGroups.business-improvement-districts.legend.icon
+      active=layerGroups.business-improvement-districts.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-industrial-business-zones
-        label=layerGroups.industrial-business-zones.legend.label
-        tooltip=layerGroups.industrial-business-zones.legend.tooltip
-        icon=layerGroups.industrial-business-zones.legend.icon
-        active=layerGroups.industrial-business-zones.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.industrial-business-zones.legend.label
+      tooltip=layerGroups.industrial-business-zones.legend.tooltip
+      icon=layerGroups.industrial-business-zones.legend.icon
+      active=layerGroups.industrial-business-zones.visible
+    }}
+    {{/container.layer-group-toggle}}
+
   {{/labs-ui/layer-groups-container}}
 
-
   {{#labs-ui/layer-groups-container
-    title='Administrative Boundaries'}}
-    {{#labs-ui/layer-group-toggle
+    title='Administrative Boundaries'
+    as |container|
+  }}
+    {{#container.layer-group-toggle
       data-test-toggle-boroughs
-        label=layerGroups.boroughs.legend.label
-        icon=layerGroups.boroughs.legend.icon
-        active=layerGroups.boroughs.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.boroughs.legend.label
+      icon=layerGroups.boroughs.legend.icon
+      active=layerGroups.boroughs.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-community-districts
-        label=layerGroups.community-districts.legend.label
-        icon=layerGroups.community-districts.legend.icon
-        active=layerGroups.community-districts.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.community-districts.legend.label
+      icon=layerGroups.community-districts.legend.icon
+      active=layerGroups.community-districts.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-nyc-council-districts
-        label=layerGroups.nyc-council-districts.legend.label
-        icon=layerGroups.nyc-council-districts.legend.icon
-        active=layerGroups.nyc-council-districts.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.nyc-council-districts.legend.label
+      icon=layerGroups.nyc-council-districts.legend.icon
+      active=layerGroups.nyc-council-districts.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-ny-senate-districts
-        label=layerGroups.ny-senate-districts.legend.label
-        icon=layerGroups.ny-senate-districts.legend.icon
-        active=layerGroups.ny-senate-districts.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.ny-senate-districts.legend.label
+      icon=layerGroups.ny-senate-districts.legend.icon
+      active=layerGroups.ny-senate-districts.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-assembly-districts
-        label=layerGroups.assembly-districts.legend.label
-        icon=layerGroups.assembly-districts.legend.icon
-        active=layerGroups.assembly-districts.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.assembly-districts.legend.label
+      icon=layerGroups.assembly-districts.legend.icon
+      active=layerGroups.assembly-districts.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-neighborhood-tabulation-areas
-        label=layerGroups.neighborhood-tabulation-areas.legend.label
-        icon=layerGroups.neighborhood-tabulation-areas.legend.icon
-        active=layerGroups.neighborhood-tabulation-areas.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      label=layerGroups.neighborhood-tabulation-areas.legend.label
+      icon=layerGroups.neighborhood-tabulation-areas.legend.icon
+      active=layerGroups.neighborhood-tabulation-areas.visible
+    }}
+    {{/container.layer-group-toggle}}
+
   {{/labs-ui/layer-groups-container}}
 
-
   {{#labs-ui/layer-groups-container
-    title='Basemaps'}}
-    {{#labs-ui/layer-group-toggle
+    title='Basemaps'
+    as |container|
+  }}
+    {{#container.layer-group-toggle
       data-test-toggle-subway
       label=layerGroups.subway.legend.label
-      active=layerGroups.subway.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      active=layerGroups.subway.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-building-footprints
       label=layerGroups.building-footprints.legend.label
       tooltip=layerGroups.building-footprints.legend.tooltip
-      active=layerGroups.building-footprints.visible}}
-    {{/labs-ui/layer-group-toggle}}
+      active=layerGroups.building-footprints.visible
+    }}
+    {{/container.layer-group-toggle}}
 
-    {{#labs-ui/layer-group-toggle
+    {{#container.layer-group-toggle
       data-test-toggle-three-d-buildings
       label=layerGroups.three-d-buildings.legend.label
       tooltip=layerGroups.three-d-buildings.legend.tooltip
-      active=layerGroups.three-d-buildings.visible}}
+      active=layerGroups.three-d-buildings.visible
+    }}
       <ul class="layer-key">
         <li>Drag the compass arrow (<span style="padding: 0; margin-right: -5px; margin-left: -5px;" class="mapboxgl-ctrl-icon mapboxgl-ctrl-compass"><span style="transform: rotate(0deg) scale(0.7); margin: 0; transform-origin: 50% 100%; position: relative; top: 0.25rem; margin-top: -8px;" class="mapboxgl-ctrl-compass-arrow"></span></span>) to adjust the bearing of the map. Click to reset north.</li>
         <li>CTRL + drag the map (or CTRL + arrow keys) to adjust both pitch and bearing.</li>
       </ul>
-    {{/labs-ui/layer-group-toggle}}
-    {{#labs-ui/layer-group-toggle
+    {{/container.layer-group-toggle}}
+
+    {{#container.layer-group-toggle
       data-test-toggle-aerials
       label=layerGroups.aerials.legend.label
       tooltip=layerGroups.aerials.legend.tooltip
-      active=layerGroups.aerials.visible}}
+      active=layerGroups.aerials.visible
+    }}
       <ul class="layer-menu-item--group-checkboxes no-bullet list-float-3">
         {{#each layerGroups.aerials.layers as |layer|}}
           <li onclick={{action (mut layerGroups.aerials.selected) layer.id}} role='button'>
@@ -355,7 +404,8 @@
           </li>
         {{/each}}
       </ul>
-    {{/labs-ui/layer-group-toggle}}
+    {{/container.layer-group-toggle}}
+
   {{/labs-ui/layer-groups-container}}
 
 
