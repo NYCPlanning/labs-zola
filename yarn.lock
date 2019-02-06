@@ -760,6 +760,10 @@
   version "0.2.13"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.13.tgz#17f3d30c53732f07a765199c3cf93b4834e8cfde"
 
+"@fortawesome/fontawesome-common-types@^0.2.14":
+  version "0.2.14"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.14.tgz#0eb86a77ac88e8c12c48591735283f0bf0ea5606"
+
 "@fortawesome/fontawesome-svg-core@^1.2.0":
   version "1.2.13"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.13.tgz#1d0923b9692fc10b9a4fa047d504da5d9941639e"
@@ -777,6 +781,12 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.7.0.tgz#b0127111924a2506cb6313dfcb140f0cbc9e35b1"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.13"
+
+"@fortawesome/free-regular-svg-icons@^5.7.1":
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.7.1.tgz#eab182769eef910f961ed4c3a581ebd9934b4b38"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.14"
 
 "@fortawesome/free-solid-svg-icons@^5.1.0", "@fortawesome/free-solid-svg-icons@^5.7.0":
   version "5.7.0"
@@ -4426,12 +4436,6 @@ ember-cli-netlify@^0.1.0:
   dependencies:
     fs-extra "^5.0.0"
 
-ember-cli-netlify@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-netlify/-/ember-cli-netlify-0.1.0.tgz#8255c63055975fc2f59b41f2075de05832938e97"
-  dependencies:
-    fs-extra "^5.0.0"
-
 ember-cli-node-assets@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/ember-cli-node-assets/-/ember-cli-node-assets-0.2.2.tgz#d2d55626e7cc6619f882d7fe55751f9266022708"
@@ -4873,10 +4877,9 @@ ember-local-storage@^1.4.0:
     ember-cli-version-checker "^2.1.0"
     ember-copy "^1.0.0"
 
-ember-mapbox-composer@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/ember-mapbox-composer/-/ember-mapbox-composer-0.2.0.tgz#97cf28edf7776f9e6cd01d0be32898d135ef3ddb"
-  integrity sha512-4mz6/aSDrxmcoOEiaxWpumG42A3+J6CZZoyn4KsWjd3NL0ZM/D1pq+2TnWpmktxS6BFcWPRE0BQqE6nXdnjbbA==
+ember-mapbox-composer@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/ember-mapbox-composer/-/ember-mapbox-composer-0.2.1.tgz#f38dc4330225286cfee53794ae8f302e4c5c571d"
   dependencies:
     "@turf/union" "^6.0.0"
     cartobox-promises-utility "1.0.2"
@@ -4887,6 +4890,7 @@ ember-mapbox-composer@0.2.0:
     ember-copy "1.0.0"
     ember-fetch "5.1.3"
     ember-truth-helpers "^2.0.0"
+    lodash "^4.17.11"
     mapbox-gl ">=0.47.0"
     pretender "2.0.0"
 
@@ -7515,11 +7519,12 @@ klaw@^1.0.0:
   optionalDependencies:
     graceful-fs "^4.1.9"
 
-labs-ember-search@^2.4.13:
-  version "2.4.13"
-  resolved "https://registry.yarnpkg.com/labs-ember-search/-/labs-ember-search-2.4.13.tgz#38649a3b0c087c4987a78bb6de43752b420c5283"
+labs-ember-search@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/labs-ember-search/-/labs-ember-search-3.0.0.tgz#ec1c3f32bc59cd9b90a9c7844731cac97fb86d22"
   dependencies:
     "@fortawesome/ember-fontawesome" "^0.1.9"
+    "@fortawesome/free-regular-svg-icons" "^5.7.1"
     "@fortawesome/free-solid-svg-icons" "^5.7.0"
     babel-plugin-htmlbars-inline-precompile "1.0.0"
     cartobox-promises-utility "1.0.2"
