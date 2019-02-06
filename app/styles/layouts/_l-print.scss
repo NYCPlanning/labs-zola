@@ -125,10 +125,12 @@
     // --------------------------------------------------
     .hide-for-print, // Hide everything that doesn't print
     .content-close-button-container,
-    // .layer-group-container:not(.has-active-layer-groups),
-    // .layer-group-container:not(.open),
-    // .layer-group-toggle:not(.active),
+    .layer-groups-container:not(.has-active-layer-groups),
+    .layer-groups-container:not(.open),
+    .layer-groups-container-title > .badge,
+    .layer-group-toggle:not(.active),
     .layer-group-toggle-header .switch,
+    .layer-group-toggle-header.layer-tax-lots + .layer-group-toggle-content > .checkbox-wrapper,
     .fa-external-link-alt,
     .fa-info-circle,
     .mapboxgl-ctrl-top-left,

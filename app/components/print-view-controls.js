@@ -1,4 +1,13 @@
 import Component from '@ember/component';
+import { action } from '@ember-decorators/object';
+
+const widowResize = () => {
+  setTimeout(() => {
+    const resizeEvent = window.document.createEvent('UIEvents');
+    resizeEvent.initUIEvent('resize', true, false, window, 0);
+    window.dispatchEvent(resizeEvent);
+  }, 300);
+};
 
 export default class PrintViewControls extends Component {
   classNames = ['print-view--controls', 'align-middle'];
@@ -13,12 +22,14 @@ export default class PrintViewControls extends Component {
 
   printViewShowContent
 
+  @action
+  disablePrintView() {
+    this.set('print', false);
+
+    widowResize();
+  }
+
   click() {
-    // When paper size/orientation change, make sure map is resized
-    setTimeout(() => {
-      const resizeEvent = window.document.createEvent('UIEvents');
-      resizeEvent.initUIEvent('resize', true, false, window, 0);
-      window.dispatchEvent(resizeEvent);
-    }, 300);
+    widowResize();
   }
 }

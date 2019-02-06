@@ -26,6 +26,7 @@
 <div class="{{if print 'print-view'}}">
   {{#if print}}
     {{print-view-controls
+      print=print
       printViewOrientation=printViewOrientation
       printViewPaperSize=printViewPaperSize
       printViewShowMap=printViewShowMap
@@ -58,6 +59,7 @@
           layerGroups=model.layerGroups
           layerGroupsObject=model.layerGroupsObject
           layerGroupsMeta=model.meta
+          print=print
         }}
 
         {{layer-palette
