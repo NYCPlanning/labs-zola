@@ -9,6 +9,15 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|}}
   <div class="labs-map-loaded" style="display:none"></div>
+  <div class="print-controls mapboxgl-ctrl mapboxgl-ctrl-group">
+    <button {{action (mut print) true}}
+      class="mapboxgl-ctrl-icon"
+      data-test-map-print-button
+    >
+      {{fa-icon 'print'}}
+    </button>
+  </div>
+
   {{#map.labs-layers
     interactivity=interactivity
     highlightedLineFeatureLayer=highlightedLotLayer
@@ -62,11 +71,7 @@
   {{map.on 'draw.render' (action 'handleMeasurement')}}
 {{/labs-map}}
 
-<div class="print-controls mapboxgl-ctrl mapboxgl-ctrl-group">
-  <button {{action 'handlePrint'}} class="mapboxgl-ctrl-icon">{{fa-icon 'print'}}</button>
-</div>
-
-<div class="draw-tools">
+<div class="draw-tools hide-for-print">
   <label>
     <span class="hide-for-large" {{action (mut drawToolsOpen) (not drawToolsOpen)}}>
       {{#if drawToolsOpen}}
