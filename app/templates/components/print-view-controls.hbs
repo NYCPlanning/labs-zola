@@ -2,7 +2,10 @@
 
 <div class="print-view-controls--item">
   <h6 class="print-view-controls--header">Orientation:</h6>
-  <button onclick={{action (mut printViewOrientation) 'landscape'}}>
+  <button
+    onclick={{action (mut printViewOrientation) 'landscape'}}
+    data-test-print-control="landscape"
+  >
     <span class="fa-layers">
       {{#if (eq printViewOrientation 'landscape')}}
         {{fa-icon 'circle' class='white'}}
@@ -14,7 +17,10 @@
       {{/if}}
     </span> Landscape
   </button>
-  <button onclick={{action (mut printViewOrientation) 'portrait'}}>
+  <button
+    onclick={{action (mut printViewOrientation) 'portrait'}}
+    data-test-print-control="portrait"
+  >
     <span class="fa-layers">
       {{#if (eq printViewOrientation 'portrait')}}
         {{fa-icon 'circle' class='white'}}
@@ -30,7 +36,10 @@
 
 <div class="print-view-controls--item">
   <h6 class="print-view-controls--header">Size:</h6>
-  <button onclick={{action (mut printViewPaperSize) 'letter'}}>
+  <button
+    onclick={{action (mut printViewPaperSize) 'letter'}}
+    data-test-print-control="letter"
+  >
     <span class="fa-layers">
       {{#if (eq printViewPaperSize 'letter')}}
         {{fa-icon 'circle' class='white'}}
@@ -42,7 +51,10 @@
       {{/if}}
     </span> Letter
   </button>
-  <button onclick={{action (mut printViewPaperSize) 'legal'}}>
+  <button
+    onclick={{action (mut printViewPaperSize) 'legal'}}
+    data-test-print-control="legal"
+  >
     <span class="fa-layers">
       {{#if (eq printViewPaperSize 'legal')}}
         {{fa-icon 'circle' class='white'}}
@@ -54,7 +66,10 @@
       {{/if}}
     </span> Legal
   </button>
-  <button onclick={{action (mut printViewPaperSize) 'tabloid'}}>
+  <button
+    onclick={{action (mut printViewPaperSize) 'tabloid'}}
+    data-test-print-control="tabloid"
+  >
     <span class="fa-layers">
       {{#if (eq printViewPaperSize 'tabloid')}}
         {{fa-icon 'circle' class='white'}}
@@ -70,7 +85,10 @@
 
 <div class="print-view-controls--item">
   <h6 class="print-view-controls--header">Show:</h6>
-  <button onclick={{action (mut printViewShowMap) (not printViewShowMap)}}>
+  <button
+    onclick={{action (mut printViewShowMap) (not printViewShowMap)}}
+    data-test-print-control="map"
+  >
     <span class="fa-layers">
       {{#if (eq printViewShowMap true)}}
         {{fa-icon 'square' class='white'}}
@@ -82,7 +100,10 @@
     </span> Map
   </button>
   {{#if (eq printViewShowMap true)}}
-    <button onclick={{action (mut printViewShowLegend) (not printViewShowLegend)}}>
+    <button
+      onclick={{action (mut printViewShowLegend) (not printViewShowLegend)}}
+      data-test-print-control="legend"
+    >
       <span class="fa-layers">
         {{#if (eq printViewShowLegend true)}}
           {{fa-icon 'square' class='white'}}
@@ -100,7 +121,10 @@
       </span> Legend
     </button>
   {{/if}}
-  <button onclick={{action (mut printViewShowContent) (not printViewShowContent)}}>
+  <button
+    onclick={{action (mut printViewShowContent) (not printViewShowContent)}}
+    data-test-print-control="content"
+  >
     <span class="fa-layers">
       {{#if (eq printViewShowContent true)}}
         {{fa-icon 'square' class='white'}}

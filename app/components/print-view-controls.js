@@ -12,15 +12,15 @@ const widowResize = () => {
 export default class PrintViewControls extends Component {
   classNames = ['print-view--controls', 'align-middle'];
 
-  printViewOrientation;
+  printViewOrientation = 'portrait';
 
-  printViewPaperSize;
+  printViewPaperSize = 'letter';
 
-  printViewShowMap
+  printViewShowMap = true;
 
-  printViewShowLegend
+  printViewShowLegend = true;
 
-  printViewShowContent
+  printViewShowContent = true;
 
   @action
   disablePrintView() {
