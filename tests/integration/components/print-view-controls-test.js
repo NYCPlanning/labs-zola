@@ -16,14 +16,6 @@ module('Integration | Component | print-view-controls', function(hooks) {
   });
 
   test('it renders with default state', async function(assert) {
-    // data-test-print-control="landscape"
-    // data-test-print-control="portrait"
-    // data-test-print-control="letter"
-    // data-test-print-control="legal"
-    // data-test-print-control="tabloid"
-    // data-test-print-control="map"
-    // data-test-print-control="legend"
-    // data-test-print-control="content"
     await render(hbs`{{print-view-controls}}`);
 
     assert.ok(!find('[data-test-print-control="landscape"] .a11y-orange'));

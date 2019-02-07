@@ -1,4 +1,7 @@
-<button class="button tiny gray float-left" {{action 'disablePrintView'}}>{{fa-icon 'times' fixedWidth=true transform='left-4'}} Exit Print View</button>
+<button class="button tiny gray float-left" {{action 'disablePrintView'}} data-test-exit-print>
+  {{fa-icon 'times' fixedWidth=true transform='left-4'}}
+  Exit Print View
+</button>
 
 <div class="print-view-controls--item">
   <h6 class="print-view-controls--header">Orientation:</h6>
