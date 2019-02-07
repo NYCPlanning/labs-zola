@@ -395,7 +395,6 @@
             <label {{!template-lint-disable "nested-interactive"}}>
               <span class="layer-group-radio-{{layer.id}}">
                 <span class="fa-layers">
-                  {{log layer.id layer.visibility}}
                   {{#if layer.visibility}}
                     {{fa-icon 'dot-circle' prefix='far' class=(if layer.visibility '' 'silver')}}
                   {{else}}
