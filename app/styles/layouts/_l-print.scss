@@ -2,34 +2,453 @@
 // Print Layout
 // --------------------------------------------------
 
-@media print {
+// Adapted from paper.css https://github.com/cognitom/paper-css/blob/master/paper.css
 
-  // html {
-  //   font-size: 8pt;
-  // }
+@page { margin: 0 }
+
+@media print {
+  body {
+    background: White;
+    margin: 0;
+  }
 
   a[href]:after {
     content: '' !important;
   }
-
-  .branding a {
-    text-decoration: none !important;
-  }
-
-  .map-grid {
-    height: 4in;
-  }
-
-  .map-container,
-  #main-map {
-    width: 100% !important;
-  }
-
-  .mapboxgl-ctrl-logo,
-  .mapboxgl-ctrl-top-left,
-  .mapboxgl-ctrl-attrib {
-    display: none !important;
-  }
-
-
 }
+
+.print-view {
+  @media screen {
+    & {
+      overflow: scroll;
+      max-height: calc(100vh - 6rem);
+    }
+  }
+
+
+  //
+  // Print controls
+  // --------------------------------------------------
+  .print-view--controls {
+    text-align: center;
+    padding: 1rem;
+    line-height: 3;
+
+    @media print {
+      display: none;
+    }
+
+    svg {
+      pointer-events: none;
+    }
+  }
+
+  .print-button {
+    margin: 0 1.5rem;
+  }
+
+  .print-view-controls--item {
+    display: inline-block;
+    margin: 0 1.5rem;
+
+    button {
+      margin-left: 0.5rem;
+    }
+  }
+
+  .print-view-controls--header {
+    display: inline;
+    color: $charcoal;
+  }
+
+
+  //
+  // Paper
+  // --------------------------------------------------
+  .paper {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    page-break-after: always;
+
+    /** Paper sizes **/
+    &.A3               { width: 297mm; height: 419mm; max-width: 297mm; }
+    &.A3.landscape     { width: 420mm; height: 296mm; max-width: 420mm; }
+    &.A4               { width: 210mm; height: 296mm; max-width: 210mm; }
+    &.A4.landscape     { width: 297mm; height: 209mm; max-width: 297mm; }
+    &.A5               { width: 148mm; height: 209mm; max-width: 148mm; }
+    &.A5.landscape     { width: 210mm; height: 147mm; max-width: 210mm; }
+    &.letter           { width: 216mm; height: 279mm; max-width: 216mm; }
+    &.letter.landscape { width: 280mm; height: 215mm; max-width: 280mm; }
+    &.legal            { width: 216mm; height: 356mm; max-width: 216mm; }
+    &.legal.landscape  { width: 357mm; height: 215mm; max-width: 357mm; }
+    &.tabloid          { width: 279mm; height: 432mm; max-width: 279mm; }
+    &.tabloid.landscape{ width: 432mm; height: 279mm; max-width: 432mm; }
+
+    /** Padding area **/
+    &.padding-7mm { padding: 7mm }
+    &.padding-10mm { padding: 10mm }
+    &.padding-15mm { padding: 15mm }
+    &.padding-20mm { padding: 20mm }
+    &.padding-25mm { padding: 25mm }
+
+    /** Fix for Chrome issue #273306 **/
+    @media print {
+      &.A3.landscape            { width: 420mm }
+      &.A3, .paper.A4.landscape { width: 297mm }
+      &.A4, .paper.A5.landscape { width: 210mm }
+      &.A5                      { width: 148mm }
+      &.letter, .paper.legal    { width: 216mm }
+      &.letter.landscape        { width: 280mm }
+      &.legal.landscape         { width: 357mm }
+    }
+
+    @media screen {
+      & {
+        background: White;
+        box-shadow: 0 0.5mm 4mm rgba(0,0,0,0.3);
+        margin: 0 auto 3rem;
+        transform-origin: left top;
+      }
+    }
+
+
+    //
+    // Powered by ZoLa footer
+    // --------------------------------------------------
+    &:after {
+      content: 'Powered by ZoLa\a0\a0\a0|\a0\a0\a0zola.planning.nyc.gov\a0\a0\a0|\a0\a0\a0NYC Department of City Planning';
+      position: absolute;
+      z-index: 2;
+      top: auto;
+      right: 7mm;
+      bottom: 7mm;
+      left: 7mm;
+      text-align: center;
+      font-size: 7pt;
+      color: $dark-gray;
+    }
+
+
+    //
+    // Map Controls
+    // --------------------------------------------------
+    .mapboxgl-ctrl-scale {
+      // Make the scale a bit smaller
+      font-size: 6pt;
+      line-height: 1.5;
+      padding: 0 1pt;
+    }
+
+
+    //
+    // Don't print this stuff!!!
+    // --------------------------------------------------
+    .hide-for-print, // Hide everything that doesn't print
+    .content-close-button-container,
+    .layer-groups-container:not(.has-active-layer-groups),
+    .layer-groups-container:not(.open),
+    .layer-groups-container-title > .badge,
+    .layer-group-toggle:not(.active),
+    .layer-group-toggle-header .switch,
+    .layer-group-toggle-header.layer-tax-lots + .layer-group-toggle-content > .checkbox-wrapper,
+    .layer-menu-item--group-checkboxes [type=checkbox],
+    .hidable-sibling-toggle,
+    .fa-external-link-alt,
+    .fa-info-circle,
+    .mapboxgl-ctrl-top-left,
+    .mapboxgl-ctrl-bottom-right,
+    .mapboxgl-ctrl.print-controls {
+      display: none !important;
+    }
+
+
+    //
+    // Print layouts
+    // --------------------------------------------------
+    &.no-map .map-container,
+    &.no-map .layer-palette,
+    &.no-legend .layer-palette,
+    &.no-content .content-area {
+      display: none;
+    }
+
+    .map-grid { height: 100%; }
+
+    .map-container,
+    .layer-palette,
+    .content-area {
+      position: absolute;
+      box-shadow: none;
+      background-color: White;
+      margin: 0;
+      padding: 0;
+      width: auto;
+      height: auto;
+    }
+
+    .map-container {
+      top: 7mm;
+      right: calc(27% + 3.5mm);
+      left: 7mm;
+      height: calc(45% - 10.5mm);
+    }
+
+    .layer-palette {
+      top: 7mm;
+      right: 7mm;
+      bottom: 14mm;
+      left: 73%;
+    }
+
+    .content-area {
+      top: 45%;
+      right: calc(27% + 3.5mm);
+      bottom: 14mm;
+      left: 7mm;
+      overflow: visible;
+    }
+
+    &.no-map .content-area {
+      top: 7mm;
+      right: 7mm;
+    }
+
+    &.portrait {
+      // Portrait + letter
+      &.no-content .map-container {
+        height: calc(100% - 21mm);
+      }
+
+      &.no-legend .map-container {
+        right: 7mm;
+      }
+
+      // Portrait + legal
+      &.legal .content-area {
+        top: 57%;
+      }
+      &.legal:not(.no-content) .map-container {
+        height: calc(57% - 10.5mm);
+      }
+
+      // Portrait + tabloid
+      &.tabloid .content-area {
+        top: 64%;
+      }
+      &.tabloid:not(.no-content) .map-container {
+        height: calc(64% - 10.5mm);
+      }
+    } // end .portrait
+
+    &.landscape {
+      // Landscape + letter
+      &.no-content .map-container {
+        height: calc(100% - 21mm);
+      }
+
+      &.no-legend {
+        .map-container {
+          right: 7mm;
+          left: calc(40%);
+          height: calc(100% - 21mm);
+        }
+        .content-area {
+          top: 7mm;
+          right: calc(60% + 3.5mm);
+          left: 7mm;
+        }
+      }
+
+      &.no-legend.no-content .map-container {
+        left: 7mm;
+      }
+
+      // Landscape + legal
+      &.legal .content-area {
+        top: 7mm;
+        right: calc(70% + 3.5mm);
+        left: 7mm;
+      }
+      &.legal .map-container {
+        right: calc(20% + 3.5mm);
+        left: 30%;
+        height: calc(100% - 21mm);
+      }
+      &.legal .layer-palette {
+        left: 80%;
+      }
+      &.legal.no-legend .map-container {
+        right: 7mm;
+      }
+      &.legal.no-content .map-container {
+        left: 0;
+      }
+      &.legal.no-legend.no-content .map-container {
+        left: 7mm;
+      }
+
+      // Landscape + tabloid
+      &.tabloid .content-area {
+        top: 7mm;
+        right: calc(80% + 3.5mm);
+        left: 7mm;
+      }
+      &.tabloid .map-container {
+        right: calc(17% + 3.5mm);
+        left: 20%;
+        height: calc(100% - 21mm);
+      }
+      &.tabloid .layer-palette {
+        left: 83%;
+      }
+      &.tabloid.no-legend .map-container {
+        right: 7mm;
+      }
+      &.tabloid.no-content .map-container {
+        left: 0;
+      }
+      &.tabloid.no-legend.no-content .map-container {
+        left: 7mm;
+      }
+    } // end .landscape
+
+
+    //
+    // Content
+    // --------------------------------------------------
+    #layers-menu {
+      pointer-events: none;
+
+      .layer-groups-container {
+        // border-bottom: 0;
+        margin-bottom: 2mm;
+        padding-bottom: 2mm;
+      }
+
+      .layer-groups-container-title {
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 9pt;
+
+        &:after {
+          display: none;
+        }
+      }
+
+      .layer-group-toggle {
+        border-top: 0;
+        font-size: 7pt;
+        box-shadow: inset 0 1px 0 0 $white-smoke;
+      }
+
+      .layer-group-toggle-label {
+        padding-right: 0;
+        padding-left: 0;
+      }
+
+      .legend-item {
+        font-size: 7pt;
+        padding: 0;
+      }
+    } // end #layers-menu
+
+    .content-area {
+      font-size: 10pt;
+
+      // Prevent click changing route
+      a, button { pointer-events: none; }
+
+      // No reason for links to be orange
+      a { color: $black; }
+
+      h1 { font-size: 17pt; }
+      h2 { font-size: 15pt; }
+      h3 { font-size: 13pt; }
+      h4 { font-size: 11pt; }
+      h5 { font-size: 9pt; }
+      h6 { font-size: 7pt; }
+
+      h6 { color: $dark-gray; }
+
+      .content-header {
+        font-size: 13pt;
+        margin-bottom: 2pt;
+      }
+
+      .header-label {
+        font-size: 7pt;
+        float: right;
+      }
+
+      p, ul {
+        font-size: 9pt;
+        margin-bottom: 14pt;
+      }
+
+      .text-small { font-size: 7pt; }
+
+      .lot-zoning-list {
+        margin: 14pt 0;
+
+        .button {
+          font-size: 7pt;
+          color: $black;
+          background-color: $white-smoke;
+          font-weight: bold;
+        }
+      }
+
+      .data-grid {
+        background-color: transparent;
+      }
+
+      .data-label {
+        font-size: 7pt;
+        width: 80pt;
+        background-color: transparent;
+        padding: 0;
+        color: $dark-gray;
+      }
+
+      .datum {
+        font-size: 7pt;
+        width: calc(100% - 80pt - 1.25rem);
+        max-width: 25em;
+      }
+    } // end .content-area
+
+    // Responsive section layouts
+    &.portrait {
+      .dynamic-lists {
+        float: left;
+        width: 36%;
+      }
+      .lot-details {
+        float: right;
+        width: 64%;
+      }
+      .neighborhood-info {
+        float: right;
+        width: 64%;
+      }
+    }
+
+    &.letter.landscape {
+      .dynamic-lists {
+        float: left;
+        width: 25%;
+      }
+      .lot-details {
+        float: left;
+        width: 40%;
+      }
+      .neighborhood-info {
+        float: right;
+        width: 30%;
+      }
+    }
+
+  } // end .paper
+} // end .print-view

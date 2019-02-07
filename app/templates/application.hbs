@@ -1,5 +1,6 @@
 {{#labs-ui/site-header
   responsiveNav=true
+  class=(if print 'hide-for-print')
   as |banner|
 }}
   {{#banner.title}}
@@ -8,7 +9,7 @@
   {{#banner.nav}}
     <ul class="menu vertical large-horizontal">
       <li>{{link-to 'About' 'about'}}</li>
-      <li>{{link-to 'Features' 'features'}}</li>
+      <li>{{link-to 'Features' 'features' classNames='features-header-link'}}</li>
       <li>{{link-to 'Data' 'data'}}</li>
       <li class="saved-bookmarks-counter">
         {{#link-to 'bookmarks'}}{{fa-icon "bookmark"}}
@@ -22,40 +23,53 @@
   {{/banner.nav}}
 {{/labs-ui/site-header}}
 
-<div class="site-main grid-x">
-  <div class="navigation-area cell large-auto">
-    <div class="search-container hide-for-print">
-      {{labs-search
-        onSelect=(action 'handleSearchSelect')
-        typeTitleLookup = (hash
-          lot='View Tax Lot Information'
-          zma='View Zoning Change Information'
-          neighborhood='Go to Neighborhood'
-          zoning-district='View Zoning Districts'
-          commercial-overlay='View Commerical Overlay'
-          special-purpose-district='View Special Purpose District'
-        )}}
-      {{labs-bbl-lookup onSuccess=(action 'handleLookupSuccess')}}
-    </div>
+<div class="{{if print 'print-view'}}">
+  {{#if print}}
+    {{print-view-controls
+      print=print
+      printViewOrientation=printViewOrientation
+      printViewPaperSize=printViewPaperSize
+      printViewShowMap=printViewShowMap
+      printViewShowLegend=printViewShowLegend
+      printViewShowContent=printViewShowContent
+    }}
+  {{/if}}
 
-    <div class="map-grid">
-      {{main-map
-        cartoSources=model.cartoSources
-        transitionTo=(action 'transitionTo')
-        bookmarks=model.bookmarks
-        layerGroups=model.layerGroups
-        layerGroupsObject=model.layerGroupsObject
-        layerGroupsMeta=model.meta
-        qps=qps
-      }}
+  <div class="site-main grid-x {{printViewClasses}}">
+    <div class="navigation-area cell large-auto">
+      <div class="search-container hide-for-print">
+        {{labs-search
+          onSelect=(action 'handleSearchSelect')
+          typeTitleLookup = (hash
+            lot='View Tax Lot Information'
+            zma='View Zoning Change Information'
+            neighborhood='Go to Neighborhood'
+            zoning-district='View Zoning Districts'
+            commercial-overlay='View Commerical Overlay'
+            special-purpose-district='View Special Purpose District'
+          )}}
+        {{labs-bbl-lookup onSuccess=(action 'handleLookupSuccess')}}
+      </div>
 
-      {{layer-palette
-        selectedZoning=selectedZoning
-        selectedOverlays=selectedOverlays
-        layerGroups=model.layerGroupsObject
-        isDefault=isDefault
-        resetQueryParams=(action 'resetQueryParams')}}
+      <div class="map-grid">
+        {{main-map
+          cartoSources=model.cartoSources
+          transitionTo=(action 'transitionTo')
+          bookmarks=model.bookmarks
+          layerGroups=model.layerGroups
+          layerGroupsObject=model.layerGroupsObject
+          layerGroupsMeta=model.meta
+          print=print
+        }}
+
+        {{layer-palette
+          selectedZoning=selectedZoning
+          selectedOverlays=selectedOverlays
+          layerGroups=model.layerGroupsObject
+          isDefault=isDefault
+          resetQueryParams=(action 'resetQueryParams')}}
+      </div>
     </div>
+    {{outlet}}
   </div>
-  {{outlet}}
 </div>
