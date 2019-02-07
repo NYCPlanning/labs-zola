@@ -7540,9 +7540,10 @@ labs-ember-search@^3.0.0:
     ember-promise-helpers "1.0.6"
     ember-truth-helpers "^2.0.0"
 
-labs-ui@^0.0.18:
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/labs-ui/-/labs-ui-0.0.18.tgz#a0cf39f8e76d19261a41d30661e6aea96139d4bf"
+labs-ui@^0.0.22:
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/labs-ui/-/labs-ui-0.0.22.tgz#a0635772fb51b41977fd742e2930dc4d015dc94b"
+  integrity sha512-nhVEZB09Aek9VueHa4eM+gCFVXuXcLz/yRSezldYtF6lnWy86nVQHia2ALiKf34TNtzIJbpAMaotWsTis6uxYA==
   dependencies:
     "@fortawesome/ember-fontawesome" "^0.1.5"
     "@fortawesome/free-brands-svg-icons" "^5.2.0"
