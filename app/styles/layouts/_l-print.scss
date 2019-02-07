@@ -110,6 +110,23 @@
 
 
     //
+    // Powered by ZoLa footer
+    // --------------------------------------------------
+    &:after {
+      content: 'Powered by ZoLa\a0\a0\a0|\a0\a0\a0zola.planning.nyc.gov\a0\a0\a0|\a0\a0\a0NYC Department of City Planning';
+      position: absolute;
+      z-index: 2;
+      top: auto;
+      right: 7mm;
+      bottom: 7mm;
+      left: 7mm;
+      text-align: center;
+      font-size: 7pt;
+      color: $dark-gray;
+    }
+
+
+    //
     // Map Controls
     // --------------------------------------------------
     .mapboxgl-ctrl-scale {
@@ -176,14 +193,14 @@
     .layer-palette {
       top: 7mm;
       right: 7mm;
-      bottom: 7mm;
+      bottom: 14mm;
       left: 73%;
     }
 
     .content-area {
       top: 45%;
       right: calc(27% + 3.5mm);
-      bottom: 7mm;
+      bottom: 14mm;
       left: 7mm;
       overflow: visible;
     }
@@ -196,7 +213,7 @@
     &.portrait {
       // Portrait + letter
       &.no-content .map-container {
-        height: calc(100% - 14mm);
+        height: calc(100% - 21mm);
       }
 
       &.no-legend .map-container {
@@ -223,14 +240,14 @@
     &.landscape {
       // Landscape + letter
       &.no-content .map-container {
-        height: calc(100% - 14mm);
+        height: calc(100% - 21mm);
       }
 
       &.no-legend {
         .map-container {
           right: 7mm;
           left: calc(40%);
-          height: calc(100% - 14mm);
+          height: calc(100% - 21mm);
         }
         .content-area {
           top: 7mm;
@@ -252,7 +269,7 @@
       &.legal .map-container {
         right: calc(20% + 3.5mm);
         left: 30%;
-        height: calc(100% - 14mm);
+        height: calc(100% - 21mm);
       }
       &.legal .layer-palette {
         left: 80%;
@@ -276,7 +293,7 @@
       &.tabloid .map-container {
         right: calc(17% + 3.5mm);
         left: 20%;
-        height: calc(100% - 14mm);
+        height: calc(100% - 21mm);
       }
       &.tabloid .layer-palette {
         left: 83%;
@@ -310,7 +327,7 @@
         padding-right: 0;
         font-size: 9pt;
 
-        &::after {
+        &:after {
           display: none;
         }
       }
