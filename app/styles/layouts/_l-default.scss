@@ -136,6 +136,8 @@ body.index {
     order: 1;
     width: 15rem;
     box-shadow: 2px 0 0 rgba(0,0,0,0.1);
+    max-height: calc(100% - 5.25rem);
+    min-height: calc(100% - 5.25rem);
   }
 
   @include breakpoint(xlarge) {
