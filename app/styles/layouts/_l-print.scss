@@ -37,6 +37,10 @@
     @media print {
       display: none;
     }
+
+    svg {
+      pointer-events: none;
+    }
   }
 
   .print-button {
@@ -56,6 +60,7 @@
     display: inline;
     color: $charcoal;
   }
+
 
   //
   // Paper
