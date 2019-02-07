@@ -760,6 +760,11 @@
   version "0.2.14"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.14.tgz#0eb86a77ac88e8c12c48591735283f0bf0ea5606"
 
+"@fortawesome/fontawesome-common-types@^0.2.14":
+  version "0.2.14"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.14.tgz#0eb86a77ac88e8c12c48591735283f0bf0ea5606"
+  integrity sha512-LOcvERCI96KioXSIfOYN4IATv2ROJOyf72dYnpoWfOIkuyLp45oMej1kL03kYdzvktLCzYhykgHwiu6nkg9Xbw==
+
 "@fortawesome/fontawesome-svg-core@^1.2.0":
   version "1.2.14"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.14.tgz#48fde5fbfa223cffd5fac9c0402cfbe87605a7d0"
@@ -775,6 +780,13 @@
 "@fortawesome/free-regular-svg-icons@^5.1.0", "@fortawesome/free-regular-svg-icons@^5.7.1":
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.7.1.tgz#eab182769eef910f961ed4c3a581ebd9934b4b38"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.14"
+
+"@fortawesome/free-regular-svg-icons@^5.7.1":
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.7.1.tgz#eab182769eef910f961ed4c3a581ebd9934b4b38"
+  integrity sha512-JFLJ4M11lZEfi+bmfJdWGVUe5fvmr5k/bqshN7VbJZvEJ6i12Yr6uaByQUM0U1tgw+hJkd8xAwVvKxpJ2HDVTA==
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.14"
 
@@ -7535,9 +7547,9 @@ labs-ember-search@3.0.0:
     ember-promise-helpers "1.0.6"
     ember-truth-helpers "^2.0.0"
 
-labs-ui@^0.0.21:
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/labs-ui/-/labs-ui-0.0.21.tgz#eab6f2729796da142d0f0517eca4fc17d3eb05de"
+labs-ui@^0.0.22:
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/labs-ui/-/labs-ui-0.0.22.tgz#a0635772fb51b41977fd742e2930dc4d015dc94b"
   dependencies:
     "@fortawesome/ember-fontawesome" "^0.1.5"
     "@fortawesome/free-brands-svg-icons" "^5.2.0"
