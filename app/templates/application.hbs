@@ -35,7 +35,7 @@
     }}
   {{/if}}
 
-  <div class="site-main grid-x {{if print (concat 'paper ' printViewPaperSize ' ' printViewOrientation ' ' printViewHiddenAreas)}}">
+  <div class="site-main grid-x {{printViewClasses}}">
     <div class="navigation-area cell large-auto">
       <div class="search-container hide-for-print">
         {{labs-search

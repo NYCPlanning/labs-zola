@@ -80,6 +80,14 @@ export default Controller.extend(mapQueryParams.Mixin, {
     return hiddenAreasClasses.join(' ');
   }),
 
+  printViewClasses: computedProp('printViewHiddenAreas', 'print', 'printViewPaperSize', 'printViewOrientation', 'printViewHiddenAreas', function() {
+    const orientation = this.get('printViewOrientation');
+    const size = this.get('printViewPaperSize');
+    const areas = this.get('printViewHiddenAreas');
+
+    return this.get('print') ? `paper ${size} ${orientation} ${areas}` : '';
+  }),
+
   isDefault: computedProp('queryParamsState', function() {
     const state = this.get('queryParamsState');
     const values = Object.values(state);
