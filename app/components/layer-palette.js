@@ -59,7 +59,7 @@ export const commercialOverlays = [
   },
 ];
 
-@classNames('layer-palette', 'hide-for-print')
+@classNames('layer-palette')
 export default class LayerPaletteComponent extends Component {
   init(...args) {
     super.init(...args);

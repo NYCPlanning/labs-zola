@@ -47,6 +47,8 @@ export const mapQueryParams = new QueryParams(
         refresh: true,
         as: 'layer-groups',
       },
+
+      print: { defaultValue: false },
     },
   ),
 );
@@ -60,6 +62,31 @@ export default Controller.extend(mapQueryParams.Mixin, {
   boro: '',
   block: '',
   lot: '',
+
+  // Print View Settings
+  printViewOrientation: 'portrait',
+  printViewPaperSize: 'letter',
+  printViewShowMap: true,
+  printViewShowLegend: true,
+  printViewShowContent: true,
+
+  printViewHiddenAreas: computedProp('printViewShowMap', 'printViewShowLegend', 'printViewShowContent', function() {
+    const hiddenAreasClasses = [];
+
+    if (!this.get('printViewShowMap')) hiddenAreasClasses.push('no-map');
+    if (!this.get('printViewShowLegend')) hiddenAreasClasses.push('no-legend');
+    if (!this.get('printViewShowContent')) hiddenAreasClasses.push('no-content');
+
+    return hiddenAreasClasses.join(' ');
+  }),
+
+  printViewClasses: computedProp('printViewHiddenAreas', 'print', 'printViewPaperSize', 'printViewOrientation', 'printViewHiddenAreas', function() {
+    const orientation = this.get('printViewOrientation');
+    const size = this.get('printViewPaperSize');
+    const areas = this.get('printViewHiddenAreas');
+
+    return this.get('print') ? `paper ${size} ${orientation} ${areas}` : '';
+  }),
 
   isDefault: computedProp('queryParamsState', function() {
     const state = this.get('queryParamsState');

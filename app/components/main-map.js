@@ -393,40 +393,6 @@ export default class MainMap extends Component {
   }
 
   @action
-  handlePrint() {
-    const config = {
-      mapConfig: {
-        style: map.getStyle(), // eslint-disable-line
-        center: map.getCenter(), // eslint-disable-line
-        zoom: map.getZoom(), // eslint-disable-line
-        bearing: map.getBearing(), // eslint-disable-line
-        pitch: map.getPitch(), // eslint-disable-line
-      },
-      logo: 'https://raw.githubusercontent.com/NYCPlanning/logo/master/dcp_logo_772.png',
-      title: 'ZoLa',
-      subtitle: 'New York City’s Zoning & Land Use Map',
-      content: 'This map was printed from Zoning & Land Use Application created by the NYC Department of City Planning. It is not an official record and all information displayed must be confirmed based on official records.',
-      source: 'ZoLa | https://zola.planning.nyc.gov',
-    };
-
-    fetch('https://map-print.planninglabs.nyc/config', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(config),
-    })
-      .then(res => res.json())
-      .then((res) => {
-        if (res.status === 'success') {
-          window.open('https://map-print.planninglabs.nyc', '_blank');
-        }
-      });
-  }
-
-  @action
   handleLayerClick(feature) {
     const { mainMap } = this;
     const highlightedLayerId = this.get('highlightedLayerId');

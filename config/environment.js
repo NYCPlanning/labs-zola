@@ -29,16 +29,21 @@ module.exports = function(environment) {
     fontawesome: {
       icons: {
         'free-regular-svg-icons': [
+          'check-square',
           'circle',
+          'dot-circle',
+          'square',
         ],
         'free-solid-svg-icons': [
           'angle-up',
           'bookmark',
           'caret-down',
           'caret-up',
+          'check-square',
           'chevron-down',
           'chevron-left',
           'chevron-up',
+          'circle',
           'external-link-alt',
           'home',
           'info-circle',
