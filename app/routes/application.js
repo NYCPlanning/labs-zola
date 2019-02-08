@@ -4,7 +4,6 @@ import { inject as service } from '@ember/service';
 export const defaultLayerGroupState = [
   { id: 'zoning-districts', visible: true },
   { id: 'street-centerlines', visible: true },
-  { id: 'tax-lots', visible: true, layers: [{ tooltipable: true }] },
   { id: 'commercial-overlays', visible: true },
   { id: 'zoning-map-amendments', visible: false },
   { id: 'zoning-map-amendments-pending', visible: false },
@@ -20,10 +19,8 @@ export const defaultLayerGroupState = [
   { id: 'coastal-zone-boundary', visible: false },
   { id: 'waterfront-access-plan', visible: false },
   { id: 'historic-districts', visible: false },
-  { id: 'landmarks', visible: false },
   { id: 'floodplain-efirm2007', visible: false },
   { id: 'floodplain-pfirm2015', visible: false },
-  { id: 'e-designations', visible: false },
   { id: 'appendixj-designated-mdistricts', visible: false },
   { id: 'business-improvement-districts', visible: false },
   { id: 'industrial-business-zones', visible: false },
@@ -37,6 +34,9 @@ export const defaultLayerGroupState = [
   { id: 'building-footprints', visible: true },
   { id: 'three-d-buildings', visible: false },
   { id: 'aerials', visible: false },
+  { id: 'tax-lots', visible: true, layers: [{ tooltipable: true }] },
+  { id: 'landmarks', visible: false },
+  { id: 'e-designations', visible: false },
 ];
 
 export default Route.extend({

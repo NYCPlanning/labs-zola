@@ -53,7 +53,7 @@
     "ember-cli-update": "0.22.0",
     "ember-composability-tools": "0.0.11",
     "ember-composable-helpers": "^2.1.0",
-    "ember-concurrency": "^0.8.19",
+    "ember-concurrency": "0.8.27",
     "ember-concurrency-decorators": "^0.5.3",
     "ember-content-placeholders": "^1.0.0",
     "ember-copy": "1.0.0",
@@ -66,7 +66,7 @@
     "ember-in-viewport": "^3.1.3",
     "ember-load-initializers": "^1.1.0",
     "ember-local-storage": "^1.4.0",
-    "ember-mapbox-composer": "0.2.1",
+    "ember-mapbox-composer": "0.2.3",
     "ember-mapbox-gl": "0.12.0",
     "ember-mapbox-gl-draw": "2.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
@@ -82,7 +82,7 @@
     "ember-test-selectors": "2.0.0",
     "ember-tether": "v1.0.0-beta.3",
     "ember-tooltips": "^3.1.0",
-    "ember-truth-helpers": "^2.0.0",
+    "ember-truth-helpers": "^2.1.0",
     "ember-unused-components": "0.2.0",
     "ember-wormhole": "^0.5.2",
     "eslint": "^4.19.1",
@@ -105,6 +105,7 @@
   },
   "dependencies": {
     "@turf/bbox": "^6.0.1",
+    "mustache": "3.0.1",
     "numeral": "^2.0.6"
   }
 }
