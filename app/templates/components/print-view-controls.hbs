@@ -3,7 +3,7 @@
   Exit Print View
 </button>
 
-<div class="print-view-controls--item">
+<div class="print-view-controls--item orientation">
   <h6 class="print-view-controls--header">Orientation:</h6>
   <button
     onclick={{action (mut printViewOrientation) 'landscape'}}
@@ -37,7 +37,7 @@
   </button>
 </div>
 
-<div class="print-view-controls--item">
+<div class="print-view-controls--item size">
   <h6 class="print-view-controls--header">Size:</h6>
   <button
     onclick={{action (mut printViewPaperSize) 'letter'}}
@@ -86,9 +86,10 @@
   </button>
 </div>
 
-<div class="print-view-controls--item">
+<div class="print-view-controls--item show">
   <h6 class="print-view-controls--header">Show:</h6>
   <button
+    class="map"
     onclick={{action (mut printViewShowMap) (not printViewShowMap)}}
     data-test-print-control="map"
   >
@@ -104,6 +105,7 @@
   </button>
   {{#if (eq printViewShowMap true)}}
     <button
+      class="legend"
       onclick={{action (mut printViewShowLegend) (not printViewShowLegend)}}
       data-test-print-control="legend"
     >
@@ -125,6 +127,7 @@
     </button>
   {{/if}}
   <button
+    class="content"
     onclick={{action (mut printViewShowContent) (not printViewShowContent)}}
     data-test-print-control="content"
   >

@@ -61,6 +61,13 @@
     color: $charcoal;
   }
 
+  .index-active-detector.active ~ .print-view--controls .print-view-controls--item.show {
+    .map,
+    .content {
+      display: none;
+    }
+  }
+
 
   //
   // Paper
@@ -215,10 +222,14 @@
       right: 7mm;
     }
 
+    @mixin full-height-map {
+      height: calc(100% - 21mm);
+    }
+
     &.portrait {
       // Portrait + letter
       &.no-content .map-container {
-        height: calc(100% - 21mm);
+        @include full-height-map
       }
 
       &.no-legend .map-container {
@@ -232,6 +243,12 @@
       &.legal:not(.no-content) .map-container {
         height: calc(57% - 10.5mm);
       }
+      &.legal.no-map .content-area {
+        top: 7mm;
+      }
+      &.legal.no-legend .content-area {
+        right: 7mm;
+      }
 
       // Portrait + tabloid
       &.tabloid .content-area {
@@ -240,12 +257,26 @@
       &.tabloid:not(.no-content) .map-container {
         height: calc(64% - 10.5mm);
       }
+      &.tabloid.no-map .content-area {
+        top: 7mm;
+      }
+      &.tabloid.no-legend .content-area {
+        right: 7mm;
+      }
+
+      // There's no content when index is active
+      @at-root .index-active-detector.active ~ .paper.portrait .map-container { @include full-height-map }
+      @at-root .index-active-detector.active ~ .paper.portrait.legal .map-container { @include full-height-map }
+      @at-root .index-active-detector.active ~ .paper.portrait.tabloid .map-container { @include full-height-map }
     } // end .portrait
 
     &.landscape {
       // Landscape + letter
       &.no-content .map-container {
         height: calc(100% - 21mm);
+      }
+      @at-root .index-active-detector.active ~ .paper.landscape .map-container {
+        @include full-height-map
       }
 
       &.no-legend {
@@ -262,6 +293,9 @@
       }
 
       &.no-legend.no-content .map-container {
+        left: 7mm;
+      }
+      @at-root .index-active-detector.active ~ .paper.landscape.no-legend .map-container {
         left: 7mm;
       }
 
@@ -283,7 +317,10 @@
         right: 7mm;
       }
       &.legal.no-content .map-container {
-        left: 0;
+        left: 7mm;
+      }
+      @at-root .index-active-detector.active ~ .paper.landscape.legal .map-container {
+        left: 7mm;
       }
       &.legal.no-legend.no-content .map-container {
         left: 7mm;
@@ -307,7 +344,10 @@
         right: 7mm;
       }
       &.tabloid.no-content .map-container {
-        left: 0;
+        left: 7mm;
+      }
+      @at-root .index-active-detector.active ~ .paper.landscape.tabloid .map-container {
+        left: 7mm;
       }
       &.tabloid.no-legend.no-content .map-container {
         left: 7mm;
