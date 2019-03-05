@@ -8,24 +8,24 @@ import carto from '../utils/carto';
 const generateSQL = function(table, bbl) {
   // special handling for tables where we don't want to SELECT *
   let intersectionTable = table;
-  if (table === 'floodplain_firm2007_v0') {
+  if (table === 'floodplain_firm2007') {
     intersectionTable = `(
       SELECT the_geom
-      FROM floodplain_firm2007_v0
+      FROM floodplain_firm2007
       WHERE fld_zone IN ('A', 'A0', 'AE') OR fld_zone = 'VE'
     )`;
   }
 
-  if (table === 'floodplain_pfirm2015_v0') {
+  if (table === 'floodplain_pfirm2015') {
     intersectionTable = `(
       SELECT the_geom
-      FROM floodplain_pfirm2015_v0
+      FROM floodplain_pfirm2015
       WHERE fld_zone IN ('A', 'A0', 'AE') OR fld_zone = 'VE'
     )`;
   }
 
   return `
-    WITH lot AS (SELECT the_geom FROM mappluto_18v2 WHERE bbl = '${bbl}')
+    WITH lot AS (SELECT the_geom FROM mappluto WHERE bbl = '${bbl}')
 
     SELECT true as intersects FROM ${intersectionTable} a, lot b WHERE ST_Intersects(a.the_geom, b.the_geom) LIMIT 1
   `;

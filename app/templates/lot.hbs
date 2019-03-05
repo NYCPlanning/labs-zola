@@ -60,21 +60,21 @@
 
             {{#intersecting-layers
                 tables=(array
-                  'inclusionary_housing_v201804'
-                  'transitzones_v201607'
-                  'fresh_zones_v201611'
-                  'waterfront_access_plan_v201109'
-                  'coastal_zone_boundary_v201601'
-                  'lower_density_growth_management_areas_v201709'
-                  'floodplain_firm2007_v0'
-                  'floodplain_pfirm2015_v0'
+                  'inclusionary_housing'
+                  'transitzones'
+                  'fresh_zones'
+                  'waterfront_access_plan'
+                  'coastal_zone_boundary'
+                  'lower_density_growth_management_areas'
+                  'floodplain_firm2007'
+                  'floodplain_pfirm2015'
                   'mandatory_inclusionary_housing'
                   'e_designations'
-                  'upland_waterfront_areas_v200912'
-                  'appendixj_designated_mdistricts_v201712'
+                  'upland_waterfront_areas'
+                  'appendixj_designated_mdistricts'
                 )
                 bbl=model.value.bbl as |layers numberIntersecting|}}
-              {{#if layers.inclusionary_housing_v201804}}
+              {{#if layers.inclusionary_housing}}
                 <li>
                   <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page">
                     {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Inclusionary Housing Zone
@@ -82,7 +82,7 @@
                 </li>
               {{/if}}
 
-              {{#if layers.transitzones_v201607}}
+              {{#if layers.transitzones}}
                 <li>
                   <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone">
                     {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Transit Zone
@@ -90,7 +90,7 @@
                 </li>
               {{/if}}
 
-              {{#if layers.fresh_zones_v201611}}
+              {{#if layers.fresh_zones}}
                 <li>
                   <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page">
                     {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} FRESH Zone
@@ -98,7 +98,7 @@
                 </li>
               {{/if}}
 
-              {{#if layers.waterfront_access_plan_v201109}}
+              {{#if layers.waterfront_access_plan}}
                 <li>
                   <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan">
                     {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Waterfront Access Plan
@@ -106,7 +106,7 @@
                 </li>
               {{/if}}
 
-              {{#if layers.upland_waterfront_areas_v200912}}
+              {{#if layers.upland_waterfront_areas}}
                 <li>
                   <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page">
                     {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Waterfront Block
@@ -114,7 +114,7 @@
                 </li>
               {{/if}}
 
-              {{#if layers.coastal_zone_boundary_v201601}}
+              {{#if layers.coastal_zone_boundary}}
                 <li>
                   <a target="_blank" href="http://www1.nyc.gov/site/planning/applicants/wrp/wrp.page">
                     {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Coastal Zone
@@ -122,7 +122,7 @@
                 </li>
               {{/if}}
 
-              {{#if layers.lower_density_growth_management_areas_v201709}}
+              {{#if layers.lower_density_growth_management_areas}}
                 <li>
                   <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page">
                     {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Lower Density Growth Management Zone
@@ -130,7 +130,7 @@
                 </li>
               {{/if}}
 
-              {{#if layers.floodplain_firm2007_v0}}
+              {{#if layers.floodplain_firm2007}}
                 <li>
                   <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
                     {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Flood Zone
@@ -138,7 +138,7 @@
                 </li>
               {{/if}}
 
-              {{#if layers.floodplain_pfirm2015_v0}}
+              {{#if layers.floodplain_pfirm2015}}
                 <li>
                   <a target="_blank" href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page">
                     {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Flood Zone
@@ -162,7 +162,7 @@
                 </li>
               {{/if}}
 
-              {{#if layers.appendixj_designated_mdistricts_v201712}}
+              {{#if layers.appendixj_designated_mdistricts}}
                 <li>
                   <a target="_blank" href="https://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-text/appendixj.pdf">
                     {{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Appendix J Designated M District
