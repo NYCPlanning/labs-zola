@@ -16,15 +16,15 @@ export default {
     },
     {
       id: 'inclusionary-housing',
-      sql: 'SELECT the_geom_webmercator, projectnam FROM inclusionary_housing_v201804',
+      sql: 'SELECT the_geom_webmercator, projectnam FROM inclusionary_housing',
     },
     {
       id: 'transit-zones',
-      sql: 'SELECT the_geom_webmercator FROM transitzones_v201607',
+      sql: 'SELECT the_geom_webmercator FROM transitzones',
     },
     {
       id: 'fresh',
-      sql: 'SELECT the_geom_webmercator, name FROM fresh_zones_v201611',
+      sql: 'SELECT the_geom_webmercator, name FROM fresh_zones',
     },
     {
       id: 'sidewalk-cafes',
@@ -32,15 +32,15 @@ export default {
     },
     {
       id: 'low-density-growth-mgmt-areas',
-      sql: 'SELECT the_geom_webmercator FROM lower_density_growth_management_areas_v201709',
+      sql: 'SELECT the_geom_webmercator FROM lower_density_growth_management_areas',
     },
     {
       id: 'coastal-zone-boundary',
-      sql: 'SELECT the_geom_webmercator FROM coastal_zone_boundary_v201601',
+      sql: 'SELECT the_geom_webmercator FROM coastal_zone_boundary',
     },
     {
       id: 'waterfront-access-plan',
-      sql: 'SELECT the_geom_webmercator, name FROM waterfront_access_plan_v201109',
+      sql: 'SELECT the_geom_webmercator, name FROM waterfront_access_plan',
     },
     {
       id: 'zoning-map-amendments-pending',
@@ -64,7 +64,7 @@ export default {
     },
     {
       id: 'appendixj-designated-mdistricts',
-      sql: 'SELECT the_geom_webmercator, name, subarea FROM appendixj_designated_mdistricts_v201712',
+      sql: 'SELECT the_geom_webmercator, name, subarea FROM appendixj_designated_mdistricts',
     },
   ],
 };

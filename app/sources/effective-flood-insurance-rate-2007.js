@@ -10,7 +10,7 @@ export default {
           WHEN fld_zone IN ('A', 'A0', 'AE') THEN 'A'
           WHEN fld_zone = 'VE' THEN 'V'
         END as fld_zone
-        FROM floodplain_firm2007_v0
+        FROM floodplain_firm2007
         WHERE fld_zone IN ('A', 'A0', 'AE') OR fld_zone = 'VE'
       `,
     },

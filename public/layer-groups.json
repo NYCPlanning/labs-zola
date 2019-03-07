@@ -154,7 +154,7 @@
         "meta": {
           "description": "Appendix J Designated M Districts Shapefile",
           "url": [
-            "https:\/\/planninglabs.carto.com\/api\/v2\/sql?q=SELECT * FROM appendixj_designated_mdistricts_v201712&format=SHP"
+            "https:\/\/planninglabs.carto.com\/api\/v2\/sql?q=SELECT * FROM appendixj_designated_mdistricts&format=SHP"
           ],
           "updated-at": "3 May 2018"
         },
