@@ -9,6 +9,7 @@ const Router = EmberRouter.extend(trackPage, {
 
 Router.map(function () { // eslint-disable-line
   this.route('lot', { path: 'lot/:boro/:block/:lot' });
+  this.route('bbox', { path: 'bbox/:west/:south/:east/:north' });
   this.route('zma', { path: 'zma/:ulurpno' });
   this.route('bbl', { path: 'bbl/:bbl' });
   this.route('zoning-district', { path: 'zoning-district/:zonedist' });
