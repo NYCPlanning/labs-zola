@@ -1,10 +1,23 @@
 import EmberRouter from '@ember/routing/router';
+import { inject as service } from '@ember/service';
 import config from './config/environment';
 import trackPage from './mixins/track-page';
 
+
 const Router = EmberRouter.extend(trackPage, {
+  mainMap: service(),
+
   location: config.locationType,
   rootURL: config.rootURL,
+
+  didTransition() {
+    // hack and a half: if the map exists, change it's zoom level by an unnoticable amount
+    // this will make mapboxgl put the viewport hash back in the current url
+    const map = this.get('mainMap.mapInstance');
+    if (map) map.flyTo({ zoom: map.getZoom() + 0.001 });
+
+    this._super();
+  },
 });
 
 Router.map(function () { // eslint-disable-line

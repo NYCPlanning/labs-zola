@@ -12,7 +12,7 @@ module('Acceptance | bbox', function(hooks) {
     assert.equal(currentURL(), `/bbox/${goodBboxUrl}`);
   });
 
-  test('visiting invalid bbox redirects to /about', async function(assert) {
+  test('visiting invalid bbox redirects to /', async function(assert) {
     const badBboxUrl = 'foo/40.5705/-73.9804/40.5785';
     await visit(`/bbox/${badBboxUrl}`);
 

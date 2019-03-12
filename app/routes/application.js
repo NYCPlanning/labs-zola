@@ -43,9 +43,9 @@ export default Route.extend({
   mainMap: service(),
   layerGroupService: service('layerGroups'),
 
-  beforeModel({ targetName }) {
-    // only transition to about if index is loaded and there is no hash
-    if (targetName === 'index') {
+  beforeModel({ targetName, intent }) {
+    // only transition to about if the url is /
+    if (intent.url === '/') {
       this.transitionTo('about');
     }
 
