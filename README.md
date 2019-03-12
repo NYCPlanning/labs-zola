@@ -88,7 +88,7 @@ For convenience to other apps that work with NYC BBLs (10-digit Borough, Block, 
 
 Example BBL route
 
-`[https://zola.planning.nyc.gov/bbl/1000477501](https://zola.planning.nyc.gov/bbl/1000477501)`
+[https://zola.planning.nyc.gov/bbl/1000477501](https://zola.planning.nyc.gov/bbl/1000477501)
 
 will redirect to 
 
