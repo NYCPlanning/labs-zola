@@ -80,6 +80,31 @@ Carto is the primary backend resource for ZoLa, which provides a PostGIS databas
 - **Carto SQL API** - The SQL API is used to retrieve record-specific data, such as tax lot details when a user navigates to a specific lot.  It is also used to cross-reference a selected lot on-the-fly with various other layers to find intersections.
 - **Zola Search API** - Zola Search API provides autocomplete search resutls, and aggregates results from ZoLa's Carto database with those from the Mapzen Search API. The search API is an express.js app that lives in a separate repo: (https://github.com/NYCPlanning/labs-zola-search-api)
 
+## BBL Route
+
+ `https://zola.planning.nyc.gov/bbl/:bbl`
+
+For convenience to other apps that work with NYC BBLs (10-digit Borough, Block, and Lot identifiers), a `/bbl` route is available for incoming links.  Incoming connections on this route will be redirected to the corresponding `lot` view.
+
+Example BBL route
+
+`[https://zola.planning.nyc.gov/bbl/1000477501](https://zola.planning.nyc.gov/bbl/1000477501)`
+
+will redirect to 
+
+`[https://zola.planning.nyc.gov/lot/1/47/7501](https://zola.planning.nyc.gov/lot/1/47/7501)`
+
+## Bounding Box Route
+
+`https://zola.planning.nyc.gov/bbox/:west/:south/:east/:north`
+
+
+For compliance with NYC [Local Law #40 of 2018](http://nyc.legistar1.com/nyc/attachments/f6a21032-ecd2-4197-ba05-f415caa39ecf.pdf), the Department of Housing Preservation and Development is required to create a link to ZoLa for all NYC Urban Renewal Areas "that directs to the highest practicable zoom level that contains all blocks and lots within such urban renewal area".  The `/bbox` route allows for specifying a bounding box defined by WGS84 latitude and longitude in decimal degrees.  When the ZoLa application loads the `bbox` route with valid bounds, the map will automatically zoom to fit the supplied bounds into the user's viewport.
+
+Example Bounding Box Route:
+
+https://zola.planning.nyc.gov/bbox/-73.9978/40.5705/-73.9804/40.5785
+
 ## Testing and checks
 
 - **ESLint** - We use ESLint with Airbnb's rules for JavaScript projects
