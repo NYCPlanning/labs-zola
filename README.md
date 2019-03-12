@@ -92,11 +92,11 @@ Example BBL route
 
 will redirect to 
 
-`[https://zola.planning.nyc.gov/lot/1/47/7501](https://zola.planning.nyc.gov/lot/1/47/7501)`
+[https://zola.planning.nyc.gov/lot/1/47/7501](https://zola.planning.nyc.gov/lot/1/47/7501)
 
 ## Bounding Box Route
 
-`https://zola.planning.nyc.gov/bbox/:west/:south/:east/:north`
+https://zola.planning.nyc.gov/bbox/:west/:south/:east/:north
 
 
 For compliance with NYC [Local Law #40 of 2018](http://nyc.legistar1.com/nyc/attachments/f6a21032-ecd2-4197-ba05-f415caa39ecf.pdf), the Department of Housing Preservation and Development is required to create a link to ZoLa for all NYC Urban Renewal Areas "that directs to the highest practicable zoom level that contains all blocks and lots within such urban renewal area".  The `/bbox` route allows for specifying a bounding box defined by WGS84 latitude and longitude in decimal degrees.  When the ZoLa application loads the `bbox` route with valid bounds, the map will automatically zoom to fit the supplied bounds into the user's viewport.
