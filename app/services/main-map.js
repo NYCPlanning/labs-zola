@@ -102,14 +102,15 @@ export default class MainMapService extends Service {
   }
 
   @restartableTask()
-  setBounds = function* () {
+  setBounds = function* (explicitBounds) {
+    const bounds = explicitBounds || this.get('bounds');
     while (!this.get('mapInstance')) {
       yield timeout(100);
     }
 
     const mapInstance = this.get('mapInstance');
 
-    mapInstance.fitBounds(this.get('bounds'), this.get('isSelectedBoundsOptions'));
+    mapInstance.fitBounds(bounds, this.get('isSelectedBoundsOptions'));
     this.set('routeIntentIsNested', false);
   }
 }

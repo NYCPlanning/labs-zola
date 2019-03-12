@@ -80,6 +80,7 @@
     "ember-radio-button": "1.2.4",
     "ember-resolver": "^5.0.1",
     "ember-source": "~3.6.0",
+    "ember-test-helpers": "^0.6.3",
     "ember-test-selectors": "2.0.0",
     "ember-tether": "v1.0.0-beta.3",
     "ember-tooltips": "^3.1.0",
@@ -106,6 +107,8 @@
   },
   "dependencies": {
     "@turf/bbox": "^6.0.1",
+    "@turf/bbox-polygon": "^6.0.1",
+    "@turf/boolean-within": "^6.0.1",
     "mustache": "3.0.1",
     "numeral": "^2.0.6"
   }
