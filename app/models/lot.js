@@ -32,7 +32,7 @@ const LotColumnsSQL = [
   'overlay1', 'overlay2',
   'policeprct',
   'sanitboro',
-  'sanitdistrict',
+  'sanitdistr',
   'sanitsub',
   'schooldist',
   'spdist1',
