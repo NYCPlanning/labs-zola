@@ -5,13 +5,9 @@ import carto from '../utils/carto';
 
 import specialPurposeCrosswalk from '../utils/special-purpose-crosswalk';
 
-const SQL = function(table, geometry) {
-  return `SELECT * FROM ${table}
-          WHERE
-            ST_Intersects(
-              ST_SetSRID(
-                ST_GeomFromGeoJSON('${JSON.stringify(geometry)}'), 4326),
-                ${table}.the_geom);`;
+const SQL = function(table, spdist1, spdist2, spdist3) {
+  return `SELECT DISTINCT sdname, sdlbl FROM ${table}
+          WHERE sdlbl IN ('${spdist1}', '${spdist2}', '${spdist3}')`;
 };
 
 const getPrimaryZone = (zonedist) => {
@@ -47,17 +43,18 @@ export default Controller.extend(Bookmarkable, {
     return getPrimaryZone(zonedist);
   }),
 
-  parentSpecialPurposeDistricts: computedProp('model.value.geometry', function() {
-    const geometry = this.get('model.value.geometry');
+  parentSpecialPurposeDistricts: computedProp('model.value.spdist1', 'model.value.spdist2', 'model.value.spdist3', function() {
+    const spdist1 = this.get('model.value.spdist1');
+    const spdist2 = this.get('model.value.spdist2');
+    const spdist3 = this.get('model.value.spdist3');
 
-    return carto.SQL(SQL('special_purpose_districts', geometry))
+    return carto.SQL(SQL('special_purpose_districts', spdist1, spdist2, spdist3))
       .then(response => response.map(
         (item) => {
           const [, [anchorName, boroName]] = specialPurposeCrosswalk
             .find(([dist]) => dist === item.sdname);
 
           return {
-            id: item.cartodb_id,
             label: item.sdlbl.toUpperCase(),
             name: item.sdname,
             anchorName,
