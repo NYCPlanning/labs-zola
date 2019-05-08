@@ -182,7 +182,7 @@
           <h6 class="no-margin-">Zoning Details:</h6>
           <ul class="no-bullet text-small">
             {{#if model.value.bbl}}<li><a target="_blank" href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName={{model.value.bbl}}">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Digital Tax Map</a></li>{{/if}}
-            {{#if model.value.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{model.value.zonemap}}.pdf">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Zoning Map <small>(PDF)</small></a></li>{{/if}}
+            {{#if model.value.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map{{model.value.zonemap}}.pdf">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Zoning Map: {{model.value.zonemap}} <small>(PDF)</small></a></li>{{/if}}
             {{#if model.value.zonemap}}<li><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps{{paddedZonemap}}.pdf">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} Historical Zoning Maps <small>(PDF)</small></a></li>{{/if}}
           </ul>
         </div>
