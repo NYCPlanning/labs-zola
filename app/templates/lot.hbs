@@ -33,7 +33,11 @@
 
         {{#each (await parentSpecialPurposeDistricts) as |specialDistrict|}}
           <li>
-            <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-{{specialDistrict.boroName}}.page#{{specialDistrict.anchorName}}" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{specialDistrict.label}}</a>
+            {{#if specialDistrict.anchorName}}
+              <a target="_blank" href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-{{specialDistrict.boroName}}.page#{{specialDistrict.anchorName}}" class="button">{{fa-icon 'external-link-alt' transform='shrink-3 up-1'}} {{specialDistrict.label}}</a>
+            {{else}}
+              <a class="button">{{specialDistrict.label}}</a>
+            {{/if}}
           </li>
         {{/each}}
 
