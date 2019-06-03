@@ -1,5 +1,5 @@
 import Checkbox from '@ember/component/checkbox';
-import { computed } from '@ember-decorators/object'; // eslint-disable-line
+import { computed } from '@ember/object';
 
 export default class MyCheckbox extends Checkbox {
   refs = [];

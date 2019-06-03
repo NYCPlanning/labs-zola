@@ -1,9 +1,8 @@
 import Controller from '@ember/controller';
-import { merge } from '@ember/polyfills';
+import { assign } from '@ember/polyfills';
 import { set, computed as computedProp } from '@ember/object';
 import { inject as service } from '@ember/service';
 import QueryParams from 'ember-parachute';
-import { computed } from '@ember-decorators/object'; // eslint-disable-line
 import { alias } from '@ember/object/computed';
 import bblDemux from '../utils/bbl-demux';
 import { zoningDistrictGroups, commercialOverlays } from '../components/layer-palette';
@@ -13,7 +12,7 @@ import trackEvent from '../utils/track-event'; // eslint-disable-line
 
 // define new query params here:
 export const mapQueryParams = new QueryParams(
-  merge(
+  assign(
     {
       'comm-type': { defaultValue: '' },
       search: { defaultValue: false },

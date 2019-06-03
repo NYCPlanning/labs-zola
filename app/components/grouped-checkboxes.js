@@ -1,6 +1,6 @@
 import Component from '@ember/component';
-import { intersect } from '@ember-decorators/object/computed';
-import { action, computed } from '@ember-decorators/object';
+import { intersect } from '@ember/object/computed';
+import { action, computed } from '@ember/object';
 
 export default class GroupedCheckboxesComponent extends Component {
   layerGroup;

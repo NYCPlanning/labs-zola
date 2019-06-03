@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import { computed } from '@ember-decorators/object';
+import { computed } from '@ember/object';
 import { attr } from '@ember-decorators/data';
 import bbox from '@turf/bbox';
 

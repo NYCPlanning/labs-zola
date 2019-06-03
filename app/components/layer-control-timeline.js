@@ -1,5 +1,4 @@
 import Component from '@ember/component';
-import { computed } from '@ember-decorators/object'; // eslint-disable-line
 import { ChildMixin } from 'ember-composability-tools';
 
 const defaultMax = new Date();

@@ -1,6 +1,5 @@
 import Controller from '@ember/controller';
 import { computed as computedProp } from '@ember/object';
-import { computed } from '@ember-decorators/object'; // eslint-disable-line
 
 export default Controller.extend({
   primaryzoneURL: computedProp('model.value.primaryzone', function() {
