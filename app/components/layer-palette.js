@@ -1,6 +1,7 @@
 import Component from '@ember/component';
-import { action, observes } from '@ember-decorators/object';
+import { action } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
+import { observes } from '@ember-decorators/object';
 import { next } from '@ember/runloop';
 
 export const zoningDistrictGroups = [

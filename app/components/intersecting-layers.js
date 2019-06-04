@@ -1,8 +1,7 @@
 import Component from '@ember/component';
-import { get } from '@ember/object';
+import { get, computed } from '@ember/object';
 import RSVP from 'rsvp';
-import { computed } from '@ember-decorators/object';
-import { restartableTask } from 'ember-concurrency-decorators';
+import { task } from 'ember-concurrency';
 import carto from '../utils/carto';
 
 const generateSQL = function(table, bbl) {
@@ -36,8 +35,7 @@ export default class IntersectingLayersComponent extends Component {
 
   bbl = null;
 
-  @restartableTask
-  calculateIntersections = function* (tables, bbl, responseIdentifier) {
+  @task(function* (tables, bbl, responseIdentifier) {
     const hash = {};
 
     tables.forEach((table) => {
@@ -46,7 +44,8 @@ export default class IntersectingLayersComponent extends Component {
     });
 
     return yield RSVP.hash(hash);
-  }
+  })
+  calculateIntersections;
 
   willDestroyElement() {
     this.get('calculateIntersections').cancelAll();

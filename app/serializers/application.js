@@ -1,4 +1,4 @@
-import { merge } from '@ember/polyfills';
+import { assign } from '@ember/polyfills';
 import DS from 'ember-data';
 
 export default DS.JSONSerializer.extend({
@@ -6,7 +6,7 @@ export default DS.JSONSerializer.extend({
     const [feature] = payload.features;
     const { id } = feature.properties;
     const { geometry } = feature;
-    const json = merge(feature.properties, { id, geometry });
+    const json = assign(feature.properties, { id, geometry });
 
     return this._super(store,
       primaryModelClass,

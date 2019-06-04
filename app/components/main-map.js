@@ -1,12 +1,11 @@
 import Component from '@ember/component';
 import mapboxgl from 'mapbox-gl';
 import numeral from 'numeral';
-import EmberObject from '@ember/object';
 
-import { inject as service } from '@ember-decorators/service';
-import { computed, action } from '@ember-decorators/object';
+import { inject as service } from '@ember/service';
+import EmberObject, { computed, action } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
-import { alias } from '@ember-decorators/object/computed';
+import { alias } from '@ember/object/computed';
 
 import drawStyles from '../layers/draw-styles';
 import bblDemux from '../utils/bbl-demux';

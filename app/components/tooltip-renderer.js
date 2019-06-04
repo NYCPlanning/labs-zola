@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { computed } from '@ember-decorators/object';
+import { computed } from '@ember/object';
 import mustache from 'mustache';
 
 export default class TooltipRenderer extends Component {

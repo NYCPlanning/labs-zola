@@ -1,8 +1,7 @@
 import LabsMap from 'ember-mapbox-composer/components/labs-map';
 import { registerWaiter, unregisterWaiter } from '@ember/test';
-import { inject as service } from '@ember-decorators/service';
-import { restartableTask } from 'ember-concurrency-decorators';
-import { timeout } from 'ember-concurrency';
+import { inject as service } from '@ember/service';
+import { timeout, task } from 'ember-concurrency';
 
 export default class TesterMap extends LabsMap {
   didIdle = false;
@@ -37,15 +36,15 @@ export default class TesterMap extends LabsMap {
     return false;
   }
 
-  @restartableTask
-  swapInImage = function* (map) {
+  @task(function* (map) {
     yield timeout(300);
     const target = this.element.querySelector('canvas') || this.element.querySelector('img');
 
     target.outerHTML = `
       <img src="${map.getCanvas().toDataURL()}"/>
     `;
-  }
+  })
+  swapInImage;
 
   _onLoad(map) {
     // callbacks

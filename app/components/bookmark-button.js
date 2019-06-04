@@ -1,7 +1,6 @@
 import Component from '@ember/component';
-import { action, computed } from '@ember-decorators/object';
-import { inject as service } from '@ember-decorators/service';
-// import trackEvent from '../utils/track-event';
+import { action, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class BookmarkButton extends Component {
   bookmark = null;

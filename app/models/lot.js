@@ -1,9 +1,10 @@
-import { computed } from '@ember-decorators/object';
-import { alias } from '@ember-decorators/object/computed';
-import { attr } from '@ember-decorators/data';
+import DS from 'ember-data';
+import { computed } from '@ember/object';
+import { alias } from '@ember/object/computed';
 import bbox from '@turf/bbox';
-
 import Bookmarkable from './bookmark';
+
+const { attr } = DS;
 
 // columns requested from server
 // update to add more

@@ -1,7 +1,9 @@
-import { computed } from '@ember-decorators/object'; // eslint-disable-line
-import { attr } from '@ember-decorators/data';
+import DS from 'ember-data';
+import { computed } from '@ember/object';
 import bbox from '@turf/bbox';
 import Bookmarkable from './bookmark';
+
+const { attr } = DS;
 
 export default class ZoningMapAmendmentModel extends Bookmarkable {
   @attr() geometry;

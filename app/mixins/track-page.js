@@ -1,12 +1,13 @@
 import { inject as service } from '@ember/service';
 import Mixin from '@ember/object/mixin';
 import { scheduleOnce } from '@ember/runloop';
+import { on } from '@ember-decorators/object';
 
 export default Mixin.create({
   metrics: service(),
 
-  didTransition(...args) {
-    this._super(...args);
+  @on('routeDidChange')
+  trackPage() {
     this._trackPage();
   },
 

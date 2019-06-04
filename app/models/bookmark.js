@@ -1,8 +1,12 @@
 import DS from 'ember-data';
-import { computed } from '@ember-decorators/object';
-import { attr, belongsTo } from '@ember-decorators/data';
+import { computed } from '@ember/object';
 
-const { PromiseObject, Model } = DS;
+const {
+  PromiseObject,
+  Model,
+  attr,
+  belongsTo,
+} = DS;
 
 export default class BookmarkModel extends Model {
   @belongsTo('bookmark', { inverse: 'bookmark' }) bookmark;
