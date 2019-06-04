@@ -1,7 +1,8 @@
 import DS from 'ember-data';
 import { computed } from '@ember/object';
-import { attr } from '@ember-decorators/data';
 import bbox from '@turf/bbox';
+
+const { attr } = DS;
 
 const zoningDescriptions = {
   m1: 'M1 districts are designated for areas with light industries.',

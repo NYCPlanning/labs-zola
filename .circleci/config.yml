@@ -36,6 +36,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: COVERAGE=TRUE yarn test
-
-      - run: curl -s https://codecov.io/bash | bash
+      - run: yarn test
