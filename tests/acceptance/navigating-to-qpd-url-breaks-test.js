@@ -1,13 +1,18 @@
 import { module, test } from 'qunit';
 import { visit, click, find } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-import { percySnapshot } from 'ember-percy';
-import setupMapMocks from '../helpers/setup-map-mocks';
+// import { percySnapshot } from 'ember-percy';
+import { setupMirage } from 'ember-cli-mirage/test-support';
 import refresh from '../helpers/refresh';
+import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
 module('Acceptance | navigating to qpd url breaks', function(hooks) {
   setupApplicationTest(hooks);
-  setupMapMocks(hooks);
+  setupMirage(hooks);
+
+  hooks.beforeEach(function() {
+    this.server.post('layer-groups', () => layerGroupsFixtures);
+  });
 
   test('Visiting index with QPs directly doesnt break', async function(assert) {
     // this does not work - zoning districts are on
@@ -27,11 +32,11 @@ module('Acceptance | navigating to qpd url breaks', function(hooks) {
 
     await click('[data-test-about-close-button]');
 
-    await percySnapshot('qp test: visit index, change some things');
+    // await percySnapshot('qp test: visit index, change some things');
 
     await refresh();
 
-    await percySnapshot('after a refresh, things are applied from previous QPs');
+    // await percySnapshot('after a refresh, things are applied from previous QPs');
 
     const boroughs = await find('[data-test-toggle-boroughs] input');
     const cds = await find('[data-test-grouped-parent="Commercial Districts"]');
