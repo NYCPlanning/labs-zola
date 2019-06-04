@@ -2,12 +2,12 @@ import { module, test } from 'qunit';
 import { visit, click, find } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { percySnapshot } from 'ember-percy';
-import setupMapMocks from '../helpers/setup-map-mocks';
+import { setupMirage } from 'ember-cli-mirage/test-support';
 import refresh from '../helpers/refresh';
 
 module('Acceptance | navigating to qpd url breaks', function(hooks) {
   setupApplicationTest(hooks);
-  setupMapMocks(hooks);
+  setupMirage(hooks);
 
   test('Visiting index with QPs directly doesnt break', async function(assert) {
     // this does not work - zoning districts are on

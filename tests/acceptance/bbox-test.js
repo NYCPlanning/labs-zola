@@ -1,9 +1,11 @@
 import { module, test } from 'qunit';
 import { visit, currentURL } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
+import { setupMirage } from 'ember-cli-mirage/test-support';
 
 module('Acceptance | bbox', function(hooks) {
   setupApplicationTest(hooks);
+  setupMirage(hooks);
 
   test('visiting valid bbox does not redirect', async function(assert) {
     const goodBboxUrl = '-73.9978/40.5705/-73.9804/40.5785';

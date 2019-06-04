@@ -10,7 +10,10 @@ import {
 import { module, skip, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import { percySnapshot } from 'ember-percy';
-import setupMapMocks from '../helpers/setup-map-mocks';
+import { setupMirage } from 'ember-cli-mirage/test-support';
+import config from '../../config/environment';
+
+const { 'labs-search': { host: labsSearchHost } } = config;
 
 const SEARCH_INPUT_SELECTOR = '.map-search-input';
 const SEARCH_RESULTS_SELECTOR = '.search-results';
@@ -24,7 +27,13 @@ const resultAt = function(x) {
 
 module('Acceptance | index', function(hooks) {
   setupApplicationTest(hooks);
-  setupMapMocks(hooks);
+  setupMirage(hooks);
+
+  hooks.beforeEach(function() {
+    this.server.get(`${labsSearchHost}/**`, function() {
+      return [{ bbl: 1000477501, label: '120 Broadway, Manhattan', type: 'lot' }];
+    });
+  });
 
   test('map-search enter on first search result', async function(assert) {
     await visit('/');

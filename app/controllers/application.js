@@ -114,6 +114,7 @@ export default Controller.extend(mapQueryParams.Mixin, {
 
     // @trackEvent('Map Search', 'Clicked result', 'searchTerms')
     handleSearchSelect(result) {
+      console.log(result);
       const { mainMap } = this;
       const mapInstance = mainMap.get('mapInstance');
       const { type } = result;

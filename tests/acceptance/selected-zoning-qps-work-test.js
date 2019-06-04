@@ -6,11 +6,13 @@ import {
   currentURL,
 } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
+import { setupMirage } from 'ember-cli-mirage/test-support';
 
 import extractQueryParams from '../helpers/extract-query-params';
 
 module('Acceptance | selected zoning qps work', function(hooks) {
   setupApplicationTest(hooks);
+  setupMirage(hooks);
 
   test('Selected zoning QPs are applied', async function(assert) {
     const zoning = ['BP', 'C1', 'C2', 'C3',
