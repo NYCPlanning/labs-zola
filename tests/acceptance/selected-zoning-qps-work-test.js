@@ -6,11 +6,18 @@ import {
   currentURL,
 } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-
+import { setupMirage } from 'ember-cli-mirage/test-support';
 import extractQueryParams from '../helpers/extract-query-params';
+import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
+
 
 module('Acceptance | selected zoning qps work', function(hooks) {
   setupApplicationTest(hooks);
+  setupMirage(hooks);
+
+  hooks.beforeEach(function() {
+    this.server.post('layer-groups', () => layerGroupsFixtures);
+  });
 
   test('Selected zoning QPs are applied', async function(assert) {
     const zoning = ['BP', 'C1', 'C2', 'C3',

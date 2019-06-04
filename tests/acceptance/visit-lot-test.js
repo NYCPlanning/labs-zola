@@ -2,16 +2,23 @@ import { currentURL, find, visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import { percySnapshot } from 'ember-percy';
-import setupMapMocks from '../helpers/setup-map-mocks';
+import { setupMirage } from 'ember-cli-mirage/test-support';
+import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
 
+// this is a true acceptance, just make sure it works
 module('Acceptance | visit lot', function(hooks) {
   setupApplicationTest(hooks);
-  setupMapMocks(hooks);
+  setupMirage(hooks);
+
+  hooks.beforeEach(function() {
+    this.server.post('layer-groups', () => layerGroupsFixtures);
+  });
 
   test('visiting a lot', async function(assert) {
     await visit('/lot/1/1632/1');
     await percySnapshot('lot view');
+
     assert.notEqual(find('.content-area').textContent.length, 0);
   });
 
