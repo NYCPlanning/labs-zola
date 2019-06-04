@@ -9,10 +9,16 @@ import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
+import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
+
 
 module('Acceptance | bookmarks', function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
+
+  hooks.beforeEach(function() {
+    this.server.post('v1/layer-groups', () => layerGroupsFixtures);
+  });
 
   hooks.beforeEach(function() {
     window.localStorage.clear();

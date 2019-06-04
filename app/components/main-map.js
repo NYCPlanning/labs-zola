@@ -87,8 +87,7 @@ export default class MainMap extends Component {
 
   @computed('layerGroupsObject')
   get mapConfig() {
-    const layerGroupsObject = this.get('layerGroupsObject');
-    return Object.keys(layerGroupsObject).map(key => layerGroupsObject[key]);
+    return this.layerGroups;
   }
 
   @computed('highlightedLotFeatures')
@@ -243,12 +242,6 @@ export default class MainMap extends Component {
       type: 'raster',
       minzoom: 17,
     });
-  }
-
-  @action
-  handleZoomend(event) {
-    const { mainMap } = this;
-    mainMap.set('currentZoom', event.target.getZoom());
   }
 
   @action

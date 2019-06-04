@@ -3,10 +3,15 @@ import { visit, click } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
+import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
 module('Acceptance | user can configure print view', function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
+
+  hooks.beforeEach(function() {
+    this.server.post('v1/layer-groups', () => layerGroupsFixtures);
+  });
 
   test('User can click print and configure', async function(assert) {
     await visit('/');

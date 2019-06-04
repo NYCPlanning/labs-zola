@@ -51,5 +51,6 @@ export default function() {
     return { rows: [] };
   });
 
-  this.post('v1/layer-groups', () => layerGroupsFixtures);
+  this.namespace = '/v1';
+  this.get('layer-groups');
 }

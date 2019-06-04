@@ -3,13 +3,17 @@ import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
-// import stubBasicMap from '../helpers/stub-basic-map';
+import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
+
 
 // this is a true acceptance, just make sure it works
 module('Acceptance | visit lot', function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
-  // stubBasicMap(hooks);
+
+  hooks.beforeEach(function() {
+    this.server.post('v1/layer-groups', () => layerGroupsFixtures);
+  });
 
   test('visiting a lot', async function(assert) {
     await visit('/lot/1/1632/1');

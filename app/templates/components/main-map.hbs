@@ -9,7 +9,12 @@
   mapLoaded=(action 'handleMapLoad')
   as |map|
 }}
-  <div class="labs-map-loaded" style="display:none"></div>
+  <div
+    data-test-main-map='loaded'
+    class="labs-map-loaded"
+    style="display:none"
+  >
+  </div>
   <div class="print-controls mapboxgl-ctrl mapboxgl-ctrl-group">
     <button {{action (mut print) true}}
       class="mapboxgl-ctrl-icon"
@@ -29,7 +34,10 @@
     onLayerHighlight=(action 'handleLayerHighlight')
      as |layers|}}
     {{#layers.tooltip as |tooltip|}}
-      {{tooltip-renderer feature=tooltip.feature template=tooltip.layer.tooltipTemplate}}
+      {{tooltip-renderer
+        data-test-tooltip="true"
+        feature=tooltip.feature
+        template=tooltip.layer.tooltipTemplate}}
     {{/layers.tooltip}}
   {{/labs-layers}}
 
@@ -72,10 +80,9 @@
     {{/map.source}}
   {{/if}}
 
-  {{map.on 'data' (action 'mapLoading') eventSource=map.instance}}
-  {{map.on 'zoomend' (action 'handleZoomend') eventSource=map.instance}}
-  {{map.on 'draw.create' (action 'handleDrawCreate') eventSource=map.instance}}
-  {{map.on 'draw.render' (action 'handleMeasurement') eventSource=map.instance}}
+  {{mapbox-gl-on 'data' (action 'mapLoading') eventSource=map.instance}}
+  {{mapbox-gl-on 'draw.create' (action 'handleDrawCreate') eventSource=map.instance}}
+  {{mapbox-gl-on 'draw.render' (action 'handleMeasurement') eventSource=map.instance}}
 {{/mapbox/basic-map}}
 
 <div class="draw-tools hide-for-print">

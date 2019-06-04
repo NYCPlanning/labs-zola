@@ -9,6 +9,8 @@ import { setupApplicationTest } from 'ember-qunit';
 import { percySnapshot } from 'ember-percy';
 import { defaultLayerGroupState } from 'labs-zola/routes/application';
 import { setupMirage } from 'ember-cli-mirage/test-support';
+import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
+
 
 const defaultVisible = defaultLayerGroupState
   .filter(({ visible }) => visible)
@@ -22,6 +24,10 @@ const defaultNonVisible = defaultLayerGroupState
 module('Acceptance | query params persist', function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
+
+  hooks.beforeEach(function() {
+    this.server.post('v1/layer-groups', () => layerGroupsFixtures);
+  });
 
   test('Navigating without layer group QPs shows default layers on, redirects', async function(assert) {
     await visit('/');
