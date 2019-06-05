@@ -29,7 +29,7 @@ module('Acceptance | index', function(hooks) {
   setupMirage(hooks);
 
   hooks.beforeEach(function() {
-    this.server.post('v1/layer-groups', () => layerGroupsFixtures);
+    this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
   hooks.beforeEach(function() {

@@ -11,7 +11,7 @@ module('Acceptance | navigating to qpd url breaks', function(hooks) {
   setupMirage(hooks);
 
   hooks.beforeEach(function() {
-    this.server.post('v1/layer-groups', () => layerGroupsFixtures);
+    this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
   test('Visiting index with QPs directly doesnt break', async function(assert) {

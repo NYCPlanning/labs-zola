@@ -26,7 +26,7 @@ module('Acceptance | query params persist', function(hooks) {
   setupMirage(hooks);
 
   hooks.beforeEach(function() {
-    this.server.post('v1/layer-groups', () => layerGroupsFixtures);
+    this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
   test('Navigating without layer group QPs shows default layers on, redirects', async function(assert) {

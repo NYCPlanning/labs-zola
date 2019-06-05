@@ -1,4 +1,3 @@
-import layerGroupsFixtures from './static-fixtures/layer-groups';
 import patchXMLHTTPRequest from './helpers/mirage-mapbox-gl-monkeypatch';
 
 export default function() {

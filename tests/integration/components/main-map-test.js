@@ -1,6 +1,6 @@
 import { module, test, skip } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find, settled, pauseTest } from '@ember/test-helpers';
+import { render, find, settled } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import stubBasicMap from '../../helpers/stub-basic-map';
@@ -29,7 +29,6 @@ module('Integration | Component | main-map', function(hooks) {
     this.layerGroups = await this.owner
       .lookup('service:store')
       .findAll('layer-group', { include: 'layers' });
-
     this.layerGroups.meta = this.meta;
 
     await render(hbs`
@@ -40,8 +39,6 @@ module('Integration | Component | main-map', function(hooks) {
         print=this.print
       }}
     `);
-
-    // await pauseTest();
 
     assert.ok(find("[data-test-main-map='loaded']"));
   });
@@ -69,12 +66,8 @@ module('Integration | Component | main-map', function(hooks) {
       geometry: null,
     };
 
-    // mapbox-gl instance mock
-    this.map = {
-      ...this.map,
-      querySourceFeatures: () => [targetEventFeature], // addon dependency
-      queryRenderedFeatures: () => [targetEventFeature], // addon dependency
-    };
+    // mock the features that exist in the map
+    this.map.features = [targetEventFeature];
 
     // callback action with assertions to show that a click event
     // produces the desired effect
@@ -93,11 +86,8 @@ module('Integration | Component | main-map', function(hooks) {
       }}
     `);
 
-    this.map.events.mousemove({ features: [targetEventFeature] });
-    await settled();
-
-    this.map.events.click({ features: [targetEventFeature] });
-    await settled();
+    await this.map.events.mousemove();
+    await this.map.events.click();
   });
 
   // this test may be an over-reach because it's making sure that an addon behaves
@@ -114,7 +104,6 @@ module('Integration | Component | main-map', function(hooks) {
     this.layerGroups = await this.owner
       .lookup('service:store')
       .findAll('layer-group', { include: 'layers' });
-
     this.layerGroups.meta = this.meta;
 
     // this is a geometric test feature that is sent in response to
@@ -131,12 +120,7 @@ module('Integration | Component | main-map', function(hooks) {
       geometry: null,
     };
 
-    // mapbox-gl instance mock
-    this.map = {
-      ...this.map,
-      querySourceFeatures: () => [targetEventFeature], // addon dependency
-      queryRenderedFeatures: () => [targetEventFeature], // addon dependency
-    };
+    this.map.features = [targetEventFeature];
 
     await render(hbs`
       {{main-map
@@ -155,8 +139,7 @@ module('Integration | Component | main-map', function(hooks) {
       args = [id, key, value];
     };
 
-    this.map.events.mousemove({ features: [targetEventFeature] });
-    await settled();
+    await this.map.events.mousemove();
 
     assert.equal(args[0], 'highlighted-feature-line');
     assert.equal(args[2], 'visible');
@@ -176,7 +159,6 @@ module('Integration | Component | main-map', function(hooks) {
     this.layerGroups = await this.owner
       .lookup('service:store')
       .findAll('layer-group', { include: 'layers' });
-
     this.layerGroups.meta = this.meta;
 
     // this is a geometric test feature that is sent in response to
@@ -193,12 +175,7 @@ module('Integration | Component | main-map', function(hooks) {
       geometry: null,
     };
 
-    // mapbox-gl instance mock
-    this.map = {
-      ...this.map,
-      querySourceFeatures: () => [targetEventFeature], // addon dependency
-      queryRenderedFeatures: () => [targetEventFeature], // addon dependency
-    };
+    this.map.features = [targetEventFeature];
 
     await render(hbs`
       {{main-map
@@ -209,10 +186,10 @@ module('Integration | Component | main-map', function(hooks) {
       }}
     `);
 
-    this.map.events.mousemove({
-      features: [targetEventFeature],
+    await this.map.events.mousemove({
       point: { x: 0, y: 0 },
     });
+
     await settled();
 
     assert.ok(find('[data-test-tooltip="true"]'));
@@ -226,7 +203,25 @@ module('Integration | Component | main-map', function(hooks) {
     assert.ok(false);
   });
 
-  // skip('displays layers in order according to the layer-group configuration provided', function(assert) {
-  //   assert.ok(false);
+  // module('Integration | Component | it routes correctly', function() {
+  //   test('it routes to lot', async function() {
+  //     console.log(this);
+  //     // boro
+  //   });
+  //   skip('it routes to zma', async function() {
+  //     // ulurpno
+  //   });
+  //   skip('it routes to zoning-district', async function() {
+  //     // zonedist
+  //   });
+  //   skip('it routes to special-purpose-district', async function() {
+  //     // cartodb_id
+  //   });
+  //   skip('it routes to special-purpose-subdistricts', async function() {
+  //     // cartodb_id
+  //   });
+  //   skip('it routes to commercial-overlay', async function() {
+  //     // overlay
+  //   });
   // });
 });

@@ -9,7 +9,7 @@ module('Acceptance | bbox', function(hooks) {
   setupMirage(hooks);
 
   hooks.beforeEach(function() {
-    this.server.post('v1/layer-groups', () => layerGroupsFixtures);
+    this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
   test('visiting valid bbox does not redirect', async function(assert) {

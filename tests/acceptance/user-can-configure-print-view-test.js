@@ -10,7 +10,7 @@ module('Acceptance | user can configure print view', function(hooks) {
   setupMirage(hooks);
 
   hooks.beforeEach(function() {
-    this.server.post('v1/layer-groups', () => layerGroupsFixtures);
+    this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
   test('User can click print and configure', async function(assert) {
