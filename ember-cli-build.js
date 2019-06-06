@@ -5,6 +5,16 @@ const babelPlugin = require('ember-auto-import/babel-plugin');
 
 module.exports = (defaults) => {
   const app = new EmberApp(defaults, {
+    'ember-ast-hot-load': {
+      helpers: [
+        'bbl-demux',
+        'carto-download-link',
+        'extract-layer-stops-for',
+        'numeral-format',
+        'to-title-case',
+      ],
+      enabled: true,
+    },
     'ember-cli-babel': {
       includePolyfill: true,
     },
