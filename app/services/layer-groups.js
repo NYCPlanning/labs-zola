@@ -2,6 +2,18 @@ import Service from '@ember/service';
 import { A } from '@ember/array';
 import { copy } from 'ember-copy';
 
+const areVisibleLayerGroupsDefault = function(currentVisibleLayerGroups, defaultVisibleLayerGroups) {
+  const currentIncludesDefault = currentVisibleLayerGroups.every(
+    layerGroup => defaultVisibleLayerGroups.any(
+      param => (param.id || param) === layerGroup,
+    ),
+  );
+
+  const currentDiffersFromDefault = currentVisibleLayerGroups.length !== defaultVisibleLayerGroups.length;
+
+  return currentIncludesDefault && currentDiffersFromDefault;
+};
+
 /**
   Layer Group aggregate service
   Allows for computed properties on the aggregate state of layer groups.
@@ -32,14 +44,13 @@ export default class LayerGroupService extends Service {
     // set initial state from QPs, grab init state from models
     const defaultVisibleLayerGroups = copy(layerGroups.filterBy('visible').mapBy('id').sort());
     const params = this.get('visibleLayerGroups').sort();
-
+    console.log(params);
+    console.log(defaultVisibleLayerGroups);
     // set defaults through ember parachute
     // controller.setDefaultQueryParamValue('layerGroupService.visibleLayerGroups', defaultVisibleLayerGroups);
 
     // check if the provided params are the default
-    const isDefaultState = params
-      .every(layerGroup => defaultVisibleLayerGroups.any(param => (param.id || param) === layerGroup))
-    && params.length !== defaultVisibleLayerGroups.length;
+    const isDefaultState = areVisibleLayerGroupsDefault(params, defaultVisibleLayerGroups);
 
     // check if QP isn't default and there are other params
     if (!isDefaultState && params.length) {

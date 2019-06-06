@@ -10,7 +10,6 @@ import { setupMirage } from 'ember-cli-mirage/test-support';
 import extractQueryParams from '../helpers/extract-query-params';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
-
 module('Acceptance | selected zoning qps work', function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);

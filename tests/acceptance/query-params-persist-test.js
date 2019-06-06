@@ -11,7 +11,6 @@ import { defaultLayerGroupState } from 'labs-zola/routes/application';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
-
 const defaultVisible = defaultLayerGroupState
   .filter(({ visible }) => visible)
   .map(({ id }) => id);

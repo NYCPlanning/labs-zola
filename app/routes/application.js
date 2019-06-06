@@ -43,10 +43,12 @@ export default Route.extend({
   mainMap: service(),
   layerGroupService: service('layerGroups'),
 
-  beforeModel({ targetName }) {
+  beforeModel({ targetName, intent: { url } }) {
+    console.log('before model');
     // only transition to about if index is loaded and there is no hash
     if (targetName === 'index') {
-      this.transitionTo('about');
+      console.log(...arguments);
+      this.transitionTo(`/about${url}`);
     }
 
     if (targetName === 'lot') {
@@ -86,6 +88,7 @@ export default Route.extend({
   },
 
   setupController(controller, model) {
+    console.log('does setup controller');
     this._super(controller, model);
 
     const { layerGroups } = model;
