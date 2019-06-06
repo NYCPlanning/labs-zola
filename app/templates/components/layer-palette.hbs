@@ -7,7 +7,6 @@
     title='Zoning and Land Use'
     as |container|
   }}
-
     {{#container.layer-group-toggle
       data-test-toggle-tax-lots
       label=layerGroups.tax-lots.legend.label
@@ -15,6 +14,7 @@
       active=layerGroups.tax-lots.visible
     }}
       <label class="checkbox-wrapper"
+        data-test-layer-option="land-use-checkbox"
         onclick={{action 'setPaintForLayerGroup'
           layerGroups.tax-lots
           'pluto-fill'
@@ -373,7 +373,7 @@
         {{#each layerGroups.aerials.layers as |layer|}}
           <li onclick={{action (mut layerGroups.aerials.selected) layer.id}} role='button'>
             <label {{!template-lint-disable "nested-interactive"}}>
-              <span class="layer-group-radio-{{layer.id}}">
+              <span class="layer-group-radio-{{layer.id}}" data-test-radio={{layer.id}}>
                 <span class="fa-layers">
                   {{#if layer.visibility}}
                     {{fa-icon 'dot-circle' prefix='far' class=(if layer.visibility '' 'silver')}}

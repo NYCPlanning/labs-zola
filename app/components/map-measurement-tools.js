@@ -84,7 +84,7 @@ export default class MapMeasurementToolsComponent extends Component {
     if (features.length > 0) {
       const feature = features[0];
 
-      const drawnMeasurements = await metricCalculation(feature);
+      const drawnMeasurements = await metricCalculation(feature); // eslint-disable-line
 
       this.set('drawnMeasurements', drawnMeasurements);
     }

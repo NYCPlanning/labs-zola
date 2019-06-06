@@ -2,25 +2,24 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import { setupMirage } from 'ember-cli-mirage/test-support';
+import stubBasicMap from '../../helpers/stub-basic-map';
 
 module('Integration | Component | map-measurement-tools', function(hooks) {
   setupRenderingTest(hooks);
+  setupMirage(hooks);
+  stubBasicMap(hooks);
 
   test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
-    await render(hbs`<MapMeasurementTools />`);
-
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
     await render(hbs`
-      <MapMeasurementTools>
-        template block text
-      </MapMeasurementTools>
+      {{#map-measurement-tools
+        map=map
+        draw=this.draw as |measurement|
+      }}
+
+      {{/map-measurement-tools}}
     `);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.ok(this.element);
   });
 });
