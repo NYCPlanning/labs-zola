@@ -38,18 +38,7 @@ export default class MainMapService extends Service {
 
   currentAddress = null;
 
-  drawnFeature = null;
-
   routeIntentIsNested = false;
-
-  @computed('drawnFeature')
-  get drawnFeatureSource() {
-    const feature = this.get('drawnFeature');
-    return {
-      type: 'geojson',
-      data: feature,
-    };
-  }
 
   @computed('currentAddress')
   get addressSource() {
