@@ -87,7 +87,11 @@
 
 <div class="draw-tools hide-for-print">
   <label>
-    <span class="hide-for-large" {{action (mut drawToolsOpen) (not drawToolsOpen)}}>
+    <span
+      data-test-button="begin-measure"
+      class="hide-for-large"
+      {{action (mut drawToolsOpen) (not drawToolsOpen)}}
+    >
       {{#if drawToolsOpen}}
         {{fa-icon 'chevron-left'}}
       {{else}}
@@ -96,7 +100,13 @@
     </span>
     <span class="show-for-large">Measure</span>
   </label>
-  <button class="draw-tool draw-tool--line {{unless drawToolsOpen 'show-for-large'}} {{if (eq mainMap.drawMode 'draw_line_string') 'active'}}" onclick={{action 'startDraw' 'line'}}>
+  <button
+    data-test-button="measure-tool-line"
+    class="draw-tool draw-tool--line
+      {{unless drawToolsOpen 'show-for-large'}}
+      {{if (eq mainMap.drawMode 'draw_line_string') 'active'}}"
+    onclick={{action 'startDraw' 'line'}}
+  >
     {{#if (and didStartDraw (not drawDidRender) (not draw))}}
       {{fa-icon 'spinner'}}
     {{else}}
@@ -104,7 +114,13 @@
     {{/if}}
   </button>
 
-  <button class="draw-tool draw-tool--polygon {{unless drawToolsOpen 'show-for-large'}} {{if (eq mainMap.drawMode 'draw_polygon') 'active'}}" onclick={{action 'startDraw' 'polygon'}}>
+  <button
+    data-test-button="measure-tool-polygon"
+    class="draw-tool draw-tool--polygon
+      {{unless drawToolsOpen 'show-for-large'}}
+      {{if (eq mainMap.drawMode 'draw_polygon') 'active'}}"
+    onclick={{action 'startDraw' 'polygon'}}
+  >
     {{#if (and didStartDraw (not drawDidRender) (not draw))}}
       {{fa-icon 'spinner'}}
     {{else}}
@@ -112,13 +128,29 @@
     {{/if}}
   </button>
   {{#if drawnMeasurements}}
-    <button class="draw-tool draw-tool--clear" onclick={{action 'clearDraw'}}>{{fa-icon "times"}}</button>
+    <button
+      data-test-button="measure-tool-close"
+      class="draw-tool draw-tool--clear"
+      onclick={{action 'clearDraw'}}
+    >
+      {{fa-icon "times"}}
+    </button>
   {{/if}}
 </div>
 {{#if drawnMeasurements}}
   <div class="draw-measurement">
-    {{if (eq measurementUnitType 'standard') drawnMeasurements.standard drawnMeasurements.metric}}
-    <span class="draw-measurement-menu-button" {{action (mut measurementMenuOpen) (not measurementMenuOpen)}}>
+    <div data-test-measure="value">
+      {{#if (eq measurementUnitType 'standard')}} 
+        {{drawnMeasurements.standard}}
+      {{else}}
+        {{drawnMeasurements.metric}}
+      {{/if}}
+    </div>
+    <span
+      data-test-measure="unit-menu"
+      class="draw-measurement-menu-button"
+        {{action (mut measurementMenuOpen) (not measurementMenuOpen)}}
+    >
       {{#if measurementMenuOpen}}
         {{fa-icon 'caret-down'}}
       {{else}}
@@ -126,10 +158,18 @@
       {{/if}}
       {{#if measurementMenuOpen}}
         <span class="draw-measurement-menu">
-          <button class="button tiny gray" onclick={{action 'handleUnitsToggle' 'standard'}}>
+          <button
+            data-tests-measure="unit-standard"
+            class="button tiny gray"
+            onclick={{action 'handleUnitsToggle' 'standard'}}
+          >
             {{fa-icon (if (eq measurementUnitType 'standard') 'dot-circle-o' 'circle-thin') class=(if (eq measurementUnitType 'metric') 'medium-gray')}} Standard
           </button>
-          <button class="button tiny gray" onclick={{action 'handleUnitsToggle' 'metric'}}>
+          <button
+            data-tests-measure="unit-metric"
+            class="button tiny gray"
+            onclick={{action 'handleUnitsToggle' 'metric'}}
+          >
             {{fa-icon (if (eq measurementUnitType 'metric') 'dot-circle-o' 'circle-thin') class=(if (eq measurementUnitType 'standard') 'medium-gray')}} Metric
           </button>
         </span>

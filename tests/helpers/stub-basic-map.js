@@ -2,6 +2,7 @@ import { registerWaiter, unregisterWaiter } from '@ember/test';
 import { action } from '@ember/object';
 import Component from '@ember/component';
 import { settled } from '@ember/test-helpers';
+import { tagName } from '@ember-decorators/component';
 
 const MAPBOX_GL_SOURCE_STUB = {
   setData() {},
@@ -54,6 +55,7 @@ export const MAPBOX_GL_DEFAULTS = {
   setLayerZoomRange() {},
   getCanvas: () => ({ style: {} }),
   addControl() {},
+  removeControl() {},
   removeLayer() {},
   removeSource() {},
   resize() {},
@@ -71,6 +73,7 @@ const createMapStub = function(testContext) {
   testContext.map = MAPBOX_GL_DEFAULTS;
   testContext.hoveredFeature = null;
 
+  @tagName('')
   class BasicMapStub extends Component {
     init(...args) {
       super.init(...args);

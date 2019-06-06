@@ -284,8 +284,10 @@ export default class MainMap extends Component {
     const draw = this.get('draw');
     this.set('mainMap.drawnFeature', e.features[0].geometry);
     setTimeout(() => {
-      this.mainMap.mapInstance.removeControl(draw);
-      this.mainMap.set('drawMode', null);
+      if (!this.mainMap.isDestroyed && !this.mainMap.isDestroying) {
+        this.mainMap.mapInstance.removeControl(draw);
+        this.mainMap.set('drawMode', null);
+      }
     }, 100);
   }
 
