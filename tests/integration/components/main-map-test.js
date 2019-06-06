@@ -176,6 +176,14 @@ module('Integration | Component | main-map', function(hooks) {
         getAll: () => ({ features: this.map.features }),
       };
 
+      let lastSource = '';
+      this.map = {
+        ...this.map,
+        addSource(source) {
+          lastSource = source;
+        },
+      };
+
       await render(hbs`
         {{main-map
           layerGroups=this.layerGroups
@@ -202,6 +210,9 @@ module('Integration | Component | main-map', function(hooks) {
       const measurement = find('[data-test-measure="value"]').textContent.trim();
 
       assert.equal(measurement, '97.74 mi');
+
+      // make sure the drawn source gets added to map
+      assert.equal(lastSource, 'drawn-feature');
 
       await click('[data-test-button="measure-tool-close"]');
     });
