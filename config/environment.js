@@ -17,12 +17,12 @@ module.exports = function(environment) {
       host: 'https://search-api.planninglabs.nyc',
       helpers: [
         'geosearch',
+        'neighborhood',
         'bbl',
-        // 'neighborhood',
-        // 'zoning-district',
-        // 'zoning-map-amendment',
-        // 'special-purpose-district',
-        // 'commercial-overlay',
+        'zoning-district',
+        'zoning-map-amendment',
+        'special-purpose-district',
+        'commercial-overlay',
       ],
     },
 
