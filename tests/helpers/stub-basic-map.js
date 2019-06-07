@@ -110,6 +110,7 @@ const createMapStub = function(testContext) {
   return BasicMapStub;
 };
 
+// TODO: extract out the stub registration so that it can be used in other contexts
 export default function(hooks) {
   hooks.beforeEach(async function() {
     this.owner.register('component:mapbox/basic-map', createMapStub(this));

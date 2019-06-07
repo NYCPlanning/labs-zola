@@ -1,0 +1,98 @@
+{{yield (hash feature=drawnFeature)}}
+
+{{mapbox-gl-on 'draw.create' (action 'handleDrawCreate') eventSource=map}}
+{{mapbox-gl-on 'draw.render' (action 'handleMeasurement') eventSource=map}}
+
+{{!-- Measurement --}}
+<div class="draw-tools hide-for-print">
+  <label>
+    <span
+      data-test-button="begin-measure"
+      class="hide-for-large"
+        {{action (mut drawToolsOpen) (not drawToolsOpen)}}
+    >
+      {{#if drawToolsOpen}}
+        {{fa-icon 'chevron-left'}}
+      {{else}}
+        {{fa-icon 'pen'}}
+      {{/if}}
+    </span>
+    <span class="show-for-large">Measure</span>
+  </label>
+  <button
+    data-test-button="measure-tool-line"
+    class="draw-tool draw-tool--line
+      {{unless drawToolsOpen 'show-for-large'}}
+      {{if (eq mainMap.drawMode 'draw_line_string') 'active'}}"
+    onclick={{action 'startDraw' 'line'}}
+  >
+    {{#if (and didStartDraw (not drawDidRender) (not draw))}}
+      {{fa-icon 'spinner'}}
+    {{else}}
+      <span class="icon distance"></span>
+    {{/if}}
+  </button>
+
+  <button
+    data-test-button="measure-tool-polygon"
+    class="draw-tool draw-tool--polygon
+      {{unless drawToolsOpen 'show-for-large'}}
+      {{if (eq mainMap.drawMode 'draw_polygon') 'active'}}"
+    onclick={{action 'startDraw' 'polygon'}}
+  >
+    {{#if (and didStartDraw (not drawDidRender) (not draw))}}
+      {{fa-icon 'spinner'}}
+    {{else}}
+      <span class="icon polygon"></span>
+    {{/if}}
+  </button>
+  {{#if drawnMeasurements}}
+    <button
+      data-test-button="measure-tool-close"
+      class="draw-tool draw-tool--clear"
+      onclick={{action 'clearDraw'}}
+    >
+      {{fa-icon "times"}}
+    </button>
+  {{/if}}
+</div>
+{{#if drawnMeasurements}}
+  <div class="draw-measurement">
+    <div data-test-measure="value">
+      {{#if (eq measurementUnitType 'standard')}} 
+        {{drawnMeasurements.standard}}
+      {{else}}
+        {{drawnMeasurements.metric}}
+      {{/if}}
+    </div>
+    <span
+      data-test-measure="unit-menu"
+      class="draw-measurement-menu-button"
+        {{action (mut measurementMenuOpen) (not measurementMenuOpen)}}
+    >
+      {{#if measurementMenuOpen}}
+        {{fa-icon 'caret-down'}}
+      {{else}}
+        {{fa-icon 'caret-up'}}
+      {{/if}}
+      {{#if measurementMenuOpen}}
+        <span class="draw-measurement-menu">
+          <button
+            data-tests-measure="unit-standard"
+            class="button tiny gray"
+            onclick={{action 'handleUnitsToggle' 'standard'}}
+          >
+            {{fa-icon (if (eq measurementUnitType 'standard') 'dot-circle-o' 'circle-thin') class=(if (eq measurementUnitType 'metric') 'medium-gray')}} Standard
+          </button>
+          <button
+            data-tests-measure="unit-metric"
+            class="button tiny gray"
+            onclick={{action 'handleUnitsToggle' 'metric'}}
+          >
+            {{fa-icon (if (eq measurementUnitType 'metric') 'dot-circle-o' 'circle-thin') class=(if (eq measurementUnitType 'standard') 'medium-gray')}} Metric
+          </button>
+        </span>
+      {{/if}}
+    </span>
+  </div>
+{{/if}}

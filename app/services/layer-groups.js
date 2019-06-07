@@ -2,6 +2,14 @@ import Service from '@ember/service';
 import { A } from '@ember/array';
 import { copy } from 'ember-copy';
 
+const areIncomingLayerGroupsDefault = function(layerGroupsToShow, layerGroupsByDefault) {
+  const layersToShowAreDefault = layerGroupsToShow.every(
+    (layerGroupToShow, idx) => layerGroupToShow === layerGroupsByDefault[idx],
+  );
+
+  return layersToShowAreDefault;
+};
+
 /**
   Layer Group aggregate service
   Allows for computed properties on the aggregate state of layer groups.
@@ -25,30 +33,25 @@ export default class LayerGroupService extends Service {
     signature is a model directly from the route
     @public
     @method initializeObservers
-    @param {Array} collection of layerGroups
+    @param {Array} collection of layerGroups IDs
     @param {Object} controller instance
   */
   initializeObservers(layerGroups) {
     // set initial state from QPs, grab init state from models
-    const defaultVisibleLayerGroups = copy(layerGroups.filterBy('visible').mapBy('id').sort());
-    const params = this.get('visibleLayerGroups').sort();
-
-    // set defaults through ember parachute
-    // controller.setDefaultQueryParamValue('layerGroupService.visibleLayerGroups', defaultVisibleLayerGroups);
+    const defaultVisibleLayerGroups = copy(layerGroups.filterBy('visible').mapBy('id')).sort();
+    const layerGroupsToShow = this.get('visibleLayerGroups').sort();
 
     // check if the provided params are the default
-    const isDefaultState = params
-      .every(layerGroup => defaultVisibleLayerGroups.any(param => (param.id || param) === layerGroup))
-    && params.length !== defaultVisibleLayerGroups.length;
+    const isDefaultState = areIncomingLayerGroupsDefault(layerGroupsToShow, defaultVisibleLayerGroups);
 
     // check if QP isn't default and there are other params
-    if (!isDefaultState && params.length) {
-      // set initial state from query params when not default
+    if (!isDefaultState && layerGroupsToShow.length) {
+      // set initial state from query layerGroupsToShow when not default
       layerGroups.forEach((layerGroup) => {
-        layerGroup.set('visible', params.any(param => (param.id || param) === layerGroup.id));
+        layerGroup.set('visible', layerGroupsToShow.any(param => (param.id || param) === layerGroup.id));
 
         if (layerGroup.get('layerVisibilityType') === 'singleton') {
-          const { selected } = params.find(param => (param.id || param) === layerGroup.id) || {};
+          const { selected } = layerGroupsToShow.find(param => (param.id || param) === layerGroup.id) || {};
 
           if (selected) layerGroup.set('selected', selected);
         }

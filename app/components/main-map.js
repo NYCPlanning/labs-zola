@@ -1,17 +1,14 @@
 import Component from '@ember/component';
 import mapboxgl from 'mapbox-gl';
-import numeral from 'numeral';
 
 import { inject as service } from '@ember/service';
 import EmberObject, { computed, action } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
 import { alias } from '@ember/object/computed';
 
-import drawStyles from '../layers/draw-styles';
 import bblDemux from '../utils/bbl-demux';
 import Geometric from '../mixins/geometric';
 import drawnFeatureLayers from '../layers/drawn-feature';
-import highlightedLotLayer from '../layers/highlighted-lot';
 import selectedLayers from '../layers/selected-lot';
 
 const selectedFillLayer = selectedLayers.fill;
@@ -57,49 +54,17 @@ export default class MainMap extends Component {
 
   loading = true;
 
-  findMeDismissed = false;
-
   sourcesLoaded = true;
-
-  measurementUnitType = 'standard';
-
-  drawnMeasurements = null;
-
-  measurementMenuOpen = false;
-
-  drawToolsOpen = false;
 
   cartoSources = [];
 
   drawnFeatureLayers = drawnFeatureLayers;
 
-  highlightedLotFeatures = [];
-
   highlightedLayerId = null;
-
-  highlightedLotLayer = highlightedLotLayer;
-
-  draw = null;
-
-  didStartDraw = false;
-
-  drawDidRender = false;
 
   @computed('layerGroupsObject')
   get mapConfig() {
     return this.layerGroups;
-  }
-
-  @computed('highlightedLotFeatures')
-  get highlightedLotSource() {
-    const features = this.get('highlightedLotFeatures');
-    return {
-      type: 'geojson',
-      data: {
-        type: 'FeatureCollection',
-        features,
-      },
-    };
   }
 
   @computed('bookmarks.[]')
@@ -162,32 +127,6 @@ export default class MainMap extends Component {
 
   selectedLineLayer = selectedLineLayer;
 
-
-  @action
-  adjustBuildingsLayer(visible) {
-    const map = this.get('mainMap.mapInstance');
-    if (visible) {
-      map.flyTo({ pitch: 45 });
-    } else {
-      map.flyTo({ pitch: 0 });
-    }
-  }
-
-  @action
-  locateMe() {
-    const geolocateButton = document.querySelectorAll('.mapboxgl-ctrl-geolocate')[0];
-
-    if (geolocateButton) {
-      geolocateButton.click();
-      this.set('findMeDismissed', true);
-    }
-  }
-
-  @action
-  dismissFindMe() {
-    this.set('findMeDismissed', true);
-  }
-
   @action
   handleMapLoad(map) {
     window.map = map;
@@ -245,124 +184,6 @@ export default class MainMap extends Component {
   }
 
   @action
-  async startDraw(type) {
-    this.set('didStartDraw', true);
-    const draw = this.get('draw') || await import('mapbox-gl-draw')
-      .then(({ default: MapboxDraw }) => new MapboxDraw({
-        displayControlsDefault: false,
-        styles: drawStyles,
-      }));
-    this.set('draw', draw);
-    const drawMode = type === 'line' ? 'draw_line_string' : 'draw_polygon';
-    const { mainMap } = this;
-    if (mainMap.get('drawMode')) {
-      draw.deleteAll();
-    } else {
-      mainMap.mapInstance.addControl(draw);
-      this.set('mainMap.drawnFeature', null);
-      this.set('drawnMeasurements', null);
-    }
-    mainMap.set('drawMode', drawMode);
-    draw.changeMode(drawMode);
-  }
-
-  @action
-  clearDraw() {
-    const draw = this.get('draw');
-    const { mainMap } = this;
-    if (mainMap.get('drawMode')) {
-      mainMap.mapInstance.removeControl(draw);
-    }
-
-    mainMap.set('drawMode', null);
-    this.set('mainMap.drawnFeature', null);
-    this.set('drawnMeasurements', null);
-  }
-
-  @action
-  handleDrawCreate(e) {
-    const draw = this.get('draw');
-    this.set('mainMap.drawnFeature', e.features[0].geometry);
-    setTimeout(() => {
-      if (!this.mainMap.isDestroyed && !this.mainMap.isDestroying) {
-        this.mainMap.mapInstance.removeControl(draw);
-        this.mainMap.set('drawMode', null);
-      }
-    }, 100);
-  }
-
-  @action
-  async handleMeasurement() {
-    this.set('drawDidRender', true);
-    const draw = this.get('draw');
-    // should log both metric and standard display strings for the current drawn feature
-    const { features } = draw.getAll();
-
-    if (features.length > 0) {
-      const feature = features[0];
-      // metric calculation
-
-      // lazy load these deps
-      const { default: area } = await import('@turf/area');
-      const { default: lineDistance } = await import('@turf/line-distance');
-
-      const drawnLength = (lineDistance(feature) * 1000); // meters
-      const drawnArea = area(feature); // square meters
-
-      let metricUnits = 'm';
-      let metricFormat = '0,0';
-      let metricMeasurement;
-
-      let standardUnits = 'feet';
-      let standardFormat = '0,0';
-      let standardMeasurement;
-
-      if (drawnLength > drawnArea) { // user is drawing a line
-        metricMeasurement = drawnLength;
-        if (drawnLength >= 1000) { // if over 1000 meters, upgrade metric
-          metricMeasurement = drawnLength / 1000;
-          metricUnits = 'km';
-          metricFormat = '0.00';
-        }
-
-        standardMeasurement = drawnLength * 3.28084;
-        if (standardMeasurement >= 5280) { // if over 5280 feet, upgrade standard
-          standardMeasurement /= 5280;
-          standardUnits = 'mi';
-          standardFormat = '0.00';
-        }
-      } else { // user is drawing a polygon
-        metricUnits = 'm²';
-        metricFormat = '0,0';
-        metricMeasurement = drawnArea;
-
-        standardUnits = 'ft²';
-        standardFormat = '0,0';
-        standardMeasurement = drawnArea * 10.7639;
-
-        if (drawnArea >= 1000000) { // if over 1,000,000 meters, upgrade metric
-          metricMeasurement = drawnArea / 1000000;
-          metricUnits = 'km²';
-          metricFormat = '0.00';
-        }
-
-        if (standardMeasurement >= 27878400) { // if over 27878400 sf, upgrade standard
-          standardMeasurement /= 27878400;
-          standardUnits = 'mi²';
-          standardFormat = '0.00';
-        }
-      }
-
-      const drawnMeasurements = {
-        metric: `${numeral(metricMeasurement).format(metricFormat)} ${metricUnits}`,
-        standard: `${numeral(standardMeasurement).format(standardFormat)} ${standardUnits}`,
-      };
-
-      this.set('drawnMeasurements', drawnMeasurements);
-    }
-  }
-
-  @action
   mapLoading(data) {
     const localConfig = this.mapConfig;
     const sourceIds = localConfig.mapBy('id');
@@ -379,11 +200,6 @@ export default class MainMap extends Component {
         this.set('loading', true);
       }
     }
-  }
-
-  @action
-  handleUnitsToggle(type) {
-    this.set('measurementUnitType', type);
   }
 
   @action
