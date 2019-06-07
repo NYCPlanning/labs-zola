@@ -118,8 +118,6 @@ export default Controller.extend(mapQueryParams.Mixin, {
       const mapInstance = mainMap.get('mapInstance');
       const { type } = result;
 
-      mainMap.set('currentAddress', null);
-
       this.setProperties({
         selected: 0,
         focused: false,
