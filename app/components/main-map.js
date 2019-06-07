@@ -87,8 +87,7 @@ export default class MainMap extends Component {
 
   @computed('layerGroupsObject')
   get mapConfig() {
-    const layerGroupsObject = this.get('layerGroupsObject');
-    return Object.keys(layerGroupsObject).map(key => layerGroupsObject[key]);
+    return this.layerGroups;
   }
 
   @computed('highlightedLotFeatures')
@@ -246,12 +245,6 @@ export default class MainMap extends Component {
   }
 
   @action
-  handleZoomend(event) {
-    const { mainMap } = this;
-    mainMap.set('currentZoom', event.target.getZoom());
-  }
-
-  @action
   async startDraw(type) {
     this.set('didStartDraw', true);
     const draw = this.get('draw') || await import('mapbox-gl-draw')
@@ -291,8 +284,10 @@ export default class MainMap extends Component {
     const draw = this.get('draw');
     this.set('mainMap.drawnFeature', e.features[0].geometry);
     setTimeout(() => {
-      this.mainMap.mapInstance.removeControl(draw);
-      this.mainMap.set('drawMode', null);
+      if (!this.mainMap.isDestroyed && !this.mainMap.isDestroying) {
+        this.mainMap.mapInstance.removeControl(draw);
+        this.mainMap.set('drawMode', null);
+      }
     }, 100);
   }
 

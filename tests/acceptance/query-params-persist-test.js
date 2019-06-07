@@ -6,9 +6,10 @@ import {
   find,
 } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-import { percySnapshot } from 'ember-percy';
+// import { percySnapshot } from 'ember-percy';
 import { defaultLayerGroupState } from 'labs-zola/routes/application';
-import setupMapMocks from '../helpers/setup-map-mocks';
+import { setupMirage } from 'ember-cli-mirage/test-support';
+import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
 const defaultVisible = defaultLayerGroupState
   .filter(({ visible }) => visible)
@@ -21,11 +22,15 @@ const defaultNonVisible = defaultLayerGroupState
 
 module('Acceptance | query params persist', function(hooks) {
   setupApplicationTest(hooks);
-  setupMapMocks(hooks);
+  setupMirage(hooks);
+
+  hooks.beforeEach(function() {
+    this.server.post('layer-groups', () => layerGroupsFixtures);
+  });
 
   test('Navigating without layer group QPs shows default layers on, redirects', async function(assert) {
     await visit('/');
-    await percySnapshot(assert);
+    // await percySnapshot(assert);
 
     // loop over and check each one, seeing if it's toggled in DOM
     defaultVisible.forEach((id) => {
@@ -44,7 +49,7 @@ module('Acceptance | query params persist', function(hooks) {
     const testParams = defaultNonVisible.slice(0, defaultVisible.length - 1);
 
     await visit(`/about?layer-groups=[${testParams.map(l => `"${l}"`)}]`);
-    await percySnapshot(assert);
+    // await percySnapshot(assert);
 
     // loop over and check each one, seeing if it's toggled in DOM
     testParams.forEach((id) => {
@@ -70,7 +75,7 @@ module('Acceptance | query params persist', function(hooks) {
     const testParams = defaultNonVisible.slice(0, defaultVisible.length + 1);
 
     await visit(`/about?layer-groups=[${testParams.map(l => `"${l}"`)}]`);
-    await percySnapshot(assert);
+    // await percySnapshot(assert);
 
     // loop over and check each one, seeing if it's toggled in DOM
     testParams.forEach((id) => {
@@ -96,7 +101,7 @@ module('Acceptance | query params persist', function(hooks) {
     const testParams = defaultNonVisible.slice(0, defaultVisible.length - 2);
 
     await visit(`/about?layer-groups=[${testParams.map(l => `"${l}"`)}]`);
-    await percySnapshot(assert);
+    // await percySnapshot(assert);
 
     // loop over and check each one, seeing if it's toggled in DOM
     testParams.forEach((id) => {
