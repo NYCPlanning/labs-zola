@@ -11,7 +11,6 @@ import drawStyles from '../layers/draw-styles';
 import bblDemux from '../utils/bbl-demux';
 import Geometric from '../mixins/geometric';
 import drawnFeatureLayers from '../layers/drawn-feature';
-import highlightedLotLayer from '../layers/highlighted-lot';
 import selectedLayers from '../layers/selected-lot';
 
 const selectedFillLayer = selectedLayers.fill;
@@ -57,8 +56,6 @@ export default class MainMap extends Component {
 
   loading = true;
 
-  findMeDismissed = false;
-
   sourcesLoaded = true;
 
   measurementUnitType = 'standard';
@@ -73,11 +70,7 @@ export default class MainMap extends Component {
 
   drawnFeatureLayers = drawnFeatureLayers;
 
-  highlightedLotFeatures = [];
-
   highlightedLayerId = null;
-
-  highlightedLotLayer = highlightedLotLayer;
 
   draw = null;
 
@@ -88,18 +81,6 @@ export default class MainMap extends Component {
   @computed('layerGroupsObject')
   get mapConfig() {
     return this.layerGroups;
-  }
-
-  @computed('highlightedLotFeatures')
-  get highlightedLotSource() {
-    const features = this.get('highlightedLotFeatures');
-    return {
-      type: 'geojson',
-      data: {
-        type: 'FeatureCollection',
-        features,
-      },
-    };
   }
 
   @computed('bookmarks.[]')
@@ -171,21 +152,6 @@ export default class MainMap extends Component {
     } else {
       map.flyTo({ pitch: 0 });
     }
-  }
-
-  @action
-  locateMe() {
-    const geolocateButton = document.querySelectorAll('.mapboxgl-ctrl-geolocate')[0];
-
-    if (geolocateButton) {
-      geolocateButton.click();
-      this.set('findMeDismissed', true);
-    }
-  }
-
-  @action
-  dismissFindMe() {
-    this.set('findMeDismissed', true);
   }
 
   @action
