@@ -3,15 +3,23 @@ import DS from 'ember-data';
 
 export default DS.JSONSerializer.extend({
   normalizeFindRecordResponse(store, primaryModelClass, payload, queryId, requestType) {
-    const [feature] = payload.features;
-    const { id } = feature.properties;
-    const { geometry } = feature;
-    const json = assign(feature.properties, { id, geometry });
+    let newPayload = payload;
+    let newQueryId = queryId;
+
+    if (payload.features) {
+      const [feature] = payload.features;
+
+      const { id } = feature.properties;
+      newQueryId = id;
+
+      const { geometry } = feature;
+      newPayload = assign(feature.properties, { id, geometry });
+    }
 
     return this._super(store,
       primaryModelClass,
-      json,
-      id,
+      newPayload,
+      newQueryId,
       requestType);
   },
 });
