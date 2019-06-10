@@ -11,7 +11,7 @@ import { inject as service } from '@ember/service';
 export default Mixin.create({
   mainMap: service(),
   afterModel({ taskInstance }, transition) {
-    if (transition.queryParams.search === 'true') {
+    if (transition.queryParams && transition.queryParams.search === 'true') {
       this.waitToFitBounds.perform(taskInstance);
     }
   },
