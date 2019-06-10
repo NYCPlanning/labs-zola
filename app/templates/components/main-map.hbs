@@ -62,122 +62,45 @@
     {{/mapbox-gl-source}}
   {{/if}}
 
-  {{#if mainMap.drawnFeature}}
-    {{#mapbox-gl-source
-      map=map.instance
-      sourceId='drawn-feature'
-      options=mainMap.drawnFeatureSource as |source|}}
-      {{source.layer layer=drawnFeatureLayers.line before='place_other'}}
-      {{#if (eq mainMap.drawnFeature.type 'Polygon')}}
-        {{source.layer layer=drawnFeatureLayers.fill before='place_other'}}
-      {{/if}}
-    {{/mapbox-gl-source}}
-  {{/if}}
-
   {{#if mainMap.currentAddress}}
     {{#map.source sourceId='currentAddress' options=mainMap.addressSource as |source|}}
       {{source.layer layer=mainMap.pointLayer}}
     {{/map.source}}
   {{/if}}
 
+  {{#map-measurement-tools
+    map=map.instance
+    draw=this.draw as |measurement|
+  }}
+    {{#if measurement.feature}}
+      {{#mapbox-gl-source
+        map=map.instance
+        sourceId='drawn-feature'
+        options=(hash
+          type='geojson'
+          data=measurement.feature
+        ) as |source|
+      }}
+        {{source.layer
+          layer=drawnFeatureLayers.line
+          before='place_other'
+        }}
+        {{#if (eq mainMap.drawnFeature.type 'Polygon')}}
+          {{source.layer
+            layer=drawnFeatureLayers.fill
+            before='place_other'
+          }}
+        {{/if}}
+      {{/mapbox-gl-source}}
+    {{/if}}
+  {{/map-measurement-tools}}
+
   {{mapbox-gl-on 'data' (action 'mapLoading') eventSource=map.instance}}
-  {{mapbox-gl-on 'draw.create' (action 'handleDrawCreate') eventSource=map.instance}}
-  {{mapbox-gl-on 'draw.render' (action 'handleMeasurement') eventSource=map.instance}}
 {{/mapbox/basic-map}}
 
-<div class="draw-tools hide-for-print">
-  <label>
-    <span
-      data-test-button="begin-measure"
-      class="hide-for-large"
-      {{action (mut drawToolsOpen) (not drawToolsOpen)}}
-    >
-      {{#if drawToolsOpen}}
-        {{fa-icon 'chevron-left'}}
-      {{else}}
-        {{fa-icon 'pen'}}
-      {{/if}}
-    </span>
-    <span class="show-for-large">Measure</span>
-  </label>
-  <button
-    data-test-button="measure-tool-line"
-    class="draw-tool draw-tool--line
-      {{unless drawToolsOpen 'show-for-large'}}
-      {{if (eq mainMap.drawMode 'draw_line_string') 'active'}}"
-    onclick={{action 'startDraw' 'line'}}
-  >
-    {{#if (and didStartDraw (not drawDidRender) (not draw))}}
-      {{fa-icon 'spinner'}}
-    {{else}}
-      <span class="icon distance"></span>
-    {{/if}}
-  </button>
-
-  <button
-    data-test-button="measure-tool-polygon"
-    class="draw-tool draw-tool--polygon
-      {{unless drawToolsOpen 'show-for-large'}}
-      {{if (eq mainMap.drawMode 'draw_polygon') 'active'}}"
-    onclick={{action 'startDraw' 'polygon'}}
-  >
-    {{#if (and didStartDraw (not drawDidRender) (not draw))}}
-      {{fa-icon 'spinner'}}
-    {{else}}
-      <span class="icon polygon"></span>
-    {{/if}}
-  </button>
-  {{#if drawnMeasurements}}
-    <button
-      data-test-button="measure-tool-close"
-      class="draw-tool draw-tool--clear"
-      onclick={{action 'clearDraw'}}
-    >
-      {{fa-icon "times"}}
-    </button>
-  {{/if}}
-</div>
-{{#if drawnMeasurements}}
-  <div class="draw-measurement">
-    <div data-test-measure="value">
-      {{#if (eq measurementUnitType 'standard')}} 
-        {{drawnMeasurements.standard}}
-      {{else}}
-        {{drawnMeasurements.metric}}
-      {{/if}}
-    </div>
-    <span
-      data-test-measure="unit-menu"
-      class="draw-measurement-menu-button"
-        {{action (mut measurementMenuOpen) (not measurementMenuOpen)}}
-    >
-      {{#if measurementMenuOpen}}
-        {{fa-icon 'caret-down'}}
-      {{else}}
-        {{fa-icon 'caret-up'}}
-      {{/if}}
-      {{#if measurementMenuOpen}}
-        <span class="draw-measurement-menu">
-          <button
-            data-tests-measure="unit-standard"
-            class="button tiny gray"
-            onclick={{action 'handleUnitsToggle' 'standard'}}
-          >
-            {{fa-icon (if (eq measurementUnitType 'standard') 'dot-circle-o' 'circle-thin') class=(if (eq measurementUnitType 'metric') 'medium-gray')}} Standard
-          </button>
-          <button
-            data-tests-measure="unit-metric"
-            class="button tiny gray"
-            onclick={{action 'handleUnitsToggle' 'metric'}}
-          >
-            {{fa-icon (if (eq measurementUnitType 'metric') 'dot-circle-o' 'circle-thin') class=(if (eq measurementUnitType 'standard') 'medium-gray')}} Metric
-          </button>
-        </span>
-      {{/if}}
-    </span>
-  </div>
-{{/if}}
-
+{{!--
+  TODO: Geolocate Feature -> Move into separate component
+--}}
 {{#unless findMeDismissed}}
   <div class="find-me">
     <button {{action 'locateMe'}} class="button hide-for-medium hide-for-print no-margin">Locate&nbsp;Me</button>

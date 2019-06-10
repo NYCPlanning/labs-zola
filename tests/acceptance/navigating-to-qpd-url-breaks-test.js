@@ -35,6 +35,7 @@ module('Acceptance | navigating to qpd url breaks', function(hooks) {
 
     // await percySnapshot('qp test: visit index, change some things');
 
+    // the refresh here resets the context, requiring re-mocking
     await refresh();
 
     // await percySnapshot('after a refresh, previous QPs still applies');
