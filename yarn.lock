@@ -5269,9 +5269,9 @@ ember-native-dom-helpers@^0.6.2:
     broccoli-funnel "^1.1.0"
     ember-cli-babel "^6.6.0"
 
-ember-parachute@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ember-parachute/-/ember-parachute-1.0.0.tgz#5e38a59978d73c493229cafda14ed4e85b1dde29"
+ember-parachute@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ember-parachute/-/ember-parachute-1.0.2.tgz#f147f6b29df100d467acc1ddf13761aef92e95de"
   dependencies:
     ember-cli-babel "^7.1.2"
 
@@ -5322,6 +5322,12 @@ ember-resolver@^5.0.1:
     ember-cli-babel "^6.16.0"
     ember-cli-version-checker "^3.0.0"
     resolve "^1.10.0"
+
+ember-responsive@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/ember-responsive/-/ember-responsive-3.0.1.tgz#52eac29ff9ab57e4912f65354056aee1f132c63c"
+  dependencies:
+    ember-cli-babel "^6.6.0"
 
 ember-rfc176-data@^0.3.9:
   version "0.3.9"
