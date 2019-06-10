@@ -83,7 +83,7 @@ export default class LayerPaletteComponent extends Component {
 
   plutoFill = false;
 
-  @observes('selectedZoning')
+  @observes('selectedZoning.@each')
   setFilterForZoning() {
     const expression = ['any', ...this.selectedZoning.map(value => ['==', 'primaryzone', value])];
 
@@ -92,7 +92,7 @@ export default class LayerPaletteComponent extends Component {
     });
   }
 
-  @observes('selectedOverlays')
+  @observes('selectedOverlays.@each')
   setFilterForOverlays() {
     const expression = ['any', ...this.selectedOverlays.map(value => ['==', 'overlay', value])];
 
