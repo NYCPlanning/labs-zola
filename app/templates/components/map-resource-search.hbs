@@ -1,0 +1,10 @@
+<div class="search-container hide-for-print">
+  {{labs-search
+    data-test-search='resource'
+    onSelect=(action 'handleSearchSelect')
+    typeTitleLookup=resourceTitleLookup}}
+
+  {{labs-bbl-lookup
+    data-test-search='bbl'
+    onSuccess=(action 'handleLookupSuccess')}}
+</div>

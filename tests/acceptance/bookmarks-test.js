@@ -55,7 +55,7 @@ module('Acceptance | bookmarks', function(hooks) {
     // await percySnapshot('no bookmarks counted');
     await click('.bookmark-save-button');
 
-    assert.equal(find('.saved-bookmarks-counter .badge').textContent, '1');
+    assert.equal(find('.saved-bookmarks-counter .badge').textContent.trim(), '1');
     // await percySnapshot('counter has incremented');
     await click('.bookmark-save-button');
     assert.equal(find('.saved-bookmarks-counter .badge'), null);

@@ -12,6 +12,7 @@ module.exports = (defaults) => {
         'extract-layer-stops-for',
         'numeral-format',
         'to-title-case',
+        'media',
       ],
       enabled: true,
     },

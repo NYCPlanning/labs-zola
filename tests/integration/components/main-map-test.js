@@ -8,6 +8,7 @@ import {
 } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { setupMirage } from 'ember-cli-mirage/test-support';
+import Service from '@ember/service';
 import stubBasicMap from '../../helpers/stub-basic-map';
 
 const MAPBOX_GL_BLANK_STYLE = {
@@ -310,11 +311,16 @@ module('Integration | Component | main-map', function(hooks) {
 
   module('Integration | Component | main-map | it routes to specific resources correctly', function(subHooks) {
     subHooks.beforeEach(async function() {
+      // generate mock layer for map
       this.server.create('layer', 1, { visible: true, clickable: true, id: 'visible-layer' });
+
+      // setup the arguments that get passed into the component
       this.layerGroups = await this.owner
         .lookup('service:store')
         .findAll('layer-group', { include: 'layers' });
       this.layerGroups.meta = this.meta;
+
+      // stubbed features that are "on the map"
       this.map.features = [{
         type: 'Feature',
         properties: {
@@ -326,6 +332,17 @@ module('Integration | Component | main-map', function(hooks) {
         },
         geometry: null,
       }];
+
+      // stub the router service that gets injected into the component
+      const testContext = this;
+      class RouterServiceStub extends Service {
+        transitionTo(...args) {
+          testContext.transitionTo(...args);
+        }
+      }
+
+      this.owner.unregister('service:router');
+      this.owner.register('service:router', RouterServiceStub);
     });
 
     test('it routes to lot', async function(assert) {
@@ -343,7 +360,6 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
           print=this.print
-          transitionTo=(action transitionTo)
         }}
       `);
 
@@ -366,7 +382,6 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
           print=this.print
-          transitionTo=(action transitionTo)
         }}
       `);
 
@@ -389,7 +404,6 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
           print=this.print
-          transitionTo=(action transitionTo)
         }}
       `);
 
@@ -412,7 +426,6 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
           print=this.print
-          transitionTo=(action transitionTo)
         }}
       `);
 
@@ -435,7 +448,6 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
           print=this.print
-          transitionTo=(action transitionTo)
         }}
       `);
 
@@ -458,7 +470,6 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
           print=this.print
-          transitionTo=(action transitionTo)
         }}
       `);
 
