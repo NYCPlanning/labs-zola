@@ -1,0 +1,7 @@
+<div class="search-container hide-for-print">
+  {{labs-search
+    onSelect=(action 'handleSearchSelect')
+    typeTitleLookup=resourceTitleLookup}}
+
+  {{labs-bbl-lookup onSuccess=(action 'handleLookupSuccess')}}
+</div>

@@ -41,6 +41,9 @@ export default class MainMap extends Component {
   @service
   store;
 
+  @service
+  router;
+
   lat = 40.7125;
 
   @computed()
@@ -274,27 +277,27 @@ export default class MainMap extends Component {
 
         if (bbl && !ceqr_num) { // eslint-disable-line
           const { boro, block, lot } = bblDemux(bbl);
-          this.transitionTo('lot', boro, block, lot);
+          this.router.transitionTo('lot', boro, block, lot);
         }
 
         if (ulurpno) {
-          this.transitionTo('zma', ulurpno, { queryParams: { search: false } });
+          this.router.transitionTo('zma', ulurpno, { queryParams: { search: false } });
         }
 
         if (zonedist) {
-          this.transitionTo('zoning-district', zonedist, { queryParams: { search: false } });
+          this.router.transitionTo('zoning-district', zonedist, { queryParams: { search: false } });
         }
 
         if (sdlbl) {
-          this.transitionTo('special-purpose-district', cartodb_id, { queryParams: { search: false } });
+          this.router.transitionTo('special-purpose-district', cartodb_id, { queryParams: { search: false } });
         }
 
         if (splbl) {
-          this.transitionTo('special-purpose-subdistricts', cartodb_id, { queryParams: { search: false } });
+          this.router.transitionTo('special-purpose-subdistricts', cartodb_id, { queryParams: { search: false } });
         }
 
         if (overlay) {
-          this.transitionTo('commercial-overlay', overlay, { queryParams: { search: false } });
+          this.router.transitionTo('commercial-overlay', overlay, { queryParams: { search: false } });
         }
 
         if (ceqr_num) { // eslint-disable-line
