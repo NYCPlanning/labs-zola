@@ -1,7 +1,6 @@
 import Service from '@ember/service';
 import { computed } from '@ember/object';
 import { timeout, task } from 'ember-concurrency';
-import pointLayer from '../layers/point-layer';
 
 const DEFAULT_BOUNDS = [-73.9, 40.690913, -73.832692, 40.856654];
 
@@ -34,23 +33,7 @@ export default class MainMapService extends Service {
     return DEFAULT_BOUNDS;
   }
 
-  pointLayer = pointLayer;
-
-  currentAddress = null;
-
   routeIntentIsNested = false;
-
-  @computed('currentAddress')
-  get addressSource() {
-    const currentAddress = this.get('currentAddress');
-    return {
-      type: 'geojson',
-      data: {
-        type: 'Point',
-        coordinates: currentAddress,
-      },
-    };
-  }
 
   @computed('selected', 'routeIntentIsNested')
   get isSelectedBoundsOptions() {
