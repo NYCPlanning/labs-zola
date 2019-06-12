@@ -1,0 +1,14 @@
+{{#carto-data-provider
+  modelId=model.id
+  modelName='zoning-district'
+  as |cartoFeature|
+}}
+  {{mapbox/map-feature-renderer
+    model=cartoFeature
+    shouldFitBounds=model.search
+  }}
+
+  {{layer-record-views/zoning-district
+    model=cartoFeature
+  }}  
+{{/carto-data-provider}}

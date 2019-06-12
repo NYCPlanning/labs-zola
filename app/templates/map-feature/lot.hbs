@@ -1,0 +1,12 @@
+{{#carto-data-provider
+  modelId=model.id
+  modelName='lot'
+  as |lotModel|
+}}
+  {{mapbox/map-feature-renderer
+    model=lotModel
+  }}
+
+  {{layer-record-views/tax-lot
+    model=lotModel}}  
+{{/carto-data-provider}}

@@ -1,0 +1,26 @@
+{{#needs-async
+  needs=(find-record this.modelName this.modelId)
+  as |data-task|
+}}
+  {{#data-task.loaded as |model|}}
+    {{yield model}}
+  {{/data-task.loaded}}
+
+  {{#data-task.loading}}
+    {{#content-placeholders as |placeholder|}}
+      {{placeholder.text lines=1}}
+      {{placeholder.nav}}
+      {{placeholder.text lines=10}}
+    {{/content-placeholders}}
+  {{/data-task.loading}}
+
+  {{#data-task.error as |error|}}
+    Oops. Something went wrong... <br/>
+    <ul>
+      {{#each error.errors as |error|}}
+        <li>{{error}}</li>
+      {{/each}}
+    </ul>
+    Please try again.
+  {{/data-task.error}}
+{{/needs-async}}

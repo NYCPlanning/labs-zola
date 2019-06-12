@@ -1,23 +1,3 @@
-import DS from 'ember-data';
-import { computed } from '@ember/object';
-import bbox from '@turf/bbox';
-import Bookmarkable from './bookmark';
+import CartoGeojsonFeature from './carto-geojson-feature';
 
-const { attr } = DS;
-
-export default class MyComponent extends Bookmarkable {
-  @attr()
-  geometry;
-
-  @attr('string')
-  splbl;
-
-  @attr('string')
-  spname;
-
-  @computed('geometry')
-  get bounds() {
-    const geometry = this.get('geometry');
-    return bbox(geometry);
-  }
-}
+export default class SpecialPurposeSubdistrict extends CartoGeojsonFeature {}

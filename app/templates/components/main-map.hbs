@@ -51,7 +51,9 @@
     {{#mapbox-gl-source
       map=map.instance
       sourceId='selected-lot'
-      options=selectedLotSource as |source|}}
+      options=selectedLotSource
+      as |source|
+    }}
       {{source.layer
         layer=selectedFillLayer
         before='place_other'}}

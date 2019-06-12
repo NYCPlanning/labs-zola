@@ -1,8 +1,11 @@
 import fetch from 'fetch';
 import { Promise } from 'rsvp';
+import config from 'labs-zola/config/environment';
 
-const cartoUsername = 'planninglabs';
-const cartoDomain = `${cartoUsername}.carto.com`;
+const { carto } = config;
+
+const cartoUsername = carto.username;
+const cartoDomain = carto.domain;
 
 
 const buildTemplate = (cartoResponse, type) => { // eslint-disable-line
@@ -16,10 +19,12 @@ const buildTemplate = (cartoResponse, type) => { // eslint-disable-line
 };
 
 const buildSqlUrl = (cleanedQuery, type = 'json') => { // eslint-disable-line
-  return `https://${cartoDomain}/api/v2/sql?q=${cleanedQuery}&format=${type}`;
+  return `${cartoDomain}/api/v2/sql?q=${cleanedQuery}&format=${type}`;
 };
 
-const carto = {
+export { buildSqlUrl };
+
+export default {
   SQL(query, type = 'json') {
     const cleanedQuery = query.replace('\n', '');
     const url = buildSqlUrl(cleanedQuery, type);
@@ -57,7 +62,7 @@ const carto = {
     };
 
     return new Promise((resolve, reject) => {
-      fetch(`https://${cartoDomain}/api/v1/map`, {
+      fetch(`${cartoDomain}/api/v1/map`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -72,6 +77,3 @@ const carto = {
     });
   },
 };
-
-export { buildSqlUrl };
-export default carto;
