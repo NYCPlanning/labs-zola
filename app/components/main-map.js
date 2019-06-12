@@ -239,23 +239,23 @@ export default class MainMap extends Component {
         }
 
         if (ulurpno) {
-          this.router.transitionTo('layer-group', 'zma', ulurpno, { queryParams: { search: false } });
+          this.router.transitionTo('map-feature.zma', 'zma', ulurpno, { queryParams: { search: false } });
         }
 
         if (zonedist) {
-          this.router.transitionTo('layer-group', 'zoning-district', zonedist, { queryParams: { search: false } });
+          this.router.transitionTo('map-feature.zoning-district', 'zoning-district', zonedist, { queryParams: { search: false } });
         }
 
         if (sdlbl) {
-          this.router.transitionTo('layer-group', 'special-purpose-district', cartodb_id, { queryParams: { search: false } });
+          this.router.transitionTo('map-feature.special-purpose-district', 'special-purpose-district', cartodb_id, { queryParams: { search: false } });
         }
 
         if (splbl) {
-          this.router.transitionTo('layer-group', 'special-purpose-subdistrict', cartodb_id, { queryParams: { search: false } });
+          this.router.transitionTo('map-feature.special-purpose-subdistricts', 'special-purpose-subdistricts', cartodb_id, { queryParams: { search: false } });
         }
 
         if (overlay) {
-          this.router.transitionTo('layer-group', 'commercial-overlay', overlay, { queryParams: { search: false } });
+          this.router.transitionTo('map-feature.commercial-overlay', 'commercial-overlay', overlay, { queryParams: { search: false } });
         }
 
         if (ceqr_num) { // eslint-disable-line

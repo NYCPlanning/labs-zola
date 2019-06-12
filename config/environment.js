@@ -26,6 +26,11 @@ module.exports = function(environment) {
       ],
     },
 
+    carto: {
+      username: 'planninglabs',
+      domain: 'https://planninglabs.carto.com',
+    },
+
     fontawesome: {
       icons: {
         'free-regular-svg-icons': [

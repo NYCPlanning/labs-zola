@@ -31,9 +31,11 @@
           print=print
         }}
 
+{{!-- TODO: Relink these --}}
+{{!--           selectedZoning=selectedZoning
+          selectedOverlays=selectedOverlays --}}
         {{layer-palette
-          selectedZoning=selectedZoning
-          selectedOverlays=selectedOverlays
+
           layerGroups=model.layerGroupsObject
           isDefault=isDefault
           resetQueryParams=(action 'resetQueryParams')}}

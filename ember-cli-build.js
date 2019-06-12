@@ -13,6 +13,7 @@ module.exports = (defaults) => {
         'numeral-format',
         'to-title-case',
         'media',
+        'query',
       ],
       enabled: true,
     },

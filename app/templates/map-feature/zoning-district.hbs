@@ -1,0 +1,4 @@
+{{#carto-data-provider cartoQuery=model.cartoQuery as |mapFeature|}} 
+  {{layer-record-views/zoning-district
+    model=(hash value=mapFeature.properties)}}  
+{{/carto-data-provider}}

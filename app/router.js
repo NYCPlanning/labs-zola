@@ -15,14 +15,17 @@ Router.map(function () { // eslint-disable-line
   this.route('bbox', { path: 'bbox/:west/:south/:east/:north' });
   this.route('bbl', { path: 'bbl/:bbl' });
 
-  // generic route for "second class" layer group views
-  this.route('layer-group', { path: '/:type/:id' });
-
   // regular metadata routes
   this.route('about');
   this.route('bookmarks');
   this.route('data');
   this.route('features');
+
+  // generic route for "second class" layer group views
+  this.route('map-feature', { path: '/:type' }, function() {
+    this.route('zoning-district', { path: '/:id' });
+    this.route('commercial-overlay');
+  });
 });
 
 export default Router;
