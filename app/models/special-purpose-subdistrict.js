@@ -1,11 +1,8 @@
 import DS from 'ember-data';
-import { computed } from '@ember/object';
-import bbox from '@turf/bbox';
-import Bookmarkable from './bookmark';
 
 const { attr } = DS;
 
-export default class MyComponent extends Bookmarkable {
+export default class SpecialPurposeSubdistrict extends DS.Model {
   @attr()
   geometry;
 
@@ -14,10 +11,4 @@ export default class MyComponent extends Bookmarkable {
 
   @attr('string')
   spname;
-
-  @computed('geometry')
-  get bounds() {
-    const geometry = this.get('geometry');
-    return bbox(geometry);
-  }
 }
