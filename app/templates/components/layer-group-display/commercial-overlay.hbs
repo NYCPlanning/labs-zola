@@ -1,28 +1,26 @@
-<div class="content-close-button-container">{{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}</div>
+<label class="header-type">
+  Commercial Overlay <span class="medium-gray">|</span> {{model.value.id}}
+</label>
 
-<div class="content-area cell large-5 large-cell-block-y xxlarge-4">
+<h1 class="header-large">
+  {{model.value.id}}
+</h1>
 
-  {{#if model.isRunning}}
-    {{#content-placeholders as |placeholder|}}
-      {{placeholder.text lines=1}}
-      {{placeholder.nav}}
-      {{placeholder.text lines=10}}
-    {{/content-placeholders}}
-  {{else}}
-    <label class="header-label clearfix">
-      Commercial Overlay <span class="medium-gray">|</span> {{model.value.id}}
-    </label>
+<p>A commercial overlay is a C1 or C2 district mapped within residential districts to serve local retail needs (grocery stores, dry cleaners, restaurants, for example). Commercial overlay districts, designated by the letters C1-1 through C1-5 and C2-1 through C2-5, are shown on the zoning maps as a pattern superimposed on a residential district.</p>
 
-    <h1 class="content-header">
-      <span class="spd-header">{{model.value.id}}</span>
-    </h1>
+<p>Unless otherwise specified on the zoning maps, the depth of C1 overlay districts, measured from the nearest street, is 200 feet for C1-1 districts, 150 feet for C1-2, C1-3, C2-1, C2-2 and C2-3 districts, and 100 feet for C1-4, C1-5, C2-4 and C2-5 districts. When mapped on the long dimension of a block, commercial overlays extend to the midpoint of that block.</p>
 
-    <p>A commercial overlay is a C1 or C2 district mapped within residential districts to serve local retail needs (grocery stores, dry cleaners, restaurants, for example). Commercial overlay districts, designated by the letters C1-1 through C1-5 and C2-1 through C2-5, are shown on the zoning maps as a pattern superimposed on a residential district.</p>
+  <p>
+    <a
+      href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page"
+      target="_blank"
+    >
+      {{fa-icon 'external-link-alt'}} Learn more&hellip;</a></p>
+  <button {{action "fitBounds"}}
+    class="button tiny hollow"
+  >
+    Fit map to all {{model.value.id}} districts
+  </button>
 
-    <p>Unless otherwise specified on the zoning maps, the depth of C1 overlay districts, measured from the nearest street, is 200 feet for C1-1 districts, 150 feet for C1-2, C1-3, C2-1, C2-2 and C2-3 districts, and 100 feet for C1-4, C1-5, C2-4 and C2-5 districts. When mapped on the long dimension of a block, commercial overlays extend to the midpoint of that block.</p>
-    <p><a href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page" target="_blank">{{fa-icon 'external-link-alt'}} Learn More</a></p>
-    <button {{action "fitBounds"}} class="button tiny hollow">Fit map to all {{model.value.id}} districts</button>
-  {{/if}}
-</div>
 
 {{outlet}}

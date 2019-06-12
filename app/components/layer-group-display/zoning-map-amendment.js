@@ -1,7 +1,27 @@
 import Component from '@ember/component';
-import Bookmarkable from 'labs-zola/mixins/bookmarkable';
+import bbox from '@turf/bbox';
+import { computed } from '@embert/object';
+import { inject as service } from '@ember/service';
 
-const BookmarkableComponent = Component.extend(Bookmarkable);
+export default class LayerGroupDisplayZoningMapAmendmentComponent extends Component {
+  @service
+  mainMap;
 
-export default class LayerGroupDisplayZmaComponent extends BookmarkableComponent {
+  @computed('model.value.effective')
+  get effectiveDisplay() {
+    return import('moment').then(({ default: moment }) => {
+      const effective = this.get('model.value.effective');
+
+      if (effective) {
+        return moment(effective).utc().format('LL');
+      }
+      return 'To be determined';
+    });
+  }
+
+  @computed('model.value.geometry')
+  get bounds() {
+    const geometry = this.get('model.value.geometry');
+    return bbox(geometry);
+  }
 }

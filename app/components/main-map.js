@@ -251,7 +251,7 @@ export default class MainMap extends Component {
         }
 
         if (splbl) {
-          this.router.transitionTo('layer-group', 'special-purpose-subdistricts', cartodb_id, { queryParams: { search: false } });
+          this.router.transitionTo('layer-group', 'special-purpose-subdistrict', cartodb_id, { queryParams: { search: false } });
         }
 
         if (overlay) {
