@@ -1,10 +1,6 @@
 import DS from 'ember-data';
 import { buildSqlUrl } from '../utils/carto';
 
-// const SQL = function(id) {
-//   return `SELECT *, overlay as id FROM commercial_overlays WHERE overlay='${id}'`;
-// };
-
 const SQL = function(id) {
   return `SELECT * FROM (
     SELECT ST_CollectionExtract(ST_Collect(the_geom),3) as the_geom, overlay as id, overlay FROM commercial_overlays GROUP BY overlay

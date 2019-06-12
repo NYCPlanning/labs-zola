@@ -3,27 +3,37 @@ import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class BookmarkButton extends Component {
-  bookmark = null;
+  bookmarkableModel = null;
 
   @service
-  metrics;
+  store;
 
-  @computed('bookmark.bookmark')
+  // we don't know what kind of model this is
+  // we only know that it's bookmarkable
+  @computed('bookmarkableModel.bookmark')
   get saved() {
-    const bookmark = this.get('bookmark.bookmark');
-    return !!bookmark;
+    return this.bookmarkableModel.bookmark;
   }
 
-  // @trackEvent
   @action
   async toggleSaved() {
-    const { bookmark } = this;
+    const { bookmark } = this.bookmarkableModel;
     const resolvedBookmark = await bookmark;
+
     if (resolvedBookmark) {
       resolvedBookmark.deleteRecord();
       resolvedBookmark.save();
     } else {
       this.createBookmark();
     }
+  }
+
+  @action
+  async createBookmark() {
+    const { bookmarkableModel } = this;
+
+    await this.store.createRecord('bookmark', {
+      bookmark: bookmarkableModel,
+    }).save();
   }
 }

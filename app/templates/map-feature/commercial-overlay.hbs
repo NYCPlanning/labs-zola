@@ -1,0 +1,13 @@
+{{#carto-data-provider
+  modelId=model.id
+  modelName='commercial-overlay'
+  as |commercialOverlay|
+}}
+  {{mapbox/map-feature-renderer
+    model=commercialOverlay
+    shouldFitBounds=model.search
+  }}
+
+  {{layer-record-views/commercial-overlay
+    model=commercialOverlay}}
+{{/carto-data-provider}}

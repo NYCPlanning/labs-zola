@@ -26,6 +26,11 @@ module.exports = function(environment) {
       ],
     },
 
+    carto: {
+      username: 'planninglabs',
+      domain: 'https://planninglabs.carto.com',
+    },
+
     fontawesome: {
       icons: {
         'free-regular-svg-icons': [
@@ -115,6 +120,19 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
+
+    ENV['labs-search'] = {
+      host: 'https://search-api.planninglabs.nyc',
+      helpers: [
+        'geosearch',
+        'bbl',
+        'neighborhood',
+        'zoning-district',
+        'zoning-map-amendment',
+        'special-purpose-district',
+        'commercial-overlay',
+      ],
+    };
 
     ENV.host = '';
   }

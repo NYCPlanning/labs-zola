@@ -1,25 +1,3 @@
-import { assign } from '@ember/polyfills';
-import DS from 'ember-data';
+import CartoGeojsonFeature from './carto-geojson-feature';
 
-export default DS.JSONSerializer.extend({
-  normalizeFindRecordResponse(store, primaryModelClass, payload, queryId, requestType) {
-    let newPayload = payload;
-    let newQueryId = queryId;
-
-    if (payload.features) {
-      const [feature] = payload.features;
-
-      const { id } = feature.properties;
-      newQueryId = id;
-
-      const { geometry } = feature;
-      newPayload = assign(feature.properties, { id, geometry });
-    }
-
-    return this._super(store,
-      primaryModelClass,
-      newPayload,
-      newQueryId,
-      requestType);
-  },
-});
+export default class ApplicationSerializer extends CartoGeojsonFeature {}

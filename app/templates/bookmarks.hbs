@@ -1,14 +1,27 @@
-<div class="content-close-button-container">{{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}</div>
+<div
+  class="content-close-button-container"
+>
+  {{#link-to 'index'
+    classNames='close-button'
+  }}
+    <span aria-hidden="true">
+      &times;
+    </span>
+  {{/link-to}}
+</div>
 
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4 bookmarks">
-
   {{#if (await bookmarksSettled)}}
     {{#each-in (group-by 'recordType.content' model) as |key values|}}
       {{#if (eq key 'lot')}}
         <h3>Tax Lots</h3>
         <ul class="no-bullet">
-          {{#each values as |lot|}}
-            {{lot-bookmark-item lot=lot deleteBookmark=(action 'deleteBookmark')}}
+          {{#each values as |bookmark|}}
+            {{lot-bookmark-item
+              data-test-bookmark=bookmark.id
+              lot=bookmark.bookmark
+              deleteBookmark=(action 'deleteBookmark' bookmark)
+            }}
           {{/each}}
         </ul>
         <p class="text-small dark-gray" style="padding-left:1.5rem;">
@@ -58,18 +71,6 @@
                 <span class="dark-gray">{{spd.bookmark.splbl}}</span>
               {{/link-to}}
               <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' spd}}>&times;</button>
-            </li>
-          {{/each}}
-        </ul>
-      {{else}}
-        <h3>Map Pins</h3>
-        <ul class="no-bullet">
-          {{#each values as |pin|}}
-            <li {{action 'flyTo' pin.coordinates}} class="map-bookmark">
-              <span class="map-bookmark link">
-                {{fa-icon "map-pin"}} {{pin.address}}
-              </span>
-              <button class="float-right lu-red delete-bookmark-button" {{action 'deleteBookmark' pin}}>&times;</button>
             </li>
           {{/each}}
         </ul>

@@ -11,9 +11,10 @@ export default Mixin.create({
     this.setSelectedTask.perform(taskInstance);
   },
 
-  setupController(controller, { taskInstance }) {
-    this.waitToFitBounds.perform(taskInstance);
-    this._super(controller, taskInstance);
+  setupController(controller, model) {
+    this.waitToFitBounds.perform(model.taskInstance);
+
+    this._super(controller, model);
   },
 
   setSelectedTask: task(function* (taskInstance) {
@@ -21,6 +22,7 @@ export default Mixin.create({
     this.set('mainMap.selected', model);
   }).restartable().cancelOn('deactivate'),
 
+  // waiting for information it doesn't yet have
   waitToFitBounds: task(function* (taskInstance) {
     yield taskInstance;
     yield this.setSelectedTask;
