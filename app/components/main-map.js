@@ -239,23 +239,23 @@ export default class MainMap extends Component {
         }
 
         if (ulurpno) {
-          this.router.transitionTo('zma', ulurpno, { queryParams: { search: false } });
+          this.router.transitionTo('layer-group', 'zma', ulurpno, { queryParams: { search: false } });
         }
 
         if (zonedist) {
-          this.router.transitionTo('zoning-district', zonedist, { queryParams: { search: false } });
+          this.router.transitionTo('layer-group', 'zoning-district', zonedist, { queryParams: { search: false } });
         }
 
         if (sdlbl) {
-          this.router.transitionTo('special-purpose-district', cartodb_id, { queryParams: { search: false } });
+          this.router.transitionTo('layer-group', 'special-purpose-district', cartodb_id, { queryParams: { search: false } });
         }
 
         if (splbl) {
-          this.router.transitionTo('special-purpose-subdistricts', cartodb_id, { queryParams: { search: false } });
+          this.router.transitionTo('layer-group', 'special-purpose-subdistricts', cartodb_id, { queryParams: { search: false } });
         }
 
         if (overlay) {
-          this.router.transitionTo('commercial-overlay', overlay, { queryParams: { search: false } });
+          this.router.transitionTo('layer-group', 'commercial-overlay', overlay, { queryParams: { search: false } });
         }
 
         if (ceqr_num) { // eslint-disable-line

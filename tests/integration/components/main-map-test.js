@@ -372,8 +372,8 @@ module('Integration | Component | main-map', function(hooks) {
         ulurpno: '1',
       };
 
-      this.transitionTo = function(route) {
-        assert.equal(route, 'zma');
+      this.transitionTo = function(route, type) {
+        assert.equal(type, 'zma');
       };
 
       await render(hbs`
@@ -394,8 +394,8 @@ module('Integration | Component | main-map', function(hooks) {
         zonedist: '1',
       };
 
-      this.transitionTo = function(route) {
-        assert.equal(route, 'zoning-district');
+      this.transitionTo = function(route, type) {
+        assert.equal(type, 'zoning-district');
       };
 
       await render(hbs`
@@ -416,8 +416,8 @@ module('Integration | Component | main-map', function(hooks) {
         sdlbl: '1',
       };
 
-      this.transitionTo = function(route) {
-        assert.equal(route, 'special-purpose-district');
+      this.transitionTo = function(route, type) {
+        assert.equal(type, 'special-purpose-district');
       };
 
       await render(hbs`
@@ -438,8 +438,8 @@ module('Integration | Component | main-map', function(hooks) {
         splbl: '1',
       };
 
-      this.transitionTo = function(route) {
-        assert.equal(route, 'special-purpose-subdistricts');
+      this.transitionTo = function(route, type) {
+        assert.equal(type, 'special-purpose-subdistricts');
       };
 
       await render(hbs`
@@ -460,8 +460,8 @@ module('Integration | Component | main-map', function(hooks) {
         overlay: '1',
       };
 
-      this.transitionTo = function(route) {
-        assert.equal(route, 'commercial-overlay');
+      this.transitionTo = function(route, type) {
+        assert.equal(type, 'commercial-overlay');
       };
 
       await render(hbs`

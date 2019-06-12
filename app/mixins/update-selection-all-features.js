@@ -15,9 +15,9 @@ export default Mixin.create({
       this.waitToFitBounds.perform(taskInstance);
     }
   },
-  setupController(controller, { taskInstance }) {
-    this.setSelectedTask.perform(taskInstance);
-    this._super(controller, taskInstance);
+  setupController(controller, hash) {
+    this.setSelectedTask.perform(hash.taskInstance);
+    this._super(controller, hash);
   },
 
   setSelectedTask: task(function* (taskInstance) {

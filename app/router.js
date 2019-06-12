@@ -8,14 +8,17 @@ const Router = EmberRouter.extend(trackPage, {
 });
 
 Router.map(function () { // eslint-disable-line
+  // first class layer group routes
   this.route('lot', { path: 'lot/:boro/:block/:lot' });
+
+  // supplementary navigation routes
   this.route('bbox', { path: 'bbox/:west/:south/:east/:north' });
-  this.route('zma', { path: 'zma/:ulurpno' });
   this.route('bbl', { path: 'bbl/:bbl' });
-  this.route('zoning-district', { path: 'zoning-district/:zonedist' });
-  this.route('special-purpose-district', { path: 'special-purpose-district/:id' });
-  this.route('special-purpose-subdistricts', { path: 'special-purpose-subdistrict/:id' });
-  this.route('commercial-overlay', { path: 'commercial-overlay/:id' });
+
+  // generic route for "second class" layer group views
+  this.route('layer-group', { path: '/:type/:id' });
+
+  // regular metadata routes
   this.route('about');
   this.route('bookmarks');
   this.route('data');
