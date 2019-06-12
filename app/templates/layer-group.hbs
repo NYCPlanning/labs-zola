@@ -12,8 +12,11 @@
   {{/link-to}}
 </div>
 
-{{component
-  (concat 'layer-group-display/' model.layerGroupType)
-  model=model.taskInstance
-  class="content-area cell large-5 large-cell-block-y xxlarge-4"
-}}
+<div class="content-area cell large-5 large-cell-block-y xxlarge-4">
+  {{#if model.taskInstance.value}}
+    {{component
+      (concat 'layer-group-display/' model.layerGroupType)
+      model=model.taskInstance
+    }}
+  {{/if}}
+</div>
