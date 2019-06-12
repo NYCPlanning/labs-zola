@@ -32,10 +32,9 @@
         }}
 
 {{!-- TODO: Relink these --}}
-{{!--           selectedZoning=selectedZoning
-          selectedOverlays=selectedOverlays --}}
         {{layer-palette
-
+          selectedZoning=this.selectedZoning
+          selectedOverlays=this.selectedOverlays
           layerGroups=model.layerGroupsObject
           isDefault=isDefault
           resetQueryParams=(action 'resetQueryParams')}}
