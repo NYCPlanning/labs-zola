@@ -7,7 +7,7 @@ const Router = EmberRouter.extend(trackPage, {
   rootURL: config.rootURL,
 });
 
-Router.map(function () { // eslint-disable-line
+Router.map(function () {// eslint-disable-line
   // first class layer group routes
   this.route('lot', { path: 'lot/:boro/:block/:lot' });
 
@@ -22,10 +22,15 @@ Router.map(function () { // eslint-disable-line
   this.route('features');
 
   // generic route for "second class" layer group views
-  this.route('map-feature', { path: '/:type' }, function() {
-    this.route('zoning-district', { path: '/:id' });
-    this.route('commercial-overlay');
+  this.route('map-feature', { path: '/l' }, function() {
+    this.route('zoning-district', { path: '/zoning-district/:id' });
+    this.route('commercial-overlay', { path: '/commercial-overlay/:id' });
+    this.route('special-purpose-district', { path: '/special-purpose-district/:id' });
+    this.route('special-purpose-subdistrict', { path: '/special-purpose-subdistrict/:id' });
+    this.route('zoning-map-amendment', { path: '/zma/:id' });
   });
+
+  this.route('legacy-redirects', { path: '/:type/:option_a' });
 });
 
 export default Router;

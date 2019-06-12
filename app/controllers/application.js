@@ -48,8 +48,7 @@ export const mapQueryParams = new QueryParams(
   ),
 );
 
-// TODO renable these fucking worthless QPs mapQueryParams.Mixin
-export default class ApplicationController extends Controller.extend() {
+export default class ApplicationController extends Controller.extend(mapQueryParams.Mixin) {
   @service('layerGroups')
   layerGroupService;
 
