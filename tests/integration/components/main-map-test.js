@@ -433,13 +433,13 @@ module('Integration | Component | main-map', function(hooks) {
       await this.map.events.click();
     });
 
-    test('it routes to special-purpose-subdistricts', async function(assert) {
+    test('it routes to special-purpose-subdistrict', async function(assert) {
       this.map.features[0].properties = {
         splbl: '1',
       };
 
       this.transitionTo = function(route, type) {
-        assert.equal(type, 'special-purpose-subdistricts');
+        assert.equal(type, 'special-purpose-subdistrict');
       };
 
       await render(hbs`
