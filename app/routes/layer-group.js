@@ -13,12 +13,11 @@ const normalizeTypes = type => layerGroupTypeMap[type] || type;
 export default class LayerGroupRoute extends mappableRoute {
   model(params) {
     const { type: layerGroupType, id } = params;
-
     const normalizedLayerGroupType = normalizeTypes(layerGroupType);
 
     return {
       layerGroupType: normalizedLayerGroupType,
-      taskInstance: this.store.findRecord(layerGroupType, id),
+      taskInstance: this.store.findRecord(normalizedLayerGroupType, id),
     };
   }
 }
