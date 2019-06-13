@@ -71,10 +71,9 @@ export default Route.extend({
 
     const { meta } = layerGroups;
 
-    const bookmarks = await this.store.findAll('bookmark').then((models) => {
-      models.invoke('get', 'bookmark');
-      return models;
-    });
+    const bookmarks = await this.store.findAll('bookmark');
+
+    await bookmarks.invoke('get', 'bookmark');
 
     return {
       layerGroups,

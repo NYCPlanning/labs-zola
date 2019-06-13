@@ -1,9 +1,9 @@
 <li class="lot-bookmark">
   <span class="icon tax-lot"></span>
-    {{#link-to 'lot' lot.bookmark.boro lot.bookmark.block lot.bookmark.lot}}
-      {{lot.bookmark.address}}
+    {{#link-to 'lot' lot.properties.boro lot.properties.block lot.properties.lot}}
+      {{lot.properties.address}}
       <span class="dark-gray">
-        {{lot.bookmark.bbl}}
+        {{lot.properties.bbl}}
       </span>
     {{/link-to}}
   <button class="float-right lu-red delete-bookmark-button" {{action '_deleteBookmark' lot}}>

@@ -3,14 +3,13 @@
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4 bookmarks">
 
   {{#if (await bookmarksSettled)}}
-    {{log bookmarksSettled}}
     {{#each-in (group-by 'recordType.content' model) as |key values|}}
       {{#if (eq key 'lot')}}
         <h3>Tax Lots</h3>
         <ul class="no-bullet">
           {{#each values as |lot|}}
             {{lot-bookmark-item
-              lot=lot.properties
+              lot=lot.bookmark
               deleteBookmark=(action 'deleteBookmark')
             }}
           {{/each}}
