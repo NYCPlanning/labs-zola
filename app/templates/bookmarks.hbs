@@ -1,16 +1,16 @@
 <div class="content-close-button-container">{{#link-to 'index' classNames='close-button'}}<span aria-hidden="true">&times;</span>{{/link-to}}</div>
 
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4 bookmarks">
-
   {{#if (await bookmarksSettled)}}
     {{#each-in (group-by 'recordType.content' model) as |key values|}}
       {{#if (eq key 'lot')}}
         <h3>Tax Lots</h3>
         <ul class="no-bullet">
-          {{#each values as |lot|}}
+          {{#each values as |bookmark|}}
             {{lot-bookmark-item
-              lot=lot.bookmark
-              deleteBookmark=(action 'deleteBookmark')
+              data-test-bookmark=bookmark.id
+              lot=bookmark.bookmark
+              deleteBookmark=(action 'deleteBookmark' bookmark)
             }}
           {{/each}}
         </ul>

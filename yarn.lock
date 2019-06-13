@@ -5147,7 +5147,7 @@ ember-load-initializers@^2.0.0:
   dependencies:
     ember-cli-babel "^7.0.0"
 
-ember-local-storage@^1.4.0:
+ember-local-storage@1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/ember-local-storage/-/ember-local-storage-1.7.0.tgz#c0309a2f8f9369ee94f9370e4d0f4d7aa50d8863"
   dependencies:

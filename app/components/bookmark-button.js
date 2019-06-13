@@ -11,10 +11,11 @@ export default class BookmarkButton extends Component {
   @service
   store;
 
+  // we don't know what kind of model this is
+  // we only know that it's bookmarkable
   @computed('bookmarkableModel.bookmark')
   get saved() {
-    const bookmark = this.get('bookmarkableModel.bookmark');
-    return !!bookmark;
+    return this.bookmarkableModel.bookmark;
   }
 
   @action
@@ -30,16 +31,11 @@ export default class BookmarkButton extends Component {
   }
 
   @action
-  createBookmark() {
+  async createBookmark() {
     const { bookmarkableModel } = this;
-    const { bookmarkType } = this;
 
-    const bookmarkedRecord = this.store.createRecord(bookmarkType, {
-      properties: bookmarkableModel.properties,
-    });
-
-    this.store.createRecord('bookmark', {
-      bookmark: bookmarkedRecord,
+    await this.store.createRecord('bookmark', {
+      bookmark: bookmarkableModel,
     }).save();
   }
 }

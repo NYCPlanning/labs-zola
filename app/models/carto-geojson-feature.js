@@ -10,7 +10,7 @@ export default class GeoJsonFeatureModel extends Bookmarkable {
   @attr()
   properties;
 
-  @attr({
+  @attr('string', {
     defaultValue: 'Polygon',
   })
   type;

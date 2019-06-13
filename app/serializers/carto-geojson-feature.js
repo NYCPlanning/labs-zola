@@ -14,7 +14,6 @@ export default class GeoJsonFeatureSerializer extends DS.JSONSerializer {
 
       const { geometry } = feature;
       newPayload = assign(feature, { id, geometry });
-      console.log(newPayload);
     }
 
     return super.normalizeFindRecordResponse(

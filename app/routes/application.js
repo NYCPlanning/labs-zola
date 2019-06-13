@@ -104,4 +104,10 @@ export default Route.extend({
 
     this.get('layerGroupService').initializeObservers(layerGroups, controller);
   },
+
+  actions: {
+    error(e) {
+      throw e;
+    },
+  },
 });

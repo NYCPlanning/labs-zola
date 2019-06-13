@@ -16,6 +16,7 @@ Ember.MODEL_FACTORY_INJECTIONS = true;
 
 loadInitializers(App, config.modulePrefix);
 
+// TODO: why is this here?
 DS.Model.reopen(TaskModelMixin);
 
 export default App;
