@@ -4,6 +4,7 @@ import {
   currentURL,
   find,
   waitUntil,
+  pauseTest,
 } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
@@ -11,6 +12,10 @@ import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import resetStorages from 'ember-local-storage/test-support/reset-storage';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
+
+const localStorageSetStringified = function(key, jsonString) {
+  window.localStorage.setItem(key, JSON.stringify(jsonString));
+};
 
 module('Acceptance | bookmarks', function(hooks) {
   setupApplicationTest(hooks);
@@ -69,6 +74,27 @@ module('Acceptance | bookmarks', function(hooks) {
   });
 
   test('it displays a saved bookmark', async function(assert) {
+    // load storage with dummy data
+    localStorageSetStringified('bookmarks-test', {
+      id: 'test',
+      attributes: { address: null },
+      relationships: {
+        bookmark: {
+          data: {
+            type: 'lots',
+            id: '3012060069',
+          },
+        },
+      },
+      type: 'bookmarks',
+    });
+
+    localStorageSetStringified('index-bookmarks', ['bookmarks-test']);
+
+    await visit('/bookmarks');
+
+    await pauseTest();
+
     assert.ok(false);
   });
 });

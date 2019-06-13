@@ -1,3 +1,3 @@
 import Bookmark from './bookmark';
 
-export default Bookmark;
+export default class BookmarkableLot extends Bookmark {}

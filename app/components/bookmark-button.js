@@ -3,7 +3,7 @@ import { action, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class BookmarkButton extends Component {
-  bookmark = null;
+  bookmarkableModel = null;
 
   // Used to group the bookmarks in display
   bookmarkType = '';
@@ -11,15 +11,15 @@ export default class BookmarkButton extends Component {
   @service
   store;
 
-  @computed('bookmark.bookmark')
+  @computed('bookmarkableModel.bookmark')
   get saved() {
-    const bookmark = this.get('bookmark.bookmark');
+    const bookmark = this.get('bookmarkableModel.bookmark');
     return !!bookmark;
   }
 
   @action
   async toggleSaved() {
-    const { bookmark } = this.bookmark;
+    const { bookmark } = this.bookmarkableModel;
     const resolvedBookmark = await bookmark;
     if (resolvedBookmark) {
       resolvedBookmark.deleteRecord();
@@ -31,12 +31,15 @@ export default class BookmarkButton extends Component {
 
   @action
   createBookmark() {
-    const { bookmark } = this;
+    const { bookmarkableModel } = this;
     const { bookmarkType } = this;
 
+    const bookmarkedRecord = this.store.createRecord(bookmarkType, {
+      properties: bookmarkableModel.properties,
+    });
+
     this.store.createRecord('bookmark', {
-      bookmark,
-      recordType: bookmarkType,
+      bookmark: bookmarkedRecord,
     }).save();
   }
 }

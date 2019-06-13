@@ -15,7 +15,19 @@ export default class BookmarkModel extends Model {
 
   @attr() coordinates;
 
-  @attr({
-    defaultValue: 'address',
-  }) recordType;
+  @attr() properties;
+
+  @computed('bookmark')
+  get recordType() {
+    const bookmark = this.get('bookmark');
+    return PromiseObject.create({
+      promise: bookmark.then((bmark) => {
+        if (bmark) {
+          return bmark.get('constructor.modelName');
+        }
+
+        return 'address';
+      }),
+    });
+  }
 }
