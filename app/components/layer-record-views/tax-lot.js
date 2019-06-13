@@ -313,105 +313,105 @@ const GeometricComponent = Component.extend(updateSelectionSingleFeatureMixin);
 export default class TaxLotComponent extends GeometricComponent {
   model = {};
 
-  @alias('model.value.borocode') boro;
+  @alias('model.properties.borocode') boro;
 
-  @computed('model.value.geometry')
+  @computed('model.properties.geometry')
   get bounds() {
-    const geometry = this.model.value.get('model.value.geometry');
+    const geometry = this.model.properties.get('model.properties.geometry');
 
     return bbox(geometry);
   }
 
-  @computed('model.value.bldgclass')
+  @computed('model.properties.bldgclass')
   get bldgclassname() {
-    return bldgclassLookup[this.model.value.bldgclass];
+    return bldgclassLookup[this.model.properties.bldgclass];
   }
 
-  @computed('model.value.cd')
+  @computed('model.properties.cd')
   get borocode() {
-    const borocd = this.model.value.cd;
+    const borocd = this.model.properties.cd;
     return borocd.substring(0, 1);
   }
 
-  @computed('model.value.borough')
+  @computed('model.properties.borough')
   get boroname() {
-    return boroughLookup[this.model.value.borough];
+    return boroughLookup[this.model.properties.borough];
   }
 
-  @computed('model.value.cd')
+  @computed('model.properties.cd')
   get cdName() {
-    const borocd = this.model.value.cd;
+    const borocd = this.model.properties.cd;
     const boro = borocd.substring(0, 1);
     const cd = parseInt(borocd.substring(1, 3), 10).toString();
     return `${boroLookup[boro]} Community District ${cd}`;
   }
 
-  @computed('model.value.cd')
+  @computed('model.properties.cd')
   get cdURLSegment() {
-    const borocd = this.model.value.cd;
+    const borocd = this.model.properties.cd;
     const boro = borocd.substring(0, 1);
     const cleanBorough = boroLookup[boro].toLowerCase().replace(/\s/g, '-');
     const cd = parseInt(borocd.substring(1, 3), 10).toString();
     return `${cleanBorough}/${cd}`;
   }
 
-  @computed('model.value.landuse')
+  @computed('model.properties.landuse')
   get landusename() {
-    return landuseLookup[this.model.value.landuse];
+    return landuseLookup[this.model.properties.landuse];
   }
 
-  @computed('model.value.ownertype')
+  @computed('model.properties.ownertype')
   get ownertypename() {
-    return ownertypeLookup[this.model.value.ownertype];
+    return ownertypeLookup[this.model.properties.ownertype];
   }
 
-  @computed('model.value.address')
+  @computed('model.properties.address')
   get housenum() {
-    const match = this.model.value.address.match(/([0-9-]*)\s[0-9A-Za-z\s]*/);
+    const match = this.model.properties.address.match(/([0-9-]*)\s[0-9A-Za-z\s]*/);
     return match ? match[1] : '';
   }
 
-  @computed('model.value.address')
+  @computed('model.properties.address')
   get street() {
-    const match = this.model.value.address.match(/[0-9-]*\s([0-9A-Za-z\s]*)/);
+    const match = this.model.properties.address.match(/[0-9-]*\s([0-9A-Za-z\s]*)/);
     return match ? match[1] : '';
   }
 
-  @computed('model.value.zonemap')
+  @computed('model.properties.zonemap')
   get paddedZonemap() {
-    const zonemap = this.get('model.value.zonemap');
+    const zonemap = this.get('model.properties.zonemap');
     return (`0${zonemap}`).slice(-3);
   }
 
-  @computed('model.value.zonedist1')
+  @computed('model.properties.zonedist1')
   get primaryzone1() {
-    const zonedist = this.get('model.value.zonedist1');
+    const zonedist = this.get('model.properties.zonedist1');
     return getPrimaryZone(zonedist);
   }
 
-  @computed('model.value.zonedist2')
+  @computed('model.properties.zonedist2')
   get primaryzone2() {
-    const zonedist = this.get('model.value.zonedist2');
+    const zonedist = this.get('model.properties.zonedist2');
     return getPrimaryZone(zonedist);
   }
 
-  @computed('model.value.zonedist3')
+  @computed('model.properties.zonedist3')
   get primaryzone3() {
-    const zonedist = this.get('model.value.zonedist3');
+    const zonedist = this.get('model.properties.zonedist3');
     return getPrimaryZone(zonedist);
   }
 
-  @computed('model.value.zonedist4')
+  @computed('model.properties.zonedist4')
   get primaryzone4() {
-    const zonedist = this.get('model.value.zonedist4');
+    const zonedist = this.get('model.properties.zonedist4');
     return getPrimaryZone(zonedist);
   }
 
-  @computed('model.value.spdist1', 'model.value.spdist2', 'model.value.spdist3')
+  @computed('model.properties.spdist1', 'model.properties.spdist2', 'model.properties.spdist3')
   get parentSpecialPurposeDistricts() {
-    const spdist1 = this.get('model.value.spdist1');
-    const spdist2 = this.get('model.value.spdist2');
-    const spdist3 = this.get('model.value.spdist3');
+    const spdist1 = this.get('model.properties.spdist1');
+    const spdist2 = this.get('model.properties.spdist2');
+    const spdist3 = this.get('model.properties.spdist3');
 
     return carto.SQL(SQL('special_purpose_districts', spdist1, spdist2, spdist3))
       .then(response => response.map(

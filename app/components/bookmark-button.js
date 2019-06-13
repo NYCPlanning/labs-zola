@@ -5,6 +5,9 @@ import { inject as service } from '@ember/service';
 export default class BookmarkButton extends Component {
   bookmark = null;
 
+  // Used to group the bookmarks in display
+  bookmarkType = '';
+
   @service
   store;
 
@@ -16,7 +19,7 @@ export default class BookmarkButton extends Component {
 
   @action
   async toggleSaved() {
-    const { bookmark } = this;
+    const { bookmark } = this.bookmark;
     const resolvedBookmark = await bookmark;
     if (resolvedBookmark) {
       resolvedBookmark.deleteRecord();
@@ -28,10 +31,12 @@ export default class BookmarkButton extends Component {
 
   @action
   createBookmark() {
-    const bookmark = this.get('model.value');
-    this.store.createRecord(
-      'bookmark',
-      { bookmark },
-    ).save();
+    const { bookmark } = this;
+    const { bookmarkType } = this;
+
+    this.store.createRecord('bookmark', {
+      bookmark,
+      recordType: bookmarkType,
+    }).save();
   }
 }

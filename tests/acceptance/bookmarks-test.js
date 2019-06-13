@@ -9,6 +9,7 @@ import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 // import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
+import resetStorages from 'ember-local-storage/test-support/reset-storage';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
 module('Acceptance | bookmarks', function(hooks) {
@@ -19,8 +20,14 @@ module('Acceptance | bookmarks', function(hooks) {
     this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
-  hooks.beforeEach(function() {
-    window.localStorage.clear();
+  hooks.afterEach(function() {
+    if (window.localStorage) {
+      window.localStorage.clear();
+    }
+    if (window.sessionStorage) {
+      window.sessionStorage.clear();
+    }
+    resetStorages();
   });
 
   test('visiting /bookmarks', async function(assert) {
@@ -59,5 +66,9 @@ module('Acceptance | bookmarks', function(hooks) {
     // await percySnapshot('counter has incremented');
     await click('.bookmark-save-button');
     assert.equal(find('.saved-bookmarks-counter .badge'), null);
+  });
+
+  test('it displays a saved bookmark', async function(assert) {
+    assert.ok(false);
   });
 });

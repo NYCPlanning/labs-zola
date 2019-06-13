@@ -46,7 +46,7 @@ const LotColumnsSQL = [
   'LOWER(zonemap) AS zonemap',
 ];
 
-const cartoQueryTemplate = function(id) {
+export const cartoQueryTemplate = function(id) {
   return `SELECT ${LotColumnsSQL.join(',')}, 
     st_x(st_centroid(the_geom)) as lon, st_y(st_centroid(the_geom)) as lat,
     the_geom, bbl AS id FROM mappluto WHERE bbl=${id}`;

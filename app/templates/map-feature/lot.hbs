@@ -1,4 +1,4 @@
-{{#carto-data-provider cartoQuery=model.cartoQuery as |mapFeature|}} 
+{{#carto-data-provider cartoQuery=model.cartoQuery as |mapFeatureModel|}} 
   {{layer-record-views/tax-lot
-    model=(hash value=mapFeature.properties)}}  
+    model=mapFeatureModel}}  
 {{/carto-data-provider}}
