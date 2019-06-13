@@ -1,4 +1,3 @@
 import CartoGeoJsonFeature from './carto-geojson-feature';
 
-export default CartoGeoJsonFeature.extend({
-});
+export default class LotSerializer extends CartoGeoJsonFeature {}

@@ -1,3 +1,3 @@
-import Bookmark from './bookmark';
+import CartoGeojsonFeature from './carto-geojson-feature';
 
-export default class BookmarkableLot extends Bookmark {}
+export default class Lot extends CartoGeojsonFeature {}

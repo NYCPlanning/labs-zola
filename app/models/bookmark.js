@@ -15,8 +15,6 @@ export default class BookmarkModel extends Model {
 
   @attr() coordinates;
 
-  @attr() properties;
-
   @computed('bookmark')
   get recordType() {
     const bookmark = this.get('bookmark');

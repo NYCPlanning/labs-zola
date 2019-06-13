@@ -74,6 +74,23 @@ module('Acceptance | bookmarks', function(hooks) {
   });
 
   test('it displays a saved bookmark', async function(assert) {
+    const sharedCartoResponseID = 3034430054;
+    this.get('https://planninglabs.carto.com/api/v2/sql', () => ({
+      type: 'FeatureCollection',
+      features: [{
+        type: 'Feature',
+        geometry: { type: 'Polygon', coordinates: [[0, 0], [0, 1], [1, 0], [1, 1], [0, 0]] },
+        properties: {
+          id: sharedCartoResponseID,
+          boro: 'test',
+          block: 'test',
+          lot: 'test',
+          address: 'test',
+          bbl: 'test',
+        },
+      }],
+    }));
+
     // load storage with dummy data
     localStorageSetStringified('bookmarks-test', {
       id: 'test',
@@ -82,7 +99,7 @@ module('Acceptance | bookmarks', function(hooks) {
         bookmark: {
           data: {
             type: 'lots',
-            id: '3012060069',
+            id: sharedCartoResponseID, // id must match what is returned from carto
           },
         },
       },
