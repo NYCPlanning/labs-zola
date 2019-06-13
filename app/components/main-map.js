@@ -235,7 +235,7 @@ export default class MainMap extends Component {
 
         if (bbl && !ceqr_num) { // eslint-disable-line
           const { boro, block, lot } = bblDemux(bbl);
-          this.router.transitionTo('lot', boro, block, lot);
+          this.router.transitionTo('map-feature.lot', boro, block, lot);
         }
 
         if (ulurpno) {

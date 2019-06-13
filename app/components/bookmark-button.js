@@ -6,7 +6,7 @@ export default class BookmarkButton extends Component {
   bookmark = null;
 
   @service
-  metrics;
+  store;
 
   @computed('bookmark.bookmark')
   get saved() {
@@ -14,7 +14,6 @@ export default class BookmarkButton extends Component {
     return !!bookmark;
   }
 
-  // @trackEvent
   @action
   async toggleSaved() {
     const { bookmark } = this;
@@ -25,5 +24,14 @@ export default class BookmarkButton extends Component {
     } else {
       this.createBookmark();
     }
+  }
+
+  @action
+  createBookmark() {
+    const bookmark = this.get('model.value');
+    this.store.createRecord(
+      'bookmark',
+      { bookmark },
+    ).save();
   }
 }

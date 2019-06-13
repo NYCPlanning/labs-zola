@@ -2,12 +2,9 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 import bbox from '@turf/bbox';
 import { inject as service } from '@ember/service';
-import Bookmarkable from 'labs-zola/mixins/bookmarkable';
 import specialPurposeCrosswalk from 'labs-zola/utils/special-purpose-crosswalk';
 
-const BookmarkableComponent = Component.extend(Bookmarkable);
-
-export default class LayerGroupDisplaySpecialPurposeSubdistrictsComponent extends BookmarkableComponent {
+export default class LayerGroupDisplaySpecialPurposeSubdistrictsComponent extends Component {
   @service
   mainMap;
 
