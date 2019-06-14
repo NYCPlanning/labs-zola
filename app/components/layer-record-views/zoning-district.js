@@ -88,17 +88,17 @@ export default class LayerGroupDisplayZoningDistrictComponent extends Component 
   @service
   mainMap;
 
-  @computed('model.value.id')
+  @computed('model.id')
   get primaryzone() {
-    const id = this.get('model.value.id');
+    const id = this.get('model.id');
     // convert R6A to r6
     const primary = id.match(/\w\d*/)[0].toLowerCase();
     return primary;
   }
 
-  @computed('model.value.id')
+  @computed('model.id')
   get zoneabbr() {
-    const id = this.get('model.value.id');
+    const id = this.get('model.id');
     const abbr = id.match(/\w\d*/)[0].toLowerCase();
 
     if (id in zoningAbbr) {
@@ -108,23 +108,23 @@ export default class LayerGroupDisplayZoningDistrictComponent extends Component 
     return abbr;
   }
 
-  @computed('zoneabbr')
+  @computed('model.properties.zoneabbr')
   get description() {
-    const zoneabbr = this.get('zoneabbr');
+    const zoneabbr = this.get('model.properties.zoneabbr');
 
     return zoningDescriptions[zoneabbr];
   }
 
-  @computed('model.value.geometry')
+  @computed('model.geometry')
   get bounds() {
-    const geometry = this.get('model.value.geometry');
+    const geometry = this.get('model.geometry');
 
     return bbox(geometry);
   }
 
-  @computed('primaryzone')
+  @computed('model.properties.primaryzone')
   get primaryzoneURL() {
-    const primaryzone = this.get('primaryzone');
+    const primaryzone = this.get('model.properties.primaryzone');
     let url = '';
 
     if ((primaryzone === 'c1') || (primaryzone === 'c2')) {

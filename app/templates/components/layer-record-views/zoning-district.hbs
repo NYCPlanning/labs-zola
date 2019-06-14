@@ -1,27 +1,30 @@
+{{bookmark-button
+  bookmarkableModel=model}}
+
 <label class="header-type">
   ZONING DISTRICT
 </label>
 
 <h1 class="header-large">
-  {{model.value.id}}
+  {{model.properties.id}}
 </h1>
 
 <p>
   {{description}}
 </p>
 
-{{#unless (eq model.value.id 'BPC')}}
+{{#unless (eq model.properties.id 'BPC')}}
   <p>
     <a 
       href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{primaryzoneURL}}.page" 
       target="_blank"
     >
-      {{fa-icon 'external-link-alt'}} Learn more about {{id}} districts&hellip;</a></p>
-  <button {{action "fitBounds"}}
-    class="button tiny hollow"
-  >
-    Fit map to all {{model.value.id}} districts
-  </button>
+      {{fa-icon 'external-link-alt'}} Learn more about {{id}} districts&hellip;
+    </a>
+  </p>
+  {{#mapbox/fit-map-to-all-button model=model}}
+    Fit map to all {{model.properties.id}} districts
+  {{/mapbox/fit-map-to-all-button}}
 {{else}}
   <p>
     <a

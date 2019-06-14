@@ -1,1 +1,13 @@
-{{outlet}}
+{{#carto-data-provider
+  modelId=model.id
+  modelName='special-purpose-district'
+  as |featureModel|
+}}
+  {{mapbox/map-feature-renderer
+    model=featureModel
+    shouldFitBounds=false
+  }}
+
+  {{layer-record-views/special-purpose-district
+    model=featureModel}}  
+{{/carto-data-provider}}

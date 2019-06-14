@@ -1,16 +1,18 @@
 import Component from '@ember/component';
 import bbox from '@turf/bbox';
-import { computed } from '@embert/object';
+import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 
-export default class LayerGroupDisplayZoningMapAmendmentComponent extends Component {
+export default class ZoningMapAmendmentComponent extends Component {
+  model = {};
+
   @service
   mainMap;
 
-  @computed('model.value.effective')
+  @computed('model.properties.effective')
   get effectiveDisplay() {
     return import('moment').then(({ default: moment }) => {
-      const effective = this.get('model.value.effective');
+      const effective = this.get('model.properties.effective');
 
       if (effective) {
         return moment(effective).utc().format('LL');
@@ -19,9 +21,9 @@ export default class LayerGroupDisplayZoningMapAmendmentComponent extends Compon
     });
   }
 
-  @computed('model.value.geometry')
+  @computed('model.geometry')
   get bounds() {
-    const geometry = this.get('model.value.geometry');
+    const geometry = this.get('model.geometry');
     return bbox(geometry);
   }
 }

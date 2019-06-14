@@ -239,7 +239,7 @@ export default class MainMap extends Component {
         }
 
         if (ulurpno) {
-          this.router.transitionTo('map-feature.zma', ulurpno, { queryParams: { search: false } });
+          this.router.transitionTo('map-feature.zoning-map-amendment', ulurpno, { queryParams: { search: false } });
         }
 
         if (zonedist) {
@@ -251,7 +251,7 @@ export default class MainMap extends Component {
         }
 
         if (splbl) {
-          this.router.transitionTo('map-feature.special-purpose-subdistricts', cartodb_id, { queryParams: { search: false } });
+          this.router.transitionTo('map-feature.special-purpose-subdistrict', cartodb_id, { queryParams: { search: false } });
         }
 
         if (overlay) {

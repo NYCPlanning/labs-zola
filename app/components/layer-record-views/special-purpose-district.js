@@ -8,17 +8,17 @@ export default class LayerGroupDisplaySpecialPurposeDistrictComponent extends Co
   @service
   mainMap;
 
-  @computed('model.value.sdname')
+  @computed('model.properties.sdname')
   get readMoreLink() {
-    const name = this.get('model.value.sdname');
+    const name = this.get('model.properties.sdname');
     const [, [anchorName, boroName]] = specialPurposeCrosswalk
       .find(([dist]) => dist === name) || [[], []];
     return `https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-${boroName}.page#${anchorName}`;
   }
 
-  @computed('model.value.geometry')
+  @computed('model.geometry')
   get bounds() {
-    const geometry = this.get('model.value.geometry');
+    const geometry = this.get('model.geometry');
     return bbox(geometry);
   }
 }

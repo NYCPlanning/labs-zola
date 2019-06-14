@@ -16,7 +16,7 @@ export default class MapResourceSearchComponent extends Component {
     // otherwise flyTo the block
     if (bbl) {
       const { boro, block, lot } = bblDemux(bbl);
-      this.router.transitionTo('lot', boro, block, lot);
+      this.router.transitionTo('map-feature.lot', boro, block, lot);
     } else {
       this.get('mainMap.mapInstance').flyTo({ center, zoom });
     }
@@ -37,17 +37,17 @@ export default class MapResourceSearchComponent extends Component {
       const { boro, block, lot } = bblDemux(result.bbl);
       this.set('searchTerms', result.label);
 
-      this.router.transitionTo('lot', boro, block, lot);
+      this.router.transitionTo('map-feature.lot', boro, block, lot, { queryParams: { search: true } });
     }
 
     if (type === 'zma') {
       this.set('searchTerms', result.label);
-      this.router.transitionTo('zma', result.ulurpno, { queryParams: { search: true } });
+      this.router.transitionTo('map-feature.zoning-map-amendment', result.ulurpno, { queryParams: { search: true } });
     }
 
     if (type === 'zoning-district') {
       this.set('searchTerms', result.label);
-      this.router.transitionTo('zoning-district', result.label, { queryParams: { search: true } });
+      this.router.transitionTo('map-feature.zoning-district', result.label, { queryParams: { search: true } });
     }
 
     if (type === 'neighborhood') {
@@ -61,12 +61,12 @@ export default class MapResourceSearchComponent extends Component {
 
     if (type === 'special-purpose-district') {
       this.set('searchTerms', result.sdname);
-      this.router.transitionTo('special-purpose-district', result.cartodb_id, { queryParams: { search: true } });
+      this.router.transitionTo('map-feature.special-purpose-district', result.cartodb_id, { queryParams: { search: true } });
     }
 
     if (type === 'commercial-overlay') {
       this.set('searchTerms', result.label);
-      this.router.transitionTo('commercial-overlay', result.label, { queryParams: { search: true } });
+      this.router.transitionTo('map-feature.commercial-overlay', result.label, { queryParams: { search: true } });
     }
   }
 }

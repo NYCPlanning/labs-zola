@@ -42,6 +42,9 @@ export default class GeoJsonFeatureSerializer extends DS.JSONSerializer {
     );
   }
 
+  // carto responds with a nonstandard error
+  // {"error":["query_wait_timeout"]}
+  // TODO: make this work, it's not catching it
   extractErrors(store, typeClass, payload) {
     if (payload && typeof payload === 'object' && payload.error) {
       payload = payload.error;

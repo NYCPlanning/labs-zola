@@ -1,1 +1,13 @@
-{{outlet}}
+{{#carto-data-provider
+  modelId=model.id
+  modelName='zoning-map-amendment'
+  as |zmaModel|
+}}
+  {{mapbox/map-feature-renderer
+    model=zmaModel
+    shouldFitBounds=false
+  }}
+
+  {{layer-record-views/zoning-map-amendment
+    model=zmaModel}}  
+{{/carto-data-provider}}
