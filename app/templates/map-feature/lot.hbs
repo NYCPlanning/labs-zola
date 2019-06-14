@@ -1,4 +1,8 @@
-{{#carto-data-provider cartoQuery=model.cartoQuery as |mapFeatureModel|}} 
+{{#carto-data-provider
+  modelId=model.id
+  modelName='lot'
+  as |mapFeatureModel|
+}} 
   {{layer-record-views/tax-lot
     model=mapFeatureModel}}  
 {{/carto-data-provider}}

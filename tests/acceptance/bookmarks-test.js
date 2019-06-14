@@ -4,7 +4,6 @@ import {
   currentURL,
   find,
   waitUntil,
-  pauseTest,
 } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
@@ -47,10 +46,37 @@ module('Acceptance | bookmarks', function(hooks) {
   });
 
   test('search lot, save, find result in bookmarks, delete it', async function(assert) {
+    this.server.get('https://planninglabs.carto.com/api/v2/sql', (schema, request) => {
+      const { format } = request.queryParams;
+
+      if (format !== 'geojson') return { rows: [] };
+
+      return {
+        type: 'FeatureCollection',
+        features: [{
+          type: 'Feature',
+          geometry: {
+            type: 'Polygon',
+            coordinates: [[0, 0], [0, 1], [1, 0], [1, 1], [0, 0]],
+          },
+          properties: {
+            id: 3034430054,
+            boro: 'test',
+            block: 'test',
+            lot: 'test',
+            address: 'test',
+            bbl: 'test-bbl',
+          },
+        }],
+      };
+    });
+
     await visit('/lot/1/47/7501');
-    await click('.bookmark-save-button');
+    await click('[data-test-bookmark="save"]');
     await visit('/bookmarks');
-    await waitUntil(() => find('.content-area'));
+
+    assert.equal(find('[data-test-lot-property="bbl"]').textContent.trim(), 'test-bbl');
+
     await click('.delete-bookmark-button');
 
     assert.ok(find('.no-bookmarks'));
@@ -77,7 +103,10 @@ module('Acceptance | bookmarks', function(hooks) {
       type: 'FeatureCollection',
       features: [{
         type: 'Feature',
-        geometry: { type: 'Polygon', coordinates: [[0, 0], [0, 1], [1, 0], [1, 1], [0, 0]] },
+        geometry: {
+          type: 'Polygon',
+          coordinates: [[0, 0], [0, 1], [1, 0], [1, 1], [0, 0]],
+        },
         properties: {
           id: sharedCartoResponseID,
           boro: 'test',

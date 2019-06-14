@@ -1,14 +1,10 @@
 {{#needs-async
-  needs=(query 'carto-geojson-feature'
-    (hash
-      q=this.cartoQuery
-      format='geojson'
-    )
-  )
+  needs=(find-record this.modelName this.modelId)
   as |data-task|
 }}
-  {{#data-task.loaded as |models|}}
-    {{yield models.firstObject}}
+  {{#data-task.loaded as |model|}}
+    {{log model}} 
+    {{yield model}}
   {{/data-task.loaded}}
 
   {{#data-task.loading}}
