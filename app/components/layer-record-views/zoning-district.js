@@ -85,6 +85,8 @@ const zoningAbbr = {
 };
 
 export default class LayerGroupDisplayZoningDistrictComponent extends Component {
+  model = {};
+
   @service
   mainMap;
 

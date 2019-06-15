@@ -5,6 +5,8 @@ import { inject as service } from '@ember/service';
 import specialPurposeCrosswalk from 'labs-zola/utils/special-purpose-crosswalk';
 
 export default class LayerGroupDisplaySpecialPurposeSubdistrictsComponent extends Component {
+  model = {};
+
   @service
   mainMap;
 

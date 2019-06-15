@@ -4,6 +4,8 @@ import { inject as service } from '@ember/service';
 import bbox from '@turf/bbox';
 
 export default class LayerGroupDisplayCommercialOverlayComponent extends Component {
+  model = {};
+
   @service
   mainMap;
 

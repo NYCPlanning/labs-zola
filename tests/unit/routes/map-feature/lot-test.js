@@ -5,7 +5,7 @@ module('Unit | Route | lot', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function (assert) {
-    const route = this.owner.lookup('route:lot');
+    const route = this.owner.lookup('route:map-feature/lot');
     assert.ok(route);
   });
 });

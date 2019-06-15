@@ -5,7 +5,7 @@ module('Unit | Route | legacy-redirects', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function(assert) {
-    let route = this.owner.lookup('route:legacy-redirects');
+    const route = this.owner.lookup('route:legacy-redirects');
     assert.ok(route);
   });
 });

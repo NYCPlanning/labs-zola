@@ -16,12 +16,11 @@ module('Integration | Component | carto-data-provider', function(hooks) {
     // Template block usage:
     await render(hbs`
       <CartoDataProvider
-        @cartoQuery='select some_col from some_table_in_carto'
+        @modelId='bbl'
+        @modelName='lot'
         as |dataTask|
       >
-        {{#dataTask.loaded}}
-          it loads
-        {{/dataTask.loaded}}
+        it loads
       </CartoDataProvider>
     `);
 

@@ -57,7 +57,7 @@ module('Acceptance | bookmarks', function(hooks) {
           type: 'Feature',
           geometry: {
             type: 'Polygon',
-            coordinates: [[0, 0], [0, 1], [1, 0], [1, 1], [0, 0]],
+            coordinates: [[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]],
           },
           properties: {
             id: 3034430054,
@@ -105,7 +105,7 @@ module('Acceptance | bookmarks', function(hooks) {
         type: 'Feature',
         geometry: {
           type: 'Polygon',
-          coordinates: [[0, 0], [0, 1], [1, 0], [1, 1], [0, 0]],
+          coordinates: [[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]],
         },
         properties: {
           id: sharedCartoResponseID,
@@ -149,7 +149,10 @@ module('Acceptance | bookmarks', function(hooks) {
         type: 'FeatureCollection',
         features: [{
           type: 'Feature',
-          geometry: { type: 'Polygon', coordinates: [[0, 0], [0, 1], [1, 0], [1, 1], [0, 0]] },
+          geometry: {
+            type: 'Polygon',
+            coordinates: [[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]],
+          },
           properties: {
             id: mockId,
             boro: 'test',

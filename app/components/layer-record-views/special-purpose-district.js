@@ -5,6 +5,8 @@ import bbox from '@turf/bbox';
 import { inject as service } from '@ember/service';
 
 export default class LayerGroupDisplaySpecialPurposeDistrictComponent extends Component {
+  model = {};
+
   @service
   mainMap;
 

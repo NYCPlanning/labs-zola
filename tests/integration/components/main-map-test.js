@@ -351,7 +351,7 @@ module('Integration | Component | main-map', function(hooks) {
       };
 
       this.transitionTo = function(route) {
-        assert.equal(route, 'lot');
+        assert.equal(route, 'map-feature.lot');
       };
 
       await render(hbs`
@@ -367,13 +367,13 @@ module('Integration | Component | main-map', function(hooks) {
       await this.map.events.click();
     });
 
-    test('it routes to zma', async function(assert) {
+    test('it routes to zoning-map-amendment', async function(assert) {
       this.map.features[0].properties = {
         ulurpno: '1',
       };
 
-      this.transitionTo = function(route, type) {
-        assert.equal(type, 'zma');
+      this.transitionTo = function(route) {
+        assert.equal(route, 'map-feature.zoning-map-amendment');
       };
 
       await render(hbs`
@@ -394,8 +394,8 @@ module('Integration | Component | main-map', function(hooks) {
         zonedist: '1',
       };
 
-      this.transitionTo = function(route, type) {
-        assert.equal(type, 'zoning-district');
+      this.transitionTo = function(route) {
+        assert.equal(route, 'map-feature.zoning-district');
       };
 
       await render(hbs`
@@ -416,8 +416,8 @@ module('Integration | Component | main-map', function(hooks) {
         sdlbl: '1',
       };
 
-      this.transitionTo = function(route, type) {
-        assert.equal(type, 'special-purpose-district');
+      this.transitionTo = function(route) {
+        assert.equal(route, 'map-feature.special-purpose-district');
       };
 
       await render(hbs`
@@ -438,8 +438,8 @@ module('Integration | Component | main-map', function(hooks) {
         splbl: '1',
       };
 
-      this.transitionTo = function(route, type) {
-        assert.equal(type, 'special-purpose-subdistrict');
+      this.transitionTo = function(route) {
+        assert.equal(route, 'map-feature.special-purpose-subdistrict');
       };
 
       await render(hbs`
@@ -460,8 +460,8 @@ module('Integration | Component | main-map', function(hooks) {
         overlay: '1',
       };
 
-      this.transitionTo = function(route, type) {
-        assert.equal(type, 'commercial-overlay');
+      this.transitionTo = function(route) {
+        assert.equal(route, 'map-feature.commercial-overlay');
       };
 
       await render(hbs`

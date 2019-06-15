@@ -5,7 +5,7 @@ module('Unit | Route | map-feature/special-purpose-district', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function(assert) {
-    let route = this.owner.lookup('route:map-feature/special-purpose-district');
+    const route = this.owner.lookup('route:map-feature/special-purpose-district');
     assert.ok(route);
   });
 });

@@ -66,12 +66,12 @@ module('Integration | Component | map-resource-search', function(hooks) {
       }];
     });
 
-    this.transitionTo = (route) => { assert.equal(route, 'lot'); };
+    this.transitionTo = (route) => { assert.equal(route, 'map-feature.lot'); };
 
     await runSearch();
   });
 
-  test('map search for search api works: zma', async function(assert) {
+  test('map search for search api works: zoning-map-amendment', async function(assert) {
     assert.expect(1);
 
     // mock server response that returns a "lot"
@@ -83,7 +83,7 @@ module('Integration | Component | map-resource-search', function(hooks) {
       }];
     });
 
-    this.transitionTo = (route) => { assert.equal(route, 'zma'); };
+    this.transitionTo = (route) => { assert.equal(route, 'map-feature.zoning-map-amendment'); };
 
     await runSearch();
   });
@@ -99,7 +99,7 @@ module('Integration | Component | map-resource-search', function(hooks) {
       }];
     });
 
-    this.transitionTo = (route) => { assert.equal(route, 'zoning-district'); };
+    this.transitionTo = (route) => { assert.equal(route, 'map-feature.zoning-district'); };
 
     await runSearch();
   });
@@ -140,7 +140,7 @@ module('Integration | Component | map-resource-search', function(hooks) {
       }];
     });
 
-    this.transitionTo = (route) => { assert.equal(route, 'special-purpose-district'); };
+    this.transitionTo = (route) => { assert.equal(route, 'map-feature.special-purpose-district'); };
 
     await runSearch();
   });
@@ -156,7 +156,7 @@ module('Integration | Component | map-resource-search', function(hooks) {
       }];
     });
 
-    this.transitionTo = (route) => { assert.equal(route, 'commercial-overlay'); };
+    this.transitionTo = (route) => { assert.equal(route, 'map-feature.commercial-overlay'); };
 
     await runSearch();
   });

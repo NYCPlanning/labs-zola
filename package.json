@@ -26,7 +26,6 @@
     "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.3",
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-clean-css": "^2.0.1",
-    "ember-ast-hot-load": "0.0.80",
     "ember-async-await-helper": "0.1.0",
     "ember-auto-import": "^1.2.19",
     "ember-clean-project": "1.0.1",
