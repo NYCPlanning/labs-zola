@@ -13,6 +13,7 @@ import stubBasicMap from 'labs-zola/tests/helpers/stub-basic-map';
 import config from 'labs-zola/config/environment';
 import Sinon from 'sinon';
 import resetStorages from 'ember-local-storage/test-support/reset-storage';
+import mockCartoResponses from '../helpers/mock-carto-geojson';
 
 const { 'labs-search': { host: labsSearchHost } } = config;
 const DEFAULT_REQUIRED_FEATURE_PROPS = {
@@ -285,14 +286,21 @@ module('Acceptance | layer behavior tests', function(hooks) {
 
 
     // TODO: Make this assertion work.it searches
-    // await assertSearchShouldFitBounds(this, assert, {
-    //   bbl: 1001870021,
-    //   type: 'lot',
-    //   label: '120 Broadway, Manhattan',
-    // });
+    await assertSearchShouldFitBounds(this, assert, {
+      bbl: 1001870021,
+      type: 'lot',
+      label: '120 Broadway, Manhattan',
+    });
   });
 
   test('Zoning Districts', async function(assert) {
+    mockCartoResponses(this, {
+      id: '1',
+      zonedist: '1',
+      zoneaddr: 'asdf',
+      cartodb_id: '1',
+    });
+
     await assertLayerGroupAdded(this, assert, 'zoning-districts');
 
     await assertClickRouteBehavior(this, assert, {
@@ -303,17 +311,17 @@ module('Acceptance | layer behavior tests', function(hooks) {
     });
 
     // TODO: Make this assertion work.
-    // await assertCanBookmark(this, assert, { zonedist: '1', cartodb_id: '1' });
+    await assertCanBookmark(this, assert, { zonedist: '1', cartodb_id: '1' });
 
     await assertFitBoundsOnClick(this, assert, { zonedist: '1', cartodb_id: '1' });
 
     await assertTooltips(this, assert, 'zoning-districts', true);
 
     // TODO: Make this assertion work.
-    // await assertSearchShouldFitBounds(this, assert, {
-    //   type: 'zoning-district',
-    //   label: 'C1-5',
-    // });
+    await assertSearchShouldFitBounds(this, assert, {
+      type: 'zoning-district',
+      label: 'C1-5',
+    });
   });
 
   test('Commercial Overlays', async function(assert) {
@@ -327,17 +335,17 @@ module('Acceptance | layer behavior tests', function(hooks) {
     });
 
     // TODO: Make this assertion work.
-    // await assertCanBookmark(this, assert, { overlay: '1', cartodb_id: '1' });
+    await assertCanBookmark(this, assert, { overlay: '1', cartodb_id: '1' });
 
     await assertFitBoundsOnClick(this, assert, { overlay: '1', cartodb_id: '1' });
 
     await assertTooltips(this, assert, 'commercial-overlays', true);
 
     // TODO: Make this assertion work.
-    // await assertSearchShouldFitBounds(this, assert, {
-    //   type: 'commercial-overlay',
-    //   label: 'test-overlay',
-    // });
+    await assertSearchShouldFitBounds(this, assert, {
+      type: 'commercial-overlay',
+      label: 'test-overlay',
+    });
   });
 
   test('Zoning Map Amendments', async function(assert) {
@@ -355,11 +363,11 @@ module('Acceptance | layer behavior tests', function(hooks) {
     await assertTooltips(this, assert, 'zoning-map-amendments', true);
 
     // TODO: Make this assertion work.
-    // await assertSearchShouldFitBounds(this, assert, {
-    //   ulurpno: 'test',
-    //   type: 'zma',
-    //   label: '120 Broadway, Manhattan',
-    // });
+    await assertSearchShouldFitBounds(this, assert, {
+      ulurpno: 'test',
+      type: 'zma',
+      label: '120 Broadway, Manhattan',
+    });
   });
 
   test('Pending Zoning Map Amendments', async function(assert) {
@@ -377,11 +385,11 @@ module('Acceptance | layer behavior tests', function(hooks) {
     await assertTooltips(this, assert, 'zoning-map-amendments-pending', true);
 
     // TODO: Make this assertion work.
-    // await assertSearchShouldFitBounds(this, assert, {
-    //   ulurpno: 'test',
-    //   type: 'zma',
-    //   label: '120 Broadway, Manhattan',
-    // });
+    await assertSearchShouldFitBounds(this, assert, {
+      ulurpno: 'test',
+      type: 'zma',
+      label: '120 Broadway, Manhattan',
+    });
   });
 
   test('Special Purpose Districts', async function(assert) {
@@ -399,12 +407,12 @@ module('Acceptance | layer behavior tests', function(hooks) {
     await assertTooltips(this, assert, 'special-purpose-districts', false);
 
     // TODO: Make this assertion work.
-    // await assertSearchShouldFitBounds(this, assert, {
-    //   type: 'special-purpose-district',
-    //   sdname: 'test',
-    //   cartodb_id: 'test',
-    //   label: '120 Broadway, Manhattan',
-    // });
+    await assertSearchShouldFitBounds(this, assert, {
+      type: 'special-purpose-district',
+      sdname: 'test',
+      cartodb_id: 'test',
+      label: '120 Broadway, Manhattan',
+    });
   });
 
   test('Special Purpose Subdistricts', async function(assert) {

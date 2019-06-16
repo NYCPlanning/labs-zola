@@ -8,7 +8,14 @@
     shouldFitBounds=model.search
   }}
 
+  {{bookmark-button
+    bookmarkableModel=cartoFeature}}
+
   {{layer-record-views/zoning-district
-    model=cartoFeature
-  }}  
+    model=cartoFeature.properties
+  }}
+
+  {{#mapbox/fit-map-to-all-button model=cartoFeature}}
+    Fit map to all {{cartoFeature.id}} districts
+  {{/mapbox/fit-map-to-all-button}}
 {{/carto-data-provider}}

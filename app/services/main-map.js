@@ -2,8 +2,6 @@ import Service from '@ember/service';
 import { computed } from '@ember/object';
 import { timeout, task } from 'ember-concurrency';
 
-const DEFAULT_BOUNDS = [-73.9, 40.690913, -73.832692, 40.856654];
-
 export default class MainMapService extends Service {
   mapInstance = null;
 
@@ -17,21 +15,6 @@ export default class MainMapService extends Service {
   drawMode = null;
 
   shouldFitBounds = false;
-
-  // computed from the selected
-  @computed('selected', 'selected.bounds')
-  get bounds() {
-    const selected = this.get('selected');
-    const { mapInstance } = this;
-    if (mapInstance) {
-      mapInstance.resize();
-    }
-
-    if (selected) {
-      return selected.get('bounds');
-    }
-    return DEFAULT_BOUNDS;
-  }
 
   routeIntentIsNested = false;
 
@@ -60,14 +43,6 @@ export default class MainMapService extends Service {
     };
 
     return options;
-  }
-
-  resetBounds() {
-    const { mapInstance } = this;
-    if (mapInstance) {
-      mapInstance.resize();
-    }
-    this.set('selected', null);
   }
 
   @task(function* (explicitBounds) {

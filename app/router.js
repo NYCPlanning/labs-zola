@@ -36,6 +36,7 @@ Router.map(function () {// eslint-disable-line
   this.route('legacy-redirects', { path: '/special-purpose-district/:id' });
   this.route('legacy-redirects', { path: '/special-purpose-subdistrict/:id' });
   this.route('legacy-redirects', { path: '/zoning-map-amendment/:id' });
+  this.route('legacy-redirects', { path: '/zma/:id' });
   this.route('legacy-redirects', { path: '/lot/:boro/:block/:lot' });
 });
 

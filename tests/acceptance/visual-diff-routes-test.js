@@ -3,32 +3,8 @@ import { visit } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
+import generateMockCartoGeoJSONResponse from '../helpers/mock-carto-geojson';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
-
-const SQUARE_POLYGON = {
-  type: 'Polygon',
-  coordinates: [[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]],
-};
-
-const generateMockCartoGeoJSONResponse = (testScope, properties) => {
-  testScope.server.get('https://planninglabs.carto.com/api/v2/sql', (schema, request) => {
-    const { queryParams } = request;
-    const { format } = queryParams;
-
-    if (format === 'geojson') {
-      return {
-        type: 'FeatureCollection',
-        features: [{
-          type: 'Feature',
-          geometry: SQUARE_POLYGON,
-          properties,
-        }],
-      };
-    }
-
-    return { rows: [] };
-  });
-};
 
 module('Acceptance | visual diff routes', function(hooks) {
   setupApplicationTest(hooks);
@@ -94,7 +70,10 @@ module('Acceptance | visual diff routes', function(hooks) {
   });
 
   test('visiting zoning-district/R3-2', async function(assert) {
-    generateMockCartoGeoJSONResponse(this, { id: 'R3-2' });
+    generateMockCartoGeoJSONResponse(this, {
+      id: 'R3-2',
+      zonedist: 'R3-2',
+    });
 
     await visit('zoning-district/R3-2');
     await percySnapshot('zoning-district/R3-2');

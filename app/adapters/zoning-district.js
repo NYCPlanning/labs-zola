@@ -3,7 +3,7 @@ import { buildSqlUrl } from '../utils/carto';
 
 const SQL = function(id) {
   return `SELECT * FROM (
-  SELECT ST_CollectionExtract(ST_Collect(the_geom),3) as the_geom, zonedist as id FROM zoning_districts GROUP BY zonedist
+  SELECT ST_CollectionExtract(ST_Collect(the_geom),3) as the_geom, zonedist, zonedist as id FROM zoning_districts GROUP BY zonedist
 ) a WHERE id = '${id}'`;
 };
 

@@ -2,12 +2,11 @@ import Component from '@ember/component';
 import mapboxgl from 'mapbox-gl';
 
 import { inject as service } from '@ember/service';
-import EmberObject, { computed, action } from '@ember/object';
+import { computed, action } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
 import { alias } from '@ember/object/computed';
 
 import bblDemux from '../utils/bbl-demux';
-import Geometric from '../mixins/geometric';
 import drawnFeatureLayers from '../layers/drawn-feature';
 import selectedLayers from '../layers/selected-lot';
 
@@ -209,7 +208,6 @@ export default class MainMap extends Component {
 
   @action
   handleLayerClick(feature) {
-    const { mainMap } = this;
     const highlightedLayerId = this.get('highlightedLayerId');
 
     if (feature) {
@@ -226,12 +224,6 @@ export default class MainMap extends Component {
           cartodb_id, // eslint-disable-line
           ceqr_num, // eslint-disable-line
         } = properties;
-
-        const featureFragment = EmberObject.extend(Geometric, {
-          geometry: feature.geometry,
-        }).create();
-
-        mainMap.set('selected', featureFragment);
 
         if (bbl && !ceqr_num) { // eslint-disable-line
           const { boro, block, lot } = bblDemux(bbl);
