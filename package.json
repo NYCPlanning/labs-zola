@@ -26,7 +26,6 @@
     "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.3",
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-clean-css": "^2.0.1",
-    "ember-ast-hot-load": "0.0.80",
     "ember-async-await-helper": "0.1.0",
     "ember-auto-import": "^1.2.19",
     "ember-clean-project": "1.0.1",
@@ -47,7 +46,6 @@
     "ember-cli-netlify": "^0.1.0",
     "ember-cli-nouislider": "1.0.0",
     "ember-cli-preprocess-registry": "3.1.2",
-    "ember-cli-qunit": "^4.3.2",
     "ember-cli-sass": "^6.0.0",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-tree-shaker": "0.2.0",
@@ -75,8 +73,10 @@
     "ember-metrics": "0.13.0",
     "ember-native-dom-helpers": "^0.6.2",
     "ember-parachute": "1.0.2",
+    "ember-percy": "1.5.0",
     "ember-power-select": "^2.0.4",
     "ember-promise-helpers": "^1.0.6",
+    "ember-qunit": "4.4.1",
     "ember-radio-button": "1.2.4",
     "ember-resolver": "^5.0.1",
     "ember-responsive": "3.0.1",
@@ -103,7 +103,7 @@
     "mapbox-gl-draw": "0.16.0",
     "moment": "2.22.2",
     "pretender": "3.0.1",
-    "qunit-dom": "^0.8.4"
+    "sinon": "7.3.2"
   },
   "engines": {
     "node": "8.* || >= 10.*"

@@ -9,7 +9,7 @@ import {
 } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
-// import { percySnapshot } from 'ember-percy';
+import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import config from '../../config/environment';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
@@ -42,12 +42,12 @@ module('Acceptance | index', function(hooks) {
 
   test('map-search enter on first search result', async function(assert) {
     await visit('/');
-    // await percySnapshot('view on first load');
+    await percySnapshot('view on first load');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
-    // await percySnapshot('searches');
+    await percySnapshot('searches');
     await waitUntil(() => find('.has-results'), { timeout });
     await click('.result');
-    // await percySnapshot('clicks result');
+    await percySnapshot('clicks result');
 
     assert.equal(
       (currentURL().indexOf('/') > -1),

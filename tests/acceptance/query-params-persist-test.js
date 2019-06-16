@@ -6,7 +6,7 @@ import {
   find,
 } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-// import { percySnapshot } from 'ember-percy';
+import { percySnapshot } from 'ember-percy';
 import { defaultLayerGroupState } from 'labs-zola/routes/application';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
@@ -30,7 +30,7 @@ module('Acceptance | query params persist', function(hooks) {
 
   test('Navigating without layer group QPs shows default layers on, redirects', async function(assert) {
     await visit('/');
-    // await percySnapshot(assert);
+    await percySnapshot(assert);
 
     // loop over and check each one, seeing if it's toggled in DOM
     defaultVisible.forEach((id) => {
@@ -49,7 +49,7 @@ module('Acceptance | query params persist', function(hooks) {
     const testParams = defaultNonVisible.slice(0, defaultVisible.length - 1);
 
     await visit(`/about?layer-groups=[${testParams.map(l => `"${l}"`)}]`);
-    // await percySnapshot(assert);
+    await percySnapshot(assert);
 
     // loop over and check each one, seeing if it's toggled in DOM
     testParams.forEach((id) => {
@@ -75,7 +75,7 @@ module('Acceptance | query params persist', function(hooks) {
     const testParams = defaultNonVisible.slice(0, defaultVisible.length + 1);
 
     await visit(`/about?layer-groups=[${testParams.map(l => `"${l}"`)}]`);
-    // await percySnapshot(assert);
+    await percySnapshot(assert);
 
     // loop over and check each one, seeing if it's toggled in DOM
     testParams.forEach((id) => {
@@ -101,7 +101,7 @@ module('Acceptance | query params persist', function(hooks) {
     const testParams = defaultNonVisible.slice(0, defaultVisible.length - 2);
 
     await visit(`/about?layer-groups=[${testParams.map(l => `"${l}"`)}]`);
-    // await percySnapshot(assert);
+    await percySnapshot(assert);
 
     // loop over and check each one, seeing if it's toggled in DOM
     testParams.forEach((id) => {
