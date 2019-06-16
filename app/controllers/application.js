@@ -11,7 +11,7 @@ export const mapQueryParams = new QueryParams(
   assign(
     {
       'comm-type': { defaultValue: '' },
-      search: { defaultValue: false },
+      // search: { defaultValue: false },
       allChecked: { defaultValue: [] },
       selectedZoning: {
         defaultValue: zoningDistrictGroups

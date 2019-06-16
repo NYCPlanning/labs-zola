@@ -1,9 +1,12 @@
+{{bookmark-button
+  bookmarkableModel=model}}
+
 <label class="header-type">
-  Commercial Overlay <span class="medium-gray">|</span> {{model.value.id}}
+  Commercial Overlay <span class="medium-gray">|</span> {{model.id}}
 </label>
 
 <h1 class="header-large">
-  {{model.value.id}}
+  {{model.id}}
 </h1>
 
 <p>A commercial overlay is a C1 or C2 district mapped within residential districts to serve local retail needs (grocery stores, dry cleaners, restaurants, for example). Commercial overlay districts, designated by the letters C1-1 through C1-5 and C2-1 through C2-5, are shown on the zoning maps as a pattern superimposed on a residential district.</p>
@@ -16,11 +19,9 @@
       target="_blank"
     >
       {{fa-icon 'external-link-alt'}} Learn more&hellip;</a></p>
-  <button {{action "fitBounds"}}
-    class="button tiny hollow"
-  >
-    Fit map to all {{model.value.id}} districts
-  </button>
 
+  {{#mapbox/fit-map-to-all-button model=model}}
+    Fit map to all {{model.id}} districts
+  {{/mapbox/fit-map-to-all-button}}
 
 {{outlet}}

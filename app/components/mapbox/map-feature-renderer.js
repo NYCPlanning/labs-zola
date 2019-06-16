@@ -8,6 +8,7 @@ export default class MapboxMapFeatureRenderer extends Component {
   @service
   mainMap;
 
+  // this is usually a query param, which comes through a string.
   shouldFitBounds = true;
 
   didInsertElement() {

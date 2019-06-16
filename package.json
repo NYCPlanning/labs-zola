@@ -104,7 +104,8 @@
     "mapbox-gl": "1.0.0",
     "mapbox-gl-draw": "0.16.0",
     "moment": "2.22.2",
-    "pretender": "3.0.1"
+    "pretender": "3.0.1",
+    "sinon": "7.3.2"
   },
   "engines": {
     "node": "8.* || >= 10.*"

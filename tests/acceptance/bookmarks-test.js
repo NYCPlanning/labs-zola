@@ -23,7 +23,7 @@ module('Acceptance | bookmarks', function(hooks) {
     this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
-  hooks.afterEach(function() {
+  hooks.beforeEach(function() {
     if (window.localStorage) {
       window.localStorage.clear();
     }

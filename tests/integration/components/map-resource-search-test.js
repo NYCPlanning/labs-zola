@@ -95,7 +95,7 @@ module('Integration | Component | map-resource-search', function(hooks) {
     this.server.get(`${labsSearchHost}/**`, function() {
       return [{
         type: 'zoning-district',
-        label: '120 Broadway, Manhattan',
+        label: 'C1-5',
       }];
     });
 

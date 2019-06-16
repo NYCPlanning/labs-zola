@@ -4,8 +4,8 @@
   as |commercialOverlay|
 }}
   {{mapbox/map-feature-renderer
-    model=cartoFeature
-    shouldFitBounds=false
+    model=commercialOverlay
+    shouldFitBounds=model.search
   }}
 
   {{layer-record-views/commercial-overlay
