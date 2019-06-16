@@ -32,7 +32,17 @@ export const MAPBOX_GL_DEFAULTS = {
 
   // registers an event, merges features into signature
   // and returns a promise to makes sure app is settled
-  on(event, callback) {
+  on(event, ...args) {
+    // map.on allows for the second arg to be an
+    // id, for example, of a layer, scoping the
+    // event callback to that layer
+    const [secondArg, thirdArg] = args;
+    let callback = secondArg;
+
+    if (secondArg && thirdArg) {
+      callback = thirdArg;
+    }
+
     this.events[event] = async (hash = {}) => {
       callback({
         features: this.features,
@@ -61,6 +71,7 @@ export const MAPBOX_GL_DEFAULTS = {
   resize() {},
   off() {},
   fitBounds() {},
+  flyTo() {},
   querySourceFeatures() {
     return this.features;
   },

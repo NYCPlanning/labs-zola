@@ -19,7 +19,7 @@ if (typeof Ember.Test === 'undefined') {
   Ember.Test = {
     registerWaiter() {
 
-    }
+    },
   };
 }
 /* eslint-enable ember-suave/no-direct-property-access, no-undef */
