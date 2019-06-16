@@ -1,24 +1,21 @@
-{{bookmark-button
-  bookmarkableModel=model}}
-
 <label class="header-type">
   ZONING MAP AMENDMENT
 </label>
 
 <h1 class="header-large">
-  {{model.properties.project_na}}
+  {{this.model.project_na}}
 </h1>
 
-<div class="data-grid"><label class="data-label">ULURP Number</label><span class="datum"><a target="_blank" href="https://zap-api.planninglabs.nyc/projects/ulurp/{{model.properties.lucats}}">{{fa-icon 'external-link-alt'}} {{model.id}}</a></span></div>
+<div class="data-grid"><label class="data-label">ULURP Number</label><span class="datum"><a target="_blank" href="https://zap-api.planninglabs.nyc/projects/ulurp/{{this.model.lucats}}">{{fa-icon 'external-link-alt'}} {{this.model.ulurpno}}</a></span></div>
 <div class="data-grid"><label class="data-label">Effective</label>
   <span class="datum">
-    {{#async-await model.properties.effectiveDisplay as |date|}}
+    {{#async-await this.model.effectiveDisplay as |date|}}
       {{date}}
     {{/async-await}}
   </span>
 </div>
 
-<div class="data-grid"><label class="data-label">Status</label><span class="datum">{{model.properties.status}}</span></div>
-<div class="data-grid"><label class="data-label">Zoning Sketch Map</label><span class="datum"><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/sketchmaps/skz{{model.properties.project_na}}.pdf">{{fa-icon "file-pdf-o"}} {{model.properties.project_na}} <small>(PDF)</small></a></span></div>
+<div class="data-grid"><label class="data-label">Status</label><span class="datum">{{this.model.status}}</span></div>
+<div class="data-grid"><label class="data-label">Zoning Sketch Map</label><span class="datum"><a target="_blank" href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/sketchmaps/skz{{this.model.project_na}}.pdf">{{fa-icon "file-pdf-o"}} {{this.model.project_na}} <small>(PDF)</small></a></span></div>
 
-{{outlet}}
+{{yield}}

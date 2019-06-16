@@ -8,6 +8,13 @@
     shouldFitBounds=model.search
   }}
 
-  {{layer-record-views/commercial-overlay
-    model=commercialOverlay}}
+  {{bookmark-button
+    bookmarkableModel=commercialOverlay}}
+
+  {{#layer-record-views/commercial-overlay
+    model=commercialOverlay.properties}}
+    {{#mapbox/fit-map-to-all-button model=commercialOverlay}}
+      Fit map to all {{commercialOverlay.id}} districts
+    {{/mapbox/fit-map-to-all-button}}
+  {{/layer-record-views/commercial-overlay}}
 {{/carto-data-provider}}

@@ -6,7 +6,7 @@ export default class GeoJsonFeatureSerializer extends DS.JSONSerializer {
     let newPayload = payload;
     let newQueryId = queryId;
 
-    if (payload.features) {
+    if (payload.features.length) {
       const [feature] = payload.features;
 
       const { id } = feature.properties;
@@ -14,6 +14,8 @@ export default class GeoJsonFeatureSerializer extends DS.JSONSerializer {
 
       const { geometry } = feature;
       newPayload = assign(feature, { id, geometry });
+    } else {
+      throw new Error(`cannot find record ${queryId} for ${primaryModelClass}`);
     }
 
     return super.normalizeFindRecordResponse(

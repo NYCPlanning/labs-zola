@@ -57,6 +57,7 @@
     "ember-content-placeholders": "^1.0.0",
     "ember-copy": "1.0.0",
     "ember-data": "~3.10.0",
+    "ember-data-model-fragments": "4.0.0",
     "ember-data-tasks": "1.1.1",
     "ember-decorators": "6.0.0",
     "ember-decorators-polyfill": "1.0.5",

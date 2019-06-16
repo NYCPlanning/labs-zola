@@ -3348,7 +3348,7 @@ cacheable-request@^2.1.1:
     normalize-url "2.0.1"
     responselike "1.0.2"
 
-calculate-cache-key-for-tree@^1.2.0:
+calculate-cache-key-for-tree@^1.1.0, calculate-cache-key-for-tree@^1.2.0:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/calculate-cache-key-for-tree/-/calculate-cache-key-for-tree-1.2.3.tgz#5a5e4fcfa2d374a63e47fe967593f179e8282825"
   dependencies:
@@ -4510,7 +4510,7 @@ ember-cli-babel@6.14.1:
     ember-cli-version-checker "^2.1.2"
     semver "^5.5.0"
 
-ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6.10.0, ember-cli-babel@^6.12.0, ember-cli-babel@^6.16.0, ember-cli-babel@^6.17.0, ember-cli-babel@^6.3.0, ember-cli-babel@^6.6.0, ember-cli-babel@^6.8.1, ember-cli-babel@^6.8.2, ember-cli-babel@^6.9.0, ember-cli-babel@^6.9.2:
+ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6.10.0, ember-cli-babel@^6.12.0, ember-cli-babel@^6.16.0, ember-cli-babel@^6.17.0, ember-cli-babel@^6.3.0, ember-cli-babel@^6.6.0, ember-cli-babel@^6.8.0, ember-cli-babel@^6.8.1, ember-cli-babel@^6.8.2, ember-cli-babel@^6.9.0, ember-cli-babel@^6.9.2:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-6.18.0.tgz#3f6435fd275172edeff2b634ee7b29ce74318957"
   dependencies:
@@ -5066,6 +5066,18 @@ ember-copy@1.0.0, ember-copy@^1.0.0:
   resolved "https://registry.yarnpkg.com/ember-copy/-/ember-copy-1.0.0.tgz#426554ba6cf65920f31d24d0a3ca2cb1be16e4aa"
   dependencies:
     ember-cli-babel "^6.6.0"
+
+ember-data-model-fragments@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/ember-data-model-fragments/-/ember-data-model-fragments-4.0.0.tgz#8570d8b6bef12e8a3518279af01478ef8818a44f"
+  dependencies:
+    broccoli-file-creator "^2.1.1"
+    broccoli-merge-trees "^3.0.0"
+    calculate-cache-key-for-tree "^1.1.0"
+    ember-cli-babel "^6.8.0"
+    ember-copy "1.0.0"
+    git-repo-info "^2.0.0"
+    npm-git-info "^1.0.3"
 
 ember-data-tasks@1.1.1:
   version "1.1.1"

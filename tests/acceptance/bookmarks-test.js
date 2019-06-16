@@ -11,6 +11,7 @@ import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import resetStorages from 'ember-local-storage/test-support/reset-storage';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
+import generateMockCartoGeoJSONResponse from '../helpers/mock-carto-geojson';
 
 const localStorageSetStringified = function(key, jsonString) {
   window.localStorage.setItem(key, JSON.stringify(jsonString));
@@ -25,6 +26,16 @@ module('Acceptance | bookmarks', function(hooks) {
   });
 
   hooks.beforeEach(function() {
+    if (window.localStorage) {
+      window.localStorage.clear();
+    }
+    if (window.sessionStorage) {
+      window.sessionStorage.clear();
+    }
+    resetStorages();
+  });
+
+  hooks.after(function() {
     if (window.localStorage) {
       window.localStorage.clear();
     }
@@ -50,38 +61,59 @@ module('Acceptance | bookmarks', function(hooks) {
   });
 
   test('search lot, save, find result in bookmarks, delete it', async function(assert) {
-    this.server.get('https://planninglabs.carto.com/api/v2/sql', (schema, request) => {
-      const { format } = request.queryParams;
-
-      if (format !== 'geojson') return { rows: [] };
-
-      return {
-        type: 'FeatureCollection',
-        features: [{
-          type: 'Feature',
-          geometry: {
-            type: 'Polygon',
-            coordinates: [[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]],
-          },
-          properties: {
-            id: 3034430054,
-            boro: 'test',
-            block: 'test',
-            lot: 'test',
-            address: 'test',
-            bbl: 'test-bbl',
-          },
-        }],
-      };
+    generateMockCartoGeoJSONResponse(this, {
+      id: 1,
+      address: '32 WEST 25 STREET',
+      bbl: 1,
+      bldgarea: 5000,
+      bldgclass: 'K1',
+      lat: 40.7434315461862,
+      lon: -73.9906654966893,
+      block: 826,
+      borough: 'MN',
+      cd: '105',
+      condono: 0,
+      council: '3',
+      firecomp: 'E001',
+      histdist: null,
+      landmark: null,
+      landuse: '05',
+      lot: 61,
+      lotarea: 4938,
+      lotdepth: 98.75,
+      lotfront: 50,
+      numbldgs: 1,
+      numfloors: 1,
+      ownername: 'HMH SPECIAL LLC',
+      ownertype: null,
+      overlay1: null,
+      overlay2: null,
+      policeprct: '13',
+      sanitboro: '1',
+      sanitdistr: '05',
+      sanitsub: '1B',
+      schooldist: '02',
+      spdist1: null,
+      spdist2: null,
+      spdist3: null,
+      unitsres: 0,
+      unitstotal: 1,
+      yearbuilt: '1935',
+      yearalter1: 0,
+      yearalter2: 0,
+      zipcode: 10010,
+      zonedist1: 'M1-6',
+      zonedist2: null,
+      zonedist3: null,
+      zonedist4: null,
+      zonemap: '8d',
     });
-
     await visit('/lot/1/47/7501');
     await click('[data-test-bookmark="save"]');
     await percySnapshot('save button works');
     await visit('/bookmarks');
     await percySnapshot('saved bookmark appears');
-
-    assert.equal(find('[data-test-lot-property="bbl"]').textContent.trim(), 'test-bbl');
+    assert.equal(find('[data-test-lot-property="bbl"]').textContent.trim(), 1);
 
     await click('.delete-bookmark-button');
     await percySnapshot('bookmark deleted');
@@ -122,7 +154,7 @@ module('Acceptance | bookmarks', function(hooks) {
           block: 'test',
           lot: 'test',
           address: 'test',
-          bbl: 'test-bbl',
+          bbl: sharedCartoResponseID,
         },
       }],
     }));
@@ -146,7 +178,7 @@ module('Acceptance | bookmarks', function(hooks) {
 
     await visit('/bookmarks');
 
-    assert.equal(find('[data-test-lot-property="bbl"]').textContent.trim(), 'test-bbl');
+    assert.equal(find('[data-test-lot-property="bbl"]').textContent.trim(), sharedCartoResponseID);
   });
 
   test('it displays a multiple lots', async function(assert) {
@@ -168,7 +200,7 @@ module('Acceptance | bookmarks', function(hooks) {
             block: 'test',
             lot: 'test',
             address: 'test',
-            bbl: 'test-bbl',
+            bbl: mockId,
           },
         }],
       };

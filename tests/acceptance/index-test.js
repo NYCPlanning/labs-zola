@@ -11,6 +11,7 @@ import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
+import { selectChoose } from 'ember-power-select/test-support';
 import config from '../../config/environment';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 import stubBasicMap from '../helpers/stub-basic-map';
@@ -67,5 +68,17 @@ module('Acceptance | index', function(hooks) {
       (find(resultAt(1)).className.indexOf('highlighted-result') > -1),
       true,
     );
+  });
+
+  test('it does BBL lookup', async function(assert) {
+    await visit('/');
+    await click('[data-test-search="bbl"] span');
+
+    await selectChoose('[data-test-search="bbl"] .ember-basic-dropdown', 'Manhattan (1)');
+    await fillIn('[data-test-search="bbl"] .bbl-lookup--block-input', 1);
+    await fillIn('[data-test-search="bbl"] .bbl-lookup--lot-input', 1);
+    await click('[data-test-search="bbl"] .button.small.expanded.no-margin');
+
+    assert.ok(currentURL().includes('lot/1/826/61'));
   });
 });

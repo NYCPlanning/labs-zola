@@ -1,12 +1,9 @@
-{{bookmark-button
-  bookmarkableModel=model}}
-
 <label class="header-type">
-  Special Purpose District <span class="medium-gray">|</span> {{model.properties.sdlbl}}
+  Special Purpose District <span class="medium-gray">|</span> {{this.model.sdlbl}}
 </label>
 
 <h1 class="header-large">
-  {{model.properties.sdname}}
+  {{this.model.sdname}}
 </h1>
 
 <p>
@@ -15,7 +12,7 @@
 
 <p>
   <a
-    href="{{readMoreLink}}"
+    href="{{this.model.readMoreLink}}"
     target="_blank"
   >
     {{fa-icon 'external-link-alt'}}
@@ -23,4 +20,4 @@
   </a>
 </p>
 
-{{outlet}}
+{{yield}}
