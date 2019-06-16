@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { visit, click, find } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-// import { percySnapshot } from 'ember-percy';
+import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import refresh from '../helpers/refresh';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
@@ -33,12 +33,12 @@ module('Acceptance | navigating to qpd url breaks', function(hooks) {
 
     await click('[data-test-about-close-button]');
 
-    // await percySnapshot('qp test: visit index, change some things');
+    await percySnapshot('qp test: visit index, change some things');
 
     // the refresh here resets the context, requiring re-mocking
     await refresh();
 
-    // await percySnapshot('after a refresh, previous QPs still applies');
+    await percySnapshot('after a refresh, previous QPs still applies');
 
     const boroughs = await find('[data-test-toggle-boroughs] input');
     const cds = await find('[data-test-grouped-parent="Commercial Districts"]');
