@@ -90,6 +90,7 @@
     "ember-unused-components": "0.2.0",
     "ember-window-mock": "0.5.4",
     "ember-wormhole": "^0.5.2",
+    "ember-percy": "1.5.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-ember": "^6.2.0",
