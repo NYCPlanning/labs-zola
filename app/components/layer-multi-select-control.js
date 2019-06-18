@@ -12,6 +12,7 @@ export default class LayerMultiSelectControl extends Parentable {
       .mapBy('value');
   }
 
+  // test
   values = [];
 
   didInsertElement() {
