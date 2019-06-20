@@ -407,7 +407,7 @@
 
   {{/labs-ui/layer-groups-container}}
 
-  <a {{action 'resetQueryParams'}} class="button gray small reset-map-button hide-for-print" disabled={{isDefault}}>
+  <a onClick={{this.resetLayerPalette}} class="button gray small reset-map-button hide-for-print" data-test-button="reset-map-layers" disabled={{isDefault}}>
     {{fa-icon "undo"}} Reset Map Layers
   </a>
 </div>

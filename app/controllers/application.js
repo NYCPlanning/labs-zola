@@ -5,6 +5,9 @@ import { inject as service } from '@ember/service';
 import QueryParams from 'ember-parachute';
 import { alias } from '@ember/object/computed';
 import { zoningDistrictGroups, commercialOverlays } from '../components/layer-palette';
+import { defaultLayerGroupState } from '../routes/application';
+
+const defaultLayerGroups = defaultLayerGroupState.filterBy('visible', true).map(layer => layer.id);
 
 // define new query params here:
 export const mapQueryParams = new QueryParams(
@@ -38,7 +41,7 @@ export const mapQueryParams = new QueryParams(
       'aerials-1951': { defaultValue: false },
 
       layerGroups: {
-        defaultValue: [],
+        defaultValue: defaultLayerGroups,
         refresh: true,
         as: 'layer-groups',
       },
@@ -127,7 +130,7 @@ export default class ApplicationController extends Controller.extend(mapQueryPar
   }
 
   @action
-  resetQueryParams() {
+  resetAllParams() {
     this.resetQueryParams();
   }
 }

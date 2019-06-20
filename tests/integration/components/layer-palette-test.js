@@ -170,8 +170,7 @@ module('Integration | Component | layer-palette', function(hooks) {
     const commercialOverlays = this.layerGroupsObject['commercial-overlays'];
     const aerialsLayer = this.layerGroupsObject.aerials;
 
-    await click('[data-test-reset-map-button]');
-    await pauseTest();
+    await click('[data-test-button="reset-map-layers" ]');
     assert.deepEqual(zoningDistricts.layers.findBy('id', 'zd-fill').style.filter, []); // reset to none
     assert.deepEqual(commercialOverlays.layers.findBy('id', 'co').style.filter, []); // reset to none
     assert.equal(aerialsLayer.visible, false); // toggle to false
