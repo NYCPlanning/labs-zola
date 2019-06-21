@@ -138,7 +138,7 @@ module('Integration | Component | layer-palette', function(hooks) {
   });
 
   // reset map button is broken as of now, will fix in another branch and return to this test
-  skip('clicking reset map button resets to all of default layers', async function(assert) {
+  test('clicking reset map button resets to all of default layers', async function(assert) {
     this.layerGroups = await this.owner
       .lookup('service:store')
       .findAll('layer-group', { include: 'layers' });

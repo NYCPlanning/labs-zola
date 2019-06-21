@@ -4,8 +4,10 @@ import { set, computed, action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import QueryParams from 'ember-parachute';
 import { alias } from '@ember/object/computed';
+import { next } from '@ember/runloop';
 import { zoningDistrictGroups, commercialOverlays } from '../components/layer-palette';
 import { defaultLayerGroupState } from '../routes/application';
+
 
 const defaultLayerGroups = defaultLayerGroupState.filterBy('visible', true).map(layer => layer.id);
 
@@ -129,8 +131,18 @@ export default class ApplicationController extends Controller.extend(mapQueryPar
     this.set(property, value);
   }
 
+  /* TODO: FIND OUT WHY THIS ERROR IS HAPPENING
+  Assertion Failed: You modified "numberMenuItems" twice on <labs-zola@component:labs-ui/layer-groups-container::ember702>
+  in a single render. It was rendered in "component:labs-ui/layer-groups-container" and modified in "component:labs-ui/layer-group-toggle".
+  This was unreliable and slow in Ember 1.x and is no longer supported. See https://github.com/emberjs/ember.js/issues/13948 for more details.
+  */
   @action
   resetAllParams() {
-    this.resetQueryParams();
+    // "next" here fixes an issue where layers that were OFF by default and then turned ON by the user would not change back when the reset map layers button
+    // was clicked. While "next" fixes this issue on the app ONLY WHEN ONE LAYER IS TURNED ON, we still get the error outlined above in the console,
+    // and it does not work when more than ONE layer is turned on
+    next(() => {
+      this.resetQueryParams();
+    });
   }
 }
