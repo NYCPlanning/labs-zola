@@ -1,8 +1,8 @@
 <button
-  class="save-button bookmark-save-button hide-for-print {{if saved 'saved'}}"
-  onclick={{action 'toggleSaved'}}
+  class="save-button bookmark-save-button hide-for-print {{if saved "saved"}}"
+  onclick={{action "toggleSaved"}}
   data-test-bookmark="save"
-  data-test-bookmark-button-saved={{if saved 'true' 'false'}}
+  data-test-bookmark-button-saved={{if saved "true" "false"}}
 >
   {{fa-icon "bookmark"}}
   <span class="state">
@@ -11,5 +11,4 @@
     {{/if}}
   </span>
 </button>
-
 {{yield}}

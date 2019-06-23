@@ -1,93 +1,105 @@
-<button class="button tiny gray float-left" {{action 'disablePrintView'}} data-test-exit-print>
-  {{fa-icon 'times' fixedWidth=true transform='left-4'}}
+<button
+  class="button tiny gray float-left"
+  data-test-exit-print
+  {{action "disablePrintView"}}
+>
+  {{fa-icon "times" fixedWidth=true transform="left-4"}}
   Exit Print View
 </button>
-
 <div class="print-view-controls--item orientation">
-  <h6 class="print-view-controls--header">Orientation:</h6>
+  <h6 class="print-view-controls--header">
+    Orientation:
+  </h6>
   <button
-    onclick={{action (mut printViewOrientation) 'landscape'}}
+    onclick={{action (mut printViewOrientation) "landscape"}}
     data-test-print-control="landscape"
   >
     <span class="fa-layers">
-      {{#if (eq printViewOrientation 'landscape')}}
-        {{fa-icon 'circle' class='white'}}
-        {{fa-icon 'circle' prefix='far' class='light-gray'}}
-        {{fa-icon 'circle' transform='shrink-6' class='a11y-orange'}}
+      {{#if (eq printViewOrientation "landscape")}}
+        {{fa-icon "circle" class="white"}}
+        {{fa-icon "circle" prefix="far" class="light-gray"}}
+        {{fa-icon "circle" transform="shrink-6" class="a11y-orange"}}
       {{else}}
-        {{fa-icon 'circle' class='silver'}}
-        {{fa-icon 'circle' prefix='far' class='light-gray'}}
+        {{fa-icon "circle" class="silver"}}
+        {{fa-icon "circle" prefix="far" class="light-gray"}}
       {{/if}}
-    </span> Landscape
+    </span>
+    Landscape
   </button>
   <button
-    onclick={{action (mut printViewOrientation) 'portrait'}}
+    onclick={{action (mut printViewOrientation) "portrait"}}
     data-test-print-control="portrait"
   >
     <span class="fa-layers">
-      {{#if (eq printViewOrientation 'portrait')}}
-        {{fa-icon 'circle' class='white'}}
-        {{fa-icon 'circle' prefix='far' class='light-gray'}}
-        {{fa-icon 'circle' transform='shrink-6' class='a11y-orange'}}
+      {{#if (eq printViewOrientation "portrait")}}
+        {{fa-icon "circle" class="white"}}
+        {{fa-icon "circle" prefix="far" class="light-gray"}}
+        {{fa-icon "circle" transform="shrink-6" class="a11y-orange"}}
       {{else}}
-        {{fa-icon 'circle' class='silver'}}
-        {{fa-icon 'circle' prefix='far' class='light-gray'}}
+        {{fa-icon "circle" class="silver"}}
+        {{fa-icon "circle" prefix="far" class="light-gray"}}
       {{/if}}
-    </span> Portrait
+    </span>
+    Portrait
   </button>
 </div>
-
 <div class="print-view-controls--item size">
-  <h6 class="print-view-controls--header">Size:</h6>
+  <h6 class="print-view-controls--header">
+    Size:
+  </h6>
   <button
-    onclick={{action (mut printViewPaperSize) 'letter'}}
+    onclick={{action (mut printViewPaperSize) "letter"}}
     data-test-print-control="letter"
   >
     <span class="fa-layers">
-      {{#if (eq printViewPaperSize 'letter')}}
-        {{fa-icon 'circle' class='white'}}
-        {{fa-icon 'circle' prefix='far' class='light-gray'}}
-        {{fa-icon 'circle' transform='shrink-6' class='a11y-orange'}}
+      {{#if (eq printViewPaperSize "letter")}}
+        {{fa-icon "circle" class="white"}}
+        {{fa-icon "circle" prefix="far" class="light-gray"}}
+        {{fa-icon "circle" transform="shrink-6" class="a11y-orange"}}
       {{else}}
-        {{fa-icon 'circle' class='silver'}}
-        {{fa-icon 'circle' prefix='far' class='light-gray'}}
+        {{fa-icon "circle" class="silver"}}
+        {{fa-icon "circle" prefix="far" class="light-gray"}}
       {{/if}}
-    </span> Letter
+    </span>
+    Letter
   </button>
   <button
-    onclick={{action (mut printViewPaperSize) 'legal'}}
+    onclick={{action (mut printViewPaperSize) "legal"}}
     data-test-print-control="legal"
   >
     <span class="fa-layers">
-      {{#if (eq printViewPaperSize 'legal')}}
-        {{fa-icon 'circle' class='white'}}
-        {{fa-icon 'circle' prefix='far' class='light-gray'}}
-        {{fa-icon 'circle' transform='shrink-6' class='a11y-orange'}}
+      {{#if (eq printViewPaperSize "legal")}}
+        {{fa-icon "circle" class="white"}}
+        {{fa-icon "circle" prefix="far" class="light-gray"}}
+        {{fa-icon "circle" transform="shrink-6" class="a11y-orange"}}
       {{else}}
-        {{fa-icon 'circle' class='silver'}}
-        {{fa-icon 'circle' prefix='far' class='light-gray'}}
+        {{fa-icon "circle" class="silver"}}
+        {{fa-icon "circle" prefix="far" class="light-gray"}}
       {{/if}}
-    </span> Legal
+    </span>
+    Legal
   </button>
   <button
-    onclick={{action (mut printViewPaperSize) 'tabloid'}}
+    onclick={{action (mut printViewPaperSize) "tabloid"}}
     data-test-print-control="tabloid"
   >
     <span class="fa-layers">
-      {{#if (eq printViewPaperSize 'tabloid')}}
-        {{fa-icon 'circle' class='white'}}
-        {{fa-icon 'circle' prefix='far' class='light-gray'}}
-        {{fa-icon 'circle' transform='shrink-6' class='a11y-orange'}}
+      {{#if (eq printViewPaperSize "tabloid")}}
+        {{fa-icon "circle" class="white"}}
+        {{fa-icon "circle" prefix="far" class="light-gray"}}
+        {{fa-icon "circle" transform="shrink-6" class="a11y-orange"}}
       {{else}}
-        {{fa-icon 'circle' class='silver'}}
-        {{fa-icon 'circle' prefix='far' class='light-gray'}}
+        {{fa-icon "circle" class="silver"}}
+        {{fa-icon "circle" prefix="far" class="light-gray"}}
       {{/if}}
-    </span> Tabloid
+    </span>
+    Tabloid
   </button>
 </div>
-
 <div class="print-view-controls--item show">
-  <h6 class="print-view-controls--header">Show:</h6>
+  <h6 class="print-view-controls--header">
+    Show:
+  </h6>
   <button
     class="map"
     onclick={{action (mut printViewShowMap) (not printViewShowMap)}}
@@ -95,13 +107,14 @@
   >
     <span class="fa-layers">
       {{#if (eq printViewShowMap true)}}
-        {{fa-icon 'square' class='white'}}
-        {{fa-icon 'check-square' class='a11y-orange'}}
+        {{fa-icon "square" class="white"}}
+        {{fa-icon "check-square" class="a11y-orange"}}
       {{else}}
-        {{fa-icon 'square' class='silver'}}
-        {{fa-icon 'square' class='light-gray' prefix='far'}}
+        {{fa-icon "square" class="silver"}}
+        {{fa-icon "square" class="light-gray" prefix="far"}}
       {{/if}}
-    </span> Map
+    </span>
+    Map
   </button>
   {{#if (eq printViewShowMap true)}}
     <button
@@ -111,19 +124,21 @@
     >
       <span class="fa-layers">
         {{#if (eq printViewShowLegend true)}}
-          {{fa-icon 'square' class='white'}}
-          {{fa-icon 'check-square' class='a11y-orange'}}
+          {{fa-icon "square" class="white"}}
+          {{fa-icon "check-square" class="a11y-orange"}}
         {{else}}
-          {{fa-icon 'square' class='silver'}}
-          {{fa-icon 'square' class='light-gray' prefix='far'}}
+          {{fa-icon "square" class="silver"}}
+          {{fa-icon "square" class="light-gray" prefix="far"}}
         {{/if}}
-      </span> Legend
+      </span>
+      Legend
     </button>
   {{else}}
-    <button disabled>
+    <button disabled="">
       <span class="fa-layers">
-        {{fa-icon 'square' class='silver' prefix='far'}}
-      </span> Legend
+        {{fa-icon "square" class="silver" prefix="far"}}
+      </span>
+      Legend
     </button>
   {{/if}}
   <button
@@ -133,16 +148,17 @@
   >
     <span class="fa-layers">
       {{#if (eq printViewShowContent true)}}
-        {{fa-icon 'square' class='white'}}
-        {{fa-icon 'check-square' class='a11y-orange'}}
+        {{fa-icon "square" class="white"}}
+        {{fa-icon "check-square" class="a11y-orange"}}
       {{else}}
-        {{fa-icon 'square' class='silver'}}
-        {{fa-icon 'square' class='light-gray' prefix='far'}}
+        {{fa-icon "square" class="silver"}}
+        {{fa-icon "square" class="light-gray" prefix="far"}}
       {{/if}}
-    </span> Content
+    </span>
+    Content
   </button>
 </div>
-
-<a class="print-button button hide-for-print" href="javascript:window.print()">PRINT</a>
-
+<a class="print-button button hide-for-print" href="javascript:window.print()">
+  PRINT
+</a>
 {{yield}}

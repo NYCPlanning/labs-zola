@@ -1,96 +1,85 @@
-{{#mapbox/basic-map
-  name='main-map'
-  layerGroups=this.layerGroups
-  initOptions=(hash style=layerGroupsMeta.mapboxStyle
-                    preserveDrawingBuffer=true
-                    zoom=zoom
-                    hash=true
-                    center=(array lng lat))
-  mapLoaded=(action 'handleMapLoad')
-  as |map|
-}}
+<Mapbox::BasicMap
+  @name="main-map"
+  @layerGroups={{this.layerGroups}}
+  @initOptions={{hash
+    style=layerGroupsMeta.mapboxStyle
+    preserveDrawingBuffer=true
+    zoom=zoom
+    hash=true
+    center=(array lng lat)
+  }}
+  @mapLoaded={{action "handleMapLoad"}} as |map|
+>
   <div
-    data-test-main-map='loaded'
+    data-test-main-map="loaded"
     class="labs-map-loaded"
     style="display:none"
-  >
-  </div>
+  ></div>
   <div class="print-controls mapboxgl-ctrl mapboxgl-ctrl-group">
-    <button {{action (mut print) true}}
+    <button
       class="mapboxgl-ctrl-icon"
       data-test-map-print-button
+      {{action (mut print) true}}
     >
-      {{fa-icon 'print'}}
+      {{fa-icon "print"}}
     </button>
   </div>
-
-  {{#labs-layers
-    map=map.instance
-    hoveredFeature=map.hoveredFeature
-    layerGroups=this.layerGroups
-    interactivity=interactivity
-    onLayerClick=(action 'handleLayerClick')
-    onLayerHighlight=(action 'handleLayerHighlight')
-     as |layers|}}
-    {{#layers.tooltip as |tooltip|}}
-      {{tooltip-renderer
+  <LabsLayers
+    @map={{map.instance}}
+    @hoveredFeature={{map.hoveredFeature}}
+    @layerGroups={{this.layerGroups}}
+    @interactivity={{interactivity}}
+    @onLayerClick={{action "handleLayerClick"}}
+    @onLayerHighlight={{action "handleLayerHighlight"}} as |layers|
+  >
+    <layers.tooltip as |tooltip|>
+      <TooltipRenderer
         data-test-tooltip="true"
-        feature=tooltip.feature
-        template=tooltip.layer.tooltipTemplate}}
-    {{/layers.tooltip}}
-  {{/labs-layers}}
-
+        @feature={{tooltip.feature}}
+        @template={{tooltip.layer.tooltipTemplate}}
+      />
+    </layers.tooltip>
+  </LabsLayers>
   {{#if bookmarkedLotsLayer}}
-    {{mapbox-gl-layer
-      map=map.instance
-      layer=bookmarkedLotsLayer
-      before='place_other'}}
+    <MapboxGlLayer
+      @map={{map.instance}}
+      @layer={{bookmarkedLotsLayer}}
+      @before="place_other"
+    />
   {{/if}}
-
   {{#if mainMap.selected}}
-    {{#mapbox-gl-source
-      map=map.instance
-      sourceId='selected-lot'
-      options=selectedLotSource
-      as |source|
-    }}
-      {{source.layer
-        layer=selectedFillLayer
-        before='place_other'}}
-      {{source.layer
-        layer=selectedLineLayer
-        before='place_other'}}
-    {{/mapbox-gl-source}}
+    <MapboxGlSource
+      @map={{map.instance}}
+      @sourceId="selected-lot"
+      @options={{selectedLotSource}} as |source|
+    >
+      <source.layer @layer={{selectedFillLayer}} @before="place_other" />
+      <source.layer @layer={{selectedLineLayer}} @before="place_other" />
+    </MapboxGlSource>
   {{/if}}
-
-  {{#map-measurement-tools
-    map=map.instance
-    draw=this.draw as |measurement|
-  }}
+  <MapMeasurementTools
+    @map={{map.instance}}
+    @draw={{this.draw}} as |measurement|
+  >
     {{#if measurement.feature}}
-      {{#mapbox-gl-source
-        map=map.instance
-        sourceId='drawn-feature'
-        options=(hash
-          type='geojson'
-          data=measurement.feature
-        ) as |source|
-      }}
-        {{source.layer
-          layer=drawnFeatureLayers.line
-          before='place_other'
-        }}
-        {{#if (eq mainMap.drawnFeature.type 'Polygon')}}
-          {{source.layer
-            layer=drawnFeatureLayers.fill
-            before='place_other'
-          }}
+      <MapboxGlSource
+        @map={{map.instance}}
+        @sourceId="drawn-feature"
+        @options={{hash type="geojson" data=measurement.feature}} as |source|
+      >
+        <source.layer
+          @layer={{drawnFeatureLayers.line}}
+          @before="place_other"
+        />
+        {{#if (eq mainMap.drawnFeature.type "Polygon")}}
+          <source.layer
+            @layer={{drawnFeatureLayers.fill}}
+            @before="place_other"
+          />
         {{/if}}
-      {{/mapbox-gl-source}}
+      </MapboxGlSource>
     {{/if}}
-  {{/map-measurement-tools}}
-
-  {{mapbox-gl-on 'data' (action 'mapLoading') eventSource=map.instance}}
-{{/mapbox/basic-map}}
-
+  </MapMeasurementTools>
+  {{mapbox-gl-on "data" (action "mapLoading") eventSource=map.instance}}
+</Mapbox::BasicMap>
 {{locate-me-mobile}}
