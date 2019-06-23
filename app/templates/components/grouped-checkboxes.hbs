@@ -1,6 +1,7 @@
 <label>
-  <input type="checkbox"
-    onClick={{action 'addOrRemoveMultiple' group.codes selected}}
+  <input
+    type="checkbox"
+    onClick={{action "addOrRemoveMultiple" group.codes selected}}
     checked={{if selectedInGroup true false}}
     indeterminate={{isIndeterminateGroup}}
     data-test-grouped-parent={{group.name}}
@@ -8,23 +9,29 @@
   {{group.name}}
   {{#if group.style}}
     <span style={{sanitize group.style}} class="indeterminate-hider">
-      {{fa-icon 'square'}}
+      {{fa-icon "square"}}
     </span>
   {{/if}}
 </label>
-
 {{#if hasMany}}
   {{#if group.codes}}
-    <input id="nested-{{group.name}}" class="checkbox-hide-sibling" type="checkbox" checked={{group.checked}}>
-    <label for="nested-{{group.name}}" class="hidable-sibling-toggle top-right">{{fa-icon 'angle-up'}}</label>
+    <input
+      id="nested-{{group.name}}"
+      class="checkbox-hide-sibling"
+      type="checkbox"
+      checked={{group.checked}}
+    />
+    <label for="nested-{{group.name}}" class="hidable-sibling-toggle top-right">
+      {{fa-icon "angle-up"}}
+    </label>
   {{/if}}
-
   <ul class="nested columns-3 hidable-sibling" data-test-grouped={{group.name}}>
     {{#each group.codes as |code|}}
       <li>
         <label>
-          <input type='checkbox'
-            onClick={{action 'addOrRemove' code selected bubbles=false}}
+          <input
+            type="checkbox"
+            onClick={{action "addOrRemove" code selected bubbles=false}}
             checked={{if (intersect (array code) selected) true false}}
             data-test-grouped={{code}}
           />

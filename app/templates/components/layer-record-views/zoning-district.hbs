@@ -1,22 +1,22 @@
 <label class="header-type">
   ZONING DISTRICT
 </label>
-
 <h1 class="header-large">
-  {{model.zonedist}}
+  {{this.model.zonedist}}
 </h1>
-
 <p>
-  {{model.description}}
+  {{this.model.description}}
 </p>
-
-{{#unless (eq model.zonedist 'BPC')}}
+{{#unless (eq this.model.zonedist "BPC")}}
   <p>
-    <a 
-      href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{this.primaryzoneURL}}.page" 
+    <a
+      href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{this.model.primaryzoneURL}}.page"
       target="_blank"
     >
-      {{fa-icon 'external-link-alt'}} Learn more about {{model.zonedist}} districts&hellip;
+      {{fa-icon "external-link-alt"}}
+      Learn more about
+      {{this.model.zonedist}}
+      districts&hellip;
     </a>
   </p>
 {{else}}
@@ -25,9 +25,9 @@
       href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-manhattan.page#battery_park"
       target="_blank"
     >
-      {{fa-icon 'external-link-alt'}} Learn more about the Special Battery Park City District&hellip;
+      {{fa-icon "external-link-alt"}}
+      Learn more about the Special Battery Park City District&hellip;
     </a>
   </p>
 {{/unless}}
-
 {{yield}}

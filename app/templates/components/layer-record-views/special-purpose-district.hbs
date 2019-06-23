@@ -1,23 +1,20 @@
 <label class="header-type">
-  Special Purpose District <span class="medium-gray">|</span> {{this.model.sdlbl}}
+  Special Purpose District
+  <span class="medium-gray">
+    |
+  </span>
+  {{this.model.sdlbl}}
 </label>
-
 <h1 class="header-large">
   {{this.model.sdname}}
 </h1>
-
 <p>
   Since 1969, the City Planning Commission has designated special zoning districts in response to areas of the City with unique characteristics. Each special district stipulates zoning requirements and incentives tailored to specific conditions that may not lend themselves to generalized zoning and standard development.
 </p>
-
 <p>
-  <a
-    href="{{this.model.readMoreLink}}"
-    target="_blank"
-  >
-    {{fa-icon 'external-link-alt'}}
+  <a href="{{this.model.readMoreLink}}" target="_blank">
+    {{fa-icon "external-link-alt"}}
     Learn more&hellip;
   </a>
 </p>
-
 {{yield}}

@@ -1,17 +1,11 @@
-{{#carto-data-provider
-  modelId=model.id
-  modelName='zoning-map-amendment'
-  as |zmaModel|
-}}
-  {{mapbox/map-feature-renderer
-    model=zmaModel
-    shouldFitBounds=model.search
-  }}
-
-  {{bookmark-button
-    bookmarkableModel=zmaModel
-  }}
-
-  {{layer-record-views/zoning-map-amendment
-    model=zmaModel.properties}}  
-{{/carto-data-provider}}
+<CartoDataProvider
+  @modelId={{model.id}}
+  @modelName="zoning-map-amendment" as |zmaModel|
+>
+  <Mapbox::MapFeatureRenderer
+    @model={{zmaModel}}
+    @shouldFitBounds={{model.search}}
+  />
+  <BookmarkButton @bookmarkableModel={{zmaModel}} />
+  <LayerRecordViews::ZoningMapAmendment @model={{zmaModel.properties}} />
+</CartoDataProvider>

@@ -1,7 +1,10 @@
 <div class="cyclomedia hide-for-print">
   {{#if inView}}
-    <iframe src="https://roadview.planninglabs.nyc/view/{{lon}}/{{lat}}" class="cyclomedia" allowfullscreen></iframe>
+    <iframe
+      src="https://roadview.planninglabs.nyc/view/{{lon}}/{{lat}}"
+      class="cyclomedia"
+      allowfullscreen=""
+    ></iframe>
   {{/if}}
 </div>
-
-{{is-in-viewport inView=inView}}
+<IsInViewport @inView={{inView}} />

@@ -1,47 +1,39 @@
-{{!--
+{{!
   This template overrides the template for an addon, ember-mapbox-composer.
   e-mapbox-composer uses private APIs in e-mapbox-gl. Those changed, so we need to
   manually configure the interface here.
---}}
-
+}}
 {{#if _loader.isLoaded}}
   {{#if _glSupported}}
     {{#if _map}}
       {{#if _isMapLoaded}}
         <div class="labs-map-loaded"></div>
-
-        {{!-- Highlighted Layer Handling --}}
-        {{mapbox-gl-layer
-          map=_map
-          layer=highlightedLineFeatureLayer
-        }} 
-        {{mapbox-gl-layer
-          map=_map
-          layer=highlightedCircleFeatureLayer
+        {{! Highlighted Layer Handling }}
+        <MapboxGlLayer @map={{_map}} @layer={{highlightedLineFeatureLayer}} />
+        <MapboxGlLayer @map={{_map}} @layer={{highlightedCircleFeatureLayer}} />
+        {{yield
+          (hash
+            call=(component "mapbox-gl-call" obj=_map)
+            control=(component "mapbox-gl-control" map=_map)
+            image=(component "mapbox-gl-image" map=_map)
+            layer=(component "mapbox-gl-layer" map=_map)
+            marker=(component "mapbox-gl-marker" map=_map)
+            on=(component "mapbox-gl-on" eventSource=_map)
+            popup=(component "mapbox-gl-popup" map=_map)
+            source=(component "mapbox-gl-source" map=_map)
+            instance=_map
+            mapInstance=_map
+            labs-layers=(component
+              "labs-layers"
+              map=_map
+              layerGroups=layerGroups
+              hoveredFeature=hoveredFeature
+            )
+          )
         }}
-
-        {{yield (hash
-          call=(component 'mapbox-gl-call' obj=_map)
-          control=(component 'mapbox-gl-control' map=_map)
-          image=(component 'mapbox-gl-image' map=_map)
-          layer=(component 'mapbox-gl-layer' map=_map)
-          marker=(component 'mapbox-gl-marker' map=_map)
-          on=(component 'mapbox-gl-on' eventSource=_map)
-          popup=(component 'mapbox-gl-popup' map=_map)
-          source=(component 'mapbox-gl-source' map=_map)
-          instance=_map
-          mapInstance=_map
-          labs-layers=(component 'labs-layers'
-            map=_map
-            layerGroups=layerGroups
-            hoveredFeature=hoveredFeature)
-        )}}
       {{/if}}
     {{/if}}
   {{/if}}
-
 {{else}}
-
-  {{yield to='inverse'}}
-
+  {{yield to="inverse"}}
 {{/if}}

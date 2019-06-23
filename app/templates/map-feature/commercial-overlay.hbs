@@ -1,20 +1,17 @@
-{{#carto-data-provider
-  modelId=model.id
-  modelName='commercial-overlay'
-  as |commercialOverlay|
-}}
-  {{mapbox/map-feature-renderer
-    model=commercialOverlay
-    shouldFitBounds=model.search
-  }}
-
-  {{bookmark-button
-    bookmarkableModel=commercialOverlay}}
-
-  {{#layer-record-views/commercial-overlay
-    model=commercialOverlay.properties}}
-    {{#mapbox/fit-map-to-all-button model=commercialOverlay}}
-      Fit map to all {{commercialOverlay.id}} districts
-    {{/mapbox/fit-map-to-all-button}}
-  {{/layer-record-views/commercial-overlay}}
-{{/carto-data-provider}}
+<CartoDataProvider
+  @modelId={{model.id}}
+  @modelName="commercial-overlay" as |commercialOverlay|
+>
+  <Mapbox::MapFeatureRenderer
+    @model={{commercialOverlay}}
+    @shouldFitBounds={{model.search}}
+  />
+  <BookmarkButton @bookmarkableModel={{commercialOverlay}} />
+  <LayerRecordViews::CommercialOverlay @model={{commercialOverlay.properties}}>
+    <Mapbox::FitMapToAllButton @model={{commercialOverlay}}>
+      Fit map to all
+      {{commercialOverlay.id}}
+      districts
+    </Mapbox::FitMapToAllButton>
+  </LayerRecordViews::CommercialOverlay>
+</CartoDataProvider>

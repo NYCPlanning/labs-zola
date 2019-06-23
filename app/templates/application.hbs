@@ -1,42 +1,37 @@
-{{main-header
-  bookmarks=model.bookmarks}}
-
-{{!-- print is chameleon --}}
-<div class="{{if print 'print-view'}}">
-  {{!-- what on earth is this for --}}
-  {{link-to '' 'index' class="index-active-detector"}}
-
-  {{!-- print is chameleon --}}
-  {{!-- data clip below --}}
+<MainHeader @bookmarks={{model.bookmarks}} />
+{{! print is chameleon }}
+<div class="{{if print "print-view"}}">
+  {{! what on earth is this for }}
+  {{link-to "" "index" class="index-active-detector"}}
+  {{! print is chameleon }}
+  {{! data clip below }}
   {{#if print}}
-    {{print-view-controls
-      print=print
-      printViewOrientation=printViewOrientation
-      printViewPaperSize=printViewPaperSize
-      printViewShowMap=printViewShowMap
-      printViewShowLegend=printViewShowLegend
-      printViewShowContent=printViewShowContent
-    }}
+    <PrintViewControls
+      @print={{print}}
+      @printViewOrientation={{printViewOrientation}}
+      @printViewPaperSize={{printViewPaperSize}}
+      @printViewShowMap={{printViewShowMap}}
+      @printViewShowLegend={{printViewShowLegend}}
+      @printViewShowContent={{printViewShowContent}}
+    />
   {{/if}}
-
   <div class="site-main grid-x {{printViewClasses}}">
     <div class="navigation-area cell large-auto">
       {{map-resource-search}}
-
       <div class="map-grid">
-        {{main-map
-          bookmarks=model.bookmarks
-          layerGroups=model.layerGroups
-          layerGroupsMeta=model.meta
-          print=print
-        }}
-
-        {{layer-palette
-          selectedZoning=this.selectedZoning
-          selectedOverlays=this.selectedOverlays
-          layerGroups=model.layerGroupsObject
-          isDefault=isDefault
-          resetQueryParams=(action 'resetQueryParams')}}
+        <MainMap
+          @bookmarks={{model.bookmarks}}
+          @layerGroups={{model.layerGroups}}
+          @layerGroupsMeta={{model.meta}}
+          @print={{print}}
+        />
+        <LayerPalette
+          @selectedZoning={{this.selectedZoning}}
+          @selectedOverlays={{this.selectedOverlays}}
+          @layerGroups={{model.layerGroupsObject}}
+          @isDefault={{isDefault}}
+          @resetQueryParams={{action "resetQueryParams"}}
+        />
       </div>
     </div>
     {{outlet}}

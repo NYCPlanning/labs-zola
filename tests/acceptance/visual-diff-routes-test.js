@@ -97,12 +97,12 @@ module('Acceptance | visual diff routes', function(hooks) {
   test('visiting zma/090334zmk', async function(assert) {
     generateMockCartoGeoJSONResponse(this, {
       id: '090334zmk',
-      ulurpno: null,
+      ulurpno: '090334zmk',
       project_na: 'GREENPOINT-WILLIAMSBURG',
       effective: '2005-05-11T00:00:00Z',
       status: 'Adopted',
       lucats: '050111a',
-      address: null,
+      address: '090334zmk',
     });
 
     await visit('zma/090334zmk');

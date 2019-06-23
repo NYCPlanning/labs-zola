@@ -1,17 +1,13 @@
-{{#carto-data-provider
-  modelId=model.id
-  modelName='special-purpose-district'
-  as |featureModel|
-}}
-  {{mapbox/map-feature-renderer
-    model=featureModel
-    shouldFitBounds=model.search
-  }}
-
-  {{bookmark-button
-    bookmarkableModel=featureModel
-  }}
-
-  {{layer-record-views/special-purpose-district
-    model=featureModel.properties}}  
-{{/carto-data-provider}}
+<CartoDataProvider
+  @modelId={{model.id}}
+  @modelName="special-purpose-district" as |featureModel|
+>
+  <Mapbox::MapFeatureRenderer
+    @model={{featureModel}}
+    @shouldFitBounds={{model.search}}
+  />
+  <BookmarkButton @bookmarkableModel={{featureModel}} />
+  <LayerRecordViews::SpecialPurposeDistrict
+    @model={{featureModel.properties}}
+  />
+</CartoDataProvider>

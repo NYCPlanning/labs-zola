@@ -1,16 +1,11 @@
-{{#carto-data-provider
-  modelId=model.id
-  modelName='lot'
-  as |lotModel|
-}}
-  {{mapbox/map-feature-renderer
-    model=lotModel
-  }}
-
-  {{bookmark-button
-    bookmarkableModel=lotModel
-  }}
-
-  {{layer-record-views/tax-lot
-    model=lotModel.properties}}  
-{{/carto-data-provider}}
+<CartoDataProvider
+  @modelId={{model.id}}
+  @modelName="lot" as |lotModel|
+>
+  <Mapbox::MapFeatureRenderer
+    @model={{lotModel}} />
+  <BookmarkButton
+    @bookmarkableModel={{lotModel}} />
+  <LayerRecordViews::TaxLot
+    @model={{lotModel.properties}} />
+</CartoDataProvider>
