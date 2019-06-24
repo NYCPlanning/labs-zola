@@ -73,7 +73,7 @@ export default class ApplicationController extends Controller.extend(mapQueryPar
 
   @action
   setModelsToDefault() {
-    // this.get('layerGroupService').rollbackLayerGroups();
+    this.get('layerGroupService').rollbackLayerGroups();
   }
 
   @service()
