@@ -1,12 +1,6 @@
 import Service from '@ember/service';
 import { set } from '@ember/object';
-
-export const isEqual = function(array1, array2) {
-  array1.sort();
-  array2.sort();
-
-  return array1.every((value, index) => value === array2[index]);
-};
+import { next } from '@ember/runloop';
 
 const matchesIdentifierFor = function(layerGroup) {
   return param => (param.id || param) === layerGroup.id;
@@ -64,46 +58,25 @@ export default class LayerGroupService extends Service {
   layerGroupRegistry = [];
 
   /**
-   * Public array of 'visible' layer group IDs. Use on the controller as a query param.
-   * Mutated internally as well as by the controller itself.
+   *  Public callback when layer group observer is fired
    */
-  visibleLayerGroups = [];
+  layerGroupsDidChange = () => {}
+
+  rollbackLayerGroups() {
+    this.layerGroupRegistry.forEach(model => model.rollbackAttributes());
+  }
 
   /**
    * Initializer that should hould be called _after_ the fully
    * resolved _route_ model is set to the controller
-   * sets up initial state and observers for the controller
-   * signature is a model directly from the route
+   * sets up observers for the controller
    *
    * @public
-   * @param {Array} collection of layerGroups IDs
    */
-  initializeObservers(layerGroups) {
-    // initial state from QPs, grab init state from models
-    // TODO: Test that mutations to model don't leak and overwrite
-    // the default layer-group visibility, which is infered from the models
-    const defaultVisibleLayerGroupIDs = layerGroups.filterBy('visible').mapBy('id');
-    const layerGroupIDsToShow = this.get('visibleLayerGroups');
-
-    // check if the provided params are the default
-    const isDefault = isEqual(layerGroupIDsToShow, defaultVisibleLayerGroupIDs);
-
-    // check if QP isn't default and there are other params
-    if (!isDefault && layerGroupIDsToShow.length) {
-      // set initial state from query layerGroupIDsToShow when not default
-      layerGroups.forEach((layerGroup) => {
-        applyQueryParamToLayerGroup(layerGroup, layerGroupIDsToShow);
-      });
-    }
-
-    // run these initially
-    this._modelsToParams();
-    this._paramsToModels();
-
+  initializeObservers() {
     // add the observers later on because they will initialize too early
     this.addObserver('layerGroupRegistry.@each.selected', this, '_modelsToParams');
     this.addObserver('layerGroupRegistry.@each.visible', this, '_modelsToParams');
-    this.addObserver('visibleLayerGroups.length', this, '_paramsToModels');
   }
 
   /**
@@ -115,23 +88,7 @@ export default class LayerGroupService extends Service {
     const newQueryParams = pluckQueryParamStateFrom(layerGroups);
 
     // set the new param state object
-    set(this, 'visibleLayerGroups', newQueryParams);
-  }
-
-  /**
-   * Translate query params to model states.
-   * The param state object is really either a string or object.
-   * This is because it can include layer group "substate", things like
-   * aerials can specify a single layer that's on
-   */
-  _paramsToModels() {
-    const layerGroups = this.get('layerGroupRegistry');
-    const layerGroupIDsToShow = this.get('visibleLayerGroups');
-
-    if (layerGroupIDsToShow.length) {
-      layerGroups.forEach((layerGroup) => {
-        applyQueryParamToLayerGroup(layerGroup, layerGroupIDsToShow);
-      });
-    }
+    next(() => set(this, 'visibleLayerGroups', newQueryParams))
+    this.layerGroupsDidChange(newQueryParams);
   }
 }

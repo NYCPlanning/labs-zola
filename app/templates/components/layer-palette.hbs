@@ -397,7 +397,7 @@
   <a
     class="button gray small reset-map-button hide-for-print"
     disabled={{isDefault}}
-    {{action "resetQueryParams"}}
+    onclick={{action this.resetQueryParams}}
   >
     {{fa-icon "undo"}}
     Reset Map Layers

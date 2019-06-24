@@ -1,10 +1,13 @@
 import Controller from '@ember/controller';
 import { assign } from '@ember/polyfills';
-import { set, computed, action } from '@ember/object';
+import { computed, action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import QueryParams from 'ember-parachute';
-import { alias } from '@ember/object/computed';
+import config from 'labs-zola/config/environment';
 import { zoningDistrictGroups, commercialOverlays } from '../components/layer-palette';
+
+const { defaultLayerGroupState } = config;
+const defaultLayerGroups = defaultLayerGroupState.filterBy('visible').mapBy('id').sort();
 
 // define new query params here:
 export const mapQueryParams = new QueryParams(
@@ -38,7 +41,7 @@ export const mapQueryParams = new QueryParams(
       'aerials-1951': { defaultValue: false },
 
       layerGroups: {
-        defaultValue: [],
+        defaultValue: defaultLayerGroups,
         refresh: true,
         as: 'layer-groups',
       },
@@ -52,14 +55,32 @@ export default class ApplicationController extends Controller.extend(mapQueryPar
   @service('layerGroups')
   layerGroupService;
 
+  /**
+   * Ember Parachute override
+   * similar to "init"
+   * used to send callbacks to the layerGroup aggregate service and initialize observers
+   */
+  setup() {
+    this.layerGroupService.set('layerGroupsDidChange', this.handleLayerGroupChange);
+
+    this.get('layerGroupService').initializeObservers();
+  }
+
+  @action
+  handleLayerGroupChange(visibleLayerGroups) {
+    this.set('layerGroups', visibleLayerGroups);
+  }
+
+  @action
+  setModelsToDefault() {
+    // this.get('layerGroupService').rollbackLayerGroups();
+  }
+
   @service()
   mainMap;
 
   @service()
   metrics;
-
-  @alias('layerGroupService.visibleLayerGroups')
-  layerGroups;
 
   boro = '';
 
@@ -67,7 +88,16 @@ export default class ApplicationController extends Controller.extend(mapQueryPar
 
   lot = '';
 
-  // Print View Settings
+  @computed('queryParamsState')
+  get isDefault() {
+    const state = this.get('queryParamsState') || {};
+    const values = Object.values(state);
+
+    return values.isEvery('changed', false);
+  }
+
+  // Print View Settings and computeds
+  // TODO: Refactor this into a separate component
   printViewOrientation = 'portrait';
 
   printViewPaperSize = 'letter';
@@ -96,38 +126,5 @@ export default class ApplicationController extends Controller.extend(mapQueryPar
     const areas = this.get('printViewHiddenAreas');
 
     return this.get('print') ? `paper ${size} ${orientation} ${areas}` : '';
-  }
-
-  @computed('queryParamsState')
-  get isDefault() {
-    const state = this.get('queryParamsState') || {};
-    const values = Object.values(state);
-
-    return values.isEvery('changed', false);
-  }
-
-  @action
-  saveAddress(address) {
-    const bookmarks = this.store.peekAll('bookmark');
-
-    const isUnique = bookmarks.every(
-      bookmark => bookmark.get('address') !== address.address,
-    );
-
-    set(address, 'type', 'address');
-
-    if (isUnique) {
-      this.store.createRecord('bookmark', address).save();
-    }
-  }
-
-  @action
-  setQueryParam(property, value) {
-    this.set(property, value);
-  }
-
-  @action
-  resetQueryParams() {
-    this.resetQueryParams();
   }
 }
