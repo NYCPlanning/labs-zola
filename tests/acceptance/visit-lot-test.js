@@ -25,7 +25,7 @@ module('Acceptance | visit lot', function(hooks) {
     await visit('/bbl/1001870021');
     await percySnapshot('lot view');
 
-    assert.equal(currentURL(), '/l/lot/1/187/21?layer-groups=%5B%22building-footprints%22%2C%22commercial-overlays%22%2C%22street-centerlines%22%2C%22subway%22%2C%22tax-lots%22%2C%22zoning-districts%22%5D');
+    assert.equal(currentURL(), '/l/lot/1/187/21');
     assert.notEqual(find('.content-area').textContent.length, 0);
   });
 });

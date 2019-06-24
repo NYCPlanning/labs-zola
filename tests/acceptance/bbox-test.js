@@ -37,6 +37,6 @@ module('Acceptance | bbox', function(hooks) {
     const badBboxUrl = 'foo/40.5705/-73.9804/40.5785';
     await visit(`/bbox/${badBboxUrl}`);
 
-    assert.equal(currentURL().substring(0, 2), '/?');
+    assert.equal(currentURL().substring(0, 2), '/');
   });
 });
