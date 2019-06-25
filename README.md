@@ -39,7 +39,7 @@ In the spirit of free software, everyone is encouraged to help improve this proj
 
 - Clone this repository: `git clone https://github.com/NYCPlanning/labs-zola.git`
 - Navigate to the repo: `cd labs-zola`
-- Install dependencies: `npm install`
+- Install dependencies: `yarn`
 - Run the development server: `ember serve`
 
 ## Architecture

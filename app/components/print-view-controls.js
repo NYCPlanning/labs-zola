@@ -1,18 +1,12 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class PrintViewControls extends Component {
   classNames = ['print-view--controls', 'align-middle'];
 
-  printViewOrientation = 'portrait';
-
-  printViewPaperSize = 'letter';
-
-  printViewShowMap = true;
-
-  printViewShowLegend = true;
-
-  printViewShowContent = true;
+  @service('print')
+  printSvc;
 
   widowResize() {
     return new Promise((resolve) => {
@@ -27,7 +21,7 @@ export default class PrintViewControls extends Component {
 
   @action
   async disablePrintView() {
-    this.set('print', false);
+    this.set('printSvc.enabled', false);
 
     await this.widowResize();
   }
