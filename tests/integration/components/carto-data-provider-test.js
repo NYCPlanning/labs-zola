@@ -9,6 +9,8 @@ module('Integration | Component | carto-data-provider', function(hooks) {
   setupMirage(hooks);
 
   test('it loads', async function(assert) {
+    this.server.create('lot', { id: 'bbl' });
+
     this.cartoQueryTemplate = function(id) {
       return `${id}`;
     };

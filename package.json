@@ -54,6 +54,7 @@
     "ember-composability-tools": "0.0.11",
     "ember-composable-helpers": "2.3.1",
     "ember-concurrency": "1.0.0",
+    "ember-concurrency-retryable": "0.6.0",
     "ember-content-placeholders": "^1.0.0",
     "ember-copy": "1.0.0",
     "ember-data": "~3.10.0",

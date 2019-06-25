@@ -1,3 +1,3 @@
 import CartoGeoJsonFeature from './carto-geojson-feature';
 
-export default class ZoningMapAmendmentSerializer extends CartoGeoJsonFeature {}
+export default CartoGeoJsonFeature;

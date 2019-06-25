@@ -5,5 +5,7 @@ export default class MapFeatureController extends Controller {
     search: {
       type: 'boolean',
     },
-  }];
+  }, 'shouldRefresh'];
+
+  shouldRefresh = false;
 }
