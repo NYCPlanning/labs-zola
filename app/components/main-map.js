@@ -42,16 +42,6 @@ export default class MainMap extends Component {
   @service
   router;
 
-  lat = 40.7125;
-
-  @computed()
-  get lng() {
-    const boundsOptions = this.get('mainMap.isSelectedBoundsOptions');
-    return boundsOptions.offset[0] === 0 ? -73.9022 : -73.733;
-  }
-
-  zoom = 9.72;
-
   menuTo = 'layers-menu';
 
   loading = true;

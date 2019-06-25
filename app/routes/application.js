@@ -14,7 +14,12 @@ export default Route.extend({
     if (targetName === 'index') {
       const { hash } = window.location;
 
-      this.transitionTo(`/about${transition.intent.url}${hash}`);
+      // preserve hash token so it's applied across transitions
+      if (hash) {
+        this.mainMap.set('knownHashIntent', hash);
+      }
+
+      this.transitionTo(`/about${transition.intent.url}`);
     }
 
     if (targetName === 'lot') {
