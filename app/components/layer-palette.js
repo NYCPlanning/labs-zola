@@ -83,6 +83,8 @@ export default class LayerPaletteComponent extends Component {
 
   plutoFill = false;
 
+  resetQueryParams = () => {};
+
   @observes('selectedZoning.@each')
   setFilterForZoning() {
     const expression = ['any', ...this.selectedZoning.map(value => ['==', 'primaryzone', value])];

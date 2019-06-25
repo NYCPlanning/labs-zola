@@ -1,0 +1,35 @@
+{{!-- The way this component is setup is awkward... --}}
+{{!-- For some reason the yield has to appear first before the --}}
+{{!-- re-renderable stuff --}}
+{{#ember-wormhole to=this.elementId}}
+  {{yield (hash
+      layer-group-toggle=(component 'labs-ui/layer-group-toggle'
+        willDestroyHook=(action 'unregisterChild')
+        didInit=(action 'registerChild')
+      )
+    )
+  }}
+{{/ember-wormhole}}
+
+<div onclick={{action 'toggleLayerGroupsContainer'}}
+  class="layer-groups-container-title
+    {{if this.open 'open' 'closed'}}
+    layer-groups-container--{{dasherize this.title}}"
+  role="button"
+>
+  {{this.title}}
+
+  {{#if this.numberMenuItems}}
+    <span class="badge">
+      {{this.numberMenuItems}}
+    </span>
+  {{/if}}
+
+  {{#if (and this.mapIsLoading this.open this.numberMenuItems)}}
+    {{fa-icon 'spinner' class='fa-spin medium-gray'}}
+  {{/if}}
+</div>
+
+<div class="layer-groups-container-content" id={{this.elementId}}>
+
+</div>

@@ -1,6 +1,5 @@
 import Service from '@ember/service';
 import { set } from '@ember/object';
-import { next } from '@ember/runloop';
 
 const matchesIdentifierFor = function(layerGroup) {
   return param => (param.id || param) === layerGroup.id;
@@ -88,7 +87,7 @@ export default class LayerGroupService extends Service {
     const newQueryParams = pluckQueryParamStateFrom(layerGroups);
 
     // set the new param state object
-    next(() => set(this, 'visibleLayerGroups', newQueryParams))
+    set(this, 'visibleLayerGroups', newQueryParams);
     this.layerGroupsDidChange(newQueryParams);
   }
 }

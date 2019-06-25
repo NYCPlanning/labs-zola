@@ -76,18 +76,6 @@ export default class ApplicationController extends Controller.extend(mapQueryPar
     this.get('layerGroupService').rollbackLayerGroups();
   }
 
-  @service()
-  mainMap;
-
-  @service()
-  metrics;
-
-  boro = '';
-
-  block = '';
-
-  lot = '';
-
   @computed('queryParamsState')
   get isDefault() {
     const state = this.get('queryParamsState') || {};
