@@ -2,6 +2,11 @@ import Service from '@ember/service';
 import { computed } from '@ember/object';
 import { timeout, task } from 'ember-concurrency';
 
+const DEFAULT_ZOOM = 9.72;
+const DEFAULT_LNG = 40.7125;
+const DEFAULT_LAT = -73.733;
+const DEFAULT_LAT_OFFSET = -0.1692;
+
 export default class MainMapService extends Service {
   mapInstance = null;
 
@@ -17,6 +22,40 @@ export default class MainMapService extends Service {
   shouldFitBounds = false;
 
   routeIntentIsNested = false;
+
+  knownHashIntent = '';
+
+  @computed
+  get parsedHash() {
+    if (this.knownHashIntent) {
+      return this.knownHashIntent.replace('#', '').split('/').reverse();
+    }
+
+    return [9.72, 40.7125, -73.733];
+  }
+
+  @computed
+  get zoom() {
+    if (this.knownHashIntent) {
+      const [,, z] = this.parsedHash;
+      return z;
+    }
+
+    return DEFAULT_ZOOM;
+  }
+
+  @computed
+  get center() {
+    if (this.knownHashIntent) {
+      const [x, y] = this.parsedHash;
+      return [x, y];
+    }
+
+    const boundsOptions = this.isSelectedBoundsOptions;
+    const x = (boundsOptions.offset[0] === 0) ? (DEFAULT_LAT + DEFAULT_LAT_OFFSET) : DEFAULT_LAT;
+
+    return [x, DEFAULT_LNG];
+  }
 
   @computed('selected', 'routeIntentIsNested')
   get isSelectedBoundsOptions() {

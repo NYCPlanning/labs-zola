@@ -2,11 +2,11 @@
   @name="main-map"
   @layerGroups={{this.layerGroups}}
   @initOptions={{hash
-    style=layerGroupsMeta.mapboxStyle
+    style=this.layerGroupsMeta.mapboxStyle
     preserveDrawingBuffer=true
-    zoom=zoom
+    zoom=this.mainMap.zoom
     hash=true
-    center=(array lng lat)
+    center=this.mainMap.center
   }}
   @mapLoaded={{action "handleMapLoad"}} as |map|
 >
