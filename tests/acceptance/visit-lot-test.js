@@ -15,6 +15,10 @@ module('Acceptance | visit lot', function(hooks) {
   });
 
   test('visiting a lot', async function(assert) {
+    this.server.create('lot', {
+      id: 1016320001,
+    });
+
     await visit('/l/lot/1/1632/1');
     await percySnapshot('lot view');
 
@@ -22,6 +26,10 @@ module('Acceptance | visit lot', function(hooks) {
   });
 
   test('visiting a bbl', async function(assert) {
+    this.server.create('lot', {
+      id: 1001870021,
+    });
+
     await visit('/bbl/1001870021');
     await percySnapshot('lot view');
 

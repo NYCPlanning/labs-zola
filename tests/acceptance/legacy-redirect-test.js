@@ -13,6 +13,7 @@ module('Acceptance | legacy redirect', function(hooks) {
   });
 
   test('visiting a non-namespaced URL redirects', async function(assert) {
+    this.server.create('lot', { id: 1000163201 });
     await visit('/lot/1/1632/1');
 
     assert.ok(currentURL().includes('/l/lot/1/1632/1'));

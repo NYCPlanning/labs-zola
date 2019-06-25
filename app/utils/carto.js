@@ -34,7 +34,7 @@ export default {
         if (response.ok) {
           return response.json();
         }
-        throw new Error('Not found');
+        throw new Error(response);
       })
       .then((d) => { // eslint-disable-line
         return type === 'json' ? d.rows : d;

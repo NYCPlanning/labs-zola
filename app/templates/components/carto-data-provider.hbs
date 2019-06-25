@@ -1,5 +1,10 @@
-<NeedsAsync @needs={{find-record this.modelName this.modelId}} as |data-task|>
-  <data-task.loaded as |model|>
+<NeedsAsync
+  @needs={{this.findRecordTask.last}} as |data-task|
+>
+  <data-task.loaded
+    data-task-was-successful
+    as |model|
+  >
     {{yield model}}
   </data-task.loaded>
   <data-task.loading>
@@ -10,15 +15,9 @@
     </ContentPlaceholders>
   </data-task.loading>
   <data-task.error as |error|>
-    Oops. Something went wrong...
-    <br />
-    <ul>
-      {{#each error.errors as |error|}}
-        <li>
-          {{error}}
-        </li>
-      {{/each}}
-    </ul>
-    Please try again.
+    <CartoDataProvider::ErrorHandler
+      data-test-error-handler
+      @errors={{error.errors}}
+    />
   </data-task.error>
 </NeedsAsync>

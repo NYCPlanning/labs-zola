@@ -94,7 +94,7 @@
         </a>
       </li>
     {{/if}}
-    {{#each
+{{!--     {{#each
       (await this.model.parentSpecialPurposeDistricts) as |specialDistrict|
     }}
       <li>
@@ -116,7 +116,7 @@
           </a>
         {{/if}}
       </li>
-    {{/each}}
+    {{/each}} --}}
     {{#if this.model.overlay1}}
       <li>
         <a
@@ -168,7 +168,7 @@
             </small>
           </li>
         {{/if}}
-        <IntersectingLayers
+{{!--         <IntersectingLayers
           @tables={{array
             "inclusionary_housing"
             "transitzones"
@@ -326,7 +326,7 @@
           {{#unless (or numberIntersecting this.model.histdist)}}
             None found
           {{/unless}}
-        </IntersectingLayers>
+        </IntersectingLayers> --}}
       </ul>
     </div>
     <div class="cell medium-shrink">

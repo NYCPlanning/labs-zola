@@ -13,7 +13,6 @@ import stubBasicMap from 'labs-zola/tests/helpers/stub-basic-map';
 import config from 'labs-zola/config/environment';
 import Sinon from 'sinon';
 import resetStorages from 'ember-local-storage/test-support/reset-storage';
-import mockCartoResponses from '../helpers/mock-carto-geojson';
 
 const { 'labs-search': { host: labsSearchHost } } = config;
 const DEFAULT_REQUIRED_FEATURE_PROPS = {
@@ -166,71 +165,6 @@ module('Acceptance | layer behavior tests', function(hooks) {
   // inject the layer group fixtures
   hooks.beforeEach(function() {
     this.server.post('layer-groups', () => layerGroupsFixtures);
-    this.server.get('https://planninglabs.carto.com/api/v2/sql', (schema, request) => {
-      const { queryParams } = request;
-      const { format } = queryParams;
-
-      if (format === 'geojson') {
-        return {
-          type: 'FeatureCollection',
-          features: [{
-            type: 'Feature',
-            geometry: {
-              type: 'Polygon',
-              coordinates: [[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]],
-            },
-            properties: {
-              address: '120 BROADWAY',
-              bbl: 3034430054,
-              id: 3034430054,
-              bldgclass: 'O4',
-              lat: 40.752049929645,
-              lon: -73.9824768690446,
-              block: 841,
-              borough: 'MN',
-              cd: '105',
-              condono: 0,
-              council: '4',
-              firecomp: 'E065',
-              histdist: null,
-              landmark: 'INDIVIDUAL LANDMARK',
-              landuse: '05',
-              lot: 49,
-              lotarea: 32834,
-              lotdepth: 185,
-              lotfront: 197.5,
-              numbldgs: 2,
-              numfloors: 29,
-              ownername: '452 FIFTH OWNERS LLC',
-              ownertype: null,
-              overlay1: null,
-              overlay2: null,
-              policeprct: '14',
-              sanitboro: '1',
-              sanitdistr: '05',
-              sanitsub: '2B',
-              schooldist: '02',
-              spdist1: 'MiD',
-              spdist2: null,
-              spdist3: null,
-              unitsres: 0,
-              unitstotal: 17,
-              yearbuilt: '1902',
-              yearalter1: 2013,
-              yearalter2: 2010,
-              zipcode: 10018,
-              zonedist1: 'C5-3',
-              zonedist2: null,
-              zonedist3: null,
-              zonedist4: null,
-              zonemap: '8d',
-            },
-          }],
-        };
-      }
-
-      return { rows: [] };
-    });
   });
 
   // stub the search api
@@ -268,6 +202,10 @@ module('Acceptance | layer behavior tests', function(hooks) {
   });
 
   test('Tax Lots', async function(assert) {
+    this.server.create('lot', {
+      id: 3034430054,
+    });
+
     // it adds the layers when toggled or if default
     await assertLayerGroupAdded(this, assert, 'tax-lots');
 
@@ -294,11 +232,13 @@ module('Acceptance | layer behavior tests', function(hooks) {
   });
 
   test('Zoning Districts', async function(assert) {
-    mockCartoResponses(this, {
+    this.server.create('carto-geojson-feature', {
       id: '1',
-      zonedist: '1',
-      zoneaddr: 'asdf',
-      cartodb_id: '1',
+      properties: {
+        zonedist: '1',
+        zoneaddr: 'asdf',
+        cartodb_id: '1',
+      },
     });
 
     await assertLayerGroupAdded(this, assert, 'zoning-districts');
@@ -325,6 +265,14 @@ module('Acceptance | layer behavior tests', function(hooks) {
   });
 
   test('Commercial Overlays', async function(assert) {
+    this.server.create('carto-geojson-feature', {
+      id: '1',
+      properties: {
+        overlay: '1',
+        cartodb_id: '1',
+      },
+    });
+
     await assertLayerGroupAdded(this, assert, 'commercial-overlays');
 
     await assertClickRouteBehavior(this, assert, {
@@ -349,6 +297,14 @@ module('Acceptance | layer behavior tests', function(hooks) {
   });
 
   test('Zoning Map Amendments', async function(assert) {
+    this.server.create('carto-geojson-feature', {
+      id: '1',
+      properties: {
+        ulurpno: '1',
+        cartodb_id: '1',
+      },
+    });
+
     await assertLayerGroupAdded(this, assert, 'zoning-map-amendments');
 
     await assertClickRouteBehavior(this, assert, {
@@ -371,6 +327,14 @@ module('Acceptance | layer behavior tests', function(hooks) {
   });
 
   test('Pending Zoning Map Amendments', async function(assert) {
+    this.server.create('carto-geojson-feature', {
+      id: '1',
+      properties: {
+        ulurpno: '1',
+        cartodb_id: '1',
+      },
+    });
+
     await assertLayerGroupAdded(this, assert, 'zoning-map-amendments-pending');
 
     await assertClickRouteBehavior(this, assert, {
@@ -393,6 +357,14 @@ module('Acceptance | layer behavior tests', function(hooks) {
   });
 
   test('Special Purpose Districts', async function(assert) {
+    this.server.create('carto-geojson-feature', {
+      id: '1',
+      properties: {
+        sdlbl: '1',
+        cartodb_id: '1',
+      },
+    });
+
     await assertLayerGroupAdded(this, assert, 'special-purpose-districts');
 
     await assertClickRouteBehavior(this, assert, {
@@ -416,6 +388,14 @@ module('Acceptance | layer behavior tests', function(hooks) {
   });
 
   test('Special Purpose Subdistricts', async function(assert) {
+    this.server.create('carto-geojson-feature', {
+      id: '1',
+      properties: {
+        splbl: '1',
+        cartodb_id: '1',
+      },
+    });
+
     await assertLayerGroupAdded(this, assert, 'special-purpose-subdistricts');
 
     await assertClickRouteBehavior(this, assert, {

@@ -42,6 +42,7 @@ module('Acceptance | index', function(hooks) {
   });
 
   test('map-search enter on first search result', async function(assert) {
+    this.server.create('lot', { id: 1000477501 });
     await visit('/');
     await percySnapshot('view on first load');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
@@ -57,6 +58,7 @@ module('Acceptance | index', function(hooks) {
   });
 
   test('map-search keydown, keyup, keyup -> first result highlighted', async function(assert) {
+    this.server.create('lot', { id: 1000477501 });
     await visit('/');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
     await waitUntil(() => find('.has-results'), { timeout });
@@ -71,6 +73,8 @@ module('Acceptance | index', function(hooks) {
   });
 
   test('it does BBL lookup', async function(assert) {
+    this.server.create('lot', { id: 1000477501 });
+
     await visit('/');
     await click('[data-test-search="bbl"] span');
 
@@ -79,6 +83,6 @@ module('Acceptance | index', function(hooks) {
     await fillIn('[data-test-search="bbl"] .bbl-lookup--lot-input', 1);
     await click('[data-test-search="bbl"] .button.small.expanded.no-margin');
 
-    assert.ok(currentURL().includes('lot/1/826/61'));
+    assert.ok(currentURL().includes('lot/1/47/7501'));
   });
 });

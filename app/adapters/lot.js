@@ -53,6 +53,14 @@ export const cartoQueryTemplate = function(id) {
 };
 
 export default DS.JSONAPIAdapter.extend({
+  handleResponse(status, headers, payload, requestData) {
+    if (payload.error) {
+      payload.errors = payload.error;
+    }
+
+    return this._super(status, headers, payload, requestData);
+  },
+
   keyForAttribute(key) {
     return key;
   },
