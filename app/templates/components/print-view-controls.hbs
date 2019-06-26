@@ -11,11 +11,11 @@
     Orientation:
   </h6>
   <button
-    onclick={{action (mut printViewOrientation) "landscape"}}
+    onclick={{action (mut this.printSvc.printViewOrientation) "landscape"}}
     data-test-print-control="landscape"
   >
     <span class="fa-layers">
-      {{#if (eq printViewOrientation "landscape")}}
+      {{#if (eq this.printSvc.printViewOrientation "landscape")}}
         {{fa-icon "circle" class="white"}}
         {{fa-icon "circle" prefix="far" class="light-gray"}}
         {{fa-icon "circle" transform="shrink-6" class="a11y-orange"}}
@@ -27,11 +27,11 @@
     Landscape
   </button>
   <button
-    onclick={{action (mut printViewOrientation) "portrait"}}
+    onclick={{action (mut this.printSvc.printViewOrientation) "portrait"}}
     data-test-print-control="portrait"
   >
     <span class="fa-layers">
-      {{#if (eq printViewOrientation "portrait")}}
+      {{#if (eq this.printSvc.printViewOrientation "portrait")}}
         {{fa-icon "circle" class="white"}}
         {{fa-icon "circle" prefix="far" class="light-gray"}}
         {{fa-icon "circle" transform="shrink-6" class="a11y-orange"}}
@@ -48,11 +48,11 @@
     Size:
   </h6>
   <button
-    onclick={{action (mut printViewPaperSize) "letter"}}
+    onclick={{action (mut this.printSvc.printViewPaperSize) "letter"}}
     data-test-print-control="letter"
   >
     <span class="fa-layers">
-      {{#if (eq printViewPaperSize "letter")}}
+      {{#if (eq this.printSvc.printViewPaperSize "letter")}}
         {{fa-icon "circle" class="white"}}
         {{fa-icon "circle" prefix="far" class="light-gray"}}
         {{fa-icon "circle" transform="shrink-6" class="a11y-orange"}}
@@ -64,11 +64,11 @@
     Letter
   </button>
   <button
-    onclick={{action (mut printViewPaperSize) "legal"}}
+    onclick={{action (mut this.printSvc.printViewPaperSize) "legal"}}
     data-test-print-control="legal"
   >
     <span class="fa-layers">
-      {{#if (eq printViewPaperSize "legal")}}
+      {{#if (eq this.printSvc.printViewPaperSize "legal")}}
         {{fa-icon "circle" class="white"}}
         {{fa-icon "circle" prefix="far" class="light-gray"}}
         {{fa-icon "circle" transform="shrink-6" class="a11y-orange"}}
@@ -80,11 +80,11 @@
     Legal
   </button>
   <button
-    onclick={{action (mut printViewPaperSize) "tabloid"}}
+    onclick={{action (mut this.printSvc.printViewPaperSize) "tabloid"}}
     data-test-print-control="tabloid"
   >
     <span class="fa-layers">
-      {{#if (eq printViewPaperSize "tabloid")}}
+      {{#if (eq this.printSvc.printViewPaperSize "tabloid")}}
         {{fa-icon "circle" class="white"}}
         {{fa-icon "circle" prefix="far" class="light-gray"}}
         {{fa-icon "circle" transform="shrink-6" class="a11y-orange"}}
@@ -102,11 +102,11 @@
   </h6>
   <button
     class="map"
-    onclick={{action (mut printViewShowMap) (not printViewShowMap)}}
+    onclick={{action (mut this.printSvc.printViewShowMap) (not this.printSvc.printViewShowMap)}}
     data-test-print-control="map"
   >
     <span class="fa-layers">
-      {{#if (eq printViewShowMap true)}}
+      {{#if (eq this.printSvc.printViewShowMap true)}}
         {{fa-icon "square" class="white"}}
         {{fa-icon "check-square" class="a11y-orange"}}
       {{else}}
@@ -116,14 +116,14 @@
     </span>
     Map
   </button>
-  {{#if (eq printViewShowMap true)}}
+  {{#if (eq this.printSvc.printViewShowMap true)}}
     <button
       class="legend"
-      onclick={{action (mut printViewShowLegend) (not printViewShowLegend)}}
+      onclick={{action (mut this.printSvc.printViewShowLegend) (not this.printSvc.printViewShowLegend)}}
       data-test-print-control="legend"
     >
       <span class="fa-layers">
-        {{#if (eq printViewShowLegend true)}}
+        {{#if (eq this.printSvc.printViewShowLegend true)}}
           {{fa-icon "square" class="white"}}
           {{fa-icon "check-square" class="a11y-orange"}}
         {{else}}
@@ -143,11 +143,11 @@
   {{/if}}
   <button
     class="content"
-    onclick={{action (mut printViewShowContent) (not printViewShowContent)}}
+    onclick={{action (mut this.printSvc.printViewShowContent) (not this.printSvc.printViewShowContent)}}
     data-test-print-control="content"
   >
     <span class="fa-layers">
-      {{#if (eq printViewShowContent true)}}
+      {{#if (eq this.printSvc.printViewShowContent true)}}
         {{fa-icon "square" class="white"}}
         {{fa-icon "check-square" class="a11y-orange"}}
       {{else}}

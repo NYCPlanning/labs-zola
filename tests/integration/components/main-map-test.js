@@ -27,7 +27,7 @@ module('Integration | Component | main-map', function(hooks) {
   hooks.beforeEach(async function() {
     this.meta = MAPBOX_GL_BLANK_STYLE;
     this.bookmarks = [];
-    this.print = false;
+    this.printSvc = this.owner.lookup('service:print');
   });
 
   test('it renders', async function(assert) {
@@ -42,7 +42,7 @@ module('Integration | Component | main-map', function(hooks) {
         layerGroups=this.layerGroups
         layerGroupsMeta=this.meta
         bookmarks=this.bookmarks
-        print=this.print
+        onPrint=(action (mut this.printSvc.enabled) true)
       }}
     `);
 
@@ -86,7 +86,7 @@ module('Integration | Component | main-map', function(hooks) {
         layerGroups=this.layerGroups
         layerGroupsMeta=this.meta
         bookmarks=this.bookmarks
-        print=this.print
+        onPrint=(action (mut this.printSvc.enabled) true)
       }}
     `);
 
@@ -141,7 +141,7 @@ module('Integration | Component | main-map', function(hooks) {
         layerGroups=this.layerGroups
         layerGroupsMeta=this.meta
         bookmarks=this.bookmarks
-        print=this.print
+        onPrint=(action (mut this.printSvc.enabled) true)
       }}
     `);
 
@@ -190,7 +190,7 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroups=this.layerGroups
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
-          print=this.print
+          onPrint=(action (mut this.printSvc.enabled) true)
           draw=this.draw
         }}
       `);
@@ -239,7 +239,7 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroups=this.layerGroups
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
-          print=this.print
+          onPrint=(action (mut this.printSvc.enabled) true)
           draw=this.draw
         }}
       `);
@@ -282,7 +282,7 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroups=this.layerGroups
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
-          print=this.print
+          onPrint=(action (mut this.printSvc.enabled) true)
           draw=this.draw
         }}
       `);
@@ -359,7 +359,7 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroups=this.layerGroups
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
-          print=this.print
+          onPrint=(action (mut this.printSvc.enabled) true)
         }}
       `);
 
@@ -381,7 +381,7 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroups=this.layerGroups
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
-          print=this.print
+          onPrint=(action (mut this.printSvc.enabled) true)
         }}
       `);
 
@@ -403,7 +403,7 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroups=this.layerGroups
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
-          print=this.print
+          onPrint=(action (mut this.printSvc.enabled) true)
         }}
       `);
 
@@ -425,7 +425,7 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroups=this.layerGroups
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
-          print=this.print
+          onPrint=(action (mut this.printSvc.enabled) true)
         }}
       `);
 
@@ -447,7 +447,7 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroups=this.layerGroups
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
-          print=this.print
+          onPrint=(action (mut this.printSvc.enabled) true)
         }}
       `);
 
@@ -469,7 +469,7 @@ module('Integration | Component | main-map', function(hooks) {
           layerGroups=this.layerGroups
           layerGroupsMeta=this.meta
           bookmarks=this.bookmarks
-          print=this.print
+          onPrint=(action (mut this.printSvc.enabled) true)
         }}
       `);
 

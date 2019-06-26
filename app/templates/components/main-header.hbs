@@ -1,6 +1,6 @@
 <LabsUi::SiteHeader
   @responsiveNav={{true}}
-  class={{if print "hide-for-print"}} as |banner|
+  class={{if this.printSvc.enabled "hide-for-print"}} as |banner|
 >
   <banner.title>
     {{#link-to
@@ -23,7 +23,7 @@
           </span>
         {{/if}}
         {{#if (or (media "mobile") (media "tablet"))}}
-          NYC's
+          NYC's 
         {{/if}}
         Zoning &amp; Land Use Map
       </small>

@@ -1,21 +1,13 @@
 <MainHeader @bookmarks={{model.bookmarks}} />
-{{! print is chameleon }}
-<div class="{{if print "print-view"}}">
-  {{! what on earth is this for }}
+<div class="{{if this.printSvc.enabled "print-view"}}">
   {{link-to "" "index" class="index-active-detector"}}
-  {{! print is chameleon }}
   {{! data clip below }}
-  {{#if print}}
+  {{#if this.printSvc.enabled}}
     <PrintViewControls
-      @print={{print}}
-      @printViewOrientation={{printViewOrientation}}
-      @printViewPaperSize={{printViewPaperSize}}
-      @printViewShowMap={{printViewShowMap}}
-      @printViewShowLegend={{printViewShowLegend}}
-      @printViewShowContent={{printViewShowContent}}
+      @printSvc={{printSvc}}
     />
   {{/if}}
-  <div class="site-main grid-x {{printViewClasses}}">
+  <div class="site-main grid-x {{this.printSvc.printViewClasses}}">
     <div class="navigation-area cell large-auto">
       {{map-resource-search}}
       <div class="map-grid">
@@ -23,7 +15,7 @@
           @bookmarks={{model.bookmarks}}
           @layerGroups={{model.layerGroups}}
           @layerGroupsMeta={{model.meta}}
-          @print={{print}}
+          @onPrint={{action (mut this.printSvc.enabled) true}}
         />
         <LayerPalette
           @selectedZoning={{this.selectedZoning}}

@@ -19,7 +19,7 @@
     <button
       class="mapboxgl-ctrl-icon"
       data-test-map-print-button
-      {{action (mut print) true}}
+      onClick={{action this.onPrint}}
     >
       {{fa-icon "print"}}
     </button>

@@ -46,12 +46,16 @@ export const mapQueryParams = new QueryParams(
         as: 'layer-groups',
       },
 
+      // TODO: After merge of params refactor, update print service based on this param.
       print: { defaultValue: false },
     },
   ),
 );
 
 export default class ApplicationController extends Controller.extend(mapQueryParams.Mixin) {
+  @service('print')
+  printSvc;
+
   @service('layerGroups')
   layerGroupService;
 
@@ -82,37 +86,5 @@ export default class ApplicationController extends Controller.extend(mapQueryPar
     const values = Object.values(state);
 
     return values.isEvery('changed', false);
-  }
-
-  // Print View Settings and computeds
-  // TODO: Refactor this into a separate component
-  printViewOrientation = 'portrait';
-
-  printViewPaperSize = 'letter';
-
-  printViewShowMap = true;
-
-  printViewShowLegend = true;
-
-  printViewShowContent = true;
-
-  @computed('printViewShowMap', 'printViewShowLegend', 'printViewShowContent')
-  get printViewHiddenAreas() {
-    const hiddenAreasClasses = [];
-
-    if (!this.get('printViewShowMap')) hiddenAreasClasses.push('no-map');
-    if (!this.get('printViewShowLegend')) hiddenAreasClasses.push('no-legend');
-    if (!this.get('printViewShowContent')) hiddenAreasClasses.push('no-content');
-
-    return hiddenAreasClasses.join(' ');
-  }
-
-  @computed('printViewHiddenAreas', 'print', 'printViewPaperSize', 'printViewOrientation', 'printViewHiddenAreas')
-  get printViewClasses() {
-    const orientation = this.get('printViewOrientation');
-    const size = this.get('printViewPaperSize');
-    const areas = this.get('printViewHiddenAreas');
-
-    return this.get('print') ? `paper ${size} ${orientation} ${areas}` : '';
   }
 }
