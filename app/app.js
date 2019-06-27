@@ -3,8 +3,15 @@ import Ember from 'ember';
 import loadInitializers from 'ember-load-initializers';
 import DS from 'ember-data';
 import TaskModelMixin from 'ember-data-tasks/mixins/task-model';
+import * as Sentry from '@sentry/browser';
+import * as Integrations from '@sentry/integrations';
 import Resolver from './resolver';
 import config from './config/environment';
+
+Sentry.init({
+  dsn: 'https://f93ba4c5c59740c4b70cdb571b54d6da@sentry.io/1492094',
+  integrations: [new Integrations.Ember()],
+});
 
 const App = Application.extend({
   modulePrefix: config.modulePrefix,
