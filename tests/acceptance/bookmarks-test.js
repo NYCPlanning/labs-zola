@@ -179,4 +179,32 @@ module('Acceptance | bookmarks', function(hooks) {
     assert.ok(find('[data-test-bookmark="test-1"]'));
     assert.ok(find('[data-test-bookmark="test-2"]'));
   });
+
+  test('it works with legacy records', async function(assert) {
+    this.server.create('carto-geojson-feature', {
+      id: '050111azmk',
+    });
+
+    localStorageSetStringified('bookmarks-1', {
+      id: 'test',
+      attributes: {
+        address: null,
+      },
+      relationships: {
+        bookmark: {
+          data: {
+            type: 'zmas',
+            id: '050111azmk',
+          },
+        },
+      },
+      type: 'bookmarks',
+    });
+
+    localStorageSetStringified('index-bookmarks', ['bookmarks-1']);
+
+    await visit('/bookmarks');
+
+    assert.ok(true);
+  });
 });
