@@ -13,6 +13,7 @@ const SQL = function(table, spdist1, spdist2, spdist3) {
 };
 
 const getPrimaryZone = (zonedist = '') => {
+  if (!zonedist) return '';
   let primary = zonedist.match(/\w\d*/)[0].toLowerCase();
   // special handling for c1 and c2
   if ((primary === 'c1') || (primary === 'c2')) primary = 'c1-c2';
@@ -507,5 +508,61 @@ export default class LotFragment extends MF.Fragment {
           };
         },
       ));
+  }
+
+  @computed('borocode', 'block', 'lot')
+  get biswebLink() {
+    const BISWEB_HOST = 'http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet';
+
+    return `${BISWEB_HOST}?allborough=${this.borocode}&allblock=${this.block}&alllot=${this.lot}&go5=+GO+&requestid=0`;
+  }
+
+  @computed('cdURLSegment')
+  get fullCommunityDistrictURL() {
+    return `https://communityprofiles.planning.nyc.gov/${this.cdURLSegment}`;
+  }
+
+  @computed('primaryzone1', 'primaryzone2', 'primaryzone3', 'primaryzone4')
+  get zoneDistLinks() {
+    const primaryZones = this.getProperties('primaryzone1', 'primaryzone2', 'primaryzone3', 'primaryzone4');
+
+    Object.keys(primaryZones).forEach((key) => {
+      const value = primaryZones[key];
+      primaryZones[key] = `https://www1.nyc.gov/site/planning/zoning/districts-tools/${value}.page`;
+    });
+
+    return {
+      ...primaryZones,
+    };
+  }
+
+  @computed('bbl')
+  get digitalTaxMapLink() {
+    return `http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName=${this.bbl}`;
+  }
+
+  @computed('zonemap')
+  get zoningMapLink() {
+    return `http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map${this.zonemap}.pdf`;
+  }
+
+  @computed('paddedZonemap')
+  get historicalZoningMapLink() {
+    return `http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps${this.paddedZonemap}.pdf`;
+  }
+
+  @computed('borocode', 'block', 'lot')
+  get ACRISLink() {
+    return `http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough=${this.borocode}&block=${this.block}&lot=${this.lot}`;
+  }
+
+  @computed('boro', 'housenum', 'street')
+  get housingInfoLink() {
+    return `https://hpdonline.hpdnyc.org/Hpdonline/Provide_address.aspx?p1=${this.boro}&p2=${this.housenum}&p3=${this.street}&SearchButton=Search`;
+  }
+
+  @computed('council')
+  get councilLink() {
+    return `https://council.nyc.gov/district-${this.council}/`;
   }
 }

@@ -7,11 +7,13 @@ import defineModifier from 'ember-concurrency-retryable/define-modifier';
 import Resolver from './resolver';
 import config from './config/environment';
 
-Sentry.init({
-  dsn: 'https://f93ba4c5c59740c4b70cdb571b54d6da@sentry.io/1492094',
-  integrations: [new Integrations.Ember()],
-  environment: config.environment,
-});
+if (config.environment !== 'development') {
+  Sentry.init({
+    dsn: 'https://f93ba4c5c59740c4b70cdb571b54d6da@sentry.io/1492094',
+    integrations: [new Integrations.Ember()],
+    environment: config.environment,
+  });
+}
 
 // necessary for applying e-concurrency extensions
 // to their decorators

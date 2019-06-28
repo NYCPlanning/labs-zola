@@ -46,9 +46,7 @@
       <li>
         <a
           target="_blank"
-          href="https://www1.nyc.gov/site/planning/zoning/districts-tools/
-            {{this.model.primaryzone1}}
-            .page"
+          href={{this.model.zoneDistLinks.primaryzone1}}
           class="button"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -60,9 +58,7 @@
       <li>
         <a
           target="_blank"
-          href="https://www1.nyc.gov/site/planning/zoning/districts-tools/
-            {{this.model.primaryzone2}}
-            .page"
+          href={{this.model.zoneDistLinks.primaryzone2}}
           class="button"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -74,9 +70,7 @@
       <li>
         <a
           target="_blank"
-          href="https://www1.nyc.gov/site/planning/zoning/districts-tools/
-            {{this.model.primaryzone3}}
-            .page"
+          href={{this.model.zoneDistLinks.primaryzone3}}
           class="button"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -88,9 +82,7 @@
       <li>
         <a
           target="_blank"
-          href="https://www1.nyc.gov/site/planning/zoning/districts-tools/
-            {{this.model.primaryzone4}}
-            .page"
+          href={{this.model.zoneDistLinks.primaryzone4}}
           class="button"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -342,8 +334,7 @@
           <li>
             <a
               target="_blank"
-              href="http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName=
-                {{this.model.bbl}}"
+              href={{this.model.digitalTaxMapLink}}
             >
               {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
               Digital Tax Map
@@ -354,9 +345,7 @@
           <li>
             <a
               target="_blank"
-              href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map
-                {{this.model.zonemap}}
-                .pdf"
+              href={{this.model.zoningMapLink}}
             >
               {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
               Zoning Map:
@@ -371,9 +360,7 @@
           <li>
             <a
               target="_blank"
-              href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps
-                {{this.model.paddedZonemap}}
-                .pdf"
+              href={{this.model.historicalZoningMapLink}}
             >
               {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
               Historical Zoning Maps
@@ -576,13 +563,7 @@
     </label>
     <span class="datum">
       <a
-        href="http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet?allborough=
-          {{this.model.borocode}}
-          &allblock=
-          {{this.model.block}}
-          &alllot=
-          {{this.model.lot}}
-          &go5=+GO+&requestid=0"
+        href={{this.model.biswebLink}}
         target="_blank"
       >
         {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -604,12 +585,7 @@
       </label>
       <span class="datum">
         <a
-          href="http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough=
-            {{this.model.borocode}}
-            &block=
-            {{this.model.block}}
-            &lot=
-            {{this.model.lot}}"
+          href={{this.model.ACRISLink}}
           target="_blank"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -625,13 +601,7 @@
       </label>
       <span class="datum">
         <a
-          href="https://hpdonline.hpdnyc.org/Hpdonline/Provide_address.aspx?p1=
-            {{this.model.boro}}
-            &p2=
-            {{this.model.housenum}}
-            &p3=
-            {{this.model.street}}
-            &SearchButton=Search"
+          href={{this.model.housingInfoLink}}
           target="_blank"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -652,8 +622,7 @@
       </label>
       <span class="datum">
         <a
-          href="https://communityprofiles.planning.nyc.gov/
-            {{this.model.cdURLSegment}}"
+          href={{this.model.fullCommunityDistrictURL}}
           target="_blank"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -669,7 +638,7 @@
       </label>
       <span class="datum">
         <a
-          href="https://council.nyc.gov/district-{{this.model.council}}/"
+          href={{this.model.councilLink}}
           target="_blank"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
