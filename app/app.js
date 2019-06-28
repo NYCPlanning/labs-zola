@@ -1,10 +1,9 @@
 import Application from '@ember/application';
 import Ember from 'ember';
 import loadInitializers from 'ember-load-initializers';
-import DS from 'ember-data';
-import TaskModelMixin from 'ember-data-tasks/mixins/task-model';
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
+import defineModifier from 'ember-concurrency-retryable/define-modifier';
 import Resolver from './resolver';
 import config from './config/environment';
 
@@ -13,6 +12,11 @@ Sentry.init({
   integrations: [new Integrations.Ember()],
   environment: config.environment,
 });
+
+// necessary for applying e-concurrency extensions
+// to their decorators
+// see: https://github.com/maxfierke/ember-concurrency-retryable/issues/5
+defineModifier();
 
 const App = Application.extend({
   modulePrefix: config.modulePrefix,
@@ -35,8 +39,5 @@ if (typeof Ember.Test === 'undefined') {
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 loadInitializers(App, config.modulePrefix);
-
-// TODO: why is this here?
-DS.Model.reopen(TaskModelMixin);
 
 export default App;
