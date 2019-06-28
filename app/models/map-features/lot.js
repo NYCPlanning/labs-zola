@@ -3,11 +3,13 @@ import MF from 'ember-data-model-fragments';
 import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import carto from 'labs-zola/utils/carto';
-import specialPurposeCrosswalk from 'labs-zola/utils/special-purpose-crosswalk';
+import config from 'labs-zola/config/environment';
+
+const { specialDistrictCrosswalk } = config;
 
 const { attr } = DS;
 
-const SQL = function(table, spdist1, spdist2, spdist3) {
+const specialPurposeDistrictsSQL = function(table, spdist1, spdist2, spdist3) {
   return `SELECT DISTINCT sdname, sdlbl FROM ${table}
           WHERE sdlbl IN ('${spdist1}', '${spdist2}', '${spdist3}')`;
 };
@@ -490,21 +492,24 @@ export default class LotFragment extends MF.Fragment {
 
   @computed('spdist1', 'spdist2', 'spdist3')
   get parentSpecialPurposeDistricts() {
+    const DISTRICT_TOOLS_URL = 'https://www1.nyc.gov/site/planning/zoning/districts-tools';
     const spdist1 = this.get('spdist1');
     const spdist2 = this.get('spdist2');
     const spdist3 = this.get('spdist3');
 
-    return carto.SQL(SQL('special_purpose_districts', spdist1, spdist2, spdist3))
+    return carto.SQL(specialPurposeDistrictsSQL('special_purpose_districts', spdist1, spdist2, spdist3))
       .then(response => response.map(
         (item) => {
-          const [, [anchorName, boroName]] = specialPurposeCrosswalk
+          const [, [anchorName, boroName]] = specialDistrictCrosswalk
             .find(([dist]) => dist === item.sdname);
+          const specialDistrictLink = `${DISTRICT_TOOLS_URL}/special-purpose-districts-${boroName}.page#${anchorName}`;
 
           return {
             label: item.sdlbl.toUpperCase(),
             name: item.sdname,
             anchorName,
             boroName,
+            specialDistrictLink,
           };
         },
       ));

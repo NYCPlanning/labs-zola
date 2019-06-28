@@ -90,17 +90,17 @@
         </a>
       </li>
     {{/if}}
-{{!--     {{#each
+    {{#each
       (await this.model.parentSpecialPurposeDistricts) as |specialDistrict|
     }}
-      <li>
+      {{log specialDistrict}}
+      <li
+        data-test-special-district
+      >
         {{#if specialDistrict.anchorName}}
           <a
             target="_blank"
-            href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-
-              {{specialDistrict.boroName}}
-              .page#
-              {{specialDistrict.anchorName}}"
+            href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-{{specialDistrict.boroName}}.page#{{specialDistrict.anchorName}}"
             class="button"
           >
             {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -112,7 +112,7 @@
           </a>
         {{/if}}
       </li>
-    {{/each}} --}}
+    {{/each}}
     {{#if this.model.overlay1}}
       <li>
         <a
@@ -150,179 +150,9 @@
         :
       </h6>
       <ul class="no-bullet text-small">
-        {{#if this.model.histdist}}
-          <li>
-            <a
-              target="_blank"
-              href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page"
-            >
-              {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-              Historic District
-            </a>
-            <small class="dark-gray">
-              {{this.model.histdist}}
-            </small>
-          </li>
-        {{/if}}
-{{!--         <IntersectingLayers
-          @tables={{array
-            "inclusionary_housing"
-            "transitzones"
-            "fresh_zones"
-            "waterfront_access_plan"
-            "coastal_zone_boundary"
-            "lower_density_growth_management_areas"
-            "floodplain_firm2007"
-            "floodplain_pfirm2015"
-            "mandatory_inclusionary_housing"
-            "e_designations"
-            "upland_waterfront_areas"
-            "appendixj_designated_mdistricts"
-          }}
-          @bbl={{this.model.bbl}} as |layers numberIntersecting|
-        >
-          {{#if layers.inclusionary_housing}}
-            <li>
-              <a
-                target="_blank"
-                href="http://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page"
-              >
-                {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-                Inclusionary Housing Zone
-              </a>
-            </li>
-          {{/if}}
-          {{#if layers.transitzones}}
-            <li>
-              <a
-                target="_blank"
-                href="http://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone"
-              >
-                {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-                Transit Zone
-              </a>
-            </li>
-          {{/if}}
-          {{#if layers.fresh_zones}}
-            <li>
-              <a
-                target="_blank"
-                href="http://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page"
-              >
-                {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-                FRESH Zone
-              </a>
-            </li>
-          {{/if}}
-          {{#if layers.waterfront_access_plan}}
-            <li>
-              <a
-                target="_blank"
-                href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan"
-              >
-                {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-                Waterfront Access Plan
-              </a>
-            </li>
-          {{/if}}
-          {{#if layers.upland_waterfront_areas}}
-            <li>
-              <a
-                target="_blank"
-                href="https://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page"
-              >
-                {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-                Waterfront Block
-              </a>
-            </li>
-          {{/if}}
-          {{#if layers.coastal_zone_boundary}}
-            <li>
-              <a
-                target="_blank"
-                href="http://www1.nyc.gov/site/planning/applicants/wrp/wrp.page"
-              >
-                {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-                Coastal Zone
-              </a>
-            </li>
-          {{/if}}
-          {{#if layers.lower_density_growth_management_areas}}
-            <li>
-              <a
-                target="_blank"
-                href="http://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page"
-              >
-                {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-                Lower Density Growth Management Zone
-              </a>
-            </li>
-          {{/if}}
-          {{#if layers.floodplain_firm2007}}
-            <li>
-              <a
-                target="_blank"
-                href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page"
-              >
-                {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-                Flood Zone
-              </a>
-              <small class="dark-gray">
-                Effective Flood Insurance Rate Maps 2007
-              </small>
-            </li>
-          {{/if}}
-          {{#if layers.floodplain_pfirm2015}}
-            <li>
-              <a
-                target="_blank"
-                href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page"
-              >
-                {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-                Flood Zone
-              </a>
-              <small class="dark-gray">
-                Preliminary Flood Insurance Rate Maps 2015
-              </small>
-            </li>
-          {{/if}}
-          {{#if layers.mandatory_inclusionary_housing}}
-            <li>
-              <a
-                target="_blank"
-                href="https://www1.nyc.gov/site/planning/plans/mih/mandatory-inclusionary-housing.page"
-              >
-                {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-                Mandatory Inclusionary Housing Area
-              </a>
-            </li>
-          {{/if}}
-          {{#if layers.e_designations}}
-            <li>
-              <a
-                target="_blank"
-                href="http://www.nyc.gov/html/oer/html/e-designation/e-designation.shtml"
-              >
-                {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-                Environmental Designation
-              </a>
-            </li>
-          {{/if}}
-          {{#if layers.appendixj_designated_mdistricts}}
-            <li>
-              <a
-                target="_blank"
-                href="https://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-text/appendixj.pdf"
-              >
-                {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-                Appendix J Designated M District
-              </a>
-            </li>
-          {{/if}}
-          {{#unless (or numberIntersecting this.model.histdist)}}
-            None found
-          {{/unless}}
-        </IntersectingLayers> --}}
+        <LayerRecordViews::TaxLot::IntersectingLayersViews
+          @model={{this.model}}
+        />
       </ul>
     </div>
     <div class="cell medium-shrink">

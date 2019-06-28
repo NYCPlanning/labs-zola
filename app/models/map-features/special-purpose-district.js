@@ -1,8 +1,9 @@
 import DS from 'ember-data';
 import MF from 'ember-data-model-fragments';
-import specialPurposeCrosswalk from 'labs-zola/utils/special-purpose-crosswalk';
+import config from 'labs-zola/config/environment';
 import { computed } from '@ember/object';
 
+const { specialDistrictCrosswalk } = config;
 const { attr } = DS;
 
 // this model fragment structures the "properties"
@@ -17,7 +18,7 @@ export default class SpecialPurposeDistrictFragment extends MF.Fragment {
   @computed('sdname')
   get readMoreLink() {
     const name = this.get('sdname');
-    const [, [anchorName, boroName]] = specialPurposeCrosswalk
+    const [, [anchorName, boroName]] = specialDistrictCrosswalk
       .find(([dist]) => dist === name) || [[], []];
     return `https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-${boroName}.page#${anchorName}`;
   }

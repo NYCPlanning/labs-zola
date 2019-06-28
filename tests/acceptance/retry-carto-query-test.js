@@ -42,14 +42,22 @@ module('Acceptance | lot route retries after error', function(hooks) {
 
     this.server.create('lot', { id: 1016320001 });
 
-    this.server.get('https://planninglabs.carto.com/api/v2/sql', (schema) => {
-      requests += 1;
-
-      if (requests === 2) {
-        return schema.lots.all();
+    this.server.get('https://planninglabs.carto.com/api/v2/sql', (schema, request) => {
+      // special handling for json format
+      if (request.queryParams.format === 'json') {
+        return { rows: [] };
       }
 
-      return new Response(400, {}, { error: ['query_timeout_exceeded'] });
+      // only geojson requests are counted
+      requests += 1;
+
+      // throw error the first request
+      if (requests === 1) {
+        return new Response(400, {}, { error: ['query_timeout_exceeded'] });
+      }
+
+      // return 200 data the second
+      return schema.lots.all();
     });
 
     await visit('/lot/1/1632/1');
@@ -113,7 +121,12 @@ module('Acceptance | lot route retries after error', function(hooks) {
   test('subsequent lot clicks fire only network request for a resource', async function(assert) {
     let requests = 0;
     this.server.create('lot', { id: 1016320001 });
-    this.server.get('https://planninglabs.carto.com/api/v2/sql', (schema) => {
+    this.server.get('https://planninglabs.carto.com/api/v2/sql', (schema, request) => {
+      // special handling for json format
+      if (request.queryParams.format === 'json') {
+        return { rows: [] };
+      }
+
       requests += 1;
 
       return schema.lots.all();
