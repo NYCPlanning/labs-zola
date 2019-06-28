@@ -22,7 +22,7 @@ export default Route.extend({
       this.transitionTo(`/about${transition.intent.url}`);
     }
 
-    if (targetName === 'lot') {
+    if (targetName === 'map-feature.lot') {
       this.set('mainMap.routeIntentIsNested', true);
     }
   },
