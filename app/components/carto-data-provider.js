@@ -1,7 +1,8 @@
 import Component from '@ember/component';
-import { task } from 'ember-concurrency';
+import { keepLatestTask } from 'ember-concurrency-decorators';
 import { inject as service } from '@ember/service';
-import { retryable, DelayPolicy } from 'ember-concurrency-retryable';
+import { computed } from '@ember/object';
+import { DelayPolicy } from 'ember-concurrency-retryable';
 import DS from 'ember-data';
 
 const delayRetryPolicy = new DelayPolicy({
@@ -11,28 +12,22 @@ const delayRetryPolicy = new DelayPolicy({
 
 export default class LayerDataProviderComponent extends Component {
   @service
+  router;
+
+  @service
   store;
+
+  modelName = 'carto-geojson-feature';
 
   modelId = null;
 
-  modelName = 'carto-data-provider';
+  @keepLatestTask({ retryable: delayRetryPolicy, maxConcurrency: 1 })
+  findRecordTask = function* () {
+    return yield this.store.findRecord(this.modelName, this.modelId);
+  };
 
-  @retryable(task(function* () {
-    const { modelName, modelId } = this;
-
-    return yield this.store.findRecord(modelName, modelId);
-  }), delayRetryPolicy)
-  findRecordTask;
-
-  didReceiveAttrs() {
-    this.findRecordTask.perform();
-  }
-
-  willDestroy() {
-    this.findRecordTask.cancelAll();
-  }
-
-  willUpdate() {
-    this.findRecordTask.cancelAll();
+  @computed('modelName', 'modelId')
+  get taskInstance() {
+    return this.findRecordTask.perform();
   }
 }
