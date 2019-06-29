@@ -10,7 +10,7 @@ const delayRetryPolicy = new DelayPolicy({
   reasons: [DS.AdapterError],
 });
 
-export default class LayerDataProviderComponent extends Component {
+export default class CartoDataProvider extends Component {
   @service
   router;
 

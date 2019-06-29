@@ -9,6 +9,8 @@ export default class GroupedCheckboxesComponent extends Component {
 
   group;
 
+  selectionChanged = () => {}
+
   @computed('group.codes.length')
   get hasMany() {
     return (this.get('group.codes.length') > 1);
@@ -34,6 +36,10 @@ export default class GroupedCheckboxesComponent extends Component {
     } else {
       haystack.pushObjects(needles);
     }
+
+    haystack.sort();
+
+    this.selectionChanged();
   }
 
   @action
@@ -43,5 +49,9 @@ export default class GroupedCheckboxesComponent extends Component {
     } else {
       haystack.pushObject(needle);
     }
+
+    haystack.sort();
+
+    this.selectionChanged();
   }
 }

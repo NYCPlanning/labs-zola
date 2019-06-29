@@ -9,4 +9,5 @@ export default LayerGroupsContainer.extend({
     this.set('layerGroupToggleItems', A([]));
   },
   layout,
+  handleToggle() {},
 });
