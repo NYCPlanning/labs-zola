@@ -28,7 +28,9 @@ export default Route.extend({
   },
 
   async model() {
-    const { layerGroups: layerGroupsParams } = this.paramsFor('application');
+    const {
+      layerGroups: layerGroupsParams,
+    } = this.paramsFor('application');
 
     // fetch layer groups based on configured environment variable
     const layerGroups = await this.store.query('layer-group', {
@@ -36,9 +38,8 @@ export default Route.extend({
     });
 
     // get the params and override the layer group state up-front
-    layerGroups.forEach((grp) => {
-      const newGroup = grp;
-      newGroup.set('visible', layerGroupsParams.includes(newGroup.id));
+    layerGroups.forEach((group) => {
+      group.set('visible', layerGroupsParams.includes(group.id));
     });
 
     // extract the meta node, see ember-data & json:api
@@ -52,7 +53,6 @@ export default Route.extend({
       },
       {},
     );
-
     const bookmarks = await this.store.findAll('bookmark');
 
     await bookmarks.invoke('get', 'bookmark');

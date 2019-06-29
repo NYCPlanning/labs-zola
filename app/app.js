@@ -7,7 +7,7 @@ import defineModifier from 'ember-concurrency-retryable/define-modifier';
 import Resolver from './resolver';
 import config from './config/environment';
 
-if (config.environment === 'production') {
+if (config.environment === 'production' || config.environment === 'staging') {
   Sentry.init({
     dsn: 'https://f93ba4c5c59740c4b70cdb571b54d6da@sentry.io/1492094',
     integrations: [new Integrations.Ember()],
