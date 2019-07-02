@@ -1,0 +1,41 @@
+<h3>
+  Tax Lots
+</h3>
+<ul class="no-bullet">
+  {{#each items as |bookmark|}}
+    <Bookmarks::Types::Lot::LotBookmarkItem
+      data-test-bookmark={{bookmark.id}}
+      @lot={{bookmark.bookmark}}
+      @deleteBookmark={{action this.deleteBookmark bookmark}}
+    />
+  {{/each}}
+</ul>
+<p class="text-small dark-gray" style="padding-left:1.5rem;">
+  <span class="float-left" style="line-height:2;">
+    Download saved Tax Lots (PLUTO) as:&nbsp;
+  </span>
+  <span class="nowrap">
+    <a
+      class="button gray tiny"
+      href={{carto-download-link
+        "mappluto"
+        "bbl"
+        (map-by "bookmark.id" items)
+        "csv"
+      }}
+    >
+      CSV
+    </a>
+    <a
+      class="button gray tiny"
+      href={{carto-download-link
+        "mappluto"
+        "bbl"
+        (map-by "bookmark.id" items)
+        "shp"
+      }}
+    >
+      Shapefile
+    </a>
+  </span>
+</p>

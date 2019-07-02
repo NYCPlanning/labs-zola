@@ -1,3 +1,3 @@
-import CartoGeojsonFeature from './carto-geojson-feature';
+import ZoningMapAmendment from './zoning-map-amendment';
 
-export default class PendingZoningMapAmendment extends CartoGeojsonFeature {}
+export default ZoningMapAmendment;
