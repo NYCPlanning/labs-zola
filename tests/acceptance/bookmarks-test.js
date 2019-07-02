@@ -10,6 +10,8 @@ import { setupApplicationTest } from 'ember-qunit';
 import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import resetStorages from 'ember-local-storage/test-support/reset-storage';
+import Sinon from 'sinon';
+import stubBasicMap from '../helpers/stub-basic-map';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
 const localStorageSetStringified = function(key, jsonString) {
@@ -19,6 +21,7 @@ const localStorageSetStringified = function(key, jsonString) {
 module('Acceptance | bookmarks', function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
+  stubBasicMap(hooks);
 
   hooks.beforeEach(function() {
     this.server.post('layer-groups', () => layerGroupsFixtures);
@@ -206,5 +209,38 @@ module('Acceptance | bookmarks', function(hooks) {
     await visit('/bookmarks');
 
     assert.ok(true);
+  });
+
+  test('it highlights bookmarked lots on map', async function(assert) {
+    this.sandbox = Sinon.createSandbox();
+    this.addLayerSpy = this.sandbox.spy(this.map, 'addLayer');
+
+    this.server.create('lot', {
+      id: '1234',
+    });
+
+    localStorageSetStringified('bookmarks-1', {
+      id: 'test',
+      attributes: {
+        address: null,
+      },
+      relationships: {
+        bookmark: {
+          data: {
+            type: 'lots',
+            id: '1234',
+          },
+        },
+      },
+      type: 'bookmarks',
+    });
+
+    localStorageSetStringified('index-bookmarks', ['bookmarks-1']);
+
+    await visit('/bookmarks');
+
+    assert.ok(this.addLayerSpy.calledWithMatch({ id: 'bookmarked-lots' }), 'it adds bookmarked lots');
+
+    this.sandbox.restore();
   });
 });
