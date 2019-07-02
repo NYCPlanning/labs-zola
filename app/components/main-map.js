@@ -64,7 +64,7 @@ export default class MainMap extends Component {
   @computed('bookmarks.[]')
   get bookmarkedLotsLayer() {
     const bookmarks = this.get('bookmarks.[]');
-    const lotBookmarks = bookmarks.getEach('bookmark.bbl')
+    const lotBookmarks = bookmarks.getEach('bookmark.properties.bbl')
       .filter(d => d); // filter out bookmarks with undefined bbl
 
     const filter = ['match', ['get', 'bbl'], lotBookmarks, true, false];

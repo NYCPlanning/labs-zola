@@ -40,10 +40,10 @@
       />
     </layers.tooltip>
   </LabsLayers>
-  {{#if bookmarkedLotsLayer}}
+  {{#if this.bookmarkedLotsLayer}}
     <MapboxGlLayer
       @map={{map.instance}}
-      @layer={{bookmarkedLotsLayer}}
+      @layer={{this.bookmarkedLotsLayer}}
       @before="place_other"
     />
   {{/if}}
