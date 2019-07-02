@@ -198,6 +198,14 @@ export default class MainMap extends Component {
 
   @action
   handleLayerClick(feature) {
+    
+    // GA
+    this.get('metrics').trackEvent('GoogleAnalytics', {
+      eventCategory: 'Layers',
+      eventAction: `${feature.layer.attributes.visible ? 'Turned off' : 'Turned on'} ${this.get('feature.layer.attributes.legend.labels')}`,
+      eventLabel: 'zoning' 
+    });
+
     const highlightedLayerId = this.get('highlightedLayerId');
 
     if (feature) {
