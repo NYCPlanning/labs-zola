@@ -17,6 +17,14 @@ export default class GeoJsonFeatureModel extends Bookmarkable {
   })
   type;
 
+  // generic property names to be aliased into
+  // from specific models
+  @attr('string')
+  title
+
+  @attr('string')
+  subtitle
+
   @computed('geometry')
   get bounds() {
     return bbox(this.geometry);

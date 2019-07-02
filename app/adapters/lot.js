@@ -1,5 +1,5 @@
-import DS from 'ember-data';
 import { buildSqlUrl } from '../utils/carto';
+import CartoGeojsonFeatureAdapter from './carto-geojson-feature';
 
 const LotColumnsSQL = [
   'address',
@@ -52,17 +52,13 @@ export const cartoQueryTemplate = function(id) {
     the_geom, bbl AS id FROM mappluto WHERE bbl=${id}`;
 };
 
-export default DS.JSONAPIAdapter.extend({
+export default CartoGeojsonFeatureAdapter.extend({
   handleResponse(status, headers, payload, requestData) {
     if (payload.error) {
       payload.errors = payload.error;
     }
 
     return this._super(status, headers, payload, requestData);
-  },
-
-  keyForAttribute(key) {
-    return key;
   },
   urlForFindRecord(id) {
     return buildSqlUrl(

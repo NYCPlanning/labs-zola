@@ -10,15 +10,15 @@ module('Integration | Component | lot bookmark item', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.on('myAction', function(val) { ... });
 
-    await render(hbs`{{lot-bookmark-item}}`);
+    await render(hbs`{{bookmarks/types/lot/lot-bookmark-item}}`);
 
     assert.equal(find('*').textContent.trim(), '×');
 
     // Template block usage:
     await render(hbs`
-      {{#lot-bookmark-item}}
+      {{#bookmarks/types/lot/lot-bookmark-item}}
         template block text
-      {{/lot-bookmark-item}}
+      {{/bookmarks/types/lot/lot-bookmark-item}}
     `);
 
     assert.equal(find('*').textContent.trim(), '×');

@@ -19,10 +19,6 @@ export default Controller.extend({
   }),
 
   actions: {
-    deleteBookmark(bookmark) {
-      bookmark.deleteRecord();
-      bookmark.save();
-    },
     flyTo(center = [0, 0]) {
       const mapInstance = this.get('mainMap.mapInstance');
       mapInstance.flyTo({

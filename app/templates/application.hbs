@@ -1,7 +1,6 @@
 <MainHeader @bookmarks={{model.bookmarks}} />
 <div class="{{if this.printSvc.enabled "print-view"}}">
   {{link-to "" "index" class="index-active-detector"}}
-  {{! data clip below }}
   {{#if this.printSvc.enabled}}
     <PrintViewControls
       @printSvc={{printSvc}}
@@ -9,7 +8,7 @@
   {{/if}}
   <div class="site-main grid-x {{this.printSvc.printViewClasses}}">
     <div class="navigation-area cell large-auto">
-      {{map-resource-search}}
+      <MapResourceSearch />
       <div class="map-grid">
         <MainMap
           @bookmarks={{model.bookmarks}}

@@ -5,6 +5,9 @@ const { carto } = config;
 
 export default DS.JSONAPIAdapter.extend({
   host: carto.domain,
+  keyForAttribute(key) {
+    return key;
+  },
   urlForQuery() {
     const baseUrl = this.buildURL();
 

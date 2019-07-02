@@ -8,120 +8,23 @@
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4 bookmarks">
   {{#if (await bookmarksSettled)}}
     {{#each-in (group-by "recordType.content" model) as |key values|}}
-      {{#if (eq key "lot")}}
-        <h3>
-          Tax Lots
-        </h3>
-        <ul class="no-bullet">
-          {{#each values as |bookmark|}}
-            <LotBookmarkItem
-              data-test-bookmark={{bookmark.id}}
-              @lot={{bookmark.bookmark}}
-              @deleteBookmark={{action "deleteBookmark" bookmark}}
-            />
-          {{/each}}
-        </ul>
-        <p class="text-small dark-gray" style="padding-left:1.5rem;">
-          <span class="float-left" style="line-height:2;">
-            Download saved Tax Lots (PLUTO) as:&nbsp;
-          </span>
-          <span class="nowrap">
-            <a
-              class="button gray tiny"
-              href={{carto-download-link
-                "mappluto"
-                "bbl"
-                (map-by "bookmark.id" values)
-                "csv"
-              }}
-            >
-              CSV
-            </a>
-            <a
-              class="button gray tiny"
-              href={{carto-download-link
-                "mappluto"
-                "bbl"
-                (map-by "bookmark.id" values)
-                "shp"
-              }}
-            >
-              Shapefile
-            </a>
-          </span>
-        </p>
-      {{else if (eq key "zma")}}
-        <h3>
-          Zoning Map Amendments
-        </h3>
-        <ul class="no-bullet">
-          {{#each values as |zma|}}
-            <li class="zma-bookmark">
-              {{#link-to "zma" zma.bookmark.id}}
-                <span class="icon polygon"></span>
-                {{zma.bookmark.project_na}}
-                <span class="dark-gray">
-                  {{zma.bookmark.lucats}}
-                </span>
-              {{/link-to}}
-              <button
-                class="float-right lu-red delete-bookmark-button"
-                {{action "deleteBookmark" zma}}
-              >
-                &times;
-              </button>
-            </li>
-          {{/each}}
-        </ul>
-      {{else if (eq key "special-purpose-district")}}
-        <h3>
-          Special Purpose Districts
-        </h3>
-        <ul class="no-bullet">
-          {{#each values as |spd|}}
-            <li class="spd-bookmark">
-              {{#link-to "special-purpose-district" spd.bookmark.id}}
-                <span class="icon polygon"></span>
-                {{spd.bookmark.sdname}}
-                <span class="dark-gray">
-                  {{spd.bookmark.sdlbl}}
-                </span>
-              {{/link-to}}
-              <button
-                class="float-right lu-red delete-bookmark-button"
-                {{action "deleteBookmark" spd}}
-              >
-                &times;
-              </button>
-            </li>
-          {{/each}}
-        </ul>
-      {{else if (eq key "special-purpose-subdistrict")}}
-        <h3>
-          Special Purpose Subdistricts
-        </h3>
-        <ul class="no-bullet">
-          {{#each values as |spd|}}
-            <li class="spd-bookmark">
-              {{#link-to "special-purpose-subdistricts" spd.bookmark.id}}
-                <span class="icon polygon"></span>
-                {{spd.bookmark.spname}}
-                <span class="dark-gray">
-                  {{spd.bookmark.splbl}}
-                </span>
-              {{/link-to}}
-              <button
-                class="float-right lu-red delete-bookmark-button"
-                {{action "deleteBookmark" spd}}
-              >
-                &times;
-              </button>
-            </li>
-          {{/each}}
-        </ul>
-      {{/if}}
+    {{!--
+      Should be one of:
+        commercial-overlay
+        lot
+        special-purpose-district
+        special-purpose-subdistrict
+        zoning-district
+        zoning-map-amendment
+      --}}
+
+      {{component (concat 'bookmarks/types/' key)
+        items=values
+        bookmarkType=key
+      }}
     {{/each-in}}
   {{/if}}
+
   {{#unless model.length}}
     <div class="no-bookmarks">
       <div class="align-self-middle large-text-center">
@@ -139,5 +42,6 @@
       </div>
     </div>
   {{/unless}}
+
   {{outlet}}
 </div>
