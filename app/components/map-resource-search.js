@@ -10,11 +10,20 @@ export default class MapResourceSearchComponent extends Component {
   @service
   mainMap;
 
+  @service
+  metrics;
+
   @action
   handleLookupSuccess(center, zoom, bbl) {
     // if onSuccess from labs-bbl-lookup includes bbl, transition to lot route for that bbl
     // otherwise flyTo the block
     if (bbl) {
+      // GA
+      this.get('metrics').trackEvent('GoogleAnalytics', {
+        eventCategory: 'Search',
+        eventAction: 'Used BBL Lookup',
+      });
+
       const { boro, block, lot } = bblDemux(bbl);
       this.router.transitionTo('map-feature.lot', boro, block, lot);
     } else {
@@ -34,6 +43,12 @@ export default class MapResourceSearchComponent extends Component {
     });
 
     if (type === 'lot') {
+      // GA
+      this.get('metrics').trackEvent('GoogleAnalytics', {
+        eventCategory: 'Search',
+        eventAction: 'Used Search Bar',
+      });
+
       const { boro, block, lot } = bblDemux(result.bbl);
       this.set('searchTerms', result.label);
 
@@ -46,6 +61,12 @@ export default class MapResourceSearchComponent extends Component {
     }
 
     if (type === 'zoning-district') {
+      // GA
+      this.get('metrics').trackEvent('GoogleAnalytics', {
+        eventCategory: 'Search',
+        eventAction: 'Searched by Zoning District',
+      });
+
       this.set('searchTerms', result.label);
       this.router.transitionTo('map-feature.zoning-district', result.label, { queryParams: { search: true } });
     }

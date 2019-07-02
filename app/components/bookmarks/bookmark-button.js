@@ -8,6 +8,9 @@ export default class BookmarkButton extends Component {
   @service
   store;
 
+  @service
+  metrics;
+
   // we don't know what kind of model this is
   // we only know that it's bookmarkable
   @computed('bookmarkableModel.bookmark')
@@ -30,6 +33,12 @@ export default class BookmarkButton extends Component {
 
   @action
   async createBookmark() {
+    // GA
+    this.get('metrics').trackEvent('GoogleAnalytics', {
+      eventCategory: 'Bookmark',
+      eventAction: 'Used Bookmark',
+    });
+
     const { bookmarkableModel } = this;
 
     await this.store.createRecord('bookmark', {

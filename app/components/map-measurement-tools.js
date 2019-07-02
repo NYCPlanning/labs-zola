@@ -8,6 +8,9 @@ export default class MapMeasurementToolsComponent extends Component {
   @service
   mainMap;
 
+  @service
+  metrics;
+
   measurementUnitType = 'standard';
 
   drawnMeasurements = null;
@@ -29,6 +32,12 @@ export default class MapMeasurementToolsComponent extends Component {
 
   @action
   async startDraw(type) {
+    // GA
+    this.get('metrics').trackEvent('GoogleAnalytics', {
+      eventCategory: 'Measurement',
+      eventAction: 'Used measurement tool',
+    });
+
     this.set('didStartDraw', true);
     const draw = this.get('draw') || await import('mapbox-gl-draw')
       .then(({ default: MapboxDraw }) => new MapboxDraw({

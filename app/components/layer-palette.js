@@ -1,4 +1,5 @@
 import Component from '@ember/component';
+import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
 import { next } from '@ember/runloop';
@@ -8,6 +9,9 @@ const { zoningDistrictOptionSets, commercialOverlaysOptionSets } = config;
 
 @classNames('layer-palette')
 export default class LayerPaletteComponent extends Component {
+  @service
+  metrics;
+
   init(...args) {
     super.init(...args);
 
@@ -73,7 +77,13 @@ export default class LayerPaletteComponent extends Component {
   }
 
   @action
-  handleLayerGroupToggle() {
+  handleLayerGroupToggle(layerGroup) {
+    // GA
+    this.get('metrics').trackEvent('GoogleAnalytics', {
+      eventCategory: 'Layers',
+      eventAction: `${layerGroup.visible ? 'Turned on' : 'Turned off'} ${layerGroup.legend.label}`,
+    });
+
     this.handleLayerGroupChange();
   }
 }

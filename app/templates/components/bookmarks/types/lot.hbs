@@ -17,6 +17,7 @@
   <span class="nowrap">
     <a
       class="button gray tiny"
+      onclick={{action this.captureBookmarkDownload "CSV" preventDefault=false}}
       href={{carto-download-link
         "mappluto"
         "bbl"
@@ -28,6 +29,7 @@
     </a>
     <a
       class="button gray tiny"
+      onclick={{action this.captureBookmarkDownload "Shapefile" preventDefault=false}}
       href={{carto-download-link
         "mappluto"
         "bbl"

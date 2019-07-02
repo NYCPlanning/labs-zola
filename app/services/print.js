@@ -1,8 +1,11 @@
-import Service from '@ember/service';
+import Service, { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 
 export default class PrintService extends Service {
   enabled = false;
+
+  @service
+  metrics;
 
   // Print View Settings
   printViewOrientation = 'portrait';
@@ -28,6 +31,13 @@ export default class PrintService extends Service {
 
   @computed('printViewHiddenAreas', 'enabled', 'printViewPaperSize', 'printViewOrientation', 'printViewHiddenAreas')
   get printViewClasses() {
+    // GA
+    this.get('metrics').trackEvent('GoogleAnalytics', {
+      eventCategory: 'Print',
+      eventAction: `${this.enabled ? 'Enabled print view' : null}`,
+      eventLabel: 'export',
+    });
+
     const orientation = this.printViewOrientation;
     const size = this.printViewPaperSize;
     const areas = this.printViewHiddenAreas;

@@ -70,6 +70,6 @@ export default class LayerGroupToggle extends Component {
   @action
   toggle() {
     this.toggleProperty('active');
-    this.onToggle(this.layerGroup.id);
+    this.onToggle(this.layerGroup);
   }
 }
