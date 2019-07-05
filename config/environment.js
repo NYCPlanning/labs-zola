@@ -194,11 +194,11 @@ module.exports = function(environment) {
       helpers: [
         'geosearch',
         'bbl',
-        // 'neighborhood',
-        // 'zoning-district',
-        // 'zoning-map-amendment',
-        // 'special-purpose-district',
-        // 'commercial-overlay',
+        'neighborhood',
+        'zoning-district',
+        'zoning-map-amendment',
+        'special-purpose-district',
+        'commercial-overlay',
       ],
     },
 
