@@ -325,7 +325,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-    ENV.host = 'https://layers-api.planninglabs.nyc';
+    ENV.host = 'https://layers-api-staging.planninglabs.nyc';
   }
 
   return ENV;
