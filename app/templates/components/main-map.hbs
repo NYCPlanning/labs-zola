@@ -15,6 +15,7 @@
     class="labs-map-loaded"
     style="display:none"
   ></div>
+
   <div class="print-controls mapboxgl-ctrl mapboxgl-ctrl-group">
     <button
       class="mapboxgl-ctrl-icon"
@@ -24,6 +25,7 @@
       {{fa-icon "print"}}
     </button>
   </div>
+
   <LabsLayers
     @map={{map.instance}}
     @hoveredFeature={{map.hoveredFeature}}
@@ -40,6 +42,7 @@
       />
     </layers.tooltip>
   </LabsLayers>
+
   {{#if this.bookmarkedLotsLayer}}
     <MapboxGlLayer
       @map={{map.instance}}
@@ -47,6 +50,7 @@
       @before="place_other"
     />
   {{/if}}
+
   {{#if mainMap.selected}}
     <MapboxGlSource
       @map={{map.instance}}
@@ -57,6 +61,11 @@
       <source.layer @layer={{selectedLineLayer}} @before="place_other" />
     </MapboxGlSource>
   {{/if}}
+
+  <Mapbox::LoadSpinner
+    @map={{map.instance}}
+  />
+
   <MapMeasurementTools
     @map={{map.instance}}
     @draw={{this.draw}} as |measurement|
@@ -80,6 +89,6 @@
       </MapboxGlSource>
     {{/if}}
   </MapMeasurementTools>
-  {{mapbox-gl-on "data" (action "mapLoading") eventSource=map.instance}}
 </Mapbox::BasicMap>
-{{locate-me-mobile}}
+
+<LocateMeMobile />
