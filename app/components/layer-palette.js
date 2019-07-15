@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { action } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
 import { next } from '@ember/runloop';
+import { inject as service } from '@ember/service';
 import config from 'labs-zola/config/environment';
 
 const { zoningDistrictOptionSets, commercialOverlaysOptionSets } = config;
@@ -14,6 +15,11 @@ export default class LayerPaletteComponent extends Component {
     this.setFilterForZoning();
     this.setFilterForOverlays();
   }
+
+  @service
+  mainMap
+
+  zoomWarningLabel = 'Some information may not be visible at this zoom level.';
 
   selectedZoning = [];
 

@@ -17,6 +17,7 @@
     <container.layer-group-toggle
       data-test-toggle-tax-lots
       @layerGroup={{this.layerGroups.tax-lots}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.tax-lots this.zoomWarningLabel this.mainMap.zoom}}
     >
       <label
         class="checkbox-wrapper"
@@ -64,6 +65,7 @@
     <container.layer-group-toggle
       data-test-toggle-zoning-districts
       @layerGroup={{this.layerGroups.zoning-districts}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.zoning-districts this.zoomWarningLabel this.mainMap.zoom}}
     >
       <ul class="layer-menu-item--group-checkboxes">
         {{#each this.zoningDistrictOptionSets as |optionSet|}}
@@ -80,6 +82,7 @@
     <container.layer-group-toggle
       data-test-toggle-commercial-overlays
       @layerGroup={{this.layerGroups.commercial-overlays}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.commercial-overlays this.zoomWarningLabel this.mainMap.zoom}}
     >
       <ul class="layer-menu-item--group-checkboxes">
         {{#each this.commercialOverlaysOptionSets as |optionSet|}}
@@ -96,6 +99,7 @@
     <container.layer-group-toggle
       data-test-toggle-zoning-map-amendments
       @layerGroup={{this.layerGroups.zoning-map-amendments}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.zoning-map-amendments this.zoomWarningLabel this.mainMap.zoom}}
     >
       <LayerControlTimeline
         @layerGroup={{this.layerGroups.zoning-map-amendments}}
@@ -106,14 +110,17 @@
     <container.layer-group-toggle
       data-test-toggle-zoning-map-amendments-pending
       @layerGroup={{this.layerGroups.zoning-map-amendments-pending}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.zoning-map-amendments-pending this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-special-purpose-districts
       @layerGroup={{this.layerGroups.special-purpose-districts}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.special-purpose-districts this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-special-purpose-subdistricts
       @layerGroup={{this.layerGroups.special-purpose-subdistricts}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.special-purpose-subdistricts this.zoomWarningLabel this.mainMap.zoom}}
     />
   </LabsUi::LayerGroupsContainer>
   <LabsUi::LayerGroupsContainer
@@ -123,56 +130,68 @@
     <container.layer-group-toggle
       data-test-toggle-mandatory-inclusionary-housing
       @layerGroup={{this.layerGroups.mandatory-inclusionary-housing}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.mandatory-inclusionary-housing this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-inclusionary-housing
       @layerGroup={{this.layerGroups.inclusionary-housing}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.inclusionary-housing this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-transit-zones
       @layerGroup={{this.layerGroups.transit-zones}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.transit-zones this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-fresh
       @layerGroup={{this.layerGroups.fresh}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.fresh this.zoomWarningLabel this.mainMap.zoom}}
     >
       <LabsUi::LegendItems @items={{this.layerGroups.fresh.legend.items}} />
     </container.layer-group-toggle>
     <container.layer-group-toggle
       data-test-toggle-sidewalk-cafes
       @layerGroup={{this.layerGroups.sidewalk-cafes}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.sidewalk-cafes this.zoomWarningLabel this.mainMap.zoom}}
     >
       <LabsUi::LegendItems @items={{this.layerGroups.sidewalk-cafes.legend.items}} />
     </container.layer-group-toggle>
     <container.layer-group-toggle
       data-test-toggle-limited-height-districts
       @layerGroup={{this.layerGroups.limited-height-districts}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.limited-height-districts this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-low-density-growth-mgmt-areas
       @layerGroup={{this.layerGroups.low-density-growth-mgmt-areas}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.low-density-growth-mgmt-areas this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-coastal-zone-boundary
       @layerGroup={{this.layerGroups.coastal-zone-boundary}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.coastal-zone-boundary this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-waterfront-access-plan
       @layerGroup={{this.layerGroups.waterfront-access-plan}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.waterfront-access-plan this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-historic-districts
       @layerGroup={{this.layerGroups.historic-districts}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.historic-districts this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-landmarks
       @layerGroup={{this.layerGroups.landmarks}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.landmarks this.zoomWarningLabel this.mainMap.zoom}}
     >
       <LabsUi::LegendItems @items={{this.layerGroups.landmarks.legend.items}} />
     </container.layer-group-toggle>
     <container.layer-group-toggle
       data-test-toggle-floodplain-efirm2007
       @layerGroup={{this.layerGroups.floodplain-efirm2007}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.floodplain-efirm2007 this.zoomWarningLabel this.mainMap.zoom}}
     >
       <LabsUi::LegendItems
         @items={{this.layerGroups.floodplain-efirm2007.legend.items}}
@@ -181,6 +200,7 @@
     <container.layer-group-toggle
       data-test-toggle-floodplain-pfirm2015
       @layerGroup={{this.layerGroups.floodplain-pfirm2015}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.floodplain-pfirm2015 this.zoomWarningLabel this.mainMap.zoom}}
     >
       <LabsUi::LegendItems
         @items={{this.layerGroups.floodplain-pfirm2015.legend.items}}
@@ -189,12 +209,14 @@
     <container.layer-group-toggle
       data-test-toggle-e-designations
       @layerGroup={{this.layerGroups.e-designations}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.e-designations this.zoomWarningLabel this.mainMap.zoom}}
     >
       <LabsUi::LegendItem @item={{this.layerGroups.e-designations.legend}} />
     </container.layer-group-toggle>
     <container.layer-group-toggle
       data-test-toggle-appendixj-designated-mdistricts
       @layerGroup={{this.layerGroups.appendixj-designated-mdistricts}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.appendixj-designated-mdistricts this.zoomWarningLabel this.mainMap.zoom}}
     />
   </LabsUi::LayerGroupsContainer>
   <LabsUi::LayerGroupsContainer
@@ -204,10 +226,12 @@
     <container.layer-group-toggle
       data-test-toggle-business-improvement-districts
       @layerGroup={{this.layerGroups.business-improvement-districts}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.business-improvement-districts this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-industrial-business-zones
       @layerGroup={{this.layerGroups.industrial-business-zones}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.industrial-business-zones this.zoomWarningLabel this.mainMap.zoom}}
     />
   </LabsUi::LayerGroupsContainer>
   <LabsUi::LayerGroupsContainer
@@ -217,26 +241,32 @@
     <container.layer-group-toggle
       data-test-toggle-boroughs
       @layerGroup={{this.layerGroups.boroughs}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.boroughs this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-community-districts
       @layerGroup={{this.layerGroups.community-districts}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.community-districts this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-nyc-council-districts
       @layerGroup={{this.layerGroups.nyc-council-districts}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.nyc-council-districts this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-ny-senate-districts
       @layerGroup={{this.layerGroups.ny-senate-districts}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.ny-senate-districts this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-assembly-districts
       @layerGroup={{this.layerGroups.assembly-districts}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.assembly-districts this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-neighborhood-tabulation-areas
       @layerGroup={{this.layerGroups.neighborhood-tabulation-areas}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.neighborhood-tabulation-areas this.zoomWarningLabel this.mainMap.zoom}}
     />
   </LabsUi::LayerGroupsContainer>
   <LabsUi::LayerGroupsContainer
@@ -246,14 +276,17 @@
     <container.layer-group-toggle
       data-test-toggle-subway
       @layerGroup={{this.layerGroups.subway}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.subway this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-building-footprints
       @layerGroup={{this.layerGroups.building-footprints}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.building-footprints this.zoomWarningLabel this.mainMap.zoom}}
     />
     <container.layer-group-toggle
       data-test-toggle-three-d-buildings
       @layerGroup={{this.layerGroups.three-d-buildings}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.three-d-buildings this.zoomWarningLabel this.mainMap.zoom}}
     >
       <ul class="layer-key">
         <li>
@@ -277,6 +310,7 @@
     <container.layer-group-toggle
       data-test-toggle-aerials
       @layerGroup={{this.layerGroups.aerials}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.aerials this.zoomWarningLabel this.mainMap.zoom}}
     >
       <ul class="layer-menu-item--group-checkboxes no-bullet list-float-3">
         {{#each layerGroups.aerials.layers as |layer|}}

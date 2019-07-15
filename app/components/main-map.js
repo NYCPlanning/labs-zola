@@ -175,6 +175,10 @@ export default class MainMap extends Component {
       type: 'raster',
       minzoom: 17,
     });
+
+    map.on('zoom', function() {
+      mainMap.set('zoom', map.getZoom());
+    });
   }
 
   @action
