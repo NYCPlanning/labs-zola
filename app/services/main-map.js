@@ -23,6 +23,8 @@ export default class MainMapService extends Service {
 
   routeIntentIsNested = false;
 
+  zoom = DEFAULT_ZOOM;
+
   knownHashIntent = '';
 
   @computed
@@ -32,16 +34,6 @@ export default class MainMapService extends Service {
     }
 
     return [9.72, 40.7125, -73.733];
-  }
-
-  @computed
-  get zoom() {
-    if (this.knownHashIntent) {
-      const [,, z] = this.parsedHash;
-      return z;
-    }
-
-    return DEFAULT_ZOOM;
   }
 
   @computed
