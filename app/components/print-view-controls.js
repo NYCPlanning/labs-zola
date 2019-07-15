@@ -8,6 +8,9 @@ export default class PrintViewControls extends Component {
   @service('print')
   printSvc;
 
+  @service
+  metrics;
+
   widowResize() {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -21,6 +24,13 @@ export default class PrintViewControls extends Component {
 
   @action
   async disablePrintView() {
+    // GA
+    this.get('metrics').trackEvent('GoogleAnalytics', {
+      eventCategory: 'Print',
+      eventAction: 'Disabled print view',
+      eventLabel: 'export',
+    });
+
     this.set('printSvc.enabled', false);
 
     await this.widowResize();

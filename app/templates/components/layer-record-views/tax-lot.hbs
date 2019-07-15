@@ -47,6 +47,7 @@
         <a
           target="_blank"
           href={{this.model.zoneDistLinks.primaryzone1}}
+          onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
           class="button"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -59,6 +60,7 @@
         <a
           target="_blank"
           href={{this.model.zoneDistLinks.primaryzone2}}
+          onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
           class="button"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -71,6 +73,7 @@
         <a
           target="_blank"
           href={{this.model.zoneDistLinks.primaryzone3}}
+          onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
           class="button"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -83,6 +86,7 @@
         <a
           target="_blank"
           href={{this.model.zoneDistLinks.primaryzone4}}
+          onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
           class="button"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -100,6 +104,7 @@
           <a
             target="_blank"
             href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-{{specialDistrict.boroName}}.page#{{specialDistrict.anchorName}}"
+            onclick={{action this.captureOutboundLink "Special Purpose District" preventDefault=false}}
             class="button"
           >
             {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -164,6 +169,7 @@
             <a
               target="_blank"
               href={{this.model.digitalTaxMapLink}}
+              onclick={{action this.captureOutboundLink "Digital Tax Map" preventDefault=false}}
             >
               {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
               Digital Tax Map
@@ -175,6 +181,7 @@
             <a
               target="_blank"
               href={{this.model.zoningMapLink}}
+              onclick={{action this.captureOutboundLink "Zoning Map" preventDefault=false}}
             >
               {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
               Zoning Map:
@@ -190,6 +197,7 @@
             <a
               target="_blank"
               href={{this.model.historicalZoningMapLink}}
+              onclick={{action this.captureOutboundLink "Historical Zoning Maps" preventDefault=false}}
             >
               {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
               Historical Zoning Maps
@@ -393,6 +401,7 @@
     <span class="datum">
       <a
         href={{this.model.biswebLink}}
+        onclick={{action this.captureOutboundLink "BISWEB" preventDefault=false}}
         target="_blank"
       >
         {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -415,6 +424,7 @@
       <span class="datum">
         <a
           href={{this.model.ACRISLink}}
+          onclick={{action this.captureOutboundLink "ACRIS" preventDefault=false}}
           target="_blank"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -431,6 +441,7 @@
       <span class="datum">
         <a
           href={{this.model.housingInfoLink}}
+          onclick={{action this.captureOutboundLink "Housing Info" preventDefault=false}}
           target="_blank"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -452,6 +463,7 @@
       <span class="datum">
         <a
           href={{this.model.fullCommunityDistrictURL}}
+          onclick={{action this.captureOutboundLink "Community District" preventDefault=false}}
           target="_blank"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
@@ -468,6 +480,7 @@
       <span class="datum">
         <a
           href={{this.model.councilLink}}
+          onclick={{action this.captureOutboundLink "Council District" preventDefault=false}}
           target="_blank"
         >
           {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}

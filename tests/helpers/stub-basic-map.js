@@ -113,7 +113,6 @@ const createMapStub = function(testContext) {
     @action
     handleMapLoaded() {
       this.mapInstance = testContext.map;
-
       this.mapLoaded(testContext.map);
     }
   }
