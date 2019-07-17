@@ -1,5 +1,5 @@
 [build]
-command = "yarn build --environment=staging"
+command = "API_HOST=https://layers-api-staging.planninglabs.nyc yarn build --environment=production"
 
 [context.master]
 command = "yarn build --environment=production"

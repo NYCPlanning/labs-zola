@@ -1,9 +1,9 @@
-import DS from 'ember-data';
 import config from 'labs-zola/config/environment';
+import ApplicationAdapter from './application';
 
 const { carto } = config;
 
-export default DS.JSONAPIAdapter.extend({
+export default ApplicationAdapter.extend({
   host: carto.domain,
   keyForAttribute(key) {
     return key;

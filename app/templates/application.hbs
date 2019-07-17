@@ -10,12 +10,18 @@
     <div class="navigation-area cell large-auto">
       <MapResourceSearch />
       <div class="map-grid">
-        <MainMap
-          @bookmarks={{model.bookmarks}}
-          @layerGroups={{model.layerGroups}}
-          @layerGroupsMeta={{model.meta}}
-          @onPrint={{action (mut this.printSvc.enabled) true}}
-        />
+        {{!-- 
+          Prevent the map from loading if it's in fastboot. Right now, we don't have a good way
+          to pre-render a map in node. For / and about /about views, this doesn't matter as much.
+        --}}
+        {{#if (not this.fastboot.isFastBoot)}}
+          <MainMap
+            @bookmarks={{model.bookmarks}}
+            @layerGroups={{model.layerGroups}}
+            @layerGroupsMeta={{model.meta}}
+            @onPrint={{action (mut this.printSvc.enabled) true}}
+          />
+        {{/if}}
         <LayerPalette
           @selectedZoning={{this.selectedZoning}}
           @selectedOverlays={{this.selectedOverlays}}

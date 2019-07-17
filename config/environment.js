@@ -1,13 +1,19 @@
 'use strict';
 
+const HOST = process.env.API_HOST || 'https://layers-api.planninglabs.nyc';
+
 module.exports = function(environment) {
   const ENV = {
     modulePrefix: 'labs-zola',
     environment,
     rootURL: '/',
     locationType: 'auto',
-    host: 'https://layers-api-staging.planninglabs.nyc',
+    host: HOST,
     namespace: 'v1',
+
+    fastboot: {
+      hostWhitelist: ['https://planninglabs.carto.com/**', 'carto.com', 'planninglabs.carto.com', /^localhost:\d+$/, 'dry-thicket-91267.herokuapp.com'],
+    },
 
     defaultLayerGroupState: [
       { id: 'zoning-districts', visible: true },
@@ -311,21 +317,6 @@ module.exports = function(environment) {
     };
 
     ENV.host = '';
-  }
-
-  if (environment === 'devlocal') {
-    // here you can enable a devlocal-specific feature
-    ENV.host = 'http://localhost:3000';
-  }
-
-  if (environment === 'staging') {
-    // here you can enable a staging-specific feature
-    ENV.host = 'https://layers-api-staging.planninglabs.nyc';
-  }
-
-  if (environment === 'production') {
-    // here you can enable a production-specific feature
-    ENV.host = 'https://layers-api.planninglabs.nyc';
   }
 
   return ENV;

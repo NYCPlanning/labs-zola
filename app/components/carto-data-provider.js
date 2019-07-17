@@ -12,9 +12,6 @@ const delayRetryPolicy = new DelayPolicy({
 
 export default class CartoDataProvider extends Component {
   @service
-  router;
-
-  @service
   store;
 
   modelName = 'carto-geojson-feature';

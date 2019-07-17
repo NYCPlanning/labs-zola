@@ -10,11 +10,17 @@ const {
   zoningDistrictOptionSets,
   commercialOverlaysOptionSets,
 } = config;
-const defaultLayerGroups = defaultLayerGroupState.filterBy('visible').mapBy('id').sort();
+
+const defaultLayerGroups = defaultLayerGroupState
+  .filter(layerGroup => layerGroup.visible)
+  .map(layerGroup => layerGroup.id)
+  .sort();
+
 const defaultSelectedOverlays = commercialOverlaysOptionSets
   .map(({ codes }) => codes)
   .reduce((acc, curr) => acc.concat(curr))
   .sort();
+
 const defaultSelectedZoningDistricts = zoningDistrictOptionSets
   .map(({ codes }) => codes)
   .reduce((acc, curr) => acc.concat(curr))
@@ -50,6 +56,9 @@ export const mapQueryParams = new QueryParams(
 export default class ApplicationController extends Controller.extend(mapQueryParams.Mixin) {
   @service('print')
   printSvc;
+
+  @service
+  fastboot;
 
   // this action extracts query-param-friendly state of layer groups
   // for various paramable layers

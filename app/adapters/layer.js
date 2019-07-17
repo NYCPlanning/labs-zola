@@ -1,4 +1,4 @@
-import DS from 'ember-data';
+import ApplicationAdapter from './application';
 
-export default DS.JSONAPIAdapter.extend({
+export default ApplicationAdapter.extend({
 });
