@@ -1,20 +1,25 @@
-{{!-- The way this component is setup is awkward... --}}
-{{!-- For some reason the yield has to appear first before the --}}
-{{!-- re-renderable stuff --}}
-
-{{!-- see https://github.com/miguelcobain/ember-composability-tools/issues/9#issuecomment-288081556  --}}
-{{#ember-wormhole to=this.elementId}}
-  <div class="layer-groups-container-content">
-    {{yield (hash
-        layer-group-toggle=(component 'labs-ui/layer-group-toggle'
-          willDestroyHook=(action 'unregisterChild')
-          didInit=(action 'registerChild')
-          onToggle=(action this.handleToggle)
+{{!--
+  The way this component is setup is awkward...
+  For some reason the yield has to appear first before the
+  re-renderable stuff
+  see https://github.com/miguelcobain/ember-composability-tools/issues/9#issuecomment-288081556 
+  Enable special handling for node-based fastboot pre-rendering
+  Ember wormhole gets skipped in fastboot because it requires the DOM
+--}}
+{{#if (not this.fastboot.isFastBoot)}}
+  {{#ember-wormhole to=this.elementId}}
+    <div class="layer-groups-container-content">
+      {{yield (hash
+          layer-group-toggle=(component 'labs-ui/layer-group-toggle'
+            willDestroyHook=(action 'unregisterChild')
+            didInit=(action 'registerChild')
+            onToggle=(action this.handleToggle)
+          )
         )
-      )
-    }}
-  </div>
-{{/ember-wormhole}}
+      }}
+    </div>
+  {{/ember-wormhole}}
+{{/if}}
 
 <div onclick={{action 'toggleLayerGroupsContainer'}}
   class="layer-groups-container-title
@@ -36,4 +41,14 @@
 </div>
 
 <div id={{this.elementId}}>
+  {{#if this.fastboot.isFastBoot}}
+    <div class="layer-groups-container-content">
+      {{yield (hash
+          layer-group-toggle=(component 'labs-ui/layer-group-toggle'
+            onToggle=(action this.handleToggle)
+          )
+        )
+      }}
+    </div>
+  {{/if}}
 </div>

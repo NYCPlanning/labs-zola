@@ -12,6 +12,9 @@ export default class LayerPaletteComponent extends Component {
   @service
   metrics;
 
+  @service
+  fastboot;
+
   init(...args) {
     super.init(...args);
 
@@ -45,9 +48,13 @@ export default class LayerPaletteComponent extends Component {
       ...this.selectedZoning.map(value => ['==', 'primaryzone', value]),
     ];
 
-    next(() => {
-      this.layerGroups['zoning-districts'].setFilterForLayer('zd-fill', expression);
-    });
+    // if-guard to prevent the node-based fastboot server from running this
+    // mapbox-gl method which gets ignored in fastboot.
+    if (!this.fastboot.isFastBoot) {
+      next(() => {
+        this.layerGroups['zoning-districts'].setFilterForLayer('zd-fill', expression);
+      });
+    }
   }
 
   // where should these go?
@@ -58,10 +65,14 @@ export default class LayerPaletteComponent extends Component {
       ...this.selectedOverlays.map(value => ['==', 'overlay', value]),
     ];
 
-    next(() => {
-      this.layerGroups['commercial-overlays'].setFilterForLayer('co', expression);
-      this.layerGroups['commercial-overlays'].setFilterForLayer('co_labels', expression);
-    });
+    // if-guard to prevent the node-based fastboot server from running this
+    // mapbox-gl method which gets ignored in fastboot.
+    if (!this.fastboot.isFastBoot) {
+      next(() => {
+        this.layerGroups['commercial-overlays'].setFilterForLayer('co', expression);
+        this.layerGroups['commercial-overlays'].setFilterForLayer('co_labels', expression);
+      });
+    }
   }
 
   @action

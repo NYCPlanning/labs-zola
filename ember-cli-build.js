@@ -3,19 +3,17 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const babelPlugin = require('ember-auto-import/babel-plugin');
 
+if (!('FASTBOOT_DISABLED' in process.env)) {
+  process.env.FASTBOOT_DISABLED = EmberApp.env() !== 'production';
+}
+
 module.exports = (defaults) => {
   const app = new EmberApp(defaults, {
-    'ember-ast-hot-load': {
-      helpers: [
-        'bbl-demux',
-        'carto-download-link',
-        'extract-layer-stops-for',
-        'numeral-format',
-        'to-title-case',
-        'media',
-        'query',
+    prember: {
+      urls: [
+        '/',
+        '/about',
       ],
-      enabled: true,
     },
     'ember-cli-babel': {
       includePolyfill: true,
@@ -50,8 +48,6 @@ module.exports = (defaults) => {
       },
     },
   });
-
-  app.import('vendor/ember/ember-template-compiler.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

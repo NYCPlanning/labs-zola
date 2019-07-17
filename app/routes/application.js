@@ -6,17 +6,21 @@ const { defaultLayerGroupState } = config;
 
 export default Route.extend({
   mainMap: service(),
+  fastboot: service(),
 
   beforeModel(transition) {
     const { targetName } = transition;
 
     // only transition to about if target is index
     if (targetName === 'index') {
-      const { hash } = window.location;
+      // TODO: handle hash in fastboot
+      if (!this.fastboot.isFastBoot) {
+        const { hash } = window.location;
 
-      // preserve hash token so it's applied across transitions
-      if (hash) {
-        this.mainMap.set('knownHashIntent', hash);
+        // preserve hash token so it's applied across transitions
+        if (hash) {
+          this.mainMap.set('knownHashIntent', hash);
+        }
       }
 
       this.transitionTo(`/about${transition.intent.url}`);
