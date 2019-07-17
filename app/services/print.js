@@ -34,7 +34,7 @@ export default class PrintService extends Service {
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'Print',
-      eventAction: `${this.enabled ? 'Enabled print view' : ''}`,
+      eventAction: `${this.enabled ? 'Enabled print view' : null}`,
       eventLabel: 'export',
     });
 

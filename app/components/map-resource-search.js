@@ -46,7 +46,7 @@ export default class MapResourceSearchComponent extends Component {
       // GA
       this.get('metrics').trackEvent('GoogleAnalytics', {
         eventCategory: 'Search',
-        eventAction: 'Searched by Address',
+        eventAction: 'Used Search Bar',
       });
 
       const { boro, block, lot } = bblDemux(result.bbl);
