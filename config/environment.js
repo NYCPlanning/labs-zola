@@ -224,6 +224,7 @@ module.exports = function(environment) {
         'free-solid-svg-icons': [
           'angle-up',
           'bookmark',
+          'bullhorn',
           'caret-down',
           'caret-up',
           'check-square',

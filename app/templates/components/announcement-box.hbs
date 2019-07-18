@@ -1,0 +1,14 @@
+<div
+  class="button expanded tiny text-left no-margin"
+  style="text-align: left;"
+  onclick={{action this.toggle}}
+>
+  {{fa-icon 'bullhorn'}}
+  Announcement: {{this.title}}
+</div>
+
+{{#if this.isOpen}}
+  <div class="announcement-box" style="background-color: #ecedee">
+    {{yield}}
+  </div>
+{{/if}}
