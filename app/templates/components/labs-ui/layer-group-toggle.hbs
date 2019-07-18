@@ -1,12 +1,14 @@
 <div class="layer-group-toggle-header layer-{{dasherize label}}">
   <div class="grid-x">
     <div class="cell auto ">
-      <div class="switch tiny float-left">
-        <input class="switch-input" type="checkbox" checked={{if active 'checked'}}>
-        <label {{action 'toggle'}} class="switch-paddle">
-          <span class="show-for-sr">Toggle Layer Group</span>
-        </label>
-      </div>
+      {{#if (not fastboot.isFastBoot)}}
+        <div class="switch tiny float-left">
+          <input class="switch-input" type="checkbox" checked={{if active 'checked'}}>
+          <label {{action 'toggle'}} class="switch-paddle">
+            <span class="show-for-sr">Toggle Layer Group</span>
+          </label>
+        </div>
+      {{/if}}
       <span {{action 'toggle' preventDefault=false}} class="layer-group-toggle-label" role="button">
         {{label}}
         {{#if active}}
@@ -45,6 +47,8 @@
 </div>
 {{#if active}}
   <div class="layer-group-toggle-content">
-    {{yield}}
+    {{#if (not fastboot.isFastBoot)}}
+      {{yield}}
+    {{/if}}
   </div>
 {{/if}}

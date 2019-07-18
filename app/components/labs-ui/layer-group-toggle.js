@@ -1,9 +1,13 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
 import { alias } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
 import layout from '../../templates/components/labs-ui/layer-group-toggle';
 
 export default class LayerGroupToggle extends Component {
+  @service
+  fastboot;
+
   // ember component class options
   classNames = ['layer-group-toggle'];
 
