@@ -3,7 +3,6 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
 import { next } from '@ember/runloop';
-import { inject as service } from '@ember/service';
 import config from 'labs-zola/config/environment';
 
 const { zoningDistrictOptionSets, commercialOverlaysOptionSets } = config;
