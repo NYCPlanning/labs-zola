@@ -11,7 +11,9 @@
     }}
       ZoLa
       <small class="site-subtitle show-for-medium">
-        {{#if (media "desktop")}}
+        {{#if (or (this.media "mobile") (this.media "tablet"))}}
+          NYC's 
+        {{else}}
           <span class="show-for-large">
             New
           </span>
@@ -21,9 +23,6 @@
           <span class="show-for-large">
             City's
           </span>
-        {{/if}}
-        {{#if (or (media "mobile") (media "tablet"))}}
-          NYC's 
         {{/if}}
         Zoning &amp; Land Use Map
       </small>
