@@ -60,6 +60,9 @@ export default class ApplicationController extends Controller.extend(mapQueryPar
   @service
   fastboot;
 
+  @service
+  mainMap;
+
   // this action extracts query-param-friendly state of layer groups
   // for various paramable layers
   @action
