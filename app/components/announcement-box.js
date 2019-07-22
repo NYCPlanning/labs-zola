@@ -1,11 +1,7 @@
 import Component from '@ember/component';
-import { action } from '@ember/object';
+import { classNames, tagName } from '@ember-decorators/component';
 
+@classNames('show-for-large')
+@tagName('li')
 export default class AnnouncementBox extends Component {
-  isOpen = false;
-
-  @action
-  toggle() {
-    this.toggleProperty('isOpen');
-  }
 }

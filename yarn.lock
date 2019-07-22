@@ -5623,6 +5623,24 @@ ember-tooltips@^3.1.0:
     resolve "^1.10.1"
     tooltip.js "^1.1.5"
 
+ember-tooltips@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/ember-tooltips/-/ember-tooltips-3.3.3.tgz#7b25842f1adc977897c9a4ad69b3388d4239942d"
+  integrity sha512-PvibtNZZKNEYFtRes/bJZOefDXIuopgkqF89XFu0ARe10Gu9Mgy5cB9SSI1sP8zp4TampyvA3TOJ/kGJcxlrqA==
+  dependencies:
+    broccoli-file-creator "^2.1.1"
+    broccoli-funnel "^2.0.2"
+    broccoli-merge-trees "^2.0.0"
+    broccoli-source "^2.0.0"
+    broccoli-string-replace "^0.1.2"
+    ember-cli-babel "^6.16.0"
+    ember-cli-htmlbars "^3.0.0"
+    ember-get-config "^0.2.4"
+    ember-wormhole "^0.5.5"
+    popper.js "^1.12.5"
+    resolve "^1.10.1"
+    tooltip.js "^1.1.5"
+
 ember-truth-helpers@^2.0.0, ember-truth-helpers@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/ember-truth-helpers/-/ember-truth-helpers-2.1.0.tgz#d4dab4eee7945aa2388126485977baeb33ca0798"
@@ -12963,6 +12981,11 @@ wgs84@0.0.0:
 what-input@^5.0.2:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/what-input/-/what-input-5.2.1.tgz#db4e25148be78f8edbd2e9e616097c3702d4364f"
+
+what-input@^5.2.3:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/what-input/-/what-input-5.2.3.tgz#9e636c9854c875b50b6716facd4fb55deb1d6653"
+  integrity sha512-ekQJmKNVEPcFIE2YI1L7iXm/m2QTQWe9QqewSCCFZs2ZPo3yOfA8TV8ioBx/JnWZrDUNVGj/YdDJCH5uagMEgg==
 
 whatwg-fetch@^3.0.0:
   version "3.0.0"

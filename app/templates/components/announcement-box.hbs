@@ -1,14 +1,18 @@
-<div
-  class="button expanded tiny text-left no-margin"
-  style="text-align: left;"
-  onclick={{action this.toggle}}
->
-  {{fa-icon 'bullhorn'}}
-  Announcement: {{this.title}}
-</div>
-
-{{#if this.isOpen}}
-  <div class="announcement-box" style="background-color: #ecedee">
-    {{yield}}
-  </div>
-{{/if}}
+<button>
+  {{fa-icon "bell"}} <sup class="a11y-orange">NEW!</sup>
+  <EmberPopover
+    @side="bottom-end"
+    @event='click'
+    @tooltipClassName='ember-popover dark'
+    @popperContainer='body'
+    as |popover|
+  >
+    <p class="text-small">
+      We've been working on ZoLa to prevent service interruptions. With these upgrades, you should now notice performance improvement.
+    </p>
+    <p class="text-small">
+      Thank you for using ZoLa!
+      <br>—<a href="mailto:zola_gis@planning.nyc.gov"> NYC Planning Labs</a>
+    </p>
+  </EmberPopover>
+</button>

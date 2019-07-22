@@ -118,7 +118,6 @@ body.index {
   }
 }
 
-// .search-and-layers {
 .layer-palette {
   @include xy-cell-static(full,false,0);
   position: relative;
@@ -249,7 +248,101 @@ body.index {
   }
 }
 
-.announcement-box {
-  padding: $global-margin;
+// Announcements
+.site-header .menu button { // should be added to Labs UI
+  color: #5d626a;
+  line-height: 1.5;
+  padding: 1.6875rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+  display: block;
+
+  &:hover {
+    background-color: #ecedee;
+    color: #212326;
+  }
 }
 
+
+// EmberTooltip overrides -
+// There is no `.ember-tooltip-arrow` in popovers; they have `.ember-popover-arrow`
+// and `.tooltip-arrow`. So popovers don't get arrows.
+//
+// TODO: [x] PR for Ember Tooltips (#370) to fix .ember-tooltip-arrow -> .tooltip-arrow issue
+// TODO: [ ] PR for Labs UI to fix colors
+// TODO: [ ] Remove these overrides onces dependency PRs are merged/published
+.ember-popover-arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+  margin: 5px;
+  border: 5px solid transparent;
+}
+
+.ember-popover[x-placement^="top"] .tooltip-arrow {
+  border-bottom-width: 0;
+  bottom: -5px;
+  left: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.ember-popover[x-placement^="top"] .tooltip-arrow {
+  border-top-color: $white-smoke;
+}
+.ember-popover.dark[x-placement^="top"] .tooltip-arrow {
+  border-top-color: $charcoal;
+}
+
+.ember-popover[x-placement^="right"] .tooltip-arrow {
+  border-left-width: 0;
+  left: -5px;
+  top: calc(50% - 5px);
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.ember-popover[x-placement^="right"] .tooltip-arrow {
+  border-right-color: $white-smoke;
+}
+.ember-popover.dark[x-placement^="right"] .tooltip-arrow {
+  border-right-color: $charcoal;
+}
+
+.ember-popover[x-placement^="bottom"] .tooltip-arrow {
+  border-top-width: 0;
+  top: -5px;
+  left: calc(50% - 5px);
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.ember-popover[x-placement^="bottom"] .tooltip-arrow {
+  border-bottom-color: $white-smoke;
+}
+.ember-popover.dark[x-placement^="bottom"] .tooltip-arrow {
+  border-bottom-color: $charcoal;
+}
+
+.ember-popover[x-placement^="left"] .tooltip-arrow {
+  border-right-width: 0;
+  right: -5px;
+  top: calc(50% - 5px);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.ember-popover[x-placement^="left"] .tooltip-arrow {
+  border-left-color: $white-smoke;
+}
+.ember-popover.dark[x-placement^="left"] .tooltip-arrow {
+  border-left-color: $charcoal;
+}
+
+.ember-popover-inner {
+  max-width: rem-calc(400);
+}
+.ember-popover.dark {
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.1);
+}
