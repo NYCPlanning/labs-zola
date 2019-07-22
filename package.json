@@ -90,7 +90,7 @@
     "ember-test-helpers": "^0.6.3",
     "ember-test-selectors": "2.0.0",
     "ember-tether": "v1.0.0-beta.3",
-    "ember-tooltips": "^3.1.0",
+    "ember-tooltips": "^3.3.3",
     "ember-truth-helpers": "^2.1.0",
     "ember-unused-components": "0.2.0",
     "ember-window-mock": "0.5.4",
@@ -125,7 +125,8 @@
     "@turf/boolean-within": "^6.0.1",
     "mustache": "3.0.1",
     "node-fetch": "2.6.0",
-    "numeral": "^2.0.6"
+    "numeral": "^2.0.6",
+    "what-input": "^5.2.3"
   },
   "resolutions": {
     "ember-composable-helpers": "2.3.1",

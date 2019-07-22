@@ -4,6 +4,7 @@ import { computed, action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import QueryParams from 'ember-parachute';
 import config from 'labs-zola/config/environment';
+import 'what-input';
 
 const {
   defaultLayerGroupState,
