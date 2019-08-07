@@ -8,6 +8,9 @@ export default class LayerGroupToggle extends Component {
   @service
   fastboot;
 
+  @service
+  metrics;
+
   // ember component class options
   classNames = ['layer-group-toggle'];
 
@@ -75,5 +78,15 @@ export default class LayerGroupToggle extends Component {
   toggle() {
     this.toggleProperty('active');
     this.onToggle(this.layerGroup);
+  }
+
+  @action
+  async captureOutboundLink(label) {
+    // GA
+    this.get('metrics').trackEvent('GoogleAnalytics', {
+      eventCategory: 'External Link',
+      eventAction: 'Clicked Supporting Zoning Link',
+      eventLabel: `Clicked ${label} Link`,
+    });
   }
 }
