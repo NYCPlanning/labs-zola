@@ -16,6 +16,5 @@ export default class LayerRecordBase extends Component {
       eventAction: 'Clicked External Link',
       eventLabel: `Clicked ${label} Link`,
     });
-    console.log(`Clicked ${label} Link`);
   }
 }
