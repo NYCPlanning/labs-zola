@@ -129,6 +129,7 @@ module.exports = function(environment) {
       ['Special Long Island City Mixed Use District', ['LIC', 'queens']],
       ['Special Southern Hunters Point District', ['SHP', 'queens']],
       ['Special Willets Point District', ['WP', 'queens']],
+      ['Special Bay Street Corridor District', ['BSC', 'staten-island']],
       ['Special Hillsides Preservation District', ['HS', 'staten-island']],
       ['Special St. George District', ['SG', 'staten-island']],
       ['Special South Richmond Development District', ['SRD', 'staten-island']],
