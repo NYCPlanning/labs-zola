@@ -44,14 +44,21 @@ export default class MapResourceSearchComponent extends Component {
 
     if (type === 'lot') {
       // GA
-      this.get('metrics').trackEvent('GoogleAnalytics', {
-        eventCategory: 'Search',
-        eventAction: 'Searched by Address',
-      });
+      // address search maps to all-uppercase addresses whereas bbl lookups map to normal case addresses
+      if (result.label.split(',')[0] === result.label.split(',')[0].toUpperCase()) {
+        this.get('metrics').trackEvent('GoogleAnalytics', {
+          eventCategory: 'Search',
+          eventAction: 'Searched by Address',
+        });
+      } else {
+        this.get('metrics').trackEvent('GoogleAnalytics', {
+          eventCategory: 'Search',
+          eventAction: 'Used BBL Lookup',
+        });
+      }
 
       const { boro, block, lot } = bblDemux(result.bbl);
       this.set('searchTerms', result.label);
-
       this.router.transitionTo('map-feature.lot', boro, block, lot, { queryParams: { search: true } });
     }
 

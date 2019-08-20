@@ -12,7 +12,7 @@ export default class IsInViewportComponent extends Component.extend(InViewportMi
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'Road View',
-      eventAction: 'Scrolled Down to Cyclomedia Viewport',
+      eventAction: 'Scrolled to bottom of a side panel',
     });
 
     this.set('inView', true);
