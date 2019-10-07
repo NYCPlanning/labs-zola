@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { ChildMixin } from 'ember-composability-tools';
 
 const defaultMax = new Date();
-const defaultStart = [1032370151000, defaultMax.getTime()];
+const defaultStart = [0, defaultMax.getTime()];
 
 function formatDate(date) {
   const d = new Date(date);
