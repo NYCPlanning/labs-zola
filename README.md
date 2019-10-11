@@ -78,7 +78,7 @@ Carto is the primary backend resource for ZoLa, which provides a PostGIS databas
 
 - **Carto Maps API** - Spatial data used in ZoLa's web maps are served as vector tiles from the Carto Maps API.  Vector tiles are defined by a SQL query, and may include several named internal layers.  Vector Tiles are defined in config files in `app/sources`, and the frontend converts each of these into a call to the Maps API, which produces a vector tile template that can be added to mapboxGL as a 'source'.
 - **Carto SQL API** - The SQL API is used to retrieve record-specific data, such as tax lot details when a user navigates to a specific lot.  It is also used to cross-reference a selected lot on-the-fly with various other layers to find intersections.
-- **Zola Search API** - Zola Search API provides autocomplete search resutls, and aggregates results from ZoLa's Carto database with those from the Mapzen Search API. The search API is an express.js app that lives in a separate repo: (https://github.com/NYCPlanning/labs-zola-search-api)
+- **Zola Search API** - Zola Search API provides autocomplete search results, and aggregates results from ZoLa's Carto database with those from the Mapzen Search API. The search API is an express.js app that lives in a separate repo: (https://github.com/NYCPlanning/labs-zola-search-api)
 
 ## BBL Route
 
