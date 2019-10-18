@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import { ChildMixin } from 'ember-composability-tools';
 
 const defaultMax = new Date();
-const defaultStart = [0, defaultMax.getTime()];
+const defaultStart = [220924800, defaultMax.getTime()];
 
 function formatDate(date) {
   const d = new Date(date);
@@ -28,12 +28,15 @@ export default Component.extend(ChildMixin, {
   actions: {
     sliderChanged(value) {
       const [min, max] = value;
-      const { layerGroup, layerID, column } = this;
+      const { layerGroup, column } = this;
 
       this.set('start', value);
 
       const expression = ['all', ['>=', column, min], ['<=', column, max]];
-      layerGroup.setFilterForLayer(layerID, expression);
+
+      layerGroup.layerIds.forEach((id) => {
+        layerGroup.setFilterForLayer(id, expression);
+      });
     },
   },
 });
