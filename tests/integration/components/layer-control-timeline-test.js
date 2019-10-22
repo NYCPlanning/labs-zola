@@ -22,7 +22,6 @@ module('Integration | Component | layer control timeline', function(hooks) {
       {{layer-control-timeline
         start=(array 1032370151000 1092370199000)
         layerGroup=layer
-        layerID='zma-fill'
         column='effective_epoch'
       }}`);
 
@@ -38,7 +37,6 @@ module('Integration | Component | layer control timeline', function(hooks) {
       {{layer-control-timeline
         start=(array 1032370151000 1092370199000)
         layerGroup=layer
-        layerID='zma-fill'
         column='effective_epoch'
       }}`);
 
