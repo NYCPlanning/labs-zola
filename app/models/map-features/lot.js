@@ -353,6 +353,8 @@ export default class LotFragment extends MF.Fragment {
 
   @attr('number') lotfront;
 
+  @attr('number') notes;
+
   @attr('number') numbldgs;
 
   @attr('number') numfloors;
