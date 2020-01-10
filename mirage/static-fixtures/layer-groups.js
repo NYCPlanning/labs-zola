@@ -2076,7 +2076,7 @@ export default {
           },
         ],
         meta: {
-          description: 'NYC GIS Zoning Features April 2019, Bytes of the Big Apple',
+          description: 'NYC GIS Zoning Features April 2019, BYTES of the BIG APPLE™',
           url: [
             'https://www1.nyc.gov/site/planning/data-maps/open-data.page',
           ],
@@ -2335,7 +2335,7 @@ export default {
           },
         ],
         meta: {
-          description: 'Zoning related datasets April 2019, Bytes of the Big Apple',
+          description: 'Zoning related datasets April 2019, BYTES of the BIG APPLE™',
           url: [
             'https://www1.nyc.gov/site/planning/data-maps/open-data.page#zoning_related',
           ],
@@ -2426,7 +2426,7 @@ export default {
           },
         ],
         meta: {
-          description: 'NYC GIS Zoning Features April 2019, Bytes of the Big Apple',
+          description: 'NYC GIS Zoning Features April 2019, BYTES of the BIG APPLE™',
           url: [
             'https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-gis-zoning.page',
           ],
@@ -3821,7 +3821,7 @@ export default {
           mvt: 10,
         },
         meta: {
-          description: 'Administrative and Political Districts v18D, Bytes of the Big Apple',
+          description: 'Administrative and Political Districts v18D, BYTES of the BIG APPLE™',
           url: [
             'https://www1.nyc.gov/site/planning/data-maps/open-data.page',
           ],
@@ -5660,7 +5660,7 @@ export default {
           },
         ],
         meta: {
-          description: 'MapPLUTO™ 18v2.1, Bytes of the Big Apple',
+          description: 'MapPLUTO™ 18v2.1, BYTES of the BIG APPLE™',
           url: [
             'https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page#mappluto',
           ],
