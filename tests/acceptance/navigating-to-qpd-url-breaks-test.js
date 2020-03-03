@@ -29,7 +29,7 @@ module('Acceptance | navigating to qpd url breaks', function(hooks) {
 
     await click('[data-test-grouped-parent="Commercial Districts"]'); // this checkbox is checked by default
     await click('[data-test-grouped-parent="Manufacturing Districts"]'); // this checkbox is checked by default
-    await click('[data-test-grouped-parent="Residential Districts"]'); // this checkbox is checked by default
+    await click('[data-test-grouped-parent="Residence Districts"]'); // this checkbox is checked by default
 
     await click('[data-test-about-close-button]');
 

@@ -1,18 +1,9 @@
 <div class="cyclomedia hide-for-print">
-  {{#if (and this.inView (media "desktop"))}}
-    <iframe
-      src={{this.url}}
-      class="cyclomedia"
-      allowfullscreen=""
-    ></iframe>
-  {{else}}
-    <a
-      class="button gray large reset-map-button hide-for-print"
-      href={{this.url}}
-      target="_blank"
-    >
-      {{fa-icon "external-link-alt"}} View Cyclomedia
-    </a>
-  {{/if}}
+  <a
+    class="button gray large reset-map-button hide-for-print"
+    href={{this.url}}
+    target="_blank"
+  >
+    {{fa-icon "external-link-alt"}} Cyclomedia Street View
+  </a>
 </div>
-<IsInViewport @inView={{this.inView}} />
