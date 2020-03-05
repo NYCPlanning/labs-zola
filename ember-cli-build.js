@@ -47,6 +47,9 @@ module.exports = (defaults) => {
         concat: false,
       },
     },
+    fingerprint: {
+      exclude: ['img/screenshot-1200x628.png'],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
