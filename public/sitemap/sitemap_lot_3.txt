@@ -41442,7 +41442,6 @@ https://zola.planning.nyc.gov/lot/3/1852/4
 https://zola.planning.nyc.gov/lot/3/1852/5
 https://zola.planning.nyc.gov/lot/3/1852/6
 https://zola.planning.nyc.gov/lot/3/1852/7
-https://zola.planning.nyc.gov/lot/3/1852/8
 https://zola.planning.nyc.gov/lot/3/1852/9
 https://zola.planning.nyc.gov/lot/3/1852/12
 https://zola.planning.nyc.gov/lot/3/1852/17

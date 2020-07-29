@@ -6,6 +6,8 @@ const DEFAULT_ZOOM = 9.72;
 const DEFAULT_LNG = 40.7125;
 const DEFAULT_LAT = -73.733;
 const DEFAULT_LAT_OFFSET = -0.1692;
+const MIN_ZOOM = 9.5;
+const MAX_BOUNDS = [[-74.5, 40.25], [-73, 41]];
 
 export default class MainMapService extends Service {
   mapInstance = null;
@@ -24,6 +26,10 @@ export default class MainMapService extends Service {
   routeIntentIsNested = false;
 
   zoom = DEFAULT_ZOOM;
+
+  minZoom = MIN_ZOOM;
+
+  maxBounds = MAX_BOUNDS;
 
   knownHashIntent = '';
 
