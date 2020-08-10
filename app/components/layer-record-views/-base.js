@@ -17,4 +17,14 @@ export default class LayerRecordBase extends Component {
       eventLabel: `Clicked ${label} Link`,
     });
   }
+
+  @action
+  onCaptchaResolved(reCaptchaResponse) {
+    this.get('model').set('reCaptchaResponse', reCaptchaResponse);
+  }
+
+  @action
+  resolveCaptcha() {
+    window.grecaptcha.execute();
+  }
 }
