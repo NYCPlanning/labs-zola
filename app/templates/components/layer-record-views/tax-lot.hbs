@@ -1,3 +1,8 @@
+{{g-recaptcha
+  onSuccess=(action "onCaptchaResolved")
+  size="invisible"
+}}
+
 <label class="header-label clearfix">
   TAX LOT
   <span class="medium-gray">
@@ -233,7 +238,11 @@
         Owner
       </label>
       <span class="datum">
-        {{this.model.ownername}}
+        {{#if this.model.reCaptchaResponse}}
+          {{this.model.ownername}}
+        {{else}}
+          <button {{action "resolveCaptcha"}} class="a11y-orange">Show Owner</button>
+        {{/if}}
       </span>
     </div>
   {{/if}}
