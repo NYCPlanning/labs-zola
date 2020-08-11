@@ -4,6 +4,7 @@ import {
   fillIn,
   find,
   triggerKeyEvent,
+  waitFor,
   waitUntil,
   currentURL,
 } from '@ember/test-helpers';
@@ -50,6 +51,7 @@ module('Acceptance | index', function(hooks) {
     await waitUntil(() => find('.has-results'), { timeout });
     await click('.result');
     await percySnapshot('clicks result');
+    await waitFor('[data-test-recaptcha-rendered="yes"]');
 
     assert.equal(
       (currentURL().indexOf('/') > -1),
@@ -82,6 +84,7 @@ module('Acceptance | index', function(hooks) {
     await fillIn('[data-test-search="bbl"] .bbl-lookup--block-input', 1);
     await fillIn('[data-test-search="bbl"] .bbl-lookup--lot-input', 1);
     await click('[data-test-search="bbl"] .button.small.expanded.no-margin');
+    await waitFor('[data-test-recaptcha-rendered="yes"]');
 
     assert.ok(currentURL().includes('lot/1/47/7501'));
   });

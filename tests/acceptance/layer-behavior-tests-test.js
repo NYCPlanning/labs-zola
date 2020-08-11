@@ -5,6 +5,7 @@ import {
   find,
   click,
   fillIn,
+  waitFor,
 } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
@@ -77,6 +78,9 @@ const assertLayerGroupAdded = async function(testScope, assert, layerGroupId) {
 
 const assertClickRouteBehavior = async function(testScope, assert, options) {
   if (find('[data-test-button="close-route"]')) {
+    if (find('[data-test-recaptcha-rendered="no"]')) {
+      await waitFor('[data-test-recaptcha-rendered="yes"]');
+    }
     await click('[data-test-button="close-route"]');
   }
 
@@ -93,6 +97,10 @@ const assertClickRouteBehavior = async function(testScope, assert, options) {
   // when click the layer group
   await clickMap(testScope.map, clickObject);
 
+  if (find('[data-test-recaptcha-rendered="no"]')) {
+    await waitFor('[data-test-recaptcha-rendered="yes"]');
+  }
+
   // it routes
   assert.ok(currentURL().includes(expectedURL), 'it routes');
 
@@ -107,6 +115,9 @@ const assertClickRouteBehavior = async function(testScope, assert, options) {
 
 const assertCanBookmark = async function(testScope, assert, clickObject) {
   if (find('[data-test-button="close-route"]')) {
+    if (find('[data-test-recaptcha-rendered="no"]')) {
+      await waitFor('[data-test-recaptcha-rendered="yes"]');
+    }
     await click('[data-test-button="close-route"]');
   }
 
@@ -118,6 +129,9 @@ const assertCanBookmark = async function(testScope, assert, clickObject) {
 
 const assertFitBoundsOnClick = async function(testScope, assert, clickObject) {
   if (find('[data-test-button="close-route"]')) {
+    if (find('[data-test-recaptcha-rendered="no"]')) {
+      await waitFor('[data-test-recaptcha-rendered="yes"]');
+    }
     await click('[data-test-button="close-route"]');
   }
 
@@ -136,6 +150,9 @@ const assertTooltips = async function(testScope, assert, layerGroupId, assertion
 
 const assertSearchShouldFitBounds = async function(testScope, assert, routeIdentifierObject) { // eslint-disable-line
   if (find('[data-test-button="close-route"]')) {
+    if (find('[data-test-recaptcha-rendered="no"]')) {
+      await waitFor('[data-test-recaptcha-rendered="yes"]');
+    }
     await click('[data-test-button="close-route"]');
   }
 
@@ -145,6 +162,10 @@ const assertSearchShouldFitBounds = async function(testScope, assert, routeIdent
 
   await fillIn('.map-search-input', 'arbitrary test string');
   await click('.result');
+
+  if (find('[data-test-recaptcha-rendered="no"]')) {
+    await waitFor('[data-test-recaptcha-rendered="yes"]');
+  }
 
   // it fits bounds on click
   // the bounding box is assumes to be the computed bounding box of the dummy
@@ -221,7 +242,6 @@ module('Acceptance | layer behavior tests', function(hooks) {
 
     // it tooltips
     await assertTooltips(this, assert, 'tax-lots');
-
 
     // TODO: Make this assertion work.it searches
     await assertSearchShouldFitBounds(this, assert, {

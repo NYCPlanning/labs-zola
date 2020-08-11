@@ -29,4 +29,9 @@ export default class LayerRecordBase extends Component {
     this.set('reCaptchaWaiting', true);
     window.grecaptcha.execute();
   }
+
+  @action
+  onCaptchaRendered() {
+    this.set('reCaptchaRendered', true);
+  }
 }
