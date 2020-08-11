@@ -8,6 +8,10 @@ export default class LayerRecordBase extends Component {
 
   model = {};
 
+  reCaptchaResponse = null;
+
+  reCaptchaWaiting = false;
+
   @action
   async captureOutboundLink(label) {
     // GA
@@ -20,13 +24,13 @@ export default class LayerRecordBase extends Component {
 
   @action
   onCaptchaResolved(reCaptchaResponse) {
-    this.get('model').set('reCaptchaResponse', reCaptchaResponse);
-    this.get('model').set('reCaptchaWaiting', false);
+    this.set('reCaptchaResponse', reCaptchaResponse);
+    this.set('reCaptchaWaiting', false);
   }
 
   @action
   resolveCaptcha() {
-    this.get('model').set('reCaptchaWaiting', true);
+    this.set('reCaptchaWaiting', true);
     window.grecaptcha.execute();
   }
 }
