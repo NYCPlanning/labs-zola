@@ -323,6 +323,8 @@ module.exports = function(environment) {
     };
 
     ENV.host = '';
+
+    ENV.gReCaptcha.siteKey = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
   }
 
   return ENV;
