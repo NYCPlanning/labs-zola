@@ -238,10 +238,14 @@
         Owner
       </label>
       <span class="datum">
-        {{#if this.model.reCaptchaResponse}}
-          {{this.model.ownername}}
+        {{#if this.model.reCaptchaWaiting}}
+          {{fa-icon 'spinner' class='fa-spin'}}
         {{else}}
-          <button {{action "resolveCaptcha"}} class="a11y-orange">Show Owner</button>
+          {{#if this.model.reCaptchaResponse}}
+            {{this.model.ownername}}
+          {{else}}
+            <button {{action "resolveCaptcha"}} class="a11y-orange" type="submit">Show Owner</button>
+          {{/if}}
         {{/if}}
       </span>
     </div>

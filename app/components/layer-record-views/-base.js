@@ -21,10 +21,12 @@ export default class LayerRecordBase extends Component {
   @action
   onCaptchaResolved(reCaptchaResponse) {
     this.get('model').set('reCaptchaResponse', reCaptchaResponse);
+    this.get('model').set('reCaptchaWaiting', false);
   }
 
   @action
   resolveCaptcha() {
+    this.get('model').set('reCaptchaWaiting', true);
     window.grecaptcha.execute();
   }
 }
