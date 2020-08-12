@@ -13,7 +13,7 @@ module.exports = function(environment) {
 
     gReCaptcha: {
       jsUrl: 'https://www.google.com/recaptcha/api.js?render=explicit',
-      siteKey: '6LeOMr0ZAAAAAD2O8q7y7JjJKiN-zkBGZIIjp1mL'
+      siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
     },
 
     fastboot: {
@@ -287,6 +287,10 @@ module.exports = function(environment) {
     },
   };
 
+  if (environment === 'production') {
+    ENV.gReCaptcha.siteKey = '6LeOMr0ZAAAAAD2O8q7y7JjJKiN-zkBGZIIjp1mL';
+  }
+
   if (environment === 'development') {
     ENV['ember-cli-mirage'] = {
       enabled: false,
@@ -323,8 +327,6 @@ module.exports = function(environment) {
     };
 
     ENV.host = '';
-
-    ENV.gReCaptcha.siteKey = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
   }
 
   return ENV;
