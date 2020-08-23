@@ -11,6 +11,11 @@ module.exports = function(environment) {
     host: HOST,
     namespace: 'v1',
 
+    gReCaptcha: {
+      jsUrl: 'https://www.google.com/recaptcha/api.js?render=explicit',
+      siteKey: '6LeOMr0ZAAAAAD2O8q7y7JjJKiN-zkBGZIIjp1mL',
+    },
+
     fastboot: {
       hostWhitelist: ['https://planninglabs.carto.com/**', 'carto.com', 'planninglabs.carto.com', /^localhost:\d+$/, 'dry-thicket-91267.herokuapp.com'],
     },
@@ -296,6 +301,8 @@ module.exports = function(environment) {
   if (environment === 'test') {
     // Testem prefers this...
     ENV.locationType = 'none';
+
+    ENV.gReCaptcha.siteKey = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
