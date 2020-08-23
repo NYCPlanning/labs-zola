@@ -14,9 +14,8 @@ export default class RecaptchaBlock extends Component {
   @action
   resolveCaptcha() {
     this.set('reCaptchaWaiting', true);
-    if (!this.isTestEnvironment) {
-      window.grecaptcha.execute();
-    }
+    const executeRecaptcha = this.isTestEnvironment ? () => {} : window.grecaptcha.execute();
+    executeRecaptcha();
   }
 
   @action
