@@ -302,7 +302,7 @@ module.exports = function(environment) {
     // Testem prefers this...
     ENV.locationType = 'none';
 
-    ENV.gReCaptcha.siteKey = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
+    // ENV.gReCaptcha.siteKey = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
