@@ -1,13 +1,3 @@
-{{#unless isTestEnvironment}}
-  {{g-recaptcha
-    onSuccess=(action "onCaptchaResolved")
-    onRender=(action "onCaptchaRendered")
-    size="invisible"
-    tabIndex="-1"
-    data-test-recaptcha-rendered=(if this.reCaptchaRendered 'yes' 'no')
-  }}
-{{/unless}}
-
 <label class="header-label clearfix">
   TAX LOT
   <span class="medium-gray">
@@ -243,19 +233,9 @@
         Owner
       </label>
       <span class="datum">
-        {{#if isTestEnvironment}}
+        <RecaptchaBlock @buttonText="Show Owner">
           {{this.model.ownername}}
-        {{else}}
-          {{#if this.reCaptchaWaiting}}
-            {{fa-icon 'spinner' class='fa-spin'}}
-          {{else}}
-            {{#if this.reCaptchaResponse}}
-              {{this.model.ownername}}
-            {{else}}
-              <button {{action "resolveCaptcha"}} class="a11y-orange" type="submit">Show Owner</button>
-            {{/if}}
-          {{/if}}
-        {{/if}}
+        </RecaptchaBlock>
       </span>
     </div>
   {{/if}}
