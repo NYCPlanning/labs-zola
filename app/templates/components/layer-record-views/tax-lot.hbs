@@ -233,7 +233,9 @@
         Owner
       </label>
       <span class="datum">
-        {{this.model.ownername}}
+        <RecaptchaBlock @buttonText="Show Owner">
+          {{this.model.ownername}}
+        </RecaptchaBlock>
       </span>
     </div>
   {{/if}}
