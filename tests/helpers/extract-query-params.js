@@ -8,7 +8,7 @@ export default function(URLStringFromCurrentURL) {
     try {
       queryParams[key] = JSON.parse(value);
     } catch (e) {
-      console.warn(`${key} did not parse for test - skipping.`);
+      console.warn(`${key} did not parse for test - skipping.`); // eslint-disable-line
       queryParams[key] = value;
     }
   });
