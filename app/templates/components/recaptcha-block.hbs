@@ -1,0 +1,23 @@
+{{#unless isTestEnvironment}}
+  {{g-recaptcha
+    onSuccess=(action "onCaptchaResolved")
+    size="invisible"
+  }}
+{{/unless}}
+
+{{#if this.reCaptchaWaiting}}
+  {{fa-icon 'spinner' class='fa-spin'}}
+{{else}}
+  {{#if this.reCaptchaResponse}}
+    {{yield}}
+  {{else}}
+    <button
+      {{action "resolveCaptcha"}}
+      class="a11y-orange"
+      type="submit"
+      data-test-recaptcha="button"
+    >
+      {{@buttonText}}
+    </button>
+  {{/if}}
+{{/if}}
