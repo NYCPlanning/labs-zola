@@ -8,9 +8,9 @@ on:
   pull_request:
 
 jobs:
-  production-test:
-    name: Production (All Tests + Canary Features)
-    runs-on: 	macos-latest
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
