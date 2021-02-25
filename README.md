@@ -42,6 +42,12 @@ In the spirit of free software, everyone is encouraged to help improve this proj
 - Install dependencies: `yarn`
 - Run the development server: `ember serve`
 
+##. Specify a local or remote layers api:
+```
+API_HOST=http://localhost:3000 ember serve
+```
+Note that you must provide `http://` to prevent cross-origin restrictions.
+
 ## Architecture
 
 ZoLa is an [Ember.js](https://www.emberjs.com/) single page application (SPA).  The frontend handles routing, web mapping, layout, and user interactions, and communicates with various APIs for content and data.
