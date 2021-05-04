@@ -8,7 +8,9 @@ ZoLa provides a simple way to research zoning regulations and other information 
 
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/) (with NPM)
+  - This installation was tested using Node v14.15.0
 - [Ember CLI](https://ember-cli.com/)
+- [Yarn](https://yarnpkg.com/)
 
 ## Local development
 
