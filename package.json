@@ -20,6 +20,8 @@
   "devDependencies": {
     "@ember/optional-features": "^0.7.0",
     "@fortawesome/ember-fontawesome": "0.1.13",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@turf/area": "^6.0.1",
     "@turf/line-distance": "^4.7.3",
     "babel-eslint": "^8.0.0",
