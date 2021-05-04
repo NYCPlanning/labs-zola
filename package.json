@@ -15,7 +15,8 @@
     "lint": "./node_modules/.bin/eslint ./*.js app config lib server tests",
     "lint:hbs": "ember-template-lint .",
     "start": "ember serve",
-    "test": "ember test"
+    "test": "ember test",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@ember/optional-features": "^0.7.0",
@@ -106,8 +107,10 @@
     "eslint-plugin-node": "^9.0.1",
     "fastboot": "2.0.1",
     "foundation-sites": "6.5.0-rc.4",
+    "husky": "^6.0.0",
     "labs-ember-search": "^3.1.3",
     "labs-ui": "^0.0.24",
+    "lint-staged": ">=10",
     "loader.js": "^4.7.0",
     "mapbox-gl": "1.0.0",
     "mapbox-gl-draw": "0.16.0",
@@ -140,5 +143,8 @@
   },
   "fastbootWhitelist": [
     "abortcontroller-polyfill"
-  ]
+  ],
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  }
 }
