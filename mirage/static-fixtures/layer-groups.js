@@ -263,7 +263,8 @@ export default {
         visible: false,
         legend: {
           label: 'Special Purpose Subdistricts',
-          tooltip: 'Areas within Special Purpose Districts where unique rules apply',
+          tooltip: 'Areas within Special Purpose Districts where unique rules apply. Special Purpose Subdistrict data is currently incomplete. See the Zoning Resolution for a complete description of the special purpose district.',
+          infolink: 'https://zr.planning.nyc.gov',
           icon: {
             type: 'fa-icon',
             layers: [
