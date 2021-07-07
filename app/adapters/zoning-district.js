@@ -7,7 +7,7 @@ const SQL = function(id) {
       SELECT ST_CollectionExtract(ST_Collect(the_geom),3) as the_geom,
         zonedist,
         zonedist as id 
-      FROM zoning_districts
+      FROM dcp_zoning_districts
       GROUP BY zonedist
     ) a 
     WHERE id = '${id}'`;

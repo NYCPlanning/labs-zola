@@ -6,7 +6,7 @@ const SQL = function(id) {
     SELECT ST_CollectionExtract(ST_Collect(the_geom),3) as the_geom,
       overlay as id,
       overlay
-    FROM commercial_overlays
+    FROM dcp_commercial_overlays
     GROUP BY overlay
   ) a WHERE id='${id}'`;
 };

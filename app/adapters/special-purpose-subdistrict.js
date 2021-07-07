@@ -10,7 +10,7 @@ const SQL = function(id) {
       splbl,
       subdist,
       subsub
-    FROM special_purpose_subdistricts
+    FROM dcp_special_purpose_subdistricts
     WHERE cartodb_id='${id}'`;
 };
 
