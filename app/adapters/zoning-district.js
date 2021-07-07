@@ -2,7 +2,7 @@ import { buildSqlUrl } from '../utils/carto';
 import CartoGeojsonFeatureAdapter from './carto-geojson-feature';
 
 const SQL = function(id) {
-  return `SELECT *
+    return `SELECT *
     FROM (
       SELECT ST_CollectionExtract(ST_Collect(the_geom),3) as the_geom,
         zonedist,
@@ -14,10 +14,10 @@ const SQL = function(id) {
 };
 
 export default CartoGeojsonFeatureAdapter.extend({
-  urlForFindRecord(id) {
-    return buildSqlUrl(
-      SQL(id),
-      'geojson',
-    );
-  },
+    urlForFindRecord(id) {
+        return buildSqlUrl(
+            SQL(id),
+            'geojson',
+        );
+    },
 });
