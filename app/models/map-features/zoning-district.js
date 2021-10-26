@@ -83,6 +83,20 @@ const zoningAbbr = {
   BPC: 'bpc',
 };
 
+export const handleCommercialZoningExceptions = (primaryzone) => {
+  let url = '';
+
+  if ((primaryzone === 'c1') || (primaryzone === 'c2')) {
+    url = 'c1-c2';
+  } else if (primaryzone === 'c3') {
+    url = 'c3-c3a';
+  } else {
+    url = primaryzone;
+  }
+
+  return url;
+};
+
 const { attr } = DS;
 
 // this model fragment structures the "properties"
@@ -94,8 +108,10 @@ export default class ZoningDistrictFragment extends MF.Fragment {
   @computed('zonedist')
   get primaryzone() {
     const zonedist = this.get('zonedist');
+
     // convert R6A to r6
-    const primary = zonedist.match(/\w\d*/)[0].toLowerCase();
+    const primary = handleCommercialZoningExceptions(zonedist.match(/\w\d*/)[0].toLowerCase());
+
     return primary;
   }
 
@@ -116,21 +132,5 @@ export default class ZoningDistrictFragment extends MF.Fragment {
     const zoneabbr = this.get('zoneabbr');
 
     return zoningDescriptions[zoneabbr];
-  }
-
-  @computed('primaryzone')
-  get primaryzoneURL() {
-    const primaryzone = this.get('primaryzone');
-    let url = '';
-
-    if ((primaryzone === 'c1') || (primaryzone === 'c2')) {
-      url = 'c1-c2';
-    } else if (primaryzone === 'c3') {
-      url = 'c3-c3a';
-    } else {
-      url = primaryzone;
-    }
-
-    return url;
   }
 }
