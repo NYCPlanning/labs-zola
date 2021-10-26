@@ -34,24 +34,24 @@ const bldgclassLookup = {
   A7: 'One Family Dwellings - Mansion Type or Town House',
   A8: 'One Family Dwellings - Bungalow Colony/Land Coop Owned',
   A9: 'One Family Dwellings - Miscellaneous',
-  
+
   B1: 'Two Family Dwellings - Brick',
   B2: 'Two Family Dwellings - Frame',
   B3: 'Two Family Dwellings - Converted From One Family',
   B9: 'Two Family Dwellings - Miscellaneous',
-  
+
   C0: 'Walk Up Apartments - Three Families',
   C1: 'Walk Up Apartments - Over Six Families Without Stores',
   C2: 'Walk Up Apartments - Five to Six Families',
   C3: 'Walk Up Apartments - Four Families',
   C4: 'Walk Up Apartments - Old Law Tenements',
-  C5: 'Walk Up Apartments - Converted Dwelling or ROoming House',
+  C5: 'Walk Up Apartments - Converted Dwelling or Rooming House',
   C6: 'Walk Up Apartments - Cooperative',
   C7: 'Walk Up Apartments - Over Six Families With Stores',
   C8: 'Walk Up Apartments - Co-Op Conversion From Loft/Warehouse',
   C9: 'Walk Up Apartments - Garden Apartments',
   CM: 'Walk Up Apartments - Mobile Homes/Trailer Parks',
-  
+
   D0: 'Elevator Apartments - Co-Op Conversion from Loft/Warehouse',
   D1: 'Elevator Apartments - Semi-fireproof (Without Stores)',
   D2: 'Elevator Apartments - Artists in Residence',
@@ -62,21 +62,21 @@ const bldgclassLookup = {
   D7: 'Elevator Apartments - Semi-fireproof (With Stores)',
   D8: 'Elevator Apartments - Luxury Type',
   D9: 'Elevator Apartments - Miscellaneous',
-  
+
   E1: 'Warehouses - Fireproof',
   E2: 'Warehouses - Contractors Warehouse',
   E3: 'Warehouses - Semi-fireproof',
   E4: 'Warehouses - Frame, Metal',
   E7: 'Warehouses - Warehouse, Self Storage',
   E9: 'Warehouses - Miscellaneous',
-  
+
   F1: 'Factory and Industrial Buildings - Heavy Manufacturing (Fireproof)',
   F2: 'Factory and Industrial Buildings - Special Construction (Fireproof)',
   F4: 'Factory and Industrial Buildings - Semi-fireproof',
   F5: 'Factory and Industrial Buildings - Light Manufacturing',
   F8: 'Factory and Industrial Buildings - Tank Farms',
   F9: 'Factory and Industrial Buildings - Miscellaneous',
-  
+
   G0: 'Garages and Gasoline Stations - Residential Tax Class 1 Garage',
   G1: 'Garages and Gasoline Stations - All Parking Garages',
   G2: 'Garages and Gasoline Stations - Auto Body/Collision or Auto Repair',
@@ -89,7 +89,7 @@ const bldgclassLookup = {
   G9: 'Garages and Gasoline Stations - Miscellaneous Garage or Gas Station',
   GU: 'Garages and Gasoline Stations - Car Sales/Rental without Showroom',
   GW: 'Garages and Gasoline Stations - Car Wash or Lubritorium Facility',
-  
+
   H1: 'Hotels - Luxury Type',
   H2: 'Hotels - Full Service Hotel',
   H3: 'Hotels - Limited Service',
@@ -103,16 +103,16 @@ const bldgclassLookup = {
   HH: 'Hotels - Hostel/Bed Rental in Dorm Like Setting',
   HR: 'Hotels - SRO',
   HS: 'Hotels - Extended Stay/Suite Amenities Similar to Apt.',
-  
+
   I1: 'Hospitals and Health - Hospitals, Sanitariums, Mental Institutions',
   I2: 'Hospitals and Health - Infirmary',
   I3: 'Hospitals and Health - Dispensary',
   I4: 'Hospitals and Health - Staff Facilities',
   I5: 'Hospitals and Health - Health Center/Child Center/Clinic',
   I6: 'Hospitals and Health - Nursing Home',
-  I7: 'Hospitals and Health - Adut Care Facility',
-  I9: 'Hospitals and Health - Miscellaenous',
-  
+  I7: 'Hospitals and Health - Adult Care Facility',
+  I9: 'Hospitals and Health - Miscellaneous',
+
   J1: 'Theatres - Art Type (under 400 capacity',
   J2: 'Theatres - Art Type (over 400 capacity',
   J3: 'Theatres - Motion Picture Theatre With Balcony',
@@ -122,7 +122,7 @@ const bldgclassLookup = {
   J7: 'Theatres - Off-Broadway Theatre',
   J8: 'Theatres - Multiplex Picture Theatre',
   J9: 'Theatres - Miscellaneous',
-  
+
   K1: 'Store Buildings - One Story Retail',
   K2: 'Store Buildings - Multi-Story Retail',
   K3: 'Store Buildings - Multi-Story Department Store',
@@ -132,25 +132,25 @@ const bldgclassLookup = {
   K7: 'Store Buildings - Banking Facilities With or Without Parking',
   K8: 'Store Buildings - Big Box Retail Not Affixed & Standing on own Lot with Parking',
   K9: 'Store Buildings - Miscellaneous',
-  
+
   L1: 'Loft Buildings - Over Eight Stories (Mid-Manhattan Type',
   L2: 'Loft Buildings - Fireproof and Storage Type (Without Stores)',
   L3: 'Loft Buildings - Semi-fireproof',
   L8: 'Loft Buildings - With Retail Stores Other Than Type 1',
   L9: 'Loft Buildings - Miscellaneous',
-  
-  M1: 'Churches, Synagogues, Etc - Churhc, Synagogue, Chapel',
+
+  M1: 'Churches, Synagogues, Etc - Church, Synagogue, Chapel',
   M2: 'Churches, Synagogues, Etc - Mission Houses (Non-Residential)',
   M3: 'Churches, Synagogues, Etc - Parsonage, Rectory',
   M4: 'Churches, Synagogues, Etc - Convents',
   M9: 'Churches, Synagogues, Etc - Miscellaneous',
-  
+
   N1: 'Asylums and Homes - Asylums',
   N2: 'Asylums and Homes - Homes for Indigent Children, Aged, and Homeless',
   N3: 'Asylums and Homes - Orphanages',
   N4: 'Asylums and Homes - Detention House for Wayward Girls',
   N9: 'Asylums and Homes - Miscellaneous',
-  
+
   O1: 'Office Buildings - Office Only - 1 Story',
   O2: 'Office Buildings - Office Only - 2 to 6 Stories',
   O3: 'Office Buildings - Office Only - 7 to 19 Stories',
@@ -160,7 +160,7 @@ const bldgclassLookup = {
   O7: 'Office Buildings - Professional Buildings/Stand Alone Funeral Homes',
   O8: 'Office Buildings - Office with Apartments Only (No Comm)',
   O9: 'Miscellaneous and Oly Style Bank Bldgs',
-  
+
   P1: 'Places of Public Assembly (Indoor) and Cultural - Concert Halls',
   P2: 'Places of Public Assembly (Indoor) and Cultural - Lodge Rooms',
   P3: 'Places of Public Assembly (Indoor) and Cultural - YWCA, YMCA, YWHA, YMHA, PAL',
@@ -169,8 +169,8 @@ const bldgclassLookup = {
   P6: 'Places of Public Assembly (Indoor) and Cultural - Amusement Place, Bathhouse, Boat House',
   P7: 'Places of Public Assembly (Indoor) and Cultural - Museum',
   P8: 'Places of Public Assembly (Indoor) and Cultural - Library',
-  P9: 'Places of Public Assembly (Indoor) and Cultural - Miscellaenous',
-  
+  P9: 'Places of Public Assembly (Indoor) and Cultural - Miscellaneous',
+
   Q0: 'Outdoor Recreation Facilities - Open Space',
   Q1: 'Outdoor Recreation Facilities - Parks/Recreation Facilities',
   Q2: 'Outdoor Recreation Facilities - Playground',
@@ -181,13 +181,13 @@ const bldgclassLookup = {
   Q7: 'Outdoor Recreation Facilities - Tennis Court',
   Q8: 'Outdoor Recreation Facilities - Marina, Yacht Club',
   Q9: 'Outdoor Recreation Facilities - Miscellaneous',
-  
+
   R0: 'Condominiums - Condo Billing Lot',
   R1: 'Condominiums - Residential Unit in 2 to 10 Unit Building',
   R2: 'Condominiums - Residential Unit in Walk-Up Building',
   R3: 'Condominiums - Residential Unit in 1 to 3 Story Building',
   R4: 'Condominiums - Residential Unit in Elevator Buidling',
-  R5: 'Condominiums - Miscellaenous Commercial',
+  R5: 'Condominiums - Miscellaneous Commercial',
   R6: 'Condominiums - Residential Unit of 1 to 3 Unit Building-Orig Class 1',
   R7: 'Condominiums - Commercial Unit of 1 to 3 Unit Building-Orig Class 1',
   R8: 'Condominiums - Commercial Unit of 2 to 10 Unit Building',
@@ -208,7 +208,7 @@ const bldgclassLookup = {
   RW: 'Condominiums - Warehouse/Factory/Industrial',
   RX: 'Condominiums - Mixed Residential, Commercial & Industrial',
   RZ: 'Condominiums - Mixed Residential & Warehouse',
-  
+
   S0: 'Residence - Multiple Use - Primarily One Family with Two Stores or Offices',
   S1: 'Residence - Multiple Use - Primarily One Family with One Store or Office',
   S2: 'Residence - Multiple Use - Primarily Two Family with One Store or Office',
@@ -216,11 +216,11 @@ const bldgclassLookup = {
   S4: 'Residence - Multiple Use - Primarily Four Family with One Store or Office',
   S5: 'Residence - Multiple Use - Primarily Five to Six Family with One Store or Office',
   S9: 'Residence - Multiple Use - Single or Multiple Dwelling with Stores or Offices',
-  
+
   T1: 'Transportation Facilities - Airport, Air Field, Terminal',
   T2: 'Transportation Facilities - Pier, Dock, Bulkhead',
   T9: 'Miscellaneous',
-  
+
   U0: 'Utility Bureau Properties - Utility Company Land and Building',
   U1: 'Utility Bureau Properties - Bridge, Tunnel, Highway',
   U2: 'Utility Bureau Properties - Gas or Electric Utility',
@@ -231,7 +231,7 @@ const bldgclassLookup = {
   U7: 'Utility Bureau Properties - Transportation - Public Ownership',
   U8: 'Utility Bureau Properties - Revocable Consent',
   U9: 'Utility Bureau Properties - Miscellaneous',
-  
+
   V0: 'Vacant Land - Zoned Residential; Not Manhattan',
   V1: 'Vacant Land - Zoned Commercial or Manhattan Residential',
   V2: 'Vacant Land - Zoned Commercial Adjacent to Class 1 Dwelling; Not Manhattan',
@@ -242,7 +242,7 @@ const bldgclassLookup = {
   V7: 'Vacant Land - Port Authority of NY and NJ',
   V8: 'Vacant Land - New York State & U.S. Government',
   V9: 'Vacant Land - Miscellaneous',
-  
+
   W1: 'Educational Structures - Public Elementary, Junior or Senior High',
   W2: 'Educational Structures - Parochial School, Yeshiva',
   W3: 'Educational Structures - School or Academy',
@@ -252,7 +252,7 @@ const bldgclassLookup = {
   W7: 'Educational Structures - Theological Seminary',
   W8: 'Educational Structures - Other Private School',
   W9: 'Educational Structures - Miscellaneous',
-  
+
   Y1: 'Selected Government Installations - Fire Department',
   Y2: 'Selected Government Installations - Police Department',
   Y3: 'Selected Government Installations - Prison, Jail, House of Detention',
@@ -262,7 +262,7 @@ const bldgclassLookup = {
   Y7: 'Selected Government Installations - Department of Ports and Terminals',
   Y8: 'Selected Government Installations - Department of Public Works',
   Y9: 'Selected Government Installations - Department of Environmental Protection',
-  
+
   Z0: 'Miscellaneous - Tennis Court, Pool, Shed, etc.',
   Z1: 'Miscellaneous - Court House',
   Z2: 'Miscellaneous - Public Parking Area',
