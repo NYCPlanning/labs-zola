@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import carto from 'labs-zola/utils/carto';
 import config from 'labs-zola/config/environment';
+import { handleCommercialZoningExceptions as getPrimaryZone } from 'labs-zola/models/map-features/zoning-district';
 
 const { specialDistrictCrosswalk } = config;
 
@@ -12,14 +13,6 @@ const { attr } = DS;
 const specialPurposeDistrictsSQL = function(table, spdist1, spdist2, spdist3) {
   return `SELECT DISTINCT sdname, sdlbl FROM ${table}
           WHERE sdlbl IN ('${spdist1}', '${spdist2}', '${spdist3}')`;
-};
-
-const getPrimaryZone = (zonedist = '') => {
-  if (!zonedist) return '';
-  let primary = zonedist.match(/\w\d*/)[0].toLowerCase();
-  // special handling for c1 and c2
-  if ((primary === 'c1') || (primary === 'c2')) primary = 'c1-c2';
-  return primary;
 };
 
 const bldgclassLookup = {

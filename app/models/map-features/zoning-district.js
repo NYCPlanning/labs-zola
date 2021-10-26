@@ -83,18 +83,30 @@ const zoningAbbr = {
   BPC: 'bpc',
 };
 
-export const handleCommercialZoningExceptions = (primaryzone) => {
-  let url = '';
+// Performs case insensitive string equality check.
+// Uses "accent" level sensitivity:
+// "accent": Only strings that differ in base letters or accents and other diacritic marks compare as unequal.
+// Examples: a ≠ b, a ≠ á, a = A.
+// See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare#parameters.
+const isSimilar = (string1, string2) => string1.localeCompare(string2, undefined, { sensitivity: 'accent' }) === 0;
 
-  if ((primaryzone === 'c1') || (primaryzone === 'c2')) {
-    url = 'c1-c2';
-  } else if (primaryzone === 'c3') {
-    url = 'c3-c3a';
-  } else {
-    url = primaryzone;
+// This is purely intended to conform to DCP website's zoning district URL scheme.
+// Originally added to make it possible to link out to DCP website:
+// https://github.com/NYCPlanning/labs-zola/commit/889cd2ddaf8b17f37a977fb5f84409e3c5535695
+export const handleCommercialZoningExceptions = (primaryzone) => {
+  if (!primaryzone) return '';
+
+  let code = primaryzone.match(/\w\d*/)[0].toLowerCase();
+
+  // Check case insensitive similarity because zoning codes are represented either
+  // capitalized or otherwise
+  if (isSimilar(primaryzone, 'c1') || isSimilar(primaryzone, 'c2')) {
+    code = 'c1-c2';
+  } else if (isSimilar(primaryzone, 'c3')) {
+    code = 'c3-c3a';
   }
 
-  return url;
+  return code;
 };
 
 const { attr } = DS;
@@ -105,14 +117,12 @@ export default class ZoningDistrictFragment extends MF.Fragment {
   @attr('string')
   zonedist;
 
+  // Used to clean up the 'zonedist' field to build a URL to the DCP website
   @computed('zonedist')
-  get primaryzone() {
+  get dcpWebsiteFileName() {
     const zonedist = this.get('zonedist');
 
-    // convert R6A to r6
-    const primary = handleCommercialZoningExceptions(zonedist.match(/\w\d*/)[0].toLowerCase());
-
-    return primary;
+    return handleCommercialZoningExceptions(zonedist);
   }
 
   @computed('zonedist')
