@@ -38,12 +38,18 @@
         </a>
       {{/if}}
       {{#if tooltip}}
-        {{labs-ui/icon-tooltip
-          tip=tooltip
+        {{#labs-ui/icon-tooltip
           icon=tooltipIcon
           side='left'
           fixedWidth=true
         }}
+          {{tooltip}}
+
+          {{#if sourceMetadata.description}}
+            <br/><br/>
+            <small>Source: {{sourceMetadata.description}} ({{sourceMetadata.updated_at}})</small>
+          {{/if}}
+        {{/labs-ui/icon-tooltip}}
       {{/if}}
     </div>
   </div>

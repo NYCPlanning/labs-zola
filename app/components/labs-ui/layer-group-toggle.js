@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { action } from '@ember/object';
+import { action, computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
 import layout from '../../templates/components/labs-ui/layer-group-toggle';
@@ -56,6 +56,13 @@ export default class LayerGroupToggle extends Component {
 
   @alias('layerGroup.visible')
   active = true;
+
+  @computed
+  get sourceMetadata() {
+    const meta = this.get('layerGroup.sources.firstObject.meta') || {};
+
+    return meta;
+  }
 
   // additional options
   infoLinkIcon = 'external-link-alt';
