@@ -337,7 +337,13 @@ export default class LotFragment extends MF.Fragment {
 
   @attr('string') council;
 
+  @attr('string') edesignum;
+
   @attr('string') firecomp;
+
+  @attr('string') firm07_fla;
+
+  @attr('string') pfirm15_fl;
 
   @attr('string') histdist;
 

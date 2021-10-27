@@ -13,6 +13,48 @@
   </li>
 {{/if}}
 
+{{#if this.model.firm07_fla}}
+  <li>
+    <a
+      target="_blank"
+      href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page"
+    >
+      {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+      Flood Zone
+    </a>
+    <small class="dark-gray">
+      Effective Flood Insurance Rate Maps 2007
+    </small>
+  </li>
+{{/if}}
+
+{{#if this.model.pfirm15_fl}}
+  <li>
+    <a
+      target="_blank"
+      href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page"
+    >
+      {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+      Flood Zone
+    </a>
+    <small class="dark-gray">
+      Preliminary Flood Insurance Rate Maps 2015
+    </small>
+  </li>
+{{/if}}
+
+{{#if this.model.edesignum}}
+  <li>
+    <a
+      target="_blank"
+      href="http://www.nyc.gov/html/oer/html/e-designation/e-designation.shtml"
+    >
+      {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+      Environmental Designation
+    </a>
+  </li>
+{{/if}}
+
 <IntersectingLayers
   @tables={{this.tables}}
   @bbl={{this.model.bbl}} as |layers numberIntersecting|
@@ -94,34 +136,6 @@
       </a>
     </li>
   {{/if}}
-  {{#if layers.floodplain_firm2007}}
-    <li>
-      <a
-        target="_blank"
-        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page"
-      >
-        {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-        Flood Zone
-      </a>
-      <small class="dark-gray">
-        Effective Flood Insurance Rate Maps 2007
-      </small>
-    </li>
-  {{/if}}
-  {{#if layers.floodplain_pfirm2015}}
-    <li>
-      <a
-        target="_blank"
-        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page"
-      >
-        {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-        Flood Zone
-      </a>
-      <small class="dark-gray">
-        Preliminary Flood Insurance Rate Maps 2015
-      </small>
-    </li>
-  {{/if}}
   {{#if layers.mandatory_inclusionary_housing}}
     <li>
       <a
@@ -130,17 +144,6 @@
       >
         {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
         Mandatory Inclusionary Housing Area
-      </a>
-    </li>
-  {{/if}}
-  {{#if layers.e_designations}}
-    <li>
-      <a
-        target="_blank"
-        href="http://www.nyc.gov/html/oer/html/e-designation/e-designation.shtml"
-      >
-        {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
-        Environmental Designation
       </a>
     </li>
   {{/if}}
@@ -155,7 +158,7 @@
       </a>
     </li>
   {{/if}}
-  {{#unless (or numberIntersecting this.model.histdist)}}
+  {{#unless (or numberIntersecting this.model.histdist this.model.firm07_fla this.model.pfirm15_fl this.model.edesignum)}}
     None found
   {{/unless}}
 </IntersectingLayers>
