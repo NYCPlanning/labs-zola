@@ -7,33 +7,6 @@ import config from 'labs-zola/config/environment';
 
 const { zoningDistrictOptionSets, commercialOverlaysOptionSets } = config;
 
-const firmOverlaysOptionSets = [
-  {
-    name: 'V',
-    checked: true,
-    codes: ['V'],
-    style: {
-      color: '#0084a8',
-    },
-  },
-  {
-    name: 'A',
-    checked: true,
-    codes: ['A'],
-    style: {
-      color: '#00a9e6',
-    },
-  },
-  {
-    name: 'Shaded X',
-    checked: true,
-    codes: ['Shaded X'],
-    style: {
-      color: '#00ffc3',
-    },
-  },
-];
-
 @classNames('layer-palette')
 export default class LayerPaletteComponent extends Component {
   @service
@@ -62,10 +35,59 @@ export default class LayerPaletteComponent extends Component {
 
   commercialOverlaysOptionSets = commercialOverlaysOptionSets;
 
+  firmOverlaysOptionSets = [
+    {
+      name: 'V',
+      checked: true,
+      codes: ['V'],
+      style: {
+        color: '#0084a8',
+      },
+    },
+    {
+      name: 'A',
+      checked: true,
+      codes: ['A'],
+      style: {
+        color: '#00a9e6',
+      },
+    },
+    {
+      name: 'Shaded X',
+      checked: true,
+      codes: ['Shaded X'],
+      style: {
+        color: '#00ffc3',
+      },
+    },
+  ];
 
-  firmOverlaysOptionSets = firmOverlaysOptionSets
-
-  pfirmOverlaysOptionSets = firmOverlaysOptionSets;
+  pfirmOverlaysOptionSets = [
+    {
+      name: 'V',
+      checked: true,
+      codes: ['p_V'],
+      style: {
+        color: '#0084a8',
+      },
+    },
+    {
+      name: 'A',
+      checked: true,
+      codes: ['p_A'],
+      style: {
+        color: '#00a9e6',
+      },
+    },
+    {
+      name: 'Shaded X',
+      checked: true,
+      codes: ['p_Shaded X'],
+      style: {
+        color: '#00ffc3',
+      },
+    },
+  ];
 
   layerGroups;
 
