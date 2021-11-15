@@ -35,6 +35,60 @@ export default class LayerPaletteComponent extends Component {
 
   commercialOverlaysOptionSets = commercialOverlaysOptionSets;
 
+  firmOverlaysOptionSets = [
+    {
+      name: 'V',
+      checked: true,
+      codes: ['V'],
+      style: {
+        color: '#0084a8',
+      },
+    },
+    {
+      name: 'A',
+      checked: true,
+      codes: ['A'],
+      style: {
+        color: '#00a9e6',
+      },
+    },
+    {
+      name: 'Shaded X',
+      checked: true,
+      codes: ['Shaded X'],
+      style: {
+        color: '#00ffc3',
+      },
+    },
+  ];
+
+  pfirmOverlaysOptionSets = [
+    {
+      name: 'V',
+      checked: true,
+      codes: ['p_V'],
+      style: {
+        color: '#0084a8',
+      },
+    },
+    {
+      name: 'A',
+      checked: true,
+      codes: ['p_A'],
+      style: {
+        color: '#00a9e6',
+      },
+    },
+    {
+      name: 'Shaded X',
+      checked: true,
+      codes: ['p_Shaded X'],
+      style: {
+        color: '#00ffc3',
+      },
+    },
+  ];
+
   layerGroups;
 
   closed = true;
@@ -45,7 +99,6 @@ export default class LayerPaletteComponent extends Component {
 
   handleLayerGroupChange = () => {};
 
-  // where should these go?
   @action
   setFilterForZoning() {
     const expression = [
@@ -62,7 +115,6 @@ export default class LayerPaletteComponent extends Component {
     }
   }
 
-  // where should these go?
   @action
   setFilterForOverlays() {
     const expression = [
@@ -76,6 +128,8 @@ export default class LayerPaletteComponent extends Component {
       next(() => {
         this.layerGroups['commercial-overlays'].setFilterForLayer('co', expression);
         this.layerGroups['commercial-overlays'].setFilterForLayer('co_labels', expression);
+        this.layerGroups['floodplain-efirm2007'].setFilterForLayer('effective-flood-insurance-rate-2007', expression);
+        this.layerGroups['floodplain-pfirm2015'].setFilterForLayer('preliminary-flood-insurance-rate', expression);
       });
     }
   }

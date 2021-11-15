@@ -192,18 +192,34 @@
       @layerGroup={{this.layerGroups.floodplain-efirm2007}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.floodplain-efirm2007 this.zoomWarningLabel this.mainMap.zoom}}
     >
-      <LabsUi::LegendItems
-        @items={{this.layerGroups.floodplain-efirm2007.legend.items}}
-      />
+      <ul class="layer-menu-item--group-checkboxes">
+        {{#each this.firmOverlaysOptionSets as |optionSet|}}
+          <li>
+            <GroupedCheckboxes
+              @group={{optionSet}}
+              @selected={{this.selectedOverlays}}
+              @selectionChanged={{action this.setFilterForOverlays}}
+            />
+          </li>
+        {{/each}}
+      </ul>
     </container.layer-group-toggle>
     <container.layer-group-toggle
       data-test-toggle-floodplain-pfirm2015
       @layerGroup={{this.layerGroups.floodplain-pfirm2015}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.floodplain-pfirm2015 this.zoomWarningLabel this.mainMap.zoom}}
     >
-      <LabsUi::LegendItems
-        @items={{this.layerGroups.floodplain-pfirm2015.legend.items}}
-      />
+      <ul class="layer-menu-item--group-checkboxes">
+        {{#each this.pfirmOverlaysOptionSets as |optionSet|}}
+          <li>
+            <GroupedCheckboxes
+              @group={{optionSet}}
+              @selected={{this.selectedOverlays}}
+              @selectionChanged={{action this.setFilterForOverlays}}
+            />
+          </li>
+        {{/each}}
+      </ul>
     </container.layer-group-toggle>
     <container.layer-group-toggle
       data-test-toggle-e-designations
