@@ -79,14 +79,6 @@ https://zola.planning.nyc.gov/bbox/-73.9978/40.5705/-73.9804/40.5785
   - Load `http://localhost:7357/` to view the test UI
   - Before creating a Pull Request, make sure your branch is updated with the latest `develop` and passes all tests
 
-## Deployment
-
-The App is deployed to our VPS using dokku, you need only do a `git push` of the master branch to the `dokku` remote.
-
-- To create a new remote named `dokku`: `git remote add dokku dokku@{domain}:zola`
-- To Deploy: `git push dokku master`
-- To deploy a branch other than master, alias it to master: `git push dokku {branchname}:master`
-
 ## Contact us
 
 You can find us on Twitter at [@nycplanninglabs](https://twitter.com/nycplanninglabs), or comment on issues and we'll follow up as soon as we can. If you'd like to send an email, use [labs_dl@planning.nyc.gov](mailto:labs_dl@planning.nyc.gov)
