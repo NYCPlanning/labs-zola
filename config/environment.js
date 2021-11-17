@@ -199,7 +199,7 @@ module.exports = function(environment) {
 
     floodplainEfirm2007OptionSets: [
       {
-        name: 'V',
+        name: 'V (1% floodplain)',
         checked: true,
         codes: ['V'],
         style: {
@@ -208,7 +208,7 @@ module.exports = function(environment) {
         tooltip: "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are subject to high velocity wave action (a breaking wave 3 feet high or larger).",
       },
       {
-        name: 'A',
+        name: 'A (1% floodplain)',
         checked: true,
         codes: ['A'],
         style: {
@@ -217,7 +217,7 @@ module.exports = function(environment) {
         tooltip: "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are not subject to high velocity wave action but are still considered high risk flooding areas.",
       },
       {
-        name: 'Shaded X',
+        name: 'Shaded X (0.2% floodplain)',
         checked: true,
         codes: ['Shaded X'],
         style: {
@@ -229,7 +229,7 @@ module.exports = function(environment) {
 
     floodplainPfirm2015OptionSets: [
       {
-        name: 'V',
+        name: 'V (1% floodplain)',
         checked: true,
         codes: ['V'],
         style: {
@@ -238,7 +238,7 @@ module.exports = function(environment) {
         tooltip: "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are subject to high velocity wave action (a breaking wave 3 feet high or larger).",
       },
       {
-        name: 'A',
+        name: 'A (1% floodplain)',
         checked: true,
         codes: ['A'],
         style: {
@@ -247,7 +247,7 @@ module.exports = function(environment) {
         tooltip: "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are not subject to high velocity wave action but are still considered high risk flooding areas.",
       },
       {
-        name: 'Shaded X',
+        name: 'Shaded X (0.2% floodplain)',
         checked: true,
         codes: ['Shaded X'],
         style: {
