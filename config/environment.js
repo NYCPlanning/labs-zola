@@ -197,6 +197,60 @@ module.exports = function(environment) {
       },
     ],
 
+    floodplainEfirm2007OptionSets: [
+      {
+        name: 'V',
+        checked: true,
+        codes: ['V'],
+        style: {
+          color: '#0084a8',
+        },
+      },
+      {
+        name: 'A',
+        checked: true,
+        codes: ['A'],
+        style: {
+          color: '#00a9e6',
+        },
+      },
+      {
+        name: 'Shaded X',
+        checked: true,
+        codes: ['Shaded X'],
+        style: {
+          color: '#00ffc3',
+        },
+      },
+    ],
+
+    floodplainPfirm2015OptionSets: [
+      {
+        name: 'V',
+        checked: true,
+        codes: ['V'],
+        style: {
+          color: '#0084a8',
+        },
+      },
+      {
+        name: 'A',
+        checked: true,
+        codes: ['A'],
+        style: {
+          color: '#00a9e6',
+        },
+      },
+      {
+        name: 'Shaded X',
+        checked: true,
+        codes: ['Shaded X'],
+        style: {
+          color: '#00ffc3',
+        },
+      },
+    ],
+
     'mapbox-gl': {
       accessToken: 'pk.eyJ1IjoiY3dob25nbnljIiwiYSI6ImNpczF1MXdrdjA4MXcycXA4ZGtyN2x5YXIifQ.3HGyME8tBs6BnljzUVIt4Q',
     },

@@ -5,7 +5,12 @@ import { classNames } from '@ember-decorators/component';
 import { next } from '@ember/runloop';
 import config from 'labs-zola/config/environment';
 
-const { zoningDistrictOptionSets, commercialOverlaysOptionSets } = config;
+const {
+  zoningDistrictOptionSets,
+  commercialOverlaysOptionSets,
+  floodplainEfirm2007OptionSets,
+  floodplainPfirm2015OptionSets,
+} = config;
 
 @classNames('layer-palette')
 export default class LayerPaletteComponent extends Component {
@@ -20,6 +25,8 @@ export default class LayerPaletteComponent extends Component {
 
     this.setFilterForZoning();
     this.setFilterForOverlays();
+    this.setFilterForFirm();
+    this.setFilterForPfirm();
   }
 
   @service
@@ -31,63 +38,17 @@ export default class LayerPaletteComponent extends Component {
 
   selectedOverlays = [];
 
+  selectedFirm = [];
+
+  selectedPfirm = [];
+
   zoningDistrictOptionSets = zoningDistrictOptionSets;
 
   commercialOverlaysOptionSets = commercialOverlaysOptionSets;
 
-  firmOverlaysOptionSets = [
-    {
-      name: 'V',
-      checked: true,
-      codes: ['V'],
-      style: {
-        color: '#0084a8',
-      },
-    },
-    {
-      name: 'A',
-      checked: true,
-      codes: ['A'],
-      style: {
-        color: '#00a9e6',
-      },
-    },
-    {
-      name: 'Shaded X',
-      checked: true,
-      codes: ['Shaded X'],
-      style: {
-        color: '#00ffc3',
-      },
-    },
-  ];
+  firmOptionSets = floodplainEfirm2007OptionSets;
 
-  pfirmOverlaysOptionSets = [
-    {
-      name: 'V',
-      checked: true,
-      codes: ['p_V'],
-      style: {
-        color: '#0084a8',
-      },
-    },
-    {
-      name: 'A',
-      checked: true,
-      codes: ['p_A'],
-      style: {
-        color: '#00a9e6',
-      },
-    },
-    {
-      name: 'Shaded X',
-      checked: true,
-      codes: ['p_Shaded X'],
-      style: {
-        color: '#00ffc3',
-      },
-    },
-  ];
+  pfirmOptionSets = floodplainPfirm2015OptionSets;
 
   layerGroups;
 
@@ -129,6 +90,38 @@ export default class LayerPaletteComponent extends Component {
         this.layerGroups['commercial-overlays'].setFilterForLayer('co', expression);
         this.layerGroups['commercial-overlays'].setFilterForLayer('co_labels', expression);
         this.layerGroups['floodplain-efirm2007'].setFilterForLayer('effective-flood-insurance-rate-2007', expression);
+        this.layerGroups['floodplain-pfirm2015'].setFilterForLayer('preliminary-flood-insurance-rate', expression);
+      });
+    }
+  }
+
+  @action
+  setFilterForFirm() {
+    const expression = [
+      'any',
+      ...this.selectedFirm.map(value => ['==', 'fld_zone', value]),
+    ];
+
+    // if-guard to prevent the node-based fastboot server from running this
+    // mapbox-gl method which gets ignored in fastboot.
+    if (!this.fastboot.isFastBoot) {
+      next(() => {
+        this.layerGroups['floodplain-efirm2007'].setFilterForLayer('effective-flood-insurance-rate-2007', expression);
+      });
+    }
+  }
+
+  @action
+  setFilterForPfirm() {
+    const expression = [
+      'any',
+      ...this.selectedPfirm.map(value => ['==', 'fld_zone', value]),
+    ];
+
+    // if-guard to prevent the node-based fastboot server from running this
+    // mapbox-gl method which gets ignored in fastboot.
+    if (!this.fastboot.isFastBoot) {
+      next(() => {
         this.layerGroups['floodplain-pfirm2015'].setFilterForLayer('preliminary-flood-insurance-rate', expression);
       });
     }

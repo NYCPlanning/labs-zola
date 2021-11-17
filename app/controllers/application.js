@@ -9,6 +9,8 @@ const {
   defaultLayerGroupState,
   zoningDistrictOptionSets,
   commercialOverlaysOptionSets,
+  floodplainEfirm2007OptionSets,
+  floodplainPfirm2015OptionSets,
 } = config;
 
 const defaultLayerGroups = defaultLayerGroupState
@@ -26,6 +28,16 @@ const defaultSelectedZoningDistricts = zoningDistrictOptionSets
   .reduce((acc, curr) => acc.concat(curr))
   .sort();
 
+const defaultSelectedFirmOptionSets = floodplainEfirm2007OptionSets
+  .map(({ codes }) => codes)
+  .reduce((acc, curr) => acc.concat(curr))
+  .sort();
+
+const defaultSelectedPfirmOptionSets = floodplainPfirm2015OptionSets
+  .map(({ codes }) => codes)
+  .reduce((acc, curr) => acc.concat(curr))
+  .sort();
+
 // define new query params here:
 export const mapQueryParams = new QueryParams(
   assign(
@@ -39,8 +51,17 @@ export const mapQueryParams = new QueryParams(
       selectedZoning: {
         defaultValue: defaultSelectedZoningDistricts,
       },
+
       selectedOverlays: {
         defaultValue: defaultSelectedOverlays,
+      },
+
+      selectedFirm: {
+        defaultValue: defaultSelectedFirmOptionSets,
+      },
+
+      selectedPfirm: {
+        defaultValue: defaultSelectedPfirmOptionSets,
       },
 
       'aerial-year': {
