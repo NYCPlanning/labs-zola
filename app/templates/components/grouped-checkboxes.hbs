@@ -1,18 +1,33 @@
-<label>
-  <input
-    type="checkbox"
-    onClick={{action "addOrRemoveMultiple" group.codes selected}}
-    checked={{if selectedInGroup true false}}
-    indeterminate={{isIndeterminateGroup}}
-    data-test-grouped-parent={{group.name}}
-  />
-  {{group.name}}
-  {{#if group.style}}
-    <span style={{sanitize group.style}} class="indeterminate-hider">
-      {{fa-icon "square"}}
-    </span>
-  {{/if}}
-</label>
+<div class="legend-item">
+  <div class="grid-x">
+    <div class="cell auto">
+      <label>
+        <input
+          type="checkbox"
+          onClick={{action "addOrRemoveMultiple" group.codes selected}}
+          checked={{if selectedInGroup true false}}
+          indeterminate={{isIndeterminateGroup}}
+          data-test-grouped-parent={{group.name}}
+        />
+        {{group.name}}
+        {{#if group.style}}
+          <span style={{sanitize group.style}} class="indeterminate-hider">
+            {{fa-icon "square"}}
+          </span>
+        {{/if}}
+      </label>
+    </div>
+    {{#if group.tooltip}}
+      <div class="cell shrink">
+        {{labs-ui/icon-tooltip
+          tip=group.tooltip
+          side='right'
+          fixedWith=true
+        }}
+      </div>
+    {{/if}}
+  </div>
+</div>
 {{#if hasMany}}
   {{#if group.codes}}
     <input

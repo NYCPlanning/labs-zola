@@ -205,6 +205,7 @@ module.exports = function(environment) {
         style: {
           color: '#0084a8',
         },
+        tooltip: "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are subject to high velocity wave action (a breaking wave 3 feet high or larger).",
       },
       {
         name: 'A',
@@ -213,6 +214,7 @@ module.exports = function(environment) {
         style: {
           color: '#00a9e6',
         },
+        tooltip: "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are not subject to high velocity wave action but are still considered high risk flooding areas.",
       },
       {
         name: 'Shaded X',
@@ -221,6 +223,7 @@ module.exports = function(environment) {
         style: {
           color: '#00ffc3',
         },
+        tooltip: "The area subject to flooding from the 0.2% annual chance flood and referred to in the Zoning Resolution as the 'moderate-risk flood zone'.",
       },
     ],
 
@@ -232,6 +235,7 @@ module.exports = function(environment) {
         style: {
           color: '#0084a8',
         },
+        tooltip: "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are subject to high velocity wave action (a breaking wave 3 feet high or larger).",
       },
       {
         name: 'A',
@@ -240,6 +244,7 @@ module.exports = function(environment) {
         style: {
           color: '#00a9e6',
         },
+        tooltip: "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are not subject to high velocity wave action but are still considered high risk flooding areas.",
       },
       {
         name: 'Shaded X',
@@ -248,6 +253,7 @@ module.exports = function(environment) {
         style: {
           color: '#00ffc3',
         },
+        tooltip: "The area subject to flooding from the 0.2% annual chance flood and referred to in the Zoning Resolution as the 'moderate-risk flood zone'.",
       },
     ],
 
