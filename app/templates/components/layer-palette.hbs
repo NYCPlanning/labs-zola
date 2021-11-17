@@ -193,12 +193,12 @@
       @activeTooltip={{zoom-dependent-label this.layerGroups.floodplain-efirm2007 this.zoomWarningLabel this.mainMap.zoom}}
     >
       <ul class="layer-menu-item--group-checkboxes">
-        {{#each this.firmOverlaysOptionSets as |optionSet|}}
+        {{#each this.firmOptionSets as |optionSet|}}
           <li>
             <GroupedCheckboxes
               @group={{optionSet}}
-              @selected={{this.selectedOverlays}}
-              @selectionChanged={{action this.setFilterForOverlays}}
+              @selected={{this.selectedFirm}}
+              @selectionChanged={{action this.setFilterForFirm}}
             />
           </li>
         {{/each}}
@@ -210,12 +210,12 @@
       @activeTooltip={{zoom-dependent-label this.layerGroups.floodplain-pfirm2015 this.zoomWarningLabel this.mainMap.zoom}}
     >
       <ul class="layer-menu-item--group-checkboxes">
-        {{#each this.pfirmOverlaysOptionSets as |optionSet|}}
+        {{#each this.pfirmOptionSets as |optionSet|}}
           <li>
             <GroupedCheckboxes
               @group={{optionSet}}
-              @selected={{this.selectedOverlays}}
-              @selectionChanged={{action this.setFilterForOverlays}}
+              @selected={{this.selectedPfirm}}
+              @selectionChanged={{action this.setFilterForPfirm}}
             />
           </li>
         {{/each}}
