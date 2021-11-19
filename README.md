@@ -1,39 +1,16 @@
-[![CircleCI](https://circleci.com/gh/NYCPlanning/labs-zola/tree/develop.svg?style=svg)](https://circleci.com/gh/NYCPlanning/labs-zola/tree/develop)
-
 # ZoLa (New York City’s Zoning & Land Use Map)
 
 ZoLa provides a simple way to research zoning regulations and other information relevant to planners. Find the zoning for your property, discover new proposals for your neighborhood, and learn where City Planning initiatives are happening throughout the City.
 
 ![image](https://user-images.githubusercontent.com/409279/34126699-83fe1ab0-e408-11e7-84eb-1f228f43c071.png)
 
-## How we work
-
-[NYC Planning Labs](https://planninglabs.nyc) takes on a single project at a time, working closely with our customers from concept to delivery in a matter of weeks.  We conduct regular maintenance between larger projects.  
-
-Take a look at our [sprint planning board](https://waffle.io/NYCPlanning/labs-zola) to get an idea of our current priorities for this project.
-
-## How you can help
-
-In the spirit of free software, everyone is encouraged to help improve this project.  Here are some ways you can contribute.
-
-- Comment on or clarify [issues](https://github.com/NYCPlanning/labs-zola/issues)
-- Report [bugs](https://github.com/NYCPlanning/labs-zola/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
-- Suggest new features
-- Write or edit documentation
-- Write code (no patch is too small)
-  - Fix typos
-  - Add comments
-  - Clean up code
-  - Add new features
-
-**[Read more about contributing.](CONTRIBUTING.md)**
-
 ## Requirements
 
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/) (with NPM)
+  - This installation was tested using Node v14.15.0
 - [Ember CLI](https://ember-cli.com/)
-- [PhantomJS](http://phantomjs.org/)
+- [Yarn](https://yarnpkg.com/)
 
 ## Local development
 
@@ -42,43 +19,29 @@ In the spirit of free software, everyone is encouraged to help improve this proj
 - Install dependencies: `yarn`
 - Run the development server: `ember serve`
 
+## Connect to a local or remote Layers Api:
+```
+API_HOST=http://localhost:3000 ember serve
+```
+Note that you must provide `http://` to prevent cross-origin restrictions.
+
 ## Architecture
 
 ZoLa is an [Ember.js](https://www.emberjs.com/) single page application (SPA).  The frontend handles routing, web mapping, layout, and user interactions, and communicates with various APIs for content and data.
 
-#### Map Styling
+#### Layer-Groups, Layers and Sources
 
-To style the map in development, we use [Maputnik Dev Server](https://github.com/NYCPlanning/labs-maputnik-dev-server). Check the `README` of maputnik-dev-server for the commands necessary to style the current map.
+ZoLa retrieves layers from the [Labs Layers Api](https://github.com/nycplanning/labs-layers-api). It requests _layer groups_, which are groups of [MapboxGL layers](https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/). For example, the "subways" layer group includes the subway lines, subway routes, and subway station entrances layers. Each layer defines has style and some filter definitions. Alongside layers, the Layers API also delivers _sources_ which provide SQL definitions for the layers. One source may correspond to multiple layers. For example, a subways source powers the Subway A line, Subway J line and Subway G line, etc.
 
-#### Layer-Groups
+Layer Groups, Layers and Sources are represented and managed as Ember Models in ZoLa. These models are provided by the [Ember Mapbox Composer](https://github.com/NYCPlanning/ember-mapbox-composer) custom Addon. On first load, [the Application route](https://github.com/NYCPlanning/labs-zola/blob/develop/app/routes/application.js#L34) will query for all necessary Layer Group records (which makes a request to the `layer-group/` endpoint of the Layers API). This consequently sideloads all necessary Layer, Source and metadata information as well.
 
-ZoLa introduces a meta definition of the [MapboxGL API](https://mapbox.com/mapbox-gl-js/api/) which allows you to define groups of mapboxGL layers. This means that sources may have many layers, hence a "layer group". For example, the "subways" layer group includes the subway lines, subway routes, and subway station entrances layers. Layer group configs are located in `app/layer-groups`.
+Labs Layer API indeed acts as the backend that Ember Data is tied to. This is specified in the [Application Adapter's `host` variable override](https://github.com/NYCPlanning/labs-zola/blob/develop/app/adapters/layer-group.js#L4-L7).
 
-- To create a layer-group: `ember g layer-group <layer-group-name>` - This will create a layer group definition file inside the `layer-groups` folder. Edit layer configuration there. To add it to the map, it must be explicitly imported and added as a layer.
+#### Vector tiles from Carto Maps API
+Along with Layer Groups, the Layers API payload (in the metadata property) contains an extra [MapboxStyle object](https://docs.mapbox.com/mapbox-gl-js/style-spec/root/), which provides [tile URL definitions](https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/) for all source layers. These tile url definitions are _anonymous maps_ generated by Layers API using the Carto Maps API.
 
-- To create a simple layer style definition: `ember g layer <layer-name>`
-
-- Import simple layer style definitions inside layer-groups, if necessary:  
-```javascript
-// layer-groups/my-layer-group
-import myLayer from '../layers/my-layer';
-
-export default {
-  layers:[{
-    layer: myLayer
-  }]
-}
-```
-
-(Make use of the many other generators for code, try `ember help generate` for more details.)
-
-## Backend services
-
-Carto is the primary backend resource for ZoLa, which provides a PostGIS database, Map Tiler, and JSON/GeoJSON data API.  All of the data represented in the app starts out as a PostGIS table in Carto.
-
-- **Carto Maps API** - Spatial data used in ZoLa's web maps are served as vector tiles from the Carto Maps API.  Vector tiles are defined by a SQL query, and may include several named internal layers.  Vector Tiles are defined in config files in `app/sources`, and the frontend converts each of these into a call to the Maps API, which produces a vector tile template that can be added to mapboxGL as a 'source'.
-- **Carto SQL API** - The SQL API is used to retrieve record-specific data, such as tax lot details when a user navigates to a specific lot.  It is also used to cross-reference a selected lot on-the-fly with various other layers to find intersections.
-- **Zola Search API** - Zola Search API provides autocomplete search results, and aggregates results from ZoLa's Carto database with those from the Mapzen Search API. The search API is an express.js app that lives in a separate repo: (https://github.com/NYCPlanning/labs-zola-search-api)
+#### Zola Search API 
+Zola Search API provides autocomplete search results, and aggregates results from ZoLa's Carto database with those from the Mapzen Search API. The search API is an express.js app that lives in a separate repo: (https://github.com/NYCPlanning/labs-zola-search-api)
 
 ## BBL Route
 
@@ -115,14 +78,6 @@ https://zola.planning.nyc.gov/bbox/-73.9978/40.5705/-73.9804/40.5785
   - Run the test suite: `ember test -server`
   - Load `http://localhost:7357/` to view the test UI
   - Before creating a Pull Request, make sure your branch is updated with the latest `develop` and passes all tests
-
-## Deployment
-
-The App is deployed to our VPS using dokku, you need only do a `git push` of the master branch to the `dokku` remote.
-
-- To create a new remote named `dokku`: `git remote add dokku dokku@{domain}:zola`
-- To Deploy: `git push dokku master`
-- To deploy a branch other than master, alias it to master: `git push dokku {branchname}:master`
 
 ## Contact us
 

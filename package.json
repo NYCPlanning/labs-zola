@@ -15,11 +15,14 @@
     "lint": "./node_modules/.bin/eslint ./*.js app config lib server tests",
     "lint:hbs": "ember-template-lint .",
     "start": "ember serve",
-    "test": "ember test"
+    "test": "ember test",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@ember/optional-features": "^0.7.0",
     "@fortawesome/ember-fontawesome": "0.1.13",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@turf/area": "^6.0.1",
     "@turf/line-distance": "^4.7.3",
     "babel-eslint": "^8.0.0",
@@ -104,8 +107,10 @@
     "eslint-plugin-node": "^9.0.1",
     "fastboot": "2.0.1",
     "foundation-sites": "6.5.0-rc.4",
+    "husky": "^6.0.0",
     "labs-ember-search": "^3.1.3",
     "labs-ui": "^0.0.24",
+    "lint-staged": ">=10",
     "loader.js": "^4.7.0",
     "mapbox-gl": "1.0.0",
     "mapbox-gl-draw": "0.16.0",
@@ -125,14 +130,21 @@
     "@turf/bbox-polygon": "^6.0.1",
     "@turf/boolean-within": "^6.0.1",
     "mustache": "3.0.1",
-    "node-fetch": "2.6.0",
+    "node-fetch": "2.6.1",
     "numeral": "^2.0.6"
   },
   "resolutions": {
     "ember-composable-helpers": "2.3.1",
-    "ember-concurrency": "1.0.0"
+    "ember-concurrency": "1.0.0",
+    "y18n": "^4.0.1",
+    "ssri": "^8.0.1",
+    "printf": "^0.6.1",
+    "elliptic": "^6.5.4"
   },
   "fastbootWhitelist": [
     "abortcontroller-polyfill"
-  ]
+  ],
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
+  }
 }

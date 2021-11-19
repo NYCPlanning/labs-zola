@@ -1,0 +1,27 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: install dependencies
+        run: yarn install --frozen-lockfile --non-interactive
+      - name: build
+        env:
+          DISABLE_SOURCE_MAPS: true
+          BROCCOLI_ENV: production
+        run: yarn ember build -prod
+      - name: test
+        run: yarn test
