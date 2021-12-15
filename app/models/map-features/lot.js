@@ -499,7 +499,7 @@ export default class LotFragment extends MF.Fragment {
       const spdist2 = this.get('spdist2');
       const spdist3 = this.get('spdist3');
 
-      return carto.SQL(specialPurposeDistrictsSQL('special_purpose_districts', spdist1, spdist2, spdist3))
+      return carto.SQL(specialPurposeDistrictsSQL('dcp_special_purpose_districts', spdist1, spdist2, spdist3))
         .then(response => response.map(
           (item) => {
             const [, [anchorName, boroName]] = specialDistrictCrosswalk
