@@ -2276,7 +2276,7 @@ export default {
           },
           {
             id: 'special-purpose-districts',
-            sql: 'SELECT the_geom_webmercator, cartodb_id, sdlbl, sdname FROM special_purpose_districts',
+            sql: 'SELECT the_geom_webmercator, cartodb_id, sdlbl, sdname FROM dcp_special_purpose_districts',
           },
           {
             id: 'special-purpose-subdistricts',
