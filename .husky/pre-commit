@@ -1,5 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+echo "Running pre-commit hooks. In a hurry? Add --no-verify flag to your command."
 yarn run test
 yarn run lint-staged
