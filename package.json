@@ -114,7 +114,7 @@
     "loader.js": "^4.7.0",
     "mapbox-gl": "1.0.0",
     "mapbox-gl-draw": "0.16.0",
-    "moment": "2.22.2",
+    "moment": "2.29.2",
     "prember": "1.0.3",
     "prember-middleware": "0.1.0",
     "pretender": "3.0.1",
