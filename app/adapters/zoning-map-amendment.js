@@ -9,7 +9,7 @@ const SQL = function(ulurpno) {
       effective,
       status,
       lucats
-    FROM zoning_map_amendments
+    FROM dcp_zoning_map_amendments
     WHERE ulurpno='${ulurpno}'`;
 };
 

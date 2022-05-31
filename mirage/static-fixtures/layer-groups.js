@@ -2419,11 +2419,11 @@ export default {
         'source-layers': [
           {
             id: 'zoning-map-amendments',
-            sql: "SELECT * FROM (SELECT the_geom_webmercator, to_char(effective, 'MM/DD/YYYY') as effectiveformatted, extract(epoch from effective) * 1000 as effective_epoch, ulurpno, status, project_na FROM planninglabs.zoning_map_amendments WHERE status = 'Adopted') a",
+            sql: "SELECT * FROM (SELECT the_geom_webmercator, to_char(effective, 'MM/DD/YYYY') as effectiveformatted, extract(epoch from effective) * 1000 as effective_epoch, ulurpno, status, project_na FROM planninglabs.dcp_zoning_map_amendments WHERE status = 'Adopted') a",
           },
           {
             id: 'zoning-map-amendments-pending',
-            sql: "SELECT the_geom_webmercator, ulurpno, status, project_na FROM zoning_map_amendments WHERE status = 'Certified'",
+            sql: "SELECT the_geom_webmercator, ulurpno, status, project_na FROM dcp_zoning_map_amendments WHERE status = 'Certified'",
           },
         ],
         meta: {
