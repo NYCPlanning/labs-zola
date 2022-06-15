@@ -142,6 +142,7 @@ module.exports = function(environment) {
       ['Special St. George District', ['SG', 'staten-island']],
       ['Special South Richmond Development District', ['SRD', 'staten-island']],
       ['Special Stapleton Waterfront District', ['SW', 'staten-island']],
+      ['Special Gowanus Mixed-Use District', ['G', 'brooklyn']],
     ],
 
     zoningDistrictOptionSets: [
