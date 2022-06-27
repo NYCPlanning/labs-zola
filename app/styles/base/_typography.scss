@@ -6,12 +6,12 @@
   @extend h3;
   margin-bottom: rem-calc(10);
 
-  .landmark {
+  .address {
     display: block;
     margin-bottom: 0;
   }
 
-  .landmark + .address {
+  .address + .landmark {
     display: block;
     @extend h4;
     margin-bottom: 0;
