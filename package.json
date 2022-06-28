@@ -100,6 +100,7 @@
     "ember-window-mock": "0.5.4",
     "ember-wormhole": "^0.5.2",
     "eslint": "^4.19.1",
+    "labs-ui": "0.0.24",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-ember": "^6.2.0",
     "eslint-plugin-ember-best-practices": "1.1.1",
