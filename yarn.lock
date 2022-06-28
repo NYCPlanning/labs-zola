@@ -2609,7 +2609,7 @@
     glob "^7.1.2"
     rollup-plugin-node-resolve "^4.0.0"
 
-"@fortawesome/ember-fontawesome@^0.1.5":
+"@fortawesome/ember-fontawesome@^0.1.5", "@fortawesome/ember-fontawesome@^0.1.9":
   version "0.1.14"
   resolved "https://registry.yarnpkg.com/@fortawesome/ember-fontawesome/-/ember-fontawesome-0.1.14.tgz#ec6a83f50330d8b22c03a38e98296e28c205ca2a"
   integrity sha512-RQg9i7y8uxArgwRnWKA6orMKlftU2nnb0930ZqBD7+vmj9CbhQaYP51vEgIu5Qw9RUGAoqZDkpUwgsFXg39/fw==
@@ -2633,15 +2633,15 @@
   version "0.2.18"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.18.tgz#c0d8f073a5116b2de0a2c8a7aba66093a6956ce7"
 
+"@fortawesome/fontawesome-common-types@^0.2.26", "@fortawesome/fontawesome-common-types@^0.2.36":
+  version "0.2.36"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.36.tgz#b44e52db3b6b20523e0c57ef8c42d315532cb903"
+  integrity sha512-a/7BiSgobHAgBWeN7N0w+lAhInrGxksn13uK7231n2m8EDPE3BMCl9NZLTGrj9ZXfCmC6LM0QLqXidIizVQ6yg==
+
 "@fortawesome/fontawesome-common-types@^0.2.35":
   version "0.2.35"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.35.tgz#01dd3d054da07a00b764d78748df20daf2b317e9"
   integrity sha512-IHUfxSEDS9dDGqYwIW7wTN6tn/O8E0n5PcAHz9cAaBoZw6UpG20IG/YM3NNLaGPwPqgjBAFjIURzqoQs3rrtuw==
-
-"@fortawesome/fontawesome-common-types@^0.2.36":
-  version "0.2.36"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.36.tgz#b44e52db3b6b20523e0c57ef8c42d315532cb903"
-  integrity sha512-a/7BiSgobHAgBWeN7N0w+lAhInrGxksn13uK7231n2m8EDPE3BMCl9NZLTGrj9ZXfCmC6LM0QLqXidIizVQ6yg==
 
 "@fortawesome/fontawesome-svg-core@^1.2.0":
   version "1.2.18"
@@ -2656,7 +2656,7 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.36"
 
-"@fortawesome/free-regular-svg-icons@^5.1.0":
+"@fortawesome/free-regular-svg-icons@^5.1.0", "@fortawesome/free-regular-svg-icons@^5.7.1":
   version "5.15.4"
   resolved "https://registry.yarnpkg.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.15.4.tgz#b97edab436954333bbeac09cfc40c6a951081a02"
   integrity sha512-9VNNnU3CXHy9XednJ3wzQp6SwNwT3XaM26oS4Rp391GsxVYA+0oDR2J194YCIWf7jNRCYKjUCOduxdceLrx+xw==
@@ -2669,6 +2669,13 @@
   integrity sha512-q4/p8Xehy9qiVTdDWHL4Z+o5PCLRChePGZRTXkl+/Z7erDVL8VcZUuqzJjs6gUz6czss4VIPBRdCz6wP37/zMQ==
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
+
+"@fortawesome/free-solid-svg-icons@5.12.0":
+  version "5.12.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.12.0.tgz#8decac5844e60453cc0c7c51437d1461df053a35"
+  integrity sha512-CnpsWs6GhTs9ekNB3d8rcO5HYqRkXbYKf2YNiAlTWbj5eVlPqsd/XH1F9If8jkcR1aegryAbln/qYeKVZzpM0g==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.26"
 
 "@fortawesome/free-solid-svg-icons@^5.1.0":
   version "5.15.4"
@@ -4208,13 +4215,13 @@ babel-plugin-filter-imports@^3.0.0:
     "@babel/types" "^7.4.0"
     lodash "^4.17.11"
 
+babel-plugin-htmlbars-inline-precompile@1.0.0, babel-plugin-htmlbars-inline-precompile@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-htmlbars-inline-precompile/-/babel-plugin-htmlbars-inline-precompile-1.0.0.tgz#a9d2f6eaad8a3f3d361602de593a8cbef8179c22"
+
 babel-plugin-htmlbars-inline-precompile@^0.2.5:
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/babel-plugin-htmlbars-inline-precompile/-/babel-plugin-htmlbars-inline-precompile-0.2.6.tgz#c00b8a3f4b32ca04bf0f0d5169fcef3b5a66d69d"
-
-babel-plugin-htmlbars-inline-precompile@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-htmlbars-inline-precompile/-/babel-plugin-htmlbars-inline-precompile-1.0.0.tgz#a9d2f6eaad8a3f3d361602de593a8cbef8179c22"
 
 babel-plugin-htmlbars-inline-precompile@^3.2.0:
   version "3.2.0"
@@ -7467,7 +7474,7 @@ ember-cli-get-component-path-option@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ember-cli-get-component-path-option/-/ember-cli-get-component-path-option-1.0.0.tgz#0d7b595559e2f9050abed804f1d8eff1b08bc771"
 
-ember-cli-htmlbars-inline-precompile@^1.0.0:
+ember-cli-htmlbars-inline-precompile@^1.0.0, ember-cli-htmlbars-inline-precompile@^1.0.2:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/ember-cli-htmlbars-inline-precompile/-/ember-cli-htmlbars-inline-precompile-1.0.5.tgz#312e050c9e3dd301c55fb399fd706296cd0b1d6a"
   dependencies:
@@ -7899,7 +7906,7 @@ ember-composability-tools@0.0.11:
     ember-cli-htmlbars "^3.0.0"
     ember-in-element-polyfill "^0.1.3"
 
-ember-composable-helpers@2.3.1:
+ember-composable-helpers@2.3.1, ember-composable-helpers@^3.1.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/ember-composable-helpers/-/ember-composable-helpers-2.3.1.tgz#db98ad8b55d053e2ac216b9da091c9e7a3b9f453"
   dependencies:
@@ -7922,7 +7929,7 @@ ember-concurrency-retryable@0.6.0:
   dependencies:
     ember-cli-babel "^7.1.2"
 
-ember-concurrency@1.0.0, ember-concurrency@^0.10.0, "ember-concurrency@^0.8.27 || ^0.9.0 || ^0.10.0":
+ember-concurrency@0.9.0, ember-concurrency@1.0.0, ember-concurrency@^0.10.0, "ember-concurrency@^0.8.27 || ^0.9.0 || ^0.10.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ember-concurrency/-/ember-concurrency-1.0.0.tgz#3b650672fdd5dc1d45007626119135829076c2b6"
   dependencies:
@@ -8229,7 +8236,7 @@ ember-power-select@^2.0.4:
     ember-text-measurer "^0.5.0"
     ember-truth-helpers "^2.1.0"
 
-ember-promise-helpers@^1.0.6:
+ember-promise-helpers@1.0.6, ember-promise-helpers@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/ember-promise-helpers/-/ember-promise-helpers-1.0.6.tgz#6ff9f451330f4608ec4696de473a7f54bc179236"
   dependencies:
@@ -11303,6 +11310,26 @@ klaw@^1.0.0:
   resolved "https://registry.yarnpkg.com/klaw/-/klaw-1.3.1.tgz#4088433b46b3b1ba259d78785d8e96f73ba02439"
   optionalDependencies:
     graceful-fs "^4.1.9"
+
+labs-ember-search@3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/labs-ember-search/-/labs-ember-search-3.1.5.tgz#dfc240b74da07b4b133448f23d9cea1843d3e6cd"
+  integrity sha512-Is3ZGrQNfU0z6iBtqjsxplqEvOR1EnGpWCtJ1yS/obMhwbJaENgJKd3Ovu4KRJ28tnLQedQsq56eeyqMNnCzoQ==
+  dependencies:
+    "@fortawesome/ember-fontawesome" "^0.1.9"
+    "@fortawesome/free-regular-svg-icons" "^5.7.1"
+    "@fortawesome/free-solid-svg-icons" "5.12.0"
+    babel-plugin-htmlbars-inline-precompile "1.0.0"
+    cartobox-promises-utility "1.0.2"
+    ember-cli-babel "^6.16.0"
+    ember-cli-htmlbars "^3.0.0"
+    ember-cli-htmlbars-inline-precompile "^1.0.2"
+    ember-composable-helpers "^3.1.1"
+    ember-concurrency "0.9.0"
+    ember-fetch "^5.1.1"
+    ember-power-select "^2.0.4"
+    ember-promise-helpers "1.0.6"
+    ember-truth-helpers "^2.0.0"
 
 labs-ui@0.0.24:
   version "0.0.24"
