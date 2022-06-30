@@ -15,8 +15,7 @@
     "lint": "./node_modules/.bin/eslint ./*.js app config lib server tests",
     "lint:hbs": "ember-template-lint .",
     "start": "ember serve",
-    "test": "ember test",
-    "prepare": "husky install"
+    "test": "ember test"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.18.6",
@@ -108,7 +107,6 @@
     "eslint-plugin-node": "^9.0.1",
     "fastboot": "2.0.1",
     "foundation-sites": "6.5.0-rc.4",
-    "husky": "^6.0.0",
     "labs-ember-search": "^3.1.5",
     "labs-ui": "^0.0.24",
     "lint-staged": ">=10",
