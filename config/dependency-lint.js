@@ -7,8 +7,5 @@ module.exports = {
 
    // TODO: Fix these dependency issues
     'ember-inflector': '3.0.0 || 3.0.1',
-
-   // TODO: Fix these dependency issues
-    'ember-data': '3.12.6 || 3.10.0',
   },
 };

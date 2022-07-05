@@ -3,37 +3,40 @@
   e-mapbox-composer uses private APIs in e-mapbox-gl. Those changed, so we need to
   manually configure the interface here.
 }}
-{{#if _loader.isLoaded}}
-  {{#if _glSupported}}
-    {{#if _map}}
-      {{#if _isMapLoaded}}
-        <div class="labs-map-loaded"></div>
-        {{! Highlighted Layer Handling }}
-        <MapboxGlLayer @map={{_map}} @layer={{highlightedLineFeatureLayer}} />
-        <MapboxGlLayer @map={{_map}} @layer={{highlightedCircleFeatureLayer}} />
-        {{yield
-          (hash
-            call=(component "mapbox-gl-call" obj=_map)
-            control=(component "mapbox-gl-control" map=_map)
-            image=(component "mapbox-gl-image" map=_map)
-            layer=(component "mapbox-gl-layer" map=_map)
-            marker=(component "mapbox-gl-marker" map=_map)
-            on=(component "mapbox-gl-on" eventSource=_map)
-            popup=(component "mapbox-gl-popup" map=_map)
-            source=(component "mapbox-gl-source" map=_map)
-            instance=_map
-            mapInstance=_map
-            labs-layers=(component
-              "labs-layers"
-              map=_map
-              layerGroups=layerGroups
-              hoveredFeature=hoveredFeature
-            )
-          )
-        }}
-      {{/if}}
-    {{/if}}
+{{#if this._loader.isLoaded}}
+  <div class="labs-map-loaded"></div>
+
+  {{!-- TODO: Added here to trigger private method override. Please refactor --}}
+  {{_run this '_onLoad' this._loader.map}}
+
+  {{! Highlighted Layer Handling }}
+  <MapboxGlLayer @map={{this._loader.map}} @layer={{this.highlightedLineFeatureLayer}} />
+  <MapboxGlLayer @map={{this._loader.map}} @layer={{this.highlightedCircleFeatureLayer}} />
+  {{yield
+    (hash
+      call=(component "mapbox-gl-call" obj=this._loader.map)
+      control=(component "mapbox-gl-control" map=this._loader.map)
+      image=(component "mapbox-gl-image" map=this._loader.map)
+      layer=(component "mapbox-gl-layer" map=this._loader.map)
+      marker=(component 'mapbox-gl-marker' map=this._loader.map MapboxGl=this._loader.MapboxGl)
+      on=(component "mapbox-gl-on" eventSource=this._loader.map)
+      popup=(component 'mapbox-gl-popup' map=this._loader.map MapboxGl=this._loader.MapboxGl)
+      source=(component "mapbox-gl-source" map=this._loader.map)
+      instance=this._loader.map
+      mapInstance=this._loader.map
+      labs-layers=(component
+        "labs-layers"
+        map=this._loader.map
+        layerGroups=layerGroups
+        hoveredFeature=hoveredFeature
+      )
+    )
+  }}
+{{else if this._loader.error}}
+  {{#if (has-block 'inverse')}}
+    {{yield this._loader.error to='inverse'}}
+  {{else}}
+    {{! template-lint-disable no-log }}
+    {{log 'error rendering mapbox-gl' this._loader.error}}
   {{/if}}
-{{else}}
-  {{yield to="inverse"}}
 {{/if}}
