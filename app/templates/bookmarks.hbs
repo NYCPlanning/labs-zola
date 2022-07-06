@@ -26,6 +26,13 @@
     {{/each-in}}
   {{/if}}
 
+  {{#if (is-rejected this.bookmarksSettled)}}
+    Something went wrong:
+
+    <br/>
+    {{get (promise-rejected-reason this.bookmarksSettled) 'message'}}.
+  {{/if}}
+
   {{#unless model.length}}
     <div class="no-bookmarks">
       <div class="align-self-middle large-text-center">
