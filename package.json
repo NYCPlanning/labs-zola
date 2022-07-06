@@ -125,13 +125,11 @@
     "@turf/boolean-within": "^6.0.1",
     "mustache": "3.0.1",
     "node-fetch": "2.6.1",
-    "numeral": "^2.0.6",
-    "y18n": "^4.0.1"
+    "numeral": "^2.0.6"
   },
   "resolutions": {
     "ember-composable-helpers": "2.3.1",
     "ember-concurrency": "1.0.0",
-    "y18n": "^4.0.1",
     "ssri": "^8.0.1",
     "printf": "^0.6.1",
     "elliptic": "^6.5.4",
