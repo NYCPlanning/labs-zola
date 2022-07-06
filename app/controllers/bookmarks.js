@@ -14,7 +14,7 @@ export default Controller.extend({
   bookmarksSettled: computedProp('model.[]', function() {
     const bookmarks = this.get('model');
     const promises = bookmarks.mapBy('recordType');
-
+    console.log(bookmarks);
     return Promise.all(promises);
   }),
 
