@@ -12,7 +12,7 @@ module('Integration | Component | bookmark button', function(hooks) {
 
     this.render(hbs`{{bookmarks/bookmark-button}}`);
 
-    assert.equal(find('*').textContent.trim(), '');
+    assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     this.render(hbs`
@@ -21,6 +21,6 @@ module('Integration | Component | bookmark button', function(hooks) {
       {{/bookmarks/bookmark-button}}
     `);
 
-    assert.equal(find('*').textContent.trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });

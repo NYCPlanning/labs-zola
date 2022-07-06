@@ -18,6 +18,6 @@ module('helper:carto-download-link', function(hooks) {
 
     await render(hbs`{{carto-download-link table identifier ids format}}`);
 
-    assert.equal(find('*').textContent.trim(), 'https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM mappluto WHERE bbl IN (1014970028,1015280036,1015280038)&format=csv&filename=mappluto');
+    assert.equal(this.element.textContent.trim(), 'https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM mappluto WHERE bbl IN (1014970028,1015280036,1015280038)&format=csv&filename=mappluto');
   });
 });

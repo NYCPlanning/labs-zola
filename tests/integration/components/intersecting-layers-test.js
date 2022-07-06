@@ -13,7 +13,7 @@ module('Integration | Component | intersecting layers', function(hooks) {
 
     await render(hbs`{{intersecting-layers tables=myProperty}}`);
 
-    assert.equal(find('*').textContent.trim(), '');
+    assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
@@ -22,6 +22,6 @@ module('Integration | Component | intersecting layers', function(hooks) {
       {{/intersecting-layers}}
     `);
 
-    assert.equal(find('*').textContent.trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });
