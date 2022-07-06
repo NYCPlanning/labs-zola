@@ -20,11 +20,11 @@ if (config.environment === 'production' || config.environment === 'staging') {
 // see: https://github.com/maxfierke/ember-concurrency-retryable/issues/5
 defineModifier();
 
-const App = Application.extend({
-  modulePrefix: config.modulePrefix,
-  podModulePrefix: config.podModulePrefix,
-  Resolver,
-});
+export default class App extends Application {
+  modulePrefix = config.modulePrefix;
+  podModulePrefix = config.podModulePrefix;
+  Resolver = Resolver;
+}
 
 // temporary fix due to importing registerWaiter
 // see: https://github.com/emberjs/ember.js/issues/15670
@@ -41,5 +41,3 @@ if (typeof Ember.Test === 'undefined') {
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 loadInitializers(App, config.modulePrefix);
-
-export default App;
