@@ -8,8 +8,7 @@ const SQL = function(id) {
       the_geom,
       spname,
       splbl,
-      subdist,
-      subsub
+      subdist
     FROM dcp_special_purpose_subdistricts
     WHERE cartodb_id='${id}'`;
 };

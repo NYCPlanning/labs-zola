@@ -7,7 +7,7 @@ const SQL = function(id) {
       the_geom,
       sdname,
       sdlbl
-    FROM special_purpose_districts
+    FROM dcp_special_purpose_districts
     WHERE cartodb_id='${id}'`;
 };
 
