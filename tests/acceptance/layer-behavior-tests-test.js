@@ -203,7 +203,7 @@ module('Acceptance | layer behavior tests', function(hooks) {
 
   test('Tax Lots', async function(assert) {
     this.server.create('lot', {
-      id: 3034430054,
+      id: 1001870021,
     });
 
     // it adds the layers when toggled or if default
@@ -260,7 +260,7 @@ module('Acceptance | layer behavior tests', function(hooks) {
     // TODO: Make this assertion work.
     await assertSearchShouldFitBounds(this, assert, {
       type: 'zoning-district',
-      label: 'C1-5',
+      label: '1',
     });
   });
 
@@ -292,7 +292,7 @@ module('Acceptance | layer behavior tests', function(hooks) {
     // TODO: Make this assertion work.
     await assertSearchShouldFitBounds(this, assert, {
       type: 'commercial-overlay',
-      label: 'test-overlay',
+      label: '1',
     });
   });
 
@@ -320,9 +320,9 @@ module('Acceptance | layer behavior tests', function(hooks) {
 
     // TODO: Make this assertion work.
     await assertSearchShouldFitBounds(this, assert, {
-      ulurpno: 'test',
+      ulurpno: '1',
       type: 'zma',
-      label: '120 Broadway, Manhattan',
+      label: '1',
     });
   });
 
@@ -350,9 +350,9 @@ module('Acceptance | layer behavior tests', function(hooks) {
 
     // TODO: Make this assertion work.
     await assertSearchShouldFitBounds(this, assert, {
-      ulurpno: 'test',
+      ulurpno: '1',
       type: 'zma',
-      label: '120 Broadway, Manhattan',
+      label: '1',
     });
   });
 
@@ -381,9 +381,9 @@ module('Acceptance | layer behavior tests', function(hooks) {
     // TODO: Make this assertion work.
     await assertSearchShouldFitBounds(this, assert, {
       type: 'special-purpose-district',
-      sdname: 'test',
-      cartodb_id: 'test',
-      label: '120 Broadway, Manhattan',
+      sdname: '1',
+      cartodb_id: '1',
+      label: '1',
     });
   });
 
