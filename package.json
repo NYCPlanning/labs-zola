@@ -11,7 +11,7 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build",
+    "build": "ember build --environment=production",
     "lint": "./node_modules/.bin/eslint ./*.js app config lib server tests",
     "lint:hbs": "ember-template-lint .",
     "start": "ember serve",
@@ -20,11 +20,12 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.2",
     "@babel/plugin-proposal-private-property-in-object": "^7.18.6",
-    "@ember/optional-features": "^1.1.0",
+    "@ember/optional-features": "^1.3.0",
     "@fortawesome/ember-fontawesome": "0.1.14",
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@glimmer/component": "^1.0.0",
+    "@glimmer/tracking": "^1.0.0",
     "@turf/area": "^6.0.1",
     "@turf/line-distance": "^4.7.3",
     "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.3",
@@ -33,9 +34,9 @@
     "ember-async-await-helper": "0.1.0",
     "ember-auto-import": "^1.5.3",
     "ember-clean-project": "1.0.1",
-    "ember-cli": "~3.15.2",
+    "ember-cli": "~3.16.2",
     "ember-cli-app-version": "^3.2.0",
-    "ember-cli-babel": "^7.13.0",
+    "ember-cli-babel": "^7.17.2",
     "ember-cli-bundle-analyzer": "0.1.0",
     "ember-cli-code-coverage": "1.0.0-beta.7",
     "ember-cli-concat": "1.3.0",
@@ -43,8 +44,8 @@
     "ember-cli-dependency-lint": "1.1.3",
     "ember-cli-fastboot": "2.1.1",
     "ember-cli-foundation-6-sass": "0.0.25",
-    "ember-cli-htmlbars": "^4.2.0",
-    "ember-cli-inject-live-reload": "^2.0.1",
+    "ember-cli-htmlbars": "^4.2.2",
+    "ember-cli-inject-live-reload": "^2.0.2",
     "ember-cli-mirage": "^2.4.0",
     "ember-cli-netlify": "^0.1.0",
     "ember-cli-nouislider": "1.0.0",
@@ -60,7 +61,7 @@
     "ember-concurrency-decorators": "1.0.0-beta.4",
     "ember-concurrency-retryable": "0.6.0",
     "ember-content-placeholders": "^1.0.0",
-    "ember-data": "~3.15.1",
+    "ember-data": "~3.16.0",
     "ember-data-model-fragments": "5.0.0-beta.8",
     "ember-decorators": "6.0.0",
     "ember-decorators-polyfill": "1.0.5",
@@ -86,7 +87,7 @@
     "ember-radio-button": "1.2.4",
     "ember-resolver": "^7.0.0",
     "ember-responsive": "3.0.1",
-    "ember-source": "~3.15.0",
+    "ember-source": "~3.16.0",
     "ember-test-helpers": "^0.6.3",
     "ember-test-selectors": "2.0.0",
     "ember-tether": "v1.0.0-beta.3",
@@ -97,10 +98,10 @@
     "ember-wormhole": "^0.5.2",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-ember": "^7.7.1",
+    "eslint-plugin-ember": "^7.7.2",
     "eslint-plugin-ember-best-practices": "1.1.1",
     "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-node": "^11.0.0",
     "fastboot": "2.0.1",
     "foundation-sites": "6.4.1",
     "labs-ember-search": "^3.1.5",
@@ -115,7 +116,7 @@
     "sinon": "7.3.2"
   },
   "engines": {
-    "node": ">= 10.*"
+    "node": "10.* || >= 12"
   },
   "ember": {
     "edition": "octane"
