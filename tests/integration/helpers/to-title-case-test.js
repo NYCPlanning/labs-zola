@@ -13,6 +13,6 @@ module('helper:to-title-case', function(hooks) {
 
     await render(hbs`{{to-title-case inputValue}}`);
 
-    assert.equal(find('*').textContent.trim(), '1234');
+    assert.equal(this.element.textContent.trim(), '1234');
   });
 });

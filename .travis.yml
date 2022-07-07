@@ -1,10 +1,9 @@
 ---
 language: node_js
 node_js:
-  - "8"
+  - "10"
 
-sudo: false
-dist: trusty
+dist: xenial
 
 addons:
   chrome: stable
@@ -30,6 +29,4 @@ install:
   - yarn install --non-interactive
 
 script:
-  - npm run lint:hbs
-  - npm run lint:js
-  - npm test
+  - yarn test

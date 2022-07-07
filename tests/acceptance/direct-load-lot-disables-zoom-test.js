@@ -30,7 +30,7 @@ module('Acceptance | direct load lot disables zoom', function(hooks) {
   });
 
   test('visiting lot', async function(assert) {
-    this.server.create('lot');
+    this.server.create('lot', { id: 1000630003 });
 
     await visit('/l/lot/1/63/3');
 

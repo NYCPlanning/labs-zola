@@ -1,10 +1,9 @@
 import Application from '@ember/application';
-import Ember from 'ember';
+import Resolver from 'ember-resolver';
 import loadInitializers from 'ember-load-initializers';
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
 import defineModifier from 'ember-concurrency-retryable/define-modifier';
-import Resolver from './resolver';
 import config from './config/environment';
 
 if (config.environment === 'production' || config.environment === 'staging') {

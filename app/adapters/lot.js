@@ -49,6 +49,7 @@ const LotColumnsSQL = [
 
 export const cartoQueryTemplate = function(id) {
   return `SELECT ${LotColumnsSQL.join(',')},
+    /* id:${id} */
     st_x(st_centroid(the_geom)) as lon, st_y(st_centroid(the_geom)) as lat,
     the_geom, bbl AS id FROM dcp_mappluto WHERE bbl=${id}`;
 };
