@@ -1,7 +1,6 @@
 import { module, test } from 'qunit';
 import { visit } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
@@ -64,7 +63,6 @@ module('Acceptance | visual diff routes', function(hooks) {
     });
 
     await visit('lot/1/187/21');
-    await percySnapshot('lot/1/187/21');
 
     assert.ok(true);
   });
@@ -78,7 +76,6 @@ module('Acceptance | visual diff routes', function(hooks) {
     });
 
     await visit('zoning-district/R3-2');
-    await percySnapshot('zoning-district/R3-2');
 
     assert.ok(true);
   });
@@ -94,7 +91,6 @@ module('Acceptance | visual diff routes', function(hooks) {
     });
 
     await visit('commercial-overlay/C2-5');
-    await percySnapshot('commercial-overlay/C2-5');
 
     assert.ok(true);
   });
@@ -114,7 +110,6 @@ module('Acceptance | visual diff routes', function(hooks) {
     });
 
     await visit('zma/090334zmk');
-    await percySnapshot('zma/090334zmk');
 
     assert.ok(true);
   });
@@ -130,7 +125,6 @@ module('Acceptance | visual diff routes', function(hooks) {
     });
 
     await visit('special-purpose-district/1');
-    await percySnapshot('special-purpose-district/1');
 
     assert.ok(true);
   });
@@ -146,7 +140,6 @@ module('Acceptance | visual diff routes', function(hooks) {
     });
 
     await visit('special-purpose-subdistrict/96');
-    await percySnapshot('special-purpose-subdistrict/96');
 
     assert.ok(true);
   });

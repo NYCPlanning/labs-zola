@@ -15,8 +15,7 @@
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
     "lint:hbs": "ember-template-lint .",
     "start": "ember serve",
-    "test": "npm-run-all lint:* test:*",
-    "test:ember": "ember test"
+    "test": "ember test"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.2",
@@ -81,7 +80,6 @@
     "ember-native-dom-helpers": "^0.6.2",
     "ember-needs-async": "https://github.com/allthesignals/ember-needs-async#8e052b9a4b1b5d043c385e3e64fccca0d55cac42",
     "ember-parachute": "1.0.2",
-    "ember-percy": "1.5.0",
     "ember-power-select": "^2.0.4",
     "ember-promise-helpers": "^1.0.6",
     "ember-query-params-service": "0.4.0",

@@ -7,7 +7,6 @@ import {
 } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
-import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import resetStorages from 'ember-local-storage/test-support/reset-storage';
 import Sinon from 'sinon';
@@ -49,7 +48,6 @@ module('Acceptance | bookmarks', function(hooks) {
 
   test('visiting /bookmarks', async function(assert) {
     await visit('/bookmarks');
-    await percySnapshot('default bookmarks view');
 
     assert.equal(currentURL(), '/bookmarks');
   });
@@ -57,7 +55,6 @@ module('Acceptance | bookmarks', function(hooks) {
   test('visiting /bookmarks, see empty message', async function(assert) {
     await visit('/bookmarks');
     await waitUntil(() => find('.content-area'));
-    await percySnapshot('default empty bookmarks view');
 
     assert.ok(find('.no-bookmarks'));
   });
@@ -69,13 +66,10 @@ module('Acceptance | bookmarks', function(hooks) {
 
     await visit('/lot/1/47/7501');
     await click('[data-test-bookmark="save"]');
-    await percySnapshot('save button works');
     await visit('/bookmarks');
-    await percySnapshot('saved bookmark appears');
     assert.equal(find('[data-test-lot-property="bbl"]').textContent.trim(), 1000477501);
 
     await click('.delete-bookmark-button');
-    await percySnapshot('bookmark deleted');
 
     assert.ok(find('.no-bookmarks'));
   });
@@ -91,11 +85,9 @@ module('Acceptance | bookmarks', function(hooks) {
     await visit('/lot/1/47/7501');
 
     assert.ok(find('[data-test-bookmark-button-saved="false"]'));
-    await percySnapshot('no bookmarks counted');
     await click('.bookmark-save-button');
 
     assert.ok(find('[data-test-bookmark-button-saved="true"]'));
-    await percySnapshot('counter has incremented');
     await click('.bookmark-save-button');
 
     assert.ok(find('[data-test-bookmark-button-saved="false"]'));
