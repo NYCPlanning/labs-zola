@@ -7226,9 +7226,9 @@ ember-local-storage@2.0.2:
     ember-cli-version-checker "^2.1.0"
     ember-copy "^2.0.1"
 
-"ember-mapbox-composer@https://github.com/allthesignals/ember-mapbox-composer#f7ef67053cb7e52459a2d3a42664723ce29846d5":
+"ember-mapbox-composer@git+https://github.com/allthesignals/ember-mapbox-composer#f7ef67053cb7e52459a2d3a42664723ce29846d5":
   version "0.2.3"
-  resolved "https://github.com/allthesignals/ember-mapbox-composer#f7ef67053cb7e52459a2d3a42664723ce29846d5"
+  resolved "git+https://github.com/allthesignals/ember-mapbox-composer#f7ef67053cb7e52459a2d3a42664723ce29846d5"
   dependencies:
     "@turf/union" "^6.0.0"
     cartobox-promises-utility "1.0.2"
@@ -7323,9 +7323,9 @@ ember-native-dom-helpers@^0.6.2:
     broccoli-funnel "^1.1.0"
     ember-cli-babel "^6.6.0"
 
-"ember-needs-async@https://github.com/allthesignals/ember-needs-async#8e052b9a4b1b5d043c385e3e64fccca0d55cac42":
+"ember-needs-async@git+https://github.com/allthesignals/ember-needs-async#8e052b9a4b1b5d043c385e3e64fccca0d55cac42":
   version "0.5.0"
-  resolved "https://github.com/allthesignals/ember-needs-async#8e052b9a4b1b5d043c385e3e64fccca0d55cac42"
+  resolved "git+https://github.com/allthesignals/ember-needs-async#8e052b9a4b1b5d043c385e3e64fccca0d55cac42"
   dependencies:
     ember-cli-babel "^7.7.3"
     ember-cli-htmlbars "^3.0.1"
