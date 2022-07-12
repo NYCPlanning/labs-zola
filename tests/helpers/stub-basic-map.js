@@ -86,10 +86,9 @@ const createMapStub = function(testContext) {
 
   @tagName('')
   class BasicMapStub extends Component {
-    init(...args) {
-      super.init(...args);
+    constructor(...args) {
+      super(...args);
 
-      registerWaiter(this._mapIsLoaded);
     }
 
     // used internally for testing. tells the test suite
@@ -99,10 +98,12 @@ const createMapStub = function(testContext) {
       return !!this.mapInstance;
     }
 
+    didInsertElement() {
+      registerWaiter(this._mapIsLoaded);
+    }
+
     willDestroyElement() {
       unregisterWaiter(this._mapIsLoaded);
-
-      this.map = {};
     }
 
     // labs-map (built on top of mapbox-gl) requires this, tries to handle this
