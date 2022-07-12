@@ -7,7 +7,7 @@
   <div class="labs-map-loaded"></div>
 
   {{!-- TODO: Added here to trigger private method override. Please refactor --}}
-  {{_run this '_onLoad' this._loader.map}}
+  {{run this '_onLoad' this._loader.map}}
 
   {{! Highlighted Layer Handling }}
   <MapboxGlLayer @map={{this._loader.map}} @layer={{this.highlightedLineFeatureLayer}} />
