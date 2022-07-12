@@ -1186,6 +1186,15 @@
     ember-cli-babel "^6.16.0"
     ember-compatibility-helpers "^1.1.1"
 
+"@ember/render-modifiers@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@ember/render-modifiers/-/render-modifiers-2.0.4.tgz#0ac7af647cb736076dbfcd54ca71e090cd329d71"
+  integrity sha512-Zh/fo5VUmVzYHkHVvzWVjJ1RjFUxA2jH0zCp2+DQa80Bf3DUXauiEByxU22UkN4LFT55DBFttC0xCQSJG3WTsg==
+  dependencies:
+    "@embroider/macros" "^1.0.0"
+    ember-cli-babel "^7.26.11"
+    ember-modifier-manager-polyfill "^1.2.0"
+
 "@ember/test-helpers@^1.7.1":
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/@ember/test-helpers/-/test-helpers-1.7.3.tgz#d06b36cb579b172186b11b236b90f0a1aba15ab0"
@@ -1210,7 +1219,7 @@
     resolve "^1.8.1"
     semver "^7.3.2"
 
-"@embroider/macros@^1.8.0":
+"@embroider/macros@^1.0.0", "@embroider/macros@^1.8.0":
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-1.8.3.tgz#2f0961ab8871f6ad819630208031d705b357757e"
   integrity sha512-gnIOfTL/pUkoD6oI7JyWOqXlVIUgZM+CnbH10/YNtZr2K0hij9eZQMdgjOZZVgN0rKOFw9dIREqc1ygrJHRYQA==
