@@ -86,11 +86,6 @@ const createMapStub = function(testContext) {
 
   @tagName('')
   class BasicMapStub extends Component {
-    constructor(...args) {
-      super(...args);
-
-    }
-
     // used internally for testing. tells the test suite
     // to wait until the map has loaded before proceeding
     @action
@@ -99,11 +94,11 @@ const createMapStub = function(testContext) {
     }
 
     didInsertElement() {
-      registerWaiter(this._mapIsLoaded);
+      // registerWaiter(this._mapIsLoaded);
     }
 
     willDestroyElement() {
-      unregisterWaiter(this._mapIsLoaded);
+      // unregisterWaiter(this._mapIsLoaded);
     }
 
     // labs-map (built on top of mapbox-gl) requires this, tries to handle this
