@@ -94,11 +94,11 @@ const createMapStub = function(testContext) {
     }
 
     didInsertElement() {
-      // registerWaiter(this._mapIsLoaded);
+      registerWaiter(this._mapIsLoaded);
     }
 
     willDestroyElement() {
-      // unregisterWaiter(this._mapIsLoaded);
+      unregisterWaiter(this._mapIsLoaded);
     }
 
     // labs-map (built on top of mapbox-gl) requires this, tries to handle this

@@ -8,9 +8,6 @@
   {{!-- TODO: Added here to trigger private method override. Please refactor --}}
   {{!-- {{run this '_onLoad' this._loader.map}} --}}
 
-  {{! Highlighted Layer Handling }}
-  <MapboxGlLayer @map={{this._loader.map}} @layer={{this.highlightedLineFeatureLayer}} />
-  <MapboxGlLayer @map={{this._loader.map}} @layer={{this.highlightedCircleFeatureLayer}} />
   {{yield
     (hash
       call=(component "mapbox-gl-call" obj=this._loader.map)
@@ -32,6 +29,7 @@
     )
   }}
 {{else if this._loader.error}}
+  <div class="error" {{did-insert (fn this.handleError this._loader.error)}}></div>
   {{#if (has-block 'inverse')}}
     {{yield this._loader.error to='inverse'}}
   {{else}}

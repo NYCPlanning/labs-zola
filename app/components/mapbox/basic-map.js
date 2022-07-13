@@ -37,10 +37,10 @@ export default class MapboxBasicMapComponent extends Component {
   }
 
   didInsertElement() {
-    // registerWaiter(this._mapIsLoaded);
+    registerWaiter(this._mapIsLoaded);
   }
 
   willDestroyElement() {
-    // unregisterWaiter(this._mapIsLoaded);
+    unregisterWaiter(this._mapIsLoaded);
   }
 }

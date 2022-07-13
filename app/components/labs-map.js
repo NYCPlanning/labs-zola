@@ -104,9 +104,17 @@ export default class LabsMap extends mapboxGlMap {
   layerGroups = null;
 
   @action
+  handleError(e) {
+    throw e;
+  }
+
+  @action
   _onLoad(map) {
     // add source for highlighted-feature
-    if (!this.get('isDestroyed')) map
+    map
       .addSource('hovered-feature', this.get('hoveredFeatureSource'));
+
+    map.addLayer(this.highlightedLineFeatureLayer);
+    map.addLayer(this.highlightedCircleFeatureLayer);
   }
 }
