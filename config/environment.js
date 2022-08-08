@@ -266,9 +266,8 @@ module.exports = function(environment) {
     },
 
     'labs-search': {
-      host: 'https://search-api-production.herokuapp.com',
       helpers: [
-        'geosearch',
+        'geosearch-v2',
         'bbl',
         'neighborhood',
         'zoning-district',
@@ -355,6 +354,8 @@ module.exports = function(environment) {
     ENV['ember-cli-mirage'] = {
       enabled: false,
     };
+
+    ENV['labs-search'].host = 'https://search-api-staging.herokuapp.com';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -374,19 +375,16 @@ module.exports = function(environment) {
     ENV.APP.autoboot = false;
 
     ENV['labs-search'] = {
-      host: 'https://search-api.planninglabs.nyc',
-      helpers: [
-        'geosearch',
-        'bbl',
-        'neighborhood',
-        'zoning-district',
-        'zoning-map-amendment',
-        'special-purpose-district',
-        'commercial-overlay',
-      ],
+      host: 'https://search-api-staging.herokuapp.com',
     };
 
     ENV.host = '';
+  }
+
+  if (environment === 'production') {
+    ENV['labs-search'] = {
+      host: 'https://search-api-production.herokuapp.com',
+    };
   }
 
   return ENV;
