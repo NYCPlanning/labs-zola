@@ -1,5 +1,5 @@
-export default function gtag(...args) {
+export default function gtag() {
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(args);
-  return args;
+  const event = arguments // eslint-disable-line
+  window.dataLayer.push(event);
 }
