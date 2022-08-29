@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
 import { next } from '@ember/runloop';
 import config from 'labs-zola/config/environment';
+import gtag from 'labs-zola/utils/gtag';
 
 const {
   zoningDistrictOptionSets,
@@ -141,6 +142,11 @@ export default class LayerPaletteComponent extends Component {
 
   @action
   handleLayerGroupToggle(layerGroup) {
+    gtag('event', 'toggle_layer', {
+      event_category: 'Layers',
+      event_action: `${layerGroup.visible ? 'Turned on' : 'Turned off'} ${layerGroup.legend.label}`,
+    });
+
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'Layers',

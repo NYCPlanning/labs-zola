@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { action } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
+import gtag from 'labs-zola/utils/gtag';
 import layout from '../../templates/components/labs-ui/layer-group-toggle';
 
 export default class LayerGroupToggle extends Component {
@@ -82,6 +83,11 @@ export default class LayerGroupToggle extends Component {
 
   @action
   async captureOutboundLink(label) {
+    gtag('event', 'external_link', {
+      event_category: 'Clicked Supporting Zoning Link',
+      event_action: `Clicked ${label} Link`,
+    });
+
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'External Link',

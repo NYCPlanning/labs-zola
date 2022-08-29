@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import numeral from 'numeral';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import gtag from 'labs-zola/utils/gtag';
 import drawStyles from '../layers/draw-styles';
 
 export default class MapMeasurementToolsComponent extends Component {
@@ -32,6 +33,11 @@ export default class MapMeasurementToolsComponent extends Component {
 
   @action
   async startDraw(type) {
+    gtag('event', 'draw_tool', {
+      event_category: 'Measurement',
+      event_action: 'Used measurement tool',
+    });
+
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'Measurement',

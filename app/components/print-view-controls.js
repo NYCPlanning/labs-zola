@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import gtag from 'labs-zola/utils/gtag';
 
 export default class PrintViewControls extends Component {
   classNames = ['print-view--controls', 'align-middle'];
@@ -24,6 +25,10 @@ export default class PrintViewControls extends Component {
 
   @action
   async disablePrintView() {
+    gtag('event', 'print', {
+      event_category: 'Print',
+      event_action: 'Disabled print view',
+    });
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'Print',

@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import gtag from 'labs-zola/utils/gtag';
 import bblDemux from '../utils/bbl-demux';
 
 export default class MapResourceSearchComponent extends Component {
@@ -18,6 +19,11 @@ export default class MapResourceSearchComponent extends Component {
     // if onSuccess from labs-bbl-lookup includes bbl, transition to lot route for that bbl
     // otherwise flyTo the block
     if (bbl) {
+      gtag('event', 'search', {
+        event_category: 'Search',
+        event_action: 'Used BBL Lookup',
+      });
+
       // GA
       this.get('metrics').trackEvent('GoogleAnalytics', {
         eventCategory: 'Search',
@@ -46,11 +52,19 @@ export default class MapResourceSearchComponent extends Component {
       // GA
       // address search maps to all-uppercase addresses whereas bbl lookups map to normal case addresses
       if (result.label.split(',')[0] === result.label.split(',')[0].toUpperCase()) {
+        gtag('event', 'search', {
+          event_category: 'Search',
+          event_action: 'Searched by Address',
+        });
         this.get('metrics').trackEvent('GoogleAnalytics', {
           eventCategory: 'Search',
           eventAction: 'Searched by Address',
         });
       } else {
+        gtag('event', 'search', {
+          event_category: 'Search',
+          event_action: 'Used BBL Lookup',
+        });
         this.get('metrics').trackEvent('GoogleAnalytics', {
           eventCategory: 'Search',
           eventAction: 'Used BBL Lookup',
@@ -68,6 +82,10 @@ export default class MapResourceSearchComponent extends Component {
     }
 
     if (type === 'zoning-district') {
+      gtag('event', 'search', {
+        event_category: 'Search',
+        event_action: 'Searched by Zoning District',
+      });
       // GA
       this.get('metrics').trackEvent('GoogleAnalytics', {
         eventCategory: 'Search',
