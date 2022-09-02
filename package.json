@@ -79,7 +79,7 @@
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-metrics": "0.13.0",
     "ember-native-dom-helpers": "^0.6.2",
-    "ember-needs-async": "git+https://github.com/allthesignals/ember-needs-async#8e052b9a4b1b5d043c385e3e64fccca0d55cac42",
+    "ember-needs-async": "git+https://github.com/NYCPlanning/ember-needs-async#4133bcfffe478f71845d1a9147fee25c1fdb2038",
     "ember-parachute": "1.0.2",
     "ember-power-select": "^2.0.4",
     "ember-promise-helpers": "^1.0.6",

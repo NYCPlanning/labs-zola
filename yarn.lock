@@ -7332,9 +7332,9 @@ ember-native-dom-helpers@^0.6.2:
     broccoli-funnel "^1.1.0"
     ember-cli-babel "^6.6.0"
 
-"ember-needs-async@git+https://github.com/allthesignals/ember-needs-async#8e052b9a4b1b5d043c385e3e64fccca0d55cac42":
+"ember-needs-async@git+https://github.com/NYCPlanning/ember-needs-async#4133bcfffe478f71845d1a9147fee25c1fdb2038":
   version "0.5.0"
-  resolved "git+https://github.com/allthesignals/ember-needs-async#8e052b9a4b1b5d043c385e3e64fccca0d55cac42"
+  resolved "git+https://github.com/NYCPlanning/ember-needs-async#4133bcfffe478f71845d1a9147fee25c1fdb2038"
   dependencies:
     ember-cli-babel "^7.7.3"
     ember-cli-htmlbars "^3.0.1"
