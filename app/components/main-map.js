@@ -6,7 +6,6 @@ import { computed, action } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
 import { alias } from '@ember/object/computed';
 
-import gtag from 'labs-zola/utils/gtag';
 import bblDemux from '../utils/bbl-demux';
 import drawnFeatureLayers from '../layers/drawn-feature';
 import selectedLayers from '../layers/selected-lot';

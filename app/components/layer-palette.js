@@ -4,7 +4,6 @@ import { action } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
 import { next } from '@ember/runloop';
 import config from 'labs-zola/config/environment';
-import gtag from 'labs-zola/utils/gtag';
 
 const {
   zoningDistrictOptionSets,

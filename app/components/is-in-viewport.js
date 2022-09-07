@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import InViewportMixin from 'ember-in-viewport';
 import { inject as service } from '@ember/service';
-import gtag from 'labs-zola/utils/gtag';
 
 export default class IsInViewportComponent extends Component.extend(InViewportMixin) {
   inView;

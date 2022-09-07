@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import gtag from 'labs-zola/utils/gtag';
 import layout from '../../../templates/components/bookmarks/types/-default';
 
 export default class DefaultBookmark extends Component {

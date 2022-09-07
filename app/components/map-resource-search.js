@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import gtag from 'labs-zola/utils/gtag';
 import bblDemux from '../utils/bbl-demux';
 
 export default class MapResourceSearchComponent extends Component {
