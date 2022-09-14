@@ -12,6 +12,7 @@ module('Unit | Model | lot', function(hooks) {
         cd: '1',
         block: '1',
         lot: '1',
+        borocode: '1',
       },
     });
 
@@ -27,6 +28,7 @@ module('Unit | Model | lot', function(hooks) {
         cd: '104',
         block: '1',
         lot: '1',
+        borocode: '1',
       },
     });
 
@@ -98,6 +100,7 @@ module('Unit | Model | lot', function(hooks) {
         cd: '104',
         block: '1',
         lot: '1',
+        borocode: '1',
       },
     });
 
@@ -114,6 +117,7 @@ module('Unit | Model | lot', function(hooks) {
         cd: '104',
         address: '123 street',
         street: 'street',
+        borocode: '1',
       },
     });
 

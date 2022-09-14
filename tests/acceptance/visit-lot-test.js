@@ -17,6 +17,9 @@ module('Acceptance | visit lot', function(hooks) {
   test('visiting a lot', async function(assert) {
     this.server.create('lot', {
       id: 1016320001,
+      properties: {
+        borocode: '1',
+      },
     });
 
     await visit('/l/lot/1/1632/1');
@@ -28,6 +31,9 @@ module('Acceptance | visit lot', function(hooks) {
   test('visiting a bbl', async function(assert) {
     this.server.create('lot', {
       id: 1001870021,
+      properties: {
+        borocode: '1',
+      },
     });
 
     await visit('/bbl/1001870021');
@@ -40,6 +46,11 @@ module('Acceptance | visit lot', function(hooks) {
   test('visiting a lot with special purpose districts', async function(assert) {
     this.server.create('lot', {
       id: 1001870021,
+      properties: {
+        borocode: '1',
+        spdist1: 'TMU',
+        zonedist1: 'C5-3',
+      },
     });
 
     this.server.get('https://planninglabs.carto.com/api/v2/sql', (schema, request) => {
@@ -52,7 +63,7 @@ module('Acceptance | visit lot', function(hooks) {
         let schemaModel = schema.cartoGeojsonFeatures.all();
 
         // if it includes mappluto, it's asking for lots
-        if (q.includes('mappluto')) {
+        if (q.includes('dcp_mappluto')) {
           schemaModel = schema.lots.all();
         }
 
@@ -67,8 +78,8 @@ module('Acceptance | visit lot', function(hooks) {
       if (q.includes('special_purpose_districts')) {
         return {
           rows: [{
-            sdname: 'Special Grand Concourse Preservation District',
-            sdlbl: 'test',
+            sdname: 'Special Tribeca Mixed Use District',
+            sdlbl: 'TMU',
           }],
         };
       }
@@ -76,7 +87,7 @@ module('Acceptance | visit lot', function(hooks) {
       return { rows: [] };
     });
 
-    await visit('/bbl/1001870021');
+    await visit('/l/lot/1/187/21');
 
     assert.ok(find('[data-test-special-district]'));
   });

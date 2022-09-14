@@ -323,6 +323,8 @@ export default class LotFragment extends MF.Fragment {
 
     @attr('string') bldgclass;
 
+    @attr('string') borocode;
+
     @attr('number') lat;
 
     @attr('number') lon;
@@ -412,12 +414,6 @@ export default class LotFragment extends MF.Fragment {
       return bldgclassLookup[this.bldgclass];
     }
 
-    @computed('cd')
-    get borocode() {
-      const borocd = this.cd;
-      return `${borocd}`.substring(0, 1);
-    }
-
     @computed('borough')
     get boroname() {
       return boroughLookup[this.borough];
@@ -426,16 +422,16 @@ export default class LotFragment extends MF.Fragment {
     @computed('cd')
     get cdName() {
       const borocd = this.cd;
-      const boro = `${borocd}`.substring(0, 1);
+      const cdborocode = `${borocd}`.substring(0, 1);
       const cd = parseInt(`${borocd}`.substring(1, 3), 10).toString();
-      return `${boroLookup[boro]} Community District ${cd}`;
+      return `${boroLookup[cdborocode]} Community District ${cd}`;
     }
 
     @computed('cd')
     get cdURLSegment() {
       const borocd = this.cd;
-      const boro = `${borocd}`.substring(0, 1);
-      const cleanBorough = boroLookup[boro].toLowerCase().replace(/\s/g, '-');
+      const borocode = this.borocode; // eslint-disable-line prefer-destructuring
+      const cleanBorough = boroLookup[borocode].toLowerCase().replace(/\s/g, '-');
       const cd = parseInt(`${borocd}`.substring(1, 3), 10).toString();
       return `${cleanBorough}/${cd}`;
     }

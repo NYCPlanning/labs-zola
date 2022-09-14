@@ -65,6 +65,9 @@ module('Acceptance | bookmarks', function(hooks) {
   test('search lot, save, find result in bookmarks, delete it', async function(assert) {
     this.server.create('lot', {
       id: 1000477501,
+      properties: {
+        borocode: '1',
+      },
     });
 
     await visit('/lot/1/47/7501');
@@ -86,6 +89,9 @@ module('Acceptance | bookmarks', function(hooks) {
   test('bookmark lot, see count increase, un-bookmark', async function(assert) {
     this.server.create('lot', {
       id: 1000477501,
+      properties: {
+        borocode: '1',
+      },
     });
 
     await visit('/lot/1/47/7501');
@@ -112,6 +118,7 @@ module('Acceptance | bookmarks', function(hooks) {
         block: 'test',
         lot: 'test',
         address: 'test',
+        borocode: '1',
       },
     });
 
@@ -140,10 +147,16 @@ module('Acceptance | bookmarks', function(hooks) {
   test('it displays a multiple lots', async function(assert) {
     this.server.create('lot', {
       id: 1,
+      properties: {
+        borocode: '1',
+      },
     });
 
     this.server.create('lot', {
       id: 2,
+      properties: {
+        borocode: '1',
+      },
     });
 
     // load storage with dummy data
@@ -154,7 +167,7 @@ module('Acceptance | bookmarks', function(hooks) {
         bookmark: {
           data: {
             type: 'lots',
-            id: 1, // id must match what is returned from carto
+            id: '1', // id must match what is returned from carto
           },
         },
       },
