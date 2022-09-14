@@ -9,6 +9,10 @@ export default class IsInViewportComponent extends Component.extend(InViewportMi
   metrics;
 
   didEnterViewport() {
+    gtag('event', 'road_view', {
+      event_category: 'Road View',
+      event_action: 'Scrolled to bottom of a side panel',
+    });
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'Road View',

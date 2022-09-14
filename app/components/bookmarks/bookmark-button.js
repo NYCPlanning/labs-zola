@@ -24,6 +24,11 @@ export default class BookmarkButton extends Component {
     const resolvedBookmark = await bookmark;
 
     if (resolvedBookmark) {
+      gtag('event', 'delete_bookmark', {
+        event_category: 'Bookmark',
+        event_action: 'Deleted Bookmark',
+      });
+
       resolvedBookmark.deleteRecord();
       resolvedBookmark.save();
     } else {
@@ -33,6 +38,11 @@ export default class BookmarkButton extends Component {
 
   @action
   async createBookmark() {
+    gtag('event', 'bookmark', {
+      event_category: 'Bookmark',
+      event_action: 'Used Bookmark',
+    });
+
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'Bookmark',

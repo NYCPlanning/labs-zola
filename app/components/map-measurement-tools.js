@@ -32,6 +32,11 @@ export default class MapMeasurementToolsComponent extends Component {
 
   @action
   async startDraw(type) {
+    gtag('event', 'draw_tool', {
+      event_category: 'Measurement',
+      event_action: 'Used measurement tool',
+    });
+
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'Measurement',
