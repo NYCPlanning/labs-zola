@@ -374,17 +374,13 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
 
-    ENV['labs-search'] = {
-      host: 'https://search-api-staging.herokuapp.com',
-    };
+    ENV['labs-search'].host = 'https://search-api-staging.herokuapp.com';
 
     ENV.host = '';
   }
 
   if (environment === 'production') {
-    ENV['labs-search'] = {
-      host: 'https://search-api-production.herokuapp.com',
-    };
+    ENV['labs-search'].host = 'https://search-api-production.herokuapp.com';
   }
 
   return ENV;
