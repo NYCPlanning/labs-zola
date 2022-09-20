@@ -14,8 +14,10 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      // gtag('config', 'G-CL1BGY7RZM', { 'debug_mode':true });
-      gtag('config', 'G-CL1BGY7RZM');
+      if(window.location.hostname.includes('zola') && (!window.location.hostname.includes('preview'))) {
+        // gtag('config', 'G-CL1BGY7RZM', { 'debug_mode':true });
+        gtag('config', 'G-CL1BGY7RZM');
+      }
     </script>
  
     <!-- Twitter Card -->
