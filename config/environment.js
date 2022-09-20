@@ -143,6 +143,10 @@ module.exports = function(environment) {
       ['Special South Richmond Development District', ['SRD', 'staten-island']],
       ['Special Stapleton Waterfront District', ['SW', 'staten-island']],
       ['Special Gowanus Mixed-Use District', ['G', 'brooklyn']],
+      ['Special SoHo-NoHo Mixed Use District', ['SNX', 'manhattan']],
+      ['Special Brooklyn Navy Yard ', ['BNY', 'brooklyn']],
+      ['Special 125th Street District', ['125th', 'manhattan']],
+      ['Special Enhanced Commercial District', ['EC', ' brooklyn']],
     ],
 
     zoningDistrictOptionSets: [
