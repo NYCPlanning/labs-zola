@@ -42,7 +42,12 @@ module('Acceptance | index', function(hooks) {
   });
 
   test('map-search enter on first search result', async function(assert) {
-    this.server.create('lot', { id: 1000477501 });
+    this.server.create('lot', {
+      id: 1000477501,
+      properties: {
+        borocode: '1',
+      },
+    });
     await visit('/');
     await percySnapshot('view on first load');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
@@ -58,7 +63,13 @@ module('Acceptance | index', function(hooks) {
   });
 
   test('map-search keydown, keyup, keyup -> first result highlighted', async function(assert) {
-    this.server.create('lot', { id: 1000477501 });
+    this.server.create('lot', {
+      id: 1000477501,
+      properties: {
+        borocode: '1',
+      },
+    });
+
     await visit('/');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
     await waitUntil(() => find('.has-results'), { timeout });
@@ -73,7 +84,12 @@ module('Acceptance | index', function(hooks) {
   });
 
   test('it does BBL lookup', async function(assert) {
-    this.server.create('lot', { id: 1000477501 });
+    this.server.create('lot', {
+      id: 1000477501,
+      properties: {
+        borocode: '1',
+      },
+    });
 
     await visit('/');
     await click('[data-test-search="bbl"] span');
