@@ -1,4 +1,4 @@
-import { module, test, skip } from 'qunit';
+import { module, test } from 'qunit';
 import { visit, find } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
@@ -40,7 +40,12 @@ module('Acceptance | lot route retries after error', function(hooks) {
   test('it returns a valid lot after retry', async function(assert) {
     let requests = 0;
 
-    this.server.create('lot', { id: 1016320001 });
+    this.server.create('lot', {
+      id: 1016320001,
+      properties: {
+        borocode: '1',
+      },
+    });
 
     this.server.get('https://planninglabs.carto.com/api/v2/sql', (schema, request) => {
       // special handling for json format
@@ -69,8 +74,13 @@ module('Acceptance | lot route retries after error', function(hooks) {
   // the assertion works (in the finally clause), but for some
   // reason the error returned from the store is not being caught
   // by the task
-  skip('it still handles an error state', async function(assert) {
-    this.server.create('lot', { id: 1016320001 });
+  ('it still handles an error state', async function(assert) { // eslint-disable-line no-unused-expressions
+    this.server.create('lot', {
+      id: 1016320001,
+      properties: {
+        borocode: '1',
+      },
+    });
 
     this.server.get('https://planninglabs.carto.com/api/v2/sql',
       () => new Response(400, {}, { error: ['query_timeout_exceeded'] }));
@@ -85,13 +95,23 @@ module('Acceptance | lot route retries after error', function(hooks) {
   });
 
   test('it still clicks through to subsequent lots', async function(assert) {
-    this.server.create('lot', { id: 1016320001 });
+    this.server.create('lot', {
+      id: 1016320001,
+      properties: {
+        borocode: '1',
+      },
+    });
 
     await visit('/lot/1/1632/1');
 
     // workaround to get mirage to provide a different tax lot record
     this.server.db.lots.remove();
-    this.server.create('lot', { id: 1001870021 });
+    this.server.create('lot', {
+      id: 1001870021,
+      properties: {
+        borocode: '1',
+      },
+    });
 
     await clickMap(this.map, { bbl: 1001870021, cartodb_id: 1001870021 });
 
@@ -100,7 +120,12 @@ module('Acceptance | lot route retries after error', function(hooks) {
 
   test('it lands on the last-clicked lot', async function(assert) {
     this.server.timing = 500;
-    this.server.create('lot', { id: 1016320001 });
+    this.server.create('lot', {
+      id: 1016320001,
+      properties: {
+        borocode: '1',
+      },
+    });
 
     await visit('/lot/1/1632/1');
 
@@ -110,7 +135,12 @@ module('Acceptance | lot route retries after error', function(hooks) {
     clickMap(this.map, { bbl: 1001870022, cartodb_id: 1001870022 });
 
     this.server.db.lots.remove();
-    this.server.create('lot', { id: 1001870023 });
+    this.server.create('lot', {
+      id: 1001870023,
+      properties: {
+        borocode: '1',
+      },
+    });
 
     await clickMap(this.map, { bbl: 1001870023, cartodb_id: 1001870023 });
 
@@ -120,7 +150,12 @@ module('Acceptance | lot route retries after error', function(hooks) {
 
   test('subsequent lot clicks fire only network request for a resource', async function(assert) {
     let requests = 0;
-    this.server.create('lot', { id: 1016320001 });
+    this.server.create('lot', {
+      id: 1016320001,
+      properties: {
+        borocode: '1',
+      },
+    });
     this.server.get('https://planninglabs.carto.com/api/v2/sql', (schema, request) => {
       // special handling for json format
       if (request.queryParams.format === 'json') {
@@ -136,7 +171,12 @@ module('Acceptance | lot route retries after error', function(hooks) {
 
     // workaround to get mirage to provide a different tax lot record
     this.server.db.lots.remove();
-    this.server.create('lot', { id: 1001870021 });
+    this.server.create('lot', {
+      id: 1001870021,
+      properties: {
+        borocode: '1',
+      },
+    });
 
     await clickMap(this.map, { bbl: 1001870021, cartodb_id: 1001870021 });
 

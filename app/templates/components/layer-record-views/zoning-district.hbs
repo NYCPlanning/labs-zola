@@ -12,6 +12,7 @@
     <a
       href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{this.model.primaryzoneURL}}.page"
       target="_blank"
+      onclick={{action this.captureOutboundLink this.model.zonedist}}
     >
       {{fa-icon "external-link-alt"}}
       Learn more about
@@ -24,6 +25,7 @@
     <a
       href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-manhattan.page#battery_park"
       target="_blank"
+      onclick={{action this.captureOutboundLink "Special Battery Park City"}}
     >
       {{fa-icon "external-link-alt"}}
       Learn more about the Special Battery Park City District&hellip;

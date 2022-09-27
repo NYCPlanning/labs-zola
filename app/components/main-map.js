@@ -42,6 +42,9 @@ export default class MainMap extends Component {
   @service
   router;
 
+  @service('print')
+  printSvc;
+
   menuTo = 'layers-menu';
 
   loading = true;
@@ -55,6 +58,17 @@ export default class MainMap extends Component {
   drawnFeatureLayers = drawnFeatureLayers;
 
   highlightedLayerId = null;
+
+  widowResize() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const resizeEvent = window.document.createEvent('UIEvents');
+        resizeEvent.initUIEvent('resize', true, false, window, 0);
+        window.dispatchEvent(resizeEvent);
+        resolve();
+      }, 300);
+    });
+  }
 
   @computed('layerGroupsObject')
   get mapConfig() {
@@ -254,5 +268,17 @@ export default class MainMap extends Component {
   @action
   handleLayerHighlight(e, Layer) {
     this.set('highlightedLayerId', Layer.get('id'));
+  }
+
+  @action
+  async enablePrintView() {
+    gtag('event', 'print', {
+      event_category: 'Print',
+      event_action: 'Enabled print view',
+    });
+
+    this.set('printSvc.enabled', true);
+
+    await this.widowResize();
   }
 }

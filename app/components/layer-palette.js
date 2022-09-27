@@ -141,6 +141,11 @@ export default class LayerPaletteComponent extends Component {
 
   @action
   handleLayerGroupToggle(layerGroup) {
+    gtag('event', 'toggle_layer', {
+      event_category: 'Layers',
+      event_action: `${layerGroup.visible ? 'Turned on' : 'Turned off'} ${layerGroup.legend.label}`,
+    });
+
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'Layers',

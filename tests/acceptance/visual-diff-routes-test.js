@@ -20,6 +20,7 @@ module('Acceptance | visual diff routes', function(hooks) {
         address: '32 WEST 25 STREET',
         bldgarea: 5000,
         bldgclass: 'K1',
+        borocode: '1',
         lat: 40.7434315461862,
         lon: -73.9906654966893,
         block: 826,

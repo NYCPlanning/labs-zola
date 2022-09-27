@@ -82,6 +82,11 @@ export default class LayerGroupToggle extends Component {
 
   @action
   async captureOutboundLink(label) {
+    gtag('event', 'external_link', {
+      event_category: 'Clicked Supporting Zoning Link',
+      event_action: `Clicked ${label} Link`,
+    });
+
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'External Link',

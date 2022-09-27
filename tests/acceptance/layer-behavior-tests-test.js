@@ -204,6 +204,9 @@ module('Acceptance | layer behavior tests', function(hooks) {
   test('Tax Lots', async function(assert) {
     this.server.create('lot', {
       id: 3034430054,
+      properties: {
+        borocode: '3',
+      },
     });
 
     // it adds the layers when toggled or if default
