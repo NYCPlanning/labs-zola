@@ -271,7 +271,7 @@ module.exports = function(environment) {
 
     'labs-search': {
       helpers: [
-        'geosearch',
+        'geosearch-v2',
         'bbl',
         'neighborhood',
         'zoning-district',
