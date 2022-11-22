@@ -14,7 +14,7 @@
     "build": "ember build",
     "lint": "./node_modules/.bin/eslint ./*.js app config lib server tests",
     "lint:hbs": "ember-template-lint .",
-    "start": "ember serve",
+    "start": "ember serve -dev",
     "test": "ember test",
     "prepare": "husky install"
   },
@@ -108,7 +108,7 @@
     "fastboot": "2.0.1",
     "foundation-sites": "6.5.0-rc.4",
     "husky": "^6.0.0",
-    "labs-ember-search": "^3.1.5",
+    "labs-ember-search": "3.1.6",
     "labs-ui": "^0.0.24",
     "lint-staged": ">=10",
     "loader.js": "^4.7.0",

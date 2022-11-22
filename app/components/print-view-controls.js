@@ -24,6 +24,10 @@ export default class PrintViewControls extends Component {
 
   @action
   async disablePrintView() {
+    gtag('event', 'print', {
+      event_category: 'Print',
+      event_action: 'Disabled print view',
+    });
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'Print',

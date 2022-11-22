@@ -11,6 +11,10 @@ export default class MapboxFixMapToAllButton extends Component {
 
   @action
   fitBounds() {
+    gtag('event', 'fit_map', {
+      event_category: 'Fit Map to Districts',
+    });
+
     this.get('mainMap.setBounds').perform(this.model.bounds);
   }
 }
