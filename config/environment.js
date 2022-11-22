@@ -1,6 +1,7 @@
 'use strict';
 
 const HOST = process.env.API_HOST || 'https://layers-api.planninglabs.nyc';
+const CARTO_USER = process.env.CARTO_USER || 'planninglabs';
 
 module.exports = function(environment) {
   const ENV = {
@@ -282,8 +283,8 @@ module.exports = function(environment) {
     },
 
     carto: {
-      username: 'planninglabs',
-      domain: 'https://planninglabs.carto.com',
+      username: CARTO_USER,
+      domain: `https://${CARTO_USER}.carto.com`,
     },
 
     fontawesome: {
