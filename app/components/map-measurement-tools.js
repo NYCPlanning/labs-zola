@@ -11,6 +11,9 @@ export default class MapMeasurementToolsComponent extends Component {
   @service
   metrics;
 
+  @service
+  media;
+
   measurementUnitType = 'standard';
 
   drawnMeasurements = null;
