@@ -143,6 +143,10 @@ module.exports = function(environment) {
       ['Special South Richmond Development District', ['SRD', 'staten-island']],
       ['Special Stapleton Waterfront District', ['SW', 'staten-island']],
       ['Special Gowanus Mixed-Use District', ['G', 'brooklyn']],
+      ['Special SoHo-NoHo Mixed Use District', ['SNX', 'manhattan']],
+      ['Special Brooklyn Navy Yard', ['BNY', 'brooklyn']],
+      ['Special 125th Street District', ['125th', 'manhattan']],
+      ['Special Enhanced Commercial District', ['EC', ' brooklyn']],
     ],
 
     zoningDistrictOptionSets: [
@@ -266,9 +270,8 @@ module.exports = function(environment) {
     },
 
     'labs-search': {
-      host: 'https://search-api-production.herokuapp.com',
       helpers: [
-        'geosearch',
+        'geosearch-v2',
         'bbl',
         'neighborhood',
         'zoning-district',
@@ -355,6 +358,8 @@ module.exports = function(environment) {
     ENV['ember-cli-mirage'] = {
       enabled: false,
     };
+
+    ENV['labs-search'].host = 'https://search-api-staging.herokuapp.com';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -373,20 +378,13 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
 
-    ENV['labs-search'] = {
-      host: 'https://search-api.planninglabs.nyc',
-      helpers: [
-        'geosearch',
-        'bbl',
-        'neighborhood',
-        'zoning-district',
-        'zoning-map-amendment',
-        'special-purpose-district',
-        'commercial-overlay',
-      ],
-    };
+    ENV['labs-search'].host = 'https://search-api-staging.herokuapp.com';
 
     ENV.host = '';
+  }
+
+  if (environment === 'production') {
+    ENV['labs-search'].host = 'https://search-api-production.herokuapp.com';
   }
 
   return ENV;

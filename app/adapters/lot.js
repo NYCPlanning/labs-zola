@@ -8,6 +8,7 @@ const LotColumnsSQL = [
   'bldgclass',
   'block',
   'borough',
+  'borocode',
   'cd',
   'condono',
   'council',

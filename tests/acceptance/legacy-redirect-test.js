@@ -13,7 +13,12 @@ module('Acceptance | legacy redirect', function(hooks) {
   });
 
   test('visiting a non-namespaced URL redirects', async function(assert) {
-    this.server.create('lot', { id: 1000163201 });
+    this.server.create('lot', {
+      id: 1000163201,
+      properties: {
+        borocode: '1',
+      },
+    });
     await visit('/lot/1/1632/1');
 
     assert.ok(currentURL().includes('/l/lot/1/1632/1'));

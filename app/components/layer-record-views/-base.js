@@ -10,6 +10,10 @@ export default class LayerRecordBase extends Component {
 
   @action
   async captureOutboundLink(label) {
+    gtag('event', 'external_link', {
+      event_category: 'External Link',
+      event_action: `Clicked ${label} Link`,
+    });
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'External Link',

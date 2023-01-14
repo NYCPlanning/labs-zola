@@ -31,13 +31,6 @@ export default class PrintService extends Service {
 
   @computed('printViewHiddenAreas', 'enabled', 'printViewPaperSize', 'printViewOrientation', 'printViewHiddenAreas')
   get printViewClasses() {
-    // GA
-    this.get('metrics').trackEvent('GoogleAnalytics', {
-      eventCategory: 'Print',
-      eventAction: `${this.enabled ? 'Enabled print view' : ''}`,
-      eventLabel: 'export',
-    });
-
     const orientation = this.printViewOrientation;
     const size = this.printViewPaperSize;
     const areas = this.printViewHiddenAreas;

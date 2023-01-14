@@ -11023,10 +11023,10 @@ klaw@^1.0.0:
   optionalDependencies:
     graceful-fs "^4.1.9"
 
-labs-ember-search@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/labs-ember-search/-/labs-ember-search-3.1.5.tgz#dfc240b74da07b4b133448f23d9cea1843d3e6cd"
-  integrity sha512-Is3ZGrQNfU0z6iBtqjsxplqEvOR1EnGpWCtJ1yS/obMhwbJaENgJKd3Ovu4KRJ28tnLQedQsq56eeyqMNnCzoQ==
+labs-ember-search@3.1.6:
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/labs-ember-search/-/labs-ember-search-3.1.6.tgz#18891fe83fca585655d3e19433e5907228f209f1"
+  integrity sha512-DeyuRHjb0Le+3GqYcdiJWBvNFVZ5p//+fo4d9YlkJWacIQuDWOjSQ2fS/FVRe/9ySCdQiLFVOa+PukvFzgyJ3Q==
   dependencies:
     "@fortawesome/ember-fontawesome" "^0.1.9"
     "@fortawesome/free-regular-svg-icons" "^5.7.1"

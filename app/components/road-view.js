@@ -13,4 +13,11 @@ export default class RoadView extends Component.extend(InViewportMixin) {
   get url() {
     return `https://roadview.planninglabs.nyc/view/${this.lon}/${this.lat}`;
   }
+
+  onClick() {
+    gtag('event', 'external_link', {
+      event_category: 'External Link',
+      event_action: 'Clicked Cyclomedia Street View Link',
+    });
+  }
 }
