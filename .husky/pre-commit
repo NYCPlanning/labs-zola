@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+open http://localhost:4200/tests
+yarn run lint-staged

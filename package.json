@@ -110,6 +110,7 @@
     "husky": "^6.0.0",
     "labs-ember-search": "3.1.6",
     "labs-ui": "^0.0.24",
+    "lint-staged": "^13.1.0",
     "loader.js": "^4.7.0",
     "mapbox-gl": "1.0.0",
     "mapbox-gl-draw": "0.16.0",
