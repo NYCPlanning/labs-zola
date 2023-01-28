@@ -74,7 +74,7 @@
     "ember-in-viewport": "^3.1.3",
     "ember-load-initializers": "^2.1.1",
     "ember-local-storage": "2.0.2",
-    "ember-mapbox-composer": "0.3.0",
+    "ember-mapbox-composer": "git+https://github.com/NYCPlanning/ember-mapbox-composer#126679e2e3a2f619c3d1d72744052c6c1cb41707",
     "ember-mapbox-gl": "0.16.0",
     "ember-mapbox-gl-draw": "2.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
@@ -118,10 +118,10 @@
     "prember": "1.1.0",
     "prember-middleware": "0.1.0",
     "pretender": "^3.4.7",
-    "sinon": "7.3.2"
+    "sinon": "^15.0.1"
   },
   "engines": {
-    "node": "12"
+    "node": "14"
   },
   "ember": {
     "edition": "octane"
