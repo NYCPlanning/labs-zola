@@ -30,6 +30,7 @@
     "@glimmer/tracking": "^1.0.0",
     "@turf/area": "^6.0.1",
     "@turf/line-distance": "^4.7.3",
+    "babel-eslint": "^10.1.0",
     "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.3",
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-clean-css": "^2.0.1",
