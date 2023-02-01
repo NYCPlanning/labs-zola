@@ -7366,9 +7366,10 @@ ember-local-storage@2.0.2:
     ember-cli-version-checker "^2.1.0"
     ember-copy "^2.0.1"
 
-"ember-mapbox-composer@git+https://github.com/NYCPlanning/ember-mapbox-composer#126679e2e3a2f619c3d1d72744052c6c1cb41707":
-  version "0.3.0"
-  resolved "git+https://github.com/NYCPlanning/ember-mapbox-composer#126679e2e3a2f619c3d1d72744052c6c1cb41707"
+ember-mapbox-composer@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/ember-mapbox-composer/-/ember-mapbox-composer-0.4.0.tgz#fd0c4ca383777192d5a3e27231a38257833df56e"
+  integrity sha512-2CaZRvGTdJBS/I8n9STT2KtTT+bOgdF9ZovlRwPQm9F4hmwM0UXeGLayWV3dofNO/pU9ZLfA6k+v4tuxXNzhCg==
   dependencies:
     "@turf/union" "^6.0.0"
     cartobox-promises-utility "1.0.2"
