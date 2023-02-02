@@ -7,14 +7,22 @@ export default class ZoningDistrictRoute extends Route {
     const { id } = params;
     const { search } = this.paramsFor('map-feature');
 
-    const response = await fetch(`${config.zapApiHost}/projects?action-ulurpnumber[]=${id}`);
-    const ulurp = await response.json();
-    const zapId = (ulurp.data.length === 1) ? ulurp.data[0].id : null;
+    try {
+      const response = await fetch(`${config.zapApiHost}/projects?action-ulurpnumber[]=${id}`);
+      const ulurp = await response.json();
+      const zapId = (ulurp.data.length === 1) ? ulurp.data[0].id : null;
 
-    return {
-      id,
-      search,
-      zapId,
-    };
+      return {
+        id,
+        search,
+        zapId,
+      };
+    } catch (e) {
+      console.error('Could not query ULURP', e); // eslint-disable-line
+      return {
+        id,
+        search,
+      };
+    }
   }
 }
