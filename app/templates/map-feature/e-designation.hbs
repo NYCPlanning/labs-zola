@@ -1,0 +1,13 @@
+<CartoDataProvider
+    @modelId={{this.model.id}}
+    @modelName="e-designation" as |eDesignation|
+>
+    <Mapbox::MapFeatureRenderer 
+        @model={{eDesignation}}
+    />
+
+<LayerRecordViews::EDesignation
+    @model={{eDesignation.properties}}
+  />
+
+</CartoDataProvider>
