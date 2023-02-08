@@ -1,0 +1,53 @@
+<label class="header-type">
+    E-DESIGNATION
+</label>
+<h1 class="header-large">
+    {{this.model.address}}
+</h1>
+<p>
+    A property with an E-designation means that, as a consequence of a zoning action, a property has environmental requirements relating to air, noise or hazardous materials that must be investigated and addressed before an owner can obtain a building permit for the property's redevelopment. To learn more about E-Designations and environmental cleanup, 
+    <a href="https://www.nyc.gov/site/oer/remediation/city-environmental-quality-review.page" target="_blank">
+    click here.
+    </a>
+</p>
+<hr class="hide-for-print">
+<h2 class="header-large">
+    E-Designation Information
+</h2>
+<div class="data-grid">
+    <label class="data-label">
+        CEQR Number
+    </label>
+    <span class="datum">
+          {{this.model.ceqr_num}}
+      </span>
+</div>
+<div class="data-grid">
+    <label class="data-label">
+        E-Number
+    </label>
+    <span class="datum">
+          {{this.model.enumber}}
+      </span>
+</div>
+<div class="data-grid">
+    <label class="data-label">
+        ULURP Number
+    </label>
+    <span class="datum">
+          {{this.model.ulurp_num}}
+      </span>
+</div>
+<br>
+<p>
+    To learn more about this project and its associated E-Designation, click the link below to open CEQR Access. Enter the CEQR Number listed above into the CEQR Number input on that page and click Search.
+</p>
+<div class="ceqr-access hide-for-print">
+  <a
+    class="button gray large reset-map-button hide-for-print"
+    href="https://www.nyc.gov/site/oer/remediation/city-environmental-quality-review.page"
+    target="_blank"
+  >
+    {{fa-icon "external-link-alt"}} CEQR Access
+  </a>
+</div>
