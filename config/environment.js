@@ -10,6 +10,7 @@ module.exports = function(environment) {
     locationType: 'auto',
     host: HOST,
     namespace: 'v1',
+    zapApiHost: 'https://zap-api-production.herokuapp.com',
 
     gReCaptcha: {
       jsUrl: 'https://www.google.com/recaptcha/api.js?render=explicit',
