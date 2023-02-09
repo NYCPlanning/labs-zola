@@ -12,5 +12,5 @@ skip('it renders', function(assert) {
 
   this.render(hbs`{{road-view}}`);
 
-  assert.equal(find('*').textContent.trim(), '');
+  assert.equal(this.element.textContent.trim(), '');
 });

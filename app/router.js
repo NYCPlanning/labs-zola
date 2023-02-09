@@ -2,10 +2,10 @@ import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
 import trackPage from './mixins/track-page';
 
-const Router = EmberRouter.extend(trackPage, {
-  location: config.locationType,
-  rootURL: config.rootURL,
-});
+export default class Router extends EmberRouter.extend(trackPage) {
+  location = config.locationType;
+  rootURL = config.rootURL;
+}
 
 Router.map(function () {// eslint-disable-line
   // supplementary navigation routes
@@ -40,5 +40,3 @@ Router.map(function () {// eslint-disable-line
   this.route('legacy-redirects', { path: '/zma/:id' });
   this.route('legacy-redirects', { path: '/lot/:boro/:block/:lot' });
 });
-
-export default Router;

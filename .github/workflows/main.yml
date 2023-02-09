@@ -10,18 +10,14 @@ on:
 jobs:
   test:
     name: Tests
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 10.x
+          node-version: 14.x
       - name: install dependencies
         run: yarn install --frozen-lockfile --non-interactive
-      - name: build
-        env:
-          DISABLE_SOURCE_MAPS: true
-          BROCCOLI_ENV: production
-        run: yarn ember build -prod
       - name: test
         run: yarn test
