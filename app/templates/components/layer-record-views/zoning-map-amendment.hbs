@@ -9,13 +9,17 @@
     ULURP Number
   </label>
   <span class="datum">
-    <a
-      target="_blank"
-      href="https://zap-api.planninglabs.nyc/projects/ulurp/{{this.model.lucats}}"
-    >
-      {{fa-icon "external-link-alt"}}
+    {{#if this.zapId}}
+      <a
+        target="_blank"
+        href="https://zap.planning.nyc.gov/projects/{{this.zapId}}"
+      >
+        {{this.model.ulurpno}}
+        {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+      </a>
+    {{else}}
       {{this.model.ulurpno}}
-    </a>
+    {{/if}}
   </span>
 </div>
 <div class="data-grid">
@@ -45,7 +49,6 @@
       target="_blank"
       href="http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/sketchmaps/skz{{this.model.ulurpno}}.pdf"
     >
-      {{fa-icon "file-pdf-o"}}
       {{this.model.ulurpno}}
       <small>
         (PDF)

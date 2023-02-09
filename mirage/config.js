@@ -26,6 +26,7 @@ export default function() {
     http://www.ember-cli-mirage.com/docs/v0.4.x/shorthands/
   */
 
+  this.passthrough('https://zap-api-production.herokuapp.com/**');
   this.passthrough('/img/ht.png');
   this.passthrough('https://labs-mapbox-gl-noop-tiles.nyc3.digitaloceanspaces.com/**');
 

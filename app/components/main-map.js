@@ -258,8 +258,8 @@ export default class MainMap extends Component {
           this.router.transitionTo('map-feature.commercial-overlay', overlay, { queryParams: { search: false } });
         }
 
-        if (ceqr_num) { // eslint-disable-line
-          window.open(`https://zap-api.planninglabs.nyc/ceqr/${ceqr_num}`, '_blank'); // eslint-disable-line
+        if (bbl && ceqr_num) {
+          this.router.transitionTo('map-feature.e-designation', bbl, { queryParams: { search: false } });
         }
       }
     }

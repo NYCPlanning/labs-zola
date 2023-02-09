@@ -26,6 +26,7 @@ Router.map(function () {// eslint-disable-line
     this.route('special-purpose-district', { path: '/special-purpose-district/:id' });
     this.route('special-purpose-subdistrict', { path: '/special-purpose-subdistrict/:id' });
     this.route('zoning-map-amendment', { path: '/zma/:id' });
+    this.route('e-designation', { path: '/e-designation/:id' });
   });
 
   // in order to namespace the map feature routes (zoning district, etc), we have
