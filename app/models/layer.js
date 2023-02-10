@@ -1,4 +1,4 @@
-import LayerModel from 'ember-mapbox-composer/models/layer';
+import LayerModel from 'labs-shared/models/layer';
 import { next } from '@ember/runloop';
 
 // I'm reimporting and extending to fix a minor bug
