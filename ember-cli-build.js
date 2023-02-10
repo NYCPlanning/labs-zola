@@ -50,6 +50,13 @@ module.exports = (defaults) => {
     fingerprint: {
       exclude: ['img/screenshot-1200x628.png'],
     },
+    sassOptions: {
+      includePaths: [
+        'node_modules/foundation-sites/scss',
+        'node_modules/nyc-planning-style-guide/dist/assets/scss',
+      ],
+      sourceMapEmbed: true,
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
