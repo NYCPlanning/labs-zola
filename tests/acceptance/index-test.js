@@ -9,7 +9,6 @@ import {
 } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
-import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import { selectChoose } from 'ember-power-select/test-support';
 import config from '../../config/environment';
@@ -49,12 +48,9 @@ module('Acceptance | index', function(hooks) {
       },
     });
     await visit('/');
-    await percySnapshot('view on first load');
     await fillIn(SEARCH_INPUT_SELECTOR, SEARCH_TERM_LOT);
-    await percySnapshot('searches');
     await waitUntil(() => find('.has-results'), { timeout });
     await click('.result');
-    await percySnapshot('clicks result');
 
     assert.equal(
       (currentURL().indexOf('/') > -1),

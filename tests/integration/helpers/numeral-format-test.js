@@ -12,6 +12,6 @@ module('helper:numeral-format', function(hooks) {
 
     await render(hbs`{{numeral-format inputValue}}`);
 
-    assert.equal(find('*').textContent.trim(), '1,234');
+    assert.equal(this.element.textContent.trim(), '1,234');
   });
 });

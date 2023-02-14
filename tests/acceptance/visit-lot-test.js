@@ -1,7 +1,6 @@
 import { currentURL, find, visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
-import { percySnapshot } from 'ember-percy';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
@@ -23,7 +22,6 @@ module('Acceptance | visit lot', function(hooks) {
     });
 
     await visit('/l/lot/1/1632/1');
-    await percySnapshot('lot view');
 
     assert.notEqual(find('.content-area').textContent.length, 0);
   });
@@ -37,7 +35,6 @@ module('Acceptance | visit lot', function(hooks) {
     });
 
     await visit('/bbl/1001870021');
-    await percySnapshot('lot view');
 
     assert.equal(currentURL(), '/l/lot/1/187/21');
     assert.notEqual(find('.content-area').textContent.length, 0);

@@ -1,10 +1,9 @@
 import Application from '@ember/application';
-import Ember from 'ember';
+import Resolver from 'ember-resolver';
 import loadInitializers from 'ember-load-initializers';
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
 import defineModifier from 'ember-concurrency-retryable/define-modifier';
-import Resolver from './resolver';
 import config from './config/environment';
 
 if (config.environment === 'production' || config.environment === 'staging') {
@@ -20,11 +19,11 @@ if (config.environment === 'production' || config.environment === 'staging') {
 // see: https://github.com/maxfierke/ember-concurrency-retryable/issues/5
 defineModifier();
 
-const App = Application.extend({
-  modulePrefix: config.modulePrefix,
-  podModulePrefix: config.podModulePrefix,
-  Resolver,
-});
+export default class App extends Application {
+  modulePrefix = config.modulePrefix;
+  podModulePrefix = config.podModulePrefix;
+  Resolver = Resolver;
+}
 
 // temporary fix due to importing registerWaiter
 // see: https://github.com/emberjs/ember.js/issues/15670
@@ -41,5 +40,3 @@ if (typeof Ember.Test === 'undefined') {
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 loadInitializers(App, config.modulePrefix);
-
-export default App;

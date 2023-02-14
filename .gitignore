@@ -27,3 +27,4 @@ development.env
 /package.json.ember-try
 
 .eslintcache
+.yalc
