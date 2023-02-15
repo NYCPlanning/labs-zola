@@ -33,8 +33,11 @@ module.exports = (defaults) => {
     },
     autoImport: {
       webpack: {
-        node: {
-          fs: 'empty',
+        resolve: {
+          fallback: {
+            fs: false,
+            path: false,
+          },
         },
       },
     },
