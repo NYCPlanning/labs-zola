@@ -15,7 +15,7 @@
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
     "lint:hbs": "ember-template-lint .",
     "start": "ember serve -dev",
-    "test": "ember test",
+    "test": "ember build; ember test",
     "prepare": "husky install"
   },
   "devDependencies": {
