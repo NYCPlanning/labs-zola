@@ -23,9 +23,6 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.18.6",
     "@ember/optional-features": "^1.3.0",
     "@ember/render-modifiers": "^2.0.4",
-    "@fortawesome/ember-fontawesome": "0.1.14",
-    "@fortawesome/free-regular-svg-icons": "^5.15.3",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@glimmer/component": "^1.0.0",
     "@glimmer/tracking": "^1.0.0",
     "@turf/area": "^6.0.1",
@@ -35,7 +32,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-clean-css": "^2.0.1",
     "ember-async-await-helper": "0.1.0",
-    "ember-auto-import": "^1.5.3",
+    "ember-auto-import": "^2.6.0",
     "ember-clean-project": "1.0.1",
     "ember-cli": "~3.19.0",
     "ember-cli-app-version": "^3.2.0",
@@ -44,7 +41,7 @@
     "ember-cli-code-coverage": "1.0.0-beta.7",
     "ember-cli-concat": "1.3.0",
     "ember-cli-dependency-checker": "^3.2.0",
-    "ember-cli-dependency-lint": "1.1.3",
+    "ember-cli-dependency-lint": "^2.0.1",
     "ember-cli-fastboot": "2.1.1",
     "ember-cli-foundation-6-sass": "https://github.com/allthesignals/ember-cli-foundation-6-sass",
     "ember-cli-htmlbars": "^5.1.2",
@@ -53,12 +50,12 @@
     "ember-cli-netlify": "^0.1.0",
     "ember-cli-nouislider": "1.0.0",
     "ember-cli-preprocess-registry": "3.1.2",
-    "ember-cli-sass": "^6.0.0",
+    "ember-cli-sass": "11.0.1",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-tree-shaker": "0.2.0",
     "ember-cli-uglify": "^3.0.0",
     "ember-cli-update": "0.22.0",
-    "ember-composability-tools": "0.0.11",
+    "ember-composability-tools": "^1.1.0",
     "ember-composable-helpers": "3.2.0",
     "ember-concurrency": "1.0.0",
     "ember-concurrency-decorators": "1.0.0-beta.4",
@@ -75,14 +72,12 @@
     "ember-in-viewport": "^3.1.3",
     "ember-load-initializers": "^2.1.1",
     "ember-local-storage": "2.0.2",
-    "ember-mapbox-gl": "0.16.0",
-    "ember-mapbox-gl-draw": "2.0.0",
+    "ember-mapbox-gl": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-metrics": "0.13.0",
     "ember-native-dom-helpers": "^0.6.2",
     "ember-needs-async": "git+https://github.com/NYCPlanning/ember-needs-async#4133bcfffe478f71845d1a9147fee25c1fdb2038",
     "ember-parachute": "1.0.2",
-    "ember-power-select": "^2.0.4",
     "ember-promise-helpers": "^1.0.6",
     "ember-query-params-service": "0.4.0",
     "ember-qunit": "4.6.0",
@@ -109,7 +104,6 @@
     "foundation-sites": "^6.3.1",
     "husky": "^6.0.0",
     "labs-shared": "https://github.com/allthesignals/labs-shared",
-    "labs-ui": "^0.0.24",
     "lint-staged": "^13.1.0",
     "loader.js": "^4.7.0",
     "mapbox-gl": "1.0.0",
@@ -117,13 +111,13 @@
     "moment": "2.22.2",
     "npm-run-all": "^4.1.5",
     "prember": "1.1.0",
-    "prember-middleware": "0.1.0",
     "pretender": "^3.4.7",
     "sass": "^1.58.0",
-    "sinon": "^15.0.1"
+    "sinon": "^15.0.1",
+    "webpack": "^5.75.0"
   },
   "engines": {
-    "node": "14"
+    "node": "^14.* || ^16.*"
   },
   "ember": {
     "edition": "octane"
@@ -143,7 +137,8 @@
     "ssri": "^8.0.1",
     "printf": "^0.6.1",
     "elliptic": "^6.5.4",
-    "foundation-sites": "6.4.1"
+    "foundation-sites": "6.4.1",
+    "ember-cli-foundation-6-sass": "https://github.com/allthesignals/ember-cli-foundation-6-sass"
   },
   "fastbootWhitelist": [
     "abortcontroller-polyfill"
