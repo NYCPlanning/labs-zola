@@ -58,7 +58,7 @@
     "ember-cli-tree-shaker": "0.2.0",
     "ember-cli-uglify": "^3.0.0",
     "ember-cli-update": "0.22.0",
-    "ember-composability-tools": "^1.1.0",
+    "ember-composability-tools": "^0.0.12",
     "ember-composable-helpers": "3.2.0",
     "ember-concurrency": "1.0.0",
     "ember-concurrency-decorators": "1.0.0-beta.4",
@@ -132,7 +132,6 @@
     "@turf/bbox": "^6.0.1",
     "@turf/bbox-polygon": "^6.0.1",
     "@turf/boolean-within": "^6.0.1",
-    "ms": "^2.1.3",
     "mustache": "3.0.1",
     "node-fetch": "2.6.1",
     "numeral": "^2.0.6"
