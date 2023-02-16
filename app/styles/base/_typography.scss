@@ -161,7 +161,7 @@ button.save-button {
   }
 
   .data-label {
-    @include xy-cell-static(full,false,0);
+    @include xy-cell(full,false,0);
     padding: rem-calc(2) rem-calc(4);
     background-color: $off-white;
     color: $dark-gray;
@@ -169,7 +169,7 @@ button.save-button {
     line-height: 1.2;
 
     @include breakpoint(medium) {
-      @include xy-cell-static(
+      @include xy-cell(
         $size: 4,
         $gutter-output: true,
         $gutters: rem-calc(10),
@@ -182,12 +182,12 @@ button.save-button {
   }
 
   .datum {
-    @include xy-cell-static(full,false,0);
+    @include xy-cell(full,false,0);
     font-size: rem-calc(13);
     line-height: 1.2;
 
     @include breakpoint(medium) {
-      @include xy-cell-static(
+      @include xy-cell(
         $size: 8,
         $gutter-output: true,
         $gutters: rem-calc(10),
