@@ -10,7 +10,7 @@
   {{/if}}
 </button>
 <div id="layers-menu" class="{{if closed "show-for-medium"}}">
-  <LabsUi::LayerGroupsContainer
+  <LabsUiOverrides::LayerGroupsContainer
     @handleToggle={{action this.handleLayerGroupToggle}}
     @title="Zoning and Land Use" as |container|
   >
@@ -121,8 +121,8 @@
       @layerGroup={{this.layerGroups.special-purpose-subdistricts}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.special-purpose-subdistricts this.zoomWarningLabel this.mainMap.zoom}}
     />
-  </LabsUi::LayerGroupsContainer>
-  <LabsUi::LayerGroupsContainer
+  </LabsUiOverrides::LayerGroupsContainer>
+  <LabsUiOverrides::LayerGroupsContainer
     @handleToggle={{action this.handleLayerGroupToggle}}
     @title="Supporting Zoning Layers" as |container|
   >
@@ -233,8 +233,8 @@
       @layerGroup={{this.layerGroups.appendixj-designated-mdistricts}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.appendixj-designated-mdistricts this.zoomWarningLabel this.mainMap.zoom}}
     />
-  </LabsUi::LayerGroupsContainer>
-  <LabsUi::LayerGroupsContainer
+  </LabsUiOverrides::LayerGroupsContainer>
+  <LabsUiOverrides::LayerGroupsContainer
     @handleToggle={{action this.handleLayerGroupToggle}}
     @title="Other Supporting Layers" as |container|
   >
@@ -248,8 +248,8 @@
       @layerGroup={{this.layerGroups.industrial-business-zones}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.industrial-business-zones this.zoomWarningLabel this.mainMap.zoom}}
     />
-  </LabsUi::LayerGroupsContainer>
-  <LabsUi::LayerGroupsContainer
+  </LabsUiOverrides::LayerGroupsContainer>
+  <LabsUiOverrides::LayerGroupsContainer
     @handleToggle={{action this.handleLayerGroupToggle}}
     @title="Administrative Boundaries" as |container|
   >
@@ -283,8 +283,8 @@
       @layerGroup={{this.layerGroups.neighborhood-tabulation-areas}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.neighborhood-tabulation-areas this.zoomWarningLabel this.mainMap.zoom}}
     />
-  </LabsUi::LayerGroupsContainer>
-  <LabsUi::LayerGroupsContainer
+  </LabsUiOverrides::LayerGroupsContainer>
+  <LabsUiOverrides::LayerGroupsContainer
     @handleToggle={{action this.handleLayerGroupToggle}}
     @title="Basemaps" as |container|
   >
@@ -360,7 +360,7 @@
         {{/each}}
       </ul>
     </container.layer-group-toggle>
-  </LabsUi::LayerGroupsContainer>
+  </LabsUiOverrides::LayerGroupsContainer>
   <a
     class="button gray small reset-map-button hide-for-print"
     disabled={{isDefault}}
