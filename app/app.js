@@ -4,7 +4,7 @@ import loadInitializers from 'ember-load-initializers';
 import * as Sentry from '@sentry/browser';
 import * as Integrations from '@sentry/integrations';
 import defineModifier from 'ember-concurrency-retryable/define-modifier';
-import config from './config/environment';
+import config from 'labs-zola/config/environment';
 
 if (config.environment === 'production' || config.environment === 'staging') {
   Sentry.init({
