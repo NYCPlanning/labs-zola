@@ -7,6 +7,7 @@ const { defaultLayerGroupState } = config;
 export default Route.extend({
   mainMap: service(),
   fastboot: service(),
+  router: service(),
 
   beforeModel(transition) {
     const { targetName } = transition;
@@ -23,7 +24,7 @@ export default Route.extend({
         }
       }
 
-      this.transitionTo(`/about${transition.intent.url}`);
+      this.router.transitionTo(`/about${transition.intent.url}`);
     }
 
     if (targetName === 'map-feature.lot') {
