@@ -27,7 +27,7 @@
     "@ember/optional-features": "^2.0.0",
     "@ember/render-modifiers": "^2.0.4",
     "@ember/test-helpers": "^2.4.2",
-    "@fortawesome/ember-fontawesome": "0.1.14",
+    "@fortawesome/ember-fontawesome": "0.3.0",
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@glimmer/component": "^1.0.4",

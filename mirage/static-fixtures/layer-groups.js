@@ -5864,7 +5864,7 @@ export default {
         clickable: true,
         highlightable: true,
         tooltipable: true,
-        'tooltip-template': "{{fa-icon 'external-link-alt'}} E-designation, E-Number: {{{enumber}}}, CEQR: {{{ceqr_num}}}, ULURP: {{{ulurp_num}}}",
+        'tooltip-template': "{{fa-icon icon='external-link-alt'}} E-designation, E-Number: {{{enumber}}}, CEQR: {{{ceqr_num}}}, ULURP: {{{ulurp_num}}}",
       },
     },
     {

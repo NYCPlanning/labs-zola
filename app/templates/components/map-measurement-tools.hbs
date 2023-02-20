@@ -10,9 +10,9 @@
       {{action (mut drawToolsOpen) (not drawToolsOpen)}}
     >
       {{#if drawToolsOpen}}
-        {{fa-icon "chevron-left"}}
+        {{fa-icon icon="chevron-left"}}
       {{else}}
-        {{fa-icon "pen"}}
+        {{fa-icon icon="pen"}}
       {{/if}}
     </span>
     <span class="show-for-large">
@@ -28,7 +28,7 @@
     onclick={{action "startDraw" "line"}}
   >
     {{#if (and didStartDraw (not drawDidRender) (not draw))}}
-      {{fa-icon "spinner"}}
+      {{fa-icon icon="spinner"}}
     {{else}}
       <span class="icon distance"></span>
     {{/if}}
@@ -42,7 +42,7 @@
     onclick={{action "startDraw" "polygon"}}
   >
     {{#if (and didStartDraw (not drawDidRender) (not draw))}}
-      {{fa-icon "spinner"}}
+      {{fa-icon icon="spinner"}}
     {{else}}
       <span class="icon polygon"></span>
     {{/if}}
@@ -53,7 +53,7 @@
       class="draw-tool draw-tool--clear"
       onclick={{action "clearDraw"}}
     >
-      {{fa-icon "times"}}
+      {{fa-icon icon="times"}}
     </button>
   {{/if}}
 </div>
@@ -72,9 +72,9 @@
       {{action (mut measurementMenuOpen) (not measurementMenuOpen)}}
     >
       {{#if measurementMenuOpen}}
-        {{fa-icon "caret-down"}}
+        {{fa-icon icon="caret-down"}}
       {{else}}
-        {{fa-icon "caret-up"}}
+        {{fa-icon icon="caret-up"}}
       {{/if}}
       {{#if measurementMenuOpen}}
         <span class="draw-measurement-menu">
