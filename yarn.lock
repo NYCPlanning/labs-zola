@@ -7634,13 +7634,6 @@ ember-native-dom-helpers@^0.6.2:
     ember-cli-htmlbars "^3.0.1"
     ember-concurrency "^1.0.0"
 
-ember-page-title@^6.2.2:
-  version "6.2.2"
-  resolved "https://registry.yarnpkg.com/ember-page-title/-/ember-page-title-6.2.2.tgz#980838c44e96cba1d00f42435d707936af627324"
-  integrity sha512-YTXA+cylZrh9zO0zwjlaAGReT2MVOxAMnVO1OOygFrs1JBs4D6CKV3tImoilg3AvIXFBeJfFNNUbJOdRd9IGGg==
-  dependencies:
-    ember-cli-babel "^7.23.1"
-
 ember-parachute@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/ember-parachute/-/ember-parachute-1.0.2.tgz#f147f6b29df100d467acc1ddf13761aef92e95de"
@@ -9248,18 +9241,13 @@ forwarded@0.2.0:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.2.0.tgz#2269936428aad4c15c7ebe9779a84bf0b2a81811"
   integrity sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==
 
-foundation-sites@6.4.1, foundation-sites@^6.6.1:
+foundation-sites@6.4.1, foundation-sites@^6.3.1, foundation-sites@^6.6.1:
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/foundation-sites/-/foundation-sites-6.4.1.tgz#49bbf7b59675f9690c04528f4141cd0147094532"
   integrity sha512-7T/hpDSjA03+LkSGUDVWbh0FLrDsJlfJZ1z0rfhBP4nw85NiuobwAYNAUuyOHA2HwPJ/Beuoxodj+y99eiBUYg==
   dependencies:
     jquery ">=3.0.0"
     what-input "^4.1.3"
-
-foundation-sites@^6.3.1:
-  version "6.7.5"
-  resolved "https://registry.yarnpkg.com/foundation-sites/-/foundation-sites-6.7.5.tgz#6bc2bdd06819e6ed4d7fd8e3090246a0b6ac81c0"
-  integrity sha512-MEjAENdF/IV2XQvlQmg20o+iDTyyWu0N/j440e8fKbEylbKxARzgg5S7vcnxtjukC1Lqg+rRm7ZDSSyGhVVoUQ==
 
 fragment-cache@^0.2.1:
   version "0.2.1"
