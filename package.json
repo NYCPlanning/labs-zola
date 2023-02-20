@@ -84,7 +84,6 @@
     "ember-metrics": "0.13.0",
     "ember-native-dom-helpers": "^0.6.2",
     "ember-needs-async": "git+https://github.com/NYCPlanning/ember-needs-async#4133bcfffe478f71845d1a9147fee25c1fdb2038",
-    "ember-page-title": "^6.2.2",
     "ember-parachute": "1.0.2",
     "ember-promise-helpers": "^1.0.6",
     "ember-query-params-service": "0.4.0",
