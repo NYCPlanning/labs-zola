@@ -4,7 +4,7 @@
   data-test-bookmark="save"
   data-test-bookmark-button-saved={{if saved "true" "false"}}
 >
-  {{fa-icon icon="bookmark"}}
+  <FaIcon @icon="bookmark" />
   <span class="state">
     {{#if saved}}
       SAVED

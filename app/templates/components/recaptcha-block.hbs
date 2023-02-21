@@ -6,7 +6,7 @@
 {{/unless}}
 
 {{#if this.reCaptchaWaiting}}
-  {{fa-icon icon='spinner' class='fa-spin'}}
+  <FaIcon @icon='spinner' class='fa-spin' />
 {{else}}
   {{#if this.reCaptchaResponse}}
     {{yield}}

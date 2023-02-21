@@ -4,9 +4,9 @@
   {{action (mut closed) (not closed)}}
 >
   {{#if closed}}
-    {{fa-icon icon="chevron-down"}} Edit Map Layers
+    <FaIcon @icon="chevron-down" /> Edit Map Layers
   {{else}}
-    {{fa-icon icon="chevron-up"}} Close Map Layers
+    <FaIcon @icon="chevron-up" /> Close Map Layers
   {{/if}}
 </button>
 <div id="layers-menu" class="{{if closed "show-for-medium"}}">
@@ -54,7 +54,7 @@
           }}
             <li>
               <span style={{sanitize (hash color=landuse.color)}}>
-                {{fa-icon icon="square"}}
+                <FaIcon @icon="square" />
               </span>
               {{landuse.title}}
             </li>
@@ -340,17 +340,17 @@
               >
                 <span class="fa-layers">
                   {{#if layer.visibility}}
-                    {{fa-icon
-                      "dot-circle"
-                      prefix="far"
-                      class=(if layer.visibility "" "silver")
-                    }}
+                    <FaIcon
+                      @icon="dot-circle"
+                      @prefix="far"
+                      class={{if layer.visibility "" "silver"}}
+                    />
                   {{else}}
-                    {{fa-icon
-                      "circle"
-                      prefix="far"
-                      class=(if layer.visibility "" "silver")
-                    }}
+                    <FaIcon
+                      @icon="circle"
+                      @prefix="far"
+                      class={{if layer.visibility "" "silver"}}
+                    />
                   {{/if}}
                 </span>
               </span>
@@ -367,7 +367,7 @@
     onclick={{action this.resetQueryParams}}
     data-test-reset-query-params="true"
   >
-    {{fa-icon icon="undo"}}
+    <FaIcon @icon="undo" />
     Reset Map Layers
   </a>
 </div>

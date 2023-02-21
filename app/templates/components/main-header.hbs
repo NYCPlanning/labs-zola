@@ -42,7 +42,7 @@
       <li class="saved-bookmarks-counter">
         {{!-- This is causing prember to break. Not sure why yet. Seems to be font-awesome causing this. --}}
         {{#link-to "bookmarks"}}
-          {{fa-icon icon="bookmark"}}
+          <FaIcon @icon="bookmark" />
           Saved
           {{#if bookmarks.length}}
             <span class="badge sup">
