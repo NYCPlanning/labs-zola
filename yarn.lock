@@ -11338,7 +11338,7 @@ klaw@^1.0.0:
 
 "labs-shared@https://github.com/allthesignals/labs-shared#ember-3.28":
   version "1.0.0"
-  resolved "https://github.com/allthesignals/labs-shared#fcb8c619966bede2fe67273f1779c740e9a58559"
+  resolved "https://github.com/allthesignals/labs-shared#978cb022ae1a8dfca2171ae0b20111ebe41ca697"
   dependencies:
     "@turf/union" "^6.0.0"
     ember-auto-import "^1.11.3"
