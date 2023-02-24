@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
 import { tagName } from '@ember-decorators/component';
-import { registerWaiter, unregisterWaiter } from '@ember/test';
+// import { registerWaiter, unregisterWaiter } from '@ember/test';
 
 /**
  *
@@ -37,10 +37,10 @@ export default class MapboxBasicMapComponent extends Component {
   }
 
   didInsertElement() {
-    registerWaiter(this._mapIsLoaded);
+    // registerWaiter(this._mapIsLoaded);
   }
 
   willDestroyElement() {
-    unregisterWaiter(this._mapIsLoaded);
+    // unregisterWaiter(this._mapIsLoaded);
   }
 }
