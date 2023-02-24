@@ -9,12 +9,6 @@ if (!('FASTBOOT_DISABLED' in process.env)) {
 
 module.exports = (defaults) => {
   const app = new EmberApp(defaults, {
-    prember: {
-      urls: [
-        '/',
-        '/about',
-      ],
-    },
     'ember-cli-babel': {
       includePolyfill: true,
     },
