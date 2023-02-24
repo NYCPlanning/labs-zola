@@ -61,9 +61,8 @@
     "ember-cli-update": "0.22.0",
     "ember-composability-tools": "^0.0.12",
     "ember-composable-helpers": "3.2.0",
-    "ember-concurrency": "1.0.0",
-    "ember-concurrency-decorators": "1.0.0-beta.4",
-    "ember-concurrency-retryable": "0.6.0",
+    "ember-concurrency": "^2.3.7",
+    "ember-concurrency-retryable": "1.0.0",
     "ember-content-placeholders": "^1.0.0",
     "ember-data": "~3.28.0",
     "ember-data-model-fragments": "5.0.0-beta.8",
@@ -139,7 +138,6 @@
     "numeral": "^2.0.6"
   },
   "resolutions": {
-    "ember-concurrency": "1.0.0",
     "ssri": "^8.0.1",
     "printf": "^0.6.1",
     "elliptic": "^6.5.4",
