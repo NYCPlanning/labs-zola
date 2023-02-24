@@ -18,7 +18,7 @@
     "lint:hbs:fix": "ember-template-lint . --fix",
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve -dev",
-    "test": "npm-run-all lint test:*",
+    "test": "ember test",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -57,6 +57,7 @@
     "ember-cli-preprocess-registry": "3.1.2",
     "ember-cli-sass": "11.0.1",
     "ember-cli-sri": "^2.1.1",
+    "ember-cli-terser": "^4.0.2",
     "ember-cli-tree-shaker": "0.2.0",
     "ember-cli-update": "0.22.0",
     "ember-composability-tools": "^0.0.12",
@@ -134,15 +135,7 @@
     "@turf/bbox-polygon": "^6.0.1",
     "@turf/boolean-within": "^6.0.1",
     "mustache": "3.0.1",
-    "node-fetch": "2.6.1",
     "numeral": "^2.0.6"
-  },
-  "resolutions": {
-    "ssri": "^8.0.1",
-    "printf": "^0.6.1",
-    "elliptic": "^6.5.4",
-    "foundation-sites": "6.4.1",
-    "ember-cli-foundation-6-sass": "https://github.com/allthesignals/ember-cli-foundation-6-sass"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"

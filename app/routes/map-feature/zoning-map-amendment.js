@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import fetch from 'node-fetch';
+import fetch from 'fetch';
 import config from 'labs-zola/config/environment';
 
 export default class ZoningDistrictRoute extends Route {
