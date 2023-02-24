@@ -19,3 +19,5 @@ jobs:
           node-version: 16.x
       - name: install dependencies
         run: yarn install --frozen-lockfile --non-interactive
+      - name: test
+        run: yarn test
