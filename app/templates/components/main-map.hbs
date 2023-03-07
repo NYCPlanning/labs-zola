@@ -46,7 +46,7 @@
   </LabsLayers>
 
   {{#if this.bookmarkedLotsLayer}}
-    <MapboxGlLayer
+    <MaplibreGlLayer
       @map={{map.instance}}
       @layer={{this.bookmarkedLotsLayer}}
       @before="place_other"
@@ -54,14 +54,14 @@
   {{/if}}
 
   {{#if mainMap.selected}}
-    <MapboxGlSource
+    <MaplibreGlSource
       @map={{map.instance}}
       @sourceId="selected-lot"
       @options={{selectedLotSource}} as |source|
     >
       <source.layer @layer={{selectedFillLayer}} @before="place_other" />
       <source.layer @layer={{selectedLineLayer}} @before="place_other" />
-    </MapboxGlSource>
+    </MaplibreGlSource>
   {{/if}}
 
   <MapMeasurementTools
@@ -69,7 +69,7 @@
     @draw={{this.draw}} as |measurement|
   >
     {{#if measurement.feature}}
-      <MapboxGlSource
+      <MaplibreGlSource
         @map={{map.instance}}
         @sourceId="drawn-feature"
         @options={{hash type="geojson" data=measurement.feature}} as |source|
@@ -84,7 +84,7 @@
             @before="place_other"
           />
         {{/if}}
-      </MapboxGlSource>
+      </MaplibreGlSource>
     {{/if}}
   </MapMeasurementTools>
 </Mapbox::BasicMap>

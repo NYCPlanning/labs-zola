@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import mapboxgl from 'mapbox-gl';
+import mapboxgl from 'maplibre-gl';
 
 import { inject as service } from '@ember/service';
 import { computed, action } from '@ember/object';
@@ -140,7 +140,7 @@ export default class MainMap extends Component {
     window.map = map;
     const { mainMap } = this;
     mainMap.set('mapInstance', map);
-
+    window.mapboxgl = mapboxgl;
     // setup controls
     const navigationControl = new mapboxgl.NavigationControl();
     const geoLocateControl = new mapboxgl.GeolocateControl({
@@ -159,8 +159,8 @@ export default class MainMap extends Component {
     });
 
     map.addControl(navigationControl, 'top-left');
-    map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
-    map.addControl(geoLocateControl, 'top-left');
+    // map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
+    // map.addControl(geoLocateControl, 'top-left');
     map.addControl(new MeasurementText(), 'top-left');
 
     // hide default base style layers

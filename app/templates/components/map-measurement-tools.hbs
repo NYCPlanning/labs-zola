@@ -1,6 +1,6 @@
 {{yield (hash feature=drawnFeature)}}
-{{mapbox-gl-on "draw.create" (action "handleDrawCreate") eventSource=map}}
-{{mapbox-gl-on "draw.render" (action "handleMeasurement") eventSource=map}}
+{{maplibre-gl-on "draw.create" (action "handleDrawCreate") eventSource=map}}
+{{maplibre-gl-on "draw.render" (action "handleMeasurement") eventSource=map}}
 {{! Measurement }}
 <div class="draw-tools hide-for-print">
   <label>

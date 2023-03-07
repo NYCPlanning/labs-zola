@@ -3,7 +3,7 @@
 {{/if}}
 
 {{#if this.map}}
-  {{mapbox-gl-on "render" (action "handleMapLoading") eventSource=map}}
-  {{mapbox-gl-on "data" (action "handleMapLoading") eventSource=map}}
-  {{mapbox-gl-on "sourcedata" (action "handleMapLoading") eventSource=map}}
+  {{maplibre-gl-on "render" (action "handleMapLoading") eventSource=map}}
+  {{maplibre-gl-on "data" (action "handleMapLoading") eventSource=map}}
+  {{maplibre-gl-on "sourcedata" (action "handleMapLoading") eventSource=map}}
 {{/if}}

@@ -1,4 +1,4 @@
-import mapboxGlMap from 'ember-mapbox-gl/components/mapbox-gl';
+import mapboxGlMap from 'ember-maplibre-gl/components/maplibre-gl';
 import { assign } from '@ember/polyfills';
 import { get } from '@ember/object';
 import { computed, action } from '@ember/object';

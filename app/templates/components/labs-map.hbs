@@ -1,6 +1,6 @@
 {{!
   This template overrides the template for an addon, ember-mapbox-composer.
-  e-mapbox-composer uses private APIs in e-mapbox-gl. Those changed, so we need to
+  e-mapbox-composer uses private APIs in e-maplibre-gl. Those changed, so we need to
   manually configure the interface here.
 }}
 {{#if this._loader.isLoaded}}
@@ -10,14 +10,14 @@
 
   {{yield
     (hash
-      call=(component "mapbox-gl-call" obj=this._loader.map)
-      control=(component "mapbox-gl-control" map=this._loader.map)
-      image=(component "mapbox-gl-image" map=this._loader.map)
-      layer=(component "mapbox-gl-layer" map=this._loader.map)
-      marker=(component 'mapbox-gl-marker' map=this._loader.map MapboxGl=this._loader.MapboxGl)
-      on=(component "mapbox-gl-on" eventSource=this._loader.map)
-      popup=(component 'mapbox-gl-popup' map=this._loader.map MapboxGl=this._loader.MapboxGl)
-      source=(component "mapbox-gl-source" map=this._loader.map)
+      call=(component "maplibre-gl-call" obj=this._loader.map)
+      control=(component "maplibre-gl-control" map=this._loader.map)
+      image=(component "maplibre-gl-image" map=this._loader.map)
+      layer=(component "maplibre-gl-layer" map=this._loader.map)
+      marker=(component 'maplibre-gl-marker' map=this._loader.map MapboxGl=this._loader.MapboxGl)
+      on=(component "maplibre-gl-on" eventSource=this._loader.map)
+      popup=(component 'maplibre-gl-popup' map=this._loader.map MapboxGl=this._loader.MapboxGl)
+      source=(component "maplibre-gl-source" map=this._loader.map)
       instance=this._loader.map
       mapInstance=this._loader.map
       labs-layers=(component
@@ -34,6 +34,6 @@
     {{yield this._loader.error to='inverse'}}
   {{else}}
     {{! template-lint-disable no-log }}
-    {{log 'error rendering mapbox-gl' this._loader.error}}
+    {{log 'error rendering maplibre-gl' this._loader.error}}
   {{/if}}
 {{/if}}
