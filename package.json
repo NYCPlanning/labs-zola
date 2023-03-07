@@ -104,7 +104,7 @@
     "eslint-plugin-qunit": "^6.2.0",
     "foundation-sites": "^6.7.5",
     "husky": "^6.0.0",
-    "labs-shared": "https://github.com/allthesignals/labs-shared#ember-3.28",
+    "labs-shared": "https://github.com/allthesignals/labs-shared#maplibre",
     "lint-staged": "^13.1.0",
     "loader.js": "^4.7.0",
     "mapbox-gl": "1.0.0",
