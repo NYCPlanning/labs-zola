@@ -50,7 +50,7 @@ export default Route.extend({
     // extract the meta node, see ember-data & json:api
     const { meta } = layerGroups;
     meta.mapboxStyle.sources['zoning-districts'].tiles = [
-      'pmtiles://https://zola-data.s3.us-west-2.amazonaws.com/nyzd.pmtiles/{z}/{x}/{y}',
+      'pmtiles://https://allthesignals.github.io/data/nyzd.pmtiles/{z}/{x}/{y}',
       // ...meta.mapboxStyle.sources['admin-boundaries'].tiles,
     ];
 
