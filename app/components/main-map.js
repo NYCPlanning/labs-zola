@@ -47,6 +47,70 @@ export default class MainMap extends Component {
 
   menuTo = 'layers-menu';
 
+  zdStyle = [
+    'case',
+    ['in', 'BP', ['get', 'ZONEDIST']],
+    '#808080',
+    ['in', 'C1', ['get', 'ZONEDIST']],
+    '#ffa89c',
+    ['in', 'C2', ['get', 'ZONEDIST']],
+    '#fd9a8f',
+    ['in', 'C3', ['get', 'ZONEDIST']],
+    '#fa867c',
+    ['in', 'C4', ['get', 'ZONEDIST']],
+    '#f76e67',
+    ['in', 'C5', ['get', 'ZONEDIST']],
+    '#f2544e',
+    ['in', 'C6', ['get', 'ZONEDIST']],
+    '#ee3a36',
+    ['in', 'C7', ['get', 'ZONEDIST']],
+    '#ea2220',
+    ['in', 'C8', ['get', 'ZONEDIST']],
+    '#e50000',
+    ['in', 'M1', ['get', 'ZONEDIST']],
+    '#f3b3ff',
+    ['in', 'M2', ['get', 'ZONEDIST']],
+    '#e187f3',
+    ['in', 'M3', ['get', 'ZONEDIST']],
+    '#cf5ce6',
+    ['in', 'PA', ['get', 'ZONEDIST']],
+    '#78D271',
+    ['in', 'R1', ['get', 'ZONEDIST']],
+    '#fff8a6',
+    ['in', 'R2', ['get', 'ZONEDIST']],
+    '#fff7a6',
+    ['in', 'R3', ['get', 'ZONEDIST']],
+    '#fff797',
+    ['in', 'R4', ['get', 'ZONEDIST']],
+    '#fff584',
+    ['in', 'R5', ['get', 'ZONEDIST']],
+    '#fff36c',
+    ['in', 'R6', ['get', 'ZONEDIST']],
+    '#fff153',
+    ['in', 'R7', ['get', 'ZONEDIST']],
+    '#ffee39',
+    ['in', 'R8', ['get', 'ZONEDIST']],
+    '#ffec22',
+    ['in', 'R9', ['get', 'ZONEDIST']],
+    '#ffeb0e',
+    ['in', 'R10', ['get', 'ZONEDIST']],
+    '#ffea00',
+    '#000',
+  ];
+
+  zdOpacity = {
+    stops: [
+      [
+        15,
+        0.3,
+      ],
+      [
+        16,
+        0,
+      ],
+    ],
+  }
+
   loading = true;
 
   findMeDismissed = false;

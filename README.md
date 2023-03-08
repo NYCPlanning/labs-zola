@@ -116,3 +116,16 @@ SELECT
 FROM planninglabs.mappluto_VERSION
 GROUP BY block, borocode)
 ```
+
+### New ETLs
+
+<!-- SELECT cartodb_id AS id, * FROM (SELECT the_geom_webmercator, zonedist, CASE WHEN SUBSTRING(zonedist, 3, 1) = '-' THEN LEFT(zonedist, 2) WHEN SUBSTRING(zonedist, 3, 1) ~ E'[A-Z]' THEN LEFT(zonedist, 2) WHEN SUBSTRING(zonedist, 3, 1) ~ E'[0-9]' THEN LEFT(zonedist, 3) ELSE zonedist END as primaryzone, cartodb_id FROM dcp_zoning_districts) a -->
+
+```bash
+ogr2ogr tmp/nyzd.geojson \
+  -f GeoJSON "https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/arcgis/rest/services/nyzd/FeatureServer/0/query?where=objectid%3E0&outfields=*&f=json" ESRIJSON \
+  -t_srs EPSG:4326
+
+tippecanoe -zg -o tmp/nyzd.mbtiles --drop-densest-as-needed --extend-zooms-if-still-dropping tmp/nyzd.geojson --force
+pmtiles convert tmp/nyzd.mbtiles tmp/nyzd.pmtiles
+```

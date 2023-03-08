@@ -28,6 +28,7 @@
     </button>
   </div>
 
+
   <LabsLayers
     @map={{map.instance}}
     @hoveredFeature={{map.hoveredFeature}}
@@ -87,6 +88,31 @@
       </MaplibreGlSource>
     {{/if}}
   </MapMeasurementTools>
+
+  {{!-- <MaplibreGlSource
+    @map={{map.instance}}
+    @sourceId="nyzd"
+    @options={{hash
+      minzoom=0
+      maxzoom=12
+      type='vector'
+      tiles=(array 'pmtiles://https://zola-data.s3.us-west-2.amazonaws.com/nyzd.pmtiles/{z}/{x}/{y}')
+    }}
+  as |source|> --}}
+    <MaplibreGlLayer
+      @map={{map.instance}}
+      @layer={{hash
+        id='nyzdasdf'
+        source="zoning-districts"
+        source-layer="nyzd"
+        type='fill'
+        paint=(hash
+          fill-color=this.zdStyle
+          fill-opacity=this.zdOpacity
+        )
+      }} as |layer|
+    />
+  {{!-- </MaplibreGlSource> --}}
 </Mapbox::BasicMap>
 
 <LocateMeMobile />
