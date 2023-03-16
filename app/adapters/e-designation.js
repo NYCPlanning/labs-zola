@@ -18,7 +18,7 @@ export default CartoGeojsonFeatureAdapter.extend({
   urlForFindRecord(id) {
     return buildSqlUrl(
       SQL(id),
-      'geojson',
+      'json',
     );
   },
 });

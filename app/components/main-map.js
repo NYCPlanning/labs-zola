@@ -220,6 +220,7 @@ export default class MainMap extends Component {
 
     if (feature) {
       const { properties } = feature;
+      console.log('feature', feature);
 
       if (highlightedLayerId === feature.layer.id) {
         const {
