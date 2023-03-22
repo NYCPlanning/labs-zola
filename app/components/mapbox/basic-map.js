@@ -11,12 +11,6 @@ import { registerWaiter, unregisterWaiter } from '@ember/test';
  */
 @tagName('')
 export default class MapboxBasicMapComponent extends Component {
-  init(...args) {
-    super.init(...args);
-
-    registerWaiter(this._mapIsLoaded);
-  }
-
   // used internally for testing. tells the test suite
   // to wait until the map has loaded before proceeding
   @action
@@ -40,6 +34,10 @@ export default class MapboxBasicMapComponent extends Component {
     this.mapInstance = e;
 
     this.mapLoaded(this.mapInstance);
+  }
+
+  didInsertElement() {
+    registerWaiter(this._mapIsLoaded);
   }
 
   willDestroyElement() {

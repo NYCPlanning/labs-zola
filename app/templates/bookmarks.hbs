@@ -6,8 +6,9 @@
   {{/link-to}}
 </div>
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4 bookmarks">
-  {{#if (await bookmarksSettled)}}
-    {{#each-in (group-by "recordType.content" model) as |key values|}}
+  {{#if (await this.bookmarksSettled)}}
+    {{#each-in (group-by "recordType.content" this.model) as |key values|}}
+
     {{!--
       Should be one of:
         commercial-overlay
@@ -23,6 +24,13 @@
         bookmarkType=key
       }}
     {{/each-in}}
+  {{/if}}
+
+  {{#if (is-rejected this.bookmarksSettled)}}
+    Something went wrong:
+
+    <br/>
+    {{get (promise-rejected-reason this.bookmarksSettled) 'message'}}.
   {{/if}}
 
   {{#unless model.length}}

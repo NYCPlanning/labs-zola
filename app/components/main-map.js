@@ -229,6 +229,7 @@ export default class MainMap extends Component {
           sdlbl,
           splbl,
           overlay,
+          id,
           cartodb_id, // eslint-disable-line
           ceqr_num, // eslint-disable-line
         } = properties;
@@ -259,7 +260,7 @@ export default class MainMap extends Component {
         }
 
         if (bbl && ceqr_num) {
-          this.router.transitionTo('map-feature.e-designation', bbl, { queryParams: { search: false } });
+          this.router.transitionTo('map-feature.e-designation', id, { queryParams: { search: false } });
         }
       }
     }

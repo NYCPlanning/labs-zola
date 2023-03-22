@@ -12,7 +12,7 @@ module('Integration | Component | lot bookmark item', function(hooks) {
 
     await render(hbs`{{bookmarks/types/lot/lot-bookmark-item}}`);
 
-    assert.equal(find('*').textContent.trim(), '×');
+    assert.equal(this.element.textContent.trim(), '×');
 
     // Template block usage:
     await render(hbs`
@@ -21,6 +21,6 @@ module('Integration | Component | lot bookmark item', function(hooks) {
       {{/bookmarks/types/lot/lot-bookmark-item}}
     `);
 
-    assert.equal(find('*').textContent.trim(), '×');
+    assert.equal(this.element.textContent.trim(), '×');
   });
 });

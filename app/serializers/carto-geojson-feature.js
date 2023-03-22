@@ -17,7 +17,6 @@ export default class GeoJsonFeatureSerializer extends DS.JSONSerializer {
     } else {
       throw new Error(`cannot find record ${queryId} for ${primaryModelClass}`);
     }
-
     return super.normalizeFindRecordResponse(
       store,
       primaryModelClass,
