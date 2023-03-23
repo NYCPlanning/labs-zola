@@ -1,4 +1,4 @@
-import LayerModel from 'labs-shared/models/layer';
+import LayerModel from '@nycplanning/ember/models/layer';
 import { next } from '@ember/runloop';
 
 // I'm reimporting and extending to fix a minor bug

@@ -1,4 +1,4 @@
-import LabsMap from 'labs-shared/components/labs-map';
+import LabsMap from '@nycplanning/ember/components/labs-map';
 import { registerWaiter, unregisterWaiter } from '@ember/test';
 import { inject as service } from '@ember/service';
 import { timeout, task } from 'ember-concurrency';
