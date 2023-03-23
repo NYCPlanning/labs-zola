@@ -6566,9 +6566,10 @@ ember-cli-dependency-lint@^2.0.1:
     chalk "^2.3.0"
     semver "^5.5.0"
 
-"ember-cli-foundation-6-sass@https://github.com/allthesignals/ember-cli-foundation-6-sass":
+ember-cli-foundation-6-sass@^0.0.27:
   version "0.0.27"
-  resolved "https://github.com/allthesignals/ember-cli-foundation-6-sass#b3b7cd5266160ed0efcc9e786c4dd3edeb7412ab"
+  resolved "https://registry.yarnpkg.com/ember-cli-foundation-6-sass/-/ember-cli-foundation-6-sass-0.0.27.tgz#ccbada1e5f6f5d23da47ed34dbb25a68a47baaca"
+  integrity sha512-9CAwZN+5wUGANTAV/m950GvCKF+BOMiSaRYZgzdTfeCV7w6zSTvf10VbvYVhkDCQ+QiGdTUmK/i9heE9p9wd0w==
   dependencies:
     "@ember/jquery" "^0.6.0"
     babel-register "^6.18.0"
@@ -6580,7 +6581,7 @@ ember-cli-dependency-lint@^2.0.1:
     ember-cli-babel "^7.7.3"
     ember-cli-htmlbars "^2.0.1"
     ember-cli-htmlbars-inline-precompile "^1.0.0"
-    ember-cli-sass "^11.0.1"
+    ember-cli-sass "^7.1.7"
     ember-cli-version-checker "^3.1.3"
     fastboot-transform "^0.1.2"
     foundation-sites "^6.3.1"
@@ -6778,7 +6779,7 @@ ember-cli-preprocess-registry@^3.3.0:
     debug "^3.0.1"
     process-relative-require "^1.0.0"
 
-ember-cli-sass@11.0.1, ember-cli-sass@^11.0.1:
+ember-cli-sass@11.0.1, ember-cli-sass@^11.0.1, ember-cli-sass@^7.1.7:
   version "11.0.1"
   resolved "https://registry.yarnpkg.com/ember-cli-sass/-/ember-cli-sass-11.0.1.tgz#dc565764213a76973a83c0db9583cb79ba187dc5"
   integrity sha512-RMlFPMK4kaB+67seF/IIoY3EC4rRd+L58q+lyElrxB3FcQTgph/qmGwtqf9Up7m3SDbPiA7cccCOSmgReMgCXA==
@@ -8908,15 +8909,7 @@ forwarded@0.2.0:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.2.0.tgz#2269936428aad4c15c7ebe9779a84bf0b2a81811"
   integrity sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==
 
-foundation-sites@^6.3.1:
-  version "6.4.1"
-  resolved "https://registry.yarnpkg.com/foundation-sites/-/foundation-sites-6.4.1.tgz#49bbf7b59675f9690c04528f4141cd0147094532"
-  integrity sha512-7T/hpDSjA03+LkSGUDVWbh0FLrDsJlfJZ1z0rfhBP4nw85NiuobwAYNAUuyOHA2HwPJ/Beuoxodj+y99eiBUYg==
-  dependencies:
-    jquery ">=3.0.0"
-    what-input "^4.1.3"
-
-foundation-sites@^6.6.1, foundation-sites@^6.7.5:
+foundation-sites@^6.3.1, foundation-sites@^6.6.1, foundation-sites@^6.7.5:
   version "6.7.5"
   resolved "https://registry.yarnpkg.com/foundation-sites/-/foundation-sites-6.7.5.tgz#6bc2bdd06819e6ed4d7fd8e3090246a0b6ac81c0"
   integrity sha512-MEjAENdF/IV2XQvlQmg20o+iDTyyWu0N/j440e8fKbEylbKxARzgg5S7vcnxtjukC1Lqg+rRm7ZDSSyGhVVoUQ==
@@ -10731,7 +10724,7 @@ jest-worker@^27.4.5:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jquery@>=3.0.0, jquery@^3.4.1, jquery@^3.5.1:
+jquery@^3.4.1, jquery@^3.5.1:
   version "3.6.3"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.3.tgz#23ed2ffed8a19e048814f13391a19afcdba160e6"
   integrity sha512-bZ5Sy3YzKo9Fyc8wH2iIQK4JImJ6R0GWI9kL1/k7Z91ZBNgkRXE6U0JfHIizZbort8ZunhSI3jw9I6253ahKfg==
@@ -16638,11 +16631,6 @@ wgs84@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/wgs84/-/wgs84-0.0.0.tgz#34fdc555917b6e57cf2a282ed043710c049cdc76"
   integrity sha512-ANHlY4Rb5kHw40D0NJ6moaVfOCMrp9Gpd1R/AIQYg2ko4/jzcJ+TVXYYF6kXJqQwITvEZP4yEthjM7U6rYlljQ==
-
-what-input@^4.1.3:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/what-input/-/what-input-4.3.1.tgz#b8ea7554ba1d9171887c4c6addf28185fec3d31d"
-  integrity sha512-7KD71RWNRWI9M08shZ8+n/2UjO5amwsG9PMSXWz0iIlH8H2DVbHE8Z2tW1RqQa0kIwdeqdUIffFz7crDfkcbAw==
 
 what-input@^5.2.3:
   version "5.2.12"
