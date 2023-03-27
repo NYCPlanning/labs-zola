@@ -1,6 +1,9 @@
 [build]
 command = "API_HOST=https://layers-api-staging.planninglabs.nyc yarn build --environment=production"
 
+[context.develop]
+command = "CARTO_USER=dcpadmin API_HOST=https://layers-api-staging.planninglabs.nyc yarn build --environment=development"
+
 [context.data-qa]
 command = "CARTO_USER=dcpadmin API_HOST=https://layers-api-data.planninglabs.nyc yarn build --environment=production"
 
