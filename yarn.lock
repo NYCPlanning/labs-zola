@@ -1823,9 +1823,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@nycplanning/ember@https://github.com/NYCPlanning/ose-ember-addons#labs-shared-ember-3.28":
-  version "1.0.0"
-  resolved "https://github.com/NYCPlanning/ose-ember-addons#d2ef566ab5ea9cf376974f77efb32bf924a4a07a"
+"@nycplanning/ember@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@nycplanning/ember/-/ember-2.0.0.tgz#fb332c5822ba2fcab03d71fc03f9760377e7150d"
+  integrity sha512-CpR6AJFC4QCqpYneAleKTf5b+2hBVMLlRUw2HAd09E/aDiLcr4GzcG3xrNspa5qR2t7Jw0TZfmMNK1+jvf4SRg==
   dependencies:
     "@turf/union" "^6.0.0"
     ember-auto-import "^1.11.3"
