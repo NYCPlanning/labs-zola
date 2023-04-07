@@ -1823,10 +1823,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@nycplanning/ember@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@nycplanning/ember/-/ember-2.0.0.tgz#fb332c5822ba2fcab03d71fc03f9760377e7150d"
-  integrity sha512-CpR6AJFC4QCqpYneAleKTf5b+2hBVMLlRUw2HAd09E/aDiLcr4GzcG3xrNspa5qR2t7Jw0TZfmMNK1+jvf4SRg==
+"@nycplanning/ember@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@nycplanning/ember/-/ember-2.0.1.tgz#b470f36b0c3e9bc2ac1f771fab7032773c579d81"
+  integrity sha512-Ak3VHJKJSZ6SLJwQnb4KCpQUUcHdmT4gndUjREjFGPPmasCC3i0m7saV2ZgxsDH3hlyObr2HhD+cBmeN8m3vmw==
   dependencies:
     "@turf/union" "^6.0.0"
     ember-auto-import "^1.11.3"
