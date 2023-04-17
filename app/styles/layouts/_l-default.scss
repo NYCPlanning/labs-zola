@@ -23,7 +23,7 @@ body {
 .site-main {
   position: relative;
   z-index: 1;
-  height: calc(100vh - 6rem);
+  height: calc(100vh - 4.6875rem);
 
   @include breakpoint(large) {
     overflow: hidden;
@@ -45,7 +45,7 @@ body {
 
   @include breakpoint(large) {
     position: fixed;
-    top: 6rem;
+    top: 4.75rem;
     left: 0;
     width: 15rem;
     box-shadow: 0 2px 0 rgba(0,0,0,0.1), 2px 0 0 rgba(0,0,0,0.1);
@@ -189,7 +189,7 @@ body.index {
       display: block;
       position: fixed;
       z-index: 3;
-      top: 6.5rem;
+      top: 5.25rem;
       right: 41.66667%;
       background-color: $white;
       margin-right: -4px;
