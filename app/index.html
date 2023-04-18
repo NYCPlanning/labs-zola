@@ -15,7 +15,6 @@
       gtag('js', new Date());
 
       if(window.location.hostname.includes('zola') && (!window.location.hostname.includes('preview'))) {
-        // gtag('config', 'G-CL1BGY7RZM', { 'debug_mode':true });
         gtag('config', 'G-CL1BGY7RZM');
       }
     </script>
@@ -62,38 +61,18 @@
 
     {{content-for "head"}}
 
-    {{content-for 'concat-css'}}
-
     {{content-for "head-footer"}}
 
-    <!-- BEGIN TRACKJS -->
-<!--     <script type="text/javascript">window._trackJs = { token: '021d694d30524212979b729736656f55' };</script>
-    <script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script> -->
-    <!-- END TRACKJS -->
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/billboard.js/dist/billboard.min.css">
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/labs-zola.css">
   </head>
   <body>
     {{content-for "body"}}
 
-    {{content-for 'concat-js'}}
+    <script src="{{rootURL}}assets/vendor.js"></script>
+    <script src="{{rootURL}}assets/labs-zola.js"></script>
 
-<!--     <div id="browser-unsupported">
-      <i class="fa fa-frown-o fa-5x" aria-hidden="true"></i>
-    </div>
-    <script>
-/* eslint-disable */
-      function removeNodes() {
-        var selector = document.getElementById('browser-unsupported');
-        selector.style.display='block';
-      };
-      var $buoop = {notify:{i:-5,f:-6,o:-6,s:-6,c:-6},insecure:true,api:5, onshow() {removeNodes()}};
-      function $buo_f(){
-       var e = document.createElement("script");
-       e.src = "//browser-update.org/update.min.js";
-       document.body.appendChild(e);
-      };
-      try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
-      catch(e){window.attachEvent("onload", $buo_f)}
-    </script> -->
     {{content-for "body-footer"}}
   </body>
 </html>

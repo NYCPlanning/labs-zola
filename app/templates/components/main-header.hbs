@@ -1,5 +1,6 @@
-<LabsUi::SiteHeader
+<Deprecated::SiteHeader
   @responsiveNav={{true}}
+  @betaNotice={{false}}
   class={{if this.printSvc.enabled "hide-for-print"}} as |banner|
 >
   <banner.title>
@@ -40,8 +41,9 @@
         {{link-to "Data" "data"}}
       </li>
       <li class="saved-bookmarks-counter">
+        {{!-- This is causing prember to break. Not sure why yet. Seems to be font-awesome causing this. --}}
         {{#link-to "bookmarks"}}
-          {{fa-icon "bookmark"}}
+          <FaIcon @icon="bookmark" />
           Saved
           {{#if bookmarks.length}}
             <span class="badge sup">
@@ -52,4 +54,4 @@
       </li>
     </ul>
   </banner.nav>
-</LabsUi::SiteHeader>
+</Deprecated::SiteHeader>

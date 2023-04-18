@@ -13,18 +13,14 @@
         <Mapbox::LoadSpinner
           @map={{this.mainMap.mapInstance}}
         />
-        {{!-- 
-          Prevent the map from loading if it's in fastboot. Right now, we don't have a good way
-          to pre-render a map in node. For / and about /about views, this doesn't matter as much.
-        --}}
-        {{#if (not this.fastboot.isFastBoot)}}
-          <MainMap
-            @bookmarks={{model.bookmarks}}
-            @layerGroups={{model.layerGroups}}
-            @layerGroupsMeta={{model.meta}}
-            @onPrint={{action (mut this.printSvc.enabled) true}}
-          />
-        {{/if}}
+
+        <MainMap
+          @bookmarks={{model.bookmarks}}
+          @layerGroups={{model.layerGroups}}
+          @layerGroupsMeta={{model.meta}}
+          @onPrint={{action (mut this.printSvc.enabled) true}}
+        />
+
         <LayerPalette
           @selectedZoning={{this.selectedZoning}}
           @selectedOverlays={{this.selectedOverlays}}
