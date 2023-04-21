@@ -14,12 +14,14 @@
           @map={{this.mainMap.mapInstance}}
         />
 
-        <MainMap
-          @bookmarks={{model.bookmarks}}
-          @layerGroups={{model.layerGroups}}
-          @layerGroupsMeta={{model.meta}}
-          @onPrint={{action (mut this.printSvc.enabled) true}}
-        />
+        {{#if (not this.fastboot.isFastBoot)}}
+          <MainMap
+            @bookmarks={{model.bookmarks}}
+            @layerGroups={{model.layerGroups}}
+            @layerGroupsMeta={{model.meta}}
+            @onPrint={{action (mut this.printSvc.enabled) true}}
+          />
+        {{/if}}
 
         <LayerPalette
           @selectedZoning={{this.selectedZoning}}
