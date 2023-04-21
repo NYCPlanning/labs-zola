@@ -10,6 +10,7 @@ export default Route.extend({
   router: service(),
 
   beforeModel(transition) {
+    console.log(transition);
     const { targetName } = transition;
 
     // only transition to about if target is index
