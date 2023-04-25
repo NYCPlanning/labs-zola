@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
-import { timeout } from 'ember-concurrency';
-import { restartableTask } from 'ember-concurrency-decorators';
+import { timeout, restartableTask } from 'ember-concurrency';
 
 export default class LoadSpinner extends Component {
   mapInstance = {};

@@ -4,13 +4,13 @@
   {{action (mut closed) (not closed)}}
 >
   {{#if closed}}
-    {{fa-icon "chevron-down"}} Edit Map Layers
+    <FaIcon @icon="chevron-down" /> Edit Map Layers
   {{else}}
-    {{fa-icon "chevron-up"}} Close Map Layers
+    <FaIcon @icon="chevron-up" /> Close Map Layers
   {{/if}}
 </button>
 <div id="layers-menu" class="{{if closed "show-for-medium"}}">
-  <LabsUi::LayerGroupsContainer
+  <LabsUiOverrides::LayerGroupsContainer
     @handleToggle={{action this.handleLayerGroupToggle}}
     @title="Zoning and Land Use" as |container|
   >
@@ -54,7 +54,7 @@
           }}
             <li>
               <span style={{sanitize (hash color=landuse.color)}}>
-                {{fa-icon "square"}}
+                <FaIcon @icon="square" />
               </span>
               {{landuse.title}}
             </li>
@@ -121,8 +121,8 @@
       @layerGroup={{this.layerGroups.special-purpose-subdistricts}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.special-purpose-subdistricts this.zoomWarningLabel this.mainMap.zoom}}
     />
-  </LabsUi::LayerGroupsContainer>
-  <LabsUi::LayerGroupsContainer
+  </LabsUiOverrides::LayerGroupsContainer>
+  <LabsUiOverrides::LayerGroupsContainer
     @handleToggle={{action this.handleLayerGroupToggle}}
     @title="Supporting Zoning Layers" as |container|
   >
@@ -233,8 +233,8 @@
       @layerGroup={{this.layerGroups.appendixj-designated-mdistricts}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.appendixj-designated-mdistricts this.zoomWarningLabel this.mainMap.zoom}}
     />
-  </LabsUi::LayerGroupsContainer>
-  <LabsUi::LayerGroupsContainer
+  </LabsUiOverrides::LayerGroupsContainer>
+  <LabsUiOverrides::LayerGroupsContainer
     @handleToggle={{action this.handleLayerGroupToggle}}
     @title="Other Supporting Layers" as |container|
   >
@@ -248,8 +248,8 @@
       @layerGroup={{this.layerGroups.industrial-business-zones}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.industrial-business-zones this.zoomWarningLabel this.mainMap.zoom}}
     />
-  </LabsUi::LayerGroupsContainer>
-  <LabsUi::LayerGroupsContainer
+  </LabsUiOverrides::LayerGroupsContainer>
+  <LabsUiOverrides::LayerGroupsContainer
     @handleToggle={{action this.handleLayerGroupToggle}}
     @title="Administrative Boundaries" as |container|
   >
@@ -283,8 +283,8 @@
       @layerGroup={{this.layerGroups.neighborhood-tabulation-areas}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.neighborhood-tabulation-areas this.zoomWarningLabel this.mainMap.zoom}}
     />
-  </LabsUi::LayerGroupsContainer>
-  <LabsUi::LayerGroupsContainer
+  </LabsUiOverrides::LayerGroupsContainer>
+  <LabsUiOverrides::LayerGroupsContainer
     @handleToggle={{action this.handleLayerGroupToggle}}
     @title="Basemaps" as |container|
   >
@@ -340,17 +340,17 @@
               >
                 <span class="fa-layers">
                   {{#if layer.visibility}}
-                    {{fa-icon
-                      "dot-circle"
-                      prefix="far"
-                      class=(if layer.visibility "" "silver")
-                    }}
+                    <FaIcon
+                      @icon="dot-circle"
+                      @prefix="far"
+                      class={{if layer.visibility "" "silver"}}
+                    />
                   {{else}}
-                    {{fa-icon
-                      "circle"
-                      prefix="far"
-                      class=(if layer.visibility "" "silver")
-                    }}
+                    <FaIcon
+                      @icon="circle"
+                      @prefix="far"
+                      class={{if layer.visibility "" "silver"}}
+                    />
                   {{/if}}
                 </span>
               </span>
@@ -360,14 +360,14 @@
         {{/each}}
       </ul>
     </container.layer-group-toggle>
-  </LabsUi::LayerGroupsContainer>
+  </LabsUiOverrides::LayerGroupsContainer>
   <a
     class="button gray small reset-map-button hide-for-print"
     disabled={{isDefault}}
     onclick={{action this.resetQueryParams}}
     data-test-reset-query-params="true"
   >
-    {{fa-icon "undo"}}
+    <FaIcon @icon="undo" />
     Reset Map Layers
   </a>
 </div>

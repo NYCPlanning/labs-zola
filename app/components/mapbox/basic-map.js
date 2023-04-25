@@ -1,7 +1,9 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
 import { tagName } from '@ember-decorators/component';
-import { registerWaiter, unregisterWaiter } from '@ember/test';
+import { buildWaiter } from '@ember/test-waiters';
+
+let waiter = buildWaiter('ember-friendz:friend-waiter');
 
 /**
  *
@@ -11,6 +13,8 @@ import { registerWaiter, unregisterWaiter } from '@ember/test';
  */
 @tagName('')
 export default class MapboxBasicMapComponent extends Component {
+  token = waiter.beginAsync();
+
   // used internally for testing. tells the test suite
   // to wait until the map has loaded before proceeding
   @action
@@ -34,13 +38,6 @@ export default class MapboxBasicMapComponent extends Component {
     this.mapInstance = e;
 
     this.mapLoaded(this.mapInstance);
-  }
-
-  didInsertElement() {
-    registerWaiter(this._mapIsLoaded);
-  }
-
-  willDestroyElement() {
-    unregisterWaiter(this._mapIsLoaded);
+    waiter.endAsync(this.token);
   }
 }

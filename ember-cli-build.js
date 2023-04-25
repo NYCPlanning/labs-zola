@@ -9,12 +9,6 @@ if (!('FASTBOOT_DISABLED' in process.env)) {
 
 module.exports = (defaults) => {
   const app = new EmberApp(defaults, {
-    prember: {
-      urls: [
-        '/',
-        '/about',
-      ],
-    },
     'ember-cli-babel': {
       includePolyfill: true,
     },
@@ -29,12 +23,15 @@ module.exports = (defaults) => {
       },
     },
     babel: {
-      plugins: [babelPlugin, 'transform-object-rest-spread'],
+      plugins: [babelPlugin],
     },
     autoImport: {
       webpack: {
-        node: {
-          fs: 'empty',
+        resolve: {
+          fallback: {
+            fs: false,
+            path: false,
+          },
         },
       },
     },
@@ -49,6 +46,13 @@ module.exports = (defaults) => {
     },
     fingerprint: {
       exclude: ['img/screenshot-1200x628.png'],
+    },
+    sassOptions: {
+      includePaths: [
+        'node_modules/foundation-sites/scss',
+        'node_modules/nyc-planning-style-guide/dist/assets/scss',
+      ],
+      sourceMapEmbed: true,
     },
   });
 

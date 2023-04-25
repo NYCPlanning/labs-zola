@@ -1,6 +1,6 @@
 import EmberRouter from '@ember/routing/router';
-import config from './config/environment';
 import trackPage from './mixins/track-page';
+import config from 'labs-zola/config/environment';
 
 export default class Router extends EmberRouter.extend(trackPage) {
   location = config.locationType;
