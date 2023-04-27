@@ -2,7 +2,6 @@ import { module, test } from 'qunit';
 import { visit, click, find } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
-import refresh from '../helpers/refresh';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
 module('Acceptance | navigating to qpd url breaks', function(hooks) {
@@ -31,9 +30,6 @@ module('Acceptance | navigating to qpd url breaks', function(hooks) {
     await click('[data-test-grouped-parent="Residence Districts"]'); // this checkbox is checked by default
 
     await click('[data-test-about-close-button]');
-
-    // the refresh here resets the context, requiring re-mocking
-    await refresh();
 
     const boroughs = await find('[data-test-toggle-boroughs] input');
     const cds = await find('[data-test-grouped-parent="Commercial Districts"]');
