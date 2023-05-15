@@ -32,9 +32,9 @@
           href="{{infolink}}" target="_blank" class="info-link"
           onclick={{action this.captureOutboundLink label preventDefault=false}}
         >
-          {{fa-icon infoLinkIcon
-            fixedWidth=true
-          }}
+          <FaIcon @icon={{infoLinkIcon}}
+            @fixedWidth=true
+          />
         </a>
       {{/if}}
       {{#if tooltip}}

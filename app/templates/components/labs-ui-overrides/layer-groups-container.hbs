@@ -10,7 +10,7 @@
   {{#ember-wormhole to=this.elementId}}
     <div class="layer-groups-container-content">
       {{yield (hash
-          layer-group-toggle=(component 'labs-ui/layer-group-toggle'
+          layer-group-toggle=(component 'labs-ui-overrides/layer-group-toggle'
             willDestroyHook=(action 'unregisterChild')
             didInit=(action 'registerChild')
             onToggle=(action this.handleToggle)
@@ -36,7 +36,7 @@
   {{/if}}
 
   {{#if (and this.mapIsLoading this.open this.numberMenuItems)}}
-    {{fa-icon 'spinner' class='fa-spin medium-gray'}}
+    <FaIcon @icon='spinner' class='fa-spin medium-gray' />
   {{/if}}
 </div>
 
@@ -44,7 +44,7 @@
   {{#if this.fastboot.isFastBoot}}
     <div class="layer-groups-container-content">
       {{yield (hash
-          layer-group-toggle=(component 'labs-ui/layer-group-toggle'
+          layer-group-toggle=(component 'labs-ui-overrides/layer-group-toggle'
             onToggle=(action this.handleToggle)
           )
         )

@@ -51,7 +51,7 @@
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
           class="button"
         >
-          {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+          {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.zonedist1}}
         </a>
       </li>
@@ -64,7 +64,7 @@
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
           class="button"
         >
-          {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+          {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.zonedist2}}
         </a>
       </li>
@@ -77,7 +77,7 @@
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
           class="button"
         >
-          {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+          {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.zonedist3}}
         </a>
       </li>
@@ -90,7 +90,7 @@
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
           class="button"
         >
-          {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+          {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.zonedist4}}
         </a>
       </li>
@@ -108,7 +108,7 @@
             onclick={{action this.captureOutboundLink "Special Purpose District" preventDefault=false}}
             class="button"
           >
-            {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+            {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
             {{specialDistrict.label}}
           </a>
         {{else}}
@@ -125,7 +125,7 @@
           target="_blank"
           class="button"
         >
-          {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+          {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.overlay1}}
         </a>
       </li>
@@ -137,7 +137,7 @@
           target="_blank"
           class="button"
         >
-          {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+          {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.overlay2}}
         </a>
       </li>
@@ -172,7 +172,7 @@
               href={{this.model.digitalTaxMapLink}}
               onclick={{action this.captureOutboundLink "Digital Tax Map" preventDefault=false}}
             >
-              {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+              {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
               Digital Tax Map
             </a>
           </li>
@@ -184,7 +184,7 @@
               href={{this.model.zoningMapLink}}
               onclick={{action this.captureOutboundLink "Zoning Map" preventDefault=false}}
             >
-              {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+              {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
               Zoning Map:
               {{this.model.zonemap}}
               <small>
@@ -200,7 +200,7 @@
               href={{this.model.historicalZoningMapLink}}
               onclick={{action this.captureOutboundLink "Historical Zoning Maps" preventDefault=false}}
             >
-              {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+              {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
               Historical Zoning Maps
               <small>
                 (PDF)
@@ -394,7 +394,7 @@
     <label class="data-label">
       Building Info
       <span>
-        {{fa-icon "info-circle"}}
+        {{fa-icon icon="info-circle"}}
         <EmberTooltip
           @text="View this lot's building listing on the NYC Department of Buildings' Building Information System (BISWEB) Application"
           @side="right"
@@ -407,7 +407,7 @@
         onclick={{action this.captureOutboundLink "BISWEB" preventDefault=false}}
         target="_blank"
       >
-        {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+        {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
         BISWEB
       </a>
     </span>
@@ -417,7 +417,7 @@
       <label class="data-label">
         Property Records
         <span>
-          {{fa-icon "info-circle"}}
+          {{fa-icon icon="info-circle"}}
           <EmberTooltip
             @text="View this lot's property records from 1966 to the present on the NYC Department of Finance's Automated City Register Information System (ACRIS)."
             @side="right"
@@ -430,7 +430,7 @@
           onclick={{action this.captureOutboundLink "ACRIS" preventDefault=false}}
           target="_blank"
         >
-          {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+          {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           View ACRIS
         </a>
       </span>
@@ -447,7 +447,7 @@
           onclick={{action this.captureOutboundLink "Housing Info" preventDefault=false}}
           target="_blank"
         >
-          {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+          {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           View HPD's Building, Registration & Violation Records
         </a>
       </span>
@@ -469,7 +469,7 @@
           onclick={{action this.captureOutboundLink "Community District" preventDefault=false}}
           target="_blank"
         >
-          {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+          {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.cdName}}
         </a>
       </span>
@@ -486,7 +486,7 @@
           onclick={{action this.captureOutboundLink "Council District" preventDefault=false}}
           target="_blank"
         >
-          {{fa-icon "external-link-alt" transform="shrink-3 up-1"}}
+          {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           Council District
           {{this.model.council}}
         </a>

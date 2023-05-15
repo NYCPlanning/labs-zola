@@ -12,7 +12,7 @@
         {{group.name}}
         {{#if group.style}}
           <span style={{sanitize group.style}} class="indeterminate-hider">
-            {{fa-icon "square"}}
+            <FaIcon @icon="square" />
           </span>
         {{/if}}
       </label>
@@ -37,7 +37,7 @@
       checked={{group.checked}}
     />
     <label for="nested-{{group.name}}" class="hidable-sibling-toggle top-right">
-      {{fa-icon "angle-up"}}
+      <FaIcon @icon="angle-up" />
     </label>
   {{/if}}
   <ul class="nested columns-3 hidable-sibling" data-test-grouped={{group.name}}>

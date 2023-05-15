@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { inject as service } from '@ember/service';
+import { dasherize } from '@ember/string';
 
 export function initialize() {
   Ember.Route.reopen({
@@ -39,7 +40,7 @@ export function initialize() {
     },
 
     getRouteCssClass() {
-      return `${this.get('routeName').replace(/\./g, '-').dasherize()}`;
+      return `${dasherize(this.get('routeName').replace(/\./g, '-'))}`;
     },
 
     getBodyElement() {
