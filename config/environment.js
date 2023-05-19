@@ -47,7 +47,7 @@ module.exports = function(environment) {
       { id: 'industrial-business-zones', visible: false },
       { id: 'boroughs', visible: false },
       { id: 'community-districts', visible: false },
-      { id: 'nyc-council-districts', visible: false },
+      { id: 'nyc-council-districts-combined', visible: false },
       { id: 'ny-senate-districts', visible: false },
       { id: 'assembly-districts', visible: false },
       { id: 'neighborhood-tabulation-areas', visible: false },
@@ -157,7 +157,7 @@ module.exports = function(environment) {
         checked: true,
         codes: ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8'],
         style: {
-          color: 'rgbA(229,0,0,0.6)',
+          color: 'rgba(229,0,0,0.6)',
         },
       },
       {
@@ -267,6 +267,25 @@ module.exports = function(environment) {
       },
     ],
 
+    cityCouncilDistrictsOptionSets : [
+      {
+        name: '2013-2023',
+        checked: true,
+        codes: ['2013'],
+        style: {
+          color: '#33D8DC'
+        },
+      },
+      {
+        name: '2024-2033',
+        checked: false,
+        codes: ['2024'],
+        style: {
+          color: '#DC333D'
+        },
+      },
+    ],
+
     'mapbox-gl': {
       accessToken: 'pk.eyJ1IjoiY3dob25nbnljIiwiYSI6ImNpczF1MXdrdjA4MXcycXA4ZGtyN2x5YXIifQ.3HGyME8tBs6BnljzUVIt4Q',
     },
@@ -312,6 +331,7 @@ module.exports = function(environment) {
           'info-circle',
           'link',
           'map-pin',
+          'minus',
           'pen',
           'print',
           'search',
