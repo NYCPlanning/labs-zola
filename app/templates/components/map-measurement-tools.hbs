@@ -2,6 +2,7 @@
 {{mapbox-gl-on "draw.create" (action "handleDrawCreate") eventSource=map}}
 {{mapbox-gl-on "draw.render" (action "handleMeasurement") eventSource=map}}
 {{! Measurement }}
+{{#if media.isDesktop}}
 <div class="draw-tools hide-for-print">
   <label>
     <span
@@ -57,6 +58,7 @@
     </button>
   {{/if}}
 </div>
+{{/if}}
 {{#if drawnMeasurements}}
   <div class="draw-measurement">
     <div data-test-measure="value">
