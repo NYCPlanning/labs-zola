@@ -1,0 +1,6 @@
+services:
+  layers:
+    image: dcposeng/labs-layers-api:latest
+    ports:
+      - 3000:3000
+    command: yarn run dev
