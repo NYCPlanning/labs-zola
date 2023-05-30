@@ -9,6 +9,7 @@ const {
   defaultLayerGroupState,
   zoningDistrictOptionSets,
   commercialOverlaysOptionSets,
+  cityCouncilDistrictsOptionSets,
   floodplainEfirm2007OptionSets,
   floodplainPfirm2015OptionSets,
 } = config;
@@ -38,6 +39,8 @@ const defaultSelectedPfirmOptionSets = floodplainPfirm2015OptionSets
   .reduce((acc, curr) => acc.concat(curr))
   .sort();
 
+const defaultSelectedCouncilDistricts =  ['2013'];
+
 // define new query params here:
 export const mapQueryParams = new QueryParams(
   assign(
@@ -54,6 +57,10 @@ export const mapQueryParams = new QueryParams(
 
       selectedOverlays: {
         defaultValue: defaultSelectedOverlays,
+      },
+
+      selectedCouncilDistricts: {
+        defaultValue: defaultSelectedCouncilDistricts,
       },
 
       selectedFirm: {
