@@ -1,6 +1,6 @@
 <MainHeader @bookmarks={{model.bookmarks}} />
 <div class="{{if this.printSvc.enabled "print-view"}}">
-  {{link-to "" "index" class="index-active-detector"}}
+  <LinkTo @route="index" class="index-active-detector"></LinkTo>
   {{#if this.printSvc.enabled}}
     <PrintViewControls
       @printSvc={{printSvc}}
