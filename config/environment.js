@@ -267,13 +267,13 @@ module.exports = function(environment) {
       },
     ],
 
-    cityCouncilDistrictsOptionSets : [
+    cityCouncilDistrictsOptionSets: [
       {
         name: '2013-2023',
         checked: true,
         codes: ['2013'],
         style: {
-          color: '#33D8DC'
+          color: '#33D8DC',
         },
       },
       {
@@ -281,7 +281,7 @@ module.exports = function(environment) {
         checked: false,
         codes: ['2024'],
         style: {
-          color: '#DC333D'
+          color: '#DC333D',
         },
       },
     ],
@@ -363,10 +363,6 @@ module.exports = function(environment) {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
-      },
-      EXTEND_PROTOTYPES: {
-        // Prevent Ember Data from overriding Date.parse.
-        Date: false,
       },
     },
 

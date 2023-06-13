@@ -2,16 +2,17 @@
 
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
+    requireConfigFile: false,
     ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
-      legacyDecorators: true
-    }
+      legacyDecorators: true,
+    },
   },
   plugins: [
-    'ember'
+    'ember',
   ],
   extends: [
     'eslint:recommended',
@@ -21,8 +22,8 @@ module.exports = {
   env: {
     browser: true,
   },
-  globals:{
-    '$': true,
+  globals: {
+    $: true,
     d3: true,
   },
   rules: {
@@ -34,7 +35,7 @@ module.exports = {
     'space-before-function-paren': 0,
     'prefer-arrow-callback': 0,
     'no-underscore-dangle': 0,
-    'camelcase': 0,
+    camelcase: 0,
     'class-methods-use-this': 0,
     'max-len': 0,
     'no-param-reassign': 0,
@@ -52,22 +53,22 @@ module.exports = {
         'testem.js',
         'blueprints/*/index.js',
         'config/**/*.js',
-        'lib/*/index.js'
+        'lib/*/index.js',
       ],
       parserOptions: {
-        sourceType: 'script'
+        sourceType: 'script',
       },
       env: {
         browser: false,
-        node: true
+        node: true,
       },
       plugins: ['node'],
       extends: ['plugin:node/recommended'],
       rules: {
         // this can be removed once the following is fixed
         // https://github.com/mysticatea/eslint-plugin-node/issues/77
-        'node/no-unpublished-require': 'off'
-      }
-    }
-  ]
+        'node/no-unpublished-require': 'off',
+      },
+    },
+  ],
 };
