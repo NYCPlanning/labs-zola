@@ -1,7 +1,6 @@
 <button
   class="button hollow expanded hide-for-medium hide-for-print
-    {{if closed " no-margin"}}"
-  {{action (mut closed) (not closed)}}
+    {{if closed " no-margin"}}" type="button" {{action (mut closed) (not closed)}}
 >
   {{#if closed}}
     <FaIcon @icon="chevron-down" /> Edit Map Layers

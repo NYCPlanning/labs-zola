@@ -1,14 +1,14 @@
 <div class="layer-group-toggle-header layer-{{dasherize label}}">
   <div class="grid-x">
     <div class="cell auto ">
-      {{#if (not fastboot.isFastBoot)}}
+      {{#unless fastboot.isFastBoot}}
         <div class="switch tiny float-left">
           <input class="switch-input" type="checkbox" checked={{if active 'checked'}}>
           <label {{action 'toggle'}} class="switch-paddle">
             <span class="show-for-sr">Toggle Layer Group</span>
           </label>
         </div>
-      {{/if}}
+      {{/unless}}
       <span {{action 'toggle' preventDefault=false}} class="layer-group-toggle-label" role="button">
         {{label}}
         {{#if active}}
@@ -30,10 +30,10 @@
       {{#if infolink}}
         <a
           href="{{infolink}}" target="_blank" class="info-link"
-          onclick={{action this.captureOutboundLink label preventDefault=false}}
+          onclick={{action this.captureOutboundLink label preventDefault=false}} rel="noopener noreferrer"
         >
           <FaIcon @icon={{infoLinkIcon}}
-            @fixedWidth=true
+            @fixedWidth="true"
           />
         </a>
       {{/if}}
@@ -50,8 +50,8 @@
 </div>
 {{#if active}}
   <div class="layer-group-toggle-content">
-    {{#if (not fastboot.isFastBoot)}}
+    {{#unless fastboot.isFastBoot}}
       {{yield}}
-    {{/if}}
+    {{/unless}}
   </div>
 {{/if}}

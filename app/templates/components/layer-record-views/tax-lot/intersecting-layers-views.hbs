@@ -2,7 +2,7 @@
   <li>
     <a
       target="_blank"
-      href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page"
+      href="http://www1.nyc.gov/site/lpc/about/landmark-designation.page" rel="noopener noreferrer"
     >
       <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
       Historic District
@@ -21,7 +21,7 @@
     <li>
       <a
         target="_blank"
-        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page"
+        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         Inclusionary Housing Zone
@@ -32,7 +32,7 @@
     <li>
       <a
         target="_blank"
-        href="http://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone"
+        href="http://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         Transit Zone
@@ -43,7 +43,7 @@
     <li>
       <a
         target="_blank"
-        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page"
+        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         FRESH Zone
@@ -54,7 +54,7 @@
     <li>
       <a
         target="_blank"
-        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan"
+        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page#waterfront_access_plan" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         Waterfront Access Plan
@@ -65,7 +65,7 @@
     <li>
       <a
         target="_blank"
-        href="https://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page"
+        href="https://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         Waterfront Block
@@ -76,7 +76,7 @@
     <li>
       <a
         target="_blank"
-        href="http://www1.nyc.gov/site/planning/applicants/wrp/wrp.page"
+        href="http://www1.nyc.gov/site/planning/applicants/wrp/wrp.page" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         Coastal Zone
@@ -87,7 +87,7 @@
     <li>
       <a
         target="_blank"
-        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page"
+        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         Lower Density Growth Management Zone
@@ -98,7 +98,7 @@
     <li>
       <a
         target="_blank"
-        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page"
+        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         Flood Zone
@@ -112,7 +112,7 @@
     <li>
       <a
         target="_blank"
-        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page"
+        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/flood-text.page" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         Flood Zone
@@ -126,7 +126,7 @@
     <li>
       <a
         target="_blank"
-        href="https://www1.nyc.gov/site/planning/plans/mih/mandatory-inclusionary-housing.page"
+        href="https://www1.nyc.gov/site/planning/plans/mih/mandatory-inclusionary-housing.page" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         Mandatory Inclusionary Housing Area
@@ -137,7 +137,7 @@
     <li>
       <a
         target="_blank"
-        href="http://www.nyc.gov/html/oer/html/e-designation/e-designation.shtml"
+        href="http://www.nyc.gov/html/oer/html/e-designation/e-designation.shtml" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         Environmental Designation
@@ -148,14 +148,14 @@
     <li>
       <a
         target="_blank"
-        href="https://zr.planning.nyc.gov/appendix-j-designated-areas-within-manufacturing-districts"
+        href="https://zr.planning.nyc.gov/appendix-j-designated-areas-within-manufacturing-districts" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         Appendix J Designated M District
       </a>
     </li>
   {{/if}}
-  {{#unless (or numberIntersecting this.model.histdist)}}
+  {{#if (not (or numberIntersecting this.model.histdist))}}
     None found
-  {{/unless}}
+  {{/if}}
 </IntersectingLayers>

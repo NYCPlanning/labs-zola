@@ -43,26 +43,26 @@
         Zoning District:
       {{/if}}
     </li>
-    {{#unless (eq this.model.zonedist1 "BPC")}}
+    {{#if (not (eq this.model.zonedist1 "BPC"))}}
       <li>
         <a
           target="_blank"
           href={{this.model.zoneDistLinks.primaryzone1}}
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
-          class="button"
+          class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.zonedist1}}
         </a>
       </li>
-    {{/unless}}
+    {{/if}}
     {{#if this.model.zonedist2}}
       <li>
         <a
           target="_blank"
           href={{this.model.zoneDistLinks.primaryzone2}}
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
-          class="button"
+          class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.zonedist2}}
@@ -75,7 +75,7 @@
           target="_blank"
           href={{this.model.zoneDistLinks.primaryzone3}}
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
-          class="button"
+          class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.zonedist3}}
@@ -88,7 +88,7 @@
           target="_blank"
           href={{this.model.zoneDistLinks.primaryzone4}}
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
-          class="button"
+          class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.zonedist4}}
@@ -106,7 +106,7 @@
             target="_blank"
             href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-{{specialDistrict.boroName}}.page#{{specialDistrict.anchorName}}"
             onclick={{action this.captureOutboundLink "Special Purpose District" preventDefault=false}}
-            class="button"
+            class="button" rel="noopener noreferrer"
           >
             {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
             {{specialDistrict.label}}
@@ -123,7 +123,7 @@
         <a
           href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page"
           target="_blank"
-          class="button"
+          class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.overlay1}}
@@ -135,7 +135,7 @@
         <a
           href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page"
           target="_blank"
-          class="button"
+          class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.overlay2}}
@@ -170,7 +170,7 @@
             <a
               target="_blank"
               href={{this.model.digitalTaxMapLink}}
-              onclick={{action this.captureOutboundLink "Digital Tax Map" preventDefault=false}}
+              onclick={{action this.captureOutboundLink "Digital Tax Map" preventDefault=false}} rel="noopener noreferrer"
             >
               {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
               Digital Tax Map
@@ -182,7 +182,7 @@
             <a
               target="_blank"
               href={{this.model.zoningMapLink}}
-              onclick={{action this.captureOutboundLink "Zoning Map" preventDefault=false}}
+              onclick={{action this.captureOutboundLink "Zoning Map" preventDefault=false}} rel="noopener noreferrer"
             >
               {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
               Zoning Map:
@@ -198,7 +198,7 @@
             <a
               target="_blank"
               href={{this.model.historicalZoningMapLink}}
-              onclick={{action this.captureOutboundLink "Historical Zoning Maps" preventDefault=false}}
+              onclick={{action this.captureOutboundLink "Historical Zoning Maps" preventDefault=false}} rel="noopener noreferrer"
             >
               {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
               Historical Zoning Maps
@@ -405,7 +405,7 @@
       <a
         href={{this.model.biswebLink}}
         onclick={{action this.captureOutboundLink "BISWEB" preventDefault=false}}
-        target="_blank"
+        target="_blank" rel="noopener noreferrer"
       >
         {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
         BISWEB
@@ -428,7 +428,7 @@
         <a
           href={{this.model.ACRISLink}}
           onclick={{action this.captureOutboundLink "ACRIS" preventDefault=false}}
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           View ACRIS
@@ -445,7 +445,7 @@
         <a
           href={{this.model.housingInfoLink}}
           onclick={{action this.captureOutboundLink "Housing Info" preventDefault=false}}
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           View HPD's Building, Registration & Violation Records
@@ -467,7 +467,7 @@
         <a
           href={{this.model.fullCommunityDistrictURL}}
           onclick={{action this.captureOutboundLink "Community District" preventDefault=false}}
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.cdName}}
@@ -484,7 +484,7 @@
         <a
           href={{this.model.councilLink}}
           onclick={{action this.captureOutboundLink "Council District" preventDefault=false}}
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           Council District

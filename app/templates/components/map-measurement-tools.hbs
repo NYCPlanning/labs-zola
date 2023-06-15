@@ -25,7 +25,7 @@
       {{unless drawToolsOpen "show-for-large"}}
 
       {{if (eq mainMap.drawMode "draw_line_string") "active"}}"
-    onclick={{action "startDraw" "line"}}
+    onclick={{action "startDraw" "line"}} type="button"
   >
     {{#if (and didStartDraw (not drawDidRender) (not draw))}}
       <FaIcon @icon="spinner" />
@@ -39,7 +39,7 @@
       {{unless drawToolsOpen "show-for-large"}}
 
       {{if (eq mainMap.drawMode "draw_polygon") "active"}}"
-    onclick={{action "startDraw" "polygon"}}
+    onclick={{action "startDraw" "polygon"}} type="button"
   >
     {{#if (and didStartDraw (not drawDidRender) (not draw))}}
       <FaIcon @icon="spinner" />
@@ -51,7 +51,7 @@
     <button
       data-test-button="measure-tool-close"
       class="draw-tool draw-tool--clear"
-      onclick={{action "clearDraw"}}
+      onclick={{action "clearDraw"}} type="button"
     >
       <FaIcon @icon="times" />
     </button>
@@ -81,7 +81,7 @@
           <button
             data-tests-measure="unit-standard"
             class="button tiny gray"
-            onclick={{action "handleUnitsToggle" "standard"}}
+            onclick={{action "handleUnitsToggle" "standard"}} type="button"
           >
             {{fa-icon
               (if
@@ -94,7 +94,7 @@
           <button
             data-tests-measure="unit-metric"
             class="button tiny gray"
-            onclick={{action "handleUnitsToggle" "metric"}}
+            onclick={{action "handleUnitsToggle" "metric"}} type="button"
           >
             {{fa-icon
               (if

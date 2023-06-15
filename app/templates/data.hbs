@@ -23,7 +23,7 @@
           {{#if layerGroup.meta.url}}
             {{#each layerGroup.meta.url as |url|}}
               <span style="display:block;" class="no-margin">
-                <a href="{{url}}" target="_blank">
+                <a href="{{url}}" target="_blank" rel="noopener noreferrer">
                   {{fa-icon icon="external-link-alt"}}
                   {{url}}
                 </a>

@@ -7,12 +7,23 @@
 <p>
   {{this.model.description}}
 </p>
-{{#unless (eq this.model.zonedist "BPC")}}
+{{#if (eq this.model.zonedist "BPC")}}
+  <p>
+    <a
+      href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-manhattan.page#battery_park"
+      target="_blank"
+      onclick={{action this.captureOutboundLink "Special Battery Park City"}} rel="noopener noreferrer"
+    >
+      <FaIcon @icon="external-link-alt" />
+      Learn more about the Special Battery Park City District&hellip;
+    </a>
+  </p>
+{{else}}
   <p>
     <a
       href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{this.model.primaryzoneURL}}.page"
       target="_blank"
-      onclick={{action this.captureOutboundLink this.model.zonedist}}
+      onclick={{action this.captureOutboundLink this.model.zonedist}} rel="noopener noreferrer"
     >
       <FaIcon @icon="external-link-alt" />
       Learn more about
@@ -20,16 +31,5 @@
       districts&hellip;
     </a>
   </p>
-{{else}}
-  <p>
-    <a
-      href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-manhattan.page#battery_park"
-      target="_blank"
-      onclick={{action this.captureOutboundLink "Special Battery Park City"}}
-    >
-      <FaIcon @icon="external-link-alt" />
-      Learn more about the Special Battery Park City District&hellip;
-    </a>
-  </p>
-{{/unless}}
+{{/if}}
 {{yield}}
