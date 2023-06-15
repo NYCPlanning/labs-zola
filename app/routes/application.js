@@ -8,6 +8,7 @@ export default Route.extend({
   mainMap: service(),
   fastboot: service(),
   router: service(),
+  store: service(),
 
   beforeModel(transition) {
     const { targetName } = transition;
