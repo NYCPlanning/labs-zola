@@ -1,8 +1,8 @@
 {{!-- Yield out if the task is done running and if it's not node-side fastboot --}}
-{{#if intersectingLayers.isRunning}}
+{{#if this.intersectingLayers.isRunning}}
   <ContentPlaceholders as |placeholder|>
     <placeholder.text @lines={{3}} />
   </ContentPlaceholders>
 {{else}}
-  {{yield intersectingLayers.value numberIntersecting}}
+  {{yield this.intersectingLayers.value this.numberIntersecting}}
 {{/if}}

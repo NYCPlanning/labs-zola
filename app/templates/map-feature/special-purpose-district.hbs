@@ -3,13 +3,13 @@
   @modelName="special-purpose-district" as |specialPurposeDistrict|
 >
   <Mapbox::MapFeatureRenderer
-    @model={{specialPurposeDistrict}}
-    @shouldFitBounds={{model.search}}
+    @model={{this.specialPurposeDistrict}}
+    @shouldFitBounds={{this.model.search}}
   />
   <Bookmarks::BookmarkButton
-    @bookmarkableModel={{specialPurposeDistrict}}
+    @bookmarkableModel={{this.specialPurposeDistrict}}
   />
   <LayerRecordViews::SpecialPurposeDistrict
-    @model={{specialPurposeDistrict.properties}}
+    @model={{this.specialPurposeDistrict.properties}}
   />
 </CartoDataProvider>

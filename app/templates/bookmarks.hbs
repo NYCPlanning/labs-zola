@@ -33,7 +33,7 @@
     {{get (promise-rejected-reason this.bookmarksSettled) 'message'}}.
   {{/if}}
 
-  {{#unless model.length}}
+  {{#unless this.model.length}}
     <div class="no-bookmarks">
       <div class="align-self-middle large-text-center">
         <h1 class="header-large">

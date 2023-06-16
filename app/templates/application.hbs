@@ -3,7 +3,7 @@
   <LinkTo @route="index" class="index-active-detector"></LinkTo>
   {{#if this.printSvc.enabled}}
     <PrintViewControls
-      @printSvc={{printSvc}}
+      @printSvc={{this.printSvc}}
     />
   {{/if}}
   <div class="site-main grid-x {{this.printSvc.printViewClasses}}">
@@ -28,7 +28,7 @@
           @selectedPfirm={{this.selectedPfirm}}
           @selectedCouncilDistricts={{this.selectedCouncilDistricts}}
           @layerGroups={{this.model.layerGroupsObject}}
-          @isDefault={{isDefault}}
+          @isDefault={{this.isDefault}}
           @resetQueryParams={{action this.setModelsToDefault}}
           @handleLayerGroupChange={{action this.handleLayerGroupChange}}
         />

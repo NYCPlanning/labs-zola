@@ -2,15 +2,15 @@
   <span class="icon tax-lot"></span>
   <LinkTo
     @route="map-feature.lot"
-    @models={{array lot.properties.boro lot.properties.block lot.properties.lot}}
+    @models={{array this.lot.properties.boro this.lot.properties.block this.lot.properties.lot}}
   >
-    {{lot.title}}
+    {{this.lot.title}}
     <span class="dark-gray" data-test-lot-property="bbl">
-      {{lot.subtitle}}
+      {{this.lot.subtitle}}
     </span>
   </LinkTo>
   <button
-    class="float-right lu-red delete-bookmark-button" type="button" {{action "_deleteBookmark" lot}}
+    class="float-right lu-red delete-bookmark-button" type="button" {{action "_deleteBookmark" this.lot}}
   >
     &times;
   </button>

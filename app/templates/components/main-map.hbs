@@ -29,58 +29,58 @@
   </div>
 
   <LabsLayers
-    @map={{map.instance}}
-    @hoveredFeature={{map.hoveredFeature}}
+    @map={{this.map.instance}}
+    @hoveredFeature={{this.map.hoveredFeature}}
     @layerGroups={{this.layerGroups}}
-    @interactivity={{interactivity}}
+    @interactivity={{this.interactivity}}
     @onLayerClick={{action "handleLayerClick"}}
     @onLayerHighlight={{action "handleLayerHighlight"}} as |layers|
   >
     <layers.tooltip as |tooltip|>
       <TooltipRenderer
         data-test-tooltip="true"
-        @feature={{tooltip.feature}}
-        @template={{tooltip.layer.tooltipTemplate}}
+        @feature={{this.tooltip.feature}}
+        @template={{this.tooltip.layer.tooltipTemplate}}
       />
     </layers.tooltip>
   </LabsLayers>
 
   {{#if this.bookmarkedLotsLayer}}
     <MapboxGlLayer
-      @map={{map.instance}}
+      @map={{this.map.instance}}
       @layer={{this.bookmarkedLotsLayer}}
       @before="place_other"
     />
   {{/if}}
 
-  {{#if mainMap.selected}}
+  {{#if this.mainMap.selected}}
     <MapboxGlSource
-      @map={{map.instance}}
+      @map={{this.map.instance}}
       @sourceId="selected-lot"
-      @options={{selectedLotSource}} as |source|
+      @options={{this.selectedLotSource}} as |source|
     >
-      <source.layer @layer={{selectedFillLayer}} @before="place_other" />
-      <source.layer @layer={{selectedLineLayer}} @before="place_other" />
+      <source.layer @layer={{this.selectedFillLayer}} @before="place_other" />
+      <source.layer @layer={{this.selectedLineLayer}} @before="place_other" />
     </MapboxGlSource>
   {{/if}}
 
   <MapMeasurementTools
-    @map={{map.instance}}
+    @map={{this.map.instance}}
     @draw={{this.draw}} as |measurement|
   >
-    {{#if measurement.feature}}
+    {{#if this.measurement.feature}}
       <MapboxGlSource
-        @map={{map.instance}}
+        @map={{this.map.instance}}
         @sourceId="drawn-feature"
-        @options={{hash type="geojson" data=measurement.feature}} as |source|
+        @options={{hash type="geojson" data=this.measurement.feature}} as |source|
       >
         <source.layer
-          @layer={{drawnFeatureLayers.line}}
+          @layer={{this.drawnFeatureLayers.line}}
           @before="place_other"
         />
-        {{#if (eq mainMap.drawnFeature.type "Polygon")}}
+        {{#if (eq this.mainMap.drawnFeature.type "Polygon")}}
           <source.layer
-            @layer={{drawnFeatureLayers.fill}}
+            @layer={{this.drawnFeatureLayers.fill}}
             @before="place_other"
           />
         {{/if}}

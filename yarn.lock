@@ -2289,10 +2289,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@nycplanning/ember@3.0.0-0":
-  version "3.0.0-0"
-  resolved "https://registry.yarnpkg.com/@nycplanning/ember/-/ember-3.0.0-0.tgz#789bf7c1327d1aab60b875342f8bcf6a169ebe2b"
-  integrity sha512-Nn+Fm9ny0KqjC+uiDBa7mGXE78KX8our1dEwNYzqo0OPGVdT/1b4YS33ODCQeYjAgyno4JCmteL32AOoK+dnpw==
+"@nycplanning/ember@3.0.0-1":
+  version "3.0.0-1"
+  resolved "https://registry.yarnpkg.com/@nycplanning/ember/-/ember-3.0.0-1.tgz#b7ebd9ff2fe4c062efa2540d53effa802cf71df6"
+  integrity sha512-vbZVHaSfy50PWSwOaz/wU98GFVISHXqeTzZb/9OtKkW6zZtN5c+pcLY7TssJ7fc3DTiutP8dPq1lJmfcVLbrrQ==
   dependencies:
     "@turf/union" "^6.0.0"
     ember-auto-import "^2.4.3"
@@ -6822,7 +6822,7 @@ ember-async-await-helper@0.1.0:
     ember-cli-babel "^6.16.0"
     ember-cli-htmlbars "^3.0.0"
 
-ember-auto-import@^1.11.3, ember-auto-import@^1.12.0, ember-auto-import@^1.6.0:
+ember-auto-import@^1.11.3, ember-auto-import@^1.12.0:
   version "1.12.2"
   resolved "https://registry.yarnpkg.com/ember-auto-import/-/ember-auto-import-1.12.2.tgz#cc7298ee5c0654b0249267de68fb27a2861c3579"
   integrity sha512-gLqML2k77AuUiXxWNon1FSzuG1DV7PEPpCLCU5aJvf6fdL6rmFfElsZRh+8ELEB/qP9dT+LHjNEunVzd2dYc8A==
@@ -7816,7 +7816,7 @@ ember-get-config@^2.1.1:
     "@embroider/macros" "^0.50.0 || ^1.0.0"
     ember-cli-babel "^7.26.6"
 
-ember-in-element-polyfill@^1.0.0, ember-in-element-polyfill@^1.0.1:
+ember-in-element-polyfill@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/ember-in-element-polyfill/-/ember-in-element-polyfill-1.0.1.tgz#143504445bb4301656a2eaad42644d684f5164dd"
   integrity sha512-eHs+7D7PuQr8a1DPqsJTsEyo3FZ1XuH6WEZaEBPDa9s0xLlwByCNKl8hi1EbXOgvgEZNHHi9Rh0vjxyfakrlgg==
@@ -7866,16 +7866,6 @@ ember-local-storage@2.0.2:
     ember-auto-import "^2.2.4"
     ember-cli-babel "^7.26.11"
     ember-cli-htmlbars "^6.0.1"
-
-ember-mapbox-gl@^1.0.0:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/ember-mapbox-gl/-/ember-mapbox-gl-1.2.1.tgz#aba7a4a43385f6fe6aa4332054023b3e8a29af1c"
-  integrity sha512-01VGMb5Tl/YZEHCCJnwwbsVpE90TYj9mM1zNsojoU87hq17w6RR8qM2cECCt/7yfOUI0rKmK+FlIqpHFFb9zkw==
-  dependencies:
-    ember-auto-import "^1.6.0"
-    ember-cli-babel "^7.22.1"
-    ember-cli-htmlbars "^5.3.1"
-    ember-in-element-polyfill "^1.0.0"
 
 ember-mapbox-gl@^2.0.0:
   version "2.0.0"
@@ -7930,10 +7920,9 @@ ember-native-dom-helpers@^0.6.2:
     broccoli-funnel "^1.1.0"
     ember-cli-babel "^6.6.0"
 
-ember-parachute@1.0.2:
+"ember-parachute@https://github.com/NYCPlanning/ember-parachute#remove-tryinvoke":
   version "1.0.2"
-  resolved "https://registry.yarnpkg.com/ember-parachute/-/ember-parachute-1.0.2.tgz#f147f6b29df100d467acc1ddf13761aef92e95de"
-  integrity sha512-wpTn179au/BE2+p4z9mQRh2Cy/a5J038oPpY2Buja3gDO/Qh64ny3klr4dxMRQ5GePniglkWK/LW3qitcs902A==
+  resolved "https://github.com/NYCPlanning/ember-parachute#19bdb35fe5f8352d06ece3b63ce44a546bd21c8f"
   dependencies:
     ember-cli-babel "^7.1.2"
 
