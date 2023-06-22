@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { ChildMixin } from 'ember-composability-tools';
+import { action } from '@ember/object';
 
 const defaultMax = new Date();
 const defaultStart = [220924800, defaultMax.getTime()];
@@ -14,29 +14,31 @@ function formatDate(date) {
   return [year, month].join('-');
 }
 
-export default Component.extend(ChildMixin, {
-  format: {
+export default class LayerControlTimelineComponent extends Component {
+  layerGroup;
+
+  column = '';
+
+
+  format = {
     to: number => formatDate(number),
     from: number => formatDate(number),
-  },
+  }
 
-  column: '',
-  start: defaultStart, // epoch time
-  min: defaultStart[0],
-  max: defaultStart[1],
+  start = defaultStart
+  min = defaultStart[0]
+  max = defaultStart[1]
 
-  actions: {
-    sliderChanged(value) {
-      const [min, max] = value;
-      const { layerGroup, column } = this;
+  @action
+  sliderChanged(value) {
+    const [min, max] = value;
+    const { layerGroup, column } = this;
+    this.set('start', value);
 
-      this.set('start', value);
+    const expression = ['all', ['>=', column, min], ['<=', column, max]];
 
-      const expression = ['all', ['>=', column, min], ['<=', column, max]];
-
-      layerGroup.layerIds.forEach((id) => {
-        layerGroup.setFilterForLayer(id, expression);
-      });
-    },
-  },
-});
+    layerGroup.layerIds.forEach((id) => {
+      layerGroup.setFilterForLayer(id, expression);
+    });
+  }
+}

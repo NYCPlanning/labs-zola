@@ -35,7 +35,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
-    "@nycplanning/ember": "3.0.0-1",
+    "@nycplanning/ember": "3.0.0-3",
     "@turf/area": "^6.0.1",
     "@turf/line-distance": "^4.7.3",
     "babel-eslint": "^10.1.0",
@@ -56,7 +56,7 @@
     "ember-cli-inject-live-reload": "^2.1.0",
     "ember-cli-mirage": "^2.4.0",
     "ember-cli-netlify": "^0.1.0",
-    "ember-cli-nouislider": "1.0.0",
+    "ember-cli-nouislider": "https://github.com/NYCPlanning/ember-cli-nouislider",
     "ember-cli-preprocess-registry": "3.1.2",
     "ember-cli-sass": "11.0.1",
     "ember-cli-sri": "^2.1.1",
@@ -80,8 +80,8 @@
     "ember-mapbox-gl-draw": "https://github.com/allthesignals/ember-mapbox-gl-draw#patch-3",
     "ember-metrics": "^1.5.2",
     "ember-native-dom-helpers": "^0.6.2",
-    "ember-parachute": "https://github.com/NYCPlanning/ember-parachute#remove-tryinvoke",
-    "ember-promise-helpers": "^1.0.9",
+    "ember-parachute": "https://github.com/NYCPlanning/ember-parachute",
+    "ember-promise-helpers": "^2.0.0",
     "ember-qunit": "^6.0.0",
     "ember-resolver": "^10.1.0",
     "ember-responsive": "^5.0.0",
@@ -92,7 +92,7 @@
     "ember-truth-helpers": "^3.1.1",
     "ember-unused-components": "0.2.0",
     "ember-window-mock": "0.5.4",
-    "ember-wormhole": "^0.5.2",
+    "ember-wormhole": "^0.6.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-config-prettier": "^8.5.0",
@@ -133,7 +133,9 @@
     "numeral": "^2.0.6"
   },
   "resolutions": {
-    "ember-cli-sass": "^11.0.1"
+    "ember-cli-sass": "^11.0.1",
+    "mapbox-gl": "1.0.0",
+    "ember-promise-helpers": "^2.0.0"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"

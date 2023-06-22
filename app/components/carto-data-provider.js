@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { keepLatestTask } from 'ember-concurrency-decorators';
+import { keepLatestTask } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 import { DelayPolicy } from 'ember-concurrency-retryable';

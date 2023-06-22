@@ -29,8 +29,8 @@
   </div>
 
   <LabsLayers
-    @map={{this.map.instance}}
-    @hoveredFeature={{this.map.hoveredFeature}}
+    @map={{map.instance}}
+    @hoveredFeature={{map.hoveredFeature}}
     @layerGroups={{this.layerGroups}}
     @interactivity={{this.interactivity}}
     @onLayerClick={{action "handleLayerClick"}}
@@ -39,15 +39,15 @@
     <layers.tooltip as |tooltip|>
       <TooltipRenderer
         data-test-tooltip="true"
-        @feature={{this.tooltip.feature}}
-        @template={{this.tooltip.layer.tooltipTemplate}}
+        @feature={{tooltip.feature}}
+        @template={{tooltip.layer.tooltipTemplate}}
       />
     </layers.tooltip>
   </LabsLayers>
 
   {{#if this.bookmarkedLotsLayer}}
     <MapboxGlLayer
-      @map={{this.map.instance}}
+      @map={{map.instance}}
       @layer={{this.bookmarkedLotsLayer}}
       @before="place_other"
     />
@@ -55,7 +55,7 @@
 
   {{#if this.mainMap.selected}}
     <MapboxGlSource
-      @map={{this.map.instance}}
+      @map={{map.instance}}
       @sourceId="selected-lot"
       @options={{this.selectedLotSource}} as |source|
     >
@@ -65,14 +65,14 @@
   {{/if}}
 
   <MapMeasurementTools
-    @map={{this.map.instance}}
+    @map={{map.instance}}
     @draw={{this.draw}} as |measurement|
   >
-    {{#if this.measurement.feature}}
+    {{#if measurement.feature}}
       <MapboxGlSource
-        @map={{this.map.instance}}
+        @map={{map.instance}}
         @sourceId="drawn-feature"
-        @options={{hash type="geojson" data=this.measurement.feature}} as |source|
+        @options={{hash type="geojson" data=measurement.feature}} as |source|
       >
         <source.layer
           @layer={{this.drawnFeatureLayers.line}}
