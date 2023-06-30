@@ -10,7 +10,7 @@ module('Integration | Helper | humanize-dasherized-words', function(hooks) {
   test('it renders', async function(assert) {
     this.set('inputValue', '1234');
 
-    await render(hbs`{{humanize-dasherized-words inputValue}}`);
+    await render(hbs`{{humanize-dasherized-words this.inputValue}}`);
 
     assert.equal(this.element.textContent.trim(), '1234');
   });

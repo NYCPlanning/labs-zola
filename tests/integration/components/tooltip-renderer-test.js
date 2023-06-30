@@ -21,7 +21,7 @@ module('Integration | Component | tooltip-renderer', function(hooks) {
     this.set('template', template);
 
     await render(hbs`
-      {{tooltip-renderer feature=feature template=template}}
+      {{tooltip-renderer feature=this.feature template=this.template}}
     `);
 
     assert.equal(this.element.textContent.trim(), 'The value of foo is bar');

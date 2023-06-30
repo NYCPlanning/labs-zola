@@ -19,7 +19,7 @@ module('Integration | Component | mapbox/load-spinner', function(hooks) {
 
     await render(hbs`
       {{mapbox/load-spinner
-        map = map.instance
+        map = this.map.instance
       }}
     `);
 

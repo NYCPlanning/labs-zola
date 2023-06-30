@@ -14,7 +14,7 @@ module('Integration | Component | print-view-controls', function(hooks) {
 
   test('it renders with default state', async function(assert) {
     this.printSvc = this.owner.lookup('service:print');
-    await render(hbs`{{print-view-controls printSvc=printSvc}}`);
+    await render(hbs`{{print-view-controls printSvc=this.printSvc}}`);
 
     assert.ok(!find('[data-test-print-control="landscape"] .a11y-orange'));
     assert.ok(find('[data-test-print-control="portrait"] .a11y-orange'));
@@ -30,7 +30,7 @@ module('Integration | Component | print-view-controls', function(hooks) {
 
   test('it changes orientation', async function(assert) {
     this.printSvc = this.owner.lookup('service:print');
-    await render(hbs`{{print-view-controls printSvc=printSvc}}`);
+    await render(hbs`{{print-view-controls printSvc=this.printSvc}}`);
 
     await click('[data-test-print-control="landscape"]');
 
@@ -45,7 +45,7 @@ module('Integration | Component | print-view-controls', function(hooks) {
 
   test('it changes size', async function(assert) {
     this.printSvc = this.owner.lookup('service:print');
-    await render(hbs`{{print-view-controls printSvc=printSvc}}`);
+    await render(hbs`{{print-view-controls printSvc=this.printSvc}}`);
     await click('[data-test-print-control="legal"]');
 
     assert.ok(!find('[data-test-print-control="letter"] .a11y-orange'));
@@ -67,7 +67,7 @@ module('Integration | Component | print-view-controls', function(hooks) {
 
   test('it changes what to show and hide', async function(assert) {
     this.printSvc = this.owner.lookup('service:print');
-    await render(hbs`{{print-view-controls printSvc=printSvc}}`);
+    await render(hbs`{{print-view-controls printSvc=this.printSvc}}`);
 
     await click('[data-test-print-control="map"]');
 

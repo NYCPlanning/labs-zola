@@ -16,7 +16,7 @@ module('helper:carto-download-link', function(hooks) {
       format: 'csv',
     });
 
-    await render(hbs`{{carto-download-link table identifier ids format}}`);
+    await render(hbs`{{carto-download-link this.table this.identifier this.ids this.format}}`);
 
     assert.equal(this.element.textContent.trim(), 'https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM dcp_mappluto WHERE bbl IN (1014970028,1015280036,1015280038)&format=csv&filename=mappluto');
   });

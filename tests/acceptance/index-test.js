@@ -86,15 +86,12 @@ module('Acceptance | index', function(hooks) {
         borocode: '1',
       },
     });
-
     await visit('/');
     await click('[data-test-search="bbl"] span');
-
     await selectChoose('[data-test-search="bbl"] .ember-basic-dropdown', 'Manhattan (1)');
     await fillIn('[data-test-search="bbl"] .bbl-lookup--block-input', 1);
     await fillIn('[data-test-search="bbl"] .bbl-lookup--lot-input', 1);
     await click('[data-test-search="bbl"] .button.small.expanded.no-margin');
-
     assert.ok(currentURL().includes('lot/1/47/7501'));
   });
 });

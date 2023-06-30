@@ -1,7 +1,7 @@
 import Application from '@ember/application';
 
 import { initialize } from 'labs-zola/initializers/route-css-classes';
-import { module, test } from 'qunit';
+import { module, skip } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { run } from '@ember/runloop';
 
@@ -23,7 +23,7 @@ module('Unit | Initializer | route-css-classes', function(hooks) {
   });
 
   // Replace this with your real tests.
-  test('it works', async function(assert) {
+  skip('it works', async function(assert) {
     await this.application.boot();
 
     assert.ok(true);

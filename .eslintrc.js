@@ -2,8 +2,8 @@
 
 module.exports = {
   root: true,
-  parser: '@babel/eslint-parser',
   parserOptions: {
+    parser: '@babel/eslint-parser',
     requireConfigFile: false,
     ecmaVersion: 2018,
     sourceType: 'module',
@@ -13,11 +13,13 @@ module.exports = {
   },
   plugins: [
     'ember',
+    'decorator-position',
   ],
   extends: [
     'eslint:recommended',
     'airbnb-base',
     'plugin:ember-best-practices/recommended',
+    'plugin:decorator-position/ember',
   ],
   env: {
     browser: true,

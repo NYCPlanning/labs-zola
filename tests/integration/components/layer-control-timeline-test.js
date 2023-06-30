@@ -21,7 +21,7 @@ module('Integration | Component | layer control timeline', function(hooks) {
     await render(hbs`
       {{layer-control-timeline
         start=(array 1032370151000 1092370199000)
-        layerGroup=layer
+        layerGroup=this.layer
         column='effective_epoch'
       }}`);
 
@@ -36,7 +36,7 @@ module('Integration | Component | layer control timeline', function(hooks) {
     await render(hbs`
       {{layer-control-timeline
         start=(array 1032370151000 1092370199000)
-        layerGroup=layer
+        layerGroup=this.layer
         column='effective_epoch'
       }}`);
 

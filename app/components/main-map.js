@@ -30,20 +30,15 @@ MeasurementText.prototype.onRemove = function () {
 
 @classNames('map-container')
 export default class MainMap extends Component {
-  @service
-  mainMap;
+  @service mainMap;
 
-  @service
-  metrics;
+  @service metrics;
 
-  @service
-  store;
+  @service store;
 
-  @service
-  router;
+  @service router;
 
-  @service('print')
-  printSvc;
+  @service('print') printSvc;
 
   menuTo = 'layers-menu';
 
@@ -113,8 +108,7 @@ export default class MainMap extends Component {
     return lotBookmarks.length > 0 ? layer : null;
   }
 
-  @alias('mainMap.shouldFitBounds')
-  shouldFitBounds;
+  @alias('mainMap.shouldFitBounds') shouldFitBounds;
 
   @computed('mainMap.selected')
   get selectedLotSource() {
@@ -233,7 +227,6 @@ export default class MainMap extends Component {
           cartodb_id, // eslint-disable-line
           ceqr_num, // eslint-disable-line
         } = properties;
-
         if (bbl && !ceqr_num) { // eslint-disable-line
           const { boro, block, lot } = bblDemux(bbl);
           this.router.transitionTo('map-feature.lot', boro, block, lot);

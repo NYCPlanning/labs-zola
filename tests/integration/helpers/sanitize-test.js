@@ -10,7 +10,7 @@ module('Integration | Helper | sanitize', function(hooks) {
   test('it renders', async function(assert) {
     this.set('inputValue', { color: 'purple' });
 
-    await render(hbs`{{sanitize inputValue}}`);
+    await render(hbs`{{sanitize this.inputValue}}`);
 
     assert.equal(this.element.textContent.trim(), 'color:purple;');
   });

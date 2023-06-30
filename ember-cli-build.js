@@ -54,6 +54,7 @@ module.exports = (defaults) => {
         'node_modules/foundation-sites/scss',
         'node_modules/nyc-planning-style-guide/dist/assets/scss',
       ],
+      implementation: sass,
       sourceMapEmbed: true,
     },
   });

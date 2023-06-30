@@ -1,7 +1,7 @@
 
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('helper:to-title-case', function(hooks) {
@@ -11,7 +11,7 @@ module('helper:to-title-case', function(hooks) {
   test('it renders', async function(assert) {
     this.set('inputValue', '1234');
 
-    await render(hbs`{{to-title-case inputValue}}`);
+    await render(hbs`{{to-title-case this.inputValue}}`);
 
     assert.equal(this.element.textContent.trim(), '1234');
   });

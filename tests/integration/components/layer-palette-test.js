@@ -34,7 +34,7 @@ module('Integration | Component | layer-palette', function(hooks) {
     await render(hbs`
       {{layer-palette
         layerGroups=this.layerGroupsObject
-        isDefault=isDefault
+        isDefault=this.isDefault
       }}
     `);
 
@@ -62,7 +62,7 @@ module('Integration | Component | layer-palette', function(hooks) {
 
     await render(hbs`
       {{layer-palette
-        selectedZoning=selectedZoning
+        selectedZoning=this.selectedZoning
         layerGroups=this.layerGroupsObject
       }}
     `);
@@ -94,7 +94,7 @@ module('Integration | Component | layer-palette', function(hooks) {
 
     await render(hbs`
       {{layer-palette
-        selectedOverlays=selectedOverlays
+        selectedOverlays=this.selectedOverlays
         layerGroups=this.layerGroupsObject
       }}
     `);
@@ -125,7 +125,7 @@ module('Integration | Component | layer-palette', function(hooks) {
     await render(hbs`
       {{layer-palette
         layerGroups=this.layerGroupsObject
-        isDefault=isDefault
+        isDefault=this.isDefault
       }}
     `);
 
@@ -156,10 +156,10 @@ module('Integration | Component | layer-palette', function(hooks) {
 
     await render(hbs`
       {{layer-palette
-        selectedZoning=selectedZoning
-        selectedOverlays=selectedOverlays
+        selectedZoning=this.selectedZoning
+        selectedOverlays=this.selectedOverlays
         layerGroups=this.layerGroupsObject
-        isDefault=isDefault
+        isDefault=this.isDefault
       }}
     `);
 
