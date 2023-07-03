@@ -18,8 +18,8 @@ export default class LocateMeMobileComponent extends Component {
     if (geolocateButton) {
       // GA
       this.metrics.trackEvent(
-        'GoogleAnalytics',
-        { eventCategory: 'Map', eventAction: 'Geolocate on Mobile' },
+        'MatomoTagManager',
+        { category: 'Map', action: 'Geolocate on Mobile', name: 'Geolocate' },
       );
 
       geolocateButton.click();
