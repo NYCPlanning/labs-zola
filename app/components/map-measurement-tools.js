@@ -5,11 +5,9 @@ import { inject as service } from '@ember/service';
 import drawStyles from '../layers/draw-styles';
 
 export default class MapMeasurementToolsComponent extends Component {
-  @service
-  mainMap;
+  @service mainMap;
 
-  @service
-  metrics;
+  @service metrics;
 
   measurementUnitType = 'standard';
 
@@ -44,7 +42,7 @@ export default class MapMeasurementToolsComponent extends Component {
     });
 
     this.set('didStartDraw', true);
-    const draw = this.get('draw') || await import('mapbox-gl-draw')
+    const draw = this.get('draw') || await import('@mapbox/mapbox-gl-draw')
       .then(({ default: MapboxDraw }) => new MapboxDraw({
         displayControlsDefault: false,
         styles: drawStyles,
