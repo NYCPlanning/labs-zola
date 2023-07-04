@@ -9,7 +9,6 @@ const {
   defaultLayerGroupState,
   zoningDistrictOptionSets,
   commercialOverlaysOptionSets,
-  cityCouncilDistrictsOptionSets,
   floodplainEfirm2007OptionSets,
   floodplainPfirm2015OptionSets,
 } = config;
@@ -39,7 +38,7 @@ const defaultSelectedPfirmOptionSets = floodplainPfirm2015OptionSets
   .reduce((acc, curr) => acc.concat(curr))
   .sort();
 
-const defaultSelectedCouncilDistricts =  ['2013'];
+const defaultSelectedCouncilDistricts = ['2013'];
 
 // define new query params here:
 export const mapQueryParams = new QueryParams(
@@ -82,14 +81,11 @@ export const mapQueryParams = new QueryParams(
 );
 
 export default class ApplicationController extends Controller.extend(mapQueryParams.Mixin) {
-  @service('print')
-  printSvc;
+  @service('print') printSvc;
 
-  @service
-  fastboot;
+  @service fastboot;
 
-  @service
-  mainMap;
+  @service mainMap;
 
   // this action extracts query-param-friendly state of layer groups
   // for various paramable layers
@@ -114,7 +110,6 @@ export default class ApplicationController extends Controller.extend(mapQueryPar
   get isDefault() {
     const state = this.get('queryParamsState') || {};
     const values = Object.values(state);
-
-    return values.isEvery('changed', false);
+    return values.every(({ changed }) => changed === false);
   }
 }
