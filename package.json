@@ -58,7 +58,7 @@
     "ember-cli-foundation-6-sass": "https://github.com/allthesignals/ember-cli-foundation-6-sass",
     "ember-cli-htmlbars": "^6.2.0",
     "ember-cli-inject-live-reload": "^2.1.0",
-    "ember-cli-mirage": "3.0.0-alpha.3",
+    "ember-cli-mirage": "^2.4.0",
     "ember-cli-netlify": "^0.1.0",
     "ember-cli-nouislider": "https://github.com/NYCPlanning/ember-cli-nouislider",
     "ember-cli-preprocess-registry": "3.1.2",
@@ -142,5 +142,8 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
+  },
+  "resolutions": {
+    "@embroider/macros": "^1.0.0"
   }
 }

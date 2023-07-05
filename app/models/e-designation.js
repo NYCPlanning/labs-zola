@@ -1,9 +1,6 @@
-import {
-  fragment,
-} from 'ember-data-model-fragments/attributes';
+import { attr } from '@ember-data/model';
 import CartoGeojsonFeature from './carto-geojson-feature';
 
 export default class EDesignation extends CartoGeojsonFeature {
-    @fragment('map-features/e-designation')
-    properties;
+    @attr properties;
 }

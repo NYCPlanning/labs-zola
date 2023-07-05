@@ -5,7 +5,7 @@
   {{this.model.zonedist}}
 </h1>
 <p>
-  {{this.model.description}}
+  {{this.description}}
 </p>
 {{#if (eq this.model.zonedist "BPC")}}
   <p>
@@ -21,7 +21,7 @@
 {{else}}
   <p>
     <a
-      href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{this.model.primaryzoneURL}}.page"
+      href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{this.primaryzoneURL}}.page"
       target="_blank"
       onclick={{action this.captureOutboundLink this.model.zonedist}} rel="noopener noreferrer"
     >

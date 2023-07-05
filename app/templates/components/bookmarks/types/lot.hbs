@@ -3,6 +3,7 @@
 </h3>
 <ul class="no-bullet">
   {{#each this.items as |bookmark|}}
+    {{log "bookmark" bookmark}}
     <Bookmarks::Types::Lot::LotBookmarkItem
       data-test-bookmark={{bookmark.id}}
       @lot={{bookmark.bookmark}}

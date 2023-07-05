@@ -21,7 +21,7 @@
   </span>
 </h1>
 <p class="text-small dark-gray">
-  {{this.model.boroname}}&nbsp;(Borough {{this.model.borocode}})
+  {{this.boroname}}&nbsp;(Borough {{this.model.borocode}})
 
   <span class="pipe">
     |
@@ -34,64 +34,64 @@
   Lot
   {{this.model.lot}}
 </p>
-{{#if this.model.zonedist1}}
+{{#if this.zonedist1}}
   <ul class="lot-zoning-list">
     <li class="menu-text">
-      {{#if (or this.model.zonedist2 this.model.spdist1)}}
+      {{#if (or this.zonedist2 this.model.spdist1)}}
         Zoning Districts:
       {{else}}
         Zoning District:
       {{/if}}
     </li>
-    {{#if (not (eq this.model.zonedist1 "BPC"))}}
+    {{#if (not (eq this.zonedist1 "BPC"))}}
       <li>
         <a
           target="_blank"
-          href={{this.model.zoneDistLinks.primaryzone1}}
+          href={{this.zoneDistLinks.primaryzone1}}
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
           class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
-          {{this.model.zonedist1}}
+          {{this.zonedist1}}
         </a>
       </li>
     {{/if}}
-    {{#if this.model.zonedist2}}
+    {{#if this.zonedist2}}
       <li>
-        <a
+        <a 
           target="_blank"
-          href={{this.model.zoneDistLinks.primaryzone2}}
+          href={{this.zoneDistLinks.primaryzone2}}
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
           class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
-          {{this.model.zonedist2}}
+          {{this.zonedist2}}
         </a>
       </li>
     {{/if}}
-    {{#if this.model.zonedist3}}
+    {{#if this.zonedist3}}
       <li>
         <a
           target="_blank"
-          href={{this.model.zoneDistLinks.primaryzone3}}
+          href={{this.zoneDistLinks.primaryzone3}}
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
           class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
-          {{this.model.zonedist3}}
+          {{this.zonedist3}}
         </a>
       </li>
     {{/if}}
-    {{#if this.model.zonedist4}}
+    {{#if this.zonedist4}}
       <li>
         <a
           target="_blank"
-          href={{this.model.zoneDistLinks.primaryzone4}}
+          href={{this.zoneDistLinks.primaryzone4}}
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
           class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
-          {{this.model.zonedist4}}
+          {{this.zonedist4}}
         </a>
       </li>
     {{/if}}
@@ -169,7 +169,7 @@
           <li>
             <a
               target="_blank"
-              href={{this.model.digitalTaxMapLink}}
+              href={{this.digitalTaxMapLink}} 
               onclick={{action this.captureOutboundLink "Digital Tax Map" preventDefault=false}} rel="noopener noreferrer"
             >
               {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
@@ -181,7 +181,7 @@
           <li>
             <a
               target="_blank"
-              href={{this.model.zoningMapLink}}
+              href={{this.zoningMapLink}}
               onclick={{action this.captureOutboundLink "Zoning Map" preventDefault=false}} rel="noopener noreferrer"
             >
               {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
@@ -197,7 +197,7 @@
           <li>
             <a
               target="_blank"
-              href={{this.model.historicalZoningMapLink}}
+              href={{this.historicalZoningMapLink}}
               onclick={{action this.captureOutboundLink "Historical Zoning Maps" preventDefault=false}} rel="noopener noreferrer"
             >
               {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
@@ -214,14 +214,14 @@
 </section>
 <hr class="hide-for-print" />
 <section class="lot-details">
-  {{#if this.model.ownertypename}}
+  {{#if this.ownertypename}}
     <div class="data-grid">
       <label class="data-label">
         Owner Type
       </label>
       <span class="datum">
-        {{#if this.model.ownertypename}}
-          {{this.model.ownertypename}}
+        {{#if this.ownertypename}}
+          {{this.ownertypename}}
         {{else}}
           Unknown/Private
         {{/if}}
@@ -240,13 +240,13 @@
       </span>
     </div>
   {{/if}}
-  {{#if this.model.landusename}}
+  {{#if this.landusename}}
     <div class="data-grid">
       <label class="data-label">
         Land Use
       </label>
       <span class="datum">
-        {{this.model.landusename}}
+        {{this.landusename}}
       </span>
     </div>
   {{/if}}
@@ -311,13 +311,13 @@
       </span>
     </div>
   {{/if}}
-  {{#if this.model.bldgclassname}}
+  {{#if this.bldgclassname}}
     <div class="data-grid">
       <label class="data-label">
         Building Class
       </label>
       <span class="datum">
-        {{this.model.bldgclassname}}
+        {{this.bldgclassname}}
         {{#if this.model.bldgclass}}
           <span class="dark-gray">
             (
@@ -403,7 +403,7 @@
     </label>
     <span class="datum">
       <a
-        href={{this.model.biswebLink}}
+        href={{this.biswebLink}}
         onclick={{action this.captureOutboundLink "BISWEB" preventDefault=false}}
         target="_blank" rel="noopener noreferrer"
       >
@@ -426,7 +426,7 @@
       </label>
       <span class="datum">
         <a
-          href={{this.model.ACRISLink}}
+          href={{this.ACRISLink}}
           onclick={{action this.captureOutboundLink "ACRIS" preventDefault=false}}
           target="_blank" rel="noopener noreferrer"
         >
@@ -443,7 +443,7 @@
       </label>
       <span class="datum">
         <a
-          href={{this.model.housingInfoLink}}
+          href={{this.housingInfoLink}}
           onclick={{action this.captureOutboundLink "Housing Info" preventDefault=false}}
           target="_blank" rel="noopener noreferrer"
         >
@@ -458,19 +458,19 @@
   <h3 class="header-small lot-section-header hide-for-print">
     Neighborhood Information
   </h3>
-  {{#if this.model.cdURLSegment}}
+  {{#if this.cdURLSegment}}
     <div class="data-grid">
       <label class="data-label">
         Community District
       </label>
       <span class="datum">
         <a
-          href={{this.model.fullCommunityDistrictURL}}
+          href={{this.fullCommunityDistrictURL}}
           onclick={{action this.captureOutboundLink "Community District" preventDefault=false}}
           target="_blank" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
-          {{this.model.cdName}}
+          {{this.cdName}}
         </a>
       </span>
     </div>
@@ -482,7 +482,7 @@
       </label>
       <span class="datum">
         <a
-          href={{this.model.councilLink}}
+          href={{this.councilLink}}
           onclick={{action this.captureOutboundLink "Council District" preventDefault=false}}
           target="_blank" rel="noopener noreferrer"
         >

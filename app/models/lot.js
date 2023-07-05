@@ -1,16 +1,14 @@
-import {
-  fragment,
-} from 'ember-data-model-fragments/attributes';
-import { alias } from '@ember/object/computed';
+import { attr } from '@ember-data/model';
 import CartoGeojsonFeature from './carto-geojson-feature';
 
 export default class Lot extends CartoGeojsonFeature {
-  @fragment('map-features/lot')
-  properties;
+  @attr properties;
 
-  @alias('properties.address')
-  title;
+  get title() {
+    return this.get('properties.address');
+  }
 
-  @alias('properties.bbl')
-  subtitle;
+  get subtitle() {
+    return this.get('properties.bbl');
+  }
 }
