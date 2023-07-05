@@ -9,7 +9,7 @@ const {
 } = DS;
 
 export default class BookmarkModel extends Model {
-  @belongsTo('bookmark', { inverse: 'bookmark' }) bookmark;
+  @belongsTo('bookmark', { inverse: 'bookmark', polymorphic: true }) bookmark;
 
   @attr('string') address;
 
