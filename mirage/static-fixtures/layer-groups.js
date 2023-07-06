@@ -5835,7 +5835,7 @@ export default {
         'source-layers': [
           {
             id: 'pluto',
-            sql: 'SELECT bbl AS id, the_geom_webmercator, bbl, lot, landuse, address, numfloors FROM mappluto',
+            sql: 'SELECT bbl AS id, the_geom_webmercator, bbl, lot, landuse, address, numfloors FROM dcp_mappluto',
           },
           {
             id: 'block-centroids',

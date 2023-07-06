@@ -40,7 +40,7 @@ export default function() {
       let schemaModel = schema.cartoGeojsonFeatures.all();
 
       // if it includes mappluto, it's asking for lots
-      if (q.includes('mappluto')) {
+      if (q.includes('dcp_mappluto')) {
         schemaModel = schema.lots.all();
       }
 
@@ -60,7 +60,9 @@ export default function() {
           const found = q.match(regex);
           const cartoIdentifier = found[0]?.split(':')[1];
           features = features.filter(f => f.id === cartoIdentifier);
-        } catch (e) {}
+        } catch (e) {
+          console.error('Mirage error: ', e);
+        }
       }
 
       return {
