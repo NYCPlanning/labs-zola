@@ -21,7 +21,6 @@ module('Acceptance | bookmarks', function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
   stubBasicMap(hooks);
-
   hooks.beforeEach(function() {
     this.server.post('layer-groups', () => layerGroupsFixtures);
   });

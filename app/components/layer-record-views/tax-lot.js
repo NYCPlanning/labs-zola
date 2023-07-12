@@ -1,5 +1,8 @@
 import carto from 'labs-zola/utils/carto';
+import config from 'labs-zola/config/environment';
 import LayerRecordComponent from './-base';
+
+const { specialDistrictCrosswalk } = config;
 
 const specialPurposeDistrictsSQL = function(table, spdist1, spdist2, spdist3) {
   return `SELECT DISTINCT sdname, sdlbl FROM ${table}
@@ -396,6 +399,7 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
   get biswebLink() {
     const BISWEB_HOST = 'http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet';
     const { borocode, block, lot } = this.model;
+
     return `${BISWEB_HOST}?allborough=${borocode}&allblock=${block}&alllot=${lot}&go5=+GO+&requestid=0`;
   }
 
@@ -434,8 +438,8 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
   }
 
   get housingInfoLink() {
-    const { borocode, housenum, street } = this.model;
-    return `https://hpdonline.hpdnyc.org/Hpdonline/Provide_address.aspx?p1=${borocode}&p2=${housenum}&p3=${street}&SearchButton=Search`;
+    const { borocode } = this.model;
+    return `https://hpdonline.hpdnyc.org/Hpdonline/Provide_address.aspx?p1=${borocode}&p2=${this.housenum}&p3=${this.street}&SearchButton=Search`;
   }
 
   get councilLink() {

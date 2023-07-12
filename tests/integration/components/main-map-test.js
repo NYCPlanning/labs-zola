@@ -1,3 +1,4 @@
+import { A } from '@ember/array';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import {
@@ -26,7 +27,7 @@ module('Integration | Component | main-map', function(hooks) {
 
   hooks.beforeEach(async function() {
     this.meta = MAPBOX_GL_BLANK_STYLE;
-    this.bookmarks = [];
+    this.bookmarks = A([]);
     this.printSvc = this.owner.lookup('service:print');
   });
 

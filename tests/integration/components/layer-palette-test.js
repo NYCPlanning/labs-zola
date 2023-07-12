@@ -1,3 +1,4 @@
+import { A } from '@ember/array';
 import { module, test, skip } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, click, pauseTest } from '@ember/test-helpers';
@@ -58,7 +59,7 @@ module('Integration | Component | layer-palette', function(hooks) {
       {},
     );
 
-    this.selectedZoning = [];
+    this.selectedZoning = A([]);
 
     await render(hbs`
       {{layer-palette
@@ -90,7 +91,7 @@ module('Integration | Component | layer-palette', function(hooks) {
       {},
     );
 
-    this.selectedOverlays = [];
+    this.selectedOverlays = A([]);
 
     await render(hbs`
       {{layer-palette

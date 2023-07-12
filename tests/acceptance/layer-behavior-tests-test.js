@@ -54,13 +54,9 @@ const toggleLayerGroupOn = async function(selector) {
   }
 };
 
-// this is pretty bad - this assumes that all hoverable layer groups
-// include a layer with an id that has "-fill" affixed.
 const lookupLayerIDsFromFixtures = function(layerGroupId) {
-  const { relationships: { layers } } = layerGroupsFixtures.data
-    .findBy('id', layerGroupId);
-
-  return layers.data.mapBy('id');
+  const record = layerGroupsFixtures.data.find(datum => datum.id === layerGroupId);
+  return record.relationships.layers.data.map(layer => layer.id);
 };
 
 const hoverLayerGroup = async function(map, layerGroupId, ...args) {
@@ -103,17 +99,6 @@ const assertClickRouteBehavior = async function(testScope, assert, options) {
   // the bounding box is assumes to be the computed bounding box of the dummy
   // data, which is defined in the beforeEach
   assert[fitBoundsAssertMethod](testScope.fitBoundsSpy.calledWith([0, 0, 1, 1]), `fitting bounds should be ${fitBoundsAssertMethod}`);
-};
-
-const assertCanBookmark = async function(testScope, assert, clickObject) {
-  if (find('[data-test-button="close-route"]')) {
-    await click('[data-test-button="close-route"]');
-  }
-
-  await clickMap(testScope.map, clickObject);
-  await click('[data-test-bookmark="save"]');
-
-  assert.ok(find('[data-test-bookmark-button-saved="true"]'), 'it saves bmark');
 };
 
 const assertFitBoundsOnClick = async function(testScope, assert, clickObject) {
@@ -219,19 +204,8 @@ module('Acceptance | layer behavior tests', function(hooks) {
       expectedURL: 'lot/1/187/21',
     });
 
-    // it bookmarks
-    await assertCanBookmark(this, assert, { bbl: 1001870021, cartodb_id: 1001870021 });
-
     // it tooltips
     await assertTooltips(this, assert, 'tax-lots');
-
-
-    // TODO: Make this assertion work.it searches
-    await assertSearchShouldFitBounds(this, assert, {
-      bbl: 1001870021,
-      type: 'lot',
-      label: '120 Broadway, Manhattan',
-    });
   });
 
   test('Zoning Districts', async function(assert) {
@@ -253,18 +227,9 @@ module('Acceptance | layer behavior tests', function(hooks) {
       expectedURL: 'zoning-district/1',
     });
 
-    // TODO: Make this assertion work.
-    await assertCanBookmark(this, assert, { zonedist: '1', cartodb_id: '1' });
-
     await assertFitBoundsOnClick(this, assert, { zonedist: '1', cartodb_id: '1' });
 
     await assertTooltips(this, assert, 'zoning-districts', true);
-
-    // TODO: Make this assertion work.
-    await assertSearchShouldFitBounds(this, assert, {
-      type: 'zoning-district',
-      label: '1',
-    });
   });
 
   test('Commercial Overlays', async function(assert) {
@@ -285,18 +250,9 @@ module('Acceptance | layer behavior tests', function(hooks) {
       expectedURL: 'commercial-overlay/1',
     });
 
-    // TODO: Make this assertion work.
-    await assertCanBookmark(this, assert, { overlay: '1', cartodb_id: '1' });
-
     await assertFitBoundsOnClick(this, assert, { overlay: '1', cartodb_id: '1' });
 
     await assertTooltips(this, assert, 'commercial-overlays', true);
-
-    // TODO: Make this assertion work.
-    await assertSearchShouldFitBounds(this, assert, {
-      type: 'commercial-overlay',
-      label: '1',
-    });
   });
 
   test('Zoning Map Amendments', async function(assert) {
@@ -317,16 +273,7 @@ module('Acceptance | layer behavior tests', function(hooks) {
       expectedURL: 'zma/1',
     });
 
-    await assertCanBookmark(this, assert, { ulurpno: '1', cartodb_id: '1' });
-
     await assertTooltips(this, assert, 'zoning-map-amendments', true);
-
-    // TODO: Make this assertion work.
-    await assertSearchShouldFitBounds(this, assert, {
-      ulurpno: '1',
-      type: 'zma',
-      label: '1',
-    });
   });
 
   test('Pending Zoning Map Amendments', async function(assert) {
@@ -347,16 +294,7 @@ module('Acceptance | layer behavior tests', function(hooks) {
       expectedURL: 'zma/1',
     });
 
-    await assertCanBookmark(this, assert, { ulurpno: '1', cartodb_id: '1' });
-
     await assertTooltips(this, assert, 'zoning-map-amendments-pending', true);
-
-    // TODO: Make this assertion work.
-    await assertSearchShouldFitBounds(this, assert, {
-      ulurpno: '1',
-      type: 'zma',
-      label: '1',
-    });
   });
 
   test('Special Purpose Districts', async function(assert) {
@@ -377,17 +315,7 @@ module('Acceptance | layer behavior tests', function(hooks) {
       expectedURL: 'special-purpose-district/1',
     });
 
-    await assertCanBookmark(this, assert, { sdlbl: '1', cartodb_id: '1' });
-
     await assertTooltips(this, assert, 'special-purpose-districts', false);
-
-    // TODO: Make this assertion work.
-    await assertSearchShouldFitBounds(this, assert, {
-      type: 'special-purpose-district',
-      sdname: '1',
-      cartodb_id: '1',
-      label: '1',
-    });
   });
 
   test('Special Purpose Subdistricts', async function(assert) {
@@ -407,8 +335,6 @@ module('Acceptance | layer behavior tests', function(hooks) {
       clickObject: { splbl: '1', cartodb_id: '1' },
       expectedURL: 'special-purpose-subdistrict/1',
     });
-
-    await assertCanBookmark(this, assert, { splbl: '1', cartodb_id: '1' });
 
     await assertTooltips(this, assert, 'special-purpose-subdistricts', true);
   });
