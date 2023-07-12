@@ -136,8 +136,5 @@
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
-  },
-  "resolutions": {
-    "@embroider/macros": "^1.0.0"
   }
 }
