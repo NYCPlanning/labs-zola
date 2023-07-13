@@ -26,6 +26,7 @@
     "upgrade": "ember-cli-update --run-codemods"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
     "@babel/eslint-parser": "^7.21.3",
     "@babel/plugin-proposal-decorators": "^7.21.0",
     "@ember/optional-features": "^2.0.0",
