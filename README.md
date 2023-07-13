@@ -8,7 +8,7 @@ ZoLa provides a simple way to research zoning regulations and other information 
 
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/) (with NPM)
-  - This installation was tested using Node v14.15.0
+  - This installation was tested using Node v16
 - [Ember CLI](https://ember-cli.com/)
 - [Yarn](https://yarnpkg.com/)
 
@@ -21,9 +21,10 @@ ZoLa provides a simple way to research zoning regulations and other information 
 
 ## Connect to a local or remote Layers Api:
 ```
-API_HOST=http://localhost:3000 ember serve
+start:local-api
 ```
-Note that you must provide `http://` to prevent cross-origin restrictions.
+
+Which will run `API_HOST=http://localhost:3000 ember serve`, running `http://` will prevent cross-origin restrictions.
 
 ## Architecture
 

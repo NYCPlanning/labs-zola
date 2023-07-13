@@ -10,6 +10,7 @@ const {
   commercialOverlaysOptionSets,
   floodplainEfirm2007OptionSets,
   floodplainPfirm2015OptionSets,
+  cityCouncilDistrictsOptionSets,
 } = config;
 
 @classNames('layer-palette')
@@ -27,6 +28,7 @@ export default class LayerPaletteComponent extends Component {
     this.setFilterForOverlays();
     this.setFilterForFirm();
     this.setFilterForPfirm();
+    this.setFilterForCouncilDistricts();
   }
 
   @service
@@ -42,6 +44,10 @@ export default class LayerPaletteComponent extends Component {
 
   selectedPfirm = [];
 
+  selectedCouncilDistricts = [];
+
+  selectedLayerGroup = [];
+
   zoningDistrictOptionSets = zoningDistrictOptionSets;
 
   commercialOverlaysOptionSets = commercialOverlaysOptionSets;
@@ -50,15 +56,21 @@ export default class LayerPaletteComponent extends Component {
 
   pfirmOptionSets = floodplainPfirm2015OptionSets;
 
+  cityCouncilDistrictsOptionSets = cityCouncilDistrictsOptionSets;
+
   layerGroups;
 
   closed = true;
+
+  cityCouncilToggled = false;
 
   plutoFill = false;
 
   resetQueryParams = () => {};
 
   handleLayerGroupChange = () => {};
+
+  toggled = () => this.cityCouncilToggled = !this.cityCouncilToggled;
 
   @action
   setFilterForZoning() {
@@ -82,15 +94,31 @@ export default class LayerPaletteComponent extends Component {
       'any',
       ...this.selectedOverlays.map(value => ['==', 'overlay', value]),
     ];
-
     // if-guard to prevent the node-based fastboot server from running this
     // mapbox-gl method which gets ignored in fastboot.
     if (!this.fastboot.isFastBoot) {
       next(() => {
         this.layerGroups['commercial-overlays'].setFilterForLayer('co', expression);
         this.layerGroups['commercial-overlays'].setFilterForLayer('co_labels', expression);
-        this.layerGroups['floodplain-efirm2007'].setFilterForLayer('effective-flood-insurance-rate-2007', expression);
-        this.layerGroups['floodplain-pfirm2015'].setFilterForLayer('preliminary-flood-insurance-rate', expression);
+      });
+    }
+  }
+
+  @action
+  setFilterForCouncilDistricts() {
+    const expression = [
+      'any',
+      ...this.selectedCouncilDistricts.map(value => ['==', 'year', value]),
+    ];
+
+    this.toggled();
+    // // if-guard to prevent the node-based fastboot server from running this
+    // mapbox-gl method which gets ignored in fastboot.
+    if (!this.fastboot.isFastBoot) {
+      next(() => {
+       this.layerGroups['nyc-council-districts-combined'].setFilterForLayer('dcp_city_council_districts_combined-line-glow', expression);
+       this.layerGroups['nyc-council-districts-combined'].setFilterForLayer('dcp_city_council_districts_combined-line', expression);
+       this.layerGroups['nyc-council-districts-combined'].setFilterForLayer('dcp_city_council_districts_combined-label', expression);
       });
     }
   }
@@ -143,15 +171,14 @@ export default class LayerPaletteComponent extends Component {
   handleLayerGroupToggle(layerGroup) {
     gtag('event', 'toggle_layer', {
       event_category: 'Layers',
-      event_action: `${layerGroup.visible ? 'Turned on' : 'Turned off'} ${layerGroup.legend.label}`,
+      event_action: `${ layerGroup.visible ? 'Turned on' : 'Turned off' } ${ layerGroup.legend.label }`,
     });
 
     // GA
     this.get('metrics').trackEvent('GoogleAnalytics', {
       eventCategory: 'Layers',
-      eventAction: `${layerGroup.visible ? 'Turned on' : 'Turned off'} ${layerGroup.legend.label}`,
+      eventAction: `${ layerGroup.visible ? 'Turned on' : 'Turned off' } ${ layerGroup.legend.label }`,
     });
-
     this.handleLayerGroupChange();
   }
 }

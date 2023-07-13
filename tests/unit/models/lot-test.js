@@ -76,7 +76,7 @@ module('Unit | Model | lot', function(hooks) {
     const model = await this.owner.lookup('service:store')
       .findRecord('lot', 1);
 
-    assert.equal(model.properties.zoningMapLink, 'http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/map8d.pdf');
+    assert.equal(model.properties.zoningMapLink, 'https://s-media.nyc.gov/agencies/dcp/assets/files/pdf/zoning/zoning-maps/map8d.pdf');
   });
 
   test('it generates correct links: Historical Zoning Map', async function(assert) {
@@ -90,7 +90,7 @@ module('Unit | Model | lot', function(hooks) {
     const model = await this.owner.lookup('service:store')
       .findRecord('lot', 1);
 
-    assert.equal(model.properties.historicalZoningMapLink, 'http://www1.nyc.gov/assets/planning/download/pdf/zoning/zoning-maps/historical-zoning-maps/maps08d.pdf');
+    assert.equal(model.properties.historicalZoningMapLink, 'https://s-media.nyc.gov/agencies/dcp/assets/files/pdf/zoning/zoning-maps/maps08d.pdf');
   });
 
   test('it generates correct links: ACRIS', async function(assert) {

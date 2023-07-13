@@ -1217,6 +1217,54 @@ export default {
     },
     {
       type: 'layer-groups',
+      id: 'nyc-council-districts-combined',
+      attributes: {
+        id: 'nyc-council-districts-combined',
+        title: 'NYC Council Districts',
+        visible: false,
+        meta: {
+          description: 'Administrative and Political Districts v17D, BYTES of the BIG APPLE™',
+          url: [
+            'https://www1.nyc.gov/site/planning/data-maps/open-data.page',
+          ],
+          'updated-at': '15 May 2023',
+        },
+        legend: {
+          label: 'NYC Council Districts',
+          tooltip: '2013-2023 NYC Council District boundaries remain in effect until the end of the year. 2024-2033 boundaries are used in the November 7th, 2023 City Council election.',
+        },
+        'legend-icon': 'admin-line',
+        'legend-color': '#76CAF5',
+      },
+      relationships: {
+        layers: {
+          data: [
+            {
+              type: 'layers',
+              id: 'dcp_city_council_districts_combined-line-glow',
+            },
+            {
+              type: 'layers',
+              id: 'dcp_city_council_districts_combined-line',
+            },
+            {
+              type: 'layers',
+              id: 'dcp_city_council_districts_combined-label',
+            },
+          ],
+        },
+        sources: {
+          data: [
+            {
+              type: 'sources',
+              id: 'admin-boundaries',
+            },
+          ],
+        },
+      },
+    },
+    {
+      type: 'layer-groups',
       id: 'ny-senate-districts',
       attributes: {
         id: 'ny-senate-districts',
@@ -3802,6 +3850,10 @@ export default {
             sql: 'SELECT the_geom_webmercator, coundist FROM nyc_council_districts',
           },
           {
+            id: 'dcp_city_council_districts_combined',
+            sql: "SELECT the_geom_webmercator, coundist, '2024' as year FROM dcp_city_council_districts union select the_geom_webmercator, coundist, '2013' as year from dcp_city_council_districts_2013",
+          },
+          {
             id: 'ny-senate-districts',
             sql: 'SELECT the_geom_webmercator, stsendist FROM ny_senate_districts',
           },
@@ -3954,6 +4006,7 @@ export default {
           type: 'line',
           source: 'admin-boundaries',
           'source-layer': 'nyc-council-districts',
+          minzoom: 10,
           paint: {
             'line-color': '#12eded',
             'line-opacity': 0.7,
@@ -4024,6 +4077,7 @@ export default {
           type: 'symbol',
           source: 'admin-boundaries',
           'source-layer': 'nyc-council-districts',
+          minzoom: 10,
           paint: {
             'text-color': '#626262',
             'text-halo-color': '#FFFFFF',
@@ -4052,6 +4106,134 @@ export default {
           },
           metadata: {
             'nycplanninglabs:layergroupid': 'nyc-council-districts',
+          },
+        },
+      },
+    },
+    {
+      type: 'layers',
+      id: 'dcp_city_council_districts_combined-line-glow',
+      attributes: {
+        style: {
+          id: 'dcp_city_council_districts_combined-line-glow',
+          type: 'line',
+          source: 'admin-boundaries',
+          'source-layer': 'nyc-council-districts-combined',
+          minzoom: 10,
+          paint: {
+            'line-color':
+            {
+              property: 'year',
+              type: 'categorical',
+              stops: [
+                [
+                  '2013',
+                  '#33D8DC',
+                ],
+                [
+                  '2024',
+                  '#DC333D',
+                ],
+              ],
+            },
+            'line-opacity': 0.7,
+            'line-width':
+            {
+              stops: [
+                [
+                  11,
+                  4,
+                ],
+                [
+                  16,
+                  8,
+                ],
+              ],
+            },
+          },
+          layout: {
+            visibility: 'none',
+          },
+          metadata: {
+            'nycplanninglabs:layergroupid': 'nyc_council_districts_combined',
+          },
+        },
+      },
+    },
+    {
+      type: 'layers',
+      id: 'dcp_city_council_districts_combined-line',
+      attributes: {
+        style: {
+          id: 'dcp_city_council_districts_combined-line',
+          type: 'line',
+          source: 'admin-boundaries',
+          'source-layer': 'nyc-council-districts-combined',
+          paint: {
+            'line-color': '#007a7a',
+            'line-opacity': 0.8,
+            'line-width': {
+              stops: [
+                [
+                  11,
+                  1,
+                ],
+                [
+                  16,
+                  3,
+                ],
+              ],
+            },
+          },
+          layout: {
+            'line-join': 'round',
+            'line-cap': 'round',
+            visibility: 'none',
+          },
+          metadata: {
+            'nycplanninglabs:layergroupid': 'nyc_council_districts_combined',
+          },
+        },
+      },
+    },
+    {
+      type: 'layers',
+      id: 'dcp_city_council_districts_combined-label',
+      attributes: {
+        style: {
+          id: 'dcp_city_council_districts_combined-label',
+          type: 'symbol',
+          source: 'admin-boundaries',
+          'source-layer': 'nyc-council-districts-combined',
+          minzoom: 10,
+          paint: {
+            'text-color': '#626262',
+            'text-halo-color': '#FFFFFF',
+            'text-halo-width': 2,
+            'text-halo-blur': 2,
+          },
+          layout: {
+            'text-field': '{coundist}',
+            'text-font': [
+              'Open Sans Semibold',
+              'Arial Unicode MS Bold',
+            ],
+            'text-size': {
+              stops: [
+                [
+                  11,
+                  12,
+                ],
+                [
+                  14,
+                  16,
+                ],
+              ],
+            },
+            visibility: 'none',
+          },
+          metadata: {
+            'nycplanninglabs:layergroupid': 'nyc_council_districts_combined',
           },
         },
       },
@@ -5653,7 +5835,7 @@ export default {
         'source-layers': [
           {
             id: 'pluto',
-            sql: 'SELECT bbl AS id, the_geom_webmercator, bbl, lot, landuse, address, numfloors FROM mappluto',
+            sql: 'SELECT bbl AS id, the_geom_webmercator, bbl, lot, landuse, address, numfloors FROM dcp_mappluto',
           },
           {
             id: 'block-centroids',

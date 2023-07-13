@@ -528,9 +528,9 @@ module('Acceptance | layer behavior tests', function(hooks) {
   });
 
   test('Second class: NYC Council Districts', async function(assert) {
-    await assertLayerGroupAdded(this, assert, 'nyc-council-districts');
+    await assertLayerGroupAdded(this, assert, 'nyc-council-districts-combined');
 
-    await assertTooltips(this, assert, 'nyc-council-districts', false);
+    await assertTooltips(this, assert, 'nyc-council-districts-combined', false);
   });
 
   test('Second class: NY State Senate Districts', async function(assert) {

@@ -10,9 +10,23 @@
           data-test-grouped-parent={{group.name}}
         />
         {{group.name}}
+
         {{#if group.style}}
           <span style={{sanitize group.style}} class="indeterminate-hider">
-            <FaIcon @icon="square" />
+            {{#if this.cityCouncilToggled}}
+              <FaIcon
+                class="nyc-council-style"
+                @icon="minus" />
+              <FaIcon
+                class="nyc-council-style"
+                @icon="minus" />
+              <FaIcon
+                class="nyc-council-style"
+                @icon="minus" />
+            {{else}}
+              <FaIcon @icon="square" />
+            {{/if}}
+
           </span>
         {{/if}}
       </label>

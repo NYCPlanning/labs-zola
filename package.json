@@ -18,6 +18,7 @@
     "lint:hbs:fix": "ember-template-lint . --fix",
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve -dev",
+    "start:local-api": "API_HOST=http://localhost:3000 ember serve",
     "test": "ember test",
     "prepare": "husky install"
   },
@@ -115,7 +116,7 @@
     "prettier": "^2.3.2",
     "qunit": "^2.16.0",
     "qunit-dom": "^2.0.0",
-    "sass": "^1.58.0",
+    "sass-embedded": "^1.63.6",
     "sinon": "^15.0.1",
     "webpack": "^5.75.0"
   },
@@ -129,6 +130,7 @@
     "@turf/bbox": "^6.0.1",
     "@turf/bbox-polygon": "^6.0.1",
     "@turf/boolean-within": "^6.0.1",
+    "ember-get-config": "1.1.0",
     "mustache": "3.0.1",
     "numeral": "^2.0.6"
   },
