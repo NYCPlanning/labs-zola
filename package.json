@@ -75,7 +75,7 @@
     "ember-fetch": "^8.1.2",
     "ember-g-recaptcha": "^1.3.0",
     "ember-load-initializers": "^2.1.2",
-    "ember-local-storage": "2.0.2",
+    "ember-local-storage": "^2.0.5",
     "ember-mapbox-gl": "^2.0.0",
     "ember-mapbox-gl-draw": "https://github.com/allthesignals/ember-mapbox-gl-draw#patch-3",
     "ember-metrics": "^1.5.2",

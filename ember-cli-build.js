@@ -16,8 +16,8 @@ module.exports = (defaults) => {
     '@ember-decorators/babel-transforms': {
       decoratorsBeforeExport: true,
     },
-    'ember-cli-uglify': {
-      uglify: {
+    'ember-cli-terser': {
+      terser: {
         compress: {
           collapse_vars: false,
         },
@@ -54,7 +54,6 @@ module.exports = (defaults) => {
         'node_modules/foundation-sites/scss',
         'node_modules/nyc-planning-style-guide/dist/assets/scss',
       ],
-      implementation: sass,
       sourceMapEmbed: true,
     },
   });

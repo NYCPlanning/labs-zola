@@ -3643,10 +3643,10 @@ blank-object@^1.0.1:
   resolved "https://registry.yarnpkg.com/blank-object/-/blank-object-1.0.2.tgz#f990793fbe9a8c8dd013fb3219420bec81d5f4b9"
   integrity sha512-kXQ19Xhoghiyw66CUiGypnuRpWlbHAzY/+NyvqTEdTfhfQGH1/dbEMYiXju7fYKIFePpzp/y9dsu5Cu/PkmawQ==
 
-blob-polyfill@^2.0.20171115:
-  version "2.0.20171115"
-  resolved "https://registry.yarnpkg.com/blob-polyfill/-/blob-polyfill-2.0.20171115.tgz#8e5c2659dda443365fafd6dd421517653f1d5ffd"
-  integrity sha512-qHpuIpWlDLdOzSI9n1+423JL8c60Tbyyu/w4+zQIPCazvKBjf0sqQWiUS2QtyHph3S1C8m17T/jKyhv/DnnQFA==
+blob-polyfill@^7.0.20220408:
+  version "7.0.20220408"
+  resolved "https://registry.yarnpkg.com/blob-polyfill/-/blob-polyfill-7.0.20220408.tgz#38bf5e046c41a21bb13654d9d19f303233b8218c"
+  integrity sha512-oD8Ydw+5lNoqq+en24iuPt1QixdPpe/nUF8azTHnviCZYu9zUC+TwdzIp5orpblJosNlgNbVmmAb//c6d6ImUQ==
 
 block-stream@*:
   version "0.0.9"
@@ -6220,9 +6220,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.431:
-  version "1.4.459"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.459.tgz#25a23370f4ae8aaa8f77aaf00133aa4994f4148e"
-  integrity sha512-XXRS5NFv8nCrBL74Rm3qhJjA2VCsRFx0OjHKBMPI0otij56aun8UWiKTDABmd5/7GTR021pA4wivs+Ri6XCElg==
+  version "1.4.460"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.460.tgz#f360a5059c039c4a5fb4dfa99680ad8129dd9f84"
+  integrity sha512-kKiHnbrHME7z8E6AYaw0ehyxY5+hdaRmeUbjBO22LZMdqTYCO29EvF0T1cQ3pJ1RN5fyMcHl1Lmcsdt9WWJpJQ==
 
 elliptic@^6.5.3:
   version "6.5.4"
@@ -7147,19 +7147,18 @@ ember-load-initializers@^2.1.2:
     ember-cli-babel "^7.13.0"
     ember-cli-typescript "^2.0.2"
 
-ember-local-storage@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/ember-local-storage/-/ember-local-storage-2.0.2.tgz#a35e8c9d93b6c01685ca096ec60a7dbcd87756d7"
-  integrity sha512-KQUr6dv5DTjznAXXJC9m2XUgNAri4OVmwFUXoKuG/0iKdOby6bLPiHbzazcJCk9CK82I7TdJpv0eO0k+yLsufw==
+ember-local-storage@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/ember-local-storage/-/ember-local-storage-2.0.5.tgz#589aea224411adecf5adb9197ee587cf6e13d400"
+  integrity sha512-38RjnJgKvXX6ley3QYegthvqSdpVY0BEFbPCMM/2Y8AbykROluV6u0cu+Up710MPaXV8yNuNFWAeMELEaimgtg==
   dependencies:
-    blob-polyfill "^2.0.20171115"
-    broccoli-funnel "^2.0.1"
-    broccoli-merge-trees "^2.0.0"
-    broccoli-stew "^1.5.0"
-    chalk "^2.3.0"
-    ember-cli-babel "^7.26.6"
+    blob-polyfill "^7.0.20220408"
+    broccoli-funnel "^3.0.8"
+    broccoli-merge-trees "^4.2.0"
+    broccoli-stew "^3.0.0"
+    ember-cli-babel "^7.26.11"
     ember-cli-string-utils "^1.1.0"
-    ember-cli-version-checker "^2.1.0"
+    ember-cli-version-checker "^5.1.2"
     ember-copy "^2.0.1"
 
 "ember-mapbox-gl-draw@https://github.com/allthesignals/ember-mapbox-gl-draw#patch-3":

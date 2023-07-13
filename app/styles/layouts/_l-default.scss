@@ -73,7 +73,11 @@ body {
 }
 
 .map-container {
-  @include xy-cell(full,false,0);
+  @include xy-cell(
+      $size: full,
+      $output: (base size),
+      $gutters: 0
+    );
   position: relative;
   z-index: 1;
   height: calc(50vh);
@@ -120,7 +124,11 @@ body.index {
 
 // .search-and-layers {
 .layer-palette {
-  @include xy-cell(full,false,0);
+  @include xy-cell(
+      $size: full,
+      $output: (base size),
+      $gutters: 0
+    );
   position: relative;
   z-index: 2;
   background-color: $off-white;
@@ -178,7 +186,11 @@ body.index {
   text-align: right;
 
   @include breakpoint(medium down) {
-    @include xy-cell(full,false,0);
+    @include xy-cell(
+      $size: full,
+      $output: (base size),
+      $gutters: 0
+    );
   }
 
   & > .close-button {
