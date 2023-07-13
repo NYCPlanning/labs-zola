@@ -73,7 +73,7 @@
   }
 
   li {
-    padding: $global-margin/2;
+    padding: $global-margin*0.5;
   }
 
   li:not(:first-child) {
@@ -105,7 +105,7 @@
 
 .search-results--loading {
   border-top: 1px solid $medium-gray;
-  padding: $global-margin/2;
+  padding: $global-margin*0.5;
   color: $dark-gray;
   background-color: rgba($white,0.94);
   font-size: rem-calc(12);

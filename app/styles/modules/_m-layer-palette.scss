@@ -19,7 +19,7 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
 
 
 .checkbox-wrapper {
-  padding: $layer-palette-padding/2 $layer-palette-padding;
+  padding: $layer-palette-padding*0.5 $layer-palette-padding;
   font-size: inherit;
 
   &:hover {
@@ -51,7 +51,7 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
   }
 
   .nested {
-    margin-bottom: $layer-palette-padding/2;
+    margin-bottom: $layer-palette-padding*0.5;
 
     label {
       padding-left: $layer-palette-padding*3;
@@ -114,7 +114,7 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
   line-height: 1.2;
 
   li {
-    padding: 0 0 $layer-palette-padding/2;
+    padding: 0 0 $layer-palette-padding*0.5;
   }
 
   .fa {

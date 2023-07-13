@@ -16,8 +16,8 @@
 
   &::before,
   &::after {
-    top: $slider-handle-height / 4;
-    height: $slider-handle-height / 2;
+    top: $slider-handle-height * 0.25;
+    height: $slider-handle-height * 0.5;
     left: 50%;
     margin-left: -2px;
     background: $light-gray;
