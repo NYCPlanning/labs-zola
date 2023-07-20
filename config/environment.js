@@ -10,7 +10,7 @@ module.exports = function(environment) {
         name: 'MatomoTagManager',
         environments: ['development', 'production', 'test'],
         config: {
-          matomoUrl: 'matomo-poc-f47265605236.herokuapp.com',
+          matomoUrl: 'matomo.planninglabs.nyc',
           containerId: '9G7PP94F',
         },
       },
