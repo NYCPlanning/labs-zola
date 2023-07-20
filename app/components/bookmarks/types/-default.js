@@ -20,6 +20,11 @@ export default class DefaultBookmark extends Component {
       event_category: 'Bookmark',
       event_action: 'Deleted Bookmark',
     });
+    this.get('metrics').trackEvent('MatomoTagManager', {
+      category: 'Bookmark',
+      action: 'Delete',
+      name: 'Deleted Bookmark',
+    });
   }
 
   @action
