@@ -1,4 +1,3 @@
-import fetch from 'fetch';
 import { Promise } from 'rsvp';
 import config from 'labs-zola/config/environment';
 
@@ -6,7 +5,6 @@ const { carto } = config;
 
 const cartoUsername = carto.username;
 const cartoDomain = carto.domain;
-
 
 const buildTemplate = (cartoResponse, type) => { // eslint-disable-line
   const { layergroupid, cdn_url } = cartoResponse; // eslint-disable-line
@@ -69,8 +67,8 @@ export default {
         },
         body: JSON.stringify(params),
       })
-        .catch(err => reject(err))
-        .then(response => response.json())
+        .catch((err) => reject(err))
+        .then((response) => response.json())
         .then((json) => {
           resolve(buildTemplate(json, 'mvt'));
         });
