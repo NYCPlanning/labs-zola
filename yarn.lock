@@ -1887,6 +1887,28 @@
     read-package-json-fast "^2.0.3"
     which "^2.0.2"
 
+"@nycplanning/ember-cli-foundation-6-sass@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@nycplanning/ember-cli-foundation-6-sass/-/ember-cli-foundation-6-sass-0.1.0.tgz#328c68513f4704c4fec651506ce4d3825d4fed64"
+  integrity sha512-XeyTYecAaUJQx6DgTgKL3tV/zX47xjlekx375A+ki7Vn8MEqIOd12YDEis/75Qc2YRCkzLmikCv9Dkuc69U56g==
+  dependencies:
+    "@ember/jquery" "^0.6.0"
+    babel-register "^6.18.0"
+    broccoli-babel-transpiler "^6.1.1"
+    broccoli-file-creator "^1.1.1"
+    broccoli-funnel "^1.2.0"
+    broccoli-merge-trees "^2.0.0"
+    broccoli-rollup "^1.3.0"
+    ember-cli-babel "^7.7.3"
+    ember-cli-htmlbars "^2.0.1"
+    ember-cli-htmlbars-inline-precompile "^1.0.0"
+    ember-cli-sass "^11.0.1"
+    ember-cli-version-checker "^3.1.3"
+    fastboot-transform "^0.1.2"
+    foundation-sites "^6.3.1"
+    rollup-plugin-legacy "^1.0.0"
+    rollup-plugin-node-resolve "^3.0.0"
+
 "@nycplanning/ember-cli-nouislider@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@nycplanning/ember-cli-nouislider/-/ember-cli-nouislider-1.3.0.tgz#772098aab85136259783c8a2e3096a04a84eeced"
@@ -5969,27 +5991,6 @@ ember-cli-dependency-lint@^2.0.1:
     broccoli-plugin "^1.3.0"
     chalk "^2.3.0"
     semver "^5.5.0"
-
-"ember-cli-foundation-6-sass@https://github.com/allthesignals/ember-cli-foundation-6-sass":
-  version "0.0.27"
-  resolved "https://github.com/allthesignals/ember-cli-foundation-6-sass#b3b7cd5266160ed0efcc9e786c4dd3edeb7412ab"
-  dependencies:
-    "@ember/jquery" "^0.6.0"
-    babel-register "^6.18.0"
-    broccoli-babel-transpiler "^6.1.1"
-    broccoli-file-creator "^1.1.1"
-    broccoli-funnel "^1.2.0"
-    broccoli-merge-trees "^2.0.0"
-    broccoli-rollup "^1.3.0"
-    ember-cli-babel "^7.7.3"
-    ember-cli-htmlbars "^2.0.1"
-    ember-cli-htmlbars-inline-precompile "^1.0.0"
-    ember-cli-sass "^11.0.1"
-    ember-cli-version-checker "^3.1.3"
-    fastboot-transform "^0.1.2"
-    foundation-sites "^6.3.1"
-    rollup-plugin-legacy "^1.0.0"
-    rollup-plugin-node-resolve "^3.0.0"
 
 ember-cli-get-component-path-option@^1.0.0:
   version "1.0.0"
