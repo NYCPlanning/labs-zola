@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { assign } from '@ember/polyfills';
 import { computed, action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import QueryParams from 'ember-parachute';
+import QueryParams from '@nycplanning/ember-parachute';
 import config from 'labs-zola/config/environment';
 
 const {
@@ -14,8 +14,8 @@ const {
 } = config;
 
 const defaultLayerGroups = defaultLayerGroupState
-  .filter(layerGroup => layerGroup.visible)
-  .map(layerGroup => layerGroup.id)
+  .filter((layerGroup) => layerGroup.visible)
+  .map((layerGroup) => layerGroup.id)
   .sort();
 
 const defaultSelectedOverlays = commercialOverlaysOptionSets
@@ -102,7 +102,7 @@ export default class ApplicationController extends Controller.extend(mapQueryPar
 
   @action
   setModelsToDefault() {
-    this.model.layerGroups.forEach(model => model.rollbackAttributes());
+    this.model.layerGroups.forEach((model) => model.rollbackAttributes());
     this.handleLayerGroupChange();
   }
 
