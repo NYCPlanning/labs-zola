@@ -1898,6 +1898,18 @@
     ember-cli-htmlbars "^4.2.3"
     nouislider "^14.1.1"
 
+"@nycplanning/ember-mapbox-gl-draw@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@nycplanning/ember-mapbox-gl-draw/-/ember-mapbox-gl-draw-2.1.0.tgz#91a704881dcf99cdbd04e62b4952868e578e895b"
+  integrity sha512-HoJoyYzstFtR4MwNAZZOMkFvgRc0TP+kwX/oRehl71MMkDGBXDjwWevicVoLWeoYdux7lPIQkb9sPljdkLEqtQ==
+  dependencies:
+    "@mapbox/mapbox-gl-draw" "^1.0.0"
+    broccoli-funnel "^2.0.1"
+    broccoli-merge-trees "^3.0.1"
+    ember-auto-import "^2.2.4"
+    ember-cli-babel "^7.26.11"
+    ember-cli-htmlbars "^6.0.1"
+
 "@nycplanning/ember-parachute@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@nycplanning/ember-parachute/-/ember-parachute-1.1.1.tgz#f3d15d354d5226b752edfbd7e3db34f5853d8159"
@@ -6611,17 +6623,6 @@ ember-local-storage@^2.0.5:
     ember-cli-string-utils "^1.1.0"
     ember-cli-version-checker "^5.1.2"
     ember-copy "^2.0.1"
-
-"ember-mapbox-gl-draw@https://github.com/allthesignals/ember-mapbox-gl-draw#patch-3":
-  version "2.0.0"
-  resolved "https://github.com/allthesignals/ember-mapbox-gl-draw#73951724f85eb1b4fc0cb25579568d5813ab54fd"
-  dependencies:
-    "@mapbox/mapbox-gl-draw" "^1.0.0"
-    broccoli-funnel "^2.0.1"
-    broccoli-merge-trees "^3.0.1"
-    ember-auto-import "^2.2.4"
-    ember-cli-babel "^7.26.11"
-    ember-cli-htmlbars "^6.0.1"
 
 ember-mapbox-gl@^2.0.0:
   version "2.0.0"
