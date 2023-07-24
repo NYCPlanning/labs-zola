@@ -153,8 +153,8 @@ export default class MainMap extends Component {
     // GA
     geoLocateControl.on('trackuserlocationstart', () => {
       this.metrics.trackEvent(
-        'GoogleAnalytics',
-        { eventCategory: 'Map', eventAction: 'Geolocate' },
+        'MatomoTagManager',
+        { category: 'Map', action: 'Geolocate', name: 'Geolocate' },
       );
     });
 

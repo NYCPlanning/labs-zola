@@ -80,7 +80,7 @@
     "ember-mapbox-gl": "^1.0.0",
     "ember-mapbox-gl-draw": "https://github.com/allthesignals/ember-mapbox-gl-draw#patch-3",
     "ember-maybe-import-regenerator": "^0.1.6",
-    "ember-metrics": "0.13.0",
+    "dcp-ember-metrics": "https://github.com/dhochbaum-dcp/dcp-ember-metrics",
     "ember-native-dom-helpers": "^0.6.2",
     "ember-parachute": "1.0.2",
     "ember-promise-helpers": "^1.0.9",

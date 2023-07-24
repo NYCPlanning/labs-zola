@@ -20,6 +20,11 @@ export default class DefaultBookmark extends Component {
       event_category: 'Bookmark',
       event_action: 'Deleted Bookmark',
     });
+    this.get('metrics').trackEvent('MatomoTagManager', {
+      category: 'Bookmark',
+      action: 'Delete',
+      name: 'Deleted Bookmark',
+    });
   }
 
   @action
@@ -30,10 +35,10 @@ export default class DefaultBookmark extends Component {
     });
 
     // GA
-    this.get('metrics').trackEvent('GoogleAnalytics', {
-      eventCategory: 'Download',
-      eventAction: `Downloaded Bookmark as ${format}`,
-      eventLabel: 'Export',
+    this.get('metrics').trackEvent('MatomoTagManager', {
+      category: 'Download',
+      action: `Downloaded Bookmark as ${format}`,
+      name: 'Export',
     });
   }
 }
