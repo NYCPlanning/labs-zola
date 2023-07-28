@@ -44,9 +44,10 @@ export default class BookmarkButton extends Component {
     });
 
     // GA
-    this.get('metrics').trackEvent('GoogleAnalytics', {
-      eventCategory: 'Bookmark',
-      eventAction: 'Used Bookmark',
+    this.get('metrics').trackEvent('MatomoTagManager', {
+      category: 'Bookmark',
+      action: 'Used Bookmark',
+      name: 'Used Bookmark',
     });
 
     const { bookmarkableModel } = this;
