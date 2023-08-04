@@ -6107,7 +6107,7 @@ date-time@^2.1.0:
 
 "dcp-ember-metrics@https://github.com/dhochbaum-dcp/dcp-ember-metrics":
   version "1.0.0"
-  resolved "https://github.com/dhochbaum-dcp/dcp-ember-metrics#0f6311e538cf2c3517596daf0058e9fe7d9fc3b4"
+  resolved "https://github.com/dhochbaum-dcp/dcp-ember-metrics#32c076eab242c34fc87245b6ad039e06c3dd7585"
   dependencies:
     broccoli-funnel "^3.0.2"
     ember-cli-babel "^7.26.6"
