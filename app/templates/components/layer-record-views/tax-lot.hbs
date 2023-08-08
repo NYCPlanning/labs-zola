@@ -509,7 +509,63 @@
         Police Precinct
       </label>
       <span class="datum">
-        {{this.model.policeprct}} {{this.model.precinctInfo.precinct}}
+        {{this.model.policeprct}}
+      </span>
+    </div>
+  {{/if}}
+  {{#if this.model.precinctInfo.precinct}}
+    <div class="data-grid">
+      <label class="data-label">
+        Police Precinct
+      </label>
+      <span class="datum">
+        <a
+          href={{this.model.precinctInfo.url}}
+          onclick={{action this.captureOutboundLink "Police" preventDefault=false}}
+          target="_blank"
+        >
+          {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
+          {{this.model.precinctInfo.precinct}}
+        </a>
+      </span>
+    </div>
+    <div class="data-grid">
+      <label class="data-label">
+        Precinct Phone:
+      </label>
+      <span class="datum">
+        <a href="tel:{{this.model.precinctInfo.phone}}">{{this.model.precinctInfo.phone}}</a>
+      </span>
+    </div>
+    <div class="data-grid">
+      <label class="data-label">
+        Precinct Address:
+      </label>
+      <span class="datum">
+        {{this.model.precinctInfo.address}}
+      </span>
+    </div>
+    <div class="data-grid">
+      <label class="data-label">
+        Precinct Crime Statistics:
+      </label>
+      <span class="datum">
+        <a
+          href={{this.model.precinctInfo.crime_stats_pdf}}
+          onclick={{action this.captureOutboundLink "Crime Stats PDF" preventDefault=false}}
+          target="_blank"
+        >
+          {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
+          PDF
+        </a>
+         <a
+          href={{this.model.precinctInfo.crime_stats_excel}}
+          onclick={{action this.captureOutboundLink "Crime Stats Excel" preventDefault=false}}
+          target="_blank"
+        >
+          {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
+          Excel
+        </a>
       </span>
     </div>
   {{/if}}
