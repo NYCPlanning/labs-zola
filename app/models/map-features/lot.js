@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import carto from 'labs-zola/utils/carto';
 import config from 'labs-zola/config/environment';
+import { inject as service } from '@ember/service';
 
 const { specialDistrictCrosswalk } = config;
 
@@ -1012,6 +1013,9 @@ const nypdPrecinctLookup = [
 // this model fragment structures the "properties"
 // node of a geojson feature
 export default class LotFragment extends MF.Fragment {
+    @service
+    metrics;
+
     @attr('string') address;
 
     @attr('number') bbl;
@@ -1104,7 +1108,25 @@ export default class LotFragment extends MF.Fragment {
 
     @attr('string') zonemap;
 
+    @attr('boolean', {
+      defaultValue: false,
+    }) showPrecinctInfo;
+
     @alias('borocode') boro;
+
+    toggleShowPrecinctInfo = () => {
+      gtag('event', 'toggle_precinct_info', {
+        event_category: 'Police',
+        event_action: `${ this.showPrecinctInfo ? 'Turned off' : 'Turned on' } Precinct Info`,
+      });
+
+      this.get('metrics').trackEvent('MatomoTagManager', {
+        category: 'Police',
+        action: `${ this.showPrecinctInfo ? 'Turned off' : 'Turned on' } Precinct Info`,
+        name: `Precinct Info`,
+      });
+      this.showPrecinctInfo = !this.showPrecinctInfo;
+    };
 
     @computed('bldgclass')
     get bldgclassname() {
