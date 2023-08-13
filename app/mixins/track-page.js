@@ -6,15 +6,14 @@ import { on } from '@ember-decorators/object';
 export default Mixin.create({
   metrics: service(),
 
-  @on('routeDidChange')
-  trackPage() {
+  trackPage: on('routeDidChange', function () {
     this._trackPage();
-  },
+  }),
 
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
       const page = this.url;
-      const title = this.getWithDefault('currentRouteName', 'unknown');
+      const title = this.currentRouteName || 'unknown';
       this.metrics.trackPage({ page, title });
     });
   },

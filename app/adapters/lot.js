@@ -48,7 +48,7 @@ const LotColumnsSQL = [
   'LOWER(zonemap) AS zonemap',
 ];
 
-export const cartoQueryTemplate = function(id) {
+export const cartoQueryTemplate = function (id) {
   return `SELECT ${LotColumnsSQL.join(',')},
     /* id:${id} */
     st_x(st_centroid(the_geom)) as lon, st_y(st_centroid(the_geom)) as lat,
@@ -64,9 +64,6 @@ export default CartoGeojsonFeatureAdapter.extend({
     return this._super(status, headers, payload, requestData);
   },
   urlForFindRecord(id) {
-    return buildSqlUrl(
-      cartoQueryTemplate(id),
-      'geojson',
-    );
+    return buildSqlUrl(cartoQueryTemplate(id), 'geojson');
   },
 });

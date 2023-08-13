@@ -10,7 +10,9 @@ function routes() {
   patchXMLHTTPRequest();
 
   this.passthrough('https://zap-api-production.herokuapp.com/**');
-  this.passthrough('https://labs-mapbox-gl-noop-tiles.nyc3.digitaloceanspaces.com/**');
+  this.passthrough(
+    'https://labs-mapbox-gl-noop-tiles.nyc3.digitaloceanspaces.com/**'
+  );
 
   this.get('https://planninglabs.carto.com/api/v2/sql', (schema, request) => {
     const { queryParams } = request;
@@ -40,7 +42,7 @@ function routes() {
           const regex = /([^, ]+):([^, ]+)/g;
           const found = q.match(regex);
           const cartoIdentifier = found[0]?.split(':')[1];
-          features = features.filter(f => f.id === cartoIdentifier);
+          features = features.filter((f) => f.id === cartoIdentifier);
         } catch (e) {
           console.error('Mirage error: ', e);
         }

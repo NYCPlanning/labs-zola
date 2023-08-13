@@ -4,7 +4,7 @@ import LayerRecordComponent from './-base';
 
 const { specialDistrictCrosswalk } = config;
 
-const specialPurposeDistrictsSQL = function(table, spdist1, spdist2, spdist3) {
+const specialPurposeDistrictsSQL = function (table, spdist1, spdist2, spdist3) {
   return `SELECT DISTINCT sdname, sdlbl FROM ${table}
           WHERE sdlbl IN ('${spdist1}', '${spdist2}', '${spdist3}')`;
 };
@@ -13,7 +13,7 @@ const getPrimaryZone = (zonedist = '') => {
   if (!zonedist) return '';
   let primary = zonedist.match(/\w\d*/)[0].toLowerCase();
   // special handling for c1 and c2
-  if ((primary === 'c1') || (primary === 'c2')) primary = 'c1-c2';
+  if (primary === 'c1' || primary === 'c2') primary = 'c1-c2';
   return primary;
 };
 
@@ -351,7 +351,7 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
 
   get paddedZonemap() {
     const { zonemap } = this.model;
-    return (`0${zonemap}`).slice(-3);
+    return `0${zonemap}`.slice(-3);
   }
 
   get primaryzone1() {
@@ -375,14 +375,24 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
   }
 
   get parentSpecialPurposeDistricts() {
-    const DISTRICT_TOOLS_URL = 'https://www1.nyc.gov/site/planning/zoning/districts-tools';
+    const DISTRICT_TOOLS_URL =
+      'https://www1.nyc.gov/site/planning/zoning/districts-tools';
     const { spdist1, spdist2, spdist3 } = this.model;
 
-    return carto.SQL(specialPurposeDistrictsSQL('dcp_special_purpose_districts', spdist1, spdist2, spdist3))
-      .then(response => response.map(
-        (item) => {
-          const [, [anchorName, boroName]] = specialDistrictCrosswalk
-            .find(([dist]) => dist === item.sdname);
+    return carto
+      .SQL(
+        specialPurposeDistrictsSQL(
+          'dcp_special_purpose_districts',
+          spdist1,
+          spdist2,
+          spdist3
+        )
+      )
+      .then((response) =>
+        response.map((item) => {
+          const [, [anchorName, boroName]] = specialDistrictCrosswalk.find(
+            ([dist]) => dist === item.sdname
+          );
           const specialDistrictLink = `${DISTRICT_TOOLS_URL}/special-purpose-districts-${boroName}.page#${anchorName}`;
 
           return {
@@ -392,12 +402,13 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
             boroName,
             specialDistrictLink,
           };
-        },
-      ));
+        })
+      );
   }
 
   get biswebLink() {
-    const BISWEB_HOST = 'http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet';
+    const BISWEB_HOST =
+      'http://a810-bisweb.nyc.gov/bisweb/PropertyBrowseByBBLServlet';
     const { borocode, block, lot } = this.model;
 
     return `${BISWEB_HOST}?allborough=${borocode}&allblock=${block}&alllot=${lot}&go5=+GO+&requestid=0`;
@@ -408,11 +419,18 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
   }
 
   get zoneDistLinks() {
-    const primaryZones = this.getProperties('primaryzone1', 'primaryzone2', 'primaryzone3', 'primaryzone4');
+    const primaryZones = {
+      primaryzone1: this.primaryzone1,
+      primaryzone2: this.primaryzone2,
+      primaryzone3: this.primaryzone3,
+      primaryzone4: this.primaryzone4,
+    };
 
     Object.keys(primaryZones).forEach((key) => {
       const value = primaryZones[key];
-      primaryZones[key] = `https://www1.nyc.gov/site/planning/zoning/districts-tools/${value}.page`;
+      primaryZones[
+        key
+      ] = `https://www1.nyc.gov/site/planning/zoning/districts-tools/${value}.page`;
     });
 
     return {
@@ -425,11 +443,11 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
   }
 
   get zoningMapLink() {
-    return `https://s-media.nyc.gov/agencies/dcp/assets/files/pdf/zoning/zoning-maps/map${this.model.zonemap}.pdf`
+    return `https://s-media.nyc.gov/agencies/dcp/assets/files/pdf/zoning/zoning-maps/map${this.model.zonemap}.pdf`;
   }
 
   get historicalZoningMapLink() {
-    return `https://s-media.nyc.gov/agencies/dcp/assets/files/pdf/zoning/zoning-maps/maps${this.paddedZonemap}.pdf`
+    return `https://s-media.nyc.gov/agencies/dcp/assets/files/pdf/zoning/zoning-maps/maps${this.paddedZonemap}.pdf`;
   }
 
   get ACRISLink() {

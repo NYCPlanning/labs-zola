@@ -4,13 +4,18 @@ import { isEmpty } from '@ember/utils';
 // https://github.com/@ember-decorators/@ember-decorators/issues/206
 
 // decorator arguments
-export default function trackEvent(eventCategory, incAction, incLabel, eventValue) {
+export default function trackEvent(
+  eventCategory,
+  incAction,
+  incLabel,
+  eventValue
+) {
   // decorator-specific pattern, args
   return (target, name, desc) => {
     const descriptor = desc;
     const originalValue = descriptor.value;
 
-    descriptor.value = function(...args) {
+    descriptor.value = function (...args) {
       originalValue.call(this, ...args);
 
       let eventAction = incAction;
@@ -33,15 +38,12 @@ export default function trackEvent(eventCategory, incAction, incLabel, eventValu
       }
 
       try {
-        this.get('metrics').trackEvent(
-          'GoogleAnalytics',
-          {
-            eventCategory,
-            eventAction,
-            eventLabel,
-            eventValue,
-          },
-        );
+        this.metrics.trackEvent('GoogleAnalytics', {
+          eventCategory,
+          eventAction,
+          eventLabel,
+          eventValue,
+        });
       } catch (e) {
         throw Error('Metrics was not found and must be injected.', e);
       }

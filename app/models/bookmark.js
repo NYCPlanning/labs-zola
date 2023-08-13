@@ -1,12 +1,5 @@
-import DS from 'ember-data';
+import Model, { attr, belongsTo, PromiseObject } from '@ember-data/model';
 import { computed } from '@ember/object';
-
-const {
-  PromiseObject,
-  Model,
-  attr,
-  belongsTo,
-} = DS;
 
 export default class BookmarkModel extends Model {
   @belongsTo('bookmark', { inverse: 'bookmark', polymorphic: true }) bookmark;
@@ -17,7 +10,7 @@ export default class BookmarkModel extends Model {
 
   @computed('bookmark')
   get recordType() {
-    const bookmark = this.get('bookmark');
+    const { bookmark } = this;
     return PromiseObject.create({
       promise: bookmark.then((bmark) => {
         if (bmark) {

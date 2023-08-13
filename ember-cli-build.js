@@ -1,5 +1,3 @@
-'use strict';
-
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const babelPlugin = require('ember-auto-import/babel-plugin');
 const sass = require('sass-embedded');

@@ -81,7 +81,6 @@ const zoningAbbr = {
   BPC: 'bpc',
 };
 
-
 export default class ZoningDistrictRecordComponent extends LayerRecordComponent {
   get primaryzone() {
     const { zonedist } = this.model;
@@ -111,7 +110,7 @@ export default class ZoningDistrictRecordComponent extends LayerRecordComponent 
     const { primaryzone } = this;
     let url = '';
 
-    if ((primaryzone === 'c1') || (primaryzone === 'c2')) {
+    if (primaryzone === 'c1' || primaryzone === 'c2') {
       url = 'c1-c2';
     } else if (primaryzone === 'c3') {
       url = 'c3-c3a';

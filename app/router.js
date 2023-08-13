@@ -1,9 +1,10 @@
 import EmberRouter from '@ember/routing/router';
-import trackPage from './mixins/track-page';
 import config from 'labs-zola/config/environment';
+import trackPage from './mixins/track-page';
 
 export default class Router extends EmberRouter.extend(trackPage) {
   location = config.locationType;
+
   rootURL = config.rootURL;
 }
 
@@ -19,12 +20,16 @@ Router.map(function () {// eslint-disable-line
   this.route('features');
 
   // views for individual records of data
-  this.route('map-feature', { path: '/l' }, function() {
+  this.route('map-feature', { path: '/l' }, function () {
     this.route('lot', { path: 'lot/:boro/:block/:lot' });
     this.route('zoning-district', { path: '/zoning-district/:id' });
     this.route('commercial-overlay', { path: '/commercial-overlay/:id' });
-    this.route('special-purpose-district', { path: '/special-purpose-district/:id' });
-    this.route('special-purpose-subdistrict', { path: '/special-purpose-subdistrict/:id' });
+    this.route('special-purpose-district', {
+      path: '/special-purpose-district/:id',
+    });
+    this.route('special-purpose-subdistrict', {
+      path: '/special-purpose-subdistrict/:id',
+    });
     this.route('zoning-map-amendment', { path: '/zma/:id' });
     this.route('e-designation', { path: '/e-designation/:id' });
   });

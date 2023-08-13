@@ -1,9 +1,7 @@
-'use strict';
-
 const HOST = process.env.API_HOST || 'https://layers-api.planninglabs.nyc';
 const CARTO_USER = process.env.CARTO_USER || 'planninglabs';
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   const ENV = {
     modulePrefix: 'labs-zola',
     environment,
@@ -19,7 +17,13 @@ module.exports = function(environment) {
     },
 
     fastboot: {
-      hostWhitelist: ['https://planninglabs.carto.com/**', 'carto.com', 'planninglabs.carto.com', /^localhost:\d+$/, 'dry-thicket-91267.herokuapp.com'],
+      hostWhitelist: [
+        'https://planninglabs.carto.com/**',
+        'carto.com',
+        'planninglabs.carto.com',
+        /^localhost:\d+$/,
+        'dry-thicket-91267.herokuapp.com',
+      ],
     },
 
     defaultLayerGroupState: [
@@ -28,7 +32,11 @@ module.exports = function(environment) {
       { id: 'commercial-overlays', visible: true },
       { id: 'zoning-map-amendments', visible: false },
       { id: 'zoning-map-amendments-pending', visible: false },
-      { id: 'special-purpose-districts', visible: false, layers: [{}, { clickable: true, highlightable: true }] },
+      {
+        id: 'special-purpose-districts',
+        visible: false,
+        layers: [{}, { clickable: true, highlightable: true }],
+      },
       { id: 'special-purpose-subdistricts', visible: false },
       { id: 'limited-height-districts', visible: false },
       { id: 'mandatory-inclusionary-housing', visible: false },
@@ -80,8 +88,14 @@ module.exports = function(environment) {
       ['Special Coastal Risk District 3', ['CR-3', 'staten-island']],
       ['Special Coastal Risk District 4', ['CR-4', 'brooklyn']],
       ['Special Limited Commercial District', ['LC', 'citywide']],
-      ['Special Mixed Use Dist./Enhanced Comm. Dist. 5', ['mixed_use', 'citywide']],
-      ['Special Mixed Use Dist./Enhanced Comm. Dist. 6', ['mixed_use', 'citywide']],
+      [
+        'Special Mixed Use Dist./Enhanced Comm. Dist. 5',
+        ['mixed_use', 'citywide'],
+      ],
+      [
+        'Special Mixed Use Dist./Enhanced Comm. Dist. 6',
+        ['mixed_use', 'citywide'],
+      ],
       ['Special Mixed Use District (MX-1)', ['mixed_use', 'citywide']],
       ['Special Mixed Use District (MX-10)', ['mixed_use', 'citywide']],
       ['Special Mixed Use District (MX-11)', ['mixed_use', 'citywide']],
@@ -98,21 +112,51 @@ module.exports = function(environment) {
       ['Special Mixed Use District (MX-7)', ['mixed_use', 'citywide']],
       ['Special Mixed Use District (MX-8)', ['mixed_use', 'citywide']],
       ['Special Mixed Use District (MX-9)', ['mixed_use', 'citywide']],
-      ['Special Fort Totten Natural Area District-4', ['natural_area', 'citywide']],
-      ['Special Planned Community Preservation District', ['planned_community', 'citywide']],
+      [
+        'Special Fort Totten Natural Area District-4',
+        ['natural_area', 'citywide'],
+      ],
+      [
+        'Special Planned Community Preservation District',
+        ['planned_community', 'citywide'],
+      ],
       ['Special Scenic View District', ['scenic_view', 'citywide']],
-      ['Special Enhanced Commercial District 4', ['special_enhanced', 'citywide']],
-      ['Special Enhanced Commercial District 5', ['special_enhanced', 'citywide']],
-      ['Special Enhanced Commercial District 6', ['special_enhanced', 'citywide']],
-      ['Special Enhanced Commercial District 1', ['special_enhanced', 'citywide']],
-      ['Special Enhanced Commercial District 2', ['special_enhanced', 'citywide']],
-      ['Special Enhanced Commercial District 3', ['special_enhanced', 'citywide']],
-      ['Special 125th Street Dist./Transit Land use Dist.', ['125th', 'manhattan']],
+      [
+        'Special Enhanced Commercial District 4',
+        ['special_enhanced', 'citywide'],
+      ],
+      [
+        'Special Enhanced Commercial District 5',
+        ['special_enhanced', 'citywide'],
+      ],
+      [
+        'Special Enhanced Commercial District 6',
+        ['special_enhanced', 'citywide'],
+      ],
+      [
+        'Special Enhanced Commercial District 1',
+        ['special_enhanced', 'citywide'],
+      ],
+      [
+        'Special Enhanced Commercial District 2',
+        ['special_enhanced', 'citywide'],
+      ],
+      [
+        'Special Enhanced Commercial District 3',
+        ['special_enhanced', 'citywide'],
+      ],
+      [
+        'Special 125th Street Dist./Transit Land use Dist.',
+        ['125th', 'manhattan'],
+      ],
       ['Special 125th Street District', ['125th', 'manhattan']],
       ['Special Battery Park City District', ['BPC', 'manhattan']],
       ['Special Clinton District', ['CL', 'manhattan']],
       ['Special East Harlem Corridors', ['EHC', 'manhattan']],
-      ['Special E. Harlem Corridors/Transit Land Use Dist.', ['EHC', 'manhattan']],
+      [
+        'Special E. Harlem Corridors/Transit Land Use Dist.',
+        ['EHC', 'manhattan'],
+      ],
       ['Special Garment Center District', ['GC', 'manhattan']],
       ['Special Governors Island District', ['GI', 'manhattan']],
       ['Special Hudson River Park District', ['HRP', 'manhattan']],
@@ -215,7 +259,8 @@ module.exports = function(environment) {
         style: {
           color: '#0084a8',
         },
-        tooltip: "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are subject to high velocity wave action (a breaking wave 3 feet high or larger).",
+        tooltip:
+          "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are subject to high velocity wave action (a breaking wave 3 feet high or larger).",
       },
       {
         name: 'A (1% floodplain)',
@@ -224,7 +269,8 @@ module.exports = function(environment) {
         style: {
           color: '#00a9e6',
         },
-        tooltip: "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are not subject to high velocity wave action but are still considered high risk flooding areas.",
+        tooltip:
+          "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are not subject to high velocity wave action but are still considered high risk flooding areas.",
       },
       {
         name: 'Shaded X (0.2% floodplain)',
@@ -233,7 +279,8 @@ module.exports = function(environment) {
         style: {
           color: '#00ffc3',
         },
-        tooltip: "The area subject to flooding from the 0.2% annual chance flood and referred to in the Zoning Resolution as the 'moderate-risk flood zone'.",
+        tooltip:
+          "The area subject to flooding from the 0.2% annual chance flood and referred to in the Zoning Resolution as the 'moderate-risk flood zone'.",
       },
     ],
 
@@ -245,7 +292,8 @@ module.exports = function(environment) {
         style: {
           color: '#0084a8',
         },
-        tooltip: "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are subject to high velocity wave action (a breaking wave 3 feet high or larger).",
+        tooltip:
+          "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are subject to high velocity wave action (a breaking wave 3 feet high or larger).",
       },
       {
         name: 'A (1% floodplain)',
@@ -254,7 +302,8 @@ module.exports = function(environment) {
         style: {
           color: '#00a9e6',
         },
-        tooltip: "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are not subject to high velocity wave action but are still considered high risk flooding areas.",
+        tooltip:
+          "A portion of the area subject to flooding from the 1% annual chance flood and referred to in the Zoning Resolution as the 'high-risk flood zone'. These areas are not subject to high velocity wave action but are still considered high risk flooding areas.",
       },
       {
         name: 'Shaded X (0.2% floodplain)',
@@ -263,7 +312,8 @@ module.exports = function(environment) {
         style: {
           color: '#00ffc3',
         },
-        tooltip: "The area subject to flooding from the 0.2% annual chance flood and referred to in the Zoning Resolution as the 'moderate-risk flood zone'.",
+        tooltip:
+          "The area subject to flooding from the 0.2% annual chance flood and referred to in the Zoning Resolution as the 'moderate-risk flood zone'.",
       },
     ],
 
@@ -287,7 +337,8 @@ module.exports = function(environment) {
     ],
 
     'mapbox-gl': {
-      accessToken: 'pk.eyJ1IjoiY3dob25nbnljIiwiYSI6ImNpczF1MXdrdjA4MXcycXA4ZGtyN2x5YXIifQ.3HGyME8tBs6BnljzUVIt4Q',
+      accessToken:
+        'pk.eyJ1IjoiY3dob25nbnljIiwiYSI6ImNpczF1MXdrdjA4MXcycXA4ZGtyN2x5YXIifQ.3HGyME8tBs6BnljzUVIt4Q',
     },
 
     'labs-search': {
@@ -316,7 +367,8 @@ module.exports = function(environment) {
           debug: environment === 'development-ga',
           trace: environment === 'development-ga',
           // Ensure development env hits aren't sent to GA
-          sendHitTask: (environment !== 'development' && environment !== 'devlocal'),
+          sendHitTask:
+            environment !== 'development' && environment !== 'devlocal',
         },
       },
     ],

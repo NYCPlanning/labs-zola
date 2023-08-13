@@ -1,12 +1,14 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-module('Unit | Component | recaptcha-block', function(hooks) {
+module('Unit | Component | recaptcha-block', function (hooks) {
   setupTest(hooks);
 
   // Replace this with your real tests.
-  test('its actions update its args', function(assert) {
-    const component = this.owner.factoryFor('component:recaptcha-block').create();
+  test('its actions update its args', function (assert) {
+    const component = this.owner
+      .factoryFor('component:recaptcha-block')
+      .create();
 
     // reCaptchaResponse starts off undefined
     let reCaptchaResponse = component.get('reCaptchaResponse');

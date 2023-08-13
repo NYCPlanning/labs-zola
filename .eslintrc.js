@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   root: true,
   parserOptions: {
@@ -13,15 +11,13 @@ module.exports = {
       ],
     },
   },
-  plugins: [
-    'ember',
-    'decorator-position',
-  ],
+  plugins: ['ember', 'decorator-position'],
   extends: [
     'eslint:recommended',
     'airbnb-base',
-    'plugin:ember-best-practices/recommended',
+    'plugin:ember/recommended',
     'plugin:decorator-position/ember',
+    'plugin:prettier/recommended',
   ],
   env: {
     browser: true,
@@ -43,9 +39,26 @@ module.exports = {
     'class-methods-use-this': 0,
     'max-len': 0,
     'no-param-reassign': 0,
-    'ember/avoid-leaking-state-in-ember-objects': 0,
-    'ember-best-practices/require-dependent-keys': 0,
     'no-undef': 0,
+    'ember/no-classic-components': 'warn',
+    'ember/no-classic-classes': 'warn',
+    'ember/no-get': 'warn',
+    'ember/no-actions-hash': 'warn',
+    'ember/require-tagless-components': 'warn',
+    'ember/no-observers': 'warn',
+    'ember/classic-decorator-no-classic-methods': 'warn',
+    'ember/classic-decorator-hooks': 'warn',
+    'ember/no-component-lifecycle-hooks': 'warn',
+    'ember/no-empty-glimmer-component-classes': 'warn',
+    'ember/require-computed-macros': 'warn',
+    'ember/no-computed-properties-in-native-classes': 'warn',
+    'ember/no-legacy-test-waiters': 'warn',
+    'ember/no-mixins': 'warn',
+    'ember/no-new-mixins': 'warn',
+    'ember/avoid-leaking-state-in-ember-objects': 'warn',
+    'ember/no-incorrect-calls-with-inline-anonymous-functions': 'warn',
+    'max-classes-per-file': 0,
+    'decorator-position/decorator-position': 0,
   },
   overrides: [
     // node files

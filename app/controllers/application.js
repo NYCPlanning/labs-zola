@@ -42,45 +42,45 @@ const defaultSelectedCouncilDistricts = ['2013'];
 
 // define new query params here:
 export const mapQueryParams = new QueryParams(
-  assign(
-    {
-      layerGroups: {
-        defaultValue: defaultLayerGroups,
-        refresh: true,
-        as: 'layer-groups',
-      },
-
-      selectedZoning: {
-        defaultValue: defaultSelectedZoningDistricts,
-      },
-
-      selectedOverlays: {
-        defaultValue: defaultSelectedOverlays,
-      },
-
-      selectedCouncilDistricts: {
-        defaultValue: defaultSelectedCouncilDistricts,
-      },
-
-      selectedFirm: {
-        defaultValue: defaultSelectedFirmOptionSets,
-      },
-
-      selectedPfirm: {
-        defaultValue: defaultSelectedPfirmOptionSets,
-      },
-
-      'aerial-year': {
-        defaultValue: 'aerials-2016',
-      },
-
-      // TODO: After merge of params refactor, update print service based on this param.
-      print: { defaultValue: false },
+  assign({
+    layerGroups: {
+      defaultValue: defaultLayerGroups,
+      refresh: true,
+      as: 'layer-groups',
     },
-  ),
+
+    selectedZoning: {
+      defaultValue: defaultSelectedZoningDistricts,
+    },
+
+    selectedOverlays: {
+      defaultValue: defaultSelectedOverlays,
+    },
+
+    selectedCouncilDistricts: {
+      defaultValue: defaultSelectedCouncilDistricts,
+    },
+
+    selectedFirm: {
+      defaultValue: defaultSelectedFirmOptionSets,
+    },
+
+    selectedPfirm: {
+      defaultValue: defaultSelectedPfirmOptionSets,
+    },
+
+    'aerial-year': {
+      defaultValue: 'aerials-2016',
+    },
+
+    // TODO: After merge of params refactor, update print service based on this param.
+    print: { defaultValue: false },
+  })
 );
 
-export default class ApplicationController extends Controller.extend(mapQueryParams.Mixin) {
+export default class ApplicationController extends Controller.extend(
+  mapQueryParams.Mixin
+) {
   @service('print') printSvc;
 
   @service fastboot;
@@ -108,7 +108,7 @@ export default class ApplicationController extends Controller.extend(mapQueryPar
 
   @computed('queryParamsState')
   get isDefault() {
-    const state = this.get('queryParamsState') || {};
+    const state = this.queryParamsState || {};
     const values = Object.values(state);
     return values.every(({ changed }) => changed === false);
   }

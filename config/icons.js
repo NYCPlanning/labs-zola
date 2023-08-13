@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = function() {
+module.exports = function () {
   return {
     'free-regular-svg-icons': [
       'check-square',

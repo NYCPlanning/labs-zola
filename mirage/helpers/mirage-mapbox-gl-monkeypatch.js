@@ -6,7 +6,7 @@ export default () => {
     const fakeXhr = this; // eslint-disable-line consistent-this
     const realXhr = this._passthroughRequest;
     if (realXhr) {
-      realXhr.onload = function(event) {
+      realXhr.onload = function (event) {
         if (fakeXhr.responseType !== 'arraybuffer') {
           fakeXhr.response = realXhr.response;
         }

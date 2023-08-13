@@ -36,17 +36,21 @@ export default class MapMeasurementToolsComponent extends Component {
     });
 
     // GA
-    this.get('metrics').trackEvent('GoogleAnalytics', {
+    this.metrics.trackEvent('GoogleAnalytics', {
       eventCategory: 'Measurement',
       eventAction: 'Used measurement tool',
     });
 
     this.set('didStartDraw', true);
-    const draw = this.get('draw') || await import('@mapbox/mapbox-gl-draw')
-      .then(({ default: MapboxDraw }) => new MapboxDraw({
-        displayControlsDefault: false,
-        styles: drawStyles,
-      }));
+    const draw =
+      this.draw ||
+      (await import('@mapbox/mapbox-gl-draw').then(
+        ({ default: MapboxDraw }) =>
+          new MapboxDraw({
+            displayControlsDefault: false,
+            styles: drawStyles,
+          })
+      ));
     this.set('draw', draw);
     const drawMode = type === 'line' ? 'draw_line_string' : 'draw_polygon';
     const { mainMap } = this;
@@ -63,7 +67,7 @@ export default class MapMeasurementToolsComponent extends Component {
 
   @action
   clearDraw() {
-    const draw = this.get('draw');
+    const { draw } = this;
     const { mainMap } = this;
     if (mainMap.get('drawMode')) {
       mainMap.mapInstance.removeControl(draw);
@@ -76,7 +80,7 @@ export default class MapMeasurementToolsComponent extends Component {
 
   @action
   handleDrawCreate(e) {
-    const draw = this.get('draw');
+    const { draw } = this;
     this.set('drawnFeature', e.features[0].geometry);
     setTimeout(() => {
       if (!this.mainMap.isDestroyed && !this.mainMap.isDestroying) {
@@ -89,7 +93,7 @@ export default class MapMeasurementToolsComponent extends Component {
   @action
   async handleMeasurement() {
     this.set('drawDidRender', true);
-    const draw = this.get('draw');
+    const { draw } = this;
     // should log both metric and standard display strings for the current drawn feature
     const { features } = draw.getAll();
 
@@ -115,7 +119,7 @@ async function calculateMeasurements(feature) {
   const { default: area } = await import('@turf/area');
   const { default: lineDistance } = await import('@turf/line-distance');
 
-  const drawnLength = (lineDistance(feature) * 1000); // meters
+  const drawnLength = lineDistance(feature) * 1000; // meters
   const drawnArea = area(feature); // square meters
 
   let metricUnits = 'm';
@@ -126,21 +130,25 @@ async function calculateMeasurements(feature) {
   let standardFormat = '0,0';
   let standardMeasurement;
 
-  if (drawnLength > drawnArea) { // user is drawing a line
+  if (drawnLength > drawnArea) {
+    // user is drawing a line
     metricMeasurement = drawnLength;
-    if (drawnLength >= 1000) { // if over 1000 meters, upgrade metric
+    if (drawnLength >= 1000) {
+      // if over 1000 meters, upgrade metric
       metricMeasurement = drawnLength / 1000;
       metricUnits = 'km';
       metricFormat = '0.00';
     }
 
     standardMeasurement = drawnLength * 3.28084;
-    if (standardMeasurement >= 5280) { // if over 5280 feet, upgrade standard
+    if (standardMeasurement >= 5280) {
+      // if over 5280 feet, upgrade standard
       standardMeasurement /= 5280;
       standardUnits = 'mi';
       standardFormat = '0.00';
     }
-  } else { // user is drawing a polygon
+  } else {
+    // user is drawing a polygon
     metricUnits = 'm²';
     metricFormat = '0,0';
     metricMeasurement = drawnArea;
@@ -149,13 +157,15 @@ async function calculateMeasurements(feature) {
     standardFormat = '0,0';
     standardMeasurement = drawnArea * 10.7639;
 
-    if (drawnArea >= 1000000) { // if over 1,000,000 meters, upgrade metric
+    if (drawnArea >= 1000000) {
+      // if over 1,000,000 meters, upgrade metric
       metricMeasurement = drawnArea / 1000000;
       metricUnits = 'km²';
       metricFormat = '0.00';
     }
 
-    if (standardMeasurement >= 27878400) { // if over 27878400 sf, upgrade standard
+    if (standardMeasurement >= 27878400) {
+      // if over 27878400 sf, upgrade standard
       standardMeasurement /= 27878400;
       standardUnits = 'mi²';
       standardFormat = '0.00';
@@ -164,7 +174,9 @@ async function calculateMeasurements(feature) {
 
   const drawnMeasurements = {
     metric: `${numeral(metricMeasurement).format(metricFormat)} ${metricUnits}`,
-    standard: `${numeral(standardMeasurement).format(standardFormat)} ${standardUnits}`,
+    standard: `${numeral(standardMeasurement).format(
+      standardFormat
+    )} ${standardUnits}`,
   };
 
   return drawnMeasurements;

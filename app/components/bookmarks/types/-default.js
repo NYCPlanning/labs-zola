@@ -4,8 +4,7 @@ import { inject as service } from '@ember/service';
 import layout from '../../../templates/components/bookmarks/types/-default';
 
 export default class DefaultBookmark extends Component {
-  @service
-  metrics;
+  @service metrics;
 
   layout = layout;
 
@@ -30,7 +29,7 @@ export default class DefaultBookmark extends Component {
     });
 
     // GA
-    this.get('metrics').trackEvent('GoogleAnalytics', {
+    this.metrics.trackEvent('GoogleAnalytics', {
       eventCategory: 'Download',
       eventAction: `Downloaded Bookmark as ${format}`,
       eventLabel: 'Export',

@@ -1,11 +1,14 @@
 import Controller from '@ember/controller';
 
 export default class MapFeatureController extends Controller {
-  queryParams = [{
-    search: {
-      type: 'boolean',
+  queryParams = [
+    {
+      search: {
+        type: 'boolean',
+      },
     },
-  }, 'shouldRefresh'];
+    'shouldRefresh',
+  ];
 
   shouldRefresh = false;
 }

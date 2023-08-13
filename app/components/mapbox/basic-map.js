@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { tagName } from '@ember-decorators/component';
 import { buildWaiter } from '@ember/test-waiters';
 
-let waiter = buildWaiter('ember-friendz:friend-waiter');
+const waiter = buildWaiter('ember-friendz:friend-waiter');
 
 /**
  *
@@ -29,7 +29,7 @@ export default class MapboxBasicMapComponent extends Component {
 
   initOptions = {};
 
-  mapLoaded = () => {}
+  mapLoaded = () => {};
 
   mapInstance = null;
 

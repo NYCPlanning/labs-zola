@@ -13,10 +13,10 @@ const feature = {
 
 const template = 'The value of foo is {{foo}}';
 
-module('Integration | Component | tooltip-renderer', function(hooks) {
+module('Integration | Component | tooltip-renderer', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders a tooltipTemplate', async function(assert) {
+  test('it renders a tooltipTemplate', async function (assert) {
     this.set('feature', feature);
     this.set('template', template);
 

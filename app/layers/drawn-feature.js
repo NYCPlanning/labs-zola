@@ -7,10 +7,7 @@ export default {
       'line-color': 'rgba(62, 35, 234, 1)',
       'line-opacity': 0.7,
       'line-width': 2,
-      'line-dasharray': [
-        5,
-        2,
-      ],
+      'line-dasharray': [5, 2],
     },
   },
   fill: {

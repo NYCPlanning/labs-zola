@@ -1,6 +1,5 @@
 import mapboxGlMap from 'ember-mapbox-gl/components/mapbox-gl';
 import { assign } from '@ember/polyfills';
-import { get } from '@ember/object';
 import { computed, action } from '@ember/object';
 import layout from '../templates/components/labs-map';
 
@@ -23,7 +22,6 @@ const highlightedCircleFeatureLayer = {
     'circle-pitch-scale': 'map',
   },
 };
-
 
 const highlightedLineFeatureLayer = {
   id: 'highlighted-feature-line',
@@ -68,14 +66,12 @@ export default class LabsMap extends mapboxGlMap {
     super.init(...args);
 
     // if layerGroups are passed to the map, use the style from that
-    if (this.get('layerGroups')) {
+    if (this.layerGroups) {
       const {
-        meta: {
-          mapboxStyle
-        }
-      } = this.get('layerGroups') || {};
+        meta: { mapboxStyle },
+      } = this.layerGroups || {};
 
-      if (mapboxStyle) assign(get(this, 'initOptions') || {}, { style: mapboxStyle });
+      if (mapboxStyle) assign(this.initOptions || {}, { style: mapboxStyle });
     }
   }
 
@@ -83,7 +79,7 @@ export default class LabsMap extends mapboxGlMap {
 
   @computed('hoveredFeature')
   get hoveredFeatureSource() {
-    const feature = this.get('hoveredFeature');
+    const feature = this.hoveredFeature;
 
     return {
       type: 'geojson',
@@ -92,7 +88,9 @@ export default class LabsMap extends mapboxGlMap {
   }
 
   hoveredFeature = null;
+
   highlightedCircleFeatureLayer = highlightedCircleFeatureLayer;
+
   highlightedLineFeatureLayer = highlightedLineFeatureLayer;
 
   /**
@@ -111,8 +109,7 @@ export default class LabsMap extends mapboxGlMap {
   @action
   _onLoad(map) {
     // add source for highlighted-feature
-    map
-      .addSource('hovered-feature', this.get('hoveredFeatureSource'));
+    map.addSource('hovered-feature', this.hoveredFeatureSource);
 
     map.addLayer(this.highlightedLineFeatureLayer);
     map.addLayer(this.highlightedCircleFeatureLayer);

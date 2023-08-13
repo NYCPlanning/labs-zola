@@ -3,8 +3,7 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 export default class LayerRecordBase extends Component {
-  @service
-  metrics;
+  @service metrics;
 
   model = {};
 
@@ -15,7 +14,7 @@ export default class LayerRecordBase extends Component {
       event_action: `Clicked ${label} Link`,
     });
     // GA
-    this.get('metrics').trackEvent('GoogleAnalytics', {
+    this.metrics.trackEvent('GoogleAnalytics', {
       eventCategory: 'External Link',
       eventAction: 'Clicked External Link',
       eventLabel: `Clicked ${label} Link`,

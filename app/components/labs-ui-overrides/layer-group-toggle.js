@@ -5,11 +5,9 @@ import { inject as service } from '@ember/service';
 import layout from '../../templates/components/labs-ui-overrides/layer-group-toggle';
 
 export default class LayerGroupToggle extends Component {
-  @service
-  fastboot;
+  @service fastboot;
 
-  @service
-  metrics;
+  @service metrics;
 
   // ember component class options
   classNames = ['layer-group-toggle'];
@@ -19,13 +17,14 @@ export default class LayerGroupToggle extends Component {
   layout = layout;
 
   init(...args) {
-    super.init(...args);
+    super.init(args);
 
-    this.get('didInit')(this);
+    this.didInit(this);
   }
 
-  willDestroy() {
-    this.get('willDestroyHook')(this);
+  willDestroy(...args) {
+    super.willDestroy(args);
+    this.willDestroyHook(this);
   }
 
   // main layerGroup
@@ -42,20 +41,15 @@ export default class LayerGroupToggle extends Component {
 
   // property bindings from the layer group
   // includes: label, tooltip, infolink, icon, active
-  @alias('layerGroup.legend.label')
-  label = '';
+  @alias('layerGroup.legend.label') label = '';
 
-  @alias('layerGroup.legend.tooltip')
-  tooltip = '';
+  @alias('layerGroup.legend.tooltip') tooltip = '';
 
-  @alias('layerGroup.legend.infolink')
-  infolink = '';
+  @alias('layerGroup.legend.infolink') infolink = '';
 
-  @alias('layerGroup.legend.icon')
-  icon = [];
+  @alias('layerGroup.legend.icon') icon = [];
 
-  @alias('layerGroup.visible')
-  active = true;
+  @alias('layerGroup.visible') active = true;
 
   // additional options
   infoLinkIcon = 'external-link-alt';
@@ -88,7 +82,7 @@ export default class LayerGroupToggle extends Component {
     });
 
     // GA
-    this.get('metrics').trackEvent('GoogleAnalytics', {
+    this.metrics.trackEvent('GoogleAnalytics', {
       eventCategory: 'External Link',
       eventAction: 'Clicked Supporting Zoning Link',
       eventLabel: `Clicked ${label} Link`,

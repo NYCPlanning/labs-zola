@@ -1,10 +1,4 @@
-import {
-  visit,
-  click,
-  currentURL,
-  find,
-  waitUntil,
-} from '@ember/test-helpers';
+import { visit, click, currentURL, find, waitUntil } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
@@ -13,19 +7,19 @@ import Sinon from 'sinon';
 import stubBasicMap from '../helpers/stub-basic-map';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
-const localStorageSetStringified = function(key, jsonString) {
+const localStorageSetStringified = function (key, jsonString) {
   window.localStorage.setItem(key, JSON.stringify(jsonString));
 };
 
-module('Acceptance | bookmarks', function(hooks) {
+module('Acceptance | bookmarks', function (hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
   stubBasicMap(hooks);
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     if (window.localStorage) {
       window.localStorage.clear();
     }
@@ -35,7 +29,7 @@ module('Acceptance | bookmarks', function(hooks) {
     resetStorages();
   });
 
-  hooks.after(function() {
+  hooks.after(function () {
     if (window.localStorage) {
       window.localStorage.clear();
     }
@@ -45,20 +39,20 @@ module('Acceptance | bookmarks', function(hooks) {
     resetStorages();
   });
 
-  test('visiting /bookmarks', async function(assert) {
+  test('visiting /bookmarks', async function (assert) {
     await visit('/bookmarks');
 
     assert.equal(currentURL(), '/bookmarks');
   });
 
-  test('visiting /bookmarks, see empty message', async function(assert) {
+  test('visiting /bookmarks, see empty message', async function (assert) {
     await visit('/bookmarks');
     await waitUntil(() => find('.content-area'));
 
     assert.ok(find('.no-bookmarks'));
   });
 
-  test('search lot, save, find result in bookmarks, delete it', async function(assert) {
+  test('search lot, save, find result in bookmarks, delete it', async function (assert) {
     this.server.create('lot', {
       id: 1000477501,
       properties: {
@@ -69,7 +63,10 @@ module('Acceptance | bookmarks', function(hooks) {
     await visit('/lot/1/47/7501');
     await click('[data-test-bookmark="save"]');
     await visit('/bookmarks');
-    assert.equal(find('[data-test-lot-property="bbl"]').textContent.trim(), 1000477501);
+    assert.equal(
+      find('[data-test-lot-property="bbl"]').textContent.trim(),
+      1000477501
+    );
 
     await click('.delete-bookmark-button');
 
@@ -79,7 +76,7 @@ module('Acceptance | bookmarks', function(hooks) {
   // TODO: i believe there's a weird race condition here where it visits a lot
   // before promises have settled, and too quickly tries to bookmark
   // a lot. hence, we add await settled.
-  test('bookmark lot, see count increase, un-bookmark', async function(assert) {
+  test('bookmark lot, see count increase, un-bookmark', async function (assert) {
     this.server.create('lot', {
       id: 1000477501,
       properties: {
@@ -98,7 +95,7 @@ module('Acceptance | bookmarks', function(hooks) {
     assert.ok(find('[data-test-bookmark-button-saved="false"]'));
   });
 
-  test('it displays a saved bookmark', async function(assert) {
+  test('it displays a saved bookmark', async function (assert) {
     const sharedCartoResponseID = '3034430054';
 
     this.server.create('lot', {
@@ -132,10 +129,13 @@ module('Acceptance | bookmarks', function(hooks) {
 
     await visit('/bookmarks');
 
-    assert.equal(find('[data-test-lot-property="bbl"]').textContent.trim(), sharedCartoResponseID);
+    assert.equal(
+      find('[data-test-lot-property="bbl"]').textContent.trim(),
+      sharedCartoResponseID
+    );
   });
 
-  test('it displays a multiple lots', async function(assert) {
+  test('it displays a multiple lots', async function (assert) {
     this.server.create('lot', {
       id: 1,
       properties: {
@@ -179,7 +179,10 @@ module('Acceptance | bookmarks', function(hooks) {
       type: 'bookmarks',
     });
 
-    localStorageSetStringified('index-bookmarks', ['bookmarks-1', 'bookmarks-2']);
+    localStorageSetStringified('index-bookmarks', [
+      'bookmarks-1',
+      'bookmarks-2',
+    ]);
 
     await visit('/bookmarks');
 
@@ -187,7 +190,7 @@ module('Acceptance | bookmarks', function(hooks) {
     assert.ok(find('[data-test-bookmark="test-2"]'));
   });
 
-  test('it works with legacy records', async function(assert) {
+  test('it works with legacy records', async function (assert) {
     this.server.create('carto-geojson-feature', {
       id: '050111azmk',
     });
@@ -215,7 +218,7 @@ module('Acceptance | bookmarks', function(hooks) {
     assert.ok(true);
   });
 
-  test('it highlights bookmarked lots on map', async function(assert) {
+  test('it highlights bookmarked lots on map', async function (assert) {
     this.sandbox = Sinon.createSandbox();
     this.addLayerSpy = this.sandbox.spy(this.map, 'addLayer');
 
@@ -243,7 +246,10 @@ module('Acceptance | bookmarks', function(hooks) {
 
     await visit('/bookmarks');
 
-    assert.ok(this.addLayerSpy.calledWithMatch({ id: 'bookmarked-lots' }), 'it adds bookmarked lots');
+    assert.ok(
+      this.addLayerSpy.calledWithMatch({ id: 'bookmarked-lots' }),
+      'it adds bookmarked lots'
+    );
 
     this.sandbox.restore();
   });

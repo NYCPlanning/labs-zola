@@ -46,7 +46,12 @@ export default [
   {
     id: 'gl-draw-polygon-and-line-vertex-halo-active',
     type: 'circle',
-    filter: ['all', ['==', 'meta', 'vertex'], ['==', '$type', 'Point'], ['!=', 'mode', 'static']],
+    filter: [
+      'all',
+      ['==', 'meta', 'vertex'],
+      ['==', '$type', 'Point'],
+      ['!=', 'mode', 'static'],
+    ],
     paint: {
       'circle-radius': 7,
       'circle-color': '#FFF',
@@ -56,7 +61,12 @@ export default [
   {
     id: 'gl-draw-polygon-and-line-vertex-active',
     type: 'circle',
-    filter: ['all', ['==', 'meta', 'vertex'], ['==', '$type', 'Point'], ['!=', 'mode', 'static']],
+    filter: [
+      'all',
+      ['==', 'meta', 'vertex'],
+      ['==', '$type', 'Point'],
+      ['!=', 'mode', 'static'],
+    ],
     paint: {
       'circle-radius': 6,
       'circle-color': '#D96B27',

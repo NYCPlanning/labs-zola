@@ -16,19 +16,22 @@ class MainMapService extends Service {
   };
 }
 
-module('Integration | Component | mapbox/map-feature-renderer', function(hooks) {
-  setupRenderingTest(hooks);
+module(
+  'Integration | Component | mapbox/map-feature-renderer',
+  function (hooks) {
+    setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
-    this.owner.register('service:main-map', MainMapService);
+    test('it renders', async function (assert) {
+      this.owner.register('service:main-map', MainMapService);
 
-    this.model = {};
+      this.model = {};
 
-    await render(hbs`
+      await render(hbs`
       {{mapbox/map-feature-renderer
         model=this.model
       }}`);
 
-    assert.equal(this.element.textContent.trim(), '');
-  });
-});
+      assert.equal(this.element.textContent.trim(), '');
+    });
+  }
+);

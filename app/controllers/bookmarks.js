@@ -11,8 +11,8 @@ export default Controller.extend({
   // this gets us in trouble when we need to do
   // aggregate operations (like filtering)
 
-  bookmarksSettled: computedProp('model.[]', function() {
-    const bookmarks = this.get('model');
+  bookmarksSettled: computedProp('model.[]', function () {
+    const bookmarks = this.model;
     const promises = bookmarks.mapBy('recordType');
 
     return Promise.all(promises);

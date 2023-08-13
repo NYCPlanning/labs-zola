@@ -5,11 +5,9 @@ import { inject as service } from '@ember/service';
 export default class BookmarkButton extends Component {
   bookmarkableModel = null;
 
-  @service
-  store;
+  @service store;
 
-  @service
-  metrics;
+  @service metrics;
 
   // we don't know what kind of model this is
   // we only know that it's bookmarkable
@@ -44,15 +42,17 @@ export default class BookmarkButton extends Component {
     });
 
     // GA
-    this.get('metrics').trackEvent('GoogleAnalytics', {
+    this.metrics.trackEvent('GoogleAnalytics', {
       eventCategory: 'Bookmark',
       eventAction: 'Used Bookmark',
     });
 
     const { bookmarkableModel } = this;
 
-    await this.store.createRecord('bookmark', {
-      bookmark: bookmarkableModel,
-    }).save();
+    await this.store
+      .createRecord('bookmark', {
+        bookmark: bookmarkableModel,
+      })
+      .save();
   }
 }

@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   allowedVersions: {
     // TODO: Fix these dependency issues

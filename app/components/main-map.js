@@ -14,9 +14,9 @@ const selectedFillLayer = selectedLayers.fill;
 const selectedLineLayer = selectedLayers.line;
 
 // Custom Control
-const MeasurementText = function() { };
+const MeasurementText = function () {};
 
-MeasurementText.prototype.onAdd = function(map) {
+MeasurementText.prototype.onAdd = function (map) {
   this._map = map;
   this._container = document.createElement('div');
   this._container.id = 'measurement-text';
@@ -65,7 +65,7 @@ export default class MainMap extends Component {
     });
   }
 
-  @computed('layerGroupsObject')
+  @computed('layerGroups', 'layerGroupsObject')
   get mapConfig() {
     return this.layerGroups;
   }
@@ -73,8 +73,9 @@ export default class MainMap extends Component {
   @computed('bookmarks.[]')
   get bookmarkedLotsLayer() {
     const bookmarks = this.get('bookmarks.[]');
-    const lotBookmarks = bookmarks.getEach('bookmark.properties.bbl')
-      .filter(d => d); // filter out bookmarks with undefined bbl
+    const lotBookmarks = bookmarks
+      .getEach('bookmark.properties.bbl')
+      .filter((d) => d); // filter out bookmarks with undefined bbl
 
     const filter = ['match', ['get', 'bbl'], lotBookmarks, true, false];
 
@@ -91,14 +92,8 @@ export default class MainMap extends Component {
         'line-color': 'rgba(0, 25, 160, 1)',
         'line-width': {
           stops: [
-            [
-              13,
-              1.5,
-            ],
-            [
-              15,
-              8,
-            ],
+            [13, 1.5],
+            [15, 8],
           ],
         },
       },
@@ -146,14 +141,17 @@ export default class MainMap extends Component {
 
     // GA
     geoLocateControl.on('trackuserlocationstart', () => {
-      this.metrics.trackEvent(
-        'GoogleAnalytics',
-        { eventCategory: 'Map', eventAction: 'Geolocate' },
-      );
+      this.metrics.trackEvent('GoogleAnalytics', {
+        eventCategory: 'Map',
+        eventAction: 'Geolocate',
+      });
     });
 
     map.addControl(navigationControl, 'top-left');
-    map.addControl(new mapboxgl.ScaleControl({ unit: 'imperial' }), 'bottom-left');
+    map.addControl(
+      new mapboxgl.ScaleControl({ unit: 'imperial' }),
+      'bottom-left'
+    );
     map.addControl(geoLocateControl, 'top-left');
     map.addControl(new MeasurementText(), 'top-left');
 
@@ -164,9 +162,9 @@ export default class MainMap extends Component {
       'highway_name_motorway',
     ];
 
-    basemapLayersToHide.forEach(layer => map.removeLayer(layer));
+    basemapLayersToHide.forEach((layer) => map.removeLayer(layer));
 
-    map.on('zoom', function() {
+    map.on('zoom', function () {
       mainMap.set('zoom', map.getZoom());
     });
   }
@@ -179,9 +177,9 @@ export default class MainMap extends Component {
 
     if (localSource) {
       if (
-        data.dataType === 'source'
-        && data.isSourceLoaded
-        && sourceIds.includes(data.sourceId)
+        data.dataType === 'source' &&
+        data.isSourceLoaded &&
+        sourceIds.includes(data.sourceId)
       ) {
         this.set('loading', false);
       } else {
@@ -192,7 +190,7 @@ export default class MainMap extends Component {
 
   @action
   handleLayerClick(feature) {
-    const highlightedLayerId = this.get('highlightedLayerId');
+    const { highlightedLayerId } = this;
 
     if (feature) {
       const { properties } = feature;
@@ -215,27 +213,45 @@ export default class MainMap extends Component {
         }
 
         if (ulurpno) {
-          this.router.transitionTo('map-feature.zoning-map-amendment', ulurpno, { queryParams: { search: false } });
+          this.router.transitionTo(
+            'map-feature.zoning-map-amendment',
+            ulurpno,
+            { queryParams: { search: false } }
+          );
         }
 
         if (zonedist) {
-          this.router.transitionTo('map-feature.zoning-district', zonedist, { queryParams: { search: false } });
+          this.router.transitionTo('map-feature.zoning-district', zonedist, {
+            queryParams: { search: false },
+          });
         }
 
         if (sdlbl) {
-          this.router.transitionTo('map-feature.special-purpose-district', cartodb_id, { queryParams: { search: false } });
+          this.router.transitionTo(
+            'map-feature.special-purpose-district',
+            cartodb_id,
+            { queryParams: { search: false } }
+          );
         }
 
         if (splbl) {
-          this.router.transitionTo('map-feature.special-purpose-subdistrict', cartodb_id, { queryParams: { search: false } });
+          this.router.transitionTo(
+            'map-feature.special-purpose-subdistrict',
+            cartodb_id,
+            { queryParams: { search: false } }
+          );
         }
 
         if (overlay) {
-          this.router.transitionTo('map-feature.commercial-overlay', overlay, { queryParams: { search: false } });
+          this.router.transitionTo('map-feature.commercial-overlay', overlay, {
+            queryParams: { search: false },
+          });
         }
 
         if (bbl && ceqr_num) {
-          this.router.transitionTo('map-feature.e-designation', id, { queryParams: { search: false } });
+          this.router.transitionTo('map-feature.e-designation', id, {
+            queryParams: { search: false },
+          });
         }
       }
     }

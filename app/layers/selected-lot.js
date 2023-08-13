@@ -20,20 +20,11 @@ const selectedLayers = {
       'line-color': 'rgba(0, 10, 90, 1)',
       'line-width': {
         stops: [
-          [
-            13,
-            1.5,
-          ],
-          [
-            15,
-            8,
-          ],
+          [13, 1.5],
+          [15, 8],
         ],
       },
-      'line-dasharray': [
-        2,
-        1.5,
-      ],
+      'line-dasharray': [2, 1.5],
     },
   },
 };

@@ -6,7 +6,7 @@ const defaultStart = [220924800, defaultMax.getTime()];
 
 function formatDate(date) {
   const d = new Date(date);
-  let month = `${(d.getMonth() + 1)}`;
+  let month = `${d.getMonth() + 1}`;
   const year = d.getFullYear();
 
   if (month.length < 2) month = `0${month}`;
@@ -19,15 +19,16 @@ export default class LayerControlTimelineComponent extends Component {
 
   column = '';
 
-
   format = {
-    to: number => formatDate(number),
-    from: number => formatDate(number),
-  }
+    to: (number) => formatDate(number),
+    from: (number) => formatDate(number),
+  };
 
-  start = defaultStart
-  min = defaultStart[0]
-  max = defaultStart[1]
+  start = defaultStart;
+
+  min = defaultStart[0];
+
+  max = defaultStart[1];
 
   @action
   sliderChanged(value) {

@@ -4,15 +4,15 @@ import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
-module('Acceptance | user can configure print view', function(hooks) {
+module('Acceptance | user can configure print view', function (hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
-  test('User can click print and configure', async function(assert) {
+  test('User can click print and configure', async function (assert) {
     await visit('/');
     await click('[data-test-map-print-button]');
     await click('[data-test-print-control="landscape"]');
