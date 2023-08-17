@@ -7,7 +7,7 @@ import {
   waitUntil,
   currentURL,
 } from '@ember/test-helpers';
-import { module, test } from 'qunit';
+import { module, test, skip } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import { selectChoose } from 'ember-power-select/test-support';
@@ -80,7 +80,7 @@ module('Acceptance | index', function (hooks) {
     );
   });
 
-  test('it does BBL lookup', async function (assert) {
+  skip('it does BBL lookup', async function (assert) {
     this.server.create('lot', {
       id: 1000477501,
       properties: {

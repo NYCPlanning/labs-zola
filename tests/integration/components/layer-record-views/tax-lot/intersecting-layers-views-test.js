@@ -15,9 +15,7 @@ module(
         rows: [],
       }));
 
-      await render(
-        hbs`{{layer-record-views/tax-lot/intersecting-layers-views}}`
-      );
+      await render(hbs`<LayerRecordViews::TaxLot::IntersectingLayersViews />`);
 
       assert.equal(this.element.textContent.trim(), 'None found');
     });

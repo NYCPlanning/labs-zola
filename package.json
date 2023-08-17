@@ -140,7 +140,8 @@
     "numeral": "^2.0.6"
   },
   "resolutions": {
-    "ember-auto-import": "^2.6.3"
+    "ember-auto-import": "^2.6.3",
+    "ember-concurrency": "^2.0.0"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"
