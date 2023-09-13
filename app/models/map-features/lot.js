@@ -559,11 +559,6 @@ export default class LotFragment extends MF.Fragment {
       return `http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough=${this.borocode}&block=${this.block}&lot=${this.lot}`;
     }
 
-    @computed('boro', 'housenum', 'street')
-    get housingInfoLink() {
-      return `https://hpdonline.hpdnyc.org/Hpdonline/Provide_address.aspx?p1=${this.boro}&p2=${this.housenum}&p3=${this.street}&SearchButton=Search`;
-    }
-
     @computed('council')
     get councilLink() {
       return `https://council.nyc.gov/district-${this.council}/`;
