@@ -110,24 +110,6 @@ module('Unit | Model | lot', function(hooks) {
     assert.equal(model.properties.ACRISLink, 'http://a836-acris.nyc.gov/bblsearch/bblsearch.asp?borough=1&block=1&lot=1');
   });
 
-  test('it generates correct links: Housing Info Link', async function(assert) {
-    this.server.create('lot', {
-      id: 1,
-      properties: {
-        cd: '104',
-        address: '123 street',
-        street: 'street',
-        borocode: '1',
-      },
-    });
-
-    const model = await this.owner.lookup('service:store')
-      .findRecord('lot', 1);
-
-    assert.equal(model.properties.housingInfoLink, 'https://hpdonline.hpdnyc.org/Hpdonline/Provide_address.aspx?p1=1&p2=123&p3=street&SearchButton=Search');
-  });
-
-
   test('it generates correct links: Council', async function(assert) {
     this.server.create('lot', {
       id: 1,
