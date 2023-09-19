@@ -38,9 +38,10 @@ export default class MapMeasurementToolsComponent extends Component {
     });
 
     // GA
-    this.get('metrics').trackEvent('GoogleAnalytics', {
-      eventCategory: 'Measurement',
-      eventAction: 'Used measurement tool',
+    this.get('metrics').trackEvent('MatomoTagManager', {
+      category: 'Measurement',
+      action: 'Used measurement tool',
+      name: 'Measurement',
     });
 
     this.set('didStartDraw', true);

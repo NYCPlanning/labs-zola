@@ -5,6 +5,16 @@ const CARTO_USER = process.env.CARTO_USER || 'planninglabs';
 
 module.exports = function(environment) {
   const ENV = {
+    metricsAdapters: [
+      {
+        name: 'MatomoTagManager',
+        environments: ['development', 'production', 'test'],
+        config: {
+          matomoUrl: 'matomo.planninglabs.nyc',
+          containerId: '9G7PP94F',
+        },
+      },
+    ],
     modulePrefix: 'labs-zola',
     environment,
     rootURL: '/',
@@ -345,19 +355,7 @@ module.exports = function(environment) {
       },
     },
 
-    metricsAdapters: [
-      {
-        name: 'GoogleAnalytics',
-        environments: ['development', 'production'],
-        config: {
-          id: 'UA-84250233-8',
-          debug: environment === 'development-ga',
-          trace: environment === 'development-ga',
-          // Ensure development env hits aren't sent to GA
-          sendHitTask: (environment !== 'development' && environment !== 'devlocal'),
-        },
-      },
-    ],
+
 
     EmberENV: {
       FEATURES: {
