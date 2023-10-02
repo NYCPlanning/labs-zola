@@ -6,8 +6,9 @@ import {
   triggerKeyEvent,
   waitUntil,
   currentURL,
+  settled,
 } from '@ember/test-helpers';
-import { module, test, skip } from 'qunit';
+import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import { selectChoose } from 'ember-power-select/test-support';
@@ -80,7 +81,7 @@ module('Acceptance | index', function (hooks) {
     );
   });
 
-  skip('it does BBL lookup', async function (assert) {
+  test('it does BBL lookup', async function (assert) {
     this.server.create('lot', {
       id: 1000477501,
       properties: {
@@ -96,6 +97,9 @@ module('Acceptance | index', function (hooks) {
     await fillIn('[data-test-search="bbl"] .bbl-lookup--block-input', 1);
     await fillIn('[data-test-search="bbl"] .bbl-lookup--lot-input', 1);
     await click('[data-test-search="bbl"] .button.small.expanded.no-margin');
+
+    // eslint-disable-next-line ember/no-settled-after-test-helper
+    await settled();
     assert.ok(currentURL().includes('lot/1/47/7501'));
   });
 });
