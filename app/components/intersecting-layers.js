@@ -1,4 +1,4 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { get, computed } from '@ember/object';
 import RSVP from 'rsvp';
 import { task } from 'ember-concurrency';
@@ -35,7 +35,8 @@ export default class IntersectingLayersComponent extends Component {
 
   bbl = null;
 
-  @task(function* (tables, bbl, responseIdentifier) {
+  @task
+  *calculateIntersections(tables, bbl, responseIdentifier) {
     const hash = {};
 
     tables.forEach((table) => {
@@ -45,28 +46,41 @@ export default class IntersectingLayersComponent extends Component {
     });
 
     return yield RSVP.hash(hash);
-  })
-  calculateIntersections;
+  }
 
+  // todo use render modifiers
   willDestroyElement(...args) {
+    console.log('test')
     super.willDestroyElement(...args);
     this.calculateIntersections.cancelAll();
   }
 
   willUpdate(...args) {
+    console.log('test')
     super.willUpdate(...args);
     this.calculateIntersections.cancelAll();
   }
 
-  @computed('bbl', 'calculateIntersections', 'responseIdentifier', 'tables.[]')
+  @computed(
+    'args',
+    'bbl',
+    'calculateIntersections',
+    'responseIdentifier',
+    'tables.[]'
+  )
   get intersectingLayers() {
-    const { tables, bbl, responseIdentifier } = this;
-    return this.calculateIntersections.perform(tables, bbl, responseIdentifier);
+    const { tables, bbl } = this.args;
+
+    return this.calculateIntersections.perform(
+      tables,
+      bbl,
+      this.responseIdentifier
+    );
   }
 
   @computed('intersectingLayers.value')
   get numberIntersecting() {
-    const intersectingLayers = this.get('intersectingLayers.value');
+    const intersectingLayers = this.intersectingLayers.value;
 
     if (intersectingLayers) {
       const truthyValues = Object.values(intersectingLayers).filter(

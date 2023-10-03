@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, settled, waitFor } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 
@@ -16,6 +16,8 @@ module(
       }));
 
       await render(hbs`<LayerRecordViews::TaxLot::IntersectingLayersViews />`);
+
+      await waitFor('[data-test-none-found]');
 
       assert.equal(this.element.textContent.trim(), 'None found');
     });

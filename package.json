@@ -71,7 +71,7 @@
     "ember-cli-tree-shaker": "0.2.0",
     "ember-cli-update": "^1.0.1",
     "ember-composable-helpers": "3.2.0",
-    "ember-concurrency": "^2.3.7",
+    "ember-concurrency": "3.1.1",
     "ember-concurrency-retryable": "1.0.0",
     "ember-data": "~4.11.3",
     "ember-decorators": "6.0.0",
@@ -140,8 +140,7 @@
     "numeral": "^2.0.6"
   },
   "resolutions": {
-    "ember-auto-import": "^2.6.3",
-    "ember-concurrency": "^2.0.0"
+    "ember-auto-import": "^2.6.3"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix"

@@ -156,6 +156,6 @@
     </li>
   {{/if}}
   {{#if (not (or numberIntersecting this.model.histdist))}}
-    None found
+    <span data-test-none-found>None found</span>
   {{/if}}
 </IntersectingLayers>
