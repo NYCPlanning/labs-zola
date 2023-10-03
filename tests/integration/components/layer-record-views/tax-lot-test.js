@@ -123,7 +123,7 @@ module(
 
       assert.equal(
         find('[data-test-housing-info-link]').getAttribute('href'),
-        'https://hpdonline.hpdnyc.org/Hpdonline/Provide_address.aspx?p1=1&p2=120&p3=BROADWAY&SearchButton=Search'
+        'https://hpdonline.nyc.gov/hpdonline/'
       );
     });
 

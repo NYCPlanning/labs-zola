@@ -15,7 +15,8 @@ export default Mixin.create({
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
       const page = this.url;
-      const title = this.getWithDefault('currentRouteName', 'unknown');
+      const title = this.currentRouteName || 'unknown';
+
       if(skipDoubleCountingBecauseThisIsTheInitialPageLoad) {
         skipDoubleCountingBecauseThisIsTheInitialPageLoad = false;
       } else {
