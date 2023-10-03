@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, fillIn, click } from '@ember/test-helpers';
+import { render, fillIn, click, settled } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import config from 'labs-zola/config/environment';
@@ -10,15 +10,18 @@ const {
   'labs-search': { host: labsSearchHost },
 } = config;
 
-// generic procedure for typing in a search with a given result and assertion
-const runSearch = async function () {
-  await render(hbs`<MapResourceSearch />`);
-  await fillIn('[data-test-search="resource"] .map-search-input', 'test');
-  await click('.result');
-};
-
 // this behavior is already tested in an acceptance test
 module('Integration | Component | map-resource-search', function (hooks) {
+  // generic procedure for typing in a search with a given result and assertion
+  // needs to be defined here to inherit this
+  const runSearch = async () => {
+    await render(hbs`<MapResourceSearch />`);
+    await fillIn('[data-test-search="resource"] .map-search-input', 'test');
+    // eslint-disable-next-line ember/no-settled-after-test-helper
+    await settled();
+    await click('.result');
+  };
+
   setupRenderingTest(hooks);
   setupMirage(hooks);
 
