@@ -21,9 +21,10 @@ export default class MapResourceSearchComponent extends Component {
       });
 
       // GA
-      this.metrics.trackEvent('GoogleAnalytics', {
-        eventCategory: 'Search',
-        eventAction: 'Used BBL Lookup',
+      this.metrics.trackEvent('MatomoTagManager', {
+        category: 'Search',
+        action: 'Used BBL Lookup',
+        name: 'Used BBL Lookup',
       });
 
       const { boro, block, lot } = bblDemux(bbl);
@@ -54,18 +55,20 @@ export default class MapResourceSearchComponent extends Component {
           event_category: 'Search',
           event_action: 'Searched by Address',
         });
-        this.metrics.trackEvent('GoogleAnalytics', {
-          eventCategory: 'Search',
-          eventAction: 'Searched by Address',
+        this.metrics.trackEvent('MatomoTagManager', {
+          category: 'Search',
+          action: 'Searched by Address',
+          name: 'Searched by Address',
         });
       } else {
         gtag('event', 'search', {
           event_category: 'Search',
           event_action: 'Used BBL Lookup',
         });
-        this.metrics.trackEvent('GoogleAnalytics', {
-          eventCategory: 'Search',
-          eventAction: 'Used BBL Lookup',
+        this.metrics.trackEvent('MatomoTagManager', {
+          category: 'Search',
+          action: 'Used BBL Lookup',
+          name: 'Used BBL Lookup',
         });
       }
 
@@ -91,9 +94,10 @@ export default class MapResourceSearchComponent extends Component {
         event_action: 'Searched by Zoning District',
       });
       // GA
-      this.metrics.trackEvent('GoogleAnalytics', {
-        eventCategory: 'Search',
-        eventAction: 'Searched by Zoning District',
+      this.metrics.trackEvent('MatomoTagManager', {
+        category: 'Search',
+        action: 'Searched by Zoning District',
+        name: 'Searched by Zoning District',
       });
 
       this.set('searchTerms', result.label);

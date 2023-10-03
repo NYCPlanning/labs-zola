@@ -3,6 +3,16 @@ const CARTO_USER = process.env.CARTO_USER || 'planninglabs';
 
 module.exports = function (environment) {
   const ENV = {
+    metricsAdapters: [
+      {
+        name: 'MatomoTagManager',
+        environments: ['development', 'production', 'test'],
+        config: {
+          matomoUrl: 'matomo.planninglabs.nyc',
+          containerId: '9G7PP94F',
+        },
+      },
+    ],
     modulePrefix: 'labs-zola',
     environment,
     rootURL: '/',
@@ -358,20 +368,45 @@ module.exports = function (environment) {
       domain: `https://${CARTO_USER}.carto.com`,
     },
 
-    metricsAdapters: [
-      {
-        name: 'GoogleAnalytics',
-        environments: ['development', 'production'],
-        config: {
-          id: 'UA-84250233-8',
-          debug: environment === 'development-ga',
-          trace: environment === 'development-ga',
-          // Ensure development env hits aren't sent to GA
-          sendHitTask:
-            environment !== 'development' && environment !== 'devlocal',
-        },
+    fontawesome: {
+      icons: {
+        'free-regular-svg-icons': [
+          'check-square',
+          'circle',
+          'dot-circle',
+          'square',
+        ],
+        'free-solid-svg-icons': [
+          'angle-up',
+          'bookmark',
+          'caret-down',
+          'caret-up',
+          'check-square',
+          'chevron-down',
+          'chevron-left',
+          'chevron-up',
+          'circle',
+          'exclamation-triangle',
+          'external-link-alt',
+          'home',
+          'info-circle',
+          'link',
+          'map-pin',
+          'minus',
+          'pen',
+          'print',
+          'search',
+          'spinner',
+          'square',
+          'times',
+          'tree',
+          'undo',
+          'window-minimize',
+        ],
       },
-    ],
+    },
+
+
 
     EmberENV: {
       EXTEND_PROTOTYPES: false,

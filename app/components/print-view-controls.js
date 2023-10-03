@@ -27,10 +27,10 @@ export default class PrintViewControls extends Component {
       event_action: 'Disabled print view',
     });
     // GA
-    this.metrics.trackEvent('GoogleAnalytics', {
-      eventCategory: 'Print',
-      eventAction: 'Disabled print view',
-      eventLabel: 'export',
+    this.metrics.trackEvent('MatomoTagManager', {
+      category: 'Print',
+      action: 'Disabled print view',
+      name: 'export',
     });
 
     this.set('printSvc.enabled', false);

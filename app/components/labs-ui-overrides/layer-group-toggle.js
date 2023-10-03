@@ -82,10 +82,10 @@ export default class LayerGroupToggle extends Component {
     });
 
     // GA
-    this.metrics.trackEvent('GoogleAnalytics', {
-      eventCategory: 'External Link',
-      eventAction: 'Clicked Supporting Zoning Link',
-      eventLabel: `Clicked ${label} Link`,
+    this.metrics.trackEvent('MatomoTagManager', {
+      category: 'External Link',
+      action: 'Clicked Supporting Zoning Link',
+      name: `Clicked ${label} Link`,
     });
   }
 }

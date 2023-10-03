@@ -200,11 +200,10 @@ export default class LayerPaletteComponent extends Component {
     });
 
     // GA
-    this.metrics.trackEvent('GoogleAnalytics', {
-      eventCategory: 'Layers',
-      eventAction: `${layerGroup.visible ? 'Turned on' : 'Turned off'} ${
-        layerGroup.legend.label
-      }`,
+    this.metrics.trackEvent('MatomoTagManager', {
+      category: 'Layers',
+      action: `${ layerGroup.visible ? 'Turned on' : 'Turned off' } ${ layerGroup.legend.label }`,
+      name: `${ layerGroup.legend.label }`,
     });
     this.handleLayerGroupChange();
   }

@@ -446,11 +446,18 @@
     <div class="data-grid">
       <label class="data-label">
         Housing Info
+        <span>
+        {{fa-icon icon="info-circle"}}
+        <EmberTooltip
+          @text="View additional information about the buildings on this lot, including Building, Registration & Violation Records by searching on the NYC Department of Housing Preservation & Development's online portal."
+          @side="right"
+        />
+      </span>
       </label>
       <span class="datum">
         <a
           data-test-housing-info-link
-          href={{this.housingInfoLink}}
+          href="https://hpdonline.nyc.gov/hpdonline/"
           onclick={{action this.captureOutboundLink "Housing Info" preventDefault=false}}
           target="_blank" rel="noopener noreferrer"
         >

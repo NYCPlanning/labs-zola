@@ -14,10 +14,10 @@ export default class LayerRecordBase extends Component {
       event_action: `Clicked ${label} Link`,
     });
     // GA
-    this.metrics.trackEvent('GoogleAnalytics', {
-      eventCategory: 'External Link',
-      eventAction: 'Clicked External Link',
-      eventLabel: `Clicked ${label} Link`,
+    this.metrics.trackEvent('MatomoTagManager', {
+      category: 'External Link',
+      action: 'Clicked External Link',
+      name: `Clicked ${label} Link`,
     });
   }
 }
