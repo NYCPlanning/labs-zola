@@ -22,7 +22,7 @@
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve -dev",
     "start:local-api": "API_HOST=http://localhost:3000 ember serve",
-    "test": "ember test --server",
+    "test": "ember test",
     "prepare": "husky install",
     "upgrade": "ember-cli-update --run-codemods"
   },
