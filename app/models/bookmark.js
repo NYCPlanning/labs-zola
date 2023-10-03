@@ -1,10 +1,11 @@
 import DS from 'ember-data'; // eslint-disable-line
 import { computed } from '@ember/object';
+import { resolve } from 'rsvp';
+import ObjectProxy from '@ember/object/proxy';
+import PromiseProxyMixin from '@ember/object/promise-proxy-mixin';
 
-// This throws https://github.com/ember-cli/eslint-plugin-ember/blob/master/docs/rules/use-ember-data-rfc-395-imports.md.
-// Fixing this elsewhere in the code was easy but I'm not sure where to get PromiseObject from.
-// If I import it off of @ember-data/model, it's undefined.
-const { PromiseObject, Model, attr, belongsTo } = DS; // eslint-disable-line
+const ObjectPromiseProxy = ObjectProxy.extend(PromiseProxyMixin);
+const { Model, attr, belongsTo } = DS; // eslint-disable-line
 
 export default class BookmarkModel extends Model {
   @belongsTo('bookmark', { inverse: 'bookmark', polymorphic: true }) bookmark;
@@ -16,14 +17,16 @@ export default class BookmarkModel extends Model {
   @computed('bookmark')
   get recordType() {
     const { bookmark } = this;
-    return PromiseObject.create({
-      promise: bookmark.then((bmark) => {
-        if (bmark) {
-          return bmark.get('constructor.modelName');
-        }
+    return ObjectPromiseProxy.create({
+      promise: resolve(
+        bookmark.then((bmark) => {
+          if (bmark) {
+            return bmark.get('constructor.modelName');
+          }
 
-        return 'address';
-      }),
+          return 'address';
+        })
+      ),
     });
   }
 }
