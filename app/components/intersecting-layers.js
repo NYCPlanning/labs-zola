@@ -50,13 +50,11 @@ export default class IntersectingLayersComponent extends Component {
 
   // todo use render modifiers
   willDestroyElement(...args) {
-    console.log('test')
     super.willDestroyElement(...args);
     this.calculateIntersections.cancelAll();
   }
 
   willUpdate(...args) {
-    console.log('test')
     super.willUpdate(...args);
     this.calculateIntersections.cancelAll();
   }
