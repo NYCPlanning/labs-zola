@@ -2216,10 +2216,10 @@
   dependencies:
     ember-cli-babel "^7.1.2"
 
-"@nycplanning/ember@^3.0.0-7":
-  version "3.0.0-7"
-  resolved "https://registry.yarnpkg.com/@nycplanning/ember/-/ember-3.0.0-7.tgz#f83bdc4467013e34a348856ef646ec96f5da22a1"
-  integrity sha512-elUp9c5cA3Z4PTfaquojkh/F1wxKpkp4jVchCw6acdU9BqKT3fs7UbDuUtt8UFIHZqAAll+/xceXFhSVj5VNvQ==
+"@nycplanning/ember@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@nycplanning/ember/-/ember-3.0.0.tgz#8103d7ecae91218d0b91ac7eaf9350e3bf2cb4b6"
+  integrity sha512-qDRAWm3A+ubNjet9UTnEW6QzPDdG5OaTaZ0o8W3e9Oz8S0kvllCVEDNYml2U30DuUZ4zAGR1i7r9QSmfTAWTkA==
   dependencies:
     "@turf/union" "^6.0.0"
     ember-auto-import "^2.6.3"
