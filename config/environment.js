@@ -406,8 +406,6 @@ module.exports = function (environment) {
       },
     },
 
-
-
     EmberENV: {
       EXTEND_PROTOTYPES: false,
       FEATURES: {

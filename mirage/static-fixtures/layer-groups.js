@@ -5564,7 +5564,7 @@ export default {
         },
       },
       sprite:
-        'https://labs-mapbox-gl-noop-tiles.nyc3.digitaloceanspaces.com/static/sprite',
+        'https://labs-mapbox-gl-noop-tiles.nyc3.digitaloceanspaces.com/static/sprite@2x',
       glyphs:
         'https://labs-mapbox-gl-noop-tiles.nyc3.digitaloceanspaces.com/fonts/dummy-font.pbf?noop={fontstack}{range}',
       layers: [

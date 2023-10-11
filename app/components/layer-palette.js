@@ -202,8 +202,10 @@ export default class LayerPaletteComponent extends Component {
     // GA
     this.metrics.trackEvent('MatomoTagManager', {
       category: 'Layers',
-      action: `${ layerGroup.visible ? 'Turned on' : 'Turned off' } ${ layerGroup.legend.label }`,
-      name: `${ layerGroup.legend.label }`,
+      action: `${layerGroup.visible ? 'Turned on' : 'Turned off'} ${
+        layerGroup.legend.label
+      }`,
+      name: `${layerGroup.legend.label}`,
     });
     this.handleLayerGroupChange();
   }

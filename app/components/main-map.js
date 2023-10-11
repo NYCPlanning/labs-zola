@@ -141,10 +141,11 @@ export default class MainMap extends Component {
 
     // GA
     geoLocateControl.on('trackuserlocationstart', () => {
-      this.metrics.trackEvent(
-        'MatomoTagManager',
-        { category: 'Map', action: 'Geolocate', name: 'Geolocate' },
-      );
+      this.metrics.trackEvent('MatomoTagManager', {
+        category: 'Map',
+        action: 'Geolocate',
+        name: 'Geolocate',
+      });
     });
 
     map.addControl(navigationControl, 'top-left');
@@ -207,7 +208,8 @@ export default class MainMap extends Component {
           cartodb_id, // eslint-disable-line
           ceqr_num, // eslint-disable-line
         } = properties;
-        if (bbl && !ceqr_num) { // eslint-disable-line
+        if (bbl && !ceqr_num) {
+          // eslint-disable-line
           const { boro, block, lot } = bblDemux(bbl);
           this.router.transitionTo('map-feature.lot', boro, block, lot);
         }
