@@ -19,6 +19,8 @@ const getPrimaryZone = (zonedist = '') => {
   let primary = zonedist.match(/\w\d*/)[0].toLowerCase();
   // special handling for c1 and c2
   if ((primary === 'c1') || (primary === 'c2')) primary = 'c1-c2';
+  // special handling for c3 and c3a
+  if ((primary === 'c3') || (primary === 'c3a')) primary = 'c3-c3a';
   return primary;
 };
 
