@@ -516,7 +516,18 @@
         Police Precinct
       </label>
       <span class="datum">
-        {{this.model.policeprct}}
+        {{#if this.model.precinctInfo.precinct}}
+          <a
+            href={{this.model.precinctInfo.url}}
+            onclick={{action this.captureOutboundLink "Police" preventDefault=false}}
+            target="_blank"
+          >
+            {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
+            {{this.model.precinctInfo.precinct}}
+          </a>
+        {{else}}
+          {{this.model.policeprct}}
+        {{/if}}
       </span>
     </div>
   {{/if}}

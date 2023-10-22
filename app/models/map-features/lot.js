@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import carto from 'labs-zola/utils/carto';
 import config from 'labs-zola/config/environment';
+import { nypdPrecinctLookup } from '../../datasets/nypd_precincts'
 
 const { specialDistrictCrosswalk } = config;
 
@@ -564,5 +565,10 @@ export default class LotFragment extends MF.Fragment {
     @computed('council')
     get councilLink() {
       return `https://council.nyc.gov/district-${this.council}/`;
+    }
+
+    @computed('policeprct')
+    get precinctInfo() {
+      return nypdPrecinctLookup.find((p) => p.id == this.policeprct);
     }
 }
