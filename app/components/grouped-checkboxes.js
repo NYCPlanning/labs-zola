@@ -9,29 +9,27 @@ export default class GroupedCheckboxesComponent extends Component {
 
   group;
 
-  selectionChanged = () => {}
+  selectionChanged = () => {};
 
   @computed('group.codes.length')
   get hasMany() {
-    return (this.get('group.codes.length') > 1);
+    return this.get('group.codes.length') > 1;
   }
 
-  @intersect('selected', 'group.codes')
-  selectedInGroup;
+  @intersect('selected', 'group.codes') selectedInGroup;
 
   @computed('selectedInGroup', 'group', 'selected')
   get isIndeterminateGroup() {
-    const {
-      selectedInGroup,
-      group,
-    } = this;
+    const { selectedInGroup, group } = this;
 
-    return (selectedInGroup.length > 0) && (selectedInGroup.length < group.codes.length);
+    return (
+      selectedInGroup.length > 0 && selectedInGroup.length < group.codes.length
+    );
   }
 
   @action
   addOrRemoveMultiple(needles, haystack) {
-    if (haystack.any(hay => needles.includes(hay))) {
+    if (haystack.some((hay) => needles.includes(hay))) {
       haystack.removeObjects(needles);
     } else {
       haystack.pushObjects(needles);

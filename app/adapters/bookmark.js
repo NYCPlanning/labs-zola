@@ -1,1 +1,3 @@
-export { default } from 'ember-local-storage/adapters/adapter';
+import LocalAdapter from 'ember-local-storage/adapters/adapter';
+
+export default LocalAdapter;

@@ -9,7 +9,7 @@ import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 // mode. when tiles and mapbox-gl network calls point to dummy resources, it's rly
 // fast. seems like this fails randomly and therefore the test is unreliable, so
 // is the feature. TODO: CORRECTLY FIX WHATEVER BUG THIS WAS SUPPOSED TO FIX
-module('Acceptance | bbox', function(hooks) {
+module('Acceptance | bbox', function (hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
@@ -22,18 +22,18 @@ module('Acceptance | bbox', function(hooks) {
   // for now, let's stub the map and move on.
   stubBasicMap(hooks);
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
-  skip('visiting valid bbox does not redirect', async function(assert) {
+  skip('visiting valid bbox does not redirect', async function (assert) {
     const goodBboxUrl = '-73.9978/40.5705/-73.9804/40.5785';
     await visit(`/bbox/${goodBboxUrl}`);
 
     assert.equal(currentURL(), `/bbox/${goodBboxUrl}`);
   });
 
-  skip('visiting invalid bbox redirects to /about', async function(assert) {
+  skip('visiting invalid bbox redirects to /about', async function (assert) {
     const badBboxUrl = 'foo/40.5705/-73.9804/40.5785';
     await visit(`/bbox/${badBboxUrl}`);
 

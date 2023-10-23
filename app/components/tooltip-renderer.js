@@ -3,10 +3,10 @@ import { computed } from '@ember/object';
 import mustache from 'mustache';
 
 export default class TooltipRenderer extends Component {
-  @computed('feature', 'template')
+  @computed('feature.properties', 'template')
   get renderedText() {
     const properties = this.get('feature.properties');
-    const template = this.get('template');
+    const { template } = this;
 
     return mustache.render(template, properties);
   }

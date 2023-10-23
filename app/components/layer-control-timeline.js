@@ -1,12 +1,12 @@
 import Component from '@ember/component';
-import { ChildMixin } from 'ember-composability-tools';
+import { action } from '@ember/object';
 
 const defaultMax = new Date();
 const defaultStart = [220924800, defaultMax.getTime()];
 
 function formatDate(date) {
   const d = new Date(date);
-  let month = `${(d.getMonth() + 1)}`;
+  let month = `${d.getMonth() + 1}`;
   const year = d.getFullYear();
 
   if (month.length < 2) month = `0${month}`;
@@ -14,29 +14,32 @@ function formatDate(date) {
   return [year, month].join('-');
 }
 
-export default Component.extend(ChildMixin, {
-  format: {
-    to: number => formatDate(number),
-    from: number => formatDate(number),
-  },
+export default class LayerControlTimelineComponent extends Component {
+  layerGroup;
 
-  column: '',
-  start: defaultStart, // epoch time
-  min: defaultStart[0],
-  max: defaultStart[1],
+  column = '';
 
-  actions: {
-    sliderChanged(value) {
-      const [min, max] = value;
-      const { layerGroup, column } = this;
+  format = {
+    to: (number) => formatDate(number),
+    from: (number) => formatDate(number),
+  };
 
-      this.set('start', value);
+  start = defaultStart;
 
-      const expression = ['all', ['>=', column, min], ['<=', column, max]];
+  min = defaultStart[0];
 
-      layerGroup.layerIds.forEach((id) => {
-        layerGroup.setFilterForLayer(id, expression);
-      });
-    },
-  },
-});
+  max = defaultStart[1];
+
+  @action
+  sliderChanged(value) {
+    const [min, max] = value;
+    const { layerGroup, column } = this;
+    this.set('start', value);
+
+    const expression = ['all', ['>=', column, min], ['<=', column, max]];
+
+    layerGroup.layerIds.forEach((id) => {
+      layerGroup.setFilterForLayer(id, expression);
+    });
+  }
+}

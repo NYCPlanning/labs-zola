@@ -4,15 +4,15 @@
       <label>
         <input
           type="checkbox"
-          onClick={{action "addOrRemoveMultiple" group.codes selected}}
-          checked={{if selectedInGroup true false}}
-          indeterminate={{isIndeterminateGroup}}
-          data-test-grouped-parent={{group.name}}
+          onClick={{action "addOrRemoveMultiple" this.group.codes this.selected}}
+          checked={{if this.selectedInGroup true false}}
+          indeterminate={{this.isIndeterminateGroup}}
+          data-test-grouped-parent={{this.group.name}}
         />
-        {{group.name}}
+        {{this.group.name}}
 
-        {{#if group.style}}
-          <span style={{sanitize group.style}} class="indeterminate-hider">
+        {{#if this.group.style}}
+          <span style={{sanitize this.group.style}} class="indeterminate-hider">
             {{#if this.cityCouncilToggled}}
               <FaIcon
                 class="nyc-council-style"
@@ -31,10 +31,10 @@
         {{/if}}
       </label>
     </div>
-    {{#if group.tooltip}}
+    {{#if this.group.tooltip}}
       <div class="cell shrink">
         {{labs-ui/icon-tooltip
-          tip=group.tooltip
+          tip=this.group.tooltip
           side='right'
           fixedWith=true
         }}
@@ -42,26 +42,26 @@
     {{/if}}
   </div>
 </div>
-{{#if hasMany}}
-  {{#if group.codes}}
+{{#if this.hasMany}}
+  {{#if this.group.codes}}
     <input
-      id="nested-{{group.name}}"
+      id="nested-{{this.group.name}}"
       class="checkbox-hide-sibling"
       type="checkbox"
-      checked={{group.checked}}
+      checked={{this.group.checked}}
     />
-    <label for="nested-{{group.name}}" class="hidable-sibling-toggle top-right">
+    <label for="nested-{{this.group.name}}" class="hidable-sibling-toggle top-right">
       <FaIcon @icon="angle-up" />
     </label>
   {{/if}}
-  <ul class="nested columns-3 hidable-sibling" data-test-grouped={{group.name}}>
-    {{#each group.codes as |code|}}
+  <ul class="nested columns-3 hidable-sibling" data-test-grouped={{this.group.name}}>
+    {{#each this.group.codes as |code|}}
       <li>
         <label>
           <input
             type="checkbox"
-            onClick={{action "addOrRemove" code selected bubbles=false}}
-            checked={{if (intersect (array code) selected) true false}}
+            onClick={{action "addOrRemove" code this.selected bubbles=false}}
+            checked={{if (intersect (array code) this.selected) true false}}
             data-test-grouped={{code}}
           />
           {{code}}

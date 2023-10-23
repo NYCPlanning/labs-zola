@@ -4,15 +4,15 @@ import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
-module('Acceptance | visual diff routes', function(hooks) {
+module('Acceptance | visual diff routes', function (hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
-  test('visiting lot/1/187/21', async function(assert) {
+  test('visiting lot/1/187/21', async function (assert) {
     this.server.create('lot', {
       id: 1001870021,
       properties: {
@@ -68,7 +68,7 @@ module('Acceptance | visual diff routes', function(hooks) {
     assert.ok(true);
   });
 
-  test('visiting zoning-district/R3-2', async function(assert) {
+  test('visiting zoning-district/R3-2', async function (assert) {
     this.server.create('carto-geojson-feature', {
       properties: {
         id: 'R3-2',
@@ -81,7 +81,7 @@ module('Acceptance | visual diff routes', function(hooks) {
     assert.ok(true);
   });
 
-  test('visiting commercial-overlay/C2-5', async function(assert) {
+  test('visiting commercial-overlay/C2-5', async function (assert) {
     this.server.create('carto-geojson-feature', {
       id: 'C2-5',
       properties: {
@@ -96,7 +96,7 @@ module('Acceptance | visual diff routes', function(hooks) {
     assert.ok(true);
   });
 
-  test('visiting zma/090334zmk', async function(assert) {
+  test('visiting zma/090334zmk', async function (assert) {
     this.server.create('carto-geojson-feature', {
       id: '090334zmk',
       properties: {
@@ -115,7 +115,7 @@ module('Acceptance | visual diff routes', function(hooks) {
     assert.ok(true);
   });
 
-  test('visiting special-purpose-district/1', async function(assert) {
+  test('visiting special-purpose-district/1', async function (assert) {
     this.server.create('carto-geojson-feature', {
       id: 1,
       properties: {
@@ -130,7 +130,7 @@ module('Acceptance | visual diff routes', function(hooks) {
     assert.ok(true);
   });
 
-  test('visiting special-purpose-subdistrict/96', async function(assert) {
+  test('visiting special-purpose-subdistrict/96', async function (assert) {
     this.server.create('carto-geojson-feature', {
       id: 96,
       properties: {

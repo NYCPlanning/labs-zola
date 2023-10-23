@@ -4,12 +4,12 @@
   class={{if this.printSvc.enabled "hide-for-print"}} as |banner|
 >
   <banner.title>
-    {{#link-to
-      "index"
-      (query-params print=false)
+    <LinkTo
+      @route="index"
+      @query={{hash print=false}}
+      class="site-title"
       data-test-link-to="index"
-      classNames="site-title"
-    }}
+    >
       ZoLa
       <small class="site-subtitle show-for-medium">
         {{#if (or (media "mobile") (media "tablet"))}}
@@ -27,30 +27,30 @@
         {{/if}}
         Zoning &amp; Land Use Map
       </small>
-    {{/link-to}}
+    </LinkTo>
   </banner.title>
   <banner.nav>
     <ul class="menu vertical large-horizontal">
       <li>
-        {{link-to "About" "about"}}
+        <LinkTo @route="about">About</LinkTo>
       </li>
       <li>
-        {{link-to "Features" "features" classNames="features-header-link"}}
+        <LinkTo @route="features" class="features-header-link">Features</LinkTo>
       </li>
       <li>
-        {{link-to "Data" "data"}}
+        <LinkTo @route="data">Data</LinkTo>
       </li>
       <li class="saved-bookmarks-counter">
         {{!-- This is causing prember to break. Not sure why yet. Seems to be font-awesome causing this. --}}
-        {{#link-to "bookmarks"}}
+        <LinkTo @route="bookmarks">
           <FaIcon @icon="bookmark" />
           Saved
-          {{#if bookmarks.length}}
+          {{#if this.bookmarks.length}}
             <span class="badge sup">
-              {{bookmarks.length}}
+              {{this.bookmarks.length}}
             </span>
           {{/if}}
-        {{/link-to}}
+        </LinkTo>
       </li>
     </ul>
   </banner.nav>

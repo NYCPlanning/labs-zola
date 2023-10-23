@@ -5,15 +5,15 @@ import { setupMirage } from 'ember-cli-mirage/test-support';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 
 // this is a true acceptance, just make sure it works
-module('Acceptance | visit lot', function(hooks) {
+module('Acceptance | visit lot', function (hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
-  test('visiting a lot', async function(assert) {
+  test('visiting a lot', async function (assert) {
     this.server.create('lot', {
       id: 1016320001,
       properties: {
@@ -26,7 +26,7 @@ module('Acceptance | visit lot', function(hooks) {
     assert.notEqual(find('.content-area').textContent.length, 0);
   });
 
-  test('visiting a bbl', async function(assert) {
+  test('visiting a bbl', async function (assert) {
     this.server.create('lot', {
       id: 1001870021,
       properties: {
@@ -40,7 +40,7 @@ module('Acceptance | visit lot', function(hooks) {
     assert.notEqual(find('.content-area').textContent.length, 0);
   });
 
-  test('visiting a lot with special purpose districts', async function(assert) {
+  test('visiting a lot with special purpose districts', async function (assert) {
     this.server.create('lot', {
       id: 1001870021,
       properties: {
@@ -50,39 +50,44 @@ module('Acceptance | visit lot', function(hooks) {
       },
     });
 
-    this.server.get('https://planninglabs.carto.com/api/v2/sql', (schema, request) => {
-      const { queryParams } = request;
-      const { format, q } = queryParams;
+    this.server.get(
+      'https://planninglabs.carto.com/api/v2/sql',
+      (schema, request) => {
+        const { queryParams } = request;
+        const { format, q } = queryParams;
 
-      // by default, this will return a feature that looks like a PLUTO Lot
-      if (format === 'geojson') {
-        // by default, return anything created in this schema
-        let schemaModel = schema.cartoGeojsonFeatures.all();
+        // by default, this will return a feature that looks like a PLUTO Lot
+        if (format === 'geojson') {
+          // by default, return anything created in this schema
+          let schemaModel = schema.cartoGeojsonFeatures.all();
 
-        // if it includes mappluto, it's asking for lots
-        if (q.includes('dcp_mappluto')) {
-          schemaModel = schema.lots.all();
+          // if it includes mappluto, it's asking for lots
+          if (q.includes('dcp_mappluto')) {
+            schemaModel = schema.lots.all();
+          }
+
+          const { models: features } = schemaModel;
+
+          return {
+            type: 'FeatureCollection',
+            features,
+          };
         }
 
-        const { models: features } = schemaModel;
+        if (q.includes('special_purpose_districts')) {
+          return {
+            rows: [
+              {
+                sdname: 'Special Tribeca Mixed Use District',
+                sdlbl: 'TMU',
+              },
+            ],
+          };
+        }
 
-        return {
-          type: 'FeatureCollection',
-          features,
-        };
+        return { rows: [] };
       }
-
-      if (q.includes('special_purpose_districts')) {
-        return {
-          rows: [{
-            sdname: 'Special Tribeca Mixed Use District',
-            sdlbl: 'TMU',
-          }],
-        };
-      }
-
-      return { rows: [] };
-    });
+    );
 
     await visit('/l/lot/1/187/21');
 

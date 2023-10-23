@@ -1,16 +1,16 @@
 <div class="content-close-button-container">
-  {{#link-to "index" classNames="close-button"}}
+  <LinkTo @route="index" class="close-button">
     <span aria-hidden="true">
       &times;
     </span>
-  {{/link-to}}
+  </LinkTo>
 </div>
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4">
   <h1>
     Data Sources
   </h1>
   <ul>
-    {{#each model as |layerGroup|}}
+    {{#each this.model as |layerGroup|}}
       <li>
         <p>
           {{#if layerGroup.meta.description}}
@@ -23,7 +23,7 @@
           {{#if layerGroup.meta.url}}
             {{#each layerGroup.meta.url as |url|}}
               <span style="display:block;" class="no-margin">
-                <a href="{{url}}" target="_blank">
+                <a href="{{url}}" target="_blank" rel="noopener noreferrer">
                   {{fa-icon icon="external-link-alt"}}
                   {{url}}
                 </a>

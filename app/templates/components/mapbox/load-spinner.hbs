@@ -1,9 +1,9 @@
-{{#if (or loadStateTask.isRunning (not map))}}
+{{#if (or this.loadStateTask.isRunning (not this.map))}}
   <FaIcon @icon='spinner' class='fa-spin fa-3x map-loading-spinner' />
 {{/if}}
 
 {{#if this.map}}
-  {{mapbox-gl-on "render" (action "handleMapLoading") eventSource=map}}
-  {{mapbox-gl-on "data" (action "handleMapLoading") eventSource=map}}
-  {{mapbox-gl-on "sourcedata" (action "handleMapLoading") eventSource=map}}
+  {{mapbox-gl-on "render" (action "handleMapLoading") eventSource=this.map}}
+  {{mapbox-gl-on "data" (action "handleMapLoading") eventSource=this.map}}
+  {{mapbox-gl-on "sourcedata" (action "handleMapLoading") eventSource=this.map}}
 {{/if}}

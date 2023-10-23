@@ -1,9 +1,9 @@
-<MainHeader @bookmarks={{model.bookmarks}} />
+<MainHeader @bookmarks={{this.model.bookmarks}} />
 <div class="{{if this.printSvc.enabled "print-view"}}">
-  {{link-to "" "index" class="index-active-detector"}}
+  <LinkTo @route="index" class="index-active-detector sr-only">Homepage</LinkTo>
   {{#if this.printSvc.enabled}}
     <PrintViewControls
-      @printSvc={{printSvc}}
+      @printSvc={{this.printSvc}}
     />
   {{/if}}
   <div class="site-main grid-x {{this.printSvc.printViewClasses}}">
@@ -15,9 +15,9 @@
         />
 
         <MainMap
-          @bookmarks={{model.bookmarks}}
-          @layerGroups={{model.layerGroups}}
-          @layerGroupsMeta={{model.meta}}
+          @bookmarks={{this.model.bookmarks}}
+          @layerGroups={{this.model.layerGroups}}
+          @layerGroupsMeta={{this.model.meta}}
           @onPrint={{action (mut this.printSvc.enabled) true}}
         />
 
@@ -27,8 +27,8 @@
           @selectedFirm={{this.selectedFirm}}
           @selectedPfirm={{this.selectedPfirm}}
           @selectedCouncilDistricts={{this.selectedCouncilDistricts}}
-          @layerGroups={{model.layerGroupsObject}}
-          @isDefault={{isDefault}}
+          @layerGroups={{this.model.layerGroupsObject}}
+          @isDefault={{this.isDefault}}
           @resetQueryParams={{action this.setModelsToDefault}}
           @handleLayerGroupChange={{action this.handleLayerGroupChange}}
         />

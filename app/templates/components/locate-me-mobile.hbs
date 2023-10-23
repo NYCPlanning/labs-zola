@@ -1,16 +1,16 @@
-{{#unless findMeDismissed}}
+{{#unless this.findMeDismissed}}
   <div class="find-me">
     <button
       onclick={{action "locateMe"}}
       class="button hide-for-medium hide-for-print no-margin"
-      data-test-button="locate-me"
+      data-test-button="locate-me" type="button"
     >
       Locate&nbsp;Me
     </button>
     <button
       onclick={{action "dismissFindMe"}}
       class="button hide-for-medium hide-for-print no-margin"
-      data-test-button="dismiss-find-me"
+      data-test-button="dismiss-find-me" type="button"
     >
       &times;
     </button>

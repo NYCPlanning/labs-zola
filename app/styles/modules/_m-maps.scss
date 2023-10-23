@@ -16,18 +16,6 @@
   z-index: 5;
 }
 
-// Loading spinner
-.loading-spinner {
-  color: $gray;
-  opacity: 0.5;
-  position: absolute;
-  z-index: 3;
-  bottom: 1.75rem;
-  right: 1rem;
-  margin: 0.25rem auto;
-  pointer-events: none;
-}
-
 // Geolocate
 .find-me {
   position: absolute;
@@ -198,6 +186,14 @@
   font-size: rem-calc(11);
   box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
   border-radius: 2px;
+}
+
+.loading-spinner {
+  opacity: 0.5;
+  display: block;
+  margin: 2rem auto 0 auto;
+  margin-top: 2rem;
+  pointer-events: none;
 }
 
 .map-loading-spinner {

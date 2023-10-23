@@ -8,11 +8,7 @@
     {{yield model}}
   </data-task.loaded>
   <data-task.loading>
-    <ContentPlaceholders as |placeholder|>
-      <placeholder.text @lines={{1}} />
-      {{placeholder.nav}}
-      <placeholder.text @lines={{10}} />
-    </ContentPlaceholders>
+    <FaIcon @icon='spinner' class='fa-spin fa-3x loading-spinner' />
   </data-task.loading>
   <data-task.error as |error|>
     <CartoDataProvider::ErrorHandler

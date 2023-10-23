@@ -1,9 +1,8 @@
 <button
   class="button tiny gray float-left"
-  data-test-exit-print
-  {{action "disablePrintView"}}
+  data-test-exit-print type="button" {{action "disablePrintView"}}
 >
-  <FaIcon @icon="times" @fixedWidth=true @transform="left-4" />
+  <FaIcon @icon="times" @fixedWidth="true" @transform="left-4" />
   Exit Print View
 </button>
 <div class="print-view-controls--item orientation">
@@ -12,7 +11,7 @@
   </h6>
   <button
     onclick={{action (mut this.printSvc.printViewOrientation) "landscape"}}
-    data-test-print-control="landscape"
+    data-test-print-control="landscape" type="button"
   >
     <span class="fa-layers">
       {{#if (eq this.printSvc.printViewOrientation "landscape")}}
@@ -28,7 +27,7 @@
   </button>
   <button
     onclick={{action (mut this.printSvc.printViewOrientation) "portrait"}}
-    data-test-print-control="portrait"
+    data-test-print-control="portrait" type="button"
   >
     <span class="fa-layers">
       {{#if (eq this.printSvc.printViewOrientation "portrait")}}
@@ -49,7 +48,7 @@
   </h6>
   <button
     onclick={{action (mut this.printSvc.printViewPaperSize) "letter"}}
-    data-test-print-control="letter"
+    data-test-print-control="letter" type="button"
   >
     <span class="fa-layers">
       {{#if (eq this.printSvc.printViewPaperSize "letter")}}
@@ -65,7 +64,7 @@
   </button>
   <button
     onclick={{action (mut this.printSvc.printViewPaperSize) "legal"}}
-    data-test-print-control="legal"
+    data-test-print-control="legal" type="button"
   >
     <span class="fa-layers">
       {{#if (eq this.printSvc.printViewPaperSize "legal")}}
@@ -81,7 +80,7 @@
   </button>
   <button
     onclick={{action (mut this.printSvc.printViewPaperSize) "tabloid"}}
-    data-test-print-control="tabloid"
+    data-test-print-control="tabloid" type="button"
   >
     <span class="fa-layers">
       {{#if (eq this.printSvc.printViewPaperSize "tabloid")}}
@@ -103,7 +102,7 @@
   <button
     class="map"
     onclick={{action (mut this.printSvc.printViewShowMap) (not this.printSvc.printViewShowMap)}}
-    data-test-print-control="map"
+    data-test-print-control="map" type="button"
   >
     <span class="fa-layers">
       {{#if (eq this.printSvc.printViewShowMap true)}}
@@ -120,7 +119,7 @@
     <button
       class="legend"
       onclick={{action (mut this.printSvc.printViewShowLegend) (not this.printSvc.printViewShowLegend)}}
-      data-test-print-control="legend"
+      data-test-print-control="legend" type="button"
     >
       <span class="fa-layers">
         {{#if (eq this.printSvc.printViewShowLegend true)}}
@@ -134,7 +133,7 @@
       Legend
     </button>
   {{else}}
-    <button disabled="">
+    <button disabled="" type="button">
       <span class="fa-layers">
         <FaIcon @icon="square" class="silver" @prefix="far" />
       </span>
@@ -144,7 +143,7 @@
   <button
     class="content"
     onclick={{action (mut this.printSvc.printViewShowContent) (not this.printSvc.printViewShowContent)}}
-    data-test-print-control="content"
+    data-test-print-control="content" type="button"
   >
     <span class="fa-layers">
       {{#if (eq this.printSvc.printViewShowContent true)}}

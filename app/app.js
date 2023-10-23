@@ -1,4 +1,5 @@
 import Application from '@ember/application';
+import Ember from 'ember';
 import Resolver from 'ember-resolver';
 import loadInitializers from 'ember-load-initializers';
 import 'ember-concurrency-retryable';

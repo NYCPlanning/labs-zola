@@ -1,4 +1,4 @@
-{{#unless isTestEnvironment}}
+{{#unless this.isTestEnvironment}}
   {{g-recaptcha
     onSuccess=(action "onCaptchaResolved")
     size="invisible"

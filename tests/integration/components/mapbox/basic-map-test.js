@@ -12,11 +12,11 @@ const MAPBOX_GL_BLANK_STYLE = {
   },
 };
 
-module('Integration | Component | mapbox/basic-map', function(hooks) {
+module('Integration | Component | mapbox/basic-map', function (hooks) {
   setupRenderingTest(hooks);
   setupMirage(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     this.layerGroups = await this.owner
       .lookup('service:store')
       .findAll('layer-group', { include: 'layers' });

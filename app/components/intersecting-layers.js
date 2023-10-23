@@ -1,10 +1,10 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { get, computed } from '@ember/object';
 import RSVP from 'rsvp';
 import { task } from 'ember-concurrency';
 import carto from '../utils/carto';
 
-const generateSQL = function(table, bbl) {
+const generateSQL = function (table, bbl) {
   // special handling for tables where we don't want to SELECT *
   let intersectionTable = table;
   if (table === 'floodplain_firm2007') {
@@ -31,48 +31,63 @@ const generateSQL = function(table, bbl) {
 };
 
 export default class IntersectingLayersComponent extends Component {
-    responseIdentifier = 'intersects';
+  responseIdentifier = 'intersects';
 
-    bbl = null;
+  bbl = null;
 
-    @task(function* (tables, bbl, responseIdentifier) {
-      const hash = {};
+  @task
+  *calculateIntersections(tables, bbl, responseIdentifier) {
+    const hash = {};
 
-      tables.forEach((table) => {
-        hash[table] = carto.SQL(generateSQL(table, bbl))
-          .then((response => get(response[0] || {}, responseIdentifier)));
-      });
+    tables.forEach((table) => {
+      hash[table] = carto
+        .SQL(generateSQL(table, bbl))
+        .then((response) => get(response[0] || {}, responseIdentifier));
+    });
 
-      return yield RSVP.hash(hash);
-    })
-    calculateIntersections;
+    return yield RSVP.hash(hash);
+  }
 
-    willDestroyElement() {
-      this.get('calculateIntersections').cancelAll();
+  // todo use render modifiers
+  willDestroyElement(...args) {
+    super.willDestroyElement(...args);
+    this.calculateIntersections.cancelAll();
+  }
+
+  willUpdate(...args) {
+    super.willUpdate(...args);
+    this.calculateIntersections.cancelAll();
+  }
+
+  @computed(
+    'args',
+    'bbl',
+    'calculateIntersections',
+    'responseIdentifier',
+    'tables.[]'
+  )
+  get intersectingLayers() {
+    const { tables, bbl } = this.args;
+
+    return this.calculateIntersections.perform(
+      tables,
+      bbl,
+      this.responseIdentifier
+    );
+  }
+
+  @computed('intersectingLayers.value')
+  get numberIntersecting() {
+    const intersectingLayers = this.intersectingLayers.value;
+
+    if (intersectingLayers) {
+      const truthyValues = Object.values(intersectingLayers).filter(
+        (val) => val
+      );
+
+      return truthyValues.length;
     }
 
-    willUpdate() {
-      this.get('calculateIntersections').cancelAll();
-    }
-
-    @computed('tables.@each', 'bbl', 'responseIdentifier')
-    get intersectingLayers() {
-      const { tables, bbl, responseIdentifier } = this.getProperties('tables', 'bbl', 'responseIdentifier');
-      return this.get('calculateIntersections').perform(tables, bbl, responseIdentifier);
-    }
-
-    @computed('intersectingLayers.value')
-    get numberIntersecting() {
-      const intersectingLayers = this.get('intersectingLayers.value');
-
-      if (intersectingLayers) {
-        const truthyValues = Object
-          .values(intersectingLayers)
-          .filter(val => val);
-
-        return get(truthyValues, 'length');
-      }
-
-      return 0;
-    }
+    return 0;
+  }
 }

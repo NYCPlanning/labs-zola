@@ -8,19 +8,68 @@ const MAPBOX_GL_SOURCE_STUB = {
   setData() {},
 };
 
-const DEFAULT_EVENTS = ['resize', 'remove', 'mousedown', 'mouseup', 'mouseover', 'mousemove', 'click', 'dblclick', 'mouseenter', 'mouseleave', 'mouseout', 'contextmenu', 'wheel', 'touchstart', 'touchend', 'touchmove', 'touchcancel', 'movestart', 'move', 'moveend', 'dragstart', 'drag', 'dragend', 'zoomstart', 'zoom', 'zoomend', 'rotatestart', 'rotate', 'rotateend', 'pitchstart', 'pitch', 'pitchend', 'boxzoomstart', 'boxzoomend', 'boxzoomcancel', 'webglcontextlost', 'webglcontextrestored', 'load', 'render', 'idle', 'error', 'data', 'styledata', 'sourcedata', 'dataloading', 'styledataloading', 'sourcedataloading', 'styleimagemissing']
-  .reduce((hash, eventName) => {
-    hash[eventName] = () => {};
+const DEFAULT_EVENTS = [
+  'resize',
+  'remove',
+  'mousedown',
+  'mouseup',
+  'mouseover',
+  'mousemove',
+  'click',
+  'dblclick',
+  'mouseenter',
+  'mouseleave',
+  'mouseout',
+  'contextmenu',
+  'wheel',
+  'touchstart',
+  'touchend',
+  'touchmove',
+  'touchcancel',
+  'movestart',
+  'move',
+  'moveend',
+  'dragstart',
+  'drag',
+  'dragend',
+  'zoomstart',
+  'zoom',
+  'zoomend',
+  'rotatestart',
+  'rotate',
+  'rotateend',
+  'pitchstart',
+  'pitch',
+  'pitchend',
+  'boxzoomstart',
+  'boxzoomend',
+  'boxzoomcancel',
+  'webglcontextlost',
+  'webglcontextrestored',
+  'load',
+  'render',
+  'idle',
+  'error',
+  'data',
+  'styledata',
+  'sourcedata',
+  'dataloading',
+  'styledataloading',
+  'sourcedataloading',
+  'styleimagemissing',
+].reduce((hash, eventName) => {
+  hash[eventName] = () => {};
 
-    return hash;
-  }, {});
+  return hash;
+}, {});
 
 export const MAPBOX_GL_DEFAULTS = {
   /**
    * convenience properties for stub
    */
   features: [],
-  events: { // stores registered events
+  events: {
+    // stores registered events
     // spread noop default events
     ...DEFAULT_EVENTS,
   },
@@ -80,7 +129,7 @@ export const MAPBOX_GL_DEFAULTS = {
   },
 };
 
-const createMapStub = function(testContext) {
+const createMapStub = function (testContext) {
   testContext.map = MAPBOX_GL_DEFAULTS;
   testContext.hoveredFeature = null;
 
@@ -93,18 +142,20 @@ const createMapStub = function(testContext) {
       return !!this.mapInstance;
     }
 
-    didInsertElement() {
+    didInsertElement(...args) {
+      super.didInsertElement(args);
       registerWaiter(this._mapIsLoaded);
     }
 
-    willDestroyElement() {
+    willDestroyElement(...args) {
+      super.willDestroyElement(args);
       unregisterWaiter(this._mapIsLoaded);
     }
 
     // labs-map (built on top of mapbox-gl) requires this, tries to handle this
     hoveredFeature = testContext.hoveredFeature;
 
-    mapLoaded = () => {}
+    mapLoaded = () => {};
 
     @action
     handleMapLoaded() {
@@ -117,8 +168,8 @@ const createMapStub = function(testContext) {
 };
 
 // TODO: extract out the stub registration so that it can be used in other contexts
-export default function(hooks) {
-  hooks.beforeEach(async function() {
+export default function (hooks) {
+  hooks.beforeEach(async function () {
     this.owner.register('component:mapbox/basic-map', createMapStub(this));
   });
 }

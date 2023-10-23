@@ -3,15 +3,23 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | layer-record-views/zoning-district', function(hooks) {
-  setupRenderingTest(hooks);
+module(
+  'Integration | Component | layer-record-views/zoning-district',
+  function (hooks) {
+    setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+    test('it renders', async function (assert) {
+      this.zoningDistrict = {
+        properties: {
+          zonedist: 'R6A',
+        },
+      };
 
-    await render(hbs`{{layer-record-views/zoning-district}}`);
+      await render(hbs`  <LayerRecordViews::ZoningDistrict
+    @model={{this.zoningDistrict.properties}}
+  />`);
 
-    assert.ok(this.element);
-  });
-});
+      assert.ok(this.element);
+    });
+  }
+);

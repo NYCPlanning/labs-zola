@@ -1,8 +1,16 @@
-import { Factory } from 'ember-cli-mirage';
+import { Factory } from 'miragejs';
 
 const SQUARE_POLYGON = {
   type: 'Polygon',
-  coordinates: [[[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]],
+  coordinates: [
+    [
+      [0, 0],
+      [0, 1],
+      [1, 1],
+      [1, 0],
+      [0, 0],
+    ],
+  ],
 };
 
 export default Factory.extend({
