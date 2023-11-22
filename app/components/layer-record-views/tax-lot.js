@@ -441,7 +441,7 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
   }
 
   get digitalTaxMapLink() {
-    return `http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName=${this.model.bbl}`;
+    return `http://gis.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName=${this.model.bbl}`;
   }
 
   get zoningMapLink() {

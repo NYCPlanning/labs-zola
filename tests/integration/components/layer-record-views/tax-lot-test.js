@@ -83,7 +83,7 @@ module(
 
       assert.equal(
         find('[data-test-tax-map-link]').getAttribute('href'),
-        'http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName=1000477501'
+        'http://gis.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName=1000477501'
       );
     });
 
