@@ -543,7 +543,7 @@ export default class LotFragment extends MF.Fragment {
 
     @computed('bbl')
     get digitalTaxMapLink() {
-      return `http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName=${this.bbl}`;
+      return `http://gis.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName=${this.bbl}`;
     }
 
     @computed('zonemap')

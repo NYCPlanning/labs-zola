@@ -62,7 +62,7 @@ module('Unit | Model | lot', function(hooks) {
     const model = await this.owner.lookup('service:store')
       .findRecord('lot', 1007650065);
 
-    assert.equal(model.properties.digitalTaxMapLink, 'http://maps.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName=1007650065');
+    assert.equal(model.properties.digitalTaxMapLink, 'http://gis.nyc.gov/taxmap/map.htm?searchType=BblSearch&featureTypeName=EVERY_BBL&featureName=1007650065');
   });
 
   test('it generates correct links: Zoning Map', async function(assert) {
