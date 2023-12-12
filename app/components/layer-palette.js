@@ -15,11 +15,9 @@ const {
 
 @classNames('layer-palette')
 export default class LayerPaletteComponent extends Component {
-  @service
-  metrics;
+  @service metrics;
 
-  @service
-  fastboot;
+  @service fastboot;
 
   init(...args) {
     super.init(...args);
@@ -31,8 +29,7 @@ export default class LayerPaletteComponent extends Component {
     this.setFilterForCouncilDistricts();
   }
 
-  @service
-  mainMap
+  @service mainMap;
 
   zoomWarningLabel = 'Some information may not be visible at this zoom level.';
 
@@ -70,20 +67,25 @@ export default class LayerPaletteComponent extends Component {
 
   handleLayerGroupChange = () => {};
 
-  toggled = () => this.cityCouncilToggled = !this.cityCouncilToggled;
+  toggled = () => {
+    this.cityCouncilToggled = !this.cityCouncilToggled;
+  };
 
   @action
   setFilterForZoning() {
     const expression = [
       'any',
-      ...this.selectedZoning.map(value => ['==', 'primaryzone', value]),
+      ...this.selectedZoning.map((value) => ['==', 'primaryzone', value]),
     ];
 
     // if-guard to prevent the node-based fastboot server from running this
     // mapbox-gl method which gets ignored in fastboot.
     if (!this.fastboot.isFastBoot) {
       next(() => {
-        this.layerGroups['zoning-districts'].setFilterForLayer('zd-fill', expression);
+        this.layerGroups['zoning-districts'].setFilterForLayer(
+          'zd-fill',
+          expression
+        );
       });
     }
   }
@@ -92,14 +94,20 @@ export default class LayerPaletteComponent extends Component {
   setFilterForOverlays() {
     const expression = [
       'any',
-      ...this.selectedOverlays.map(value => ['==', 'overlay', value]),
+      ...this.selectedOverlays.map((value) => ['==', 'overlay', value]),
     ];
     // if-guard to prevent the node-based fastboot server from running this
     // mapbox-gl method which gets ignored in fastboot.
     if (!this.fastboot.isFastBoot) {
       next(() => {
-        this.layerGroups['commercial-overlays'].setFilterForLayer('co', expression);
-        this.layerGroups['commercial-overlays'].setFilterForLayer('co_labels', expression);
+        this.layerGroups['commercial-overlays'].setFilterForLayer(
+          'co',
+          expression
+        );
+        this.layerGroups['commercial-overlays'].setFilterForLayer(
+          'co_labels',
+          expression
+        );
       });
     }
   }
@@ -108,7 +116,7 @@ export default class LayerPaletteComponent extends Component {
   setFilterForCouncilDistricts() {
     const expression = [
       'any',
-      ...this.selectedCouncilDistricts.map(value => ['==', 'year', value]),
+      ...this.selectedCouncilDistricts.map((value) => ['==', 'year', value]),
     ];
 
     this.toggled();
@@ -116,9 +124,18 @@ export default class LayerPaletteComponent extends Component {
     // mapbox-gl method which gets ignored in fastboot.
     if (!this.fastboot.isFastBoot) {
       next(() => {
-       this.layerGroups['nyc-council-districts-combined'].setFilterForLayer('dcp_city_council_districts_combined-line-glow', expression);
-       this.layerGroups['nyc-council-districts-combined'].setFilterForLayer('dcp_city_council_districts_combined-line', expression);
-       this.layerGroups['nyc-council-districts-combined'].setFilterForLayer('dcp_city_council_districts_combined-label', expression);
+        this.layerGroups['nyc-council-districts-combined'].setFilterForLayer(
+          'dcp_city_council_districts_combined-line-glow',
+          expression
+        );
+        this.layerGroups['nyc-council-districts-combined'].setFilterForLayer(
+          'dcp_city_council_districts_combined-line',
+          expression
+        );
+        this.layerGroups['nyc-council-districts-combined'].setFilterForLayer(
+          'dcp_city_council_districts_combined-label',
+          expression
+        );
       });
     }
   }
@@ -127,14 +144,17 @@ export default class LayerPaletteComponent extends Component {
   setFilterForFirm() {
     const expression = [
       'any',
-      ...this.selectedFirm.map(value => ['==', 'fld_zone', value]),
+      ...this.selectedFirm.map((value) => ['==', 'fld_zone', value]),
     ];
 
     // if-guard to prevent the node-based fastboot server from running this
     // mapbox-gl method which gets ignored in fastboot.
     if (!this.fastboot.isFastBoot) {
       next(() => {
-        this.layerGroups['floodplain-efirm2007'].setFilterForLayer('effective-flood-insurance-rate-2007', expression);
+        this.layerGroups['floodplain-efirm2007'].setFilterForLayer(
+          'effective-flood-insurance-rate-2007',
+          expression
+        );
       });
     }
   }
@@ -143,14 +163,17 @@ export default class LayerPaletteComponent extends Component {
   setFilterForPfirm() {
     const expression = [
       'any',
-      ...this.selectedPfirm.map(value => ['==', 'fld_zone', value]),
+      ...this.selectedPfirm.map((value) => ['==', 'fld_zone', value]),
     ];
 
     // if-guard to prevent the node-based fastboot server from running this
     // mapbox-gl method which gets ignored in fastboot.
     if (!this.fastboot.isFastBoot) {
       next(() => {
-        this.layerGroups['floodplain-pfirm2015'].setFilterForLayer('preliminary-flood-insurance-rate', expression);
+        this.layerGroups['floodplain-pfirm2015'].setFilterForLayer(
+          'preliminary-flood-insurance-rate',
+          expression
+        );
       });
     }
   }
@@ -171,14 +194,18 @@ export default class LayerPaletteComponent extends Component {
   handleLayerGroupToggle(layerGroup) {
     gtag('event', 'toggle_layer', {
       event_category: 'Layers',
-      event_action: `${ layerGroup.visible ? 'Turned on' : 'Turned off' } ${ layerGroup.legend.label }`,
+      event_action: `${layerGroup.visible ? 'Turned on' : 'Turned off'} ${
+        layerGroup.legend.label
+      }`,
     });
 
     // GA
-    this.get('metrics').trackEvent('MatomoTagManager', {
+    this.metrics.trackEvent('MatomoTagManager', {
       category: 'Layers',
-      action: `${ layerGroup.visible ? 'Turned on' : 'Turned off' } ${ layerGroup.legend.label }`,
-      name: `${ layerGroup.legend.label }`,
+      action: `${layerGroup.visible ? 'Turned on' : 'Turned off'} ${
+        layerGroup.legend.label
+      }`,
+      name: `${layerGroup.legend.label}`,
     });
     this.handleLayerGroupChange();
   }

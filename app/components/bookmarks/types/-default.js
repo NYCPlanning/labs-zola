@@ -4,8 +4,7 @@ import { inject as service } from '@ember/service';
 import layout from '../../../templates/components/bookmarks/types/-default';
 
 export default class DefaultBookmark extends Component {
-  @service
-  metrics;
+  @service metrics;
 
   layout = layout;
 
@@ -20,7 +19,7 @@ export default class DefaultBookmark extends Component {
       event_category: 'Bookmark',
       event_action: 'Deleted Bookmark',
     });
-    this.get('metrics').trackEvent('MatomoTagManager', {
+    this.metrics.trackEvent('MatomoTagManager', {
       category: 'Bookmark',
       action: 'Delete',
       name: 'Deleted Bookmark',
@@ -35,7 +34,7 @@ export default class DefaultBookmark extends Component {
     });
 
     // GA
-    this.get('metrics').trackEvent('MatomoTagManager', {
+    this.metrics.trackEvent('MatomoTagManager', {
       category: 'Download',
       action: `Downloaded Bookmark as ${format}`,
       name: 'Export',

@@ -5,11 +5,9 @@ import { inject as service } from '@ember/service';
 export default class PrintViewControls extends Component {
   classNames = ['print-view--controls', 'align-middle'];
 
-  @service('print')
-  printSvc;
+  @service('print') printSvc;
 
-  @service
-  metrics;
+  @service metrics;
 
   widowResize() {
     return new Promise((resolve) => {
@@ -29,7 +27,7 @@ export default class PrintViewControls extends Component {
       event_action: 'Disabled print view',
     });
     // GA
-    this.get('metrics').trackEvent('MatomoTagManager', {
+    this.metrics.trackEvent('MatomoTagManager', {
       category: 'Print',
       action: 'Disabled print view',
       name: 'export',

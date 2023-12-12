@@ -7,7 +7,9 @@ let count = 0;
 
 function createSitemap(rows) {
   // set up export file
-  const sitemap = fs.createWriteStream(`../public/sitemap/sitemap_${count}.txt`);
+  const sitemap = fs.createWriteStream(
+    `../public/sitemap/sitemap_${count}.txt`
+  );
 
   rows.forEach((row) => {
     console.log(row); // eslint-disable-line
@@ -17,7 +19,9 @@ function createSitemap(rows) {
     const block = parseInt(bbl.substring(1, 6), 10).toString();
     const lot = parseInt(bbl.substring(6, 10), 10).toString();
 
-    sitemap.write(`https://zola.planning.nyc.gov/lot/${boro}/${block}/${lot}\n`);
+    sitemap.write(
+      `https://zola.planning.nyc.gov/lot/${boro}/${block}/${lot}\n`
+    );
   });
 
   count += 1;
@@ -39,6 +43,5 @@ function getData() {
     createSitemap(data.rows);
   });
 }
-
 
 getData(count);

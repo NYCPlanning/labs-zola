@@ -21,7 +21,7 @@
   </span>
 </h1>
 <p class="text-small dark-gray">
-  {{this.model.boroname}}&nbsp;(Borough {{this.model.borocode}})
+  {{this.boroname}}&nbsp;(Borough {{this.model.borocode}})
 
   <span class="pipe">
     |
@@ -43,26 +43,27 @@
         Zoning District:
       {{/if}}
     </li>
-    {{#unless (eq this.model.zonedist1 "BPC")}}
+    {{#if (not (eq this.model.zonedist1 "BPC"))}}
       <li>
         <a
+          data-test-zone-dist-link
           target="_blank"
-          href={{this.model.zoneDistLinks.primaryzone1}}
+          href={{this.zoneDistLinks.primaryzone1}}
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
-          class="button"
+          class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.zonedist1}}
         </a>
       </li>
-    {{/unless}}
+    {{/if}}
     {{#if this.model.zonedist2}}
       <li>
-        <a
+        <a 
           target="_blank"
-          href={{this.model.zoneDistLinks.primaryzone2}}
+          href={{this.zoneDistLinks.primaryzone2}}
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
-          class="button"
+          class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.zonedist2}}
@@ -73,9 +74,9 @@
       <li>
         <a
           target="_blank"
-          href={{this.model.zoneDistLinks.primaryzone3}}
+          href={{this.zoneDistLinks.primaryzone3}}
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
-          class="button"
+          class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.zonedist3}}
@@ -86,9 +87,9 @@
       <li>
         <a
           target="_blank"
-          href={{this.model.zoneDistLinks.primaryzone4}}
+          href={{this.zoneDistLinks.primaryzone4}}
           onclick={{action this.captureOutboundLink "Zoning District" preventDefault=false}}
-          class="button"
+          class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.zonedist4}}
@@ -96,7 +97,7 @@
       </li>
     {{/if}}
     {{#each
-      (await this.model.parentSpecialPurposeDistricts) as |specialDistrict|
+      (await this.parentSpecialPurposeDistricts) as |specialDistrict|
     }}
       <li
         data-test-special-district
@@ -106,7 +107,7 @@
             target="_blank"
             href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-{{specialDistrict.boroName}}.page#{{specialDistrict.anchorName}}"
             onclick={{action this.captureOutboundLink "Special Purpose District" preventDefault=false}}
-            class="button"
+            class="button" rel="noopener noreferrer"
           >
             {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
             {{specialDistrict.label}}
@@ -123,7 +124,7 @@
         <a
           href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page"
           target="_blank"
-          class="button"
+          class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.overlay1}}
@@ -135,7 +136,7 @@
         <a
           href="https://www1.nyc.gov/site/planning/zoning/districts-tools/c1-c2-overlays.page"
           target="_blank"
-          class="button"
+          class="button" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           {{this.model.overlay2}}
@@ -168,9 +169,10 @@
         {{#if this.model.bbl}}
           <li>
             <a
+              data-test-tax-map-link
               target="_blank"
-              href={{this.model.digitalTaxMapLink}}
-              onclick={{action this.captureOutboundLink "Digital Tax Map" preventDefault=false}}
+              href={{this.digitalTaxMapLink}} 
+              onclick={{action this.captureOutboundLink "Digital Tax Map" preventDefault=false}} rel="noopener noreferrer"
             >
               {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
               Digital Tax Map
@@ -180,9 +182,10 @@
         {{#if this.model.zonemap}}
           <li>
             <a
+              data-test-zoning-map-link
               target="_blank"
-              href={{this.model.zoningMapLink}}
-              onclick={{action this.captureOutboundLink "Zoning Map" preventDefault=false}}
+              href={{this.zoningMapLink}}
+              onclick={{action this.captureOutboundLink "Zoning Map" preventDefault=false}} rel="noopener noreferrer"
             >
               {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
               Zoning Map:
@@ -196,9 +199,10 @@
         {{#if this.model.zonemap}}
           <li>
             <a
+              data-test-historical-zoning-map-link
               target="_blank"
-              href={{this.model.historicalZoningMapLink}}
-              onclick={{action this.captureOutboundLink "Historical Zoning Maps" preventDefault=false}}
+              href={{this.historicalZoningMapLink}}
+              onclick={{action this.captureOutboundLink "Historical Zoning Maps" preventDefault=false}} rel="noopener noreferrer"
             >
               {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
               Historical Zoning Maps
@@ -214,14 +218,14 @@
 </section>
 <hr class="hide-for-print" />
 <section class="lot-details">
-  {{#if this.model.ownertypename}}
+  {{#if this.ownertypename}}
     <div class="data-grid">
       <label class="data-label">
         Owner Type
       </label>
       <span class="datum">
-        {{#if this.model.ownertypename}}
-          {{this.model.ownertypename}}
+        {{#if this.ownertypename}}
+          {{this.ownertypename}}
         {{else}}
           Unknown/Private
         {{/if}}
@@ -240,13 +244,13 @@
       </span>
     </div>
   {{/if}}
-  {{#if this.model.landusename}}
+  {{#if this.landusename}}
     <div class="data-grid">
       <label class="data-label">
         Land Use
       </label>
       <span class="datum">
-        {{this.model.landusename}}
+        {{this.landusename}}
       </span>
     </div>
   {{/if}}
@@ -311,13 +315,13 @@
       </span>
     </div>
   {{/if}}
-  {{#if this.model.bldgclassname}}
+  {{#if this.bldgclassname}}
     <div class="data-grid">
       <label class="data-label">
         Building Class
       </label>
       <span class="datum">
-        {{this.model.bldgclassname}}
+        {{this.bldgclassname}}
         {{#if this.model.bldgclass}}
           <span class="dark-gray">
             (
@@ -403,9 +407,10 @@
     </label>
     <span class="datum">
       <a
-        href={{this.model.biswebLink}}
+        data-test-bisweb-link
+        href={{this.biswebLink}}
         onclick={{action this.captureOutboundLink "BISWEB" preventDefault=false}}
-        target="_blank"
+        target="_blank" rel="noopener noreferrer"
       >
         {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
         BISWEB
@@ -426,9 +431,10 @@
       </label>
       <span class="datum">
         <a
-          href={{this.model.ACRISLink}}
+          data-test-acris-link
+          href={{this.ACRISLink}}
           onclick={{action this.captureOutboundLink "ACRIS" preventDefault=false}}
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           View ACRIS
@@ -450,9 +456,10 @@
       </label>
       <span class="datum">
         <a
+          data-test-housing-info-link
           href="https://hpdonline.nyc.gov/hpdonline/"
           onclick={{action this.captureOutboundLink "Housing Info" preventDefault=false}}
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           View HPD's Building, Registration & Violation Records
@@ -465,19 +472,20 @@
   <h3 class="header-small lot-section-header hide-for-print">
     Neighborhood Information
   </h3>
-  {{#if this.model.cdURLSegment}}
+  {{#if this.cdURLSegment}}
     <div class="data-grid">
       <label class="data-label">
         Community District
       </label>
       <span class="datum">
         <a
-          href={{this.model.fullCommunityDistrictURL}}
+          data-test-full-cd-url
+          href={{this.fullCommunityDistrictURL}}
           onclick={{action this.captureOutboundLink "Community District" preventDefault=false}}
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
-          {{this.model.cdName}}
+          {{this.cdName}}
         </a>
       </span>
     </div>
@@ -489,9 +497,10 @@
       </label>
       <span class="datum">
         <a
-          href={{this.model.councilLink}}
+          data-test-council-link
+          href={{this.councilLink}}
           onclick={{action this.captureOutboundLink "Council District" preventDefault=false}}
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
         >
           {{fa-icon icon="external-link-alt" transform="shrink-3 up-1"}}
           Council District

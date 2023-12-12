@@ -1,4 +1,3 @@
-import fetch from 'fetch';
 import { Promise } from 'rsvp';
 import config from 'labs-zola/config/environment';
 
@@ -7,7 +6,6 @@ const { carto } = config;
 const cartoUsername = carto.username;
 const cartoDomain = carto.domain;
 
-
 const buildTemplate = (cartoResponse, type) => { // eslint-disable-line
   const { layergroupid, cdn_url } = cartoResponse; // eslint-disable-line
   const { subdomains } = cdn_url.templates.https;
@@ -15,7 +13,10 @@ const buildTemplate = (cartoResponse, type) => { // eslint-disable-line
   // choose a subdomain at random
   const subdomain = subdomains[Math.floor(Math.random() * subdomains.length)];
 
-  return `${cdn_url.templates.https.url.replace('{s}', subdomain)}/${cartoUsername}/api/v1/map/${layergroupid}/{z}/{x}/{y}.${type}`;
+  return `${cdn_url.templates.https.url.replace(
+    '{s}',
+    subdomain
+  )}/${cartoUsername}/api/v1/map/${layergroupid}/{z}/{x}/{y}.${type}`;
 };
 
 const buildSqlUrl = (cleanedQuery, type = 'json') => { // eslint-disable-line
@@ -69,8 +70,8 @@ export default {
         },
         body: JSON.stringify(params),
       })
-        .catch(err => reject(err))
-        .then(response => response.json())
+        .catch((err) => reject(err))
+        .then((response) => response.json())
         .then((json) => {
           resolve(buildTemplate(json, 'mvt'));
         });

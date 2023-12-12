@@ -4,16 +4,18 @@
 <ul class="no-bullet">
   {{#each this.items as |item|}}
     <li class="list-item-bookmark">
-      {{#link-to (concat 'map-feature.' this.bookmarkType) item.bookmark.id}}
+      <LinkTo
+        @route={{concat 'map-feature.' this.bookmarkType}}
+        @model={{item.bookmark.id}}
+      >
         <span class="icon polygon"></span>
         {{item.bookmark.title}}
         <span class="dark-gray">
           {{item.bookmark.subtitle}}
         </span>
-      {{/link-to}}
+      </LinkTo>
       <button
-        class="float-right lu-red delete-bookmark-button"
-        {{action this.deleteBookmark item}}
+        class="float-right lu-red delete-bookmark-button" type="button" {{action this.deleteBookmark item}}
       >
         &times;
       </button>

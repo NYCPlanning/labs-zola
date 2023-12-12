@@ -16,7 +16,8 @@ export default {
         visible: true,
         legend: {
           label: 'Zoning Districts',
-          tooltip: 'A zoning district is a residential, commercial or manufac­turing area of the city within which zoning regulations govern land use and building bulk.',
+          tooltip:
+            'A zoning district is a residential, commercial or manufac­turing area of the city within which zoning regulations govern land use and building bulk.',
         },
       },
       relationships: {
@@ -84,7 +85,8 @@ export default {
         visible: true,
         legend: {
           label: 'Commercial Overlays',
-          tooltip: 'A commercial overlay is a C1 or C2 district mapped within residential districts to serve local retail needs.',
+          tooltip:
+            'A commercial overlay is a C1 or C2 district mapped within residential districts to serve local retail needs.',
           icon: {
             type: 'fa-icon',
             layers: [
@@ -132,7 +134,8 @@ export default {
         visible: false,
         legend: {
           label: 'Zoning Map Amendments',
-          tooltip: 'Changes to the Zoning Map that have been adopted since 2002',
+          tooltip:
+            'Changes to the Zoning Map that have been adopted since 2002',
           icon: {
             type: 'rectangle',
             layers: [
@@ -176,7 +179,8 @@ export default {
         visible: false,
         legend: {
           label: 'Pending Zoning Map Amendments',
-          tooltip: 'Changes to the Zoning Map that are currently undergoing public review',
+          tooltip:
+            'Changes to the Zoning Map that are currently undergoing public review',
           icon: {
             type: 'rectangle',
             layers: [
@@ -220,7 +224,8 @@ export default {
         visible: false,
         legend: {
           label: 'Special Purpose Districts',
-          tooltip: 'The regulations for special purpose districts are designed to supplement and modify the underlying zoning in order to respond to distinctive neighborhoods with particular issues and goals',
+          tooltip:
+            'The regulations for special purpose districts are designed to supplement and modify the underlying zoning in order to respond to distinctive neighborhoods with particular issues and goals',
           icon: {
             type: 'fa-icon',
             layers: [
@@ -263,7 +268,8 @@ export default {
         visible: false,
         legend: {
           label: 'Special Purpose Subdistricts',
-          tooltip: 'Areas within Special Purpose Districts where unique rules apply. Special Purpose Subdistrict data is currently incomplete. See the Zoning Resolution for a complete description of the special purpose district.',
+          tooltip:
+            'Areas within Special Purpose Districts where unique rules apply. Special Purpose Subdistrict data is currently incomplete. See the Zoning Resolution for a complete description of the special purpose district.',
           infolink: 'https://zr.planning.nyc.gov',
           icon: {
             type: 'fa-icon',
@@ -307,7 +313,8 @@ export default {
         visible: false,
         legend: {
           label: 'Limited Height Districts',
-          tooltip: 'A limited height district may be superimposed on an area designated as an historic district by the Landmarks Preservation Commission. It is mapped in areas of the Upper East Side, Gramercy Park, Brooklyn Heights and Cobble Hill. The maximum building height is 50 feet in a LH-1 district, 60 feet in a LH-1A district, 70 feet in a LH-2 district and 100 feet in a LH-3 district.',
+          tooltip:
+            'A limited height district may be superimposed on an area designated as an historic district by the Landmarks Preservation Commission. It is mapped in areas of the Upper East Side, Gramercy Park, Brooklyn Heights and Cobble Hill. The maximum building height is 50 feet in a LH-1 district, 60 feet in a LH-1A district, 70 feet in a LH-2 district and 100 feet in a LH-3 district.',
           icon: {
             type: 'rectangle',
             layers: [
@@ -351,8 +358,10 @@ export default {
         visible: false,
         legend: {
           label: 'Mandatory Inclusionary Housing Areas',
-          tooltip: 'Areas where developments, enlargements and conversions over a certain size are required to set aside a percentage of floor area for permanently affordable housing',
-          infolink: 'https://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page',
+          tooltip:
+            'Areas where developments, enlargements and conversions over a certain size are required to set aside a percentage of floor area for permanently affordable housing',
+          infolink:
+            'https://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page',
           icon: {
             type: 'rectangle',
             layers: [
@@ -396,8 +405,10 @@ export default {
         visible: false,
         legend: {
           label: 'Inclusionary Housing Designated Areas',
-          tooltip: 'Areas where zoning incentives are offered to encourage the creation of permanently affordable housing',
-          infolink: 'https://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page',
+          tooltip:
+            'Areas where zoning incentives are offered to encourage the creation of permanently affordable housing',
+          infolink:
+            'https://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page',
           icon: {
             type: 'rectangle',
             layers: [
@@ -441,8 +452,10 @@ export default {
         visible: false,
         legend: {
           label: 'Transit Zones',
-          tooltip: 'Transit-accessible areas where parking is optional for new affordable housing units and special rules apply to existing affordable units',
-          infolink: 'https://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone',
+          tooltip:
+            'Transit-accessible areas where parking is optional for new affordable housing units and special rules apply to existing affordable units',
+          infolink:
+            'https://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone',
           icon: {
             type: 'rectangle',
             layers: [
@@ -486,8 +499,10 @@ export default {
         visible: false,
         legend: {
           label: 'FRESH Zones',
-          tooltip: 'FRESH promotes the establishment and expansion of neighborhood grocery stores in underserved communities by providing zoning and financial incentives',
-          infolink: 'https://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page',
+          tooltip:
+            'FRESH promotes the establishment and expansion of neighborhood grocery stores in underserved communities by providing zoning and financial incentives',
+          infolink:
+            'https://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page',
           items: [
             {
               label: 'Zoning incentives',
@@ -567,8 +582,10 @@ export default {
         visible: false,
         legend: {
           label: 'Sidewalk Cafes',
-          tooltip: 'Areas where different types of sidewalk cafes are permitted on public sidewalks',
-          infolink: 'https://www1.nyc.gov/site/planning/zoning/districts-tools/sidewalk-cafes.page',
+          tooltip:
+            'Areas where different types of sidewalk cafes are permitted on public sidewalks',
+          infolink:
+            'https://www1.nyc.gov/site/planning/zoning/districts-tools/sidewalk-cafes.page',
           items: [
             {
               label: 'All Cafes Permitted',
@@ -641,8 +658,10 @@ export default {
         visible: false,
         legend: {
           label: 'Lower Density Growth Management Areas',
-          tooltip: 'Areas where special zoning controls intend to limit growth and better match available infrastructure and services in lower-density areas experiencing rapid development',
-          infolink: 'https://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page',
+          tooltip:
+            'Areas where special zoning controls intend to limit growth and better match available infrastructure and services in lower-density areas experiencing rapid development',
+          infolink:
+            'https://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page',
           icon: {
             type: 'rectangle',
             layers: [
@@ -686,8 +705,10 @@ export default {
         visible: false,
         legend: {
           label: 'Coastal Zone Boundary',
-          tooltip: 'Projects within the coastal zone boundary are subject to additional review under the Waterfront Revitalization Program',
-          infolink: 'https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-wrp.page',
+          tooltip:
+            'Projects within the coastal zone boundary are subject to additional review under the Waterfront Revitalization Program',
+          infolink:
+            'https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-wrp.page',
           icon: {
             type: 'rectangle',
             layers: [
@@ -731,8 +752,10 @@ export default {
         visible: false,
         legend: {
           label: 'Waterfront Access Plan',
-          tooltip: 'These areas reflect site specific modification of waterfront public access requirements for waterfront parcels with unique conditions and opportunities',
-          infolink: 'https://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page',
+          tooltip:
+            'These areas reflect site specific modification of waterfront public access requirements for waterfront parcels with unique conditions and opportunities',
+          infolink:
+            'https://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page',
           icon: {
             type: 'rectangle',
             layers: [
@@ -776,7 +799,8 @@ export default {
         visible: false,
         legend: {
           label: 'Historic Districts',
-          tooltip: 'Areas designated by the NYC Landmarks Preservation Commission that possess historical significance and to which special zoning regulations apply',
+          tooltip:
+            'Areas designated by the NYC Landmarks Preservation Commission that possess historical significance and to which special zoning regulations apply',
           icon: {
             type: 'rectangle',
             layers: [
@@ -820,12 +844,15 @@ export default {
         visible: false,
         legend: {
           label: 'Effective Flood Insurance Rate Maps 2007',
-          tooltip: 'The Effective Flood Insurance Rate Maps (FIRMs), first adopted by New York City in 1983 and last updated in 2007, establish the floodplain currently subject to the National Flood Insurance Program purchase requirements.',
-          infolink: 'https://www1.nyc.gov/site/planning/plans/climate-resiliency-faq.page',
+          tooltip:
+            'The Effective Flood Insurance Rate Maps (FIRMs), first adopted by New York City in 1983 and last updated in 2007, establish the floodplain currently subject to the National Flood Insurance Program purchase requirements.',
+          infolink:
+            'https://www1.nyc.gov/site/planning/plans/climate-resiliency-faq.page',
           items: [
             {
               label: 'V Zone',
-              tooltip: 'Portion of the 1% annual chance floodplain subject to high velocity wave action (a breaking wave 3 feet high or larger). V Zones are subject to more stringent building requirements than other zones because of the damaging force of waves.',
+              tooltip:
+                'Portion of the 1% annual chance floodplain subject to high velocity wave action (a breaking wave 3 feet high or larger). V Zones are subject to more stringent building requirements than other zones because of the damaging force of waves.',
               icon: {
                 type: 'fa-icon',
                 layers: [
@@ -838,7 +865,8 @@ export default {
             },
             {
               label: 'A Zone',
-              tooltip: 'A portion of the area subject to flooding from the 1% annual chance flood. These areas are not subject to high velocity wave action but are still considered high risk flooding areas.',
+              tooltip:
+                'A portion of the area subject to flooding from the 1% annual chance flood. These areas are not subject to high velocity wave action but are still considered high risk flooding areas.',
               icon: {
                 type: 'fa-icon',
                 layers: [
@@ -879,12 +907,15 @@ export default {
         visible: false,
         legend: {
           label: 'Preliminary Flood Insurance Rate Maps 2015',
-          tooltip: 'Released in 2015 as part of a citywide flood map update, the Preliminary FIRMs establish the 1% annual chance floodplain. For building code and zoning purposes, the more expansive of the either the 2015 or 2007 maps is used.',
-          infolink: 'https://www1.nyc.gov/site/planning/plans/climate-resiliency-faq.page',
+          tooltip:
+            'Released in 2015 as part of a citywide flood map update, the Preliminary FIRMs establish the 1% annual chance floodplain. For building code and zoning purposes, the more expansive of the either the 2015 or 2007 maps is used.',
+          infolink:
+            'https://www1.nyc.gov/site/planning/plans/climate-resiliency-faq.page',
           items: [
             {
               label: 'V Zone',
-              tooltip: 'Portion of the 1% annual chance floodplain subject to high velocity wave action (a breaking wave 3 feet high or larger). V Zones are subject to more stringent building requirements than other zones because of the damaging force of waves.',
+              tooltip:
+                'Portion of the 1% annual chance floodplain subject to high velocity wave action (a breaking wave 3 feet high or larger). V Zones are subject to more stringent building requirements than other zones because of the damaging force of waves.',
               icon: {
                 type: 'fa-icon',
                 layers: [
@@ -897,7 +928,8 @@ export default {
             },
             {
               label: 'A Zone',
-              tooltip: 'A portion of the area subject to flooding from the 1% annual chance flood. These areas are not subject to high velocity wave action but are still considered high risk flooding areas.',
+              tooltip:
+                'A portion of the area subject to flooding from the 1% annual chance flood. These areas are not subject to high velocity wave action but are still considered high risk flooding areas.',
               icon: {
                 type: 'fa-icon',
                 layers: [
@@ -938,8 +970,10 @@ export default {
         visible: false,
         legend: {
           label: 'Appendix J Designated M Districts',
-          tooltip: 'Designated areas within Manufacturing Districts in which self service storage facilities are subject to certain as-of-right provisions (subarea 1) or are subject to special permit by the City Planning Commission (subarea 2)',
-          infolink: 'https://www1.nyc.gov/assets/planning/download/pdf/data-maps/open-data/designated_areas_m_districts_metadata.pdf',
+          tooltip:
+            'Designated areas within Manufacturing Districts in which self service storage facilities are subject to certain as-of-right provisions (subarea 1) or are subject to special permit by the City Planning Commission (subarea 2)',
+          infolink:
+            'https://www1.nyc.gov/assets/planning/download/pdf/data-maps/open-data/designated_areas_m_districts_metadata.pdf',
           icon: {
             type: 'rectangle',
             layers: [
@@ -983,7 +1017,8 @@ export default {
         visible: false,
         legend: {
           label: 'Business Improvement Districts',
-          tooltip: 'A Business Improvement District (BID) is a geographical area where local stakeholders oversee and fund the maintenance, improvement, and promotion of their commercial district.',
+          tooltip:
+            'A Business Improvement District (BID) is a geographical area where local stakeholders oversee and fund the maintenance, improvement, and promotion of their commercial district.',
           icon: {
             type: 'rectangle',
             layers: [
@@ -1027,7 +1062,8 @@ export default {
         visible: false,
         legend: {
           label: 'Industrial Business Zones',
-          tooltip: 'Industrial Business Zones (IBZs) are areas where expanded business services are available for industrial and manufacturing businesses. This designation fosters high-performing business districts by creating competitive advantages over locating in areas outside of New York City.',
+          tooltip:
+            'Industrial Business Zones (IBZs) are areas where expanded business services are available for industrial and manufacturing businesses. This designation fosters high-performing business districts by creating competitive advantages over locating in areas outside of New York City.',
           icon: {
             type: 'rectangle',
             layers: [
@@ -1223,15 +1259,15 @@ export default {
         title: 'NYC Council Districts',
         visible: false,
         meta: {
-          description: 'Administrative and Political Districts v17D, BYTES of the BIG APPLE™',
-          url: [
-            'https://www1.nyc.gov/site/planning/data-maps/open-data.page',
-          ],
+          description:
+            'Administrative and Political Districts v17D, BYTES of the BIG APPLE™',
+          url: ['https://www1.nyc.gov/site/planning/data-maps/open-data.page'],
           'updated-at': '15 May 2023',
         },
         legend: {
           label: 'NYC Council Districts',
-          tooltip: '2013-2023 NYC Council District boundaries remain in effect until the end of the year. 2024-2033 boundaries are used in the November 7th, 2023 City Council election.',
+          tooltip:
+            '2013-2023 NYC Council District boundaries remain in effect until the end of the year. 2024-2033 boundaries are used in the November 7th, 2023 City Council election.',
         },
         'legend-icon': 'admin-line',
         'legend-color': '#76CAF5',
@@ -1530,9 +1566,7 @@ export default {
           ],
         },
         sources: {
-          data: [
-
-          ],
+          data: [],
         },
       },
     },
@@ -1557,9 +1591,7 @@ export default {
           ],
         },
         sources: {
-          data: [
-
-          ],
+          data: [],
         },
       },
     },
@@ -1682,7 +1714,8 @@ export default {
         visible: true,
         legend: {
           label: 'Tax Lots',
-          tooltip: 'A tax lot is a parcel of land identified with a unique borough, block and lot number for property tax purposes.',
+          tooltip:
+            'A tax lot is a parcel of land identified with a unique borough, block and lot number for property tax purposes.',
           icon: {
             type: 'fa-icon',
             layers: [
@@ -1729,7 +1762,8 @@ export default {
         visible: false,
         legend: {
           label: 'Landmarks',
-          tooltip: 'Sites designated by the NYC Landmarks Preservation Commission that possess historical significance and to which special zoning regulations apply',
+          tooltip:
+            'Sites designated by the NYC Landmarks Preservation Commission that possess historical significance and to which special zoning regulations apply',
           items: [
             {
               label: 'Individual Landmarks',
@@ -1824,7 +1858,8 @@ export default {
         visible: false,
         legend: {
           label: 'Environmental Designations',
-          tooltip: 'An E-Designation is a NYC zoning map designation that indicates the presence of an environmental requirement pertaining to potential Hazardous Materials Contamination, Window/Wall Noise Attenuation, or Air Quality impacts on a particular tax lot.',
+          tooltip:
+            'An E-Designation is a NYC zoning map designation that indicates the presence of an environmental requirement pertaining to potential Hazardous Materials Contamination, Window/Wall Noise Attenuation, or Air Quality impacts on a particular tax lot.',
           infolink: 'https://www1.nyc.gov/site/planning/applicants/e-faq.page',
           icon: {
             type: 'fa-icon',
@@ -1881,110 +1916,35 @@ export default {
               property: 'primaryzone',
               type: 'categorical',
               stops: [
-                [
-                  'BP',
-                  '#808080',
-                ],
-                [
-                  'C1',
-                  '#ffa89c',
-                ],
-                [
-                  'C2',
-                  '#fd9a8f',
-                ],
-                [
-                  'C3',
-                  '#fa867c',
-                ],
-                [
-                  'C4',
-                  '#f76e67',
-                ],
-                [
-                  'C5',
-                  '#f2544e',
-                ],
-                [
-                  'C6',
-                  '#ee3a36',
-                ],
-                [
-                  'C7',
-                  '#ea2220',
-                ],
-                [
-                  'C8',
-                  '#e50000',
-                ],
-                [
-                  'M1',
-                  '#f3b3ff',
-                ],
-                [
-                  'M2',
-                  '#e187f3',
-                ],
-                [
-                  'M3',
-                  '#cf5ce6',
-                ],
-                [
-                  'PA',
-                  '#78D271',
-                ],
-                [
-                  'R1',
-                  '#fff8a6',
-                ],
-                [
-                  'R2',
-                  '#fff7a6',
-                ],
-                [
-                  'R3',
-                  '#fff797',
-                ],
-                [
-                  'R4',
-                  '#fff584',
-                ],
-                [
-                  'R5',
-                  '#fff36c',
-                ],
-                [
-                  'R6',
-                  '#fff153',
-                ],
-                [
-                  'R7',
-                  '#ffee39',
-                ],
-                [
-                  'R8',
-                  '#ffec22',
-                ],
-                [
-                  'R9',
-                  '#ffeb0e',
-                ],
-                [
-                  'R10',
-                  '#ffea00',
-                ],
+                ['BP', '#808080'],
+                ['C1', '#ffa89c'],
+                ['C2', '#fd9a8f'],
+                ['C3', '#fa867c'],
+                ['C4', '#f76e67'],
+                ['C5', '#f2544e'],
+                ['C6', '#ee3a36'],
+                ['C7', '#ea2220'],
+                ['C8', '#e50000'],
+                ['M1', '#f3b3ff'],
+                ['M2', '#e187f3'],
+                ['M3', '#cf5ce6'],
+                ['PA', '#78D271'],
+                ['R1', '#fff8a6'],
+                ['R2', '#fff7a6'],
+                ['R3', '#fff797'],
+                ['R4', '#fff584'],
+                ['R5', '#fff36c'],
+                ['R6', '#fff153'],
+                ['R7', '#ffee39'],
+                ['R8', '#ffec22'],
+                ['R9', '#ffeb0e'],
+                ['R10', '#ffea00'],
               ],
             },
             'fill-opacity': {
               stops: [
-                [
-                  15,
-                  0.3,
-                ],
-                [
-                  16,
-                  0,
-                ],
+                [15, 0.3],
+                [16, 0],
               ],
             },
             'fill-antialias': true,
@@ -2014,30 +1974,15 @@ export default {
           paint: {
             'line-opacity': {
               stops: [
-                [
-                  12,
-                  0,
-                ],
-                [
-                  13,
-                  0.2,
-                ],
-                [
-                  16,
-                  0.5,
-                ],
+                [12, 0],
+                [13, 0.2],
+                [16, 0.5],
               ],
             },
             'line-width': {
               stops: [
-                [
-                  13,
-                  1,
-                ],
-                [
-                  14,
-                  3,
-                ],
+                [13, 1],
+                [14, 3],
               ],
             },
           },
@@ -2063,14 +2008,8 @@ export default {
           paint: {
             'text-color': {
               stops: [
-                [
-                  15,
-                  '#626262',
-                ],
-                [
-                  16,
-                  '#444',
-                ],
+                [15, '#626262'],
+                [16, '#444'],
               ],
             },
             'text-halo-color': '#FFFFFF',
@@ -2078,14 +2017,8 @@ export default {
             'text-halo-blur': 2,
             'text-opacity': {
               stops: [
-                [
-                  12,
-                  0,
-                ],
-                [
-                  13,
-                  1,
-                ],
+                [12, 0],
+                [13, 1],
               ],
             },
           },
@@ -2094,14 +2027,8 @@ export default {
             'text-field': '{zonedist}',
             'text-size': {
               stops: [
-                [
-                  10,
-                  8,
-                ],
-                [
-                  14,
-                  16,
-                ],
+                [10, 8],
+                [14, 16],
               ],
             },
             visibility: 'visible',
@@ -2125,10 +2052,9 @@ export default {
           },
         ],
         meta: {
-          description: 'NYC GIS Zoning Features April 2019, BYTES of the BIG APPLE™',
-          url: [
-            'https://www1.nyc.gov/site/planning/data-maps/open-data.page',
-          ],
+          description:
+            'NYC GIS Zoning Features April 2019, BYTES of the BIG APPLE™',
+          url: ['https://www1.nyc.gov/site/planning/data-maps/open-data.page'],
           data_date: 'April 2019',
           updated_at: 'April 2019',
         },
@@ -2154,10 +2080,7 @@ export default {
           paint: {
             'text-color': 'rgba(37, 37, 37, 1)',
             'text-halo-color': '#fff',
-            'text-translate': [
-              0,
-              0,
-            ],
+            'text-translate': [0, 0],
             'text-halo-width': 2,
             'text-halo-blur': 1,
           },
@@ -2217,7 +2140,8 @@ export default {
           },
         ],
         meta: {
-          description: 'NYC Department of City Planning Technical Review Division',
+          description:
+            'NYC Department of City Planning Technical Review Division',
           updated_at: '6 April 2018',
         },
       },
@@ -2261,14 +2185,8 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  12,
-                  0.1,
-                ],
-                [
-                  15,
-                  2,
-                ],
+                [12, 0.1],
+                [15, 2],
               ],
             },
             'line-color': 'rgba(220,10,10,0.75)',
@@ -2384,7 +2302,8 @@ export default {
           },
         ],
         meta: {
-          description: 'Zoning related datasets April 2019, BYTES of the BIG APPLE™',
+          description:
+            'Zoning related datasets April 2019, BYTES of the BIG APPLE™',
           url: [
             'https://www1.nyc.gov/site/planning/data-maps/open-data.page#zoning_related',
           ],
@@ -2392,9 +2311,7 @@ export default {
           updated_at: 'April 2019',
         },
       },
-      relationships: {
-
-      },
+      relationships: {},
     },
     {
       type: 'layers',
@@ -2408,21 +2325,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(159, 199, 62, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -2455,7 +2363,8 @@ export default {
         clickable: true,
         highlightable: true,
         tooltipable: true,
-        'tooltip-template': '{{{project_na}}} - Effective {{{effectiveformatted}}}',
+        'tooltip-template':
+          '{{{project_na}}} - Effective {{{effectiveformatted}}}',
       },
     },
     {
@@ -2475,7 +2384,8 @@ export default {
           },
         ],
         meta: {
-          description: 'NYC GIS Zoning Features April 2019, BYTES of the BIG APPLE™',
+          description:
+            'NYC GIS Zoning Features April 2019, BYTES of the BIG APPLE™',
           url: [
             'https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-gis-zoning.page',
           ],
@@ -2483,9 +2393,7 @@ export default {
           updated_at: 'April 2019',
         },
       },
-      relationships: {
-
-      },
+      relationships: {},
     },
     {
       type: 'layers',
@@ -2499,21 +2407,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(176, 31, 31, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -2561,21 +2460,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(94,102,51, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -2622,21 +2512,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': '#8DA610',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
             'line-opacity': 0.6,
           },
           layout: {
@@ -2686,21 +2567,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(118, 66, 10, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -2747,21 +2619,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(204, 61, 93, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -2808,21 +2671,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(229, 115, 0, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -2870,21 +2724,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(230, 214, 46, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -2931,21 +2776,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(48, 191, 78, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -2970,11 +2806,7 @@ export default {
           },
           filter: [
             'all',
-            [
-              '==',
-              'name',
-              'Zoning and discretionary tax incentives',
-            ],
+            ['==', 'name', 'Zoning and discretionary tax incentives'],
           ],
           layout: {
             visibility: 'none',
@@ -3000,14 +2832,7 @@ export default {
           paint: {
             'fill-color': 'rgba(11, 147, 144, 0.2)',
           },
-          filter: [
-            'all',
-            [
-              '==',
-              'name',
-              'Zoning incentives',
-            ],
-          ],
+          filter: ['all', ['==', 'name', 'Zoning incentives']],
           layout: {
             visibility: 'none',
           },
@@ -3032,14 +2857,7 @@ export default {
           paint: {
             'fill-color': 'rgba(143, 227, 57, 0.2)',
           },
-          filter: [
-            'all',
-            [
-              '==',
-              'name',
-              'Discretionary tax incentives',
-            ],
-          ],
+          filter: ['all', ['==', 'name', 'Discretionary tax incentives']],
           layout: {
             visibility: 'none',
           },
@@ -3064,30 +2882,14 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  0.5,
-                ],
-                [
-                  13,
-                  1,
-                ],
-                [
-                  15,
-                  5,
-                ],
+                [11, 0.5],
+                [13, 1],
+                [15, 5],
               ],
             },
             'line-color': '#28AD15',
           },
-          filter: [
-            'all',
-            [
-              '==',
-              'cafetype',
-              'All Cafes',
-            ],
-          ],
+          filter: ['all', ['==', 'cafetype', 'All Cafes']],
           layout: {
             visibility: 'none',
           },
@@ -3109,30 +2911,14 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  0.5,
-                ],
-                [
-                  13,
-                  1,
-                ],
-                [
-                  15,
-                  5,
-                ],
+                [11, 0.5],
+                [13, 1],
+                [15, 5],
               ],
             },
             'line-color': '#CC3DCA',
           },
-          filter: [
-            'all',
-            [
-              '==',
-              'cafetype',
-              'Small Only',
-            ],
-          ],
+          filter: ['all', ['==', 'cafetype', 'Small Only']],
           layout: {
             visibility: 'none',
           },
@@ -3154,30 +2940,14 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  0.5,
-                ],
-                [
-                  13,
-                  1,
-                ],
-                [
-                  15,
-                  5,
-                ],
+                [11, 0.5],
+                [13, 1],
+                [15, 5],
               ],
             },
             'line-color': '#216BC6',
           },
-          filter: [
-            'all',
-            [
-              '==',
-              'cafetype',
-              'Unenclosed Only',
-            ],
-          ],
+          filter: ['all', ['==', 'cafetype', 'Unenclosed Only']],
           layout: {
             visibility: 'none',
           },
@@ -3199,21 +2969,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(157, 71, 178, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -3260,21 +3021,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(93, 198, 228, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -3321,21 +3073,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(0, 164, 210, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -3382,21 +3125,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(70, 130, 180, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -3460,9 +3194,7 @@ export default {
           updated_at: '17 May 2018',
         },
       },
-      relationships: {
-
-      },
+      relationships: {},
     },
     {
       type: 'layers',
@@ -3478,14 +3210,8 @@ export default {
               property: 'fld_zone',
               type: 'categorical',
               stops: [
-                [
-                  'V',
-                  '#0084a8',
-                ],
-                [
-                  'A',
-                  '#00a9e6',
-                ],
+                ['V', '#0084a8'],
+                ['A', '#00a9e6'],
               ],
             },
             'fill-opacity': 0.7,
@@ -3526,9 +3252,7 @@ export default {
           updated_at: 'September 2017',
         },
       },
-      relationships: {
-
-      },
+      relationships: {},
     },
     {
       type: 'layers',
@@ -3544,14 +3268,8 @@ export default {
               property: 'fld_zone',
               type: 'categorical',
               stops: [
-                [
-                  'V',
-                  '#0084a8',
-                ],
-                [
-                  'A',
-                  '#00a9e6',
-                ],
+                ['V', '#0084a8'],
+                ['A', '#00a9e6'],
               ],
             },
             'fill-opacity': 0.7,
@@ -3580,21 +3298,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(243, 51, 225, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -3641,21 +3350,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(118, 66, 10, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -3702,21 +3402,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(43, 10, 118, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -3765,14 +3456,8 @@ export default {
             'line-opacity': 0.5,
             'line-width': {
               stops: [
-                [
-                  11,
-                  4,
-                ],
-                [
-                  16,
-                  8,
-                ],
+                [11, 4],
+                [16, 8],
               ],
             },
           },
@@ -3799,14 +3484,8 @@ export default {
             'line-opacity': 0.8,
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  16,
-                  3,
-                ],
+                [11, 1],
+                [16, 3],
               ],
             },
           },
@@ -3874,16 +3553,13 @@ export default {
           mvt: 10,
         },
         meta: {
-          description: 'Administrative and Political Districts v18D, BYTES of the BIG APPLE™',
-          url: [
-            'https://www1.nyc.gov/site/planning/data-maps/open-data.page',
-          ],
+          description:
+            'Administrative and Political Districts v18D, BYTES of the BIG APPLE™',
+          url: ['https://www1.nyc.gov/site/planning/data-maps/open-data.page'],
           updated_at: '30 November 2018',
         },
       },
-      relationships: {
-
-      },
+      relationships: {},
     },
     {
       type: 'layers',
@@ -3899,14 +3575,8 @@ export default {
             'line-opacity': 0.5,
             'line-width': {
               stops: [
-                [
-                  11,
-                  4,
-                ],
-                [
-                  16,
-                  8,
-                ],
+                [11, 4],
+                [16, 8],
               ],
             },
           },
@@ -3933,14 +3603,8 @@ export default {
             'line-opacity': 0.8,
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  16,
-                  3,
-                ],
+                [11, 1],
+                [16, 3],
               ],
             },
           },
@@ -3973,20 +3637,11 @@ export default {
           },
           layout: {
             'text-field': '{boro_district}',
-            'text-font': [
-              'Open Sans Semibold',
-              'Arial Unicode MS Bold',
-            ],
+            'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
             'text-size': {
               stops: [
-                [
-                  11,
-                  12,
-                ],
-                [
-                  14,
-                  16,
-                ],
+                [11, 12],
+                [14, 16],
               ],
             },
             visibility: 'none',
@@ -4012,14 +3667,8 @@ export default {
             'line-opacity': 0.7,
             'line-width': {
               stops: [
-                [
-                  11,
-                  4,
-                ],
-                [
-                  16,
-                  8,
-                ],
+                [11, 4],
+                [16, 8],
               ],
             },
           },
@@ -4046,14 +3695,8 @@ export default {
             'line-opacity': 0.8,
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  16,
-                  3,
-                ],
+                [11, 1],
+                [16, 3],
               ],
             },
           },
@@ -4086,20 +3729,11 @@ export default {
           },
           layout: {
             'text-field': '{coundist}',
-            'text-font': [
-              'Open Sans Semibold',
-              'Arial Unicode MS Bold',
-            ],
+            'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
             'text-size': {
               stops: [
-                [
-                  11,
-                  12,
-                ],
-                [
-                  14,
-                  16,
-                ],
+                [11, 12],
+                [14, 16],
               ],
             },
             visibility: 'none',
@@ -4121,33 +3755,19 @@ export default {
           'source-layer': 'nyc-council-districts-combined',
           minzoom: 10,
           paint: {
-            'line-color':
-            {
+            'line-color': {
               property: 'year',
               type: 'categorical',
               stops: [
-                [
-                  '2013',
-                  '#33D8DC',
-                ],
-                [
-                  '2024',
-                  '#DC333D',
-                ],
+                ['2013', '#33D8DC'],
+                ['2024', '#DC333D'],
               ],
             },
             'line-opacity': 0.7,
-            'line-width':
-            {
+            'line-width': {
               stops: [
-                [
-                  11,
-                  4,
-                ],
-                [
-                  16,
-                  8,
-                ],
+                [11, 4],
+                [16, 8],
               ],
             },
           },
@@ -4174,14 +3794,8 @@ export default {
             'line-opacity': 0.8,
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  16,
-                  3,
-                ],
+                [11, 1],
+                [16, 3],
               ],
             },
           },
@@ -4214,20 +3828,11 @@ export default {
           },
           layout: {
             'text-field': '{coundist}',
-            'text-font': [
-              'Open Sans Semibold',
-              'Arial Unicode MS Bold',
-            ],
+            'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
             'text-size': {
               stops: [
-                [
-                  11,
-                  12,
-                ],
-                [
-                  14,
-                  16,
-                ],
+                [11, 12],
+                [14, 16],
               ],
             },
             visibility: 'none',
@@ -4252,14 +3857,8 @@ export default {
             'line-opacity': 0.4,
             'line-width': {
               stops: [
-                [
-                  11,
-                  4,
-                ],
-                [
-                  16,
-                  8,
-                ],
+                [11, 4],
+                [16, 8],
               ],
             },
           },
@@ -4286,14 +3885,8 @@ export default {
             'line-opacity': 0.6,
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  16,
-                  3,
-                ],
+                [11, 1],
+                [16, 3],
               ],
             },
           },
@@ -4326,20 +3919,11 @@ export default {
           },
           layout: {
             'text-field': '{stsendist}',
-            'text-font': [
-              'Open Sans Semibold',
-              'Arial Unicode MS Bold',
-            ],
+            'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
             'text-size': {
               stops: [
-                [
-                  11,
-                  12,
-                ],
-                [
-                  14,
-                  16,
-                ],
+                [11, 12],
+                [14, 16],
               ],
             },
             visibility: 'none',
@@ -4364,14 +3948,8 @@ export default {
             'line-opacity': 0.4,
             'line-width': {
               stops: [
-                [
-                  11,
-                  4,
-                ],
-                [
-                  16,
-                  8,
-                ],
+                [11, 4],
+                [16, 8],
               ],
             },
           },
@@ -4398,14 +3976,8 @@ export default {
             'line-opacity': 0.8,
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  16,
-                  3,
-                ],
+                [11, 1],
+                [16, 3],
               ],
             },
           },
@@ -4438,20 +4010,11 @@ export default {
           },
           layout: {
             'text-field': '{assemdist}',
-            'text-font': [
-              'Open Sans Semibold',
-              'Arial Unicode MS Bold',
-            ],
+            'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
             'text-size': {
               stops: [
-                [
-                  11,
-                  12,
-                ],
-                [
-                  14,
-                  16,
-                ],
+                [11, 12],
+                [14, 16],
               ],
             },
             visibility: 'none',
@@ -4476,14 +4039,8 @@ export default {
             'line-opacity': 0.3,
             'line-width': {
               stops: [
-                [
-                  11,
-                  4,
-                ],
-                [
-                  16,
-                  8,
-                ],
+                [11, 4],
+                [16, 8],
               ],
             },
           },
@@ -4510,14 +4067,8 @@ export default {
             'line-opacity': 0.6,
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  16,
-                  3,
-                ],
+                [11, 1],
+                [16, 3],
               ],
             },
           },
@@ -4550,20 +4101,11 @@ export default {
           },
           layout: {
             'text-field': '{ntaname}',
-            'text-font': [
-              'Open Sans Semibold',
-              'Arial Unicode MS Bold',
-            ],
+            'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
             'text-size': {
               stops: [
-                [
-                  11,
-                  12,
-                ],
-                [
-                  14,
-                  16,
-                ],
+                [11, 12],
+                [14, 16],
               ],
             },
             visibility: 'none',
@@ -4604,26 +4146,13 @@ export default {
           source: 'transportation',
           'source-layer': 'subway-routes',
           type: 'line',
-          filter: [
-            'all',
-            [
-              '==',
-              'rt_symbol',
-              '4',
-            ],
-          ],
+          filter: ['all', ['==', 'rt_symbol', '4']],
           paint: {
             'line-color': 'rgba(0, 147, 60, 1)',
             'line-width': {
               stops: [
-                [
-                  10,
-                  1,
-                ],
-                [
-                  15,
-                  4,
-                ],
+                [10, 1],
+                [15, 4],
               ],
             },
           },
@@ -4645,26 +4174,13 @@ export default {
           source: 'transportation',
           'source-layer': 'subway-routes',
           type: 'line',
-          filter: [
-            'all',
-            [
-              '==',
-              'rt_symbol',
-              'N',
-            ],
-          ],
+          filter: ['all', ['==', 'rt_symbol', 'N']],
           paint: {
             'line-color': 'rgba(252, 204, 10, 1)',
             'line-width': {
               stops: [
-                [
-                  10,
-                  1,
-                ],
-                [
-                  15,
-                  4,
-                ],
+                [10, 1],
+                [15, 4],
               ],
             },
           },
@@ -4685,26 +4201,13 @@ export default {
           id: 'subway_gray',
           source: 'transportation',
           'source-layer': 'subway-routes',
-          filter: [
-            'all',
-            [
-              '==',
-              'rt_symbol',
-              'L',
-            ],
-          ],
+          filter: ['all', ['==', 'rt_symbol', 'L']],
           paint: {
             'line-color': 'rgba(167, 169, 172, 1)',
             'line-width': {
               stops: [
-                [
-                  10,
-                  1,
-                ],
-                [
-                  15,
-                  4,
-                ],
+                [10, 1],
+                [15, 4],
               ],
             },
           },
@@ -4726,26 +4229,13 @@ export default {
           source: 'transportation',
           'source-layer': 'subway-routes',
           type: 'line',
-          filter: [
-            'all',
-            [
-              '==',
-              'rt_symbol',
-              'J',
-            ],
-          ],
+          filter: ['all', ['==', 'rt_symbol', 'J']],
           paint: {
             'line-color': 'rgba(153, 102, 51, 1)',
             'line-width': {
               stops: [
-                [
-                  10,
-                  1,
-                ],
-                [
-                  15,
-                  4,
-                ],
+                [10, 1],
+                [15, 4],
               ],
             },
           },
@@ -4767,26 +4257,13 @@ export default {
           source: 'transportation',
           'source-layer': 'subway-routes',
           type: 'line',
-          filter: [
-            'all',
-            [
-              '==',
-              'rt_symbol',
-              'G',
-            ],
-          ],
+          filter: ['all', ['==', 'rt_symbol', 'G']],
           paint: {
             'line-color': 'rgba(108, 190, 69, 1)',
             'line-width': {
               stops: [
-                [
-                  10,
-                  1,
-                ],
-                [
-                  15,
-                  4,
-                ],
+                [10, 1],
+                [15, 4],
               ],
             },
           },
@@ -4808,26 +4285,13 @@ export default {
           source: 'transportation',
           'source-layer': 'subway-routes',
           type: 'line',
-          filter: [
-            'all',
-            [
-              '==',
-              'rt_symbol',
-              'B',
-            ],
-          ],
+          filter: ['all', ['==', 'rt_symbol', 'B']],
           paint: {
             'line-color': 'rgba(255, 99, 25, 1)',
             'line-width': {
               stops: [
-                [
-                  10,
-                  1,
-                ],
-                [
-                  15,
-                  4,
-                ],
+                [10, 1],
+                [15, 4],
               ],
             },
           },
@@ -4849,31 +4313,13 @@ export default {
           source: 'transportation',
           'source-layer': 'subway-routes',
           type: 'line',
-          filter: [
-            'any',
-            [
-              '==',
-              'rt_symbol',
-              'A',
-            ],
-            [
-              '==',
-              'rt_symbol',
-              'SI',
-            ],
-          ],
+          filter: ['any', ['==', 'rt_symbol', 'A'], ['==', 'rt_symbol', 'SI']],
           paint: {
             'line-color': 'rgba(0, 57, 166, 1)',
             'line-width': {
               stops: [
-                [
-                  10,
-                  1,
-                ],
-                [
-                  15,
-                  4,
-                ],
+                [10, 1],
+                [15, 4],
               ],
             },
           },
@@ -4895,26 +4341,13 @@ export default {
           source: 'transportation',
           'source-layer': 'subway-routes',
           type: 'line',
-          filter: [
-            'all',
-            [
-              '==',
-              'rt_symbol',
-              '7',
-            ],
-          ],
+          filter: ['all', ['==', 'rt_symbol', '7']],
           paint: {
             'line-color': 'rgba(185, 51, 173, 1)',
             'line-width': {
               stops: [
-                [
-                  10,
-                  1,
-                ],
-                [
-                  15,
-                  4,
-                ],
+                [10, 1],
+                [15, 4],
               ],
             },
           },
@@ -4936,26 +4369,13 @@ export default {
           source: 'transportation',
           'source-layer': 'subway-routes',
           type: 'line',
-          filter: [
-            'all',
-            [
-              '==',
-              'rt_symbol',
-              '1',
-            ],
-          ],
+          filter: ['all', ['==', 'rt_symbol', '1']],
           paint: {
             'line-color': 'rgba(238, 53, 46, 1)',
             'line-width': {
               stops: [
-                [
-                  10,
-                  1,
-                ],
-                [
-                  15,
-                  4,
-                ],
+                [10, 1],
+                [15, 4],
               ],
             },
           },
@@ -4982,38 +4402,20 @@ export default {
             'circle-color': 'rgba(255, 255, 255, 1)',
             'circle-opacity': {
               stops: [
-                [
-                  11,
-                  0,
-                ],
-                [
-                  12,
-                  1,
-                ],
+                [11, 0],
+                [12, 1],
               ],
             },
             'circle-stroke-opacity': {
               stops: [
-                [
-                  11,
-                  0,
-                ],
-                [
-                  12,
-                  1,
-                ],
+                [11, 0],
+                [12, 1],
               ],
             },
             'circle-radius': {
               stops: [
-                [
-                  10,
-                  2,
-                ],
-                [
-                  14,
-                  5,
-                ],
+                [10, 2],
+                [14, 5],
               ],
             },
             'circle-stroke-width': 1,
@@ -5050,20 +4452,11 @@ export default {
           paint: {
             'text-halo-color': 'rgba(255, 255, 255, 1)',
             'text-halo-width': 1,
-            'text-translate': [
-              1,
-              20,
-            ],
+            'text-translate': [1, 20],
             'text-opacity': {
               stops: [
-                [
-                  13,
-                  0,
-                ],
-                [
-                  14,
-                  1,
-                ],
+                [13, 0],
+                [14, 1],
               ],
             },
           },
@@ -5116,10 +4509,7 @@ export default {
             'symbol-spacing': 250,
             'symbol-avoid-edges': false,
             'text-size': 8,
-            'text-offset': [
-              0,
-              1,
-            ],
+            'text-offset': [0, 1],
             'text-anchor': 'center',
             visibility: 'visible',
           },
@@ -5128,14 +4518,8 @@ export default {
             'text-halo-width': 1,
             'text-opacity': {
               stops: [
-                [
-                  16.5,
-                  0,
-                ],
-                [
-                  17.5,
-                  1,
-                ],
+                [16.5, 0],
+                [17.5, 1],
               ],
             },
           },
@@ -5172,7 +4556,8 @@ export default {
           },
         ],
         meta: {
-          description: 'NYC Subway Lines and Stops - Originally Sourced from NYC DoITT GIS, combined with SI Railway data from Baruch College NYC Mass Transit Spatial Layers | Subway entrances from NYC Open Data',
+          description:
+            'NYC Subway Lines and Stops - Originally Sourced from NYC DoITT GIS, combined with SI Railway data from Baruch College NYC Mass Transit Spatial Layers | Subway entrances from NYC Open Data',
           url: [
             'https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM mta_subway_stops&format=SHP',
             'https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM mta_subway_routes&format=SHP',
@@ -5196,14 +4581,8 @@ export default {
           paint: {
             'fill-opacity': {
               stops: [
-                [
-                  15,
-                  0,
-                ],
-                [
-                  16,
-                  0.3,
-                ],
+                [15, 0],
+                [16, 0.3],
               ],
             },
             'fill-color': 'rgba(175, 175, 175, 1)',
@@ -5230,10 +4609,7 @@ export default {
           paint: {
             'fill-extrusion-color': 'rgba(203, 203, 203, 1)',
             'fill-extrusion-opacity': 0.95,
-            'fill-extrusion-translate': [
-              3,
-              0,
-            ],
+            'fill-extrusion-translate': [3, 0],
             'fill-extrusion-height': {
               property: 'render_height',
               type: 'identity',
@@ -5467,15 +4843,11 @@ export default {
       attributes: {
         id: 'aerials-1924',
         type: 'raster',
-        tiles: [
-          'https://maps.nyc.gov/xyz/1.0.0/photo/1924/{z}/{x}/{y}.png8',
-        ],
+        tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/1924/{z}/{x}/{y}.png8'],
         'tile-size': 256,
         meta: {
           description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-          url: [
-            'https://maps.nyc.gov/tiles/',
-          ],
+          url: ['https://maps.nyc.gov/tiles/'],
           updated_at: 'n/a',
         },
       },
@@ -5486,15 +4858,11 @@ export default {
       attributes: {
         id: 'aerials-1951',
         type: 'raster',
-        tiles: [
-          'https://maps.nyc.gov/xyz/1.0.0/photo/1951/{z}/{x}/{y}.png8',
-        ],
+        tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/1951/{z}/{x}/{y}.png8'],
         'tile-size': 256,
         meta: {
           description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-          url: [
-            'https://maps.nyc.gov/tiles/',
-          ],
+          url: ['https://maps.nyc.gov/tiles/'],
           updated_at: 'n/a',
         },
       },
@@ -5505,15 +4873,11 @@ export default {
       attributes: {
         id: 'aerials-1996',
         type: 'raster',
-        tiles: [
-          'https://maps.nyc.gov/xyz/1.0.0/photo/1996/{z}/{x}/{y}.png8',
-        ],
+        tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/1996/{z}/{x}/{y}.png8'],
         'tile-size': 256,
         meta: {
           description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-          url: [
-            'https://maps.nyc.gov/tiles/',
-          ],
+          url: ['https://maps.nyc.gov/tiles/'],
           updated_at: 'n/a',
         },
       },
@@ -5524,15 +4888,11 @@ export default {
       attributes: {
         id: 'aerials-20012',
         type: 'raster',
-        tiles: [
-          'https://maps.nyc.gov/xyz/1.0.0/photo/2001-2/{z}/{x}/{y}.png8',
-        ],
+        tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2001-2/{z}/{x}/{y}.png8'],
         'tile-size': 256,
         meta: {
           description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-          url: [
-            'https://maps.nyc.gov/tiles/',
-          ],
+          url: ['https://maps.nyc.gov/tiles/'],
           updated_at: 'n/a',
         },
       },
@@ -5543,15 +4903,11 @@ export default {
       attributes: {
         id: 'aerials-2004',
         type: 'raster',
-        tiles: [
-          'https://maps.nyc.gov/xyz/1.0.0/photo/2004/{z}/{x}/{y}.png8',
-        ],
+        tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2004/{z}/{x}/{y}.png8'],
         'tile-size': 256,
         meta: {
           description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-          url: [
-            'https://maps.nyc.gov/tiles/',
-          ],
+          url: ['https://maps.nyc.gov/tiles/'],
           updated_at: 'n/a',
         },
       },
@@ -5562,15 +4918,11 @@ export default {
       attributes: {
         id: 'aerials-2006',
         type: 'raster',
-        tiles: [
-          'https://maps.nyc.gov/xyz/1.0.0/photo/2006/{z}/{x}/{y}.png8',
-        ],
+        tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2006/{z}/{x}/{y}.png8'],
         'tile-size': 256,
         meta: {
           description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-          url: [
-            'https://maps.nyc.gov/tiles/',
-          ],
+          url: ['https://maps.nyc.gov/tiles/'],
           updated_at: 'n/a',
         },
       },
@@ -5581,15 +4933,11 @@ export default {
       attributes: {
         id: 'aerials-2008',
         type: 'raster',
-        tiles: [
-          'https://maps.nyc.gov/xyz/1.0.0/photo/2008/{z}/{x}/{y}.png8',
-        ],
+        tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2008/{z}/{x}/{y}.png8'],
         'tile-size': 256,
         meta: {
           description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-          url: [
-            'https://maps.nyc.gov/tiles/',
-          ],
+          url: ['https://maps.nyc.gov/tiles/'],
           updated_at: 'n/a',
         },
       },
@@ -5600,15 +4948,11 @@ export default {
       attributes: {
         id: 'aerials-2010',
         type: 'raster',
-        tiles: [
-          'https://maps.nyc.gov/xyz/1.0.0/photo/2010/{z}/{x}/{y}.png8',
-        ],
+        tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2010/{z}/{x}/{y}.png8'],
         'tile-size': 256,
         meta: {
           description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-          url: [
-            'https://maps.nyc.gov/tiles/',
-          ],
+          url: ['https://maps.nyc.gov/tiles/'],
           updated_at: 'n/a',
         },
       },
@@ -5619,15 +4963,11 @@ export default {
       attributes: {
         id: 'aerials-2012',
         type: 'raster',
-        tiles: [
-          'https://maps.nyc.gov/xyz/1.0.0/photo/2012/{z}/{x}/{y}.png8',
-        ],
+        tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2012/{z}/{x}/{y}.png8'],
         'tile-size': 256,
         meta: {
           description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-          url: [
-            'https://maps.nyc.gov/tiles/',
-          ],
+          url: ['https://maps.nyc.gov/tiles/'],
           updated_at: 'n/a',
         },
       },
@@ -5638,15 +4978,11 @@ export default {
       attributes: {
         id: 'aerials-2014',
         type: 'raster',
-        tiles: [
-          'https://maps.nyc.gov/xyz/1.0.0/photo/2014/{z}/{x}/{y}.png8',
-        ],
+        tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2014/{z}/{x}/{y}.png8'],
         'tile-size': 256,
         meta: {
           description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-          url: [
-            'https://maps.nyc.gov/tiles/',
-          ],
+          url: ['https://maps.nyc.gov/tiles/'],
           updated_at: 'n/a',
         },
       },
@@ -5657,15 +4993,11 @@ export default {
       attributes: {
         id: 'aerials-2016',
         type: 'raster',
-        tiles: [
-          'https://maps.nyc.gov/xyz/1.0.0/photo/2016/{z}/{x}/{y}.png8',
-        ],
+        tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2016/{z}/{x}/{y}.png8'],
         'tile-size': 256,
         meta: {
           description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-          url: [
-            'https://maps.nyc.gov/tiles/',
-          ],
+          url: ['https://maps.nyc.gov/tiles/'],
           updated_at: 'n/a',
         },
       },
@@ -5686,50 +5018,17 @@ export default {
               property: 'landuse',
               type: 'categorical',
               stops: [
-                [
-                  '01',
-                  '#FEFFA8',
-                ],
-                [
-                  '02',
-                  '#FCB842',
-                ],
-                [
-                  '03',
-                  '#B16E00',
-                ],
-                [
-                  '04',
-                  '#ff8341',
-                ],
-                [
-                  '05',
-                  '#fc2929',
-                ],
-                [
-                  '06',
-                  '#E362FB',
-                ],
-                [
-                  '07',
-                  '#E0BEEB',
-                ],
-                [
-                  '08',
-                  '#44A3D5',
-                ],
-                [
-                  '09',
-                  '#78D271',
-                ],
-                [
-                  '10',
-                  '#BAB8B6',
-                ],
-                [
-                  '11',
-                  '#555555',
-                ],
+                ['01', '#FEFFA8'],
+                ['02', '#FCB842'],
+                ['03', '#B16E00'],
+                ['04', '#ff8341'],
+                ['05', '#fc2929'],
+                ['06', '#E362FB'],
+                ['07', '#E0BEEB'],
+                ['08', '#44A3D5'],
+                ['09', '#78D271'],
+                ['10', '#BAB8B6'],
+                ['11', '#555555'],
               ],
               default: '#EEEEEE',
             },
@@ -5763,14 +5062,8 @@ export default {
             'line-color': 'rgba(130, 130, 130, 1)',
             'line-opacity': {
               stops: [
-                [
-                  15,
-                  0,
-                ],
-                [
-                  16,
-                  1,
-                ],
+                [15, 0],
+                [16, 1],
               ],
             },
           },
@@ -5795,24 +5088,15 @@ export default {
           minzoom: 15,
           layout: {
             'text-field': '{lot}',
-            'text-font': [
-              'Open Sans Regular',
-              'Arial Unicode MS Regular',
-            ],
+            'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
             'text-size': 11,
             visibility: 'visible',
           },
           paint: {
             'text-opacity': {
               stops: [
-                [
-                  16.5,
-                  0,
-                ],
-                [
-                  17.5,
-                  1,
-                ],
+                [16.5, 0],
+                [17.5, 1],
               ],
             },
             'icon-color': 'rgba(193, 193, 193, 1)',
@@ -5863,14 +5147,8 @@ export default {
           paint: {
             'circle-radius': {
               stops: [
-                [
-                  10,
-                  3,
-                ],
-                [
-                  15,
-                  7,
-                ],
+                [10, 3],
+                [15, 7],
               ],
             },
             'circle-color': '#012700',
@@ -5897,28 +5175,16 @@ export default {
           paint: {
             'circle-radius': {
               stops: [
-                [
-                  10,
-                  1,
-                ],
-                [
-                  15,
-                  5,
-                ],
+                [10, 1],
+                [15, 5],
               ],
             },
             'circle-color': {
               property: 'lm_type',
               type: 'categorical',
               stops: [
-                [
-                  'Individual Landmark',
-                  'rgba(147, 245, 201, 1)',
-                ],
-                [
-                  'Interior Landmark',
-                  'rgba(152, 152, 247, 1)',
-                ],
+                ['Individual Landmark', 'rgba(147, 245, 201, 1)'],
+                ['Interior Landmark', 'rgba(152, 152, 247, 1)'],
               ],
             },
             'circle-opacity': 0.7,
@@ -5947,21 +5213,12 @@ export default {
           paint: {
             'line-width': {
               stops: [
-                [
-                  11,
-                  1,
-                ],
-                [
-                  12,
-                  3,
-                ],
+                [11, 1],
+                [12, 3],
               ],
             },
             'line-color': 'rgba(153, 18, 237, 0.6)',
-            'line-dasharray': [
-              1,
-              1,
-            ],
+            'line-dasharray': [1, 1],
           },
           layout: {
             visibility: 'none',
@@ -6008,27 +5265,15 @@ export default {
           paint: {
             'circle-radius': {
               stops: [
-                [
-                  16,
-                  2,
-                ],
-                [
-                  17,
-                  5,
-                ],
+                [16, 2],
+                [17, 5],
               ],
             },
             'circle-color': 'rgba(255, 255, 255, 0.65)',
             'circle-stroke-opacity': {
               stops: [
-                [
-                  15,
-                  1,
-                ],
-                [
-                  16,
-                  1,
-                ],
+                [15, 1],
+                [16, 1],
               ],
             },
             'circle-stroke-color': 'rgba(52, 33, 220, 1)',
@@ -6046,7 +5291,8 @@ export default {
         clickable: true,
         highlightable: true,
         tooltipable: true,
-        'tooltip-template': "{{fa-icon icon='external-link-alt'}} E-designation, E-Number: {{{enumber}}}, CEQR: {{{ceqr_num}}}, ULURP: {{{ulurp_num}}}",
+        'tooltip-template':
+          "{{fa-icon icon='external-link-alt'}} E-designation, E-Number: {{{enumber}}}, CEQR: {{{ceqr_num}}}, ULURP: {{{ulurp_num}}}",
       },
     },
     {
@@ -6068,14 +5314,8 @@ export default {
           paint: {
             'text-opacity': {
               stops: [
-                [
-                  16,
-                  0,
-                ],
-                [
-                  17,
-                  1,
-                ],
+                [16, 0],
+                [17, 1],
               ],
             },
           },
@@ -6091,12 +5331,10 @@ export default {
       version: 8,
       name: 'NYCPlanning Positron',
       metadata: {
-        attribution: 'Based on OpenMapTiles Positron style: https://github.com/openmaptiles/positron-gl-style',
+        attribution:
+          'Based on OpenMapTiles Positron style: https://github.com/openmaptiles/positron-gl-style',
       },
-      center: [
-        -73.869324,
-        40.815888,
-      ],
+      center: [-73.869324, 40.815888],
       zoom: 9.72,
       bearing: 0,
       pitch: 0,
@@ -6132,105 +5370,77 @@ export default {
         'aerials-2016': {
           id: 'aerials-2016',
           type: 'raster',
-          tiles: [
-            'https://maps.nyc.gov/xyz/1.0.0/photo/2016/{z}/{x}/{y}.png8',
-          ],
+          tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2016/{z}/{x}/{y}.png8'],
           tileSize: 256,
           meta: {
             description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-            url: [
-              'https://maps.nyc.gov/tiles/',
-            ],
+            url: ['https://maps.nyc.gov/tiles/'],
             updated_at: 'n/a',
           },
         },
         'aerials-2014': {
           id: 'aerials-2014',
           type: 'raster',
-          tiles: [
-            'https://maps.nyc.gov/xyz/1.0.0/photo/2014/{z}/{x}/{y}.png8',
-          ],
+          tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2014/{z}/{x}/{y}.png8'],
           tileSize: 256,
           meta: {
             description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-            url: [
-              'https://maps.nyc.gov/tiles/',
-            ],
+            url: ['https://maps.nyc.gov/tiles/'],
             updated_at: 'n/a',
           },
         },
         'aerials-2012': {
           id: 'aerials-2012',
           type: 'raster',
-          tiles: [
-            'https://maps.nyc.gov/xyz/1.0.0/photo/2012/{z}/{x}/{y}.png8',
-          ],
+          tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2012/{z}/{x}/{y}.png8'],
           tileSize: 256,
           meta: {
             description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-            url: [
-              'https://maps.nyc.gov/tiles/',
-            ],
+            url: ['https://maps.nyc.gov/tiles/'],
             updated_at: 'n/a',
           },
         },
         'aerials-2010': {
           id: 'aerials-2010',
           type: 'raster',
-          tiles: [
-            'https://maps.nyc.gov/xyz/1.0.0/photo/2010/{z}/{x}/{y}.png8',
-          ],
+          tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2010/{z}/{x}/{y}.png8'],
           tileSize: 256,
           meta: {
             description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-            url: [
-              'https://maps.nyc.gov/tiles/',
-            ],
+            url: ['https://maps.nyc.gov/tiles/'],
             updated_at: 'n/a',
           },
         },
         'aerials-2008': {
           id: 'aerials-2008',
           type: 'raster',
-          tiles: [
-            'https://maps.nyc.gov/xyz/1.0.0/photo/2008/{z}/{x}/{y}.png8',
-          ],
+          tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2008/{z}/{x}/{y}.png8'],
           tileSize: 256,
           meta: {
             description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-            url: [
-              'https://maps.nyc.gov/tiles/',
-            ],
+            url: ['https://maps.nyc.gov/tiles/'],
             updated_at: 'n/a',
           },
         },
         'aerials-2006': {
           id: 'aerials-2006',
           type: 'raster',
-          tiles: [
-            'https://maps.nyc.gov/xyz/1.0.0/photo/2006/{z}/{x}/{y}.png8',
-          ],
+          tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2006/{z}/{x}/{y}.png8'],
           tileSize: 256,
           meta: {
             description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-            url: [
-              'https://maps.nyc.gov/tiles/',
-            ],
+            url: ['https://maps.nyc.gov/tiles/'],
             updated_at: 'n/a',
           },
         },
         'aerials-2004': {
           id: 'aerials-2004',
           type: 'raster',
-          tiles: [
-            'https://maps.nyc.gov/xyz/1.0.0/photo/2004/{z}/{x}/{y}.png8',
-          ],
+          tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/2004/{z}/{x}/{y}.png8'],
           tileSize: 256,
           meta: {
             description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-            url: [
-              'https://maps.nyc.gov/tiles/',
-            ],
+            url: ['https://maps.nyc.gov/tiles/'],
             updated_at: 'n/a',
           },
         },
@@ -6243,54 +5453,40 @@ export default {
           tileSize: 256,
           meta: {
             description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-            url: [
-              'https://maps.nyc.gov/tiles/',
-            ],
+            url: ['https://maps.nyc.gov/tiles/'],
             updated_at: 'n/a',
           },
         },
         'aerials-1996': {
           id: 'aerials-1996',
           type: 'raster',
-          tiles: [
-            'https://maps.nyc.gov/xyz/1.0.0/photo/1996/{z}/{x}/{y}.png8',
-          ],
+          tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/1996/{z}/{x}/{y}.png8'],
           tileSize: 256,
           meta: {
             description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-            url: [
-              'https://maps.nyc.gov/tiles/',
-            ],
+            url: ['https://maps.nyc.gov/tiles/'],
             updated_at: 'n/a',
           },
         },
         'aerials-1951': {
           id: 'aerials-1951',
           type: 'raster',
-          tiles: [
-            'https://maps.nyc.gov/xyz/1.0.0/photo/1951/{z}/{x}/{y}.png8',
-          ],
+          tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/1951/{z}/{x}/{y}.png8'],
           tileSize: 256,
           meta: {
             description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-            url: [
-              'https://maps.nyc.gov/tiles/',
-            ],
+            url: ['https://maps.nyc.gov/tiles/'],
             updated_at: 'n/a',
           },
         },
         'aerials-1924': {
           id: 'aerials-1924',
           type: 'raster',
-          tiles: [
-            'https://maps.nyc.gov/xyz/1.0.0/photo/1924/{z}/{x}/{y}.png8',
-          ],
+          tiles: ['https://maps.nyc.gov/xyz/1.0.0/photo/1924/{z}/{x}/{y}.png8'],
           tileSize: 256,
           meta: {
             description: 'NYC DoITT GIS Aerial Photography Tile Layers (TMS)',
-            url: [
-              'https://maps.nyc.gov/tiles/',
-            ],
+            url: ['https://maps.nyc.gov/tiles/'],
             updated_at: 'n/a',
           },
         },
@@ -6367,8 +5563,10 @@ export default {
           ],
         },
       },
-      sprite: 'https://labs-mapbox-gl-noop-tiles.nyc3.digitaloceanspaces.com/static/sprite@2x',
-      glyphs: 'https://labs-mapbox-gl-noop-tiles.nyc3.digitaloceanspaces.com/fonts/dummy-font.pbf?noop={fontstack}{range}',
+      sprite:
+        'https://labs-mapbox-gl-noop-tiles.nyc3.digitaloceanspaces.com/static/sprite@2x',
+      glyphs:
+        'https://labs-mapbox-gl-noop-tiles.nyc3.digitaloceanspaces.com/fonts/dummy-font.pbf?noop={fontstack}{range}',
       layers: [
         {
           id: 'background',
@@ -6382,11 +5580,7 @@ export default {
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'park',
-          filter: [
-            '==',
-            '$type',
-            'Polygon',
-          ],
+          filter: ['==', '$type', 'Polygon'],
           layout: {
             visibility: 'visible',
           },
@@ -6399,11 +5593,7 @@ export default {
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'water',
-          filter: [
-            '==',
-            '$type',
-            'Polygon',
-          ],
+          filter: ['==', '$type', 'Polygon'],
           layout: {
             visibility: 'visible',
           },
@@ -6420,16 +5610,8 @@ export default {
           maxzoom: 8,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'Polygon',
-            ],
-            [
-              '==',
-              'subclass',
-              'ice_shelf',
-            ],
+            ['==', '$type', 'Polygon'],
+            ['==', 'subclass', 'ice_shelf'],
           ],
           layout: {
             visibility: 'visible',
@@ -6447,16 +5629,8 @@ export default {
           maxzoom: 8,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'Polygon',
-            ],
-            [
-              '==',
-              'subclass',
-              'glacier',
-            ],
+            ['==', '$type', 'Polygon'],
+            ['==', 'subclass', 'glacier'],
           ],
           layout: {
             visibility: 'visible',
@@ -6466,14 +5640,8 @@ export default {
             'fill-opacity': {
               base: 1,
               stops: [
-                [
-                  0,
-                  1,
-                ],
-                [
-                  8,
-                  0.5,
-                ],
+                [0, 1],
+                [8, 0.5],
               ],
             },
           },
@@ -6486,16 +5654,8 @@ export default {
           maxzoom: 16,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'Polygon',
-            ],
-            [
-              '==',
-              'class',
-              'residential',
-            ],
+            ['==', '$type', 'Polygon'],
+            ['==', 'class', 'residential'],
           ],
           layout: {
             visibility: 'visible',
@@ -6505,14 +5665,8 @@ export default {
             'fill-opacity': {
               base: 0.6,
               stops: [
-                [
-                  8,
-                  0.8,
-                ],
-                [
-                  9,
-                  0.6,
-                ],
+                [8, 0.8],
+                [9, 0.6],
               ],
             },
           },
@@ -6523,19 +5677,7 @@ export default {
           source: 'openmaptiles',
           'source-layer': 'landcover',
           minzoom: 10,
-          filter: [
-            'all',
-            [
-              '==',
-              '$type',
-              'Polygon',
-            ],
-            [
-              '==',
-              'class',
-              'grass',
-            ],
-          ],
+          filter: ['all', ['==', '$type', 'Polygon'], ['==', 'class', 'grass']],
           layout: {
             visibility: 'visible',
           },
@@ -6544,14 +5686,8 @@ export default {
             'fill-opacity': {
               base: 1,
               stops: [
-                [
-                  8,
-                  0,
-                ],
-                [
-                  12,
-                  1,
-                ],
+                [8, 0],
+                [12, 1],
               ],
             },
           },
@@ -6559,16 +5695,10 @@ export default {
         {
           id: 'landuse_cemetery',
           type: 'fill',
-          metadata: {
-
-          },
+          metadata: {},
           source: 'openmaptiles',
           'source-layer': 'landuse',
-          filter: [
-            '==',
-            'class',
-            'cemetery',
-          ],
+          filter: ['==', 'class', 'cemetery'],
           layout: {
             visibility: 'visible',
           },
@@ -6581,20 +5711,13 @@ export default {
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'waterway',
-          filter: [
-            '==',
-            '$type',
-            'LineString',
-          ],
+          filter: ['==', '$type', 'LineString'],
           layout: {
             visibility: 'visible',
           },
           paint: {
             'line-color': '#bbccdd',
-            'line-dasharray': [
-              3,
-              3,
-            ],
+            'line-dasharray': [3, 3],
           },
         },
         {
@@ -6602,20 +5725,13 @@ export default {
           type: 'symbol',
           source: 'openmaptiles',
           'source-layer': 'water_name',
-          filter: [
-            '==',
-            '$type',
-            'LineString',
-          ],
+          filter: ['==', '$type', 'LineString'],
           layout: {
             'text-field': '{name:latin}\n{name:nonlatin}',
             'symbol-placement': 'line',
             'text-rotation-alignment': 'map',
             'symbol-spacing': 500,
-            'text-font': [
-              'Metropolis Medium Italic',
-              'Noto Sans Italic',
-            ],
+            'text-font': ['Metropolis Medium Italic', 'Noto Sans Italic'],
             'text-size': 12,
           },
           paint: {
@@ -6636,9 +5752,7 @@ export default {
             'fill-outline-color': 'rgb(219, 219, 218)',
             'fill-antialias': true,
           },
-          filter: [
-            'all',
-          ],
+          filter: ['all'],
         },
         {
           id: 'tunnel_motorway_casing',
@@ -6651,24 +5765,8 @@ export default {
           minzoom: 6,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              'all',
-              [
-                '==',
-                'brunnel',
-                'tunnel',
-              ],
-              [
-                '==',
-                'class',
-                'motorway',
-              ],
-            ],
+            ['==', '$type', 'LineString'],
+            ['all', ['==', 'brunnel', 'tunnel'], ['==', 'class', 'motorway']],
           ],
           layout: {
             'line-cap': 'butt',
@@ -6680,18 +5778,9 @@ export default {
             'line-width': {
               base: 1.4,
               stops: [
-                [
-                  5.8,
-                  0,
-                ],
-                [
-                  6,
-                  3,
-                ],
-                [
-                  20,
-                  40,
-                ],
+                [5.8, 0],
+                [6, 3],
+                [20, 40],
               ],
             },
             'line-opacity': 1,
@@ -6708,24 +5797,8 @@ export default {
           minzoom: 6,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              'all',
-              [
-                '==',
-                'brunnel',
-                'tunnel',
-              ],
-              [
-                '==',
-                'class',
-                'motorway',
-              ],
-            ],
+            ['==', '$type', 'LineString'],
+            ['all', ['==', 'brunnel', 'tunnel'], ['==', 'class', 'motorway']],
           ],
           layout: {
             'line-cap': 'round',
@@ -6737,18 +5810,9 @@ export default {
             'line-width': {
               base: 1.4,
               stops: [
-                [
-                  4,
-                  2,
-                ],
-                [
-                  6,
-                  1.3,
-                ],
-                [
-                  20,
-                  30,
-                ],
+                [4, 2],
+                [6, 1.3],
+                [20, 30],
               ],
             },
           },
@@ -6762,14 +5826,7 @@ export default {
           source: 'openmaptiles',
           'source-layer': 'aeroway',
           minzoom: 12,
-          filter: [
-            'all',
-            [
-              'in',
-              'class',
-              'taxiway',
-            ],
-          ],
+          filter: ['all', ['in', 'class', 'taxiway']],
           layout: {
             'line-cap': 'round',
             'line-join': 'round',
@@ -6780,14 +5837,8 @@ export default {
             'line-width': {
               base: 1.55,
               stops: [
-                [
-                  13,
-                  1.8,
-                ],
-                [
-                  20,
-                  20,
-                ],
+                [13, 1.8],
+                [20, 20],
               ],
             },
             'line-opacity': 1,
@@ -6802,14 +5853,7 @@ export default {
           source: 'openmaptiles',
           'source-layer': 'aeroway',
           minzoom: 11,
-          filter: [
-            'all',
-            [
-              'in',
-              'class',
-              'runway',
-            ],
-          ],
+          filter: ['all', ['in', 'class', 'runway']],
           layout: {
             'line-cap': 'round',
             'line-join': 'round',
@@ -6820,14 +5864,8 @@ export default {
             'line-width': {
               base: 1.5,
               stops: [
-                [
-                  11,
-                  6,
-                ],
-                [
-                  17,
-                  55,
-                ],
+                [11, 6],
+                [17, 55],
               ],
             },
             'line-opacity': 1,
@@ -6844,17 +5882,8 @@ export default {
           minzoom: 4,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'Polygon',
-            ],
-            [
-              'in',
-              'class',
-              'runway',
-              'taxiway',
-            ],
+            ['==', '$type', 'Polygon'],
+            ['in', 'class', 'runway', 'taxiway'],
           ],
           layout: {
             visibility: 'visible',
@@ -6863,14 +5892,8 @@ export default {
             'fill-opacity': {
               base: 1,
               stops: [
-                [
-                  13,
-                  0,
-                ],
-                [
-                  14,
-                  1,
-                ],
+                [13, 0],
+                [14, 1],
               ],
             },
             'fill-color': 'rgba(255, 255, 255, 1)',
@@ -6888,16 +5911,8 @@ export default {
           maxzoom: 24,
           filter: [
             'all',
-            [
-              'in',
-              'class',
-              'runway',
-            ],
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
+            ['in', 'class', 'runway'],
+            ['==', '$type', 'LineString'],
           ],
           layout: {
             'line-cap': 'round',
@@ -6909,14 +5924,8 @@ export default {
             'line-width': {
               base: 1.5,
               stops: [
-                [
-                  11,
-                  4,
-                ],
-                [
-                  17,
-                  50,
-                ],
+                [11, 4],
+                [17, 50],
               ],
             },
             'line-opacity': 1,
@@ -6932,16 +5941,8 @@ export default {
           'source-layer': 'transportation',
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              '==',
-              'class',
-              'path',
-            ],
+            ['==', '$type', 'LineString'],
+            ['==', 'class', 'path'],
           ],
           layout: {
             'line-cap': 'round',
@@ -6953,14 +5954,8 @@ export default {
             'line-width': {
               base: 1.2,
               stops: [
-                [
-                  13,
-                  1,
-                ],
-                [
-                  20,
-                  10,
-                ],
+                [13, 1],
+                [20, 10],
               ],
             },
             'line-opacity': 0.9,
@@ -6977,18 +5972,8 @@ export default {
           minzoom: 8,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              'in',
-              'class',
-              'minor',
-              'service',
-              'track',
-            ],
+            ['==', '$type', 'LineString'],
+            ['in', 'class', 'minor', 'service', 'track'],
           ],
           layout: {
             'line-cap': 'round',
@@ -7000,14 +5985,8 @@ export default {
             'line-width': {
               base: 1.55,
               stops: [
-                [
-                  13,
-                  1.8,
-                ],
-                [
-                  20,
-                  20,
-                ],
+                [13, 1.8],
+                [20, 20],
               ],
             },
             'line-opacity': 0.9,
@@ -7024,19 +6003,8 @@ export default {
           minzoom: 11,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              'in',
-              'class',
-              'primary',
-              'secondary',
-              'tertiary',
-              'trunk',
-            ],
+            ['==', '$type', 'LineString'],
+            ['in', 'class', 'primary', 'secondary', 'tertiary', 'trunk'],
           ],
           layout: {
             'line-cap': 'butt',
@@ -7045,21 +6013,12 @@ export default {
           },
           paint: {
             'line-color': 'rgb(213, 213, 213)',
-            'line-dasharray': [
-              12,
-              0,
-            ],
+            'line-dasharray': [12, 0],
             'line-width': {
               base: 1.3,
               stops: [
-                [
-                  10,
-                  3,
-                ],
-                [
-                  20,
-                  23,
-                ],
+                [10, 3],
+                [20, 23],
               ],
             },
           },
@@ -7075,19 +6034,8 @@ export default {
           minzoom: 11,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              'in',
-              'class',
-              'primary',
-              'secondary',
-              'tertiary',
-              'trunk',
-            ],
+            ['==', '$type', 'LineString'],
+            ['in', 'class', 'primary', 'secondary', 'tertiary', 'trunk'],
           ],
           layout: {
             'line-cap': 'round',
@@ -7099,14 +6047,8 @@ export default {
             'line-width': {
               base: 1.3,
               stops: [
-                [
-                  10,
-                  2,
-                ],
-                [
-                  20,
-                  20,
-                ],
+                [10, 2],
+                [20, 20],
               ],
             },
           },
@@ -7122,19 +6064,8 @@ export default {
           maxzoom: 11,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              'in',
-              'class',
-              'primary',
-              'secondary',
-              'tertiary',
-              'trunk',
-            ],
+            ['==', '$type', 'LineString'],
+            ['in', 'class', 'primary', 'secondary', 'tertiary', 'trunk'],
           ],
           layout: {
             'line-cap': 'round',
@@ -7157,24 +6088,11 @@ export default {
           minzoom: 6,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
+            ['==', '$type', 'LineString'],
             [
               'all',
-              [
-                '!in',
-                'brunnel',
-                'bridge',
-                'tunnel',
-              ],
-              [
-                '==',
-                'class',
-                'motorway',
-              ],
+              ['!in', 'brunnel', 'bridge', 'tunnel'],
+              ['==', 'class', 'motorway'],
             ],
           ],
           layout: {
@@ -7187,24 +6105,12 @@ export default {
             'line-width': {
               base: 1.4,
               stops: [
-                [
-                  5.8,
-                  0,
-                ],
-                [
-                  6,
-                  3,
-                ],
-                [
-                  20,
-                  40,
-                ],
+                [5.8, 0],
+                [6, 3],
+                [20, 40],
               ],
             },
-            'line-dasharray': [
-              2,
-              0,
-            ],
+            'line-dasharray': [2, 0],
             'line-opacity': 1,
           },
         },
@@ -7219,24 +6125,11 @@ export default {
           minzoom: 6,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
+            ['==', '$type', 'LineString'],
             [
               'all',
-              [
-                '!in',
-                'brunnel',
-                'bridge',
-                'tunnel',
-              ],
-              [
-                '==',
-                'class',
-                'motorway',
-              ],
+              ['!in', 'brunnel', 'bridge', 'tunnel'],
+              ['==', 'class', 'motorway'],
             ],
           ],
           layout: {
@@ -7248,31 +6141,16 @@ export default {
             'line-color': {
               base: 1,
               stops: [
-                [
-                  5.8,
-                  'hsla(0, 0%, 85%, 0.53)',
-                ],
-                [
-                  6,
-                  '#fff',
-                ],
+                [5.8, 'hsla(0, 0%, 85%, 0.53)'],
+                [6, '#fff'],
               ],
             },
             'line-width': {
               base: 1.4,
               stops: [
-                [
-                  4,
-                  2,
-                ],
-                [
-                  6,
-                  1.3,
-                ],
-                [
-                  20,
-                  30,
-                ],
+                [4, 2],
+                [6, 1.3],
+                [20, 30],
               ],
             },
           },
@@ -7288,16 +6166,8 @@ export default {
           maxzoom: 6,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              '==',
-              'class',
-              'motorway',
-            ],
+            ['==', '$type', 'LineString'],
+            ['==', 'class', 'motorway'],
           ],
           layout: {
             'line-cap': 'round',
@@ -7309,14 +6179,8 @@ export default {
             'line-width': {
               base: 1.4,
               stops: [
-                [
-                  4,
-                  2,
-                ],
-                [
-                  6,
-                  1.3,
-                ],
+                [4, 2],
+                [6, 1.3],
               ],
             },
           },
@@ -7332,24 +6196,8 @@ export default {
           minzoom: 16,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              'all',
-              [
-                '==',
-                'class',
-                'transit',
-              ],
-              [
-                '!in',
-                'brunnel',
-                'tunnel',
-              ],
-            ],
+            ['==', '$type', 'LineString'],
+            ['all', ['==', 'class', 'transit'], ['!in', 'brunnel', 'tunnel']],
           ],
           layout: {
             visibility: 'visible',
@@ -7371,24 +6219,8 @@ export default {
           minzoom: 16,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              'all',
-              [
-                '==',
-                'class',
-                'transit',
-              ],
-              [
-                '!in',
-                'brunnel',
-                'tunnel',
-              ],
-            ],
+            ['==', '$type', 'LineString'],
+            ['all', ['==', 'class', 'transit'], ['!in', 'brunnel', 'tunnel']],
           ],
           layout: {
             visibility: 'visible',
@@ -7397,10 +6229,7 @@ export default {
           paint: {
             'line-color': '#fafafa',
             'line-width': 2,
-            'line-dasharray': [
-              3,
-              3,
-            ],
+            'line-dasharray': [3, 3],
           },
         },
         {
@@ -7414,23 +6243,8 @@ export default {
           minzoom: 16,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              'all',
-              [
-                '==',
-                'class',
-                'rail',
-              ],
-              [
-                'has',
-                'service',
-              ],
-            ],
+            ['==', '$type', 'LineString'],
+            ['all', ['==', 'class', 'rail'], ['has', 'service']],
           ],
           layout: {
             visibility: 'visible',
@@ -7452,20 +6266,9 @@ export default {
           minzoom: 16,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              '==',
-              'class',
-              'rail',
-            ],
-            [
-              'has',
-              'service',
-            ],
+            ['==', '$type', 'LineString'],
+            ['==', 'class', 'rail'],
+            ['has', 'service'],
           ],
           layout: {
             visibility: 'visible',
@@ -7474,10 +6277,7 @@ export default {
           paint: {
             'line-color': '#fafafa',
             'line-width': 2,
-            'line-dasharray': [
-              3,
-              3,
-            ],
+            'line-dasharray': [3, 3],
           },
         },
         {
@@ -7491,23 +6291,8 @@ export default {
           minzoom: 13,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              'all',
-              [
-                '!has',
-                'service',
-              ],
-              [
-                '==',
-                'class',
-                'rail',
-              ],
-            ],
+            ['==', '$type', 'LineString'],
+            ['all', ['!has', 'service'], ['==', 'class', 'rail']],
           ],
           layout: {
             visibility: 'visible',
@@ -7518,14 +6303,8 @@ export default {
             'line-width': {
               base: 1.3,
               stops: [
-                [
-                  16,
-                  3,
-                ],
-                [
-                  20,
-                  7,
-                ],
+                [16, 3],
+                [20, 7],
               ],
             },
           },
@@ -7541,23 +6320,8 @@ export default {
           minzoom: 13,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              'all',
-              [
-                '!has',
-                'service',
-              ],
-              [
-                '==',
-                'class',
-                'rail',
-              ],
-            ],
+            ['==', '$type', 'LineString'],
+            ['all', ['!has', 'service'], ['==', 'class', 'rail']],
           ],
           layout: {
             visibility: 'visible',
@@ -7568,20 +6332,11 @@ export default {
             'line-width': {
               base: 1.3,
               stops: [
-                [
-                  16,
-                  2,
-                ],
-                [
-                  20,
-                  6,
-                ],
+                [16, 2],
+                [20, 6],
               ],
             },
-            'line-dasharray': [
-              3,
-              3,
-            ],
+            'line-dasharray': [3, 3],
           },
         },
         {
@@ -7595,24 +6350,8 @@ export default {
           minzoom: 6,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              'all',
-              [
-                '==',
-                'brunnel',
-                'bridge',
-              ],
-              [
-                '==',
-                'class',
-                'motorway',
-              ],
-            ],
+            ['==', '$type', 'LineString'],
+            ['all', ['==', 'brunnel', 'bridge'], ['==', 'class', 'motorway']],
           ],
           layout: {
             'line-cap': 'butt',
@@ -7624,24 +6363,12 @@ export default {
             'line-width': {
               base: 1.4,
               stops: [
-                [
-                  5.8,
-                  0,
-                ],
-                [
-                  6,
-                  5,
-                ],
-                [
-                  20,
-                  45,
-                ],
+                [5.8, 0],
+                [6, 5],
+                [20, 45],
               ],
             },
-            'line-dasharray': [
-              2,
-              0,
-            ],
+            'line-dasharray': [2, 0],
             'line-opacity': 1,
           },
         },
@@ -7656,24 +6383,8 @@ export default {
           minzoom: 6,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              'all',
-              [
-                '==',
-                'brunnel',
-                'bridge',
-              ],
-              [
-                '==',
-                'class',
-                'motorway',
-              ],
-            ],
+            ['==', '$type', 'LineString'],
+            ['all', ['==', 'brunnel', 'bridge'], ['==', 'class', 'motorway']],
           ],
           layout: {
             'line-cap': 'round',
@@ -7684,31 +6395,16 @@ export default {
             'line-color': {
               base: 1,
               stops: [
-                [
-                  5.8,
-                  'hsla(0, 0%, 85%, 0.53)',
-                ],
-                [
-                  6,
-                  '#fff',
-                ],
+                [5.8, 'hsla(0, 0%, 85%, 0.53)'],
+                [6, '#fff'],
               ],
             },
             'line-width': {
               base: 1.4,
               stops: [
-                [
-                  4,
-                  2,
-                ],
-                [
-                  6,
-                  1.3,
-                ],
-                [
-                  20,
-                  30,
-                ],
+                [4, 2],
+                [6, 1.3],
+                [20, 30],
               ],
             },
           },
@@ -7723,26 +6419,15 @@ export default {
           'source-layer': 'transportation_name',
           filter: [
             'all',
-            [
-              '!=',
-              'class',
-              'motorway',
-            ],
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
+            ['!=', 'class', 'motorway'],
+            ['==', '$type', 'LineString'],
           ],
           layout: {
             'text-size': 10,
             'text-max-angle': 30,
             'text-transform': 'uppercase',
             'symbol-spacing': 350,
-            'text-font': [
-              'Metropolis Regular',
-              'Noto Sans Regular',
-            ],
+            'text-font': ['Metropolis Regular', 'Noto Sans Regular'],
             'symbol-placement': 'line',
             visibility: 'visible',
             'text-rotation-alignment': 'map',
@@ -7752,10 +6437,7 @@ export default {
           paint: {
             'text-color': 'rgb(117, 129, 145)',
             'text-halo-color': '#fff',
-            'text-translate': [
-              0,
-              0,
-            ],
+            'text-translate': [0, 0],
             'text-halo-width': 2,
             'text-halo-blur': 1,
           },
@@ -7770,24 +6452,13 @@ export default {
           'source-layer': 'transportation_name',
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'LineString',
-            ],
-            [
-              '==',
-              'class',
-              'motorway',
-            ],
+            ['==', '$type', 'LineString'],
+            ['==', 'class', 'motorway'],
           ],
           layout: {
             'text-size': 10,
             'symbol-spacing': 350,
-            'text-font': [
-              'Metropolis Light',
-              'Noto Sans Regular',
-            ],
+            'text-font': ['Metropolis Light', 'Noto Sans Regular'],
             'symbol-placement': 'line',
             visibility: 'visible',
             'text-rotation-alignment': 'viewport',
@@ -7797,10 +6468,7 @@ export default {
           paint: {
             'text-color': 'rgb(117, 129, 145)',
             'text-halo-color': 'hsl(0, 0%, 100%)',
-            'text-translate': [
-              0,
-              2,
-            ],
+            'text-translate': [0, 2],
             'text-halo-width': 1,
             'text-halo-blur': 1,
           },
@@ -7813,11 +6481,7 @@ export default {
           },
           source: 'openmaptiles',
           'source-layer': 'boundary',
-          filter: [
-            '==',
-            'admin_level',
-            4,
-          ],
+          filter: ['==', 'admin_level', 4],
           layout: {
             'line-cap': 'round',
             'line-join': 'round',
@@ -7828,21 +6492,12 @@ export default {
             'line-width': {
               base: 1.3,
               stops: [
-                [
-                  3,
-                  1,
-                ],
-                [
-                  22,
-                  15,
-                ],
+                [3, 1],
+                [22, 15],
               ],
             },
             'line-blur': 0.4,
-            'line-dasharray': [
-              2,
-              2,
-            ],
+            'line-dasharray': [2, 2],
             'line-opacity': 1,
           },
         },
@@ -7854,11 +6509,7 @@ export default {
           },
           source: 'openmaptiles',
           'source-layer': 'boundary',
-          filter: [
-            '==',
-            'admin_level',
-            2,
-          ],
+          filter: ['==', 'admin_level', 2],
           layout: {
             'line-cap': 'round',
             'line-join': 'round',
@@ -7868,27 +6519,15 @@ export default {
             'line-width': {
               base: 1.1,
               stops: [
-                [
-                  3,
-                  1,
-                ],
-                [
-                  22,
-                  20,
-                ],
+                [3, 1],
+                [22, 20],
               ],
             },
             'line-blur': {
               base: 1,
               stops: [
-                [
-                  0,
-                  0.4,
-                ],
-                [
-                  22,
-                  4,
-                ],
+                [0, 0.4],
+                [22, 4],
               ],
             },
             'line-opacity': 1,
@@ -7913,19 +6552,12 @@ export default {
               'neighbourhood',
               'isolated_dwelling',
             ],
-            [
-              '==',
-              '$type',
-              'Point',
-            ],
+            ['==', '$type', 'Point'],
           ],
           layout: {
             'text-size': 10,
             'text-transform': 'uppercase',
-            'text-font': [
-              'Metropolis Regular',
-              'Noto Sans Regular',
-            ],
+            'text-font': ['Metropolis Regular', 'Noto Sans Regular'],
             'text-justify': 'center',
             visibility: 'visible',
             'text-anchor': 'center',
@@ -7947,26 +6579,11 @@ export default {
           source: 'openmaptiles',
           'source-layer': 'place',
           maxzoom: 15,
-          filter: [
-            'all',
-            [
-              '==',
-              '$type',
-              'Point',
-            ],
-            [
-              '==',
-              'class',
-              'suburb',
-            ],
-          ],
+          filter: ['all', ['==', '$type', 'Point'], ['==', 'class', 'suburb']],
           layout: {
             'text-size': 10,
             'text-transform': 'uppercase',
-            'text-font': [
-              'Metropolis Regular',
-              'Noto Sans Regular',
-            ],
+            'text-font': ['Metropolis Regular', 'Noto Sans Regular'],
             'text-justify': 'center',
             visibility: 'visible',
             'text-anchor': 'center',
@@ -7988,26 +6605,11 @@ export default {
           source: 'openmaptiles',
           'source-layer': 'place',
           maxzoom: 14,
-          filter: [
-            'all',
-            [
-              '==',
-              '$type',
-              'Point',
-            ],
-            [
-              '==',
-              'class',
-              'village',
-            ],
-          ],
+          filter: ['all', ['==', '$type', 'Point'], ['==', 'class', 'village']],
           layout: {
             'text-size': 10,
             'text-transform': 'uppercase',
-            'text-font': [
-              'Metropolis Regular',
-              'Noto Sans Regular',
-            ],
+            'text-font': ['Metropolis Regular', 'Noto Sans Regular'],
             'text-justify': 'center',
             visibility: 'visible',
             'text-anchor': 'center',
@@ -8029,26 +6631,11 @@ export default {
           source: 'openmaptiles',
           'source-layer': 'place',
           maxzoom: 15,
-          filter: [
-            'all',
-            [
-              '==',
-              '$type',
-              'Point',
-            ],
-            [
-              '==',
-              'class',
-              'town',
-            ],
-          ],
+          filter: ['all', ['==', '$type', 'Point'], ['==', 'class', 'town']],
           layout: {
             'text-size': 10,
             'text-transform': 'uppercase',
-            'text-font': [
-              'Metropolis Regular',
-              'Noto Sans Regular',
-            ],
+            'text-font': ['Metropolis Regular', 'Noto Sans Regular'],
             'text-justify': 'center',
             visibility: 'visible',
             'text-anchor': 'center',
@@ -8072,37 +6659,18 @@ export default {
           maxzoom: 14,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'Point',
-            ],
+            ['==', '$type', 'Point'],
             [
               'all',
-              [
-                '!=',
-                'capital',
-                2,
-              ],
-              [
-                '==',
-                'class',
-                'city',
-              ],
-              [
-                '>',
-                'rank',
-                3,
-              ],
+              ['!=', 'capital', 2],
+              ['==', 'class', 'city'],
+              ['>', 'rank', 3],
             ],
           ],
           layout: {
             'text-size': 10,
             'text-transform': 'uppercase',
-            'text-font': [
-              'Metropolis Regular',
-              'Noto Sans Regular',
-            ],
+            'text-font': ['Metropolis Regular', 'Noto Sans Regular'],
             'text-justify': 'center',
             visibility: 'visible',
             'text-anchor': 'center',
@@ -8126,32 +6694,13 @@ export default {
           maxzoom: 12,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'Point',
-            ],
-            [
-              'all',
-              [
-                '==',
-                'capital',
-                2,
-              ],
-              [
-                '==',
-                'class',
-                'city',
-              ],
-            ],
+            ['==', '$type', 'Point'],
+            ['all', ['==', 'capital', 2], ['==', 'class', 'city']],
           ],
           layout: {
             'text-size': 14,
             'text-transform': 'uppercase',
-            'text-font': [
-              'Metropolis Regular',
-              'Noto Sans Regular',
-            ],
+            'text-font': ['Metropolis Regular', 'Noto Sans Regular'],
             'text-justify': 'center',
             visibility: 'visible',
             'text-anchor': 'center',
@@ -8175,37 +6724,18 @@ export default {
           maxzoom: 12,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'Point',
-            ],
+            ['==', '$type', 'Point'],
             [
               'all',
-              [
-                '!=',
-                'capital',
-                2,
-              ],
-              [
-                '<=',
-                'rank',
-                3,
-              ],
-              [
-                '==',
-                'class',
-                'city',
-              ],
+              ['!=', 'capital', 2],
+              ['<=', 'rank', 3],
+              ['==', 'class', 'city'],
             ],
           ],
           layout: {
             'text-size': 14,
             'text-transform': 'uppercase',
-            'text-font': [
-              'Metropolis Regular',
-              'Noto Sans Regular',
-            ],
+            'text-font': ['Metropolis Regular', 'Noto Sans Regular'],
             'text-justify': 'center',
             visibility: 'visible',
             'text-field': '{name:latin}\n{name:nonlatin}',
@@ -8226,26 +6756,11 @@ export default {
           source: 'openmaptiles',
           'source-layer': 'place',
           maxzoom: 12,
-          filter: [
-            'all',
-            [
-              '==',
-              '$type',
-              'Point',
-            ],
-            [
-              '==',
-              'class',
-              'state',
-            ],
-          ],
+          filter: ['all', ['==', '$type', 'Point'], ['==', 'class', 'state']],
           layout: {
             visibility: 'visible',
             'text-field': '{name:latin}\n{name:nonlatin}',
-            'text-font': [
-              'Metropolis Regular',
-              'Noto Sans Regular',
-            ],
+            'text-font': ['Metropolis Regular', 'Noto Sans Regular'],
             'text-transform': 'uppercase',
             'text-size': 10,
           },
@@ -8267,40 +6782,20 @@ export default {
           maxzoom: 8,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'Point',
-            ],
-            [
-              '==',
-              'class',
-              'country',
-            ],
-            [
-              '!has',
-              'iso_a2',
-            ],
+            ['==', '$type', 'Point'],
+            ['==', 'class', 'country'],
+            ['!has', 'iso_a2'],
           ],
           layout: {
             visibility: 'visible',
             'text-field': '{name:latin}',
-            'text-font': [
-              'Metropolis Light Italic',
-              'Noto Sans Italic',
-            ],
+            'text-font': ['Metropolis Light Italic', 'Noto Sans Italic'],
             'text-transform': 'uppercase',
             'text-size': {
               base: 1,
               stops: [
-                [
-                  0,
-                  9,
-                ],
-                [
-                  6,
-                  11,
-                ],
+                [0, 9],
+                [6, 11],
               ],
             },
           },
@@ -8310,14 +6805,8 @@ export default {
             'text-color': {
               base: 1,
               stops: [
-                [
-                  3,
-                  'rgb(157,169,177)',
-                ],
-                [
-                  4,
-                  'rgb(153, 153, 153)',
-                ],
+                [3, 'rgb(157,169,177)'],
+                [4, 'rgb(153, 153, 153)'],
               ],
             },
           },
@@ -8333,45 +6822,21 @@ export default {
           maxzoom: 8,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'Point',
-            ],
-            [
-              '==',
-              'class',
-              'country',
-            ],
-            [
-              '>=',
-              'rank',
-              2,
-            ],
-            [
-              'has',
-              'iso_a2',
-            ],
+            ['==', '$type', 'Point'],
+            ['==', 'class', 'country'],
+            ['>=', 'rank', 2],
+            ['has', 'iso_a2'],
           ],
           layout: {
             visibility: 'visible',
             'text-field': '{name:latin}',
-            'text-font': [
-              'Metropolis Regular',
-              'Noto Sans Regular',
-            ],
+            'text-font': ['Metropolis Regular', 'Noto Sans Regular'],
             'text-transform': 'uppercase',
             'text-size': {
               base: 1,
               stops: [
-                [
-                  0,
-                  10,
-                ],
-                [
-                  6,
-                  12,
-                ],
+                [0, 10],
+                [6, 12],
               ],
             },
           },
@@ -8381,14 +6846,8 @@ export default {
             'text-color': {
               base: 1,
               stops: [
-                [
-                  3,
-                  'rgb(157,169,177)',
-                ],
-                [
-                  4,
-                  'rgb(153, 153, 153)',
-                ],
+                [3, 'rgb(157,169,177)'],
+                [4, 'rgb(153, 153, 153)'],
               ],
             },
           },
@@ -8404,49 +6863,22 @@ export default {
           maxzoom: 6,
           filter: [
             'all',
-            [
-              '==',
-              '$type',
-              'Point',
-            ],
-            [
-              '<=',
-              'rank',
-              1,
-            ],
-            [
-              '==',
-              'class',
-              'country',
-            ],
-            [
-              'has',
-              'iso_a2',
-            ],
+            ['==', '$type', 'Point'],
+            ['<=', 'rank', 1],
+            ['==', 'class', 'country'],
+            ['has', 'iso_a2'],
           ],
           layout: {
             visibility: 'visible',
             'text-field': '{name:latin}',
-            'text-font': [
-              'Metropolis Regular',
-              'Noto Sans Regular',
-            ],
+            'text-font': ['Metropolis Regular', 'Noto Sans Regular'],
             'text-transform': 'uppercase',
             'text-size': {
               base: 1.4,
               stops: [
-                [
-                  0,
-                  10,
-                ],
-                [
-                  3,
-                  12,
-                ],
-                [
-                  4,
-                  14,
-                ],
+                [0, 10],
+                [3, 12],
+                [4, 14],
               ],
             },
             'text-anchor': 'center',
@@ -8457,14 +6889,8 @@ export default {
             'text-color': {
               base: 1,
               stops: [
-                [
-                  3,
-                  'rgb(157,169,177)',
-                ],
-                [
-                  4,
-                  'rgb(153, 153, 153)',
-                ],
+                [3, 'rgb(157,169,177)'],
+                [4, 'rgb(153, 153, 153)'],
               ],
             },
           },

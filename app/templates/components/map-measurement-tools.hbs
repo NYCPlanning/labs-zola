@@ -1,15 +1,15 @@
-{{yield (hash feature=drawnFeature)}}
-{{mapbox-gl-on "draw.create" (action "handleDrawCreate") eventSource=map}}
-{{mapbox-gl-on "draw.render" (action "handleMeasurement") eventSource=map}}
+{{yield (hash feature=this.drawnFeature)}}
+{{mapbox-gl-on "draw.create" (action "handleDrawCreate") eventSource=this.map}}
+{{mapbox-gl-on "draw.render" (action "handleMeasurement") eventSource=this.map}}
 {{! Measurement }}
 <div class="draw-tools hide-for-print">
   <label>
     <span
       data-test-button="begin-measure"
       class="hide-for-large"
-      {{action (mut drawToolsOpen) (not drawToolsOpen)}}
+      {{action (mut this.drawToolsOpen) (not this.drawToolsOpen)}}
     >
-      {{#if drawToolsOpen}}
+      {{#if this.drawToolsOpen}}
         <FaIcon @icon="chevron-left" />
       {{else}}
         <FaIcon @icon="pen" />
@@ -22,12 +22,12 @@
   <button
     data-test-button="measure-tool-line"
     class="draw-tool draw-tool--line
-      {{unless drawToolsOpen "show-for-large"}}
+      {{unless this.drawToolsOpen "show-for-large"}}
 
-      {{if (eq mainMap.drawMode "draw_line_string") "active"}}"
-    onclick={{action "startDraw" "line"}}
+      {{if (eq this.mainMap.drawMode "draw_line_string") "active"}}"
+    onclick={{action "startDraw" "line"}} type="button"
   >
-    {{#if (and didStartDraw (not drawDidRender) (not draw))}}
+    {{#if (and this.didStartDraw (not this.drawDidRender) (not this.draw))}}
       <FaIcon @icon="spinner" />
     {{else}}
       <span class="icon distance"></span>
@@ -36,71 +36,71 @@
   <button
     data-test-button="measure-tool-polygon"
     class="draw-tool draw-tool--polygon
-      {{unless drawToolsOpen "show-for-large"}}
+      {{unless this.drawToolsOpen "show-for-large"}}
 
-      {{if (eq mainMap.drawMode "draw_polygon") "active"}}"
-    onclick={{action "startDraw" "polygon"}}
+      {{if (eq this.mainMap.drawMode "draw_polygon") "active"}}"
+    onclick={{action "startDraw" "polygon"}} type="button"
   >
-    {{#if (and didStartDraw (not drawDidRender) (not draw))}}
+    {{#if (and this.didStartDraw (not this.drawDidRender) (not this.draw))}}
       <FaIcon @icon="spinner" />
     {{else}}
       <span class="icon polygon"></span>
     {{/if}}
   </button>
-  {{#if drawnMeasurements}}
+  {{#if this.drawnMeasurements}}
     <button
       data-test-button="measure-tool-close"
       class="draw-tool draw-tool--clear"
-      onclick={{action "clearDraw"}}
+      onclick={{action "clearDraw"}} type="button"
     >
       <FaIcon @icon="times" />
     </button>
   {{/if}}
 </div>
-{{#if drawnMeasurements}}
+{{#if this.drawnMeasurements}}
   <div class="draw-measurement">
     <div data-test-measure="value">
-      {{#if (eq measurementUnitType "standard")}}
-        {{drawnMeasurements.standard}}
+      {{#if (eq this.measurementUnitType "standard")}}
+        {{this.drawnMeasurements.standard}}
       {{else}}
-        {{drawnMeasurements.metric}}
+        {{this.drawnMeasurements.metric}}
       {{/if}}
     </div>
     <span
       data-test-measure="unit-menu"
       class="draw-measurement-menu-button"
-      {{action (mut measurementMenuOpen) (not measurementMenuOpen)}}
+      {{action (mut this.measurementMenuOpen) (not this.measurementMenuOpen)}}
     >
-      {{#if measurementMenuOpen}}
+      {{#if this.measurementMenuOpen}}
         <FaIcon @icon="caret-down" />
       {{else}}
         <FaIcon @icon="caret-up" />
       {{/if}}
-      {{#if measurementMenuOpen}}
+      {{#if this.measurementMenuOpen}}
         <span class="draw-measurement-menu">
           <button
             data-tests-measure="unit-standard"
             class="button tiny gray"
-            onclick={{action "handleUnitsToggle" "standard"}}
+            onclick={{action "handleUnitsToggle" "standard"}} type="button"
           >
             {{fa-icon
               (if
-                (eq measurementUnitType "standard") "dot-circle-o" "circle-thin"
+                (eq this.measurementUnitType "standard") "dot-circle-o" "circle-thin"
               )
-              class=(if (eq measurementUnitType "metric") "medium-gray")
+              class=(if (eq this.measurementUnitType "metric") "medium-gray")
             }}
             Standard
           </button>
           <button
             data-tests-measure="unit-metric"
             class="button tiny gray"
-            onclick={{action "handleUnitsToggle" "metric"}}
+            onclick={{action "handleUnitsToggle" "metric"}} type="button"
           >
             {{fa-icon
               (if
-                (eq measurementUnitType "metric") "dot-circle-o" "circle-thin"
+                (eq this.measurementUnitType "metric") "dot-circle-o" "circle-thin"
               )
-              class=(if (eq measurementUnitType "standard") "medium-gray")
+              class=(if (eq this.measurementUnitType "standard") "medium-gray")
             }}
             Metric
           </button>

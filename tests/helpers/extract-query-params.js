@@ -1,4 +1,4 @@
-export default function(URLStringFromCurrentURL) {
+export default function (URLStringFromCurrentURL) {
   const URLParsed = new URL(`http://localhost${URLStringFromCurrentURL}`);
   const SearchParams = new URLSearchParams(URLParsed.search);
 

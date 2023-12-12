@@ -24,7 +24,7 @@ const adminBoundaryStyles = {
       'line-cap': 'round',
     },
   },
-  labelLayout: field => ({
+  labelLayout: (field) => ({
     'text-field': `{${field}}`,
     'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
     'text-size': {

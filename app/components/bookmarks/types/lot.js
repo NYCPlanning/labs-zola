@@ -1,1 +1,3 @@
-export { default } from './-default';
+import DefaultBookmark from './-default';
+
+export default DefaultBookmark;

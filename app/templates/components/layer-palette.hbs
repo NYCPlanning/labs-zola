@@ -1,15 +1,14 @@
 <button
   class="button hollow expanded hide-for-medium hide-for-print
-    {{if closed " no-margin"}}"
-  {{action (mut closed) (not closed)}}
+    {{if this.closed " no-margin"}}" type="button" {{action (mut this.closed) (not this.closed)}}
 >
-  {{#if closed}}
+  {{#if this.closed}}
     <FaIcon @icon="chevron-down" /> Edit Map Layers
   {{else}}
     <FaIcon @icon="chevron-up" /> Close Map Layers
   {{/if}}
 </button>
-<div id="layers-menu" class="{{if closed "show-for-medium"}}">
+<div id="layers-menu" class="{{if this.closed "show-for-medium"}}">
   <LabsUiOverrides::LayerGroupsContainer
     @handleToggle={{action this.handleLayerGroupToggle}}
     @title="Zoning and Land Use" as |container|
@@ -23,14 +22,14 @@
         data-test-layer-option="land-use-checkbox"
         onclick={{action
           "setPaintForLayerGroup"
-          layerGroups.tax-lots
+          this.layerGroups.tax-lots
           "pluto-fill"
-          (hash fill-opacity=(if plutoFill 0 0.5))
+          (hash fill-opacity=(if this.plutoFill 0 0.5))
         }}>
-        {{input type="checkbox" checked=plutoFill}}
+        {{input type="checkbox" checked=this.plutoFill}}
         Show Land Use Colors
       </label>
-      {{#if plutoFill}}
+      {{#if this.plutoFill}}
         <ul class="layer-key">
           {{#each
             (array
@@ -301,11 +300,11 @@
       @layerGroup={{this.layerGroups.aerials}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.aerials this.zoomWarningLabel this.mainMap.zoom}}>
       <ul class="layer-menu-item--group-checkboxes no-bullet list-float-3">
-        {{#each layerGroups.aerials.layers as |layer|}}
+        {{#each this.layerGroups.aerials.layers as |layer|}}
           <li
             {{action this.setSelectionForAerials layer.id}}
             role="button">
-            <label {{!template-lint-disable "nested-interactive"}}>
+            <label>
               <span
                 class="layer-group-radio-{{layer.id}}"
                 data-test-radio={{layer.id}}>
@@ -332,7 +331,7 @@
   </LabsUiOverrides::LayerGroupsContainer>
   <a
     class="button gray small reset-map-button hide-for-print"
-    disabled={{isDefault}}
+    disabled={{this.isDefault}}
     onclick={{action this.resetQueryParams}}
     data-test-reset-query-params="true">
     <FaIcon @icon="undo" />

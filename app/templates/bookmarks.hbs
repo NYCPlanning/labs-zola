@@ -1,9 +1,9 @@
 <div class="content-close-button-container">
-  {{#link-to "index" classNames="close-button"}}
+  <LinkTo @route="index" class="close-button">
     <span aria-hidden="true">
       &times;
     </span>
-  {{/link-to}}
+  </LinkTo>
 </div>
 <div class="content-area cell large-5 large-cell-block-y xxlarge-4 bookmarks">
   {{#if (await this.bookmarksSettled)}}
@@ -33,7 +33,7 @@
     {{get (promise-rejected-reason this.bookmarksSettled) 'message'}}.
   {{/if}}
 
-  {{#unless model.length}}
+  {{#unless this.model.length}}
     <div class="no-bookmarks">
       <div class="align-self-middle large-text-center">
         <h1 class="header-large">

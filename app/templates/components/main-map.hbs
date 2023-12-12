@@ -22,7 +22,7 @@
     <button
       class="mapboxgl-ctrl-icon"
       data-test-map-print-button
-      onClick={{this.enablePrintView}}
+      onClick={{this.enablePrintView}} type="button"
     >
       <FaIcon @icon="print" />
     </button>
@@ -32,7 +32,7 @@
     @map={{map.instance}}
     @hoveredFeature={{map.hoveredFeature}}
     @layerGroups={{this.layerGroups}}
-    @interactivity={{interactivity}}
+    @interactivity={{this.interactivity}}
     @onLayerClick={{action "handleLayerClick"}}
     @onLayerHighlight={{action "handleLayerHighlight"}} as |layers|
   >
@@ -53,14 +53,14 @@
     />
   {{/if}}
 
-  {{#if mainMap.selected}}
+  {{#if this.mainMap.selected}}
     <MapboxGlSource
       @map={{map.instance}}
       @sourceId="selected-lot"
-      @options={{selectedLotSource}} as |source|
+      @options={{this.selectedLotSource}} as |source|
     >
-      <source.layer @layer={{selectedFillLayer}} @before="place_other" />
-      <source.layer @layer={{selectedLineLayer}} @before="place_other" />
+      <source.layer @layer={{this.selectedFillLayer}} @before="place_other" />
+      <source.layer @layer={{this.selectedLineLayer}} @before="place_other" />
     </MapboxGlSource>
   {{/if}}
 
@@ -75,12 +75,12 @@
         @options={{hash type="geojson" data=measurement.feature}} as |source|
       >
         <source.layer
-          @layer={{drawnFeatureLayers.line}}
+          @layer={{this.drawnFeatureLayers.line}}
           @before="place_other"
         />
-        {{#if (eq mainMap.drawnFeature.type "Polygon")}}
+        {{#if (eq this.mainMap.drawnFeature.type "Polygon")}}
           <source.layer
-            @layer={{drawnFeatureLayers.fill}}
+            @layer={{this.drawnFeatureLayers.fill}}
             @before="place_other"
           />
         {{/if}}

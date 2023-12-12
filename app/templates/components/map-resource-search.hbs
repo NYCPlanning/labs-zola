@@ -2,10 +2,10 @@
   <LabsSearch
     data-test-search="resource"
     @onSelect={{action "handleSearchSelect"}}
-    @typeTitleLookup={{resourceTitleLookup}}
+    @typeTitleLookup={{this.resourceTitleLookup}}
   />
   <LabsBblLookup
     data-test-search="bbl"
-    @onSuccess={{action "handleLookupSuccess"}}
+    @onSuccess={{this.handleLookupSuccess}}
   />
 </div>

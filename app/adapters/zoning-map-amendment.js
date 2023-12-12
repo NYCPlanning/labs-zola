@@ -1,7 +1,7 @@
 import { buildSqlUrl } from '../utils/carto';
 import CartoGeojsonFeatureAdapter from './carto-geojson-feature';
 
-const SQL = function(ulurpno) {
+const SQL = function (ulurpno) {
   return `SELECT the_geom,
       ulurpno,
       ulurpno as id,
@@ -15,9 +15,6 @@ const SQL = function(ulurpno) {
 
 export default CartoGeojsonFeatureAdapter.extend({
   urlForFindRecord(id) {
-    return buildSqlUrl(
-      SQL(id),
-      'geojson',
-    );
+    return buildSqlUrl(SQL(id), 'geojson');
   },
 });

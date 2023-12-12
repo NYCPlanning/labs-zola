@@ -5,13 +5,13 @@ export default class MapboxMapFeatureRenderer extends Component {
   // should be carto-feature-like
   model = {};
 
-  @service
-  mainMap;
+  @service mainMap;
 
   // this is usually a query param, which comes through a string.
   shouldFitBounds = true;
 
-  didInsertElement() {
+  didInsertElement(...args) {
+    super.didInsertElement(...args);
     this.setSelectedFeature(this.model);
 
     if (this.shouldFitBounds) {
@@ -21,7 +21,7 @@ export default class MapboxMapFeatureRenderer extends Component {
 
   setFitBounds(model) {
     const { bounds } = model;
-    this.get('mainMap.setBounds').perform(bounds);
+    this.mainMap.setBounds.perform(bounds);
   }
 
   setSelectedFeature(model) {

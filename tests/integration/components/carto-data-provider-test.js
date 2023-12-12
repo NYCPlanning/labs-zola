@@ -4,14 +4,14 @@ import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 
-module('Integration | Component | carto-data-provider', function(hooks) {
+module('Integration | Component | carto-data-provider', function (hooks) {
   setupRenderingTest(hooks);
   setupMirage(hooks);
 
-  test('it loads', async function(assert) {
+  test('it loads', async function (assert) {
     this.server.create('lot', { id: 'bbl' });
 
-    this.cartoQueryTemplate = function(id) {
+    this.cartoQueryTemplate = function (id) {
       return `${id}`;
     };
 

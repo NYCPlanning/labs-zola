@@ -3,8 +3,7 @@ import { inject as service } from '@ember/service';
 import window from 'ember-window-mock';
 
 export default class LegacyRedirectsRoute extends Route {
-  @service
-  fastboot;
+  @service fastboot;
 
   beforeModel(transition) {
     if (!this.fastboot.isFastBoot) {

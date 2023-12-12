@@ -1,11 +1,11 @@
 <RangeSlider
-  @start={{start}}
-  @min={{min}}
-  @max={{max}}
-  @tooltips={{array format format}}
+  @start={{this.start}}
+  @min={{this.min}}
+  @max={{this.max}}
+  @tooltips={{array this.format this.format}}
   @connect={{true}}
   @step={{1}}
   @behaviour="drag"
-  @on-change="sliderChanged"
+  @on-change={{action this.sliderChanged}}
 />
 {{yield}}

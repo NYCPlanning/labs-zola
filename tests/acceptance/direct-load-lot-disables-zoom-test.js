@@ -6,30 +6,30 @@ import Sinon from 'sinon';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 import stubBasicMap from '../helpers/stub-basic-map';
 
-module('Acceptance | direct load lot disables zoom', function(hooks) {
+module('Acceptance | direct load lot disables zoom', function (hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
   stubBasicMap(hooks);
 
   // setup sinon sandbox
-  hooks.before(function() {
+  hooks.before(function () {
     this.sandbox = Sinon.createSandbox();
   });
 
   // reset sinon
-  hooks.afterEach(function() {
+  hooks.afterEach(function () {
     this.sandbox.restore();
   });
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.fitBoundsSpy = this.sandbox.spy(this.map, 'fitBounds');
   });
 
-  test('visiting lot', async function(assert) {
+  test('visiting lot', async function (assert) {
     this.server.create('lot', {
       id: 1,
       properties: {

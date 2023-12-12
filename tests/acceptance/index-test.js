@@ -6,6 +6,7 @@ import {
   triggerKeyEvent,
   waitUntil,
   currentURL,
+  settled,
 } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
@@ -15,32 +16,36 @@ import config from '../../config/environment';
 import layerGroupsFixtures from '../../mirage/static-fixtures/layer-groups';
 import stubBasicMap from '../helpers/stub-basic-map';
 
-const { 'labs-search': { host: labsSearchHost } } = config;
+const {
+  'labs-search': { host: labsSearchHost },
+} = config;
 
 const SEARCH_INPUT_SELECTOR = '.map-search-input';
 const SEARCH_RESULTS_SELECTOR = '.search-results';
 const SEARCH_TERM_LOT = '1000477501';
 const timeout = 15000;
-const resultAt = function(x) {
+const resultAt = function (x) {
   return `${SEARCH_RESULTS_SELECTOR} li:nth-child(${x + 1})`;
 };
 
-module('Acceptance | index', function(hooks) {
+module('Acceptance | index', function (hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
   stubBasicMap(hooks);
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.server.post('layer-groups', () => layerGroupsFixtures);
   });
 
-  hooks.beforeEach(function() {
-    this.server.get(`${labsSearchHost}/**`, function() {
-      return [{ bbl: 1000477501, label: '120 Broadway, Manhattan', type: 'lot' }];
+  hooks.beforeEach(function () {
+    this.server.get(`${labsSearchHost}/**`, function () {
+      return [
+        { bbl: 1000477501, label: '120 Broadway, Manhattan', type: 'lot' },
+      ];
     });
   });
 
-  test('map-search enter on first search result', async function(assert) {
+  test('map-search enter on first search result', async function (assert) {
     this.server.create('lot', {
       id: 1000477501,
       properties: {
@@ -52,13 +57,10 @@ module('Acceptance | index', function(hooks) {
     await waitUntil(() => find('.has-results'), { timeout });
     await click('.result');
 
-    assert.equal(
-      (currentURL().indexOf('/') > -1),
-      true,
-    );
+    assert.equal(currentURL().indexOf('/') > -1, true);
   });
 
-  test('map-search keydown, keyup, keyup -> first result highlighted', async function(assert) {
+  test('map-search keydown, keyup, keyup -> first result highlighted', async function (assert) {
     this.server.create('lot', {
       id: 1000477501,
       properties: {
@@ -74,27 +76,30 @@ module('Acceptance | index', function(hooks) {
     await triggerKeyEvent(SEARCH_INPUT_SELECTOR, 'keyup', 38);
 
     assert.equal(
-      (find(resultAt(1)).className.indexOf('highlighted-result') > -1),
-      true,
+      find(resultAt(1)).className.indexOf('highlighted-result') > -1,
+      true
     );
   });
 
-  test('it does BBL lookup', async function(assert) {
+  test('it does BBL lookup', async function (assert) {
     this.server.create('lot', {
       id: 1000477501,
       properties: {
         borocode: '1',
       },
     });
-
     await visit('/');
     await click('[data-test-search="bbl"] span');
-
-    await selectChoose('[data-test-search="bbl"] .ember-basic-dropdown', 'Manhattan (1)');
+    await selectChoose(
+      '[data-test-search="bbl"] .ember-basic-dropdown',
+      'Manhattan (1)'
+    );
     await fillIn('[data-test-search="bbl"] .bbl-lookup--block-input', 1);
     await fillIn('[data-test-search="bbl"] .bbl-lookup--lot-input', 1);
     await click('[data-test-search="bbl"] .button.small.expanded.no-margin');
 
+    // eslint-disable-next-line ember/no-settled-after-test-helper
+    await settled();
     assert.ok(currentURL().includes('lot/1/47/7501'));
   });
 });

@@ -1,34 +1,18 @@
+import {
+  discoverEmberDataModels,
+  applyEmberDataSerializers,
+} from 'ember-cli-mirage';
+import { createServer } from 'miragejs';
+import layerGroupsFixtures from './static-fixtures/layer-groups';
 import patchXMLHTTPRequest from './helpers/mirage-mapbox-gl-monkeypatch';
 
-export default function() {
+function routes() {
   patchXMLHTTPRequest();
-  // These comments are here to help you get started. Feel free to delete them.
-
-  /*
-    Config (with defaults).
-
-    Note: these only affect routes defined *after* them!
-  */
-
-  // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
-  // this.namespace = '';    // make this `/api`, for example, if your API is namespaced
-  // this.timing = 400;      // delay for each request, automatically set to 0 during testing
-
-  /*
-    Shorthand cheatsheet:
-
-    this.get('/posts');
-    this.post('/posts');
-    this.get('/posts/:id');
-    this.put('/posts/:id'); // or this.patch
-    this.del('/posts/:id');
-
-    http://www.ember-cli-mirage.com/docs/v0.4.x/shorthands/
-  */
 
   this.passthrough('https://zap-api-production.herokuapp.com/**');
-  this.passthrough('/img/ht.png');
-  this.passthrough('https://labs-mapbox-gl-noop-tiles.nyc3.digitaloceanspaces.com/**');
+  this.passthrough(
+    'https://labs-mapbox-gl-noop-tiles.nyc3.digitaloceanspaces.com/**'
+  );
 
   this.get('https://planninglabs.carto.com/api/v2/sql', (schema, request) => {
     const { queryParams } = request;
@@ -38,7 +22,6 @@ export default function() {
     if (format === 'geojson') {
       // by default, return anything created in this schema
       let schemaModel = schema.cartoGeojsonFeatures.all();
-
       // if it includes mappluto, it's asking for lots
       if (q.includes('dcp_mappluto')) {
         schemaModel = schema.lots.all();
@@ -59,7 +42,7 @@ export default function() {
           const regex = /([^, ]+):([^, ]+)/g;
           const found = q.match(regex);
           const cartoIdentifier = found[0]?.split(':')[1];
-          features = features.filter(f => f.id === cartoIdentifier);
+          features = features.filter((f) => f.id === cartoIdentifier);
         } catch (e) {
           console.error('Mirage error: ', e);
         }
@@ -76,4 +59,18 @@ export default function() {
 
   this.namespace = '/v1';
   this.get('layer-groups');
+  this.post('v1/layer-groups', () => layerGroupsFixtures);
+}
+
+export default function (config) {
+  const finalConfig = {
+    ...config,
+    namespace: '/v1',
+    // Remove discoverEmberDataModels if you do not want ember-cli-mirage to auto discover the ember models
+    models: { ...discoverEmberDataModels(), ...config.models },
+    // uncomment to opt into ember-cli-mirage to auto discover ember serializers
+    serializers: applyEmberDataSerializers(config.serializers),
+    routes,
+  };
+  return createServer(finalConfig);
 }
