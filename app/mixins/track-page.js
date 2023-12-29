@@ -3,20 +3,21 @@ import Mixin from '@ember/object/mixin';
 import { scheduleOnce } from '@ember/runloop';
 import { on } from '@ember/object/evented';
 
-var skipDoubleCountingBecauseThisIsTheInitialPageLoad = true;
+let skipDoubleCountingBecauseThisIsTheInitialPageLoad = true;
 
 export default Mixin.create({
   metrics: service(),
 
-  trackPage: on('routeDidChange', function() {
+  trackPage: on('routeDidChange', function () {
     this._trackPage();
   }),
 
   _trackPage() {
     scheduleOnce('afterRender', this, () => {
       const page = this.url;
-      const title = this.getWithDefault('currentRouteName', 'unknown');
-      if(skipDoubleCountingBecauseThisIsTheInitialPageLoad) {
+      const title = this.currentRouteName || 'unknown';
+
+      if (skipDoubleCountingBecauseThisIsTheInitialPageLoad) {
         skipDoubleCountingBecauseThisIsTheInitialPageLoad = false;
       } else {
         this.metrics.trackPage({ page, title });

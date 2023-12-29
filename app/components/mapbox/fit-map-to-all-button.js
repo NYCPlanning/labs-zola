@@ -6,8 +6,7 @@ export default class MapboxFixMapToAllButton extends Component {
   // should be carto-geojson-model-like
   model = {};
 
-  @service
-  mainMap;
+  @service mainMap;
 
   @action
   fitBounds() {
@@ -15,6 +14,6 @@ export default class MapboxFixMapToAllButton extends Component {
       event_category: 'Fit Map to Districts',
     });
 
-    this.get('mainMap.setBounds').perform(this.model.bounds);
+    this.mainMap.setBounds.perform(this.model.bounds);
   }
 }

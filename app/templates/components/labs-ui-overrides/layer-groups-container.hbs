@@ -6,8 +6,8 @@
   Enable special handling for node-based fastboot pre-rendering
   Ember wormhole gets skipped in fastboot because it requires the DOM
 --}}
-{{#if (not this.fastboot.isFastBoot)}}
-  {{#ember-wormhole to=this.elementId}}
+{{#unless this.fastboot.isFastBoot}}
+  <EmberWormhole @to={{this.elementId}}>
     <div class="layer-groups-container-content">
       {{yield (hash
           layer-group-toggle=(component 'labs-ui-overrides/layer-group-toggle'
@@ -18,9 +18,8 @@
         )
       }}
     </div>
-  {{/ember-wormhole}}
-{{/if}}
-
+  </EmberWormhole>
+{{/unless}}
 <div onclick={{action 'toggleLayerGroupsContainer'}}
   class="layer-groups-container-title
     {{if this.open 'open' 'closed'}}

@@ -1,28 +1,29 @@
-'use strict';
-
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
   parserOptions: {
-    ecmaVersion: 2018,
+    parser: '@babel/eslint-parser',
+    ecmaVersion: 'latest',
     sourceType: 'module',
-    ecmaFeatures: {
-      legacyDecorators: true
-    }
+    requireConfigFile: false,
+    babelOptions: {
+      plugins: [
+        ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
+      ],
+    },
   },
-  plugins: [
-    'ember'
-  ],
+  plugins: ['ember', 'decorator-position'],
   extends: [
     'eslint:recommended',
     'airbnb-base',
-    'plugin:ember-best-practices/recommended',
+    'plugin:ember/recommended',
+    'plugin:decorator-position/ember',
+    'plugin:prettier/recommended',
   ],
   env: {
     browser: true,
   },
-  globals:{
-    '$': true,
+  globals: {
+    $: true,
     d3: true,
   },
   rules: {
@@ -34,40 +35,54 @@ module.exports = {
     'space-before-function-paren': 0,
     'prefer-arrow-callback': 0,
     'no-underscore-dangle': 0,
-    'camelcase': 0,
+    camelcase: 0,
     'class-methods-use-this': 0,
     'max-len': 0,
     'no-param-reassign': 0,
-    'ember/avoid-leaking-state-in-ember-objects': 0,
-    'ember-best-practices/require-dependent-keys': 0,
     'no-undef': 0,
+    'ember/no-classic-components': 'warn',
+    'ember/no-classic-classes': 'warn',
+    'ember/no-get': 'warn',
+    'ember/no-actions-hash': 'warn',
+    'ember/require-tagless-components': 'warn',
+    'ember/no-observers': 'warn',
+    'ember/classic-decorator-no-classic-methods': 'warn',
+    'ember/classic-decorator-hooks': 'warn',
+    'ember/no-component-lifecycle-hooks': 'warn',
+    'ember/no-empty-glimmer-component-classes': 'warn',
+    'ember/require-computed-macros': 'warn',
+    'ember/no-computed-properties-in-native-classes': 'warn',
+    'ember/no-legacy-test-waiters': 'warn',
+    'ember/no-mixins': 'warn',
+    'ember/no-new-mixins': 'warn',
+    'ember/avoid-leaking-state-in-ember-objects': 'warn',
+    'ember/no-incorrect-calls-with-inline-anonymous-functions': 'warn',
+    'max-classes-per-file': 0,
+    'decorator-position/decorator-position': 0,
   },
   overrides: [
     // node files
     {
       files: [
-        '.eslintrc.js',
-        '.template-lintrc.js',
-        'ember-cli-build.js',
-        'testem.js',
-        'blueprints/*/index.js',
-        'config/**/*.js',
-        'lib/*/index.js'
+        './.eslintrc.js',
+        './.prettierrc.js',
+        './.stylelintrc.js',
+        './.template-lintrc.js',
+        './ember-cli-build.js',
+        './testem.js',
+        './blueprints/*/index.js',
+        './config/**/*.js',
+        './lib/*/index.js',
+        './server/**/*.js',
       ],
       parserOptions: {
-        sourceType: 'script'
+        sourceType: 'script',
       },
       env: {
         browser: false,
-        node: true
+        node: true,
       },
-      plugins: ['node'],
-      extends: ['plugin:node/recommended'],
-      rules: {
-        // this can be removed once the following is fixed
-        // https://github.com/mysticatea/eslint-plugin-node/issues/77
-        'node/no-unpublished-require': 'off'
-      }
-    }
-  ]
+      extends: ['plugin:n/recommended'],
+    },
+  ],
 };

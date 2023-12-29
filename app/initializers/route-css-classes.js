@@ -1,9 +1,9 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import { dasherize } from '@ember/string';
 
 export function initialize() {
-  Ember.Route.reopen({
+  Route.reopen({
     fastboot: service(),
     activate(...args) {
       this._super(...args);
@@ -34,13 +34,16 @@ export function initialize() {
         if (el.classList) {
           el.classList.remove(className);
         } else {
-          el.className = el.className.replace(new RegExp(`(^|\\b)${className.split(' ').join('|')}(\\b|$)`, 'gi'), ' ');
+          el.className = el.className.replace(
+            new RegExp(`(^|\\b)${className.split(' ').join('|')}(\\b|$)`, 'gi'),
+            ' '
+          );
         }
       }
     },
 
     getRouteCssClass() {
-      return `${dasherize(this.get('routeName').replace(/\./g, '-'))}`;
+      return `${dasherize(this.routeName.replace(/\./g, '-'))}`;
     },
 
     getBodyElement() {

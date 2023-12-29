@@ -28,7 +28,4 @@ const fillStyle = (id, source, sourceLayer, color) => ({
   layout: {},
 });
 
-export {
-  lineStyle,
-  fillStyle,
-};
+export { lineStyle, fillStyle };

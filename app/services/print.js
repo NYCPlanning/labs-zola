@@ -4,8 +4,7 @@ import { computed } from '@ember/object';
 export default class PrintService extends Service {
   enabled = false;
 
-  @service
-  metrics;
+  @service metrics;
 
   // Print View Settings
   printViewOrientation = 'portrait';
@@ -29,7 +28,12 @@ export default class PrintService extends Service {
     return hiddenAreasClasses.join(' ');
   }
 
-  @computed('printViewHiddenAreas', 'enabled', 'printViewPaperSize', 'printViewOrientation', 'printViewHiddenAreas')
+  @computed(
+    'printViewHiddenAreas',
+    'enabled',
+    'printViewPaperSize',
+    'printViewOrientation'
+  )
   get printViewClasses() {
     const orientation = this.printViewOrientation;
     const size = this.printViewPaperSize;

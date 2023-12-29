@@ -1,46 +1,46 @@
-<div class="layer-group-toggle-header layer-{{dasherize label}}">
+<div class="layer-group-toggle-header layer-{{dasherize this.label}}">
   <div class="grid-x">
     <div class="cell auto ">
-      {{#if (not fastboot.isFastBoot)}}
+      {{#unless this.fastboot.isFastBoot}}
         <div class="switch tiny float-left">
-          <input class="switch-input" type="checkbox" checked={{if active 'checked'}}>
+          <input class="switch-input" type="checkbox" checked={{if this.active 'checked'}}>
           <label {{action 'toggle'}} class="switch-paddle">
             <span class="show-for-sr">Toggle Layer Group</span>
           </label>
         </div>
-      {{/if}}
+      {{/unless}}
       <span {{action 'toggle' preventDefault=false}} class="layer-group-toggle-label" role="button">
-        {{label}}
-        {{#if active}}
-          {{#if icon}}
-            {{labs-ui/legend-icon icon=icon}}
+        {{this.label}}
+        {{#if this.active}}
+          {{#if this.icon}}
+            {{labs-ui/legend-icon icon=this.icon}}
           {{/if}}
         {{/if}}
       </span>
     </div>
     <div class="cell shrink layer-group-toggle-icons">
-      {{#if (and activeTooltip active)}}
+      {{#if (and this.activeTooltip this.active)}}
         {{labs-ui/icon-tooltip
-          tip=activeTooltip
-          icon=activeTooltipIcon
+          tip=this.activeTooltip
+          icon=this.activeTooltipIcon
           side='left'
           fixedWith=true
         }}
       {{/if}}
-      {{#if infolink}}
+      {{#if this.infolink}}
         <a
-          href="{{infolink}}" target="_blank" class="info-link"
-          onclick={{action this.captureOutboundLink label preventDefault=false}}
+          href="{{this.infolink}}" target="_blank" class="info-link"
+          onclick={{action this.captureOutboundLink this.label preventDefault=false}} rel="noopener noreferrer"
         >
-          <FaIcon @icon={{infoLinkIcon}}
-            @fixedWidth=true
+          <FaIcon @icon={{this.infoLinkIcon}}
+            @fixedWidth="true"
           />
         </a>
       {{/if}}
-      {{#if tooltip}}
+      {{#if this.tooltip}}
         {{labs-ui/icon-tooltip
-          tip=tooltip
-          icon=tooltipIcon
+          tip=this.tooltip
+          icon=this.tooltipIcon
           side='left'
           fixedWidth=true
         }}
@@ -48,10 +48,10 @@
     </div>
   </div>
 </div>
-{{#if active}}
+{{#if this.active}}
   <div class="layer-group-toggle-content">
-    {{#if (not fastboot.isFastBoot)}}
+    {{#unless this.fastboot.isFastBoot}}
       {{yield}}
-    {{/if}}
+    {{/unless}}
   </div>
 {{/if}}

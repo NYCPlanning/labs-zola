@@ -1,19 +1,16 @@
 <li class="lot-bookmark">
   <span class="icon tax-lot"></span>
-  {{#link-to
-    "map-feature.lot"
-    lot.properties.boro
-    lot.properties.block
-    lot.properties.lot
-  }}
-    {{lot.title}}
+  <LinkTo
+    @route="map-feature.lot"
+    @models={{array this.lot.properties.borocode this.lot.properties.block this.lot.properties.lot}}
+  >
+    {{this.lot.title}}
     <span class="dark-gray" data-test-lot-property="bbl">
-      {{lot.subtitle}}
+      {{this.lot.subtitle}}
     </span>
-  {{/link-to}}
+  </LinkTo>
   <button
-    class="float-right lu-red delete-bookmark-button"
-    {{action "_deleteBookmark" lot}}
+    class="float-right lu-red delete-bookmark-button" type="button" {{action "_deleteBookmark" this.lot}}
   >
     &times;
   </button>

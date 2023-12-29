@@ -2,7 +2,7 @@
   Tax Lots
 </h3>
 <ul class="no-bullet">
-  {{#each items as |bookmark|}}
+  {{#each this.items as |bookmark|}}
     <Bookmarks::Types::Lot::LotBookmarkItem
       data-test-bookmark={{bookmark.id}}
       @lot={{bookmark.bookmark}}
@@ -21,7 +21,7 @@
       href={{carto-download-link
         "dcp_mappluto"
         "bbl"
-        (map-by "bookmark.id" items)
+        (map-by "bookmark.id" this.items)
         "csv"
       }}
     >
@@ -33,7 +33,7 @@
       href={{carto-download-link
         "dcp_mappluto"
         "bbl"
-        (map-by "bookmark.id" items)
+        (map-by "bookmark.id" this.items)
         "shp"
       }}
     >

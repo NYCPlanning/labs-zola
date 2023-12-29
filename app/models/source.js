@@ -1,6 +1,6 @@
-import DS from 'ember-data';
+import Model, { attr } from '@ember-data/model';
 
-export default DS.Model.extend({
-  meta: DS.attr(),
-  minzoom: DS.attr('number'),
+export default Model.extend({
+  meta: attr(),
+  minzoom: attr('number'),
 });

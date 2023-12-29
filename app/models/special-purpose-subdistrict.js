@@ -1,16 +1,11 @@
-import {
-  fragment,
-} from 'ember-data-model-fragments/attributes';
+import { attr } from '@ember-data/model';
 import { alias } from '@ember/object/computed';
 import CartoGeojsonFeature from './carto-geojson-feature';
 
 export default class SpecialPurposeSubdistrict extends CartoGeojsonFeature {
-  @fragment('map-features/special-purpose-subdistrict')
-  properties;
+  @attr properties;
 
-  @alias('properties.spname')
-  title;
+  @alias('properties.spname') title;
 
-  @alias('properties.splbl')
-  subtitle;
+  @alias('properties.splbl') subtitle;
 }

@@ -6,14 +6,13 @@ import { timeout, task } from 'ember-concurrency';
 export default class TesterMap extends LabsMap {
   didIdle = false;
 
-  @service
-  mockMapService;
+  @service mockMapService;
 
   init(...args) {
     super.init(...args);
 
     // register map reference
-    this.get('mockMapService.maps').set(this.elementId, this);
+    this.mockMapService.maps.set(this.elementId, this);
 
     // test waiter
     registerWaiter(this.testWaiter.bind(this));
@@ -25,7 +24,7 @@ export default class TesterMap extends LabsMap {
     this.map.off('idle', this.callbacks.willIdle);
     this.map.off('render', this.callbacks.willRender);
 
-    this._super(...params);
+    super.willDestroyElement(...params);
   }
 
   testWaiter() {
@@ -38,7 +37,8 @@ export default class TesterMap extends LabsMap {
 
   @task(function* (map) {
     yield timeout(300);
-    const target = this.element.querySelector('canvas') || this.element.querySelector('img');
+    const target =
+      this.element.querySelector('canvas') || this.element.querySelector('img');
 
     target.outerHTML = `
       <img src="${map.getCanvas().toDataURL()}"/>

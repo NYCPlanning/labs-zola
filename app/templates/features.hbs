@@ -1,9 +1,9 @@
 <div class="content-close-button-container">
-  {{#link-to "index" classNames="close-button"}}
+  <LinkTo @route="index" class="close-button">
     <span aria-hidden="true">
       &times;
     </span>
-  {{/link-to}}
+  </LinkTo>
 </div>
 <div
   class="content-area cell large-5 large-cell-block-y xxlarge-4 text-center medium-text-left"
@@ -16,11 +16,11 @@
   </h2>
   <div class="grid-x">
     <div class="cell medium-3 feature-image-cell">
-      <img class="feature-image" src="/img/feature-search.png" />
+      <img class="feature-image" src="/img/feature-search.png" alt="A screenshot of the search functionality" />
     </div>
     <div class="cell medium-9">
       <p>
-        The search input provide various types of results as you type.  Search for known addresses, tax lots (by BBL or address), zoning districts, zoning map amendments (by ULURP number or name), neighborhoods, and special purpose districts.
+        The search input provide various types of results as you type. Search for known addresses, tax lots (by BBL or address), zoning districts, zoning map amendments (by ULURP number or name), neighborhoods, and special purpose districts.
       </p>
     </div>
   </div>
@@ -29,11 +29,11 @@
   </h4>
   <div class="grid-x">
     <div class="cell medium-3 feature-image-cell">
-      <img class="feature-image" src="/img/feature-url.png" />
+      <img class="feature-image" src="/img/feature-url.png" alt="A screenshot of a shareable URL" />
     </div>
     <div class="cell medium-9">
       <p>
-        Each tax lot, zoning district, special purpose district, and zoning map amendment  lives at its own URL, so you can easily share links.  The currently selected map layers are also included in the URL, so you can customize your view and share it with a friend.
+        Each tax lot, zoning district, special purpose district, and zoning map amendment lives at its own URL, so you can easily share links. The currently selected map layers are also included in the URL, so you can customize your view and share it with a friend.
       </p>
     </div>
   </div>
@@ -42,11 +42,11 @@
   </h4>
   <div class="grid-x">
     <div class="cell medium-3 feature-image-cell">
-      <img class="feature-image" src="/img/feature-palette.png" />
+      <img class="feature-image" src="/img/feature-palette.png" alt="A screenshot of the layer controls" />
     </div>
     <div class="cell medium-9">
       <p>
-        The default view includes zoning districts, tax lots, commercial overlays, and subways. But many other layers are available, some with additional filtering controls.  Explore zoning map amendments, aerial imagery, historic districts, landmarks, and more.
+        The default view includes zoning districts, tax lots, commercial overlays, and subways. But many other layers are available, some with additional filtering controls. Explore zoning map amendments, aerial imagery, historic districts, landmarks, and more.
       </p>
     </div>
   </div>
@@ -55,11 +55,11 @@
   </h4>
   <div class="grid-x">
     <div class="cell medium-3 feature-image-cell">
-      <img class="feature-image" src="/img/feature-map-controls.png" />
+      <img class="feature-image" src="/img/feature-map-controls.png" alt="A screenshot of the map controls" />
     </div>
     <div class="cell medium-9">
       <p>
-        Next-generation web mapping technology used in ZoLa allows you to fine tune the map's zoom, tilt, and rotation. Use the scrollwheel to zoom, hold Ctrl while dragging the map to adjust pitch and bearing.  Click the compass icon to reset north.
+        Next-generation web mapping technology used in ZoLa allows you to fine tune the map's zoom, tilt, and rotation. Use the scrollwheel to zoom, hold Ctrl while dragging the map to adjust pitch and bearing. Click the compass icon to reset north.
       </p>
     </div>
   </div>
@@ -68,11 +68,11 @@
   </h4>
   <div class="grid-x">
     <div class="cell medium-3 feature-image-cell">
-      <img class="feature-image" src="/img/feature-find-my-location.png" />
+      <img class="feature-image" src="/img/feature-find-my-location.png" alt="A screenshot of the find my location functionality" />
     </div>
     <div class="cell medium-9">
       <p>
-        Click the locator control and ZoLa will zoom in on your current location (you may need to give permission via your web browser).  This feature works great on mobile, so you can quickly lookup property and zoning data on the go.
+        Click the locator control and ZoLa will zoom in on your current location (you may need to give permission via your web browser). This feature works great on mobile, so you can quickly lookup property and zoning data on the go.
       </p>
     </div>
   </div>
@@ -81,7 +81,7 @@
   </h4>
   <div class="grid-x">
     <div class="cell medium-3 feature-image-cell">
-      <img class="feature-image" src="/img/feature-bbl-lookup.png" />
+      <img class="feature-image" src="/img/feature-bbl-lookup.png" alt="A screenshot of the BBL lookup functionality" />
     </div>
     <div class="cell medium-9">
       <p>
@@ -94,7 +94,7 @@
   </h4>
   <div class="grid-x">
     <div class="cell medium-3 feature-image-cell">
-      <img class="feature-image" src="/img/feature-save.png" />
+      <img class="feature-image" src="/img/feature-save.png" alt="A screenshot of the bookmarks functionality"/>
     </div>
     <div class="cell medium-9">
       <p>
@@ -107,11 +107,11 @@
   </h4>
   <div class="grid-x">
     <div class="cell medium-3 feature-image-cell">
-      <img class="feature-image" src="/img/feature-3d-buildings.png" />
+      <img class="feature-image" src="/img/feature-3d-buildings.png" alt="A screenshot of the 3D buildings layer" />
     </div>
     <div class="cell medium-9">
       <p>
-        Turn on the 3D Buildings layer (data sourced from OpenStreetMap) to view current building masses, streetwalls, and setbacks along with your other layers.  Be sure to try different pitch and bearing settings as you explore.
+        Turn on the 3D Buildings layer (data sourced from OpenStreetMap) to view current building masses, streetwalls, and setbacks along with your other layers. Be sure to try different pitch and bearing settings as you explore.
       </p>
     </div>
   </div>

@@ -8,6 +8,7 @@ export default Route.extend({
   mainMap: service(),
   fastboot: service(),
   router: service(),
+  store: service(),
 
   beforeModel(transition) {
     const { targetName } = transition;
@@ -33,9 +34,7 @@ export default Route.extend({
   },
 
   async model() {
-    const {
-      layerGroups: layerGroupsParams,
-    } = this.paramsFor('application');
+    const { layerGroups: layerGroupsParams } = this.paramsFor('application');
 
     // fetch layer groups based on configured environment variable
     const layerGroups = await this.store.query('layer-group', {
@@ -51,13 +50,10 @@ export default Route.extend({
     const { meta } = layerGroups;
 
     // pass down a hash representation of the layer group ids
-    const layerGroupsObject = layerGroups.reduce(
-      (accumulator, current) => {
-        accumulator[current.get('id')] = current;
-        return accumulator;
-      },
-      {},
-    );
+    const layerGroupsObject = layerGroups.reduce((accumulator, current) => {
+      accumulator[current.get('id')] = current;
+      return accumulator;
+    }, {});
     const bookmarks = await this.store.findAll('bookmark');
 
     await bookmarks.invoke('get', 'bookmark');

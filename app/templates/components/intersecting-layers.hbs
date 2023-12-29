@@ -1,8 +1,6 @@
 {{!-- Yield out if the task is done running and if it's not node-side fastboot --}}
-{{#if (not intersectingLayers.isRunning)}}
-  {{yield intersectingLayers.value numberIntersecting}}
+{{#if this.intersectingLayers.isRunning}}
+<FaIcon @icon='spinner' class='fa-spin fa-3x loading-spinner' />
 {{else}}
-  <ContentPlaceholders as |placeholder|>
-    <placeholder.text @lines={{3}} />
-  </ContentPlaceholders>
+  {{yield this.intersectingLayers.value this.numberIntersecting}}
 {{/if}}

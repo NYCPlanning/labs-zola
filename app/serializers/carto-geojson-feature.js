@@ -1,8 +1,14 @@
 import { assign } from '@ember/polyfills';
-import DS from 'ember-data';
+import JSONSerializer from '@ember-data/serializer/json';
 
-export default class GeoJsonFeatureSerializer extends DS.JSONSerializer {
-  normalizeFindRecordResponse(store, primaryModelClass, payload, queryId, requestType) {
+export default class GeoJsonFeatureSerializer extends JSONSerializer {
+  normalizeFindRecordResponse(
+    store,
+    primaryModelClass,
+    payload,
+    queryId,
+    requestType
+  ) {
     let newPayload = payload;
     let newQueryId = queryId;
 
@@ -22,7 +28,7 @@ export default class GeoJsonFeatureSerializer extends DS.JSONSerializer {
       primaryModelClass,
       newPayload,
       newQueryId,
-      requestType,
+      requestType
     );
   }
 
@@ -39,7 +45,7 @@ export default class GeoJsonFeatureSerializer extends DS.JSONSerializer {
       store,
       primaryModelClass,
       features,
-      ...etc,
+      ...etc
     );
   }
 }
