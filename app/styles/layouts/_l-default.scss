@@ -15,36 +15,6 @@ body {
   }
 }
 
-.info-banner {
-  background-color: #2C7A7B;
-  color: white;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: $body-font-family;
-  flex-direction: column;
-  padding: 1rem;
-
-  @include breakpoint(large) {
-    flex-direction: row;
-  }
-
-  p {
-    margin-bottom: 0;
-  }
-
-  a {
-    color: white;
-    display: block;
-    font-family: $body-font-family;
-    text-decoration: underline;
-  }
-}
-
 .site-header {
   position: relative;
   z-index: 2;
@@ -75,7 +45,7 @@ body {
 
   @include breakpoint(large) {
     position: fixed;
-    top: 8.25rem;
+    top: 4.75rem;
     left: 0;
     width: 15rem;
     box-shadow: 0 2px 0 rgba(0,0,0,0.1), 2px 0 0 rgba(0,0,0,0.1);
@@ -231,7 +201,7 @@ body.index {
       display: block;
       position: fixed;
       z-index: 3;
-      top: 8.75rem;
+      top: 5.25rem;
       right: 41.66667%;
       background-color: $white;
       margin-right: -4px;
