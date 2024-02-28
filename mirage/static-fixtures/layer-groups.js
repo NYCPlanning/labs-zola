@@ -576,82 +576,6 @@ export default {
     },
     {
       type: 'layer-groups',
-      id: 'sidewalk-cafes',
-      attributes: {
-        id: 'sidewalk-cafes',
-        visible: false,
-        legend: {
-          label: 'Sidewalk Cafes',
-          tooltip:
-            'Areas where different types of sidewalk cafes are permitted on public sidewalks',
-          infolink:
-            'https://www1.nyc.gov/site/planning/zoning/districts-tools/sidewalk-cafes.page',
-          items: [
-            {
-              label: 'All Cafes Permitted',
-              icon: {
-                type: 'line',
-                layers: [
-                  {
-                    stroke: '#28AD15',
-                  },
-                ],
-              },
-            },
-            {
-              label: 'Small Cafes Permitted',
-              icon: {
-                type: 'line',
-                layers: [
-                  {
-                    stroke: '#CC3DCA',
-                  },
-                ],
-              },
-            },
-            {
-              label: 'Unenclosed and Small Cafes Permitted',
-              icon: {
-                type: 'line',
-                layers: [
-                  {
-                    stroke: '#216BC6',
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      },
-      relationships: {
-        layers: {
-          data: [
-            {
-              type: 'layers',
-              id: 'sidewalkcafes-line-all',
-            },
-            {
-              type: 'layers',
-              id: 'sidewalkcafes-line-small',
-            },
-            {
-              type: 'layers',
-              id: 'sidewalkcafes-line-unenclosed',
-            },
-          ],
-        },
-        sources: {
-          data: [
-            {
-              type: 'sources',
-              id: 'supporting-zoning',
-            },
-          ],
-        },
-      },
-    },
-    {
-      type: 'layer-groups',
       id: 'low-density-growth-mgmt-areas',
       attributes: {
         id: 'low-density-growth-mgmt-areas',
@@ -2265,10 +2189,6 @@ export default {
             sql: 'SELECT the_geom_webmercator, name FROM fresh_zones',
           },
           {
-            id: 'sidewalk-cafes',
-            sql: 'SELECT the_geom_webmercator, cafetype FROM sidewalk_cafes',
-          },
-          {
             id: 'low-density-growth-mgmt-areas',
             sql: 'SELECT the_geom_webmercator FROM lower_density_growth_management_areas',
           },
@@ -2868,93 +2788,6 @@ export default {
         highlightable: true,
         tooltipable: true,
         'tooltip-template': 'FRESH - {{{name}}}',
-      },
-    },
-    {
-      type: 'layers',
-      id: 'sidewalkcafes-line-all',
-      attributes: {
-        style: {
-          id: 'sidewalkcafes-line-all',
-          type: 'line',
-          source: 'supporting-zoning',
-          'source-layer': 'sidewalk-cafes',
-          paint: {
-            'line-width': {
-              stops: [
-                [11, 0.5],
-                [13, 1],
-                [15, 5],
-              ],
-            },
-            'line-color': '#28AD15',
-          },
-          filter: ['all', ['==', 'cafetype', 'All Cafes']],
-          layout: {
-            visibility: 'none',
-          },
-          metadata: {
-            'nycplanninglabs:layergroupid': 'sidewalk-cafes',
-          },
-        },
-      },
-    },
-    {
-      type: 'layers',
-      id: 'sidewalkcafes-line-small',
-      attributes: {
-        style: {
-          id: 'sidewalkcafes-line-small',
-          type: 'line',
-          source: 'supporting-zoning',
-          'source-layer': 'sidewalk-cafes',
-          paint: {
-            'line-width': {
-              stops: [
-                [11, 0.5],
-                [13, 1],
-                [15, 5],
-              ],
-            },
-            'line-color': '#CC3DCA',
-          },
-          filter: ['all', ['==', 'cafetype', 'Small Only']],
-          layout: {
-            visibility: 'none',
-          },
-          metadata: {
-            'nycplanninglabs:layergroupid': 'sidewalk-cafes',
-          },
-        },
-      },
-    },
-    {
-      type: 'layers',
-      id: 'sidewalkcafes-line-unenclosed',
-      attributes: {
-        style: {
-          id: 'sidewalkcafes-line-unenclosed',
-          type: 'line',
-          source: 'supporting-zoning',
-          'source-layer': 'sidewalk-cafes',
-          paint: {
-            'line-width': {
-              stops: [
-                [11, 0.5],
-                [13, 1],
-                [15, 5],
-              ],
-            },
-            'line-color': '#216BC6',
-          },
-          filter: ['all', ['==', 'cafetype', 'Unenclosed Only']],
-          layout: {
-            visibility: 'none',
-          },
-          metadata: {
-            'nycplanninglabs:layergroupid': 'sidewalk-cafes',
-          },
-        },
       },
     },
     {
