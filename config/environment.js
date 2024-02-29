@@ -53,7 +53,6 @@ module.exports = function (environment) {
       { id: 'inclusionary-housing', visible: false },
       { id: 'transit-zones', visible: false },
       { id: 'fresh', visible: false },
-      { id: 'sidewalk-cafes', visible: false },
       { id: 'low-density-growth-mgmt-areas', visible: false },
       { id: 'coastal-zone-boundary', visible: false },
       { id: 'waterfront-access-plan', visible: false },
