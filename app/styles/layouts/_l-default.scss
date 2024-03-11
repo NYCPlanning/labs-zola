@@ -246,6 +246,11 @@ body.index {
   border: 0;
 }
 
+a.glossary, a.glossary:link, a.glossary:visited {
+  color: #245CB6;
+  font-style: italic;
+}
+
 .ceqr-access {
   width: 100%;
   height:48px;
