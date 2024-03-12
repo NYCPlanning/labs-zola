@@ -331,5 +331,12 @@
     <FaIcon @icon="undo" />
     Reset Map Layers
   </a>
+  <a
+    class="button gray small no-layers-button hide-for-print"
+    onclick={{action this.setAllLayerVisibilityToFalse}}
+    data-test-reset-query-params="true">
+    <FaIcon @icon="circle-xmark" @prefix="far" />
+    Toggle All Map Layers Off
+  </a>
 </div>
 {{yield}}

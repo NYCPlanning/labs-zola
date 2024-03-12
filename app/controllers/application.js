@@ -106,6 +106,19 @@ export default class ApplicationController extends Controller.extend(
     this.handleLayerGroupChange();
   }
 
+  @action
+  setAllLayerVisibilityToFalse() {
+    this.model.layerGroups
+      .filter(({ visible }) => visible)
+      .forEach((model) => this.toggleLayerVisibilityToFalse(model));
+    this.handleLayerGroupChange();
+  }
+
+  @action
+  toggleLayerVisibilityToFalse(layer) {
+    layer.visible = false;
+  }
+
   @computed('queryParamsState')
   get isDefault() {
     const state = this.queryParamsState || {};
