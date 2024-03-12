@@ -87,6 +87,8 @@ export default class ApplicationController extends Controller.extend(
 
   @service mainMap;
 
+  @service metrics;
+
   // this action extracts query-param-friendly state of layer groups
   // for various paramable layers
   @action
@@ -112,6 +114,18 @@ export default class ApplicationController extends Controller.extend(
       .filter(({ visible }) => visible)
       .forEach((model) => this.toggleLayerVisibilityToFalse(model));
     this.handleLayerGroupChange();
+
+    gtag('event', 'search', {
+      event_category: 'Toggle Layer',
+      event_action: 'Toggle All Layers Off',
+    });
+
+    // GA
+    this.metrics.trackEvent('MatomoTagManager', {
+      category: 'Toggle Layer',
+      action: 'Toggle All Layers Off',
+      name: 'Toggle All Layers Off',
+    });
   }
 
   @action
