@@ -1,0 +1,25 @@
+{{#if (eq this.model.comparisonid "0000000000")}}
+  <p>Select another tax lot for comparison
+    <button {{action 'cancelLotComparison' this.model.id}} style="color: red;">
+      {{fa-icon icon="times"  transform="grow-1 up-1"}}
+    </button>
+  </p>
+  <CartoDataProvider @modelId={{this.model.id}} @modelName="lot" as |lot|>
+    <Mapbox::MapFeatureRenderer @model={{lot}} />
+    <Bookmarks::BookmarkButton @bookmarkableModel={{lot}} />
+    <LayerRecordViews::TaxLot @model={{lot.properties}} @hidePlus="true" />
+  </CartoDataProvider>
+{{else}}
+  <div style="display:flex; flex-direction:row;">
+    <CartoDataProvider @modelId={{this.model.comparisonid}} @modelName="lot" as |lot|>
+      <Mapbox::MapFeatureRenderer @model={{lot}} />
+      <Bookmarks::BookmarkButton @bookmarkableModel={{lot}} />
+      <LayerRecordViews::TaxLot @model={{lot.properties}} @hidePlus="true" @otherModelId={{this.model.id}} />
+    </CartoDataProvider>
+    <CartoDataProvider @modelId={{this.model.id}} @modelName="lot" as |lot|>
+      <Mapbox::MapFeatureRenderer @model={{lot}} />
+      <Bookmarks::BookmarkButton @bookmarkableModel={{lot}} />
+      <LayerRecordViews::TaxLot @model={{lot.properties}} @hidePlus="true" @otherModelId={{this.model.comparisonid}} />
+    </CartoDataProvider>
+  </div>
+{{/if}}
