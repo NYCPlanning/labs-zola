@@ -1,7 +1,7 @@
 import { attr } from '@ember-data/model';
 import CartoGeojsonFeature from './carto-geojson-feature';
 
-export default class Lot extends CartoGeojsonFeature {
+export default class LotComparison extends CartoGeojsonFeature {
   @attr properties;
 
   get title() {
