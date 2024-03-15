@@ -11,15 +11,19 @@
   </CartoDataProvider>
 {{else}}
   <div style="display:flex; flex-direction:row;">
-    <CartoDataProvider @modelId={{this.model.comparisonid}} @modelName="lot" as |lot|>
-      <Mapbox::MapFeatureRenderer @model={{lot}} />
-      <Bookmarks::BookmarkButton @bookmarkableModel={{lot}} />
-      <LayerRecordViews::TaxLot @model={{lot.properties}} @hidePlus="true" @otherModelId={{this.model.id}} />
-    </CartoDataProvider>
-    <CartoDataProvider @modelId={{this.model.id}} @modelName="lot" as |lot|>
-      <Mapbox::MapFeatureRenderer @model={{lot}} />
-      <Bookmarks::BookmarkButton @bookmarkableModel={{lot}} />
-      <LayerRecordViews::TaxLot @model={{lot.properties}} @hidePlus="true" @otherModelId={{this.model.comparisonid}} />
-    </CartoDataProvider>
+    <div style="width: 50%">
+      <CartoDataProvider @modelId={{this.model.comparisonid}} @modelName="lot" as |lot|>
+        <Mapbox::MapFeatureRenderer @model={{lot}} />
+        <Bookmarks::BookmarkButton @bookmarkableModel={{lot}} />
+        <LayerRecordViews::TaxLot @model={{lot.properties}} @hidePlus="true" @otherModelId={{this.model.id}} />
+      </CartoDataProvider>
+    </div>
+    <div style="width: 50%">
+      <CartoDataProvider @modelId={{this.model.id}} @modelName="lot" as |lot|>
+        <Mapbox::MapFeatureRenderer @model={{lot}} />
+        <Bookmarks::BookmarkButton @bookmarkableModel={{lot}} />
+        <LayerRecordViews::TaxLot @model={{lot.properties}} @hidePlus="true" @otherModelId={{this.model.comparisonid}} />
+      </CartoDataProvider>
+    </div>
   </div>
 {{/if}}
