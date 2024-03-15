@@ -315,6 +315,8 @@ const landuseLookup = {
 export default class TaxLotRecordComponent extends LayerRecordComponent {
   @service router;
 
+  @service mainMap;
+
   @action
   linkToLotComparison() {
     this.router.transitionTo(
@@ -330,6 +332,7 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
 
   @action
   removeLotFromComparison(otherModelId) {
+    this.set('mainMap.comparisonSelected', null);
     const { boro, block, lot } = bblDemux(otherModelId);
     this.router.transitionTo(
       'map-feature.lot-comparison',
