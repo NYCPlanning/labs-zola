@@ -135,7 +135,7 @@ $layer-palette-hover-color: rgba($dark-gray,0.08);
 // "Toggle All Map Layers Off" button
 // --------------------------------------------------
 .no-layers-button {
-  margin: $layer-palette-padding*0 $layer-palette-padding*2 $layer-palette-padding*3 $layer-palette-padding*2;
+  margin: $layer-palette-padding*3 $layer-palette-padding*2 $layer-palette-padding*2 $layer-palette-padding*2;
   width: calc(100% - #{$layer-palette-padding*4});
 }
 
