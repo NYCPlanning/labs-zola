@@ -185,10 +185,6 @@ export default class MainMap extends Component {
     map.on('zoom', function () {
       mainMap.set('zoom', map.getZoom());
     });
-
-    if (this.router.currentRoute.name === 'map-feature.lot-comparison') {
-      mainMap.set('comparisonSelected', mainMap.selected);
-    }
   }
 
   @action
