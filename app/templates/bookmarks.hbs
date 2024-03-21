@@ -51,5 +51,34 @@
     </div>
   {{/unless}}
 
+<div style="margin-top: 2rem">
+  <h3>
+    Layer Sets
+    <a
+      class="button gray tiny float-right"
+      onclick={{action 'bookmarkCurrentLayerSet'}}
+    >
+      Bookmark Current Layers
+    </a>
+  </h3>
+
+  <ul class="no-bullet">
+    {{#each this.savedLayerSets as |bookmark|}}
+      <li class="lot-bookmark">
+        <span class="icon tax-lot"></span>
+        <a onclick={{action 'loadBookmarkedLayerSettings' bookmark.id}}>
+          {{bookmark.name}}
+        </a>
+        <button
+          class="float-right lu-red delete-bookmark-button" type="button" {{action 'deleteBookmarkedLayerSettings' bookmark.id}}
+        >
+          &times;
+        </button>
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
+
   {{outlet}}
 </div>
