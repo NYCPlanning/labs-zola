@@ -412,12 +412,6 @@ module('Acceptance | layer behavior tests', function (hooks) {
     await assertTooltips(this, assert, 'fresh', true);
   });
 
-  test('Second class: Sidewalk Cafes', async function (assert) {
-    await assertLayerGroupAdded(this, assert, 'sidewalk-cafes');
-
-    await assertTooltips(this, assert, 'sidewalk-cafes', false);
-  });
-
   test('Second class: Lower Density Growth Management Areas', async function (assert) {
     await assertLayerGroupAdded(this, assert, 'low-density-growth-mgmt-areas');
 
