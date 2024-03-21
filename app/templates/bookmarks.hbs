@@ -65,10 +65,19 @@
   <ul class="no-bullet">
     {{#each this.savedLayerSets as |bookmark|}}
       <li class="lot-bookmark">
-        <span class="icon tax-lot"></span>
-        <a onclick={{action 'loadBookmarkedLayerSettings' bookmark.id}}>
-          {{bookmark.name}}
-        </a>
+        {{#if (eq this.editMode bookmark.id)}}
+          <form onsubmit={{action 'updateBookmarkedLayerSettings' bookmark.id}}>
+            <input type="text" id="name" name="fname" value="{{bookmark.name}}">
+            <input type="submit" value="Save">
+          </form> 
+        {{else}}
+          <a onclick={{action 'turnOnEditMode' bookmark.id}}>
+            <FaIcon @icon="pen" color="#ae561f" cursor="pointer" />
+          </a>
+          <a onclick={{action 'loadBookmarkedLayerSettings' bookmark.id}}>
+            {{bookmark.name}}
+          </a>
+        {{/if}}
         <button
           class="float-right lu-red delete-bookmark-button" type="button" {{action 'deleteBookmarkedLayerSettings' bookmark.id}}
         >

@@ -13,6 +13,8 @@ export default Controller.extend({
     ? JSON.parse(window.localStorage['saved-layer-sets'])
     : [],
 
+  editMode: false,
+
   // because we must compute the record types based on multiple
   // promises, the model uses Promise.all
   // this gets us in trouble when we need to do
@@ -66,6 +68,22 @@ export default Controller.extend({
       window.localStorage['saved-layer-sets'] = JSON.stringify(
         this.savedLayerSets
       );
+    },
+
+    updateBookmarkedLayerSettings(id) {
+      const newLayerSets = [...this.savedLayerSets];
+      const updatedLayerSetIndex = newLayerSets.findIndex((lg) => lg.id === id);
+      newLayerSets[updatedLayerSetIndex].name =
+        document.getElementById('name').value;
+      this.set('savedLayerSets', newLayerSets);
+      window.localStorage['saved-layer-sets'] = JSON.stringify(
+        this.savedLayerSets
+      );
+      this.set('editMode', false);
+    },
+
+    turnOnEditMode(id) {
+      this.set('editMode', id);
     },
 
     loadBookmarkedLayerSettings(bookmarkId) {
