@@ -33,7 +33,7 @@
     {{get (promise-rejected-reason this.bookmarksSettled) 'message'}}.
   {{/if}}
 
-  {{#unless this.model.length}}
+  {{#unless (or this.model.length this.savedLayerSets.length)}}
     <div class="no-bookmarks">
       <div class="align-self-middle large-text-center">
         <h1 class="header-large">
@@ -47,6 +47,15 @@
         <p>
           From this page you can quickly navigate to all of your bookmarked&nbsp;information.
         </p>
+        <p>
+          If you would like to bookmark the current selected set of layers, use the button below.
+        </p>
+        <a
+          class="button gray tiny"
+          onclick={{action 'bookmarkCurrentLayerSet'}}
+        >
+          Bookmark Current Layers
+        </a>
       </div>
     </div>
   {{/unless}}
@@ -66,9 +75,15 @@
     {{#each this.savedLayerSets as |bookmark|}}
       <li class="lot-bookmark">
         {{#if (eq this.editMode bookmark.id)}}
-          <form onsubmit={{action 'updateBookmarkedLayerSettings' bookmark.id}}>
-            <input type="text" id="name" value={{bookmark.name}}>
-            <input type="submit" value="Save">
+          <form onsubmit={{action 'updateBookmarkedLayerSettings' bookmark.id}} style="display: flex; flex-direction: row; flex-wrap:nowrap;">
+            <input type="text" id="name" value={{bookmark.name}} style="max-width: 100%">
+            <input type="submit" value="Save" class="button gray" style="margin-right: 0.5rem;
+    margin-left: 0.5rem;">
+            <button
+              class="float-right lu-red delete-bookmark-button" type="button" {{action 'deleteBookmarkedLayerSettings' bookmark.id}}
+            >
+              &times;
+            </button>
           </form> 
         {{else}}
           <a onclick={{action 'turnOnEditMode' bookmark.id}}>
@@ -77,12 +92,12 @@
           <a id={{bookmark.id}} onclick={{action 'loadBookmarkedLayerSettings' bookmark.id}}>
             {{bookmark.name}}
           </a>
+          <button
+            class="float-right lu-red delete-bookmark-button" type="button" {{action 'deleteBookmarkedLayerSettings' bookmark.id}}
+          >
+            &times;
+          </button>
         {{/if}}
-        <button
-          class="float-right lu-red delete-bookmark-button" type="button" {{action 'deleteBookmarkedLayerSettings' bookmark.id}}
-        >
-          &times;
-        </button>
       </li>
     {{/each}}
   </ul>
