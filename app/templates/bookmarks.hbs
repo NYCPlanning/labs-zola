@@ -71,6 +71,9 @@
     </a>
   </h3>
 
+  {{#unless this.savedLayerSets.length}}
+    <p>No current saved layer sets.</p>
+  {{/unless}}
   <ul class="no-bullet">
     {{#each this.savedLayerSets as |bookmark|}}
       <li class="lot-bookmark">
