@@ -67,14 +67,14 @@
       <li class="lot-bookmark">
         {{#if (eq this.editMode bookmark.id)}}
           <form onsubmit={{action 'updateBookmarkedLayerSettings' bookmark.id}}>
-            <input type="text" id="name" name="fname" value="{{bookmark.name}}">
+            <input type="text" id="name" value={{bookmark.name}}>
             <input type="submit" value="Save">
           </form> 
         {{else}}
           <a onclick={{action 'turnOnEditMode' bookmark.id}}>
             <FaIcon @icon="pen" color="#ae561f" cursor="pointer" />
           </a>
-          <a onclick={{action 'loadBookmarkedLayerSettings' bookmark.id}}>
+          <a id={{bookmark.id}} onclick={{action 'loadBookmarkedLayerSettings' bookmark.id}}>
             {{bookmark.name}}
           </a>
         {{/if}}

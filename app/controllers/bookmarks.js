@@ -80,6 +80,11 @@ export default Controller.extend({
         this.savedLayerSets
       );
       this.set('editMode', false);
+      // without the below, the name won't update in the dom
+      setTimeout(function () {
+        document.getElementById(id).innerText =
+          newLayerSets[updatedLayerSetIndex].name;
+      }, 1);
     },
 
     turnOnEditMode(id) {
