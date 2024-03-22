@@ -15,6 +15,17 @@ export default Controller.extend({
 
   editMode: false,
 
+  track(act) {
+    gtag('event', 'saved_layer_sets', {
+      event_category: 'Saved Layer Sets',
+      event_action: act,
+    });
+    this.metrics.trackEvent('MatomoTagManager', {
+      category: 'Saved Layer Sets',
+      action: act,
+      name: act,
+    });
+  },
   // because we must compute the record types based on multiple
   // promises, the model uses Promise.all
   // this gets us in trouble when we need to do
@@ -58,6 +69,7 @@ export default Controller.extend({
       window.localStorage['saved-layer-sets'] = JSON.stringify(
         this.savedLayerSets
       );
+      this.track('bookmarkCurrentLayerSet');
     },
 
     deleteBookmarkedLayerSettings(id) {
@@ -68,6 +80,7 @@ export default Controller.extend({
       window.localStorage['saved-layer-sets'] = JSON.stringify(
         this.savedLayerSets
       );
+      this.track('deleteBookmarkedLayerSettings');
     },
 
     updateBookmarkedLayerSettings(id) {
@@ -85,10 +98,12 @@ export default Controller.extend({
         document.getElementById(id).innerText =
           newLayerSets[updatedLayerSetIndex].name;
       }, 1);
+      this.track('');
     },
 
     turnOnEditMode(id) {
       this.set('editMode', id);
+      this.track('updateBookmarkedLayerSettings');
     },
 
     loadBookmarkedLayerSettings(bookmarkId) {
@@ -104,6 +119,7 @@ export default Controller.extend({
           layer.visibility = !!layerToLoad.visibleLayers.includes(layer.id);
         });
       });
+      this.track('loadBookmarkedLayerSettings');
     },
   },
 });
