@@ -7,7 +7,6 @@ export default class ZoningDistrictLongDescription extends LayerRecordComponent 
 
   @action
   setZone(newZone) {
-    console.log('setting zone', newZone);
     this.set('primaryZoneOverride', newZone);
   }
 
