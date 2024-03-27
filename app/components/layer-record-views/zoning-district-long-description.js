@@ -1,6 +1,66 @@
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import LayerRecordComponent from './-base';
 
 export default class ZoningDistrictLongDescription extends LayerRecordComponent {
+  @tracked primaryZoneOverride;
+
+  @action
+  setZone(newZone) {
+    console.log('setting zone', newZone);
+    this.set('primaryZoneOverride', newZone);
+  }
+
+  zones = {
+    C: ['C1-C2', 'C3-C3A', 'C4', 'C5', 'C6', 'C7', 'C8'],
+    R: [
+      'R1',
+      'R2',
+      'R2A',
+      'R2X',
+      'R3-1',
+      'R3-2',
+      'R3A',
+      'R3X',
+      'R4',
+      'R4-1',
+      'R4A',
+      'R4B',
+      'R5',
+      'R5A',
+      'R5B',
+      'R5D',
+      'R6',
+      'R6A',
+      'R6B',
+      'R7',
+      'R7A',
+      'R7B',
+      'R7D',
+      'R7X',
+      'R8',
+      'R8A',
+      'R8B',
+      'R8X',
+      'R9',
+      'R9A',
+      'R9D',
+      'R9X',
+      'R10',
+      'R10A',
+      'R10X',
+    ],
+    M: ['M1', 'M2', 'M3'],
+  };
+
+  get overflow() {
+    return this.primaryzoneCode[0] === 'R';
+  }
+
+  get zoneMenuItems() {
+    return this.zones[this.primaryzoneCode[0]];
+  }
+
   get primaryzone() {
     const { zonedist } = this.model;
     // convert R6A to r6
@@ -9,6 +69,10 @@ export default class ZoningDistrictLongDescription extends LayerRecordComponent 
   }
 
   get primaryzoneCode() {
+    if (this.primaryZoneOverride) {
+      return this.primaryZoneOverride;
+    }
+
     const { zonedist } = this.model;
 
     const { primaryzone } = this;

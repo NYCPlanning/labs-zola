@@ -1,5 +1,12 @@
 <div class="section">
-  <div class="text-box">
+  <ul class="tabs zd-nav" style={{if this.overflow "overflow-x: scroll;"}}>
+    {{#each this.zoneMenuItems as |zone|}}
+      <li class="tabs-title{{if (eq this.primaryzoneCode zone) " is-active"}}">
+        <a onclick={{action this.setZone zone}} aria-selected={{if (eq this.primaryzoneCode zone) "true"}}>{{zone}}</a>
+      </li>
+    {{/each}}
+  </ul>
+  <div class="text-box" style="margin-top: 1rem;">
     {{#if (eq this.primaryzoneCode "C1-C2")}}
       <LayerRecordViews::ZoningDistrictLongDescriptions::C1-C2 />
     {{else if (eq this.primaryzoneCode "C3-C3A")}}
