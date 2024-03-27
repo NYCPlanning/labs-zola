@@ -1,4 +1,16 @@
 <label class="header-label clearfix">
+
+  {{#if this.hidePlus}}
+    <button {{action 'removeLotFromComparison' this.otherModelId}} style="color: red;">
+      {{fa-icon icon="times"  transform="grow-1 up-1"}}
+    </button>
+  {{else}}
+    <button class="add-comparison-lot-button"  {{action 'linkToLotComparison'}}>
+      <span class="show-for-medium">{{fa-icon icon="plus"  transform="grow-10 up-1"}}&nbsp;&nbsp;Add Another Tax Lot for Comparison</span>
+    </button>
+    <br />
+  {{/if}}
+
   TAX LOT
   <span class="medium-gray">
     |

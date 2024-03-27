@@ -266,3 +266,17 @@ body.index {
     left: 50%;
   }
 }
+
+.add-comparison-lot-button {
+  border: 1px solid;
+  border-color: green;
+  border-radius: 5px;
+  padding: .5rem;
+  margin-bottom: .5rem;
+  color: green;
+  &:hover {
+    background-color: green;
+    border: 1px solid;
+    color: white;
+  }
+}

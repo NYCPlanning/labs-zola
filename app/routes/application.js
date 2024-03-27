@@ -28,7 +28,10 @@ export default Route.extend({
       this.router.transitionTo(`/about${transition.intent.url}`);
     }
 
-    if (targetName === 'map-feature.lot') {
+    if (
+      targetName === 'map-feature.lot' ||
+      targetName === 'map-feature.lot-comparison'
+    ) {
       this.set('mainMap.routeIntentIsNested', true);
     }
   },

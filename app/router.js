@@ -22,6 +22,9 @@ Router.map(function () {// eslint-disable-line
   // views for individual records of data
   this.route('map-feature', { path: '/l' }, function () {
     this.route('lot', { path: 'lot/:boro/:block/:lot' });
+    this.route('lot-comparison', {
+      path: 'lot-comparison/:boro/:block/:lot/:comparisonboro/:comparisonblock/:comparisonlot/',
+    });
     this.route('zoning-district', { path: '/zoning-district/:id' });
     this.route('commercial-overlay', { path: '/commercial-overlay/:id' });
     this.route('special-purpose-district', {
