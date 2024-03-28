@@ -4,6 +4,7 @@ import { computed, action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import QueryParams from '@nycplanning/ember-parachute';
 import config from 'labs-zola/config/environment';
+import { tracked } from '@glimmer/tracking';
 
 const {
   defaultLayerGroupState,
@@ -87,6 +88,8 @@ export default class ApplicationController extends Controller.extend(
 
   @service mainMap;
 
+  @tracked leftSideMenuVisibilty = true;
+
   // this action extracts query-param-friendly state of layer groups
   // for various paramable layers
   @action
@@ -111,5 +114,11 @@ export default class ApplicationController extends Controller.extend(
     const state = this.queryParamsState || {};
     const values = Object.values(state);
     return values.every(({ changed }) => changed === false);
+  }
+
+  @action
+  toggleLeftSideMenuVisibility() {
+    this.leftSideMenuVisibilty = !this.leftSideMenuVisibilty;
+    console.log('new layer visibility', this.leftSideMenuVisibilty);
   }
 }
