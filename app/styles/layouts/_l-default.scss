@@ -214,6 +214,51 @@ body.index {
   }
 }
 
+.content-toggle-layer-palette-container {
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
+  background-color: $white;
+  text-align: left;
+
+  @include breakpoint(small down) {
+    display: none;
+  }
+
+  @include breakpoint(medium down) {
+    @include xy-cell(
+      $size: full,
+      $output: (base size),
+      $gutters: 0
+    );
+  }
+
+  & > .close-button {
+    position: relative;
+    margin: 0;
+    max-inline-size: max-content;
+    border: 2px solid rgba(0,0,0,0.25);
+    border-left: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    @include breakpoint(large) {
+      display: block;
+      position: fixed;
+      z-index: 3;
+      top: 50%;
+      left: 18rem;
+      background-color: $white;
+      margin-left: -4px;
+      padding: 0 rem-calc(6) rem-calc(3);
+      // box-shadow: -4px 4px 0 rgba(0,0,0,0.1);
+    }
+    @include breakpoint(xxlarge) {
+      left: 18rem;
+    }
+  }
+}
+
 .content-is-closed {
 
   .navigation-area {
