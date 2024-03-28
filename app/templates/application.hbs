@@ -30,7 +30,10 @@
           @layerGroups={{this.model.layerGroupsObject}}
           @isDefault={{this.isDefault}}
           @resetQueryParams={{action this.setModelsToDefault}}
+          @setAllLayerVisibilityToFalse={{action this.setAllLayerVisibilityToFalse}}
+          @undoSetAllLayerVisibilityToFalse={{action this.undoSetAllLayerVisibilityToFalse}}
           @handleLayerGroupChange={{action this.handleLayerGroupChange}}
+          @showToggleLayersBackOn={{this.showToggleLayersBackOn}}
         />
       </div>
     </div>

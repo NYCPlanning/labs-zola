@@ -5,6 +5,7 @@ module.exports = function () {
       'circle',
       'dot-circle',
       'square',
+      'circle-xmark',
     ],
     'free-solid-svg-icons': [
       'angle-up',

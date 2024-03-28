@@ -9,6 +9,23 @@
   {{/if}}
 </button>
 <div id="layers-menu" class="{{if this.closed "show-for-medium"}}">
+  {{#if this.showToggleLayersBackOn}}
+    <a
+      class="button gray small no-layers-button hide-for-print"
+      onclick={{action this.undoSetAllLayerVisibilityToFalse}}
+      data-test-reset-query-params="true">
+      <FaIcon @icon="undo" />
+      Toggle Layers Back On
+    </a>
+  {{else}}
+    <a
+      class="button gray small no-layers-button hide-for-print"
+      onclick={{action this.setAllLayerVisibilityToFalse}}
+      data-test-reset-query-params="true">
+      <FaIcon @icon="circle-xmark" @prefix="far" />
+      Toggle All Map Layers Off
+    </a>
+  {{/if}}
   <LabsUiOverrides::LayerGroupsContainer
     @handleToggle={{action this.handleLayerGroupToggle}}
     @title="Zoning and Land Use" as |container|
@@ -323,13 +340,5 @@
       </ul>
     </container.layer-group-toggle>
   </LabsUiOverrides::LayerGroupsContainer>
-  <a
-    class="button gray small reset-map-button hide-for-print"
-    disabled={{this.isDefault}}
-    onclick={{action this.resetQueryParams}}
-    data-test-reset-query-params="true">
-    <FaIcon @icon="undo" />
-    Reset Map Layers
-  </a>
 </div>
 {{yield}}
