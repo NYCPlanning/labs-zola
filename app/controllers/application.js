@@ -88,6 +88,8 @@ export default class ApplicationController extends Controller.extend(
 
   @service mainMap;
 
+  @service metrics;
+
   @tracked leftSideMenuVisibilty = true;
 
   // this action extracts query-param-friendly state of layer groups
@@ -119,6 +121,16 @@ export default class ApplicationController extends Controller.extend(
   @action
   toggleLeftSideMenuVisibility() {
     this.leftSideMenuVisibilty = !this.leftSideMenuVisibilty;
-    console.log('new layer visibility', this.leftSideMenuVisibilty);
+
+    this.metrics.trackEvent('MatomoTagManager', {
+      category: 'Toggled Layer Menu Visibility',
+      action: 'Toggled Layer Menu Visibility',
+      name: `${this.leftSideMenuVisibilty ? 'Opened' : 'Closed'}`,
+    });
+
+    gtag('event', 'toggle_menu', {
+      event_category: 'Toggled Layer Menu Visibility',
+      event_action: `${this.leftSideMenuVisibilty ? 'Opened' : 'Closed'}`,
+    });
   }
 }
