@@ -1,13 +1,27 @@
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
 import LayerRecordComponent from './-base';
 
 export default class ZoningDistrictLongDescription extends LayerRecordComponent {
   @tracked primaryZoneOverride;
 
+  @service metrics;
+
   @action
   setZone(newZone) {
     this.set('primaryZoneOverride', newZone);
+
+    gtag('event', 'quick_reference', {
+      event_category: 'Quick Reference Menu Click',
+      event_action: `${newZone}`,
+    });
+
+    this.metrics.trackEvent('MatomoTagManager', {
+      category: 'Quick Reference Menu Click',
+      action: `${newZone}`,
+      name: `Quick Reference Menu Click ${newZone}`,
+    });
   }
 
   zones = {
