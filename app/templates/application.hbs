@@ -1,3 +1,4 @@
+<DefaultModal @openModal={{this.openModal}} @toggleModal={{this.toggleModal}} @dontShowModalAgain={{this.dontShowModalAgain}} />
 <MainHeader @bookmarks={{this.model.bookmarks}} />
 <div class="{{if this.printSvc.enabled "print-view"}}">
   <LinkTo @route="index" class="index-active-detector sr-only">Homepage</LinkTo>

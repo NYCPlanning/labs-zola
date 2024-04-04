@@ -1,0 +1,18 @@
+<div class="slideshow-content">
+  {{#if (eq @slideNumber 1)}}
+    <div class="slide" style="background-color: aqua;">
+      <p>Access what you're looking for more quickly using your <strong>search history</strong></p>
+      <img src="/img/slideshow/search-history.gif" alt="A video showing the search history functionality" />
+    </div>
+  {{else if (eq @slideNumber 2)}}
+    <div class="slide" style="background-color: yellow;">
+      <p>See more of the map by <strong>hiding the layers menu</strong></p>
+      <img src="/img/slideshow/toggle-sidebar.gif" alt="A video showing the sidebar toggle functionality" />
+    </div>
+  {{else if (eq @slideNumber 3)}}
+    <div class="slide" style="background-color: lightgreen;">
+      <p><strong>Select two tax lots</strong> for side-by-side comparison</p>
+      <img src="/img/slideshow/side-by-side.gif" alt="A video showing the sidebar toggle functionality" />
+    </div>
+  {{/if}}
+</div>

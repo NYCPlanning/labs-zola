@@ -4,6 +4,7 @@ import { computed, action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import QueryParams from '@nycplanning/ember-parachute';
 import config from 'labs-zola/config/environment';
+import { tracked } from '@glimmer/tracking';
 
 const {
   defaultLayerGroupState,
@@ -111,5 +112,21 @@ export default class ApplicationController extends Controller.extend(
     const state = this.queryParamsState || {};
     const values = Object.values(state);
     return values.every(({ changed }) => changed === false);
+  }
+
+  @tracked
+  openModal = !window.localStorage.hideMessage;
+
+  @tracked
+  dontShowModalAgain = false;
+
+  @action toggleModal() {
+    this.openModal = !this.openModal;
+    // Uncomment this when done so that the message only shows the first time
+    // window.localStorage.hideMessage = true;
+    // Uncomment this one to use the checkbox to hide it
+    if (this.dontShowModalAgain) {
+      window.localStorage.hideMessage = true;
+    }
   }
 }
