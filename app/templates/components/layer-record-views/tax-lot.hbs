@@ -5,8 +5,8 @@
       {{fa-icon icon="times"  transform="grow-1 up-1"}}
     </button>
   {{else}}
-    <button class="add-comparison-lot-button"  {{action 'linkToLotComparison'}}>
-      <span class="show-for-medium">{{fa-icon icon="plus"  transform="grow-10 up-1"}}&nbsp;&nbsp;Add Another Tax Lot for Comparison</span>
+    <button class="add-comparison-lot-button show-for-medium">
+      <span {{action 'linkToLotComparison'}}>{{fa-icon icon="plus"  transform="grow-10 up-1"}}&nbsp;&nbsp;Add Another Tax Lot for Comparison</span>
     </button>
     <br />
   {{/if}}
