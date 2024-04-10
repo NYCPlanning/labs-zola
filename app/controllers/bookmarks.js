@@ -59,17 +59,36 @@ export default Controller.extend({
         layer.visibility ? visibleLayers.push(layer.id) : null;
       });
 
+      const queryParams = {};
+      [
+        'layer-groups',
+        'selectedZoning',
+        'selectedOverlays',
+        'selectedFirm',
+        'selectedPfirm',
+        'selectedCouncilDistricts',
+        'selectedLayerGroup',
+      ].forEach((selected) => {
+        queryParams[selected] = this.router.currentRoute.queryParams[selected]
+          ? JSON.parse(this.router.currentRoute.queryParams[selected])
+          : undefined;
+      });
+
       const layerSet = {
         id: crypto.randomUUID(),
         name: 'New Saved Layer Set',
         visibleLayers,
         visibleLayerGroups,
+        queryParams,
       };
       this.set('savedLayerSets', [...this.savedLayerSets, layerSet]);
       window.localStorage['saved-layer-sets'] = JSON.stringify(
         this.savedLayerSets
       );
       this.track('bookmarkCurrentLayerSet');
+      // Hack to update the # which doesn't update automatically
+      document.querySelector('.badge.sup').innerText =
+        parseInt(document.querySelector('.badge.sup').innerText, 10) + 1;
     },
 
     deleteBookmarkedLayerSettings(id) {
@@ -81,6 +100,9 @@ export default Controller.extend({
         this.savedLayerSets
       );
       this.track('deleteBookmarkedLayerSettings');
+      // Hack to update the # which doesn't update automatically
+      document.querySelector('.badge.sup').innerText =
+        parseInt(document.querySelector('.badge.sup').innerText, 10) - 1;
     },
 
     updateBookmarkedLayerSettings(id) {
@@ -98,12 +120,12 @@ export default Controller.extend({
         document.getElementById(id).innerText =
           newLayerSets[updatedLayerSetIndex].name;
       }, 1);
-      this.track('');
+      this.track('finishUpdateBookmarkedLayerSettings');
     },
 
     turnOnEditMode(id) {
       this.set('editMode', id);
-      this.track('updateBookmarkedLayerSettings');
+      this.track('beginUpdateBookmarkedLayerSettings');
     },
 
     loadBookmarkedLayerSettings(bookmarkId) {
@@ -119,6 +141,19 @@ export default Controller.extend({
           layer.visibility = !!layerToLoad.visibleLayers.includes(layer.id);
         });
       });
+
+      [
+        'selectedZoning',
+        'selectedOverlays',
+        'selectedFirm',
+        'selectedPfirm',
+        'selectedCouncilDistricts',
+        'selectedLayerGroup',
+      ].forEach((selected) => {
+        this.router.currentRoute.queryParams[selected] =
+          layerToLoad.queryParams[selected];
+      });
+
       this.track('loadBookmarkedLayerSettings');
     },
   },

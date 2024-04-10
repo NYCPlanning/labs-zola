@@ -92,9 +92,9 @@
           <a onclick={{action 'turnOnEditMode' bookmark.id}}>
             <FaIcon @icon="pen" color="#ae561f" cursor="pointer" />
           </a>
-          <a id={{bookmark.id}} onclick={{action 'loadBookmarkedLayerSettings' bookmark.id}}>
+          <LinkTo @route="bookmarks" @query={{bookmark.queryParams}} id={{bookmark.id}} onclick={{action 'loadBookmarkedLayerSettings' bookmark.id}}>
             {{bookmark.name}}
-          </a>
+          </LinkTo>
           <button
             class="float-right lu-red delete-bookmark-button" type="button" {{action 'deleteBookmarkedLayerSettings' bookmark.id}}
           >
