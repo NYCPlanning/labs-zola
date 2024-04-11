@@ -271,7 +271,8 @@ a.glossary, a.glossary:link, a.glossary:visited {
   margin: 0;
   border: 1px solid #d3d5d9;
   background: 0 0;
-  list-style-type: none
+  list-style-type: none;
+  padding-bottom: 5px;
 }
 
 .tabs::after,.tabs::before {
