@@ -36,14 +36,7 @@
 </p>
 
 <div style="color: #ae561f; font-size: 1.25rem; display: flex; flex-flow: row wrap; gap: 1.25rem;">
-  <a target="_blank" onclick={{action this.captureOutboundLink "Icons - Cyclomedia" preventDefault=false}} href="https://roadview.planninglabs.nyc/view/{{this.model.lon}}/{{this.model.lat}}">
-    <EmberPopover @side="top" @popperContainer="body" @popoverHideDelay={{0}}>
-      View this address in Cyclomedia Street View
-    </EmberPopover>
-    <FaIcon @icon="street-view" />
-  </a>
-
-  <a target="_blank"onclick={{action this.captureOutboundLink "Icons - ZAP" preventDefault=false}} href="https://zap.planning.nyc.gov/projects?applied-filters=dcp_publicstatus%2Cdistance_from_point%2Cradius_from_point&distance_from_point={{this.model.lon}}%2C{{this.model.lat}}">
+  <a target="_blank" onclick={{action this.captureOutboundLink "Icons - ZAP" preventDefault=false}} href="https://zap.planning.nyc.gov/projects?applied-filters=dcp_publicstatus%2Cdistance_from_point%2Cradius_from_point&distance_from_point={{this.model.lon}}%2C{{this.model.lat}}">
     <EmberPopover @side="top" @popperContainer="body" @popoverHideDelay={{0}}>
       View nearby projects in the Zoning Application Portal
     </EmberPopover>
@@ -51,7 +44,7 @@
   </a>
 
   <a target="_blank" onclick={{action this.captureOutboundLink "Icons - PFF - Default (CD)" preventDefault=false}} href="https://popfactfinder.planning.nyc.gov/explorer/districts/{{this.model.cd}}">
-    <EmberPopover @side="top" @popperContainer="body" @popoverHideDelay={{0}}>
+    <EmberPopover @side="top" @popperContainer="body" @popoverHideDelay={{250}}>
       View Decennial Census and ACS data for the 
       <a target="_blank" onclick={{action this.captureOutboundLink "Icons - PFF - Boro" preventDefault=false}} href="https://popfactfinder.planning.nyc.gov/explorer/boroughs/{{this.model.borocode}}">Boro</a>, 
       <a target="_blank" onclick={{action this.captureOutboundLink "Icons - PFF - CD" preventDefault=false}} href="https://popfactfinder.planning.nyc.gov/explorer/districts/{{this.model.cd}}">Community District</a>, <br />
@@ -61,8 +54,15 @@
     <FaIcon @icon="users-between-lines" />
   </a>
 
-  <a target="_blank" onclick={{action this.captureOutboundLink "Icons - CPE - Default (Capital Projects)" preventDefault=false}}  href="https://capitalplanning.nyc.gov/">
+  <a target="_blank" onclick={{action this.captureOutboundLink "Icons - Streets" preventDefault=false}} href="https://streets.planning.nyc.gov/about?lat={{this.model.lat}}&layer-groups=%5B%22amendments%22%2C%22citymap%22%2C%22pierhead-bulkhead-lines%22%2C%22street-centerlines%22%5D&lng={{this.model.lon}}&zoom=15">
     <EmberPopover @side="top" @popperContainer="body" @popoverHideDelay={{0}}>
+      View the street map for the area
+    </EmberPopover>
+    <FaIcon @icon="road" />
+  </a>
+
+  <a target="_blank" onclick={{action this.captureOutboundLink "Icons - CPE - Default (Capital Projects)" preventDefault=false}}  href="https://capitalplanning.nyc.gov/">
+    <EmberPopover @side="top" @popperContainer="body" @popoverHideDelay={{250}}>
       View nearby
       <a target="_blank" onclick={{action this.captureOutboundLink "Icons - CPE - Capital Projects" preventDefault=false}} href="https://capitalplanning.nyc.gov/map/capitalprojects">Capital Projects</a>, 
       <a target="_blank" onclick={{action this.captureOutboundLink "Icons - CPE - Housing Development" preventDefault=false}} href="https://capitalplanning.nyc.gov/map/housing">Housing Development</a>, <br />
@@ -70,8 +70,16 @@
     </EmberPopover>
     <FaIcon @icon="dollar-sign" />
   </a>
-  <a target="_blank" onclick={{action this.captureOutboundLink "Icons - EDDE - Default (Home)" preventDefault=false}} href="https://equitableexplorer.planning.nyc.gov/">
+
+  <a target="_blank" onclick={{action this.captureOutboundLink "Icons - CD Profiles" preventDefault=false}} href="https://communityprofiles.planning.nyc.gov/{{this.boroSlashCd}}">
     <EmberPopover @side="top" @popperContainer="body" @popoverHideDelay={{0}}>
+      View data for the community district in Community District Profiles
+    </EmberPopover>
+    <FaIcon @icon="people-roof" />
+  </a>
+
+  <a target="_blank" onclick={{action this.captureOutboundLink "Icons - EDDE - Default (Home)" preventDefault=false}} href="https://equitableexplorer.planning.nyc.gov/">
+    <EmberPopover @side="top" @popperContainer="body" @popoverHideDelay={{250}}>
       View 
       <a target="_blank" onclick={{action this.captureOutboundLink "Icons - EDDE - Citywide" preventDefault=false}} href="https://equitableexplorer.planning.nyc.gov/data/citywide/nyc/demo/tot">Citywide</a>, 
       <a target="_blank" onclick={{action this.captureOutboundLink "Icons - EDDE - Boro" preventDefault=false}} href="https://equitableexplorer.planning.nyc.gov/data/borough/{{this.model.borocode}}/demo/tot">Borough</a>, 
@@ -79,18 +87,14 @@
     </EmberPopover>
     <FaIcon @icon="equals" />
   </a>
-  <a target="_blank" onclick={{action this.captureOutboundLink "Icons - Streets" preventDefault=false}} href="https://streets.planning.nyc.gov/about?lat={{this.model.lat}}&layer-groups=%5B%22amendments%22%2C%22citymap%22%2C%22pierhead-bulkhead-lines%22%2C%22street-centerlines%22%5D&lng={{this.model.lon}}&zoom=15">
+  
+  <a target="_blank" onclick={{action this.captureOutboundLink "Icons - Cyclomedia" preventDefault=false}} href="https://roadview.planninglabs.nyc/view/{{this.model.lon}}/{{this.model.lat}}">
     <EmberPopover @side="top" @popperContainer="body" @popoverHideDelay={{0}}>
-      View the street map for the area
+      View this address in Cyclomedia Street View
     </EmberPopover>
-    <FaIcon @icon="road" />
+    <FaIcon @icon="street-view" />
   </a>
-  <a target="_blank" onclick={{action this.captureOutboundLink "Icons - CD Profiles" preventDefault=false}} href="https://communityprofiles.planning.nyc.gov/{{this.boroSlashCd}}">
-    <EmberPopover @side="top" @popperContainer="body" @popoverHideDelay={{0}}>
-      View data for the community district in Community District Profiles
-    </EmberPopover>
-    <FaIcon @icon="people-roof" />
-  </a>
+
   <a target="_blank" onclick={{action this.captureOutboundLink "Icons - Google Maps" preventDefault=false}} href="{{this.googleMapsURL}}">
     <EmberPopover @side="top" @popperContainer="body" @popoverHideDelay={{0}}>
       View this address in Google Maps
