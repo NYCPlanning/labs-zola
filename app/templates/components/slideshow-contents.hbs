@@ -14,5 +14,25 @@
       <p><strong>Select two tax lots</strong> for side-by-side comparison</p>
       <img src="/img/slideshow/side-by-side.gif" alt="A video showing the sidebar toggle functionality" />
     </div>
+  {{else if (eq @slideNumber 4)}}
+    <div class="slide" style="background-color: hotpink;">
+      <p><strong>Turn off all layers</strong> with the click of a button</p>
+      <img src="/img/slideshow/toggle-all-layers-off.gif" alt="A video showing the all layer toggle button functionality" />
+    </div>
+  {{else if (eq @slideNumber 5)}}
+    <div class="slide" style="background-color: cornflowerblue;">
+      <p><strong>Bookmark your selected layers</strong> to return to later</p>
+      <img src="/img/slideshow/bookmark-layer-sets.gif" alt="A video showing the all layer bookmark functionality" />
+    </div>
+  {{else if (eq @slideNumber 6)}}
+    <div class="slide" style="background-color: gold;">
+      <p>Sum the area or distance of <strong>multiple measurements</strong></p>
+      <img src="/img/slideshow/multiple-measurements.gif" alt="A video showing the multiple measurement functionality" />
+    </div>
+  {{else if (eq @slideNumber 7)}}
+    <div class="slide" style="background-color: chartreuse;">
+      <p><strong>New</strong> links to sites related to the selected tax lot</p>
+      <img src="/img/slideshow/relevant-links.gif" alt="A video showing the relevant links functionality" />
+    </div>
   {{/if}}
 </div>
