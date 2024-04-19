@@ -71,7 +71,7 @@ export const mapQueryParams = new QueryParams(
     },
 
     'aerial-year': {
-      defaultValue: 'aerials-2016',
+      defaultValue: 'aerials-2022',
     },
 
     // TODO: After merge of params refactor, update print service based on this param.
