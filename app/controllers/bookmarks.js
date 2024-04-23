@@ -4,6 +4,15 @@ import { inject as service } from '@ember/service';
 import { computed as computedProp } from '@ember/object';
 import { Promise } from 'rsvp';
 
+const QUERY_PARAMS_LIST = [
+  'selectedZoning',
+  'selectedOverlays',
+  'selectedFirm',
+  'selectedPfirm',
+  'selectedCouncilDistricts',
+  'selectedLayerGroup',
+];
+
 export default Controller.extend({
   mainMap: service(),
   metrics: service(),
@@ -60,15 +69,7 @@ export default Controller.extend({
       });
 
       const queryParams = {};
-      [
-        'layer-groups',
-        'selectedZoning',
-        'selectedOverlays',
-        'selectedFirm',
-        'selectedPfirm',
-        'selectedCouncilDistricts',
-        'selectedLayerGroup',
-      ].forEach((selected) => {
+      ['layer-groups', ...QUERY_PARAMS_LIST].forEach((selected) => {
         queryParams[selected] = this.router.currentRoute.queryParams[selected]
           ? JSON.parse(this.router.currentRoute.queryParams[selected])
           : undefined;
@@ -142,14 +143,7 @@ export default Controller.extend({
         });
       });
 
-      [
-        'selectedZoning',
-        'selectedOverlays',
-        'selectedFirm',
-        'selectedPfirm',
-        'selectedCouncilDistricts',
-        'selectedLayerGroup',
-      ].forEach((selected) => {
+      QUERY_PARAMS_LIST.forEach((selected) => {
         this.router.currentRoute.queryParams[selected] =
           layerToLoad.queryParams[selected];
       });
