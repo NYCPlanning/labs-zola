@@ -95,6 +95,11 @@ body {
   @include breakpoint(xlarge) {
     width: calc(100% - 18rem);
   }
+
+  &.full-width {
+      width: 100%;
+  }
+
 }
 
 body.index {
@@ -193,7 +198,7 @@ body.index {
     );
   }
 
-  & > .close-button {
+  & .close-button {
     position: relative;
     margin: 0;
 

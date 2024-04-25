@@ -122,6 +122,12 @@ export default class ApplicationController extends Controller.extend(
   toggleLeftSideMenuVisibility() {
     this.leftSideMenuVisibilty = !this.leftSideMenuVisibilty;
 
+    const mapContainer = document.querySelector('.map-container');
+
+    if (this.leftSideMenuVisibilty)
+      mapContainer.setAttribute('class', 'map-container');
+    else mapContainer.setAttribute('class', 'map-container full-width');
+
     this.metrics.trackEvent('MatomoTagManager', {
       category: 'Toggled Layer Menu Visibility',
       action: 'Toggled Layer Menu Visibility',
