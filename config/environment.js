@@ -382,6 +382,7 @@ module.exports = function (environment) {
           'circle',
           'dot-circle',
           'square',
+          'circle-xmark',
         ],
         'free-solid-svg-icons': [
           'angle-up',
