@@ -94,6 +94,17 @@ export default class ApplicationController extends Controller.extend(
 
   @tracked layerGroupsStorage;
 
+  widowResize() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const resizeEvent = window.document.createEvent('UIEvents');
+        resizeEvent.initUIEvent('resize', true, false, window, 0);
+        window.dispatchEvent(resizeEvent);
+        resolve();
+      }, 1);
+    });
+  }
+
   // this action extracts query-param-friendly state of layer groups
   // for various paramable layers
   @action
@@ -190,7 +201,7 @@ export default class ApplicationController extends Controller.extend(
   }
 
   @action
-  toggleLeftSideMenuVisibility() {
+  async toggleLeftSideMenuVisibility() {
     this.leftSideMenuVisibilty = !this.leftSideMenuVisibilty;
 
     const mapContainer = document.querySelector('.map-container');
@@ -198,6 +209,8 @@ export default class ApplicationController extends Controller.extend(
     if (this.leftSideMenuVisibilty)
       mapContainer.setAttribute('class', 'map-container');
     else mapContainer.setAttribute('class', 'map-container full-width');
+
+    await this.widowResize();
 
     this.metrics.trackEvent('MatomoTagManager', {
       category: 'Toggled Layer Menu Visibility',
