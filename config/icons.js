@@ -33,6 +33,13 @@ module.exports = function () {
       'tree',
       'undo',
       'window-minimize',
+      'dollar-sign',
+      'street-view',
+      'bolt',
+      'equals',
+      'users-between-lines',
+      'road',
+      'people-roof',
     ],
   };
 };
