@@ -137,13 +137,8 @@ export default class MapMeasurementToolsComponent extends Component {
     this.set('draw', draw);
     const drawMode = type === 'line' ? 'draw_line_string' : 'draw_polygon';
     const { mainMap } = this;
-    if (mainMap.get('drawMode')) {
-      // the following have been commented out, as we no longer want to clear all previous drawings unless the user hits the x button
-      // draw.deleteAll();
-    } else {
+    if (!mainMap.get('drawMode')) {
       mainMap.mapInstance.addControl(draw);
-      // this.set('drawnFeature', null);
-      // this.set('drawnMeasurements', null);
     }
     mainMap.set('drawMode', drawMode);
     draw.changeMode(drawMode);
