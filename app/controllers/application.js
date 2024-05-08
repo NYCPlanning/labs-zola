@@ -94,7 +94,7 @@ export default class ApplicationController extends Controller.extend(
 
   @tracked layerGroupsStorage;
 
-  widowResize() {
+  windowResize() {
     return new Promise((resolve) => {
       setTimeout(() => {
         const resizeEvent = window.document.createEvent('UIEvents');
@@ -210,7 +210,7 @@ export default class ApplicationController extends Controller.extend(
       mapContainer.setAttribute('class', 'map-container');
     else mapContainer.setAttribute('class', 'map-container full-width');
 
-    await this.widowResize();
+    await this.windowResize();
 
     this.metrics.trackEvent('MatomoTagManager', {
       category: 'Toggled Layer Menu Visibility',

@@ -97,7 +97,7 @@ body {
   }
 
   &.full-width {
-      width: 100% !important;
+      width: 100%;
   }
 
 }
@@ -256,7 +256,6 @@ body.index {
       background-color: $white;
       margin-left: -4px;
       padding: 0 rem-calc(6) rem-calc(6);
-      // box-shadow: -4px 4px 0 rgba(0,0,0,0.1);
     }
     @include breakpoint(xxlarge) {
       left: 18rem;

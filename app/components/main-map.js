@@ -54,7 +54,7 @@ export default class MainMap extends Component {
 
   highlightedLayerId = null;
 
-  widowResize() {
+  windowResize() {
     return new Promise((resolve) => {
       setTimeout(() => {
         const resizeEvent = window.document.createEvent('UIEvents');
@@ -273,6 +273,6 @@ export default class MainMap extends Component {
 
     this.set('printSvc.enabled', true);
 
-    await this.widowResize();
+    await this.windowResize();
   }
 }
