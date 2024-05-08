@@ -9,6 +9,7 @@ export default Route.extend({
       const { mainMap } = this;
       mainMap.setProperties({
         selected: null,
+        comparisonSelected: null,
         shouldFitBounds: false,
       });
 

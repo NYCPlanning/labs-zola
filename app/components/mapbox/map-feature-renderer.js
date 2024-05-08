@@ -27,8 +27,14 @@ export default class MapboxMapFeatureRenderer extends Component {
         parseInt(this.router.currentRoute.params.lot, 10)
     ) {
       this.setSelectedFeature(this.model);
-    } else if (this.router.currentRoute.params.comparisonboro !== '0') {
+    } else if (
+      this.router.currentRoute.params.comparisonboro !== '0' &&
+      this.router.currentRoute.name === 'map-feature.lot-comparison'
+    ) {
       this.setComparisonSelectedFeature(this.model);
+    } else {
+      this.setSelectedFeature(this.model);
+      this.setComparisonSelectedFeature(null);
     }
 
     if (this.shouldFitBounds) {
