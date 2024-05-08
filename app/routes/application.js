@@ -58,11 +58,16 @@ export default Route.extend({
 
     await bookmarks.invoke('get', 'bookmark');
 
+    const savedLayerSets = window.localStorage['saved-layer-sets']
+      ? JSON.parse(window.localStorage['saved-layer-sets'])
+      : [];
+
     return {
       layerGroups,
       layerGroupsObject,
       meta,
       bookmarks,
+      savedLayerSets,
     };
   },
 });

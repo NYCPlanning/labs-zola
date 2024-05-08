@@ -1,4 +1,4 @@
-<MainHeader @bookmarks={{this.model.bookmarks}} />
+<MainHeader @bookmarks={{this.model.bookmarks}} @savedLayerSets={{this.model.savedLayerSets}} />
 <div class="{{if this.printSvc.enabled "print-view"}}">
   <LinkTo @route="index" class="index-active-detector sr-only">Homepage</LinkTo>
   {{#if this.printSvc.enabled}}
