@@ -90,7 +90,20 @@ export default class ApplicationController extends Controller.extend(
 
   @service metrics;
 
+  @tracked leftSideMenuVisibilty = true;
+
   @tracked layerGroupsStorage;
+
+  windowResize() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const resizeEvent = window.document.createEvent('UIEvents');
+        resizeEvent.initUIEvent('resize', true, false, window, 0);
+        window.dispatchEvent(resizeEvent);
+        resolve();
+      }, 1);
+    });
+  }
 
   // this action extracts query-param-friendly state of layer groups
   // for various paramable layers
@@ -185,5 +198,29 @@ export default class ApplicationController extends Controller.extend(
     const state = this.queryParamsState || {};
     const values = Object.values(state);
     return values.every(({ changed }) => changed === false);
+  }
+
+  @action
+  async toggleLeftSideMenuVisibility() {
+    this.leftSideMenuVisibilty = !this.leftSideMenuVisibilty;
+
+    const mapContainer = document.querySelector('.map-container');
+
+    if (this.leftSideMenuVisibilty)
+      mapContainer.setAttribute('class', 'map-container');
+    else mapContainer.setAttribute('class', 'map-container full-width');
+
+    await this.windowResize();
+
+    this.metrics.trackEvent('MatomoTagManager', {
+      category: 'Toggled Layer Menu Visibility',
+      action: 'Toggled Layer Menu Visibility',
+      name: `${this.leftSideMenuVisibilty ? 'Opened' : 'Closed'}`,
+    });
+
+    gtag('event', 'toggle_menu', {
+      event_category: 'Toggled Layer Menu Visibility',
+      event_action: `${this.leftSideMenuVisibilty ? 'Opened' : 'Closed'}`,
+    });
   }
 }
