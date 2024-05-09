@@ -25,6 +25,7 @@ module.exports = function () {
       'map-pin',
       'minus',
       'pen',
+      'plus',
       'print',
       'search',
       'spinner',

@@ -1,4 +1,18 @@
 <label class="header-label clearfix">
+
+  {{#if this.hidePlus}}
+    {{#if this.otherModelId}}
+      <button {{action 'removeLotFromComparison' this.otherModelId}} style="color: red;">
+        {{fa-icon icon="times"  transform="grow-1 up-1"}}
+      </button>
+    {{/if}}
+  {{else}}
+    <button class="add-comparison-lot-button show-for-medium">
+      <span {{action 'linkToLotComparison'}}>{{fa-icon icon="plus"  transform="grow-10 up-1"}}&nbsp;&nbsp;Add Another Tax Lot for Comparison</span>
+    </button>
+    <br />
+  {{/if}}
+
   TAX LOT
   <span class="medium-gray">
     |
@@ -216,7 +230,7 @@
 {{/if}}
 <section class="dynamic-lists">
   <div class="grid-x grid-margin-x">
-    <div class="cell medium-shrink">
+    <div class="cell {{if this.otherModelId "medium" "medium-shrink"}}">
       <h6 class="">
         Intersecting Map Layers
         <LabsUi::IconTooltip

@@ -1,5 +1,8 @@
 import carto from 'labs-zola/utils/carto';
 import config from 'labs-zola/config/environment';
+import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
+import bblDemux from 'labs-zola/utils/bbl-demux';
 import LayerRecordComponent from './-base';
 
 const { specialDistrictCrosswalk } = config;
@@ -310,6 +313,38 @@ const landuseLookup = {
 };
 
 export default class TaxLotRecordComponent extends LayerRecordComponent {
+  @service router;
+
+  @service mainMap;
+
+  @action
+  linkToLotComparison() {
+    this.router.transitionTo(
+      'map-feature.lot-comparison',
+      this.model.borocode,
+      this.model.block,
+      this.model.lot,
+      0,
+      0,
+      0
+    );
+  }
+
+  @action
+  removeLotFromComparison(otherModelId) {
+    this.set('mainMap.comparisonSelected', null);
+    const { boro, block, lot } = bblDemux(otherModelId);
+    this.router.transitionTo(
+      'map-feature.lot-comparison',
+      boro,
+      block,
+      lot,
+      0,
+      0,
+      0
+    );
+  }
+
   get bldgclassname() {
     return bldgclassLookup[this.model.bldgclass];
   }
