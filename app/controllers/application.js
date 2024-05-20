@@ -5,7 +5,6 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import QueryParams from '@nycplanning/ember-parachute';
 import config from 'labs-zola/config/environment';
-import { tracked } from '@glimmer/tracking';
 
 const {
   defaultLayerGroupState,
@@ -215,6 +214,7 @@ export default class ApplicationController extends Controller.extend(
     if (this.dontShowModalAgain) {
       window.localStorage.hideMessage = true;
     }
+  }
 
   @action
   async toggleLeftSideMenuVisibility() {
