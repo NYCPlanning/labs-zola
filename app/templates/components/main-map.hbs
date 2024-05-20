@@ -63,28 +63,42 @@
       <source.layer @layer={{this.selectedLineLayer}} @before="place_other" />
     </MapboxGlSource>
   {{/if}}
+  {{#if this.mainMap.comparisonSelected}}
+    <MapboxGlSource
+      @map={{map.instance}}
+      @sourceId="comparison-selected-lot"
+      @options={{this.comparisonSelectedLotSource}} as |source|
+    >
+      <source.layer @layer={{this.comparisonSelectedFillLayer}} @before="place_other" />
+      <source.layer @layer={{this.comparisonSelectedLineLayer}} @before="place_other" />
+    </MapboxGlSource>
+  {{/if}}
 
   <MapMeasurementTools
     @map={{map.instance}}
     @draw={{this.draw}} as |measurement|
   >
-    {{#if measurement.feature}}
-      <MapboxGlSource
-        @map={{map.instance}}
-        @sourceId="drawn-feature"
-        @options={{hash type="geojson" data=measurement.feature}} as |source|
-      >
-        <source.layer
-          @layer={{this.drawnFeatureLayers.line}}
-          @before="place_other"
-        />
-        {{#if (eq this.mainMap.drawnFeature.type "Polygon")}}
+    {{#if measurement.features.length}}
+      {{#each measurement.features as |feature|}}
+        <MapboxGlSource
+          @map={{map.instance}}
+          @sourceId={{feature.id}}
+          @options={{hash type="geojson" data=feature}} as |source|
+        >
           <source.layer
-            @layer={{this.drawnFeatureLayers.fill}}
+            @id="{{source.id}}-line"
+            @layer={{this.drawnFeatureLayers.line}}
             @before="place_other"
           />
-        {{/if}}
-      </MapboxGlSource>
+          {{#if (eq this.mainMap.drawnFeature.type "Polygon")}}
+            <source.layer
+              @id="{{source.id}}-fill"
+              @layer={{this.drawnFeatureLayers.fill}}
+              @before="place_other"
+            />
+          {{/if}}        
+        </MapboxGlSource>
+      {{/each}}
     {{/if}}
   </MapMeasurementTools>
 </Mapbox::BasicMap>

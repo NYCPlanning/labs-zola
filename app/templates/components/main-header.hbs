@@ -50,9 +50,9 @@
         <LinkTo @route="bookmarks">
           <FaIcon @icon="bookmark" />
           Saved
-          {{#if this.bookmarks.length}}
+          {{#if this.totalBookmarks}}
             <span class="badge sup">
-              {{this.bookmarks.length}}
+              {{this.totalBookmarks}}
             </span>
           {{/if}}
         </LinkTo>
