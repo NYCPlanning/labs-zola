@@ -1,0 +1,97 @@
+// --------------------------------------------------
+// Module: Reveal Modal
+// --------------------------------------------------
+
+#reveal-modal-container {
+  z-index: 3;
+}
+
+@include breakpoint(1280px up) {
+  .mobile-header,
+  .mobile-body {
+    display: none;
+  }
+}
+
+
+.reveal-overlay {
+  padding: 1rem;
+
+  @include breakpoint(medium) {
+    padding: 8rem 1rem;
+    // position: absolute;
+  }
+}
+
+.reveal-overlay-target {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.reveal {
+  border: 0;
+  box-shadow: 0 0 0 rem-calc(4) rgba(0,0,0,0.1);
+  top: 0;
+  border-radius: 5px;
+  padding-top: 40px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  /* should we keep this? */
+  min-height: 10rem;
+}
+
+/* Next & previous buttons */
+.slideshow-prev, .slideshow-next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 48px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0,0,0,0.1);
+}
+
+/* Position the "next button" to the right */
+.slideshow-next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.slideshow-prev:hover, .slideshow-next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.slideshow-content {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  background-color: lightgray;
+}
+
+.slide img {
+  height: 350px;
+}

@@ -200,6 +200,19 @@ export default class ApplicationController extends Controller.extend(
     return values.every(({ changed }) => changed === false);
   }
 
+  @tracked
+  openModal = !window.localStorage.hideMessage;
+
+  @tracked
+  dontShowModalAgain = false;
+
+  @action toggleModal() {
+    this.openModal = !this.openModal;
+    if (this.dontShowModalAgain) {
+      window.localStorage.hideMessage = true;
+    }
+  }
+
   @action
   async toggleLeftSideMenuVisibility() {
     this.leftSideMenuVisibilty = !this.leftSideMenuVisibilty;
