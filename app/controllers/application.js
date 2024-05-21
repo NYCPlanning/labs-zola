@@ -208,9 +208,6 @@ export default class ApplicationController extends Controller.extend(
 
   @action toggleModal() {
     this.openModal = !this.openModal;
-    // Uncomment this when done so that the message only shows the first time
-    // window.localStorage.hideMessage = true;
-    // Uncomment this one to use the checkbox to hide it
     if (this.dontShowModalAgain) {
       window.localStorage.hideMessage = true;
     }
