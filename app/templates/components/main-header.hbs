@@ -35,7 +35,12 @@
         <LinkTo @route="about">About</LinkTo>
       </li>
       <li>
-        <LinkTo @route="features" class="features-header-link">Features</LinkTo>
+        <LinkTo @route="features" class="features-header-link">
+          Features
+          <span class="badge sup">
+            <strong>New!</strong>
+          </span>
+        </LinkTo>
       </li>
       <li>
         <LinkTo @route="data">Data</LinkTo>
@@ -45,9 +50,9 @@
         <LinkTo @route="bookmarks">
           <FaIcon @icon="bookmark" />
           Saved
-          {{#if this.bookmarks.length}}
+          {{#if this.totalBookmarks}}
             <span class="badge sup">
-              {{this.bookmarks.length}}
+              {{this.totalBookmarks}}
             </span>
           {{/if}}
         </LinkTo>

@@ -1,0 +1,24 @@
+<RevealModal @open={{this.openModal}} @closeModal={{this.toggleModal}}>
+  <h1 class='header-large'>
+    We're excited to share some new features we've added to ZoLa! Scroll through the updates below, or select the "Features" tab at any time to view the new additions.
+  </h1>
+
+  <div class="slideshow-container">
+    <a class="slideshow-prev" onclick={{action 'prevSlide'}}>❮</a>
+    <SlideshowContents @slideNumber={{this.slideNumber}} />
+    <a class="slideshow-next" onclick={{action 'nextSlide'}}>❯</a>
+  </div>
+
+  {{input type="checkbox" checked=this.dontShowModalAgain}}
+  Don't show this message again
+
+  {{!-- Uncomment the below to show a message only on mobile --}}
+  {{!-- <h1 class='header-large mobile-header'>
+    labs-zola is optimized for desktop screen widths.
+  </h1>
+  <p class='lead mobile-body'>
+    Mobile support for ZoLa will be added in the future.
+    For the best experience, please use a browser with a minimum width of
+    1280px.
+  </p> --}}
+</RevealModal>

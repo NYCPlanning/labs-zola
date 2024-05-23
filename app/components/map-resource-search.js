@@ -74,9 +74,24 @@ export default class MapResourceSearchComponent extends Component {
 
       const { boro, block, lot } = bblDemux(result.bbl);
       this.set('searchTerms', result.label);
-      this.router.transitionTo('map-feature.lot', boro, block, lot, {
-        queryParams: { search: true },
-      });
+      if (this.router.currentRoute.name === 'map-feature.lot-comparison') {
+        this.router.transitionTo(
+          'map-feature.lot-comparison',
+          this.router.currentRoute.params.boro,
+          this.router.currentRoute.params.block,
+          this.router.currentRoute.params.lot,
+          boro,
+          block,
+          lot,
+          {
+            queryParams: { search: true },
+          }
+        );
+      } else {
+        this.router.transitionTo('map-feature.lot', boro, block, lot, {
+          queryParams: { search: true },
+        });
+      }
     }
 
     if (type === 'zma') {

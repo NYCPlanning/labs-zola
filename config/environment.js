@@ -382,6 +382,7 @@ module.exports = function (environment) {
           'circle',
           'dot-circle',
           'square',
+          'circle-xmark',
         ],
         'free-solid-svg-icons': [
           'angle-up',
@@ -401,6 +402,7 @@ module.exports = function (environment) {
           'map-pin',
           'minus',
           'pen',
+          'plus',
           'print',
           'search',
           'spinner',

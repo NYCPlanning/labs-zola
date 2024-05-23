@@ -1,6 +1,5 @@
 export default {
   line: {
-    id: 'drawn-feature-line',
     type: 'line',
     source: 'drawn-feature',
     paint: {
@@ -11,7 +10,6 @@ export default {
     },
   },
   fill: {
-    id: 'drawn-feature-fill',
     type: 'fill',
     source: 'drawn-feature',
     paint: {

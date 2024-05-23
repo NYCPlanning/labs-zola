@@ -5,6 +5,7 @@ module.exports = function () {
       'circle',
       'dot-circle',
       'square',
+      'circle-xmark',
     ],
     'free-solid-svg-icons': [
       'angle-up',
@@ -24,6 +25,7 @@ module.exports = function () {
       'map-pin',
       'minus',
       'pen',
+      'plus',
       'print',
       'search',
       'spinner',
@@ -32,6 +34,13 @@ module.exports = function () {
       'tree',
       'undo',
       'window-minimize',
+      'dollar-sign',
+      'street-view',
+      'bolt',
+      'equals',
+      'users-between-lines',
+      'road',
+      'people-roof',
     ],
   };
 };

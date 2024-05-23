@@ -1,4 +1,5 @@
-<MainHeader @bookmarks={{this.model.bookmarks}} />
+<DefaultModal @openModal={{this.openModal}} @toggleModal={{this.toggleModal}} @dontShowModalAgain={{this.dontShowModalAgain}} />
+<MainHeader @bookmarks={{this.model.bookmarks}} @savedLayerSets={{this.model.savedLayerSets}} />
 <div class="{{if this.printSvc.enabled "print-view"}}">
   <LinkTo @route="index" class="index-active-detector sr-only">Homepage</LinkTo>
   {{#if this.printSvc.enabled}}
@@ -8,7 +9,17 @@
   {{/if}}
   <div class="site-main grid-x {{this.printSvc.printViewClasses}}">
     <div class="navigation-area cell large-auto">
-      <MapResourceSearch />
+
+      {{#if this.leftSideMenuVisibilty}}
+        <MapResourceSearch />
+      {{/if}}
+
+      <div class="content-toggle-layer-palette-container">
+        <span aria-hidden="true" class="close-button" onclick={{action this.toggleLeftSideMenuVisibility}} style={{if this.leftSideMenuVisibilty "" "left: 0;"}}>
+          {{#if this.leftSideMenuVisibilty}}&lt;{{else}}&gt;{{/if}}
+        </span>
+      </div>
+
       <div class="map-grid">
         <Mapbox::LoadSpinner
           @map={{this.mainMap.mapInstance}}
@@ -21,17 +32,22 @@
           @onPrint={{action (mut this.printSvc.enabled) true}}
         />
 
-        <LayerPalette
-          @selectedZoning={{this.selectedZoning}}
-          @selectedOverlays={{this.selectedOverlays}}
-          @selectedFirm={{this.selectedFirm}}
-          @selectedPfirm={{this.selectedPfirm}}
-          @selectedCouncilDistricts={{this.selectedCouncilDistricts}}
-          @layerGroups={{this.model.layerGroupsObject}}
-          @isDefault={{this.isDefault}}
-          @resetQueryParams={{action this.setModelsToDefault}}
-          @handleLayerGroupChange={{action this.handleLayerGroupChange}}
-        />
+        {{#if this.leftSideMenuVisibilty}}
+          <LayerPalette
+            @selectedZoning={{this.selectedZoning}}
+            @selectedOverlays={{this.selectedOverlays}}
+            @selectedFirm={{this.selectedFirm}}
+            @selectedPfirm={{this.selectedPfirm}}
+            @selectedCouncilDistricts={{this.selectedCouncilDistricts}}
+            @layerGroups={{this.model.layerGroupsObject}}
+            @isDefault={{this.isDefault}}
+            @resetQueryParams={{action this.setModelsToDefault}}
+            @setAllLayerVisibilityToFalse={{action this.setAllLayerVisibilityToFalse}}
+            @undoSetAllLayerVisibilityToFalse={{action this.undoSetAllLayerVisibilityToFalse}}
+            @handleLayerGroupChange={{action this.handleLayerGroupChange}}
+            @showToggleLayersBackOn={{this.showToggleLayersBackOn}}
+          />
+        {{/if}}
       </div>
     </div>
     {{outlet}}
