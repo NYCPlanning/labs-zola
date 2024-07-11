@@ -8,8 +8,8 @@ module.exports = function (environment) {
         name: 'MatomoTagManager',
         environments: ['development', 'production', 'test'],
         config: {
-          matomoUrl: 'matomo.planninglabs.nyc',
-          containerId: '9G7PP94F',
+          matomoUrl: 'nycplanning.matomo.cloud',
+          containerId: 'FkkxRc58',
         },
       },
     ],
