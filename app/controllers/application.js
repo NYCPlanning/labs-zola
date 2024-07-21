@@ -135,7 +135,11 @@ export default class ApplicationController extends Controller.extend(
 
     this.model.layerGroups
       .filter(({ visible }) => visible)
-      .forEach((model) => this.toggleLayerVisibilityToFalse(model));
+      .forEach(
+        (model) =>
+          model.id !== 'street-centerlines' &&
+          this.toggleLayerVisibilityToFalse(model)
+      );
     this.handleLayerGroupChange();
 
     this.set('layerGroupsStorage', tempStorage);
@@ -185,7 +189,9 @@ export default class ApplicationController extends Controller.extend(
   @computed('layerGroupsStorage', 'model.layerGroups')
   get showToggleLayersBackOn() {
     if (
-      this.model.layerGroups.filter(({ visible }) => visible).length === 0 &&
+      this.model.layerGroups.filter(
+        ({ id, visible }) => visible && id !== 'street-centerlines'
+      ).length === 0 &&
       this.layerGroupsStorage
     ) {
       return true;
