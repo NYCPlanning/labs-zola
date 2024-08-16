@@ -39,7 +39,7 @@ const defaultSelectedPfirmOptionSets = floodplainPfirm2015OptionSets
   .reduce((acc, curr) => acc.concat(curr))
   .sort();
 
-const defaultSelectedCouncilDistricts = ['2013'];
+const defaultSelectedCouncilDistricts = ['2024'];
 
 // define new query params here:
 export const mapQueryParams = new QueryParams(
