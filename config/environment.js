@@ -337,7 +337,7 @@ module.exports = function (environment) {
     cityCouncilDistrictsOptionSets: [
       {
         name: '2013-2023',
-        checked: true,
+        checked: false,
         codes: ['2013'],
         style: {
           color: '#33D8DC',
@@ -345,7 +345,7 @@ module.exports = function (environment) {
       },
       {
         name: '2024-2033',
-        checked: false,
+        checked: true,
         codes: ['2024'],
         style: {
           color: '#DC333D',
