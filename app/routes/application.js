@@ -28,7 +28,10 @@ export default Route.extend({
       this.router.transitionTo(`/about${transition.intent.url}`);
     }
 
-    if (targetName === 'map-feature.lot') {
+    if (
+      targetName === 'map-feature.lot' ||
+      targetName === 'map-feature.lot-comparison'
+    ) {
       this.set('mainMap.routeIntentIsNested', true);
     }
   },
@@ -58,11 +61,16 @@ export default Route.extend({
 
     await bookmarks.invoke('get', 'bookmark');
 
+    const savedLayerSets = window.localStorage['saved-layer-sets']
+      ? JSON.parse(window.localStorage['saved-layer-sets'])
+      : [];
+
     return {
       layerGroups,
       layerGroupsObject,
       meta,
       bookmarks,
+      savedLayerSets,
     };
   },
 });

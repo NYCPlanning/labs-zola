@@ -21,6 +21,7 @@
 @include foundation-close-button;
 @include foundation-menu;
 @include foundation-label;
+@include foundation-reveal;
 @include foundation-switch;
 @include foundation-visibility-classes;
 @include foundation-float-classes;
@@ -46,7 +47,7 @@
 @import 'modules/_m-maps';
 @import 'modules/_m-noui';
 @import 'modules/_m-search';
-
+@import 'modules/_m-reveal-modal';
 @import 'ember-power-select';
 
 @import 'layouts/_l-print';

@@ -95,6 +95,11 @@ body {
   @include breakpoint(xlarge) {
     width: calc(100% - 18rem);
   }
+
+  &.full-width {
+      width: 100%;
+  }
+
 }
 
 body.index {
@@ -193,7 +198,7 @@ body.index {
     );
   }
 
-  & > .close-button {
+  & .close-button {
     position: relative;
     margin: 0;
 
@@ -210,6 +215,50 @@ body.index {
     }
     @include breakpoint(xxlarge) {
       right: 33.33333%;
+    }
+  }
+}
+
+.content-toggle-layer-palette-container {
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
+  background-color: $white;
+  text-align: left;
+
+  @include breakpoint(small down) {
+    display: none;
+  }
+
+  @include breakpoint(medium down) {
+    @include xy-cell(
+      $size: full,
+      $output: (base size),
+      $gutters: 0
+    );
+  }
+
+  & > .close-button {
+    position: relative;
+    margin: 0;
+    max-inline-size: max-content;
+    border: 2px solid rgba(0,0,0,0.25);
+    border-left: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    @include breakpoint(large) {
+      display: block;
+      position: fixed;
+      z-index: 3;
+      top: 50%;
+      left: 18rem;
+      background-color: $white;
+      margin-left: -4px;
+      padding: 0 rem-calc(6) rem-calc(6);
+    }
+    @include breakpoint(xxlarge) {
+      left: 18rem;
     }
   }
 }
@@ -264,5 +313,19 @@ body.index {
     position: absolute;
     top: 50%;
     left: 50%;
+  }
+}
+
+.add-comparison-lot-button {
+  border: 1px solid;
+  border-color: green;
+  border-radius: 5px;
+  padding: .5rem;
+  margin-bottom: .5rem;
+  color: green;
+  &:hover {
+    background-color: green;
+    border: 1px solid;
+    color: white;
   }
 }

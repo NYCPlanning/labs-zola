@@ -1,4 +1,4 @@
-{{yield (hash feature=this.drawnFeature)}}
+{{yield (hash features=this.drawnFeatures)}}
 {{mapbox-gl-on "draw.create" (action "handleDrawCreate") eventSource=this.map}}
 {{mapbox-gl-on "draw.render" (action "handleMeasurement") eventSource=this.map}}
 {{! Measurement }}
@@ -61,9 +61,9 @@
   <div class="draw-measurement">
     <div data-test-measure="value">
       {{#if (eq this.measurementUnitType "standard")}}
-        {{this.drawnMeasurements.standard}}
+        {{this.shownMeasurements.standard}}
       {{else}}
-        {{this.drawnMeasurements.metric}}
+        {{this.shownMeasurements.metric}}
       {{/if}}
     </div>
     <span

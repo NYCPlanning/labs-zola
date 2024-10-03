@@ -9,9 +9,13 @@ import { alias } from '@ember/object/computed';
 import bblDemux from '../utils/bbl-demux';
 import drawnFeatureLayers from '../layers/drawn-feature';
 import selectedLayers from '../layers/selected-lot';
+import comparisonSelectedLayers from '../layers/comparison-selected-lot';
 
 const selectedFillLayer = selectedLayers.fill;
 const selectedLineLayer = selectedLayers.line;
+
+const comparisonSelectedFillLayer = comparisonSelectedLayers.fill;
+const comparisonSelectedLineLayer = comparisonSelectedLayers.line;
 
 // Custom Control
 const MeasurementText = function () {};
@@ -54,7 +58,7 @@ export default class MainMap extends Component {
 
   highlightedLayerId = null;
 
-  widowResize() {
+  windowResize() {
     return new Promise((resolve) => {
       setTimeout(() => {
         const resizeEvent = window.document.createEvent('UIEvents');
@@ -114,6 +118,15 @@ export default class MainMap extends Component {
     };
   }
 
+  @computed('mainMap.comparisonSelected')
+  get comparisonSelectedLotSource() {
+    const comparisonSelected = this.get('mainMap.comparisonSelected');
+    return {
+      type: 'geojson',
+      data: comparisonSelected.get('geometry'),
+    };
+  }
+
   @computed('mainMap.drawMode')
   get interactivity() {
     const drawMode = this.get('mainMap.drawMode');
@@ -123,6 +136,10 @@ export default class MainMap extends Component {
   selectedFillLayer = selectedFillLayer;
 
   selectedLineLayer = selectedLineLayer;
+
+  comparisonSelectedFillLayer = comparisonSelectedFillLayer;
+
+  comparisonSelectedLineLayer = comparisonSelectedLineLayer;
 
   @action
   handleMapLoad(map) {
@@ -211,7 +228,22 @@ export default class MainMap extends Component {
         if (bbl && !ceqr_num) {
           // eslint-disable-line
           const { boro, block, lot } = bblDemux(bbl);
-          this.router.transitionTo('map-feature.lot', boro, block, lot);
+          if (this.router.currentRoute.name === 'map-feature.lot-comparison') {
+            if (!this.mainMap.comparisonSelected) {
+              this.mainMap.set('comparisonSelected', this.mainMap.selected);
+            }
+            this.router.transitionTo(
+              'map-feature.lot-comparison',
+              this.router.currentRoute.params.boro,
+              this.router.currentRoute.params.block,
+              this.router.currentRoute.params.lot,
+              boro,
+              block,
+              lot
+            );
+          } else {
+            this.router.transitionTo('map-feature.lot', boro, block, lot);
+          }
         }
 
         if (ulurpno) {
@@ -273,6 +305,6 @@ export default class MainMap extends Component {
 
     this.set('printSvc.enabled', true);
 
-    await this.widowResize();
+    await this.windowResize();
   }
 }

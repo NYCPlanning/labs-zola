@@ -9,7 +9,7 @@ export default class PrintViewControls extends Component {
 
   @service metrics;
 
-  widowResize() {
+  windowResize() {
     return new Promise((resolve) => {
       setTimeout(() => {
         const resizeEvent = window.document.createEvent('UIEvents');
@@ -35,10 +35,10 @@ export default class PrintViewControls extends Component {
 
     this.set('printSvc.enabled', false);
 
-    await this.widowResize();
+    await this.windowResize();
   }
 
   async click() {
-    await this.widowResize();
+    await this.windowResize();
   }
 }

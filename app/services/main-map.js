@@ -20,6 +20,8 @@ export default class MainMapService extends Service {
   // used to determine how to zoom
   selected = null;
 
+  comparisonSelected = null;
+
   currentMeasurement = null;
 
   drawMode = null;

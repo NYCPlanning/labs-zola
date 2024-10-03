@@ -1,5 +1,8 @@
 import carto from 'labs-zola/utils/carto';
 import config from 'labs-zola/config/environment';
+import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
+import bblDemux from 'labs-zola/utils/bbl-demux';
 import LayerRecordComponent from './-base';
 
 const { specialDistrictCrosswalk } = config;
@@ -310,6 +313,38 @@ const landuseLookup = {
 };
 
 export default class TaxLotRecordComponent extends LayerRecordComponent {
+  @service router;
+
+  @service mainMap;
+
+  @action
+  linkToLotComparison() {
+    this.router.transitionTo(
+      'map-feature.lot-comparison',
+      this.model.borocode,
+      this.model.block,
+      this.model.lot,
+      0,
+      0,
+      0
+    );
+  }
+
+  @action
+  removeLotFromComparison(otherModelId) {
+    this.set('mainMap.comparisonSelected', null);
+    const { boro, block, lot } = bblDemux(otherModelId);
+    this.router.transitionTo(
+      'map-feature.lot-comparison',
+      boro,
+      block,
+      lot,
+      0,
+      0,
+      0
+    );
+  }
+
   get bldgclassname() {
     return bldgclassLookup[this.model.bldgclass];
   }
@@ -325,12 +360,26 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
     return `${boroLookup[cdborocode]} Community District ${cd}`;
   }
 
+  get boroSlashCd() {
+    const borocd = this.model.cd;
+    const cdborocode = `${borocd}`.substring(0, 1);
+    const cd = parseInt(`${borocd}`.substring(1, 3), 10).toString();
+    return `${boroLookup[cdborocode].replace(' ', '-').toLowerCase()}/${cd}`;
+  }
+
   get cdURLSegment() {
     const borocd = this.model.cd;
     const borocode = this.model.borocode; // eslint-disable-line prefer-destructuring
     const cleanBorough = boroLookup[borocode].toLowerCase().replace(/\s/g, '-');
     const cd = parseInt(`${borocd}`.substring(1, 3), 10).toString();
     return `${cleanBorough}/${cd}`;
+  }
+
+  get googleMapsURL() {
+    const encodedAddress = encodeURIComponent(
+      `${this.model.address}, ${this.model.zipcode}`
+    );
+    return `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
   }
 
   get landusename() {
@@ -441,7 +490,9 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
   }
 
   get digitalTaxMapLink() {
-    return `https://propertyinformationportal.nyc.gov/parcels/${this.model.condono ? 'condo' : 'parcel'}/${this.model.bbl}`;
+    return `https://propertyinformationportal.nyc.gov/parcels/${
+      this.model.condono ? 'condo' : 'parcel'
+    }/${this.model.bbl}`;
   }
 
   get zoningMapLink() {
