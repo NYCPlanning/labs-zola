@@ -83,6 +83,7 @@ module.exports = function (environment) {
       ['Special Hunts Point District', ['HP', 'bronx']],
       ['Special Harlem River Waterfront District', ['HRW', 'bronx']],
       ['Special Jerome Corridor District', ['J', 'bronx']],
+      ['Special Eastchester – East Tremont Corridor', ['ETC', 'bronx']],
       ['Special Natural Area District-1', ['natural_area', 'bronx']],
       ['Special Natural Area District-2', ['natural_area', 'bronx']],
       ['Special Natural Area District-3', ['natural_area', 'bronx']],
