@@ -451,7 +451,7 @@ export default {
         id: 'transit-zones',
         visible: false,
         legend: {
-          label: 'Transit Zones',
+          label: 'Appendix I Historical Transit Zones',
           tooltip:
             'Transit-accessible areas where parking is optional for new affordable housing units and special rules apply to existing affordable units',
           infolink:

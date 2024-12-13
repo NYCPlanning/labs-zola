@@ -721,6 +721,90 @@
     },
     {
       "type": "layer-groups",
+      "id": "cho-greate-transit-zone",
+      "attributes": {
+        "id": "cho-greater-transit-zone",
+        "title": "Lorem Ipsum",
+        "visible": false,
+        "title-tooltip": "Lorem Ipsum",
+        "meta": {
+          "description": "Lorem Ipsum Description",
+          "url": [
+            "https://example.com"
+          ],
+          "updated-at": "December 2024"
+        },
+        "legend-icon": "polygon",
+        "legend-color": "#E6D62E"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "cho-greater-transit-zone-line"
+            },
+            {
+              "type": "layers",
+              "id": "cho-greater-transit-zone-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
+      "id": "cho-transit-zones",
+      "attributes": {
+        "id": "cho-transit-zones",
+        "title": "Lorem Ipsum",
+        "visible": false,
+        "title-tooltip": "Lorem Ipsum Title Tooltip",
+        "meta": {
+          "description": "Lorem Ipsum Description",
+          "url": [
+            "https://example2.com"
+          ],
+          "updated-at": "December 2024"
+        }
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "cho-transit-zones-line"
+            },
+            {
+              "type": "layers",
+              "id": "cho-transit-zones-fill-core"
+            },
+            {
+              "type": "layers",
+              "id": "cho-transit-zones-fill-inner"
+            },
+            {
+              "type": "layers",
+              "id": "cho-transit-zones-fill-outer"
+            },
+            {
+              "type": "layers",
+              "id": "cho-transit-zones-fill-special-base"
+            },
+            {
+              "type": "layers",
+              "id": "cho-transit-zones-fill-special-hatch"
+            },
+            {
+              "type": "layers",
+              "id": "cho-transit-zones-fill-beyond"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "layer-groups",
       "id": "historic-districts",
       "attributes": {
         "id": "historic-districts",
@@ -1306,7 +1390,7 @@
           "description": "NYC GIS Zoning Features February 2018, BYTES of the BIG APPLE™",
           "url": [
             "https:\/\/www1.nyc.gov\/site\/planning\/data-maps\/open-data.page"
-          ],  
+          ],
           "updated-at": "5 March 2018"
         },
         "legend-icon": "polygon-fill-dash",
@@ -1553,7 +1637,7 @@
       "id": "transit-zones",
       "attributes": {
         "id": "transit-zones",
-        "title": "Transit Zones",
+        "title": "Appendix I Historical Transit Zones",
         "visible": false,
         "title-tooltip": "Transit-accessible areas where parking is optional for new affordable housing units and special rules apply to existing affordable units",
         "meta": {
@@ -1939,7 +2023,7 @@
             "fill-color": "rgba(240, 15, 130, 0.4)"
           },
           "layout": {
-            
+
           },
           "filter": [
             "==",
@@ -1966,7 +2050,7 @@
             "fill-color": "rgba(174, 86, 31, 0.2)"
           },
           "layout": {
-            
+
           },
           "filter": [
             "==",
@@ -2029,7 +2113,7 @@
             "fill-opacity": 0.2
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "appendixj-designated-mdistricts"
@@ -2296,7 +2380,7 @@
             "fill-color": "rgba(175, 175, 175, 1)"
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "building-footprints"
@@ -2353,7 +2437,7 @@
             "fill-opacity": 0.2
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "business-improvement-districts"
@@ -2594,7 +2678,7 @@
         }
       },
       "relationships": {
-        
+
       }
     },
     {
@@ -2867,7 +2951,7 @@
             "fill-opacity": 0.2
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "coastal-zone-boundary"
@@ -3186,7 +3270,7 @@
         "tooltip-template": "2007 {{fld_zone}} Zone"
       },
       "relationships": {
-        
+
       }
     },
     {
@@ -3223,7 +3307,7 @@
         "tooltip-template": "2015 {{fld_zone}} Zone"
       },
       "relationships": {
-        
+
       }
     },
     {
@@ -3283,7 +3367,7 @@
             ]
           ],
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "fresh"
@@ -3315,7 +3399,7 @@
             ]
           ],
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "fresh"
@@ -3347,7 +3431,7 @@
             ]
           ],
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "fresh"
@@ -3406,7 +3490,7 @@
             "fill-opacity": 0.2
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "historic-districts"
@@ -3465,7 +3549,7 @@
             "fill-opacity": 0.2
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "inclusionary-housing"
@@ -3524,7 +3608,7 @@
             "fill-opacity": 0.2
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "industrial-business-zones"
@@ -3660,7 +3744,7 @@
             "fill-opacity": 0.2
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "landmarks"
@@ -3719,7 +3803,7 @@
             "fill-opacity": 0.2
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "limited-height-districts"
@@ -3778,7 +3862,7 @@
             "fill-opacity": 0.2
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "low-density-growth-mgmt-areas"
@@ -3837,7 +3921,7 @@
             "fill-opacity": 0.2
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "mandatory-inclusionary-housing"
@@ -4997,7 +5081,7 @@
             "fill-opacity": 0.2
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "special-purpose-subdistricts"
@@ -5910,7 +5994,7 @@
             "fill-opacity": 0.2
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "transit-zones"
@@ -5969,7 +6053,7 @@
             "fill-opacity": 0.2
           },
           "layout": {
-            
+
           },
           "metadata": {
             "nycplanninglabs:layergroupid": "waterfront-access-plan"

@@ -400,7 +400,7 @@ module('Acceptance | layer behavior tests', function (hooks) {
     await assertTooltips(this, assert, 'inclusionary-housing', true);
   });
 
-  test('Second class: Transit Zones', async function (assert) {
+  test('Second class: Appendix I Historical Transit Zones', async function (assert) {
     await assertLayerGroupAdded(this, assert, 'transit-zones');
 
     await assertTooltips(this, assert, 'transit-zones', true);
