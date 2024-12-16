@@ -1,0 +1,19 @@
+<div class="legend-item">
+  <div class="grid-x">
+    <div class="cell auto">
+      <LabsUiOverrides::LegendIcon
+        @icon={{@item.icon}}
+      />
+      {{@item.label}}
+    </div>
+    <div class="cell shrink">
+      {{#if @item.tooltip}}
+        <LabsUiOverrides::icon-tooltip
+          @tip={{@item.tooltip}}
+          @side="left"
+          @fixedWidth={{true}}
+        />
+      {{/if}}
+    </div>
+  </div>
+</div>

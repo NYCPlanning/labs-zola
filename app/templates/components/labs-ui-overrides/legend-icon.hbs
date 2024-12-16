@@ -1,0 +1,26 @@
+<span class="legend-icon">
+  <span class={{this.iconType}}>
+    {{!-- TODO:
+      Refactor to use `@iconType` instead of `this.iconType`, which is used here
+      because we expect the string 'fa-icon' from labs-layers-api and we change
+      it to 'fa-layers'. This string substitution is unnecessary but possibly
+      involves changes to 3 repos (this one, style guide, labs-layers-api).
+     --}}
+
+    {{#each @icon.layers as |icon-layer|}}
+
+      {{#if (eq @icon.type "line")}}
+        <LabsUiOverrides::Icons::Line @options={{icon-layer}} />
+      {{/if}}
+
+      {{#if (eq @icon.type "rectangle")}}
+        <LabsUiOverrides::Icons::rectangle @options={{icon-layer}} />
+      {{/if}}
+
+      {{#if (eq @icon.type "fa-icon")}}
+        <LabsUiOverrides::Icons::fa-icon @options={{icon-layer}} />
+      {{/if}}
+
+    {{/each}}
+  </span>
+</span>

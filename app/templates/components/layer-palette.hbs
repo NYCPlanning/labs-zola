@@ -151,7 +151,7 @@
       data-test-toggle-cho-transit-zones
       @layerGroup={{this.layerGroups.cho-transit-zones}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.cho-transit-zones this.zoomWarningLabel this.mainMap.zoom}}>
-      <LabsUi::LegendItems @items={{this.layerGroups.cho-transit-zones.legend.items}} />
+      <LabsUiOverrides::LegendItems @items={{this.layerGroups.cho-transit-zones.legend.items}} />
     </container.layer-group-toggle>
     <container.layer-group-toggle
       data-test-toggle-fresh

@@ -1,0 +1,10 @@
+{{!-- NOTE: Whitespace is purposefully avoided inside the markup's <span> as to not alter the layout --}}
+<span class='icon-tooltip'><FaIcon
+  @icon={{this.icon}}
+  @transform={{@transform}}
+  @fixedWidth={{this.fixedWidth}}
+/><EmberTooltip
+  @text={{@tip}}
+  @side={{this.side}}
+  @popperContainer="body"
+/></span>
