@@ -51,6 +51,8 @@ module.exports = function (environment) {
       { id: 'limited-height-districts', visible: false },
       { id: 'mandatory-inclusionary-housing', visible: false },
       { id: 'inclusionary-housing', visible: false },
+      { id: 'cho-greater-transit-zone', visible: false },
+      { id: 'cho-transit-zones', visible: false },
       { id: 'transit-zones', visible: false },
       { id: 'fresh', visible: false },
       { id: 'low-density-growth-mgmt-areas', visible: false },

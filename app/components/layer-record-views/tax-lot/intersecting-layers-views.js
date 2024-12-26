@@ -5,7 +5,6 @@ export default class IntersectingLayersViews extends Component {
 
   tables = [
     'inclusionary_housing',
-    'transitzones',
     'fresh_zones',
     'waterfront_access_plan',
     'coastal_zone_boundary',
@@ -15,6 +14,7 @@ export default class IntersectingLayersViews extends Component {
     'mandatory_inclusionary_housing',
     'e_designations',
     'upland_waterfront_areas',
+    'transitzones',
     'appendixj_designated_mdistricts',
   ];
 }

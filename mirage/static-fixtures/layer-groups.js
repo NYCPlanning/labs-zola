@@ -451,17 +451,17 @@ export default {
         id: 'transit-zones',
         visible: false,
         legend: {
-          label: 'Transit Zones',
+          label: 'Appendix I',
           tooltip:
-            'Transit-accessible areas where parking is optional for new affordable housing units and special rules apply to existing affordable units',
+            'Transit-accessible areas where special streetscape and special parking requirements apply.',
           infolink:
             'https://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone',
           icon: {
             type: 'rectangle',
             layers: [
               {
-                fill: 'rgba(230, 214, 46, 0.2)',
-                stroke: 'rgba(230, 214, 46, 0.6)',
+                fill: 'rgba(49, 151, 149, 0.2)',
+                stroke: 'rgba(49, 151, 149, 0.6)',
                 'stroke-dasharray': '1',
               },
             ],
