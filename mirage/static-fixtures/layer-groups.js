@@ -897,7 +897,7 @@ export default {
           tooltip:
             'Designated areas within Manufacturing Districts in which self service storage facilities are subject to certain as-of-right provisions (subarea 1) or are subject to special permit by the City Planning Commission (subarea 2)',
           infolink:
-            'https://www1.nyc.gov/assets/planning/download/pdf/data-maps/open-data/designated_areas_m_districts_metadata.pdf',
+            'https://s-media.nyc.gov/agencies/dcp/assets/files/AE/designated-areas-m-districts-metadata.pdf',
           icon: {
             type: 'rectangle',
             layers: [
