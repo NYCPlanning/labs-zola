@@ -496,11 +496,11 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
   }
 
   get zoningMapLink() {
-    return `https://s-media.nyc.gov/agencies/dcp/assets/files/pdf/zoning/zoning-maps/map${this.model.zonemap}.pdf`;
+    return `https://zoningmap.nyc3.digitaloceanspaces.com/map${this.model.zonemap}.pdf`;
   }
 
   get historicalZoningMapLink() {
-    return `https://s-media.nyc.gov/agencies/dcp/assets/files/pdf/zoning/zoning-maps/maps${this.paddedZonemap}.pdf`;
+    return `https://zoningmap.nyc3.digitaloceanspaces.com/maps${this.paddedZonemap}.pdf`;
   }
 
   get ACRISLink() {
