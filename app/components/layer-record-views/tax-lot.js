@@ -496,7 +496,7 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
   }
 
   get zoningMapLink() {
-    return `https://zoningmap.nyc3.digitaloceanspaces.com/map${this.model.zonemap}.pdf`;
+    return `https://zoningmap.nyc3.digitaloceanspaces.com/map${this.paddedZonemap}.pdf`;
   }
 
   get historicalZoningMapLink() {
