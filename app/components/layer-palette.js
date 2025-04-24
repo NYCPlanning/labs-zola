@@ -1,3 +1,5 @@
+/* eslint-disable ember/require-tagless-components */
+/* eslint-disable ember/classic-decorator-hooks */
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';

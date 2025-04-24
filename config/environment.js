@@ -77,6 +77,7 @@ module.exports = function (environment) {
       { id: 'tax-lots', visible: true, layers: [{ tooltipable: true }] },
       { id: 'landmarks', visible: false },
       { id: 'e-designations', visible: false },
+      { id: 'zoning-map-index', visible: false },
     ],
 
     specialDistrictCrosswalk: [
