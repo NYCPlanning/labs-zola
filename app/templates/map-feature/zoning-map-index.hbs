@@ -2,7 +2,16 @@
   @modelId={{this.model.id}}
   @modelName="zoning-map-index" as |zoningMapIndex|
 >
+
+  <Mapbox::MapFeatureRenderer
+  @model={{zoningMapIndex}}
+  @shouldFitBounds={{this.model.search}} />
+
   <LayerRecordViews::ZoningMapIndex
     @model={{zoningMapIndex.properties}}
+  />
+
+  <Bookmarks::BookmarkButton
+  @bookmarkableModel={{zoningMapIndex}}
   />
 </CartoDataProvider>

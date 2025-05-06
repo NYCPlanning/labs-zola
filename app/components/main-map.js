@@ -209,7 +209,6 @@ export default class MainMap extends Component {
   @action
   handleLayerClick(feature) {
     const { highlightedLayerId } = this;
-
     if (feature) {
       const { properties } = feature;
 
@@ -224,6 +223,7 @@ export default class MainMap extends Component {
           id,
           cartodb_id, // eslint-disable-line
           ceqr_num, // eslint-disable-line
+          zmi_id,
         } = properties;
         if (bbl && !ceqr_num) {
           // eslint-disable-line
@@ -284,6 +284,12 @@ export default class MainMap extends Component {
 
         if (bbl && ceqr_num) {
           this.router.transitionTo('map-feature.e-designation', id, {
+            queryParams: { search: false },
+          });
+        }
+
+        if (zmi_id) {
+          this.router.transitionTo('map-feature.zoning-map-index', zmi_id, {
             queryParams: { search: false },
           });
         }

@@ -109,10 +109,11 @@
         {{/each}}
       </ul>
     </container.layer-group-toggle>
-    <container.layer-group-toggle data-test-toggle-zoning-map-index
-      @layerGroup=  {{this.layerGroups.zoning-map-index}}
-      @activeTooltip={{zoom-dependent-label this.layerGroups.zoning-map-index }}>
-    </container.layer-group-toggle>
+    <container.layer-group-toggle
+      data-test-toggle-zoning-map-index
+      @layerGroup={{this.layerGroups.zoning-map-index}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.zoning-map-index }}
+    />
     <container.layer-group-toggle
       data-test-toggle-zoning-map-amendments
       @layerGroup={{this.layerGroups.zoning-map-amendments}}
