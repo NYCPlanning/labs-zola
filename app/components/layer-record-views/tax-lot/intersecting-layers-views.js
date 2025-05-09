@@ -16,5 +16,6 @@ export default class IntersectingLayersViews extends Component {
     'upland_waterfront_areas',
     'transitzones',
     'appendixj_designated_mdistricts',
+    'mta_rail_station_50ft_buffers',
   ];
 }

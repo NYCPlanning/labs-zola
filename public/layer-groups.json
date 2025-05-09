@@ -1829,6 +1829,33 @@
           ]
         }
       }
+    },
+    {
+    "type": "layer-groups",
+      "id": "zoning-for-accessibility",
+      "attributes": {
+        "id": "zoning-for-accessibility",
+        "title": "Zoning Map Index",
+        "visible": false,
+        "title-tooltip": "Transit-adjacent areas where applicable developments and enlargements require additional consultation with the MTA or relevant transit agencies.",
+        "infolink": "https://www.nyc.gov/content/planning/pages/our-work/plans/citywide/elevate-transit-zoning-accessibility",
+        "legend-icon": "polygon",
+        "legend-color": "#000000"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "zfi-line"
+            },
+            {
+              "type": "layers",
+              "id": "zfi-fill"
+            }
+          ]
+        }
+      }
     }
   ],
   "included": [
@@ -6551,6 +6578,69 @@
         "clickable": true,
         "tooltipable": true,
         "tooltip-template": "{{{zmi_label}}}"
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zfa-line",
+      "attributes": {
+        "style": {
+          "id": "zfa-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "zoning-for-accessibility",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "rgba(0, 57, 165, 1)"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zfa-fill",
+      "attributes": {
+        "highlightable": true,
+        "clickable": true,
+        "tooltipable": true,
+        "tooltipTemplate": "Transit Buffer {{{station_na}}}",
+        "style": {
+          "id": "zfa-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "zoning-for-accessibility",
+          "paint": {
+            "fill-color": "rgba(0, 57, 166, 0.5)",
+            "fill-opacity": {
+              "stops": [
+                [
+                  15,
+                  0.1
+                ],
+                [
+                  16,
+                  0.1
+                ]
+              ]
+            },
+            "fill-antialias": true
+          },
+        "highlightable": true,
+        "clickable": true,
+        "tooltipable": true,
+        "tooltip-template": "{{{zfa_label}}}"
         }
       }
     }
