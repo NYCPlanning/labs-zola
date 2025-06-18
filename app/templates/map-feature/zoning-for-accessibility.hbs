@@ -1,0 +1,13 @@
+<CartoDataProvider
+  @modelId={{this.model.id}}
+  @modelName="zoning-for-accessibility" as |zoningForAccessibility|>
+
+  <Mapbox::MapFeatureRenderer
+    @model={{zoningForAccessibility}}
+    @shouldFitBounds={{this.model.search}}
+  />
+
+<LayerRecordViews::ZoningForAccessibility
+  @model={{zoningForAccessibility.properties}}
+/>
+</CartoDataProvider>

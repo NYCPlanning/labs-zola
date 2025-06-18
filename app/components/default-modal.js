@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 
-const TOTAL_SLIDES = 7;
+const TOTAL_SLIDES = 8;
 
 export default Component.extend({
   tagName: '',

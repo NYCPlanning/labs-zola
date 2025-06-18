@@ -1,0 +1,59 @@
+<label class="header-type">
+  ZONING MAP INDEX
+</label>
+<h1 class="header-large uppercase">
+  {{this.displayName}}
+</h1>
+
+<div class="external-map-links">
+  <p>
+      <a
+        href="{{this.model.zoningmapurl}}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaIcon @icon="external-link-alt" />
+        View Zoning Map <small>(PDF)</small>
+      </a>
+  </p>
+
+  <p>
+      <a
+        href="{{this.model.historicalmapurl}}"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="This PDF document contains all adopted zoning section maps since 1961 that were either printed in the Zoning Resolution or posted on DCP's website."
+      >
+        <FaIcon @icon="external-link-alt" />
+        Historical Map <small>(PDF)</small>
+      </a>
+  </p>
+
+  <p>
+      <a
+        href="{{this.model.updatelogurl}}"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="The Zoning Map Change Log is a record of the most recent zoning changes approved by City Council."
+      >
+        <FaIcon @icon="external-link-alt" />
+        Zoning Map Changelog <small>(PDF)</small>
+      </a>
+  </p>
+</div>
+
+
+<p>The NYC Zoning Map Index is used to determine which zoning map is related to a specific geographic area in New York City. There are 126 zoning map sections that are part of the NYC Zoning Resolution. Each section is identified by a unique number and covers an area of 8,000 feet by 12,500 feet of the City. View the Zoning Map link to see the last adoption date.</p>
+
+<p>
+    <a
+      href="https://s-media.nyc.gov/agencies/dcp/assets/files/AE/about-zoning-maps.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <FaIcon @icon="external-link-alt" />
+      Learn more&hellip; <small>(PDF)</small>
+    </a>
+</p>
+
+{{yield}}

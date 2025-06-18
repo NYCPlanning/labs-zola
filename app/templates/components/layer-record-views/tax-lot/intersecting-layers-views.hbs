@@ -21,7 +21,7 @@
     <li>
       <a
         target="_blank"
-        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page" rel="noopener noreferrer"
+        href="https://www.nyc.gov/content/planning/pages/our-work/plans/citywide/mandatory-inclusionary-housing" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         Inclusionary Housing Zone
@@ -32,7 +32,7 @@
     <li>
       <a
         target="_blank"
-        href="http://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page" rel="noopener noreferrer"
+        href="https://www.nyc.gov/content/planning/pages/zoning/zoning-districts-guide/special-areas-rules#fresh" rel="noopener noreferrer"
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         FRESH Zone
@@ -152,6 +152,16 @@
       >
         <FaIcon @icon="external-link-alt" @transform="shrink-3 up-1" />
         Appendix J Designated M District
+      </a>
+    </li>
+  {{/if}}
+  {{#if (and layers.mta_rail_station_50ft_buffers this.showZFALayer)}}
+    <li>
+      <a
+        href="https://www.nyc.gov/content/planning/pages/our-work/plans/citywide/elevate-transit-zoning-accessibility"
+        target="_blank" rel="noopener noreferrer">
+        <FaIcon @icon="external-link-alt" />
+        Zoning for Accessibility <small>(PDF)</small>
       </a>
     </li>
   {{/if}}

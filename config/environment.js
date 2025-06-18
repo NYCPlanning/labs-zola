@@ -20,6 +20,7 @@ module.exports = function (environment) {
     host: HOST,
     namespace: 'v1',
     zapApiHost: 'https://zap-api-production.herokuapp.com',
+    featureFlagShowZFALayer: process.env.FEATURE_FLAG_SHOW_ZFA_LAYER === 'ON',
 
     gReCaptcha: {
       jsUrl: 'https://www.google.com/recaptcha/api.js?render=explicit',
@@ -77,6 +78,7 @@ module.exports = function (environment) {
       { id: 'tax-lots', visible: true, layers: [{ tooltipable: true }] },
       { id: 'landmarks', visible: false },
       { id: 'e-designations', visible: false },
+      { id: 'zoning-map-index', visible: false },
     ],
 
     specialDistrictCrosswalk: [
@@ -463,6 +465,13 @@ module.exports = function (environment) {
 
   if (environment === 'production') {
     ENV['labs-search'].host = 'https://search-api-production.herokuapp.com';
+  }
+
+  if (ENV.featureFlagShowZFALayer) {
+    ENV.defaultLayerGroupState.push({
+      id: 'zoning-for-accessibility',
+      visible: false,
+    });
   }
 
   return ENV;

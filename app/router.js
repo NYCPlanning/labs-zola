@@ -35,6 +35,12 @@ Router.map(function () {// eslint-disable-line
     });
     this.route('zoning-map-amendment', { path: '/zma/:id' });
     this.route('e-designation', { path: '/e-designation/:id' });
+    this.route('zoning-map-index', { path: '/zoning-map-index/:id' });
+    if (config.featureFlagShowZFALayer) {
+      this.route('zoning-for-accessibility', {
+        path: '/zoning-for-accessibility/:id',
+      });
+    }
   });
 
   // in order to namespace the map feature routes (zoning district, etc), we have

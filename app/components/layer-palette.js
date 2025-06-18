@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
 import { next } from '@ember/runloop';
 import config from 'labs-zola/config/environment';
+import { tracked } from '@glimmer/tracking';
 
 const {
   zoningDistrictOptionSets,
@@ -18,6 +19,9 @@ export default class LayerPaletteComponent extends Component {
   @service metrics;
 
   @service fastboot;
+
+  @tracked
+  showZFALayer = config.featureFlagShowZFALayer;
 
   init(...args) {
     super.init(...args);

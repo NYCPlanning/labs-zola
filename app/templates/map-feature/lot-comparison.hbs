@@ -1,6 +1,6 @@
 {{#if (eq this.model.comparisonid "0000000000")}}
   <p>Select another tax lot for comparison
-    <button {{action 'cancelLotComparison' this.model.id}} style="color: red;">
+    <button style="color: red;" type="button" {{action 'cancelLotComparison' this.model.id}}>
       {{fa-icon icon="times"  transform="grow-1 up-1"}}
     </button>
   </p>
