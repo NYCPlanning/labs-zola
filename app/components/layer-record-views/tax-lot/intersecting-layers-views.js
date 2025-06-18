@@ -1,7 +1,12 @@
 import Component from '@ember/component';
+import { tracked } from '@glimmer/tracking';
+import config from 'labs-zola/config/environment';
 
 export default class IntersectingLayersViews extends Component {
   model = null;
+
+  @tracked
+  showZFALayer = config.featureFlagShowZFALayer;
 
   tables = [
     'inclusionary_housing',

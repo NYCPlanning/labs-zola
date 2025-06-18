@@ -155,7 +155,7 @@
       </a>
     </li>
   {{/if}}
-  {{#if layers.mta_rail_station_50ft_buffers}}
+  {{#if (and layers.mta_rail_station_50ft_buffers this.showZFALayer)}}
     <li>
       <a
         href="https://www.nyc.gov/content/planning/pages/our-work/plans/citywide/elevate-transit-zoning-accessibility"
