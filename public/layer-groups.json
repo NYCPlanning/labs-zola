@@ -531,6 +531,37 @@
       }
     },
     {
+    "type": "layer-groups",
+      "id": "zoning-map-index",
+      "attributes": {
+        "id": "zoning-map-index",
+        "title": "Zoning Map Index",
+        "visible": false,
+        "title-tooltip": "This layer displays an index of 126 zoning map sections that are part of the NYC Zoning Resolution. Each section is identified by a unique number and covers an area of 8,000 feet by 12,500 feet of the City. Click on a section to view and print the corresponding zoning map",
+        "infolink": "https://s-media.nyc.gov/agencies/dcp/assets/files/AE/about-zoning-maps.pdf",
+        "legend-icon": "polygon",
+        "legend-color": "#000000"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "zmi-line"
+            },
+            {
+              "type": "layers",
+              "id": "zmi-label"
+            },
+            {
+              "type": "layers",
+              "id": "zmi-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
       "type": "layer-groups",
       "id": "community-districts",
       "attributes": {
@@ -1794,6 +1825,33 @@
             {
               "type": "layers",
               "id": "zma-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
+    "type": "layer-groups",
+      "id": "zoning-for-accessibility",
+      "attributes": {
+        "id": "zoning-for-accessibility",
+        "title": "Zoning Map Index",
+        "visible": false,
+        "title-tooltip": "Transit-adjacent areas where applicable developments and enlargements require additional consultation with the MTA or relevant transit agencies.",
+        "infolink": "https://www.nyc.gov/content/planning/pages/our-work/plans/citywide/elevate-transit-zoning-accessibility",
+        "legend-icon": "polygon",
+        "legend-color": "#000000"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "zfi-line"
+            },
+            {
+              "type": "layers",
+              "id": "zfi-fill"
             }
           ]
         }
@@ -6412,6 +6470,178 @@
         "clickable": true,
         "highlightable": true,
         "tooltip-template": "{{{project_na}}} - Effective {{{effectiveformatted}}}"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zmi-line",
+      "attributes": {
+        "style": {
+          "id": "zmi-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "zoning-map-index",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#000000"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zmi-label",
+      "attributes": {
+        "style": {
+          "id": "zmi-label",
+          "type": "symbol",
+          "source": "supporting-zoning",
+          "source-layer": "zoning-map-index-centroids",
+          "paint": {
+            "text-color": "rgba(200, 0, 0, 1)",
+            "text-halo-color": "#FFFFFF",
+            "text-halo-width": 2,
+            "text-halo-blur": 2,
+            "text-opacity": 0.9
+          },
+          "layout": {
+            "symbol-placement": "point",
+            "text-field": "{zmi_label}",
+            "text-padding": 8,
+            "text-allow-overlap": true,
+            "text-font": [
+               "Arial Unicode MS Regular"
+            ],
+            "text-size": {
+              "base": 1,
+              "stops": [
+                [
+                  8,
+                  10
+                ],
+                [
+                  16,
+                  18
+                ],
+                [
+                  20,
+                  24
+                ]
+              ]
+            }
+          }
+        },
+        "before": "place_other"
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zmi-fill",
+      "attributes": {
+        "highlightable": true,
+        "clickable": true,
+        "tooltipable": true,
+        "tooltipTemplate": "Zoning Map Index {{{zmi_label}}}",
+        "style": {
+          "id": "zmi-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "zoning-map-index",
+          "paint": {
+            "fill-color": "#000000",
+            "fill-opacity": {
+              "stops": [
+                [
+                  15,
+                  0.1
+                ],
+                [
+                  16,
+                  0.1
+                ]
+              ]
+            },
+            "fill-antialias": true
+          },
+        "highlightable": true,
+        "clickable": true,
+        "tooltipable": true,
+        "tooltip-template": "{{{zmi_label}}}"
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zfa-line",
+      "attributes": {
+        "style": {
+          "id": "zfa-line",
+          "type": "line",
+          "source": "supporting-zoning",
+          "source-layer": "zoning-for-accessibility",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "rgba(0, 57, 165, 1)"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "zfa-fill",
+      "attributes": {
+        "highlightable": true,
+        "clickable": true,
+        "tooltipable": true,
+        "tooltipTemplate": "Transit Buffer {{{station_na}}}",
+        "style": {
+          "id": "zfa-fill",
+          "type": "fill",
+          "source": "supporting-zoning",
+          "source-layer": "zoning-for-accessibility",
+          "paint": {
+            "fill-color": "rgba(0, 57, 166, 0.5)",
+            "fill-opacity": {
+              "stops": [
+                [
+                  15,
+                  0.1
+                ],
+                [
+                  16,
+                  0.1
+                ]
+              ]
+            },
+            "fill-antialias": true
+          },
+        "highlightable": true,
+        "clickable": true,
+        "tooltipable": true,
+        "tooltip-template": "{{{zfa_label}}}"
+        }
       }
     }
   ],

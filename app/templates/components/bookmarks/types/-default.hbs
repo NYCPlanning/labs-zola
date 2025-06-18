@@ -9,7 +9,11 @@
         @model={{item.bookmark.id}}
       >
         <span class="icon polygon"></span>
-        {{item.bookmark.title}}
+        {{#if item.bookmark.formattedTitle.length}}
+          {{item.bookmark.formattedTitle}}
+        {{else}}
+          {{item.bookmark.title}}
+        {{/if}}
         <span class="dark-gray">
           {{item.bookmark.subtitle}}
         </span>

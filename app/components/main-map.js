@@ -2,9 +2,11 @@ import Component from '@ember/component';
 import mapboxgl from 'mapbox-gl';
 
 import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import { computed, action } from '@ember/object';
 import { classNames } from '@ember-decorators/component';
 import { alias } from '@ember/object/computed';
+import config from 'labs-zola/config/environment';
 
 import bblDemux from '../utils/bbl-demux';
 import drawnFeatureLayers from '../layers/drawn-feature';
@@ -43,6 +45,9 @@ export default class MainMap extends Component {
   @service router;
 
   @service('print') printSvc;
+
+  @tracked
+  showZFALayer = config.featureFlagShowZFALayer;
 
   menuTo = 'layers-menu';
 
@@ -209,7 +214,6 @@ export default class MainMap extends Component {
   @action
   handleLayerClick(feature) {
     const { highlightedLayerId } = this;
-
     if (feature) {
       const { properties } = feature;
 
@@ -224,6 +228,8 @@ export default class MainMap extends Component {
           id,
           cartodb_id, // eslint-disable-line
           ceqr_num, // eslint-disable-line
+          zmi_id,
+          zfa_id,
         } = properties;
         if (bbl && !ceqr_num) {
           // eslint-disable-line
@@ -286,6 +292,22 @@ export default class MainMap extends Component {
           this.router.transitionTo('map-feature.e-designation', id, {
             queryParams: { search: false },
           });
+        }
+
+        if (zmi_id) {
+          this.router.transitionTo('map-feature.zoning-map-index', zmi_id, {
+            queryParams: { search: false },
+          });
+        }
+
+        if (zfa_id && this.showZFALayer) {
+          this.router.transitionTo(
+            'map-feature.zoning-for-accessibility',
+            zfa_id,
+            {
+              queryParams: { search: false },
+            }
+          );
         }
       }
     }
