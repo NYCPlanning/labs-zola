@@ -21,6 +21,7 @@
 /yarn-error.log
 development.env
 **/.DS_Store
+/.vscode
 
 # ember-try
 /.node_modules.ember-try/

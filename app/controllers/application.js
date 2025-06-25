@@ -207,7 +207,7 @@ export default class ApplicationController extends Controller.extend(
   }
 
   @tracked
-  openModal = !window.localStorage.hideMessageZoningIndexMap;
+  openModal = !window.localStorage.hidePopupMessage;
 
   @tracked
   dontShowModalAgain = false;
@@ -215,7 +215,7 @@ export default class ApplicationController extends Controller.extend(
   @action toggleModal() {
     this.openModal = !this.openModal;
     if (this.dontShowModalAgain) {
-      window.localStorage.hideMessageZoningIndexMap = true;
+      window.localStorage.hidePopupMessage = true;
     }
   }
 

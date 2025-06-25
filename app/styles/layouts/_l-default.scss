@@ -103,8 +103,6 @@ body {
 }
 
 body.index {
-  overflow: hidden;
-
   @include breakpoint(small only) {
     .map-grid,
     .map-container {
