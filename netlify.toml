@@ -1,5 +1,5 @@
 [build]
-command = "API_HOST=https://layers-api-staging.planninglabs.nyc FEATURE_FLAG_SHOW_ZFA_LAYER=OFF yarn build --environment=production"
+command = "API_HOST=https://layers-api-staging.planninglabs.nyc FEATURE_FLAG_SHOW_ZFA_LAYER=ON yarn build --environment=production"
 
 [context.develop]
 command = "CARTO_USER=dcpadmin API_HOST=https://layers-api-staging.planninglabs.nyc FEATURE_FLAG_SHOW_ZFA_LAYER=ON yarn build --environment=development"
