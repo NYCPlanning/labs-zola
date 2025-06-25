@@ -8,4 +8,4 @@ command = "CARTO_USER=dcpadmin API_HOST=https://layers-api-staging.planninglabs.
 command = "CARTO_USER=dcpadmin API_HOST=https://layers-api-data.planninglabs.nyc FEATURE_FLAG_SHOW_ZFA_LAYER=ON yarn build --environment=production"
 
 [context.master]
-command = "yarn build --environment=production"
+command = "FEATURE_FLAG_SHOW_ZFA_LAYER=ON yarn build --environment=production"
