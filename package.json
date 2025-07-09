@@ -127,7 +127,7 @@
     "what-input": "^5.2.10"
   },
   "engines": {
-    "node": "14.* || 16.* || >= 18"
+    "node": "18.16.0"
   },
   "ember": {
     "edition": "octane"
