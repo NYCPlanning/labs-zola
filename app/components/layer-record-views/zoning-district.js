@@ -108,16 +108,25 @@ export default class ZoningDistrictRecordComponent extends LayerRecordComponent 
 
   get primaryzoneURL() {
     const { primaryzone } = this;
-    let url = '';
+    let primary = primaryzone.toUpperCase();
 
-    if (primaryzone === 'c1' || primaryzone === 'c2') {
-      url = 'c1-c2';
-    } else if (primaryzone === 'c3') {
-      url = 'c3-c3a';
-    } else {
-      url = primaryzone;
+    if (primary === 'C1' || primary === 'C2') {
+      primary = 'C1-C2';
+    } else if (primary === 'C3' || primary === 'C3A') {
+      primary = 'C3-C3A';
+    } else if (primary === 'R3') {
+      primary = zonedist;
     }
 
-    return url;
+    const primaryZoneGroups = {
+      R: 'residence-districts',
+      C: 'commercial-districts',
+      M: 'manufacturing-districts',
+    };
+    const primaryZoneGroup = primaryZoneGroups[primary[0]]
+      ? primaryZoneGroups[primary[0]]
+      : '';
+
+    return `https://www.nyc.gov/content/planning/pages/zoning/zoning-districts-guide/${primaryZoneGroup}/#${primary}`;
   }
 }

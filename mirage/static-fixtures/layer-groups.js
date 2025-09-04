@@ -361,7 +361,7 @@ export default {
           tooltip:
             'Areas where developments, enlargements and conversions over a certain size are required to set aside a percentage of floor area for permanently affordable housing',
           infolink:
-            'https://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page',
+            'https://www.nyc.gov/content/planning/pages/our-work/plans/citywide/mandatory-inclusionary-housing',
           icon: {
             type: 'rectangle',
             layers: [
@@ -408,7 +408,7 @@ export default {
           tooltip:
             'Areas where zoning incentives are offered to encourage the creation of permanently affordable housing',
           infolink:
-            'https://www1.nyc.gov/site/planning/zoning/districts-tools/inclusionary-housing.page',
+            'https://www.nyc.gov/content/planning/pages/our-work/plans/citywide/mandatory-inclusionary-housing',
           icon: {
             type: 'rectangle',
             layers: [
@@ -455,7 +455,7 @@ export default {
           tooltip:
             'Transit-accessible areas where special streetscape and special parking requirements apply.',
           infolink:
-            'https://www1.nyc.gov/site/planning/zoning/glossary.page#transit_zone',
+            'https://www.nyc.gov/assets/planning/downloads/pdf/zoning/downloadable-zoning-resources/zoning-glossary.pdf#page=34',
           icon: {
             type: 'rectangle',
             layers: [
@@ -502,7 +502,7 @@ export default {
           tooltip:
             'FRESH promotes the establishment and expansion of neighborhood grocery stores in underserved communities by providing zoning and financial incentives',
           infolink:
-            'https://www1.nyc.gov/site/planning/zoning/districts-tools/fresh-food-stores.page',
+            'https://www.nyc.gov/content/planning/pages/zoning/zoning-districts-guide/rules-for-special-areas#fresh',
           items: [
             {
               label: 'Zoning incentives',
@@ -585,7 +585,7 @@ export default {
           tooltip:
             'Areas where special zoning controls intend to limit growth and better match available infrastructure and services in lower-density areas experiencing rapid development',
           infolink:
-            'https://www1.nyc.gov/site/planning/zoning/districts-tools/lower-density-growth-mngmt.page',
+            'https://www.nyc.gov/content/planning/pages/zoning/zoning-districts-guide/rules-for-special-areas#lower-density-growth',
           icon: {
             type: 'rectangle',
             layers: [
@@ -632,7 +632,7 @@ export default {
           tooltip:
             'Projects within the coastal zone boundary are subject to additional review under the Waterfront Revitalization Program',
           infolink:
-            'https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-wrp.page',
+            'https://www.nyc.gov/content/planning/pages/resources?search=wrp#downloadable-maps',
           icon: {
             type: 'rectangle',
             layers: [
@@ -679,7 +679,7 @@ export default {
           tooltip:
             'These areas reflect site specific modification of waterfront public access requirements for waterfront parcels with unique conditions and opportunities',
           infolink:
-            'https://www1.nyc.gov/site/planning/zoning/districts-tools/waterfront-zoning.page',
+            'https://www.nyc.gov/content/planning/pages/zoning/zoning-districts-guide/rules-for-special-areas#waterfront-zoning',
           icon: {
             type: 'rectangle',
             layers: [
@@ -771,7 +771,7 @@ export default {
           tooltip:
             'The Effective Flood Insurance Rate Maps (FIRMs), first adopted by New York City in 1983 and last updated in 2007, establish the floodplain currently subject to the National Flood Insurance Program purchase requirements.',
           infolink:
-            'https://www1.nyc.gov/site/planning/plans/climate-resiliency-faq.page',
+            'https://www.nyc.gov/content/planning/pages/our-work/plans/citywide/climate-resiliency#faq',
           items: [
             {
               label: 'V Zone',
@@ -834,7 +834,7 @@ export default {
           tooltip:
             'Released in 2015 as part of a citywide flood map update, the Preliminary FIRMs establish the 1% annual chance floodplain. For building code and zoning purposes, the more expansive of the either the 2015 or 2007 maps is used.',
           infolink:
-            'https://www1.nyc.gov/site/planning/plans/climate-resiliency-faq.page',
+            'https://www.nyc.gov/content/planning/pages/our-work/plans/citywide/climate-resiliency#faq',
           items: [
             {
               label: 'V Zone',
@@ -1185,7 +1185,9 @@ export default {
         meta: {
           description:
             'Administrative and Political Districts v17D, BYTES of the BIG APPLE™',
-          url: ['https://www1.nyc.gov/site/planning/data-maps/open-data.page'],
+          url: [
+            'https://www.nyc.gov/content/planning/pages/resources#datasets',
+          ],
           'updated-at': '15 May 2023',
         },
         legend: {
@@ -1784,7 +1786,8 @@ export default {
           label: 'Environmental Designations',
           tooltip:
             'An E-Designation is a NYC zoning map designation that indicates the presence of an environmental requirement pertaining to potential Hazardous Materials Contamination, Window/Wall Noise Attenuation, or Air Quality impacts on a particular tax lot.',
-          infolink: 'https://www1.nyc.gov/site/planning/applicants/e-faq.page',
+          infolink:
+            'https://www.nyc.gov/assets/planning/downloads/pdf/planning/public-review/e-designations-faq.pdf',
           icon: {
             type: 'fa-icon',
             layers: [
@@ -1978,7 +1981,9 @@ export default {
         meta: {
           description:
             'NYC GIS Zoning Features April 2019, BYTES of the BIG APPLE™',
-          url: ['https://www1.nyc.gov/site/planning/data-maps/open-data.page'],
+          url: [
+            'https://www.nyc.gov/content/planning/pages/resources#datasets',
+          ],
           data_date: 'April 2019',
           updated_at: 'April 2019',
         },
@@ -2225,7 +2230,7 @@ export default {
           description:
             'Zoning related datasets April 2019, BYTES of the BIG APPLE™',
           url: [
-            'https://www1.nyc.gov/site/planning/data-maps/open-data.page#zoning_related',
+            'https://www.nyc.gov/content/planning/pages/resources?search=zoning#datasets',
           ],
           data_date: 'April 2019',
           updated_at: 'April 2019',
@@ -2307,7 +2312,7 @@ export default {
           description:
             'NYC GIS Zoning Features April 2019, BYTES of the BIG APPLE™',
           url: [
-            'https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-gis-zoning.page',
+            'https://www.nyc.gov/content/planning/pages/resources/datasets/gis-zoning-features',
           ],
           data_date: 'April 2019',
           updated_at: 'April 2019',
@@ -3388,7 +3393,9 @@ export default {
         meta: {
           description:
             'Administrative and Political Districts v18D, BYTES of the BIG APPLE™',
-          url: ['https://www1.nyc.gov/site/planning/data-maps/open-data.page'],
+          url: [
+            'https://www.nyc.gov/content/planning/pages/resources#datasets',
+          ],
           updated_at: '30 November 2018',
         },
       },
@@ -4962,7 +4969,7 @@ export default {
         meta: {
           description: 'MapPLUTO™ 18v2.1, BYTES of the BIG APPLE™',
           url: [
-            'https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page#mappluto',
+            'https://www.nyc.gov/content/planning/pages/resources/datasets/mappluto-pluto-change',
           ],
           updated_at: 'March 2019',
         },

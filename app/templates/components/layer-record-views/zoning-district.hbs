@@ -10,7 +10,7 @@
 {{#if (eq this.model.zonedist "BPC")}}
   <p>
     <a
-      href="https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-manhattan.page#battery_park"
+      href="https://www.nyc.gov/content/planning/pages/zoning/zoning-districts-guide/special-purpose-districts#BPC"
       target="_blank"
       onclick={{action this.captureOutboundLink "Special Battery Park City"}} rel="noopener noreferrer"
     >
@@ -21,7 +21,7 @@
 {{else}}
   <p>
     <a
-      href="https://www1.nyc.gov/site/planning/zoning/districts-tools/{{this.primaryzoneURL}}.page"
+      href={{this.primaryzoneURL}}
       target="_blank"
       onclick={{action this.captureOutboundLink this.model.zonedist}} rel="noopener noreferrer"
     >

@@ -6,9 +6,9 @@ const { specialDistrictCrosswalk } = config;
 export default class SpecialPurposeDistrictRecordComponent extends LayerRecordComponent {
   get readMoreLink() {
     const name = this.model.sdname;
-    const [, [anchorName, boroName]] = specialDistrictCrosswalk.find(
+    const [, [anchorName]] = specialDistrictCrosswalk.find(
       ([dist]) => dist === name
     ) || [[], []];
-    return `https://www1.nyc.gov/site/planning/zoning/districts-tools/special-purpose-districts-${boroName}.page#${anchorName}`;
+    return `https://www.nyc.gov/content/planning/pages/zoning/zoning-districts-guide/special-purpose-districts#${anchorName}`;
   }
 }

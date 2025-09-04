@@ -73,7 +73,7 @@ module(
 
       assert.equal(
         find('[data-test-zone-dist-link]').getAttribute('href'),
-        'https://www1.nyc.gov/site/planning/zoning/districts-tools/c5.page'
+        'https://www.nyc.gov/content/planning/pages/zoning/zoning-districts-guide/commercial-districts#C5'
       );
     });
 
