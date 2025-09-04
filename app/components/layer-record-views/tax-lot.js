@@ -14,11 +14,15 @@ const specialPurposeDistrictsSQL = function (table, spdist1, spdist2, spdist3) {
 
 const getPrimaryZone = (zonedist = '') => {
   if (!zonedist) return '';
-  let primary = zonedist.match(/\w\d*/)[0].toLowerCase();
+
+  let primary = zonedist.match(/\w\d*/)[0];
+
   // special handling for c1 and c2
-  if (primary === 'c1' || primary === 'c2') primary = 'c1-c2';
+  if (primary === 'C1' || primary === 'C2') primary = 'C1-C2';
   // special handling for c3 and c3a
-  if (primary === 'c3' || primary === 'c3a') primary = 'c3-c3a';
+  if (primary === 'C3' || primary === 'C3A') primary = 'C3-C3A';
+  // special handling for r3
+  if (primary === 'R3') primary = zonedist;
   return primary;
 };
 
@@ -427,7 +431,7 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
 
   get parentSpecialPurposeDistricts() {
     const DISTRICT_TOOLS_URL =
-      'https://www1.nyc.gov/site/planning/zoning/districts-tools';
+      'https://www.nyc.gov/content/planning/pages/zoning';
     const { spdist1, spdist2, spdist3 } = this.model;
 
     return carto
@@ -479,9 +483,18 @@ export default class TaxLotRecordComponent extends LayerRecordComponent {
 
     Object.keys(primaryZones).forEach((key) => {
       const value = primaryZones[key];
+      const primaryZoneGroups = {
+        R: 'residence-districts',
+        C: 'commercial-districts',
+        M: 'manufacturing-districts',
+      };
+      const primaryZoneGroup = primaryZoneGroups[value[0]]
+        ? primaryZoneGroups[value[0]]
+        : '';
+
       primaryZones[
         key
-      ] = `https://www1.nyc.gov/site/planning/zoning/districts-tools/${value}.page`;
+      ] = `https://www.nyc.gov/content/planning/pages/zoning/zoning-districts-guide/${primaryZoneGroup}/#${value}`;
     });
 
     return {
