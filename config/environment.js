@@ -187,6 +187,7 @@ module.exports = function (environment) {
       ['Special 125th Street District', ['125', 'manhattan']],
       ['Special Enhanced Commercial District', ['EC', ' brooklyn']],
       ['Special Flushing Waterfront District', ['FW', 'queens']],
+      ['Special Atlantic Avenue Mixed Use District (AAM)', ['AAM', 'brooklyn']],
     ],
 
     zoningDistrictOptionSets: [
