@@ -73,7 +73,7 @@
     <FaIcon @icon="users-between-lines" />
   </a>
 
-  <a target="_blank" onclick={{action this.captureOutboundLink "Icons - Streets" preventDefault=false}} href="https://streets.planning.nyc.gov/about?lat={{this.model.lat}}&layer-groups=%5B%22amendments%22%2C%22citymap%22%2C%22pierhead-bulkhead-lines%22%2C%22street-centerlines%22%5D&lng={{this.model.lon}}&zoom=15" rel="noopener noreferrer">
+  <a target="_blank" onclick={{action this.captureOutboundLink "Icons - Streets" preventDefault=false}} href="https://ae-streets-container-app.greenwater-bde2cea9.eastus2.azurecontainerapps.io/about?lat={{this.model.lat}}&layer-groups=%5B%22amendments%22%2C%22citymap%22%2C%22pierhead-bulkhead-lines%22%2C%22street-centerlines%22%5D&lng={{this.model.lon}}&zoom=15" rel="noopener noreferrer">
     <EmberPopover @side="top" @popperContainer="body" @popoverHideDelay={{0}}>
       View the street map for the area
     </EmberPopover>
