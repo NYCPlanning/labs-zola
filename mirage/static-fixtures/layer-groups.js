@@ -2179,31 +2179,31 @@ export default {
           },
           {
             id: 'mandatory-inclusionary-housing',
-            sql: 'SELECT the_geom_webmercator, projectnam, mih_option FROM mandatory_inclusionary_housing',
+            sql: 'SELECT the_geom_webmercator, projectnam, mih_option FROM dcp_mandatory_inclusionary_housing',
           },
           {
             id: 'inclusionary-housing',
-            sql: 'SELECT the_geom_webmercator, projectnam FROM inclusionary_housing',
+            sql: 'SELECT the_geom_webmercator, projectnam FROM dcp_inclusionary_housing',
           },
           {
             id: 'transit-zones',
-            sql: 'SELECT the_geom_webmercator FROM transitzones',
+            sql: 'SELECT the_geom_webmercator FROM dcp_appendixi_transit_zones',
           },
           {
             id: 'fresh',
-            sql: 'SELECT the_geom_webmercator, name FROM fresh_zones',
+            sql: 'SELECT the_geom_webmercator, name FROM dcp_fresh_zones',
           },
           {
             id: 'low-density-growth-mgmt-areas',
-            sql: 'SELECT the_geom_webmercator FROM lower_density_growth_management_areas',
+            sql: 'SELECT the_geom_webmercator FROM dcp_lower_density_growth_management_areas',
           },
           {
             id: 'coastal-zone-boundary',
-            sql: 'SELECT the_geom_webmercator FROM coastal_zone_boundary',
+            sql: 'SELECT the_geom_webmercator FROM dcp_coastal_zone_boundary',
           },
           {
             id: 'waterfront-access-plan',
-            sql: 'SELECT the_geom_webmercator, name FROM waterfront_access_plan',
+            sql: 'SELECT the_geom_webmercator, name FROM dcp_waterfront_access_plan',
           },
           {
             id: 'limited-height-districts',
@@ -2215,7 +2215,7 @@ export default {
           },
           {
             id: 'e-designations',
-            sql: 'SELECT the_geom_webmercator, bbl, ceqr_num, enumber, ulurp_num FROM e_designations',
+            sql: 'SELECT the_geom_webmercator, bbl, ceqr_num, enumber, ulurp_num FROM dcp_e_designations',
           },
           {
             id: 'industrial-business-zones',
@@ -2223,7 +2223,7 @@ export default {
           },
           {
             id: 'appendixj-designated-mdistricts',
-            sql: 'SELECT the_geom_webmercator, name, subarea FROM appendixj_designated_mdistricts',
+            sql: 'SELECT the_geom_webmercator, name, subarea FROM dcp_appendixj_designated_mdistricts',
           },
         ],
         meta: {
