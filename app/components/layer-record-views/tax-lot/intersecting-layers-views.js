@@ -9,18 +9,18 @@ export default class IntersectingLayersViews extends Component {
   showZFALayer = config.featureFlagShowZFALayer;
 
   tables = [
-    'inclusionary_housing',
-    'fresh_zones',
-    'waterfront_access_plan',
-    'coastal_zone_boundary',
-    'lower_density_growth_management_areas',
+    'dcp_inclusionary_housing',
+    'dcp_fresh_zones',
+    'dcp_waterfront_access_plan',
+    'dcp_coastal_zone_boundary',
+    'dcp_lower_density_growth_management_areas',
     'floodplain_firm2007',
     'floodplain_pfirm2015',
-    'mandatory_inclusionary_housing',
-    'e_designations',
+    'dcp_mandatory_inclusionary_housing',
+    'dcp_e_designations',
     'upland_waterfront_areas',
-    'transitzones',
-    'appendixj_designated_mdistricts',
+    'dcp_appendixi_transit_zones',
+    'dcp_appendixj_designated_mdistricts',
     'mta_rail_station_50ft_buffers',
   ];
 }
