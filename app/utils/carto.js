@@ -33,6 +33,7 @@ export default {
     return fetch(url)
       .then((response) => {
         if (response.ok) {
+          console.debug('res', response.json);
           return response.json();
         }
         throw new Error(response);
