@@ -531,7 +531,7 @@
       }
     },
     {
-    "type": "layer-groups",
+      "type": "layer-groups",
       "id": "zoning-map-index",
       "attributes": {
         "id": "zoning-map-index",
@@ -752,7 +752,7 @@
     },
     {
       "type": "layer-groups",
-      "id": "cho-greate-transit-zone",
+      "id": "cho-greater-transit-zone",
       "attributes": {
         "id": "cho-greater-transit-zone",
         "title": "Greater Transit Zone",
@@ -1527,10 +1527,10 @@
     },
     {
       "type": "layer-groups",
-      "id": "subway",
+      "id": "unified-transit-lines",
       "attributes": {
-        "id": "subway",
-        "title": "Subways",
+        "id": "unified-transit-lines",
+        "title": "Unified Transit Lines",
         "visible": true,
         "meta": {
           "description": "NYC Subway Lines and Stops - Originally Sourced from NYC DoITT GIS, combined with SI Railway data from Baruch College NYC Mass Transit Spatial Layers | Subway entrances from NYC Open Data",
@@ -1540,7 +1540,7 @@
             "https:\/\/data.cityofnewyork.us\/Transportation\/Subway-Entrances\/drex-xx56",
             "https:\/\/www.baruch.cuny.edu\/confluence\/display\/geoportal\/NYC+Mass+Transit+Spatial+Layers"
           ],
-          "updated-at": "21 November 2017"
+          "updated-at": "29 March 2026"
         }
       },
       "relationships": {
@@ -1592,11 +1592,27 @@
             },
             {
               "type": "layers",
-              "id": "subway_entrances"
+              "id": "lirr_rail_lines"
             },
             {
               "type": "layers",
-              "id": "subway_entrances_labels"
+              "id": "metronorth_rail_lines"
+            },
+            {
+              "type": "layers",
+              "id": "path_routes"
+            },
+            {
+              "type": "layers",
+              "id": "path_stations"
+            },
+            {
+              "type": "layers",
+              "id": "station_envelope_line"
+            },
+            {
+              "type": "layers",
+              "id": "station_envelope_fill"
             }
           ]
         }
@@ -1831,7 +1847,7 @@
       }
     },
     {
-    "type": "layer-groups",
+      "type": "layer-groups",
       "id": "zoning-for-accessibility",
       "attributes": {
         "id": "zoning-for-accessibility",
@@ -2080,9 +2096,7 @@
           "paint": {
             "fill-color": "rgba(240, 15, 130, 0.4)"
           },
-          "layout": {
-
-          },
+          "layout": {},
           "filter": [
             "==",
             "status",
@@ -2107,9 +2121,7 @@
           "paint": {
             "fill-color": "rgba(174, 86, 31, 0.2)"
           },
-          "layout": {
-
-          },
+          "layout": {},
           "filter": [
             "==",
             "status",
@@ -2170,9 +2182,7 @@
             "fill-color": "#F333E1",
             "fill-opacity": 0.2
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "appendixj-designated-mdistricts"
           }
@@ -2437,9 +2447,7 @@
             },
             "fill-color": "rgba(175, 175, 175, 1)"
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "building-footprints"
           }
@@ -2494,9 +2502,7 @@
             "fill-color": "#76420a",
             "fill-opacity": 0.2
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "business-improvement-districts"
           }
@@ -2735,9 +2741,7 @@
           }
         }
       },
-      "relationships": {
-
-      }
+      "relationships": {}
     },
     {
       "type": "layers",
@@ -3008,9 +3012,7 @@
             "fill-color": "#5DC6E4",
             "fill-opacity": 0.2
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "coastal-zone-boundary"
           }
@@ -3327,9 +3329,7 @@
         "highlightable": true,
         "tooltip-template": "2007 {{fld_zone}} Zone"
       },
-      "relationships": {
-
-      }
+      "relationships": {}
     },
     {
       "type": "layers",
@@ -3364,9 +3364,7 @@
         "highlightable": true,
         "tooltip-template": "2015 {{fld_zone}} Zone"
       },
-      "relationships": {
-
-      }
+      "relationships": {}
     },
     {
       "type": "layers",
@@ -3424,9 +3422,7 @@
               "Zoning and discretionary tax incentives"
             ]
           ],
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "fresh"
           }
@@ -3456,9 +3452,7 @@
               "Zoning incentives"
             ]
           ],
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "fresh"
           }
@@ -3488,9 +3482,7 @@
               "Discretionary tax incentives"
             ]
           ],
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "fresh"
           }
@@ -3547,9 +3539,7 @@
             "fill-color": "steelblue",
             "fill-opacity": 0.2
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "historic-districts"
           }
@@ -3606,9 +3596,7 @@
             "fill-color": "#E57300",
             "fill-opacity": 0.2
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "inclusionary-housing"
           }
@@ -3665,9 +3653,7 @@
             "fill-color": "#2B0A76",
             "fill-opacity": 0.2
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "industrial-business-zones"
           }
@@ -3801,9 +3787,7 @@
             "fill-color": "purple",
             "fill-opacity": 0.2
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "landmarks"
           }
@@ -3860,9 +3844,7 @@
             "fill-color": "#76420a",
             "fill-opacity": 0.2
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "limited-height-districts"
           }
@@ -3919,9 +3901,7 @@
             "fill-color": "#9D47B2",
             "fill-opacity": 0.2
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "low-density-growth-mgmt-areas"
           }
@@ -3978,9 +3958,7 @@
             "fill-color": "#CC3D5D",
             "fill-opacity": 0.2
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "mandatory-inclusionary-housing"
           }
@@ -4571,10 +4549,8 @@
       "type": "line",
       "source": "admin-boundaries",
       "source-layer": "nyc-council-districts-combined",
-      "paint":
-      {
-        "line-color":
-        {
+      "paint": {
+        "line-color": {
           "property": "year",
           "type": "categorical",
           "stops": [
@@ -4589,8 +4565,7 @@
           ]
         },
         "line-opacity": 0.7,
-        "line-width":
-        {
+        "line-width": {
           "stops": [
             [
               11,
@@ -4603,8 +4578,7 @@
           ]
         }
       },
-      "metadata":
-      {
+      "metadata": {
         "nycplanninglabs:layergroupid": "nyc_council_districts_combined"
       }
     },
@@ -4634,8 +4608,7 @@
         "line-join": "round",
         "line-cap": "round"
       },
-      "metadata":
-      {
+      "metadata": {
         "nycplanninglabs:layergroupid": "nyc_council_districts_combined"
       }
     },
@@ -4670,8 +4643,7 @@
           ]
         }
       },
-      "metadata":
-      {
+      "metadata": {
         "nycplanninglabs:layergroupid": "nyc_council_districts_combined"
       }
     },
@@ -5138,9 +5110,7 @@
             "fill-color": "#8DA610",
             "fill-opacity": 0.2
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "special-purpose-subdistricts"
           }
@@ -5648,7 +5618,7 @@
           "id": "subway_stations",
           "minzoom": 11,
           "source": "transportation",
-          "source-layer": "subway-stops",
+          "source-layer": "station-envelope-point-on-surfaces",
           "type": "circle",
           "paint": {
             "circle-color": "rgba(255, 255, 255, 1)",
@@ -5692,7 +5662,7 @@
             "circle-pitch-scale": "map"
           },
           "metadata": {
-            "nycplanninglabs:layergroupid": "subway"
+            "nycplanninglabs:layergroupid": "unified-transit-lines"
           }
         }
       }
@@ -5705,7 +5675,198 @@
           "id": "subway_stations_labels",
           "minzoom": 13,
           "source": "transportation",
-          "source-layer": "subway-stops",
+          "source-layer": "station-envelope-point-on-surfaces",
+          "type": "symbol",
+          "layout": {
+            "text-field": "{station_name}",
+            "symbol-placement": "point",
+            "symbol-spacing": 250,
+            "symbol-avoid-edges": false,
+            "text-size": 14,
+            "text-anchor": "center"
+          },
+          "paint": {
+            "text-halo-color": "rgba(255, 255, 255, 1)",
+            "text-halo-width": 1,
+            "text-translate": [
+              1,
+              20
+            ],
+            "text-opacity": {
+              "stops": [
+                [
+                  13,
+                  0
+                ],
+                [
+                  14,
+                  1
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "unified-transit-lines"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "lirr_rail_lines",
+      "attributes": {
+        "style": {
+          "id": "lirr_rail_lines",
+          "source": "transportation",
+          "source-layer": "mta-lirr-rail-lines",
+          "type": "line",
+          "paint": {
+            "line-color": "rgba(69, 76, 82, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  15,
+                  4
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "unified-transit-lines"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "metronorth_rail_lines",
+      "attributes": {
+        "style": {
+          "id": "metronorth_rail_lines",
+          "source": "transportation",
+          "source-layer": "mta-metronorth-rail-lines",
+          "type": "line",
+          "paint": {
+            "line-color": "rgba(69, 76, 82, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  15,
+                  4
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "unified-transit-lines"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "path_routes",
+      "attributes": {
+        "style": {
+          "id": "path_routes",
+          "source": "transportation",
+          "source-layer": "path-rail-routes",
+          "type": "line",
+          "paint": {
+            "line-color": "rgba(69, 76, 82, 1)",
+            "line-width": {
+              "stops": [
+                [
+                  10,
+                  1
+                ],
+                [
+                  15,
+                  4
+                ]
+              ]
+            }
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "unified-transit-lines"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "path_stations",
+      "attributes": {
+        "style": {
+          "id": "path_stations",
+          "minzoom": 11,
+          "source": "transportation",
+          "source-layer": "path-rail-stops",
+          "type": "circle",
+          "paint": {
+            "circle-color": "rgba(255, 255, 255, 1)",
+            "circle-opacity": {
+              "stops": [
+                [
+                  11,
+                  0
+                ],
+                [
+                  12,
+                  1
+                ]
+              ]
+            },
+            "circle-stroke-opacity": {
+              "stops": [
+                [
+                  11,
+                  0
+                ],
+                [
+                  12,
+                  1
+                ]
+              ]
+            },
+            "circle-radius": {
+              "stops": [
+                [
+                  10,
+                  2
+                ],
+                [
+                  14,
+                  5
+                ]
+              ]
+            },
+            "circle-stroke-width": 1,
+            "circle-pitch-scale": "map"
+          },
+          "metadata": {
+            "nycplanninglabs:layergroupid": "unified-transit-lines"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "path_stations_labels",
+      "attributes": {
+        "style": {
+          "id": "path_stations_labels",
+          "minzoom": 13,
+          "source": "transportation",
+          "source-layer": "path-rail-stops",
           "type": "symbol",
           "layout": {
             "text-field": "{name}",
@@ -5736,90 +5897,7 @@
             }
           },
           "metadata": {
-            "nycplanninglabs:layergroupid": "subway"
-          }
-        }
-      }
-    },
-    {
-      "type": "layers",
-      "id": "subway_entrances",
-      "attributes": {
-        "style": {
-          "id": "subway_entrances",
-          "minzoom": 15,
-          "source": "transportation",
-          "source-layer": "subway-entrances",
-          "type": "symbol",
-          "layout": {
-            "icon-image": "rail-15",
-            "icon-allow-overlap": true,
-            "text-font": [
-              "Open Sans Semibold",
-              "Arial Unicode MS Bold"
-            ],
-            "text-anchor": "top"
-          },
-          "paint": {
-            "icon-opacity": {
-              "stops": [
-                [
-                  15.5,
-                  0
-                ],
-                [
-                  16.5,
-                  1
-                ]
-              ]
-            }
-          },
-          "metadata": {
-            "nycplanninglabs:layergroupid": "subway"
-          }
-        }
-      }
-    },
-    {
-      "type": "layers",
-      "id": "subway_entrances_labels",
-      "attributes": {
-        "style": {
-          "id": "subway_entrances_labels",
-          "minzoom": 15,
-          "source": "transportation",
-          "source-layer": "subway-entrances",
-          "type": "symbol",
-          "layout": {
-            "text-field": "Entrance",
-            "symbol-placement": "point",
-            "symbol-spacing": 250,
-            "symbol-avoid-edges": false,
-            "text-size": 8,
-            "text-offset": [
-              0,
-              2
-            ],
-            "text-anchor": "center"
-          },
-          "paint": {
-            "text-halo-color": "rgba(255, 255, 255, 1)",
-            "text-halo-width": 1,
-            "text-opacity": {
-              "stops": [
-                [
-                  15.5,
-                  0
-                ],
-                [
-                  16.5,
-                  1
-                ]
-              ]
-            }
-          },
-          "metadata": {
-            "nycplanninglabs:layergroupid": "subway"
+            "nycplanninglabs:layergroupid": "unified-transit-lines"
           }
         }
       }
@@ -6051,9 +6129,7 @@
             "fill-color": "#E6D62E",
             "fill-opacity": 0.2
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "transit-zones"
           }
@@ -6110,9 +6186,7 @@
             "fill-color": "#00A4D2",
             "fill-opacity": 0.2
           },
-          "layout": {
-
-          },
+          "layout": {},
           "metadata": {
             "nycplanninglabs:layergroupid": "waterfront-access-plan"
           }
@@ -6521,7 +6595,7 @@
             "text-padding": 8,
             "text-allow-overlap": true,
             "text-font": [
-               "Arial Unicode MS Regular"
+              "Arial Unicode MS Regular"
             ],
             "text-size": {
               "base": 1,
@@ -6574,10 +6648,10 @@
             },
             "fill-antialias": true
           },
-        "highlightable": true,
-        "clickable": true,
-        "tooltipable": true,
-        "tooltip-template": "{{{zmi_label}}}"
+          "highlightable": true,
+          "clickable": true,
+          "tooltipable": true,
+          "tooltip-template": "{{{zmi_label}}}"
         }
       }
     },
@@ -6604,6 +6678,55 @@
               ]
             },
             "line-color": "rgba(0, 57, 165, 1)"
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "station_envelope_line",
+      "minzoom": 16,
+      "attributes": {
+        "style": {
+          "id": "station_envelope_line",
+          "type": "line",
+          "source": "transportation",
+          "source-layer": "station-envelope",
+          "paint": {
+            "line-width": {
+              "stops": [
+                [
+                  11,
+                  1
+                ],
+                [
+                  12,
+                  3
+                ]
+              ]
+            },
+            "line-color": "#DA02C8",
+            "line-dasharray": [
+              1,
+              1
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "layers",
+      "id": "station_envelope_fill",
+      "minzoom": 16,
+      "attributes": {
+        "style": {
+          "id": "station_envelope_fill",
+          "type": "fill",
+          "source": "transportation",
+          "source-layer": "station-envelope",
+          "paint": {
+            "fill-color": "rgba(218, 2, 200, 0.20)",
+            "fill-antialias": true
           }
         }
       }
@@ -6637,10 +6760,10 @@
             },
             "fill-antialias": true
           },
-        "highlightable": true,
-        "clickable": true,
-        "tooltipable": true,
-        "tooltip-template": "{{{zfa_label}}}"
+          "highlightable": true,
+          "clickable": true,
+          "tooltipable": true,
+          "tooltip-template": "{{{zfa_label}}}"
         }
       }
     }
