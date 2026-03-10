@@ -146,12 +146,10 @@
       data-test-toggle-inclusionary-housing
       @layerGroup={{this.layerGroups.inclusionary-housing}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.inclusionary-housing this.zoomWarningLabel this.mainMap.zoom}}/>
-    {{#if this.showZFALayer}}
-      <container.layer-group-toggle
-        data-test-toggle-zoning-for-accessibility
-        @layerGroup={{this.layerGroups.zoning-for-accessibility}}
-        @activeTooltip={{zoom-dependent-label this.layerGroups.zoning-for-accessibility }} />
-    {{/if}}
+    <container.layer-group-toggle
+      data-test-toggle-zoning-for-accessibility
+      @layerGroup={{this.layerGroups.zoning-for-accessibility}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.zoning-for-accessibility }} />
     <container.layer-group-toggle
       data-test-toggle-cho-greater-transit-zone
       @layerGroup={{this.layerGroups.cho-greater-transit-zone}}
@@ -301,8 +299,8 @@
 >
     <container.layer-group-toggle
       data-test-toggle-subway
-      @layerGroup={{this.layerGroups.subway}}
-      @activeTooltip={{zoom-dependent-label this.layerGroups.subway this.zoomWarningLabel this.mainMap.zoom}}/>
+      @layerGroup={{this.layerGroups.unified-transit-lines}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.unified-transit-lines this.zoomWarningLabel this.mainMap.zoom}}/>
     <container.layer-group-toggle
       data-test-toggle-building-footprints
       @layerGroup={{this.layerGroups.building-footprints}}
