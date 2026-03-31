@@ -6738,14 +6738,14 @@
         "highlightable": true,
         "clickable": true,
         "tooltipable": true,
-        "tooltipTemplate": "Transit Buffer {{{station_na}}}",
+        "tooltipTemplate": "Transit-adjacent area",
         "style": {
           "id": "zfa-fill",
           "type": "fill",
           "source": "supporting-zoning",
           "source-layer": "zoning-for-accessibility",
           "paint": {
-            "fill-color": "rgba(0, 57, 166, 0.5)",
+            "fill-color": "rgba(218, 2, 200, 0.15)",
             "fill-opacity": {
               "stops": [
                 [
