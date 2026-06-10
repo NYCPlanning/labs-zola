@@ -6615,7 +6615,7 @@
         "highlightable": true,
         "clickable": true,
         "tooltipable": true,
-        "tooltipTemplate": "Transit Buffer {{{station_na}}}",
+        "tooltipTemplate": "Transit-adjacent area",
         "style": {
           "id": "zfa-fill",
           "type": "fill",
