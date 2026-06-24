@@ -70,7 +70,6 @@ module.exports = function (environment) {
       { id: 'ny-senate-districts', visible: false },
       { id: 'assembly-districts', visible: false },
       { id: 'neighborhood-tabulation-areas', visible: false },
-      // { id: 'subway', visible: true },
       { id: 'building-footprints', visible: true },
       { id: 'three-d-buildings', visible: false },
       { id: 'aerials', visible: false },

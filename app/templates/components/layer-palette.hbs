@@ -149,7 +149,7 @@
     <container.layer-group-toggle
       data-test-toggle-zoning-for-accessibility
       @layerGroup={{this.layerGroups.zoning-for-accessibility}}
-      @activeTooltip={{zoom-dependent-label this.layerGroups.zoning-for-accessibility }} />
+      @activeTooltip={{zoom-dependent-label this.layerGroups.zoning-for-accessibility this.zoomWarningLabel this.mainMap.zoom}} />
     <container.layer-group-toggle
       data-test-toggle-cho-greater-transit-zone
       @layerGroup={{this.layerGroups.cho-greater-transit-zone}}
