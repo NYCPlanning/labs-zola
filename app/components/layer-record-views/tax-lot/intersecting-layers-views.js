@@ -1,12 +1,7 @@
 import Component from '@ember/component';
-import { tracked } from '@glimmer/tracking';
-import config from 'labs-zola/config/environment';
 
 export default class IntersectingLayersViews extends Component {
   model = null;
-
-  @tracked
-  showZFALayer = config.featureFlagShowZFALayer;
 
   tables = [
     'dcp_inclusionary_housing',
@@ -21,6 +16,6 @@ export default class IntersectingLayersViews extends Component {
     'upland_waterfront_areas',
     'dcp_appendixi_transit_zones',
     'dcp_appendixj_designated_mdistricts',
-    'mta_rail_station_50ft_buffers',
+    'mta_nyc_rail_station_buffer_dissolve',
   ];
 }

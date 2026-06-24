@@ -5,7 +5,7 @@ const SQL = function (zoningForAccessibilityId) {
   return `SELECT
     the_geom,
     cartodb_id AS id
-    FROM mta_rail_station_50ft_buffers
+    FROM mta_nyc_rail_station_buffer_dissolve
     WHERE cartodb_id = '${zoningForAccessibilityId}'`;
 };
 
