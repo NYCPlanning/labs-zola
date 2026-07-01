@@ -159,7 +159,7 @@ module.exports = function (environment) {
       ['Special Little Italy District', ['LI', 'manhattan']],
       ['Special Lower Manhattan District', ['LM', 'manhattan']],
       ['Special Midtown District', ['MID', 'manhattan']],
-      ['Special Midtown South Mixed Use District ', ['MSX', 'manhattan']],
+      ['Special Midtown South Mixed-Use District', ['MSX', 'manhattan']],
       ['Special Manhattanville Mixed Use District', ['MMU', 'manhattan']],
       ['Special Madison Avenue Preservation District', ['MP', 'manhattan']],
       ['Special Park Improvement District', ['PI', 'manhattan']],
