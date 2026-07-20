@@ -117,3 +117,12 @@ SELECT
 FROM planninglabs.mappluto_VERSION
 GROUP BY block, borocode)
 ```
+
+## Deploying the Intranet Site
+To build the docker file:
+- Pull the `docker-master` branch, and then merge the changes from `master` into `docker-master`
+- Log in to Docker Hub with `docker login -u <your_username>`
+- Navigate to the ZoLa's directory in the terminal, and then run `docker build --platform linux/amd64 -t <your_username>/labs-zola:latest .`
+- Confirm image exists by listing your local images with `docker images`
+- Push the image to Docker Hub with `docker push <your_username>/labs-zola:latest`
+- Send the URL for the image on Docker Hub (it should be https://hub.docker.com/repository/docker/<your_username>/labs-zola/) and send it to Leo Olen for deployment
