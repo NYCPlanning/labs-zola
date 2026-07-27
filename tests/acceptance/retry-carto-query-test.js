@@ -58,7 +58,7 @@ module('Acceptance | lot route retries after error', function (hooks) {
     });
 
     this.server.get(
-      'https://planninglabs.carto.com/api/v2/sql',
+      'https://carto.nycplanningdigital.com/api/v2/sql',
       (schema, request) => {
         // special handling for json format
         if (request.queryParams.format === 'json') {
@@ -98,7 +98,7 @@ module('Acceptance | lot route retries after error', function (hooks) {
   //     });
 
   //     this.server.get(
-  //       'https://planninglabs.carto.com/api/v2/sql',
+  //       'https://carto.nycplanningdigital.com/api/v2/sql',
   //       () => new Response(400, {}, { error: ['query_timeout_exceeded'] })
   //     );
 
@@ -180,7 +180,7 @@ module('Acceptance | lot route retries after error', function (hooks) {
       },
     });
     this.server.get(
-      'https://planninglabs.carto.com/api/v2/sql',
+      'https://carto.nycplanningdigital.com/api/v2/sql',
       (schema, request) => {
         // special handling for json format
         if (request.queryParams.format === 'json') {
