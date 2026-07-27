@@ -51,7 +51,7 @@ module('Acceptance | visit lot', function (hooks) {
     });
 
     this.server.get(
-      'https://planninglabs.carto.com/api/v2/sql',
+      'https://carto.nycplanningdigital.com/api/v2/sql',
       (schema, request) => {
         const { queryParams } = request;
         const { format, q } = queryParams;
