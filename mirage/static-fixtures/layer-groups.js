@@ -4399,8 +4399,8 @@ export default {
           description:
             'NYC Subway Lines and Stops - Originally Sourced from NYC DoITT GIS, combined with SI Railway data from Baruch College NYC Mass Transit Spatial Layers | Subway entrances from NYC Open Data',
           url: [
-            'https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM mta_subway_stops&format=SHP',
-            'https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM mta_subway_routes&format=SHP',
+            'https://carto.nycplanningdigital.com/api/v2/sql?q=SELECT * FROM mta_subway_stops&format=SHP',
+            'https://carto.nycplanningdigital.com/api/v2/sql?q=SELECT * FROM mta_subway_routes&format=SHP',
             'https://data.cityofnewyork.us/Transportation/Subway-Entrances/drex-xx56',
             'https://www.baruch.cuny.edu/confluence/display/geoportal/NYC+Mass+Transit+Spatial+Layers',
           ],
