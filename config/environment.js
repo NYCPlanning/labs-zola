@@ -1,5 +1,5 @@
 const HOST =
-  process.env.API_HOST || 'https://labs-layers-api-data-qa.herokuapp.com';
+  process.env.API_HOST || 'https://labs-layers-api-staging.herokuapp.com';
 const CARTO_USER = process.env.CARTO_USER || 'planninglabs';
 
 module.exports = function (environment) {
