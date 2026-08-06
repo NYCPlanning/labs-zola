@@ -30,14 +30,14 @@
   </span>
 </label>
 <h1 class="content-header">
+  <span class="address">
+    {{this.model.address}}, {{this.model.zipcode}}
+  </span>
   {{#if this.model.landmark}}
     <span class="landmark">
       {{this.model.landmark}}
     </span>
   {{/if}}
-  <span class="address">
-    {{this.model.address}}, {{this.model.zipcode}}
-  </span>
 </h1>
 <p class="text-small dark-gray" style="margin-bottom: 0.5rem">
   {{this.boroname}}&nbsp;(Borough {{this.model.borocode}})
