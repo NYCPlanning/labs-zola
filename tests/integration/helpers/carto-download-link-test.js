@@ -21,7 +21,7 @@ module('helper:carto-download-link', function (hooks) {
 
     assert.equal(
       this.element.textContent.trim(),
-      'https://carto.nycplanningdigital.com/api/v2/sql?q=SELECT * FROM dcp_mappluto WHERE bbl IN (1014970028,1015280036,1015280038)&format=csv&filename=dcp_mappluto'
+      'https://planninglabs.carto.com/api/v2/sql?q=SELECT * FROM dcp_mappluto WHERE bbl IN (1014970028,1015280036,1015280038)&format=csv&filename=dcp_mappluto'
     );
   });
 });

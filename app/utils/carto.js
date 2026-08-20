@@ -12,6 +12,7 @@ const buildTemplate = (cartoResponse, type) => { // eslint-disable-line
 
   // choose a subdomain at random
   const subdomain = subdomains[Math.floor(Math.random() * subdomains.length)];
+
   return `${cdn_url.templates.https.url.replace(
     '{s}',
     subdomain

@@ -1,5 +1,4 @@
-const HOST =
-  process.env.API_HOST || 'https://labs-layers-api-data-qa.herokuapp.com';
+const HOST = process.env.API_HOST || 'https://labs-layers-api.herokuapp.com';
 const CARTO_USER = process.env.CARTO_USER || 'planninglabs';
 
 module.exports = function (environment) {
@@ -29,9 +28,9 @@ module.exports = function (environment) {
 
     fastboot: {
       hostWhitelist: [
-        'https://carto.nycplanningdigital.com/**',
-        'nycplanningdigital.com',
-        'carto.nycplanningdigital.com',
+        'https://planninglabs.carto.com/**',
+        'carto.com',
+        'planninglabs.carto.com',
         /^localhost:\d+$/,
         'dry-thicket-91267.herokuapp.com',
       ],
@@ -350,8 +349,8 @@ module.exports = function (environment) {
     },
 
     carto: {
-      domain: `https://carto.nycplanningdigital.com`,
       username: CARTO_USER,
+      domain: `https://${CARTO_USER}.carto.com`,
     },
 
     fontawesome: {

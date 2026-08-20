@@ -11,12 +11,9 @@ module(
     setupMirage(hooks);
 
     test('it shows none found with empty response', async function (assert) {
-      this.server.get(
-        'https://carto.nycplanningdigital.com/api/v2/sql',
-        () => ({
-          rows: [],
-        })
-      );
+      this.server.get('https://planninglabs.carto.com/api/v2/sql', () => ({
+        rows: [],
+      }));
 
       await render(hbs`<LayerRecordViews::TaxLot::IntersectingLayersViews />`);
 
