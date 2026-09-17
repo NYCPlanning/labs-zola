@@ -40,10 +40,8 @@ export default class MapResourceSearchComponent extends Component {
     const mapInstance = mainMap.get('mapInstance');
     const { type } = result;
 
-    this.setProperties({
-      selected: 0,
-      focused: false,
-    });
+    this.selected = 0;
+    this.focused = false;
 
     if (type === 'lot') {
       // GA
