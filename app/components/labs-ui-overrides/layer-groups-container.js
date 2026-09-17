@@ -1,13 +1,13 @@
-import { A } from '@ember/array';
-import { inject as service } from '@ember/service';
+import { service } from '@ember/service';
 import LayerGroupsContainer from '@nycplanning/ember/components/deprecated/layer-groups-container';
+import { tracked } from '@glimmer/tracking';
 
-export default LayerGroupsContainer.extend({
-  fastboot: service(),
-  init(...args) {
-    this._super(...args);
+export default class LayerGroupsContainerComponent extends LayerGroupsContainer {
+  get fastboot() {
+    return service();
+  }
 
-    this.set('layerGroupToggleItems', A([]));
-  },
-  handleToggle() {},
-});
+  @tracked layerGroupToggleItems = [];
+
+  handleToggle() {}
+}

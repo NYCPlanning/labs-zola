@@ -6,7 +6,7 @@
   Enable special handling for node-based fastboot pre-rendering
   Ember wormhole gets skipped in fastboot because it requires the DOM
 --}}
-{{#unless this.fastboot.isFastBoot}}
+{{!-- {{#unless this.fastboot.isFastBoot}}
   <EmberWormhole @to={{this.elementId}}>
     <div class="layer-groups-container-content">
       {{yield (hash
@@ -19,18 +19,18 @@
       }}
     </div>
   </EmberWormhole>
-{{/unless}}
+{{/unless}} --}}
 <div onclick={{action 'toggleLayerGroupsContainer'}}
   class="layer-groups-container-title
     {{if this.open 'open' 'closed'}}
-    layer-groups-container--{{dasherize this.title}}"
+    layer-groups-container--{{dasherize @title}}"
   role="button"
 >
-  {{this.title}}
+  {{@title}}
 
-  {{#if this.numberMenuItems}}
+  {{#if @numberMenuItems}}
     <span class="badge">
-      {{this.numberMenuItems}}
+      {{@numberMenuItems}}
     </span>
   {{/if}}
 
@@ -39,7 +39,18 @@
   {{/if}}
 </div>
 
-<div id={{this.elementId}}>
+<div class="layer-groups-container-content">
+      {{yield (hash
+          layer-group-toggle=(component 'labs-ui-overrides/layer-group-toggle'
+            willDestroyHook=(action 'unregisterChild')
+            didInit=(action 'registerChild')
+            onToggle=(action this.handleToggle)
+          )
+        )
+      }}
+    </div>
+
+{{!-- <div id={{@elementId}}>
   {{#if this.fastboot.isFastBoot}}
     <div class="layer-groups-container-content">
       {{yield (hash
@@ -50,4 +61,4 @@
       }}
     </div>
   {{/if}}
-</div>
+</div> --}}
