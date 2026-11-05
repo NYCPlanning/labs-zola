@@ -194,6 +194,8 @@
       @activeTooltip={{zoom-dependent-label this.layerGroups.landmarks this.zoomWarningLabel this.mainMap.zoom}}>
       <LabsUi::LegendItems @items={{this.layerGroups.landmarks.legend.items}} />
     </container.layer-group-toggle>
+    <container.layer-group-toggle data-test-toggle-board-of-standards-and-appeals @layerGroup={{this.layerGroups.board-of-standards-and-appeals}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.board-of-standards-and-appeals this.zoomWarningLabel this.mainMap.zoom}} />
     <container.layer-group-toggle
       data-test-toggle-floodplain-efirm2007
       @layerGroup={{this.layerGroups.floodplain-efirm2007}}
