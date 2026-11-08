@@ -1,0 +1,87 @@
+<label class="header-type">
+  BOARD OF STANDARDS AND APPEALS
+</label>
+<h1 class="header-large">
+  {{@model.address}}
+</h1>
+<p>
+  This map shows decided Board cases filed from January 1, 1998, to the present. Active (currently open) cases are not
+  displayed here.
+</p>
+<p>
+  You can also use our other search tools,
+  <a href="https://www.nyc.gov/site/oer/remediation/city-environmental-quality-review.page" target="_blank"
+    rel="noopener noreferrer">
+    Search for Resolutions
+  </a>
+   to find out more application information, look up active
+  cases, and download resolutions (as applicable), and
+  <a href="https://www.nyc.gov/site/oer/remediation/city-environmental-quality-review.page" target="_blank"
+    rel="noopener noreferrer">
+    Applications prior to 1998
+  </a>
+  to find calendar numbers,
+  street addresses, and block and lots for decided cases prior to 1998.
+  </p>
+  <p>
+  This data is provided solely for informational purposes and does not represent the full extent of the Board's
+  jurisdiction or decisions, which date from 1916 to the present. Researchers and property owners should visit the
+  <a href="https://www.nyc.gov/site/oer/remediation/city-environmental-quality-review.page" target="_blank"
+    rel="noopener noreferrer">
+    Records Request
+  </a>
+  page to request information which may be unavailable on this website.
+</p>
+<hr class="hide-for-print">
+<div class="data-grid">
+  <label class="data-label">
+    Filed
+  </label>
+  <span class="datum">
+    {{@model.properties.filed}}
+  </span>
+</div>
+<div class="data-grid">
+  <label class="data-label">
+    Calendar Number
+  </label>
+  <span class="datum">
+    {{@model.properties.calendar_number}}
+  </span>
+</div>
+<div class="data-grid">
+  <label class="data-label">
+    Project Description
+  </label>
+  <span class="datum">
+    {{@model.properties.project_description}}
+  </span>
+</div>
+<div class="data-grid">
+  <label class="data-label">
+    Status
+  </label>
+  <span class="datum">
+    {{@model.properties.status}}
+  </span>
+</div>
+<div class="data-grid">
+  <label class="data-label">
+    Decision Date
+  </label>
+  <span class="datum">
+    {{@model.properties.decision_date}}
+  </span>
+</div>
+<div class="data-grid">
+  <label class="data-label">
+    Decision URL
+  </label>
+  <span class="datum">
+    <a href={{@model.properties.decision_url}} target="_blank" rel="noopener noreferrer">
+      View Decision
+      {{!-- {{@model.properties.decision_url}} --}}
+    </a>
+  </span>
+</div>
+<br>

@@ -1,0 +1,6 @@
+<CartoDataProvider @modelId={{this.model.id}} @modelName="board-of-standards-and-appeals" as
+  |boardOfStandardsAndAppeals|>
+  <Mapbox::MapFeatureRenderer @model={{boardOfStandardsAndAppeals}} @shouldFitBounds={{this.model.search}} />
+
+  <LayerRecordViews::BoardOfStandardsAndAppeals @model={{boardOfStandardsAndAppeals}} />
+</CartoDataProvider>

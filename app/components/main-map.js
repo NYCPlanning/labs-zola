@@ -225,6 +225,7 @@ export default class MainMap extends Component {
           ceqr_num, // eslint-disable-line
           zmi_id,
           zfa_id,
+          bsa_id,
         } = properties;
         if (bbl && !ceqr_num) {
           // eslint-disable-line
@@ -299,6 +300,16 @@ export default class MainMap extends Component {
           this.router.transitionTo(
             'map-feature.zoning-for-accessibility',
             zfa_id,
+            {
+              queryParams: { search: false },
+            }
+          );
+        }
+
+        if (bsa_id) {
+          this.router.transitionTo(
+            'map-feature.board-of-standards-and-appeals',
+            bsa_id,
             {
               queryParams: { search: false },
             }
