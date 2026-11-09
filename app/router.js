@@ -39,6 +39,9 @@ Router.map(function () {// eslint-disable-line
     this.route('zoning-for-accessibility', {
       path: '/zoning-for-accessibility/:id',
     });
+    this.route('board-of-standards-and-appeals', {
+      path: '/board-of-standards-and-appeals/:id',
+    });
   });
 
   // in order to namespace the map feature routes (zoning district, etc), we have

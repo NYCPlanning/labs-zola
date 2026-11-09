@@ -79,6 +79,7 @@ module.exports = function (environment) {
       { id: 'zoning-map-index', visible: false },
       { id: 'zoning-for-accessibility', visible: false },
       { id: 'unified-transit-lines', visible: true },
+      { id: 'board-of-standards-and-appeals', visible: false },
     ],
 
     specialDistrictCrosswalk: [
