@@ -11,4 +11,8 @@ export default class BoardOfStandardsAndAppeals extends CartoGeojsonFeature {
 
     return [street, borough].filter(Boolean).join(', ');
   }
+
+  get cases() {
+    return this.properties?.cases || [];
+  }
 }
