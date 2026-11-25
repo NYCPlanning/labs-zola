@@ -531,6 +531,37 @@
       }
     },
     {
+    "type": "layer-groups",
+      "id": "zoning-map-index",
+      "attributes": {
+        "id": "zoning-map-index",
+        "title": "Zoning Map Index",
+        "visible": false,
+        "title-tooltip": "This layer displays an index of 126 zoning map sections that are part of the NYC Zoning Resolution. Each section is identified by a unique number and covers an area of 8,000 feet by 12,500 feet of the City. Click on a section to view and print the corresponding zoning map",
+        "infolink": "https://s-media.nyc.gov/agencies/dcp/assets/files/AE/about-zoning-maps.pdf",
+        "legend-icon": "polygon",
+        "legend-color": "#000000"
+      },
+      "relationships": {
+        "layers": {
+          "data": [
+            {
+              "type": "layers",
+              "id": "zmi-line"
+            },
+            {
+              "type": "layers",
+              "id": "zmi-label"
+            },
+            {
+              "type": "layers",
+              "id": "zmi-fill"
+            }
+          ]
+        }
+      }
+    },
+    {
       "type": "layer-groups",
       "id": "zoning-map-index",
       "attributes": {
