@@ -146,6 +146,18 @@
       data-test-toggle-inclusionary-housing
       @layerGroup={{this.layerGroups.inclusionary-housing}}
       @activeTooltip={{zoom-dependent-label this.layerGroups.inclusionary-housing this.zoomWarningLabel this.mainMap.zoom}}/>
+    {{#if this.showZFALayer}}
+      <container.layer-group-toggle
+        data-test-toggle-zoning-for-accessibility
+        @layerGroup={{this.layerGroups.zoning-for-accessibility}}
+        @activeTooltip={{zoom-dependent-label this.layerGroups.zoning-for-accessibility }} />
+    {{/if}}
+    <container.layer-group-toggle
+      data-test-toggle-cho-greater-transit-zone
+      @layerGroup={{this.layerGroups.cho-greater-transit-zone}}
+      @activeTooltip={{zoom-dependent-label this.layerGroups.cho-greater-transit-zone this.zoomWarningLabel this.mainMap.zoom}}>
+      <LabsUi::LegendItems @items={{this.layerGroups.cho-greater-transit-zone.legend.items}} />
+    </container.layer-group-toggle>
     <container.layer-group-toggle
       data-test-toggle-zoning-for-accessibility
       @layerGroup={{this.layerGroups.zoning-for-accessibility}}
